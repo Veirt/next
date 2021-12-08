@@ -1,6 +1,6 @@
 # Contributing 
 
-**If you have any questions or concerns, please reach out to CameronCT directly via cameron@keyma.sh or GNiK#8129 on Discord.
+**If you have any questions or concerns, please reach out to CameronCT directly via GNiK#8129 on Discord.**
 
 ### Table of Contents
 
