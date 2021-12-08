@@ -1,0 +1,79 @@
+.input-settings {
+  @apply block w-full focus:outline-none border-b-2 border-gray-600 bg-gray-600 bg-opacity-30 shadow rounded px-2 py-1;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.02);
+  @apply mt-3 w-full p-2 text-lg text-gray-300 border-gray-700 border-b-2 shadow;
+}
+
+.form-control-small {
+  background: rgba(255, 255, 255, 0.02);
+  @apply mt-3 w-full p-2 text-base text-gray-300 border-gray-700 border-b-2 shadow;
+}
+
+.form-control-smallest {
+  background: rgba(255, 255, 255, 0.02);
+  @apply mt-3 w-full p-1 text-sm text-gray-300 border-gray-700 border-b-2 shadow;
+}
+
+.form-settings {
+  @apply w-full bg-gray-700 bg-opacity-40 py-2 px-3 text-base text-white shadow;
+}
+
+.form-settings-small {
+  @apply py-1 px-2 #{!important};;
+}
+
+.form-settings-dob {
+  @apply p-1;
+}
+
+.form-settings::placeholder {
+  @apply text-gray-400;
+}
+
+.form-settings:hover,
+.form-settings:focus {
+  @apply outline-none;
+}
+
+option {
+  @apply bg-gray-800 p-1 border-gray-800;
+}
+
+.form-control-smallest:hover,
+.form-control-smallest:focus,
+.form-control-small:hover,
+.form-control-small:focus,
+.form-control:hover,
+.form-control:focus {
+  @apply outline-none;
+}
+
+.form-control::placeholder {
+  @apply text-gray-400;
+}
+
+.form-control:hover,
+.form-control:focus {
+  @apply outline-none;
+}
+
+// ----------------- Form Control
+.form-control-radio-div {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+.form-control-radio-div + div {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+.form-control-radio-div:checked + div {
+  outline: 1px solid #f6ad55;
+}

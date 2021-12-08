@@ -1,0 +1,318 @@
+{
+    "other": {
+        "account_banned": "Va\u0161 ra\u010dun je bio zabranjen, molimo vas kontaktirajte support@keyma.sh!",
+        "grades": {
+            "passed": "Pro\u0161ao",
+            "failed": "Propao"
+        },
+        "save": "Spremi!"
+    },
+    "button": {
+        "save": "Spremi!",
+        "retry": "Poku\u0161aj ponovno",
+        "back": "Natrag",
+        "next": "Dalje",
+        "leave": "Oti\u0107i",
+        "enable": "Uklju\u010di",
+        "disable": "Isklju\u010di",
+        "spectator": "Gledatelj",
+        "join": "Priklju\u010diti",
+        "ladder": "Ljestve",
+        "lobby": "Predvorje",
+        "newgame": "Nova igra"
+    },
+    "charts": {
+        "lowest": "Najni\u017ee",
+        "highest": "Najvi\u0161e"
+    },
+    "options": {
+        "yes": "Da",
+        "no": "Ne",
+        "random": "Razli\u010dito",
+        "quotes": "Citati",
+        "dict": "Rije\u010dnik",
+        "custom": "Prilago\u0111eno"
+    },
+    "form": {
+        "message": "Unesite poruku..."
+    },
+    "statistics": {
+        "wpm_abbreviation": "WPM",
+        "cpm_abbreviation": "CPM",
+        "wpm": "Rije\u010di u minuti",
+        "cpm": "Slova u minuti",
+        "time": "Proteklo vrijeme",
+        "won": "Pobijedio",
+        "lost": "Izgubio",
+        "ratio": "Omjer",
+        "accuracy": "Preciznost",
+        "exp_abbreviation": "EXP",
+        "playtime": "Vrijeme igranja",
+        "exp_total": "Ukupno iskustvo",
+        "exp": "Iskustvo",
+        "wpm_fastest": "Najbr\u017ea runda",
+        "mistakes": "Pogre\u0161ke",
+        "grade": "Ocjena",
+        "records": "Rekordi"
+    },
+    "component": {
+        "topbar": {
+            "home": "Dom",
+            "news": "Vijesti",
+            "play": "Igraj",
+            "leaders": "Vo\u0111e",
+            "discord": "Discord"
+        },
+        "bottombar": {
+            "about": "O nama",
+            "tos": "Uvjeti pru\u017eanja usluga",
+            "privacy": "Politika privatnosti",
+            "trello": "Trello",
+            "patreon": "Patreon",
+            "contribute": "Doprinosi",
+            "guidelines": "Smjernice Zajednice",
+            "shortcuts": "Tipkovin pre\u010daci",
+            "faq": "\u010cesta pitanja",
+            "faqM": "FAQ"
+        },
+        "navbar": {
+            "home": "Dom",
+            "news": "Vijesti",
+            "play": "Igraj",
+            "leaders": "Vo\u0111e",
+            "discord": "Discord",
+            "practice": "Vje\u017ebaj",
+            "learn": "Nau\u010di",
+            "achievements": "Postignu\u0107a",
+            "statistics": "Statistike",
+            "matches": "Runde",
+            "recent_matches": "Nedavne runde",
+            "tournaments": "Turniri",
+            "settings": "Postavke",
+            "logout": "Odjavite se",
+            "login": "Prijavite se",
+            "notifications": "Obavijesti",
+            "custom": "Prilago\u0111eno"
+        },
+        "auth": {
+            "discord": "Prijavite se putem Discorda",
+            "facebook": "Prijavite se putem Facebooka",
+            "google": "Prijavite se putem Googlea"
+        }
+    },
+    "page": {
+        "match": {
+            "completed": "Runda zavr\u0161ena",
+            "mistakes": "Pogre\u0161ke",
+            "no_mistakes": "Odli\u010dno! Nisi napravio\/napravila gre\u0161ku tijekom ove runde.",
+            "suspended": "Bili ste suspendirani iz ove runde zbog varanja.",
+            "time_out": "Isteklo vam je vrijeme da zavr\u0161ite rundu. Vi\u0161e sre\u0107e drugi put!",
+            "reconnect_failed": "Nismo uspjeli vas uspjeli povezati natrag u utakmicu.",
+            "many_mistakes": "Napravili ste previ\u0161e gre\u0161aka.",
+            "statistics_unsaved": "Va\u0161e statistike nisu spremljene za ovu utakmicu",
+            "connect_lost": "Veza je izgubljena, poku\u0161aj ponovno",
+            "reconnect": "Ponovno povezivanje"
+        },
+        "error404": {
+            "title": "Stranica koju tra\u017eite ne postoji.",
+            "message": "Ako ste gre\u0161kom preusmjereni na ovu stranicu kontaktirajte"
+        },
+        "custom": {
+            "configuration": "Konfiguracija",
+            "title": "Naslov",
+            "privacy": "Privatnost",
+            "mode": "Na\u010din rada",
+            "guests": "Dopusti Goste?",
+            "text": "Tekst",
+            "match": "Runda",
+            "custom": "Prilago\u0111eno",
+            "status": {
+                "lobby": "U Predvorju",
+                "game": "U Igri"
+            },
+            "unlisted": "Nenavedeno",
+            "public": "Javno",
+            "countdown": "Odbrojavanje",
+            "startmatch": "Zapo\u010dni Rundu",
+            "error": {
+                "team_size": "Veli\u010dine va\u0161eg tima moraju biti jednake da biste zapo\u010deli rundu.",
+                "unsaved": "Morate spremiti svoje promjene da biste zapo\u010deli."
+            },
+            "chat": "Molimo vas da ne \u0161aljete nikakve sensitivne i\/ili povjerljive poruke."
+        },
+        "learn": {
+            "title": "Centar U\u010denja",
+            "welcome": "Dobrodo\u0161li! Ovaj centar za u\u010denje pomo\u0107i \u0107e daktilografima pru\u017eiti novi materijal koji \u0107e im pove\u0107ati brzinu tipkanja.",
+            "lesson": "Lekcija",
+            "section": "Odjeljak",
+            "reportcard": "Izvje\u0161taj",
+            "tips": {
+                "one": "Tipkanje sporije na rije\u010dima koje su te\u017ee \u0107e vam pomo\u010di s dosljednosti dugoro\u010dno.",
+                "two": "Izvodite vje\u017ebe za zape\u0161\u0107a svakih 15 minuta da bi izbjegli trajno o\u0161te\u0107enje \u017eivaca va\u0161im zape\u0161\u0107ima i ramenima.",
+                "three": "U\u010denje ku\u0107nog reda vrlo je va\u017eno u vje\u017ebanju pam\u0107enja mi\u0161i\u0107a kako biste tipkali bez gledanja u tipkovnicu."
+            }
+        },
+        "achievements": {
+            "personal_best": "Osobni rekord",
+            "matches_played": "Rundi Odigrano",
+            "matches_won": "Rundi Pobje\u0111eno",
+            "playtime": "Ukupno vrijeme igranja"
+        },
+        "login": {
+            "title": "Prijavite se",
+            "descr": "Izaberite jedan od sljede\u0107ih mogu\u0107nosti"
+        },
+        "home": {
+            "matches_new": "Najnovije runde",
+            "matches_high": "Dana\u0161nji rekordi",
+            "tournaments": {
+                "title": "Dnevna Natjecanja!",
+                "content1": "Doma\u0107ini smo turnira za provjeru vje\u0161tina daktilografa <1> svaki dan <\/1>. Uz dodatni turnir svake nedjelje za priliku da osvojite <1> Discord Nitro <\/1>.",
+                "button": "Po\u010dnite se natjecati odmah!"
+            },
+            "lobbies": "Javna Predvorja",
+            "news": "Najnovije novosti",
+            "slogan": "Podignite tipkanje na sljede\u0107u razinu",
+            "hero": {
+                "content1": "Ako imate bilo kakvih pitanja ili nedoumica, nemojte se ustru\u010davati kontaktirati nas na Discord ili izravno putem <1> support@keyma.sh <\/1>.",
+                "content2": "O da, zaboravio sam spomenuti ... Uvijek tra\u017eimo doprinos zajednice, uklju\u010duju\u0107i prijave teksta, jezi\u010dne prijevode i jo\u0161 mnogo toga! <1> Kliknite ovdje <\/1> da biste saznali vi\u0161e.",
+                "button": "Po\u010dnite tipkati odmah!"
+            },
+            "schools": {
+                "title": "Mogu li \u0161kole koristiti ovo?",
+                "button": "Po\u010dnite u\u010diti!",
+                "content1": "<1> Apsolutno <\/1>. Na\u0161 centar za u\u010denje nudi se svim daktilografima s ra\u010dunom ili bez njega, no toplo preporu\u010dujemo da imate ra\u010dun da biste u\u0161tedjeli napredak.",
+                "content2": "Ova je usluga <1> besplatna <\/1> za sve ljude \u0161irom svijeta, a mi koristimo jednostavan sustav ocjenjivanja sa sjedi\u0161tem u Sjedinjenim Dr\u017eavama."
+            },
+            "custom": {
+                "title": "Igranje sa prijateljima je tako lagano",
+                "content1": "Sa klikom tipke mo\u017eete zapo\u010deti svoju privatnu sobu u kojoj bilo tko od tvojih prijatelja i obitelji mo\u017ee u\u0107i. Nudimo potpuno prilagodbu i \u010dak sposobnost da gledate kako drugi igra\u010d tipka!",
+                "button": "Napravite Sobu!"
+            }
+        },
+        "leaderboards": {
+            "level": "Najvi\u0161a Razina",
+            "time": "Ve\u0107ina igranih",
+            "speed": "Najbr\u017ea brzina",
+            "wins": "Najvi\u0161e pobjeda"
+        },
+        "tournaments": {
+            "title": "Turniri",
+            "join": "Pridru\u017ei se ljestvici",
+            "play": "Igraj sada",
+            "starts": "Po\u010dinje",
+            "ends": "Zavr\u0161ava",
+            "finished": "Zavr\u0161eno",
+            "info": "Informacije",
+            "rules": "Pravila",
+            "players": "Igra\u010di",
+            "bracket": "Zagrada",
+            "qualified": "Kvalificiran",
+            "notqualified": "Nije Kvalificiran",
+            "qualification": "Kvalificiranja",
+            "ladders": "Ljestvice",
+            "none": "Nijedan igra\u010d nije sudjelovao do sada, budite prvi!"
+        },
+        "queue": {
+            "shortcut": "Jeste li znali da kori\u0161tenjem <1>CTR+ALT+I<\/1> mo\u017eete do\u0107i ovdje br\u017ee?",
+            "quickplay": {
+                "title": "Svatko za sebe",
+                "description": "Pridru\u017eite se rundi bilo gdje u svijetu odmah!",
+                "": "Brza Igra"
+            },
+            "ranked": {
+                "title": "Poredak",
+                "description": "Postavite se protiv svijeta konkurencije",
+                "join": "Dolazi uskoro"
+            },
+            "custom": {
+                "title": "Prilago\u0111eno",
+                "description": "Napravite privatnu rundu sa tobom i tvojim prijateljima",
+                "create": "Napravi",
+                "browse": "Pretra\u017ei",
+                "public": "Javne Sobe",
+                "none": "Trenuta\u010dno nema javnih soba.",
+                "": "Prilago\u0111eno"
+            },
+            "practice": "Igrate u praksnoj rundi. Va\u0161 rezultat se ne\u0107e spremiti.",
+            "cooldown": "Ve\u0107 ste u rundi, molimo vas pri\u010dekajte sekundu pa probajte ponovno.",
+            "cooldown_plural": "Ve\u0107 ste u rundi, molimo vas pri\u010dekajte sekundu pa probajte ponovno.",
+            "random": {
+                "title": "Razli\u010dito",
+                "description": "Dopustite da mi odlu\u010dimo umjesto vas"
+            },
+            "quotes": {
+                "title": "Citati",
+                "description": "Knjige, Filmovi i vi\u0161e"
+            },
+            "dictionary": {
+                "title": "Rije\u010dnik",
+                "description": "Naj\u010de\u0161\u0107e engleske rije\u010di"
+            }
+        },
+        "notifications": {
+            "title": "Obavijesti",
+            "none": "Nemate obavijesti.",
+            "markread": "Ozna\u010di kao pro\u010ditano",
+            "remove": "Izbri\u0161i sve",
+            "removeconfirm": "Jeste li sigurni da \u017eelite izbrisati svoje obavijesti?"
+        },
+        "profile": {
+            "refresh": "Ova stranica \u0107e se osvje\u017eiti nakon \u0161to stisnete spremite promjene.",
+            "profile": "Profil",
+            "account": "Ra\u010dun",
+            "personal": "Osobno",
+            "information": "Informacije",
+            "personalize": "Prilagodite",
+            "joined": "Spojen",
+            "displayname": "Korini\u010dko ime",
+            "defaultworld": "Zadani svijet",
+            "about": "O meni",
+            "general": "Op\u0107enito",
+            "fullname": "Ime",
+            "level": "Razina",
+            "age": "Godina",
+            "years_old": "godine",
+            "dob": "Datum ro\u0111enja",
+            "showOnline": "Pokazati online status",
+            "gender": "Spol",
+            "locale": "Language",
+            "country": "Dr\u017eava",
+            "keyboard": {
+                "title": "Tipkovnica",
+                "layout": "Raspored tipkovnice",
+                "brand": "Marka tipkovnice",
+                "model": "Na\u010din tipkovnice"
+            },
+            "customize": "Prilagodi",
+            "wpm": "WPM ili CPM?",
+            "navbar": "Navbar stil",
+            "border": "Granica slike",
+            "playercards": "Kartama igra\u010da"
+        },
+        "settings": {
+            "refresh": "Ova stranica \u0107e se osvje\u017eiti nakon \u0161to stisnete spremi promjene.",
+            "profile": "Profil",
+            "information": "Informacije",
+            "personalize": "Prilagodite",
+            "displayname": "Korisni\u010dko ime",
+            "defaultworld": "Zadani svijet",
+            "about": "O meni",
+            "fullname": "Ime",
+            "dob": "Datum ro\u0111enja",
+            "showOnline": "Prika\u017ei Online status",
+            "gender": "Spol",
+            "locale": "Jezik",
+            "country": "Dr\u017eava",
+            "keyboard": {
+                "layout": "Raspored tipkovnice",
+                "brand": "Marka tipkovnice",
+                "model": "Model tipkovnice"
+            },
+            "customize": "Prilagodi",
+            "wpm": "WPM ili CPM?",
+            "border": "granica slike",
+            "playercards": "kartama igra\u010da"
+        }
+    }
+}

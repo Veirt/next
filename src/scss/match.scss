@@ -1,0 +1,85 @@
+
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.caret-idle {
+  animation: cursor-blink 1s infinite;
+}
+
+.game {
+  &--content {
+    @apply p-6 my-6 shadow-lg bg-gray-825;
+  }
+  &--content--bar {
+    @apply py-3 px-4 lg:px-8 bg-gray-800 shadow-md rounded-t-2xl;
+  } 
+}
+
+.match {
+  &--text {
+    word-break: break-word;
+  }
+
+  &--container {
+    @apply p-8 bg-black bg-gray-775 shadow-lg rounded-b-2xl;
+  }
+
+  &--container-transparent {
+    @apply py-8;
+  }
+
+  @media (max-width: 1024px) {
+    &--container {
+      @apply p-4;
+    }
+
+    &--container-transparent {
+      @apply py-4;
+    }
+  }
+
+  &--letter {
+    letter-spacing: 1px;
+    /* Setting to 0.05em or 1.2px causes letter shifting "Th(er)e" as an example. */
+    @apply font-medium leading-relaxed;
+  }
+
+  &--correct {
+    @apply text-white;
+  }
+
+  &--input {
+    @apply mt-4 lg:mt-8 w-full p-2 text-sm text-gray-400 border-b-2 border-opacity-25 rounded-lg shadow;
+  }
+
+  &--input::placeholder {
+    @apply text-gray-500;
+  }
+
+  &--input:hover,
+  &--input:focus {
+    @apply outline-none;
+  }
+}
+
+.rankBackdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* if backdrop support: very transparent and blurred */
+@supports (
+  (-webkit-backdrop-filter: blur(4em)) or (backdrop-filter: blur(4em))
+) {
+  .rankBackdrop {
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(4em);
+    backdrop-filter: blur(4em);
+  }
+}

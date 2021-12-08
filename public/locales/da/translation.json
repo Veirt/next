@@ -1,0 +1,206 @@
+{
+    "other": {
+        "account_banned": "Din konto er blevet bandlyst, du bedes kontakte support@keyma.sh!",
+        "grades": {
+            "failed": "Fejlet"
+        },
+        "save": "Gem!"
+    },
+    "button": {
+        "save": "Gem!",
+        "retry": "Pr\u00f8v igen",
+        "back": "Tilbage",
+        "next": "N\u00e6ste",
+        "close": "Luk",
+        "newgame": "Nyt Spil"
+    },
+    "charts": {
+        "lowest": "Laveste",
+        "highest": "H\u00f8jeste"
+    },
+    "options": {
+        "yes": "Ja",
+        "no": "Nej",
+        "random": "Tilf\u00e6ldig",
+        "quotes": "Citater",
+        "dict": "Ordbog"
+    },
+    "form": {
+        "message": "Skriv en besked..."
+    },
+    "statistics": {
+        "wpm": "Ord Per Minut",
+        "won": "Vundne",
+        "lost": "Tabte",
+        "playtime": "Spilletid",
+        "mistakes": "Fejl",
+        "records": "Rekorder"
+    },
+    "component": {
+        "spectator": {
+            "help_title": "Tilskuer hj\u00e6lp"
+        },
+        "topbar": {
+            "home": "Hjem",
+            "news": "Nyheder",
+            "play": "Spil",
+            "leaders": "Ledere",
+            "discord": "Discord"
+        },
+        "bottombar": {
+            "about": "Om os",
+            "tos": "Servicevilk\u00e5r",
+            "privacy": "Fortrolighedspolitik",
+            "trello": "Trello",
+            "patreon": "Patreon",
+            "contribute": "Bidrag",
+            "guidelines": "Retningslinjer for f\u00e6llesskabet",
+            "shortcuts": "Tastaturgenveje",
+            "faq": "Ofte stilte sp\u00f8rgsm\u00e5l",
+            "faqM": "FAQ"
+        },
+        "navbar": {
+            "home": "Hjem",
+            "news": "Nyheder",
+            "play": "Spil",
+            "discord": "Discord",
+            "practice": "\u00d8velse",
+            "learn": "L\u00e6r",
+            "achievements": "Pr\u00e6stationer",
+            "statistics": "Statistikker",
+            "settings": "Indstillinger",
+            "logout": "Log ud",
+            "login": "Log ind",
+            "notifications": "Notifikationer",
+            "custom": "Brugerdefineret"
+        },
+        "auth": {
+            "discord": "Log ind med Discord",
+            "facebook": "Log ind med Facebook",
+            "google": "Log ind med Google"
+        }
+    },
+    "page": {
+        "match": {
+            "mistakes": "Fejl",
+            "many_mistakes": "Du har lavet for mange fejl"
+        },
+        "error404": {
+            "title": "Denne side findes ikke.",
+            "message": "Hvis du var omdirigeret til denne side ved fejl, s\u00e5 kontakt"
+        },
+        "custom": {
+            "guests": "Tillad G\u00e6ster?",
+            "text": "Tekst",
+            "public": "Offentlig",
+            "countdown": "Nedt\u00e6lling"
+        },
+        "learn": {
+            "lesson": "Lektion",
+            "section": "Sektion"
+        },
+        "achievements": {
+            "playtime": "Total Spilletid"
+        },
+        "login": {
+            "title": "Log Ind",
+            "descr": "V\u00e6lg en af f\u00f8lgende valgmuligheder"
+        },
+        "home": {
+            "matches_new": "Nyeste kampe",
+            "matches_high": "Dagens Highscores",
+            "news": "Seneste Nyt"
+        },
+        "leaderboards": {
+            "level": "H\u00f8jeste level"
+        },
+        "tournaments": {
+            "play": "Spil Nu",
+            "starts": "Starter",
+            "ends": "Slutter",
+            "finished": "F\u00e6rdig",
+            "info": "Information",
+            "rules": "Regler",
+            "players": "Spillere",
+            "none": "Ingen spillere har deltaget endnu, v\u00e6r den f\u00f8rste!"
+        },
+        "queue": {
+            "shortcut": "Vidste du, at ved brug af <1> CTRL + ALT + I <\/1> kan slette ord hurtigere?",
+            "quickplay": {
+                "title": "Free for All",
+                "description": "Deltag i en kamp  med det samme i hele verden",
+                "": "Hurtig Spil"
+            },
+            "ranked": {
+                "title": "Ranked",
+                "join": "Kommer snart"
+            },
+            "custom": {
+                "title": "Custom",
+                "description": "Opret en privat kamp til dig og dine venner",
+                "create": "Create",
+                "browse": "Gennemse",
+                "public": "Offentlige lobbyer",
+                "none": "Der er i \u00f8jeblikket ingen offentlige lobbyer.",
+                "": "Brugerdefineret"
+            },
+            "practice": "Du spiller i en <1>\u00f8velse<\/1>kamp. Din score vil ikke blive gemt.",
+            "cooldown": "Du er allerede i en kamp, v\u00e6r s\u00f8d at vente {{count}} sekunder, og pr\u00f8v igen.",
+            "cooldown_plural": "Du er allerde i en kamp, v\u00e6r s\u00f8d at vente (?) sekunder, og pr\u00f8v igen.",
+            "random": {
+                "title": "Tilf\u00e6ldig",
+                "description": "Lad os v\u00e6lge for dig"
+            },
+            "quotes": {
+                "title": "Citater",
+                "description": "B\u00f8ger, film m.m."
+            },
+            "dictionary": {
+                "title": "Ordbog",
+                "description": "Top engelske ord"
+            }
+        },
+        "notifications": {
+            "title": "Notifikationer",
+            "none": "Du har ingen notifikationer.",
+            "markread": "Marker som l\u00e6st",
+            "remove": "Fjern alt",
+            "removeconfirm": "Er du sikker p\u00e5 at du vil fjerne dine notifikationer?"
+        },
+        "profile": {
+            "profile": "Profil",
+            "personal": "Personlig",
+            "information": "Information",
+            "personalize": "Personligg\u00f8r",
+            "displayname": "Brugernavn",
+            "about": "Om Mig",
+            "general": "Generelt",
+            "fullname": "Navn",
+            "level": "Level"
+        },
+        "settings": {
+            "refresh": "Denne side vil genindl\u00e6se efter du trykke p\u00e5 Gem \u00e6ndringer.",
+            "profile": "Profil",
+            "information": "Information",
+            "personalize": "Personligg\u00f8r",
+            "displayname": "Brugernavn",
+            "defaultworld": "Standard Verden",
+            "about": "Om Mig",
+            "fullname": "Navn",
+            "dob": "F\u00f8dselsdato",
+            "showOnline": "Vis Online Status",
+            "gender": "K\u00f8n",
+            "locale": "Sprog",
+            "country": "Land",
+            "keyboard": {
+                "layout": "Tastaturlayout",
+                "brand": "Tastaturm\u00e6rke",
+                "model": "Tastaturmodel"
+            },
+            "customize": "Tilpas",
+            "wpm": "WPM eller CPM?",
+            "border": "Billedramme",
+            "playercards": "Spillerkort"
+        }
+    }
+}

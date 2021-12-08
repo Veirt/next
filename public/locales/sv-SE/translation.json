@@ -1,0 +1,75 @@
+{
+    "other": {
+        "account_banned": "Ditt konto har blivit bannat, v\u00e4nligen kontakta support@keyma.sh!",
+        "save": "Spara!"
+    },
+    "button": {
+        "save": "Spara!",
+        "back": "Tillbaka"
+    },
+    "component": {
+        "topbar": {
+            "home": "Hem",
+            "news": "Nyheter",
+            "play": "Spela",
+            "leaders": "Ledare",
+            "discord": "Discord"
+        },
+        "bottombar": {
+            "about": "Om Oss",
+            "tos": "Anv\u00e4ndarvillkor",
+            "privacy": "Integritetspolicy",
+            "trello": "Trello",
+            "patreon": "Patreon",
+            "contribute": "Bidra",
+            "guidelines": "Community Riktlinjer",
+            "shortcuts": "Tangentbords Genv\u00e4gar",
+            "faq": "Vanliga Fr\u00e5gor",
+            "faqM": "FAQ"
+        },
+        "navbar": {
+            "news": "Senaste Nyheterna",
+            "play": "Spela",
+            "practice": "\u00d6va",
+            "learn": "Skola",
+            "achievements": "Utm\u00e4rkelser",
+            "tournaments": "Stegar",
+            "settings": "Inst\u00e4llningar",
+            "logout": "Logga ut",
+            "login": "Logga in",
+            "notifications": "Notifikationer",
+            "custom": "Anpassat"
+        },
+        "auth": {
+            "discord": "Logga in med Discord",
+            "facebook": "Logga in med Facebook",
+            "google": "Logga in med Google"
+        }
+    },
+    "page": {
+        "error404": {
+            "title": "Sidan du s\u00f6ker existerar ej",
+            "message": "Om du skickades till denna sida var god kontakta"
+        },
+        "login": {
+            "title": "Logga in",
+            "descr": "V\u00e4lj en av f\u00f6ljande alternativ"
+        },
+        "home": {
+            "matches_new": "Nyaste matchningarna",
+            "matches_high": "Dagens Rekord",
+            "news": "Senaste nyheterna"
+        },
+        "tournaments": {
+            "join": "G\u00e5 med stege",
+            "play": "Spela Nu",
+            "starts": "B\u00f6rjar",
+            "ends": "Slutar",
+            "finished": "Avslutat",
+            "info": "Information",
+            "rules": "Regler",
+            "players": "Spelare",
+            "none": "Inga spelare har g\u00e5tt med in, var den f\u00f6rsta!"
+        }
+    }
+}

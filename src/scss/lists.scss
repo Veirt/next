@@ -1,0 +1,20 @@
+
+.panel {
+  @apply shadow-lg;
+}
+
+.panel .head {
+  @apply rounded-t-lg py-3 px-4 bg-gray-775 text-xs uppercase text-white font-semibold tracking-wider border-b-2 border-orange-400 mb-0;
+}
+
+.panel .body {
+  @apply rounded-b-lg bg-gray-750 text-white border-b-4 border-gray-775 p-5;
+}
+
+.panel .item {
+  @apply bg-gray-750 rounded-lg px-4 py-3 block w-full text-left transition ease-in-out duration-200 hover:bg-gray-775 text-sm uppercase font-semibold text-white tracking-wider focus:outline-none;
+}
+
+.panel .item-active {
+  @apply bg-gray-775;
+}

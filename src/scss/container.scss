@@ -1,0 +1,28 @@
+.container {
+  @apply
+    px-10 w-full mx-auto max-w-screen-4xl;
+
+  &-content {
+    @apply bg-gradient-to-r from-gray-800 to-gray-850;
+  }
+
+  &-content-solid {
+    @apply bg-gray-825;
+  }
+}
+
+.container-padding {
+  @apply pt-12;
+}
+
+.container-margin {
+  @apply mt-12;
+}
+
+.container-small {
+  @apply px-10 w-full mx-auto max-w-screen-xl;
+}
+
+.container-game, .container-smaller {
+  @apply px-10 w-full mx-auto max-w-screen-lg;
+}

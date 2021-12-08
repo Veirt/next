@@ -1,0 +1,44 @@
+{
+  // Configuration for JavaScript files
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended", 
+    "plugin:@typescript-eslint/eslint-recommended", 
+    "next", 
+    "next/core-web-vitals"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "no-undef": "off",
+    "no-compare-neg-zero": "off", // Should be fixed at a later date
+    "prettier/prettier": "off",
+    "react/destructuring-assignment": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/require-default-props": "off",
+    "react/jsx-curly-brace-presence": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-unneeded-ternary": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "react/no-unescaped-entities": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "@next/next/no-img-element": "off",
+    "@next/next/no-sync-scripts": "off",
+    "import/order": "off",
+    "no-plusplus": "off",
+    "no-console": "off",
+    "no-nested-ternary": "off",
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"]
+  }
+}

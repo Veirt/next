@@ -1,0 +1,27 @@
+
+.desktopNav-item {
+  @apply relative my-auto w-auto px-5 xl:px-8 py-3.5 border-transparent text-sm xl:text-base uppercase text-center text-white transition ease-in-out duration-300 font-semibold hover:text-orange-400;
+}
+
+.desktopNav-item::after {
+  content: "";
+  transform: scaleX(0);
+  @apply absolute transition-all ease-in-out duration-200 absolute top-0 right-0 left-0 bottom-0 border-b-2 border-orange-400;
+}
+
+.desktopNav-item:hover::after, .desktopNav-item.levelbar-active::after, .desktopNav-item.levelbar-active {
+  transform: scaleX(1);
+  @apply text-orange-400
+}
+
+.mobileNav-item {
+  @apply my-auto w-auto pb-1 pt-2 border-b-2 border-transparent hover:border-orange-400 text-sm uppercase text-center text-white transition ease-in-out duration-300 font-semibold hover:text-orange-400
+}
+
+.mobileNav-item.levelbar-active {
+  @apply border-orange-400 text-orange-400 #{!important};;
+}
+
+.desktopNav-item.levelbar-active {
+  @apply bg-gradient-to-r from-gray-775 to-gray-800;
+}

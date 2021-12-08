@@ -1,0 +1,77 @@
+import {FC, useState, useEffect, useRef, ReactElement} from 'react';
+import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import axios, {CancelTokenSource} from "axios";
+import Config from "../../Config";
+
+interface IProps {
+    active?: boolean;
+    title?: ReactElement;
+    text?: ReactElement;
+    item?: ReactElement;
+    bottom?: ReactElement;
+    isHint?: boolean;
+    onClose?: () => void;
+}
+
+const Popup:FC<IProps> = (props) => {
+    const axiosCancelSource = useRef<CancelTokenSource | null>(null);
+
+    const [ transition, setTransition ] = useState(false);
+    const { active, title, item, text, bottom, isHint  } = props;
+
+    useEffect(() => {
+        axiosCancelSource.current = axios.CancelToken.source();
+
+        if (active)
+            setTransition(true);
+
+        return () => {
+            axiosCancelSource.current?.cancel();
+            setTransition(false);
+        }
+    }, [ active ]);
+
+    const closePopup = () => {
+        if (props.onClose) {
+            props.onClose();
+
+            if (isHint) {
+                axios.post(`${Config.API_URL}/user/hints`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token })
+                    .then(() => console.log('[HintService] User Settings have been updated'))
+                    .catch((e) => console.log(e));
+            }
+        }
+        setTransition(false);
+    }
+
+    return (
+        <div className={`_popupContainer fixed left-0 right-0 top-0 bottom-0 z-50 bg-black bg-opacity-70 transition ease-in-out duration-700 transform h-screen flex ${transition ? 'opacity-100 w-full' : 'opacity-0 pointer-events-none'}`}>
+            <div className={`m-auto w-11/12 sm:w-10/12 md:w-3/4 lg:w-3/5 xl:max-w-screen-md xl:w-full transition-all ease-in-out duration-700 transform ${transition ? 'scale-100' : 'scale-0' }`}>
+                <div className={"_popupBox bg-gradient-to-r from-gray-775 to-gray-825 shadow-xl p-10"}>
+                    <button type={"button"} onClick={closePopup} className={"z-20 text-2xl absolute top-0 right-0 mt-3 mr-5 focus:outline-none hover:text-orange-400 transition ease-in-out duration-300 text-white"}>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                    <div className={"relative z-10 text-white"}>
+                        {title && <div className={"text-2xl md:text-3xl lg:text-4xl uppercase font-bold text-orange-200"}>{title}</div>}
+                        {text && (
+                            <div className={"w-5/6 sm:w-11/12 md:w-4/5 lg:w-5/6 pt-5 text-base lg:text-lg"}>
+                                {text}
+                            </div>
+                        )}
+                        {item && (
+                            <div className={"block pt-6"}>
+                                <div className={"text-base md:text-lg xl:text-2xl text-orange-400 uppercase font-bold tracking-wide mt-5 sm:px-4 sm:py-2 sm:bg-gray-900 bg-opacity-80 rounded-md sm:shadow inline"}>{item}</div>
+                            </div>
+                        )}
+                        {bottom && (
+                            <div className={"text-base lg:text-lg text-white pt-6"}>{bottom}</div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Popup;

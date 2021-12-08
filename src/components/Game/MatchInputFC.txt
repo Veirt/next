@@ -1,0 +1,49 @@
+
+import {ClipboardEvent, ChangeEvent, useRef, useState, useEffect, FC} from 'react';
+
+interface MatchInputProps {
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+  disabled: boolean;
+  removeLimit?: boolean;
+}
+
+const MatchInput:FC<MatchInputProps> = (props) => {
+
+  const inputField = useRef<HTMLInputElement | null>(null);
+  const [ inputText, setInputText ] = useState('');
+
+  const { disabled, className, removeLimit } = props;
+
+  useEffect(() => {
+    if (!props.disabled)
+      inputField.current?.focus();
+  }, [props.disabled]);
+
+  const onPaste = (e: ClipboardEvent<HTMLInputElement>): void => e.preventDefault();
+  const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setInputText(e.target.value);
+    onChange(e);
+  };
+
+  return (
+      <input
+          className={`match--input ${className} bg-gray-825`}
+          lang="en"
+          type="text"
+          name="textInput"
+          placeholder={disabled ? 'Type your text in here...' : ''}
+          autoComplete="off"
+          spellCheck="false"
+          onChange={onChange}
+          onPaste={onPaste}
+          value={inputText}
+          maxLength={removeLimit ? 2000 : 35}
+          disabled={disabled}
+          onBlur={({ target }) => target.focus()}
+          ref={inputField}
+      />
+  );
+}
+
+export default MatchInput;

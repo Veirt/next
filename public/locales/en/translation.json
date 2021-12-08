@@ -1,0 +1,397 @@
+{
+  "other": {
+    "account_banned": "Your account has been banned, please contact support@keyma.sh!",
+    "twitch_none": "No one is streaming right now :( Come back later or start streaming!",
+    "grades": {
+      "passed": "Passed",
+      "failed": "Failed"
+    },
+    "finished": "Finished",
+    "gameover": "Game Over",
+    "lists": {
+      "locales": "Languages",
+      "types": "Types"
+    },
+    "debug": {
+      "title": "Bug Reporting",
+      "message": "If you experience one or more of the issues below, please click the button below and email support@keyma.sh with as much information regarding how you initially received it and how to recreate it. The more information provided will help us as it will allow us to recreate your exact issue and resolve it.",
+      "list": {
+        "0": "Sudden disconnect in the middle of a match",
+        "1": "Your WPM/CPM no longer updating for yourself or other players",
+        "2": "Your progress bar no longer updating for yourself or other players",
+        "3": "Not seeing the end match results despite finishing the match"
+      }
+    }
+  },
+  "button": {
+    "save": "Save!",
+    "retry": "Retry",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "leave": "Leave",
+    "enable": "Enable",
+    "disable": "Disable",
+    "spectator": "Spectator",
+    "join": "Join",
+    "ladder": "Ladder",
+    "lobby": "Lobby",
+    "newgame": "New Game",
+    "letsgo": "Let's Go!"
+  },
+  "charts": {
+    "lowest": "Lowest",
+    "highest": "Highest"
+  },
+  "options": {
+    "yes": "Yes",
+    "no": "No",
+    "random": "Random",
+    "quotes": "Quotes",
+    "dict": "Dictionary",
+    "custom": "Custom",
+    "purchase": "Purchase"
+  },
+  "form": {
+    "message": "Enter a message..."
+  },
+  "statistics": {
+    "wpm_abbreviation": "WPM",
+    "cpm_abbreviation": "CPM",
+    "wpm": "Words Per Minute",
+    "cpm": "Characters Per Minute",
+    "time": "Elapsed Time",
+    "won": "Won",
+    "lost": "Lost",
+    "ratio": "Ratio",
+    "coins": "Coins",
+    "accuracy": "Accuracy",
+    "achievements": "Achievements",
+    "exp_abbreviation": "EXP",
+    "playtime": "Playtime",
+    "exp_total": "Total Experience",
+    "exp": "Experience",
+    "wpm_fastest": "Fastest Match",
+    "mistakes": "Mistakes",
+    "grade": "Grade",
+    "records": "Records",
+    "total": "Total",
+    "tournaments": "Tournaments",
+    "top5": "Top 5",
+    "levelUp": "Congratulations, you are now"
+  },
+  "component": {
+    "spectator": {
+      "help_title": "Spectator Help",
+      "help_1": "1. To exit the match, use the button on the top left corner.",
+      "help_2": "2. Beside each player is a triangle with a color, this color will be matching with the caret/cursor on the text.",
+      "help_3": "3. For gamemodes utilizing the round system you will notice a highlighted orb for each round won and lost.",
+      "help_4": "4. When each player is finished make sure to hit the button on the top left corner to go back to lobby. This is intentionally made to not fully redirect you just in case you wish to see the statistics provided."
+    },
+    "bottombar": {
+      "about": "About Us",
+      "tos": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Contribute",
+      "guidelines": "Community Guidelines",
+      "shortcuts": "Keyboard Shortcuts",
+      "faq": "Frequently Asked Questions",
+      "troubleshooting": "Troubleshooting",
+      "faqM": "FAQ",
+      "issueTracker": "Issue Tracker",
+      "github": "GitHub"
+    },
+    "navbar": {
+      "home": "Home",
+      "news": "News",
+      "play": "Play",
+      "leaders": "Leaderboards",
+      "discord": "Discord",
+      "practice": "Practice",
+      "twitch": "Twitch",
+      "shop": "Shop",
+      "challenges": "Challenges",
+      "achievements": "Achievements",
+      "statistics": "Statistics",
+      "matches": "Matches",
+      "recent_matches": "Recent Matches",
+      "tournaments": "Competitions",
+      "settings": "Settings",
+      "matchmaking": "Matchmaking",
+      "logout": "Logout",
+      "login": "Sign In",
+      "notifications": "Notifications",
+      "custom": "Custom"
+    },
+    "auth": {
+      "discord": "Login with Discord",
+      "facebook": "Login with Facebook",
+      "google": "Login with Google"
+    }
+  },
+  "page": {
+    "banned": {
+      "title": "You have been banned",
+      "text": "Your account has been indefinitely banned, this can be caused by a violation in our Terms and Services or cheating. If you have any questions, please contact us at"
+    },
+    "guest": {
+      "title": "Your Guest account has been reset",
+      "text": "Thank you for playing! We are glad that you are enjoying the game and we recommend that you create an account in order to save your progress in the future. For context, we remove Guest accounts that are older than 7 days."
+    },
+    "match": {
+      "completed": "Match Completed",
+      "mistakes": "Mistakes",
+      "no_mistakes": "Awesome! You did not make a mistake during this match.",
+      "suspended": "You have been suspended from this match due to cheating.",
+      "time_out": "You have run out of time to complete the match. Better luck next time!",
+      "reconnect_failed": "We have failed to reconnect you back to the match.",
+      "many_mistakes": "You have made too many mistakes",
+      "statistics_unsaved": "Your statistics have not been saved for this match",
+      "connect_lost": "Connection lost, retrying",
+      "reconnect": "Reconnecting",
+      "highscores": "Highscores",
+      "personal": "Personal Best"
+    },
+    "error404": {
+      "title": "The page you are looking for does not exist.",
+      "message": "If you were redirected to this page in error then please contact"
+    },
+    "shop": {
+      "title": "Shop",
+      "featured": "Featured",
+      "borders": "Borders",
+      "playercards": "Playercards",
+      "banners": "Banners"
+    },
+    "custom": {
+      "configuration": "Configuration",
+      "title": "Title",
+      "privacy": "Privacy",
+      "mode": "Mode",
+      "guests": "Allow Guests?",
+      "text": "Text",
+      "invite": "Invite",
+      "match": "Match",
+      "custom": "Custom",
+      "status": {
+        "title": "Status",
+        "lobby": "In Lobby",
+        "game": "In Game"
+      },
+      "unlisted": "Unlisted",
+      "public": "Public",
+      "countdown": "Countdown",
+      "startmatch": "Start Match",
+      "error": {
+        "team_size": "Your team sizes must be exact in order to start the match.",
+        "unsaved": "You must save your changes in order to start."
+      },
+      "chat": "Please refrain from posting any sensitive and/or confidential messages."
+    },
+    "challenges": {
+      "title": "Daily Challenges",
+      "about": {
+        "title": "Welcome to Daily Challenges",
+        "text": "Every day you will get two challenges that you can complete in return for rewards such as in-game currency.",
+        "text2": "Challenges are automatically generated per day and are not based on your current skill level, or based on your activity. These challenges are generated in a way that may promote you to play the game more, and even expand into places that you typically do not visit while playing!"
+      }
+    },
+    "achievements": {
+      "personal_best": "Personal Best",
+      "matches_played": "Matches Played",
+      "matches_won": "Matches Won",
+      "playtime": "Total Playtime"
+    },
+    "login": {
+      "title": "Sign In",
+      "descr": "Select from one the following options"
+    },
+    "home": {
+      "matches_new": "Newest Matches",
+      "matches_high": "Recent Highscores",
+      "tournaments": "Tournaments",
+      "lobbies": "Public Lobbies",
+      "links": "Useful Links",
+      "news": "Latest News",
+      "slogan": "Take your typing to the next level",
+      "hero": {
+        "content1": "If you have any questions or concerns, don't hesitate to contact us on Discord or directly through <1>support@keyma.sh</1>.",
+        "content2": "Oh yeah, forgot to mention... We are always looking for community contribution including text submissions, language translations and more! <1>Click here</1> to learn more.",
+        "button": "Start typing now!"
+      },
+      "schools": {
+        "title": "Can schools use this?",
+        "button": "Start learning!",
+        "content1": " <1>Absolutely</1>. Our Learning center is offered to any typist with or without an account however we strongly recommend having an account to save progress.",
+        "content2": "This service is <1>free</1> for anyone around the world and we use a simple grading system based off the United States."
+      },
+      "tournaments": {
+        "title": "Daily Competitions!",
+        "content1": "We host tournaments to test typists skills <1>every day</1>. With an additional tournament every Sunday for a chance to win <1>Discord Nitro</1>.",
+        "button": "Start competing now!"
+      },
+      "custom": {
+        "title": "Playing with friends is so easy",
+        "content1": "Within a click of a button you can start your own private room where any of your friends and family can join in. We offer full customization and even allow the ability to watch another player type!",
+        "button": "Create a lobby!"
+      }
+    },
+    "leaderboards": {
+      "level": "Highest Level",
+      "time": "Most Played",
+      "speed": "Fastest Speed",
+      "wins": "Most Wins"
+    },
+    "tournaments": {
+      "title": "Competitions",
+      "join": "Join Ladder",
+      "play": "Play Now",
+      "starts": "Starts",
+      "ends": "Ends",
+      "finished": "Finished",
+      "info": "Information",
+      "rules": "Rules",
+      "players": "Players",
+      "bracket": "Bracket",
+      "qualified": "Qualified",
+      "notqualified": "Not Qualified",
+      "qualification": "Qualifications",
+      "ladders": "Ladders",
+      "none": "No players have participated yet, be the first!"
+    },
+    "queue": {
+      "howToPlayGuide": {
+        "1_title": "How to Play?",
+        "1_description": "In order to play Ranked Matchmaking you must be at least <1>Level 10</1>. You will be placed through a calculation stage where you will not see your rank until you have finished <1>10 matches</1>. This will ensure the accuracy of your skill level when you get matched against other players.",
+        "2_title": "What is Ranked?",
+        "2_description": "Ranked matchmaking is a competitive environment where players are matched with others of similar skill level that is of greater accuracy than the current Quick Play modes.",
+        "3_title": "How is SR determined?",
+        "3_description": "Famously used in Chess, Ranked matchmaking utilizes a form of \"rating system\" also famously known as Glicko-2 Rating system. It uses a form of calculation to determine your skill rating (SR) by matching your skill rating versus your opponents and your ratings reliability also known as \"Ratings Deviation\".",
+        "4_title": "Can we quit mid-game?",
+        "4_description": "Due to the competitive nature it is extremely discouraged to quit a game. If you quit before you finish playing your ranked game then <1>20 points</1> will be deducted from your skill rating. Additionally if your opponent finishes the game you will suffer the loss as if you had completed the match."
+      },
+      "shortcut": "Did you know that using <1>CTRL+ALT+I</1> can get you here faster?",
+      "titles": {
+        "casual": "Casual",
+        "competitive": "Competitive",
+        "playNow": "Play Now",
+        "latestNews": "Latest News",
+        "archiveNews": "Archive",
+        "lobbies": "Public Lobbies",
+        "competitions": "Competitions",
+        "streams": "Live on Twitch"
+      },
+      "quickplay": {
+        "title": "Quick Play",
+        "description": "Join a match anywhere instantly worldwide"
+      },
+      "ranked": {
+        "title": "Ranked",
+        "description": "Place yourself against the world of competition",
+        "join": "Duel (1v1)",
+        "how": "How to Play"
+      },
+      "custom": {
+        "title": "Custom",
+        "description": "Play with your friends and family",
+        "create": "Create Lobby",
+        "browse": "Browse List",
+        "public": "Public Lobbies",
+        "online": "Lobbies Online",
+        "none": "There are currently no public lobbies."
+      },
+      "practice": "You are playing in a <1>practice</1> match. Your scores will not be saved.",
+      "cooldown": "You are already in a match, please wait {{count}} second then try again.",
+      "cooldown_plural": "You are already in a match, please wait {{count}} seconds then try again.",
+      "random": {
+        "title": "Random",
+        "description": "Let us decide for you."
+      },
+      "quotes": {
+        "title": "Quotes",
+        "description": "Play matches that only use quotes from movies, music and authors."
+      },
+      "dictionary": {
+        "title": "Dictionary",
+        "description": "Play matches that only use dictionary texts."
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "none": "You have no notifications.",
+      "markread": "Mark as Read",
+      "remove": "Remove All",
+      "removeconfirm": "Are you sure you want to remove your notifications?"
+    },
+    "profile": {
+      "inventory": "Inventory",
+      "purchaseMore": "Visit Shop",
+      "refresh": "This page will refresh after pressing save changes.",
+      "profile": "Profile",
+      "account": "Account",
+      "personal": "Personal",
+      "information": "Information",
+      "personalize": "Personalize",
+      "joined": "Joined",
+      "progress": "Progress Over Time",
+      "colorBlindMode": "Color Blind Mode",
+      "smoothCaretSpeed": "Smooth Caret Speed",
+      "smoothCaret": "Smooth Caret (beta)",
+      "adsGameplay": "Side Ads",
+      "gameplayParticipantStyle": "Participants Style",
+      "performanceMode": "Performance Mode",
+      "inputbox": "Hide Input Box?",
+      "displayname": "Username",
+      "defaultworld": "Default World",
+      "about": "About Me",
+      "general": "General",
+      "fullname": "Name",
+      "level": "Level",
+      "age": "Age",
+      "years_old": "years old",
+      "dob": "Date of Birth",
+      "showOnline":  "Show Online Status",
+      "gender":  "Gender",
+      "locale":  "Language",
+      "country": "Country",
+      "simplifyHome": "Simplify Home?",
+      "keyboard": {
+        "title": "Keyboard",
+        "layout": "Keyboard Layout",
+        "brand": "Keyboard Brand",
+        "model": "Keyboard Model"
+      },
+      "config": "Config",
+      "gameplay": "Gameplay",
+      "sound": "Sound",
+      "wpm": "WPM or CPM?",
+      "navbar": "Navbar Style",
+      "border": "Picture Border",
+      "playercards": "Playercards",
+      "borders": "Borders",
+      "banners": "Banners",
+      "streamerMode": "Enable Streamer Mode",
+      "matchTextSize": "Match Text Size",
+      "matchBoxSize": "Match Box Size",
+      "hideWPM": "Hide WPM in Match",
+      "countdownBeep": "Countdown Beep",
+      "matchFinishBeep": "Match Finish Beep",
+      "upscaleMatchContainer": "Match Container Size",
+      "matchContainerTransparent": "Match Container Transparent",
+      "matchTextType": "Match Text Type",
+      "customChatBeep": "Lobby Chat Beep",
+      "globalChatBeep": "Global Chat Beep",
+      "rankUpSound": "Rank Up Sound",
+      "rankDownSound": "Rank Down Sound",
+      "shortcutHome": "Go to Home",
+      "shortcutExit": "Exit Match",
+      "shortcutPlayRandom": "Play Now (Random)",
+      "shortcutPlayQuotes": "Play Now (Quotes)",
+      "shortcutPlayDictionary": "Play Now (Dictionary)",
+      "shortcutGameRedo": "Redo Match",
+      "shortcuts": "Keyboard Shortcuts"
+    }
+  }
+}
