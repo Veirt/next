@@ -192,7 +192,7 @@ const Userbar = (props: IProps) => {
                     ) : playerItems.map(item => ((!item.isAuth && isGuest) || (!isGuest && item.isAuth)) && (
                         <div key={"userbar" + item.title} className={`w-auto my-auto ${isSidebar? 'pl-0 lg:pl-3' : 'pl-3'}`}>
                             {!item.onClick ? (
-                                <Link to={item.route} className={`activeClassName[text-orange-400] nav-link text-white text-xl rounded tracking-wider uppercase px-1 ${(toggleNotifications && item.title === 'component.navbar.notifications') ? 'text-orange-400' : ''} hover:text-orange-400 transition ease-in-out duration-300 font-semibold`} onClick={() => notificationToggle()}>
+                                <Link to={item.route} className={`activeClassName[text-orange-400] nav-link text-white text-xl rounded tracking-wider uppercase px-1 hover:text-orange-400 transition ease-in-out duration-300 font-semibold`}>
                                     <FontAwesomeIcon icon={item.icon.name} />
                                 </Link>
                             ) : (
