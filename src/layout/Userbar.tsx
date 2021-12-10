@@ -81,7 +81,6 @@ const Userbar = (props: IProps) => {
     }, [socket, playerToken]);
 
     const deleteNotifications = async () => socket?.emit('deleteNotifications', {});
-    const notificationToggle = async () => setToggleNotifications(!toggleNotifications);
 
     const notificationToggleManual = (e: MouseEvent) => {
         if ((e.target as Element).classList.contains('notificationsWrapper'))
