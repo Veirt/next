@@ -46,7 +46,7 @@ const About = (props: IProps) => {
     }
 
     return (
-        <Base meta={<Meta title={title} />}>
+        <Base meta={<Meta title={title} />} ads={{ enableBottomRail: true }}>
             {useElement}
         </Base>
     )

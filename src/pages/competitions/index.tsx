@@ -79,8 +79,8 @@ const Tournaments = () => {
 
     return (
         <Base meta={<Meta title={t('page.tournaments.title')} />} ads={{ enableBottomRail: true }} isLoaded={(loaded && tournamentsData !== null)}>
-             <ComboTop />
             <div className="container-smaller container-margin py-10">
+                <ComboTop />
                 <h1 className={"text-white uppercase"}>{t('page.tournaments.title')}</h1>
                 <div className={"flex flex-wrap mt-5"}>
                     <div className={"w-full lg:w-auto mr-auto my-auto"}>
