@@ -12,6 +12,7 @@ type IMainProps = {
     }
     isLoaded?: boolean;
     noAnimate?: boolean;
+    noNav?: boolean;
 };
 
 const Base = (props: IMainProps) => {
@@ -37,7 +38,7 @@ const Base = (props: IMainProps) => {
     return props ? (
         <>
             {props.meta}
-            <Levelbar />
+            {!props.noNav ? <Levelbar /> : ''}
             <main>
                 <LoadContent isLoaded={loaded}>
                     <PlaywireContainer {...props.ads} />

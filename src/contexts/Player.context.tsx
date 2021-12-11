@@ -1,4 +1,4 @@
-import {FC, useState, createContext, useContext, useEffect, useRef} from 'react';
+import {FC, useState, createContext, useContext, useEffect, useRef, useCallback} from 'react';
 import axios, { CancelTokenSource } from "axios";
 import Config from "../Config";
 import {AuthenticationSessionData} from "../types.client.mongo";
@@ -11,6 +11,7 @@ interface ContextType {
     setIsGuest: (userAuth: boolean) => void;
     isPatreon: boolean;
     setIsPatreon: (v: boolean) => void;
+    getSessionData: () => void;
 }
 
 export const PlayerContext = createContext<ContextType | null>(null);
@@ -22,35 +23,34 @@ export const PlayerProvider: FC = ({ children }) => {
     const [ isGuest, setIsGuest ] = useState(false);
     const [ isPatreon, setIsPatreon ] = useState(false);
 
-    useEffect(() => {
-        axiosCancelSource.current = axios.CancelToken.source();
+    const getSessionData = useCallback(async () => {
+        const response = await axios.get(`${Config.authUrl}/session`, {
+            withCredentials: true,
+            cancelToken: axiosCancelSource.current?.token,
+        });
+        const data = await response.data;
+        const getData = data.data;
+        setSessionData(getData);
 
-        async function getSession() {
-            const response = await axios.get(`${Config.authUrl}/session`, {
-                withCredentials: true,
-                cancelToken: axiosCancelSource.current?.token,
-            });
-            const data = await response.data;
-            const getData = data.data;
-            setSessionData(getData);
+        if (getData.patreon || getData.staff)
+            setIsPatreon(true);
 
-            if (getData.patreon || getData.staff)
-                setIsPatreon(true);
+        if (getData.authName && getData.authName === 'Guest')
+            setIsGuest(true);
 
-            if (getData.authName && getData.authName === 'Guest')
-                setIsGuest(true);
-
-            if (data.versionControl !== Config.versionControl) {
-                toast.error(`Keyma.sh version mismatch detected, please clear your cache!`);
-                console.log(`[SERVER MISMATCH WITH CLIENT] Server v${data.versionControl} - Client v${Config.versionControl}`);
-            }
-
+        if (data.versionControl !== Config.versionControl) {
+            toast.error(`Keyma.sh version mismatch detected, please clear your cache!`);
+            console.log(`[SERVER MISMATCH WITH CLIENT] Server v${data.versionControl} - Client v${Config.versionControl}`);
         }
-        getSession().then();
-        return () => axiosCancelSource.current?.cancel();
     }, []);
 
-    return <PlayerContext.Provider value={{ sessionData, setSessionData, isGuest, setIsGuest, isPatreon, setIsPatreon }}>
+    useEffect(() => {
+        axiosCancelSource.current = axios.CancelToken.source();
+        getSessionData();
+        return () => axiosCancelSource.current?.cancel();
+    }, [ getSessionData ]);
+
+    return <PlayerContext.Provider value={{ sessionData, setSessionData, isGuest, setIsGuest, isPatreon, setIsPatreon, getSessionData }}>
         {children}
     </PlayerContext.Provider>;
 }

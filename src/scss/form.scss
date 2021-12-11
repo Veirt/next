@@ -77,3 +77,16 @@ option {
 .form-control-radio-div:checked + div {
   outline: 1px solid #f6ad55;
 }
+
+/* Form Combination */ 
+.form-combo {
+    @apply flex bg-black bg-opacity-20 rounded-lg shadow-sm focus:border-gray-700 transition ease-in-out duration-300;
+}
+
+.form-combo div {
+   @apply w-12 text-center my-auto opacity-100;
+}
+
+.form-combo input {
+  @apply placeholder-gray-400 w-full block mr-4 py-2.5 bg-transparent focus:outline-none;
+}

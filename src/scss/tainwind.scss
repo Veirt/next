@@ -50,10 +50,10 @@ body {
 }
 
 /* New Buttons */
-.button {
+.button { 
   @apply flex rounded-lg font-bold uppercase transition ease-in-out duration-300;
 }
-
+ 
 .button.small {
   @apply px-4 py-1.5;
 }
@@ -70,8 +70,28 @@ body {
   @apply bg-gray-750 hover:bg-gray-775 text-gray-400;
 }
 
+.button.lightgray {
+  @apply bg-gray-700 hover:bg-gray-750 text-gray-200;
+}
+
 .button.orange {
   @apply bg-orange-400 hover:bg-orange-300 text-black text-opacity-40;
+}
+
+.button-text {
+  @apply transition ease-in-out duration-300;
+}
+
+.button-text.small {
+  @apply text-sm;
+}
+
+.button-text.default {
+  @apply text-base;
+}
+
+.button-text.large {
+  @apply text-lg;
 }
 
 /* Old Buttons */
