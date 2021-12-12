@@ -130,7 +130,7 @@ const Shop = (props: IProps) => {
     return () => axiosCancelSource.current?.cancel();
   }, [ sessionData?.authName ]);
 
-  const featuredItems = [ 'banner_chromatic_blue', 'banner_chromatic_green', 'banner_chromatic_orange', 'banner_chromatic_purple', 'banner_chromatic_red', 'space_earth', 'space_uranus', 'space_eclipse_2', 'space_jupiter', 'space_moon', 'space_neptune', 'space_saturn', 'space_mars', 'space_shutter', 'space_venus'];
+  const featuredItems = [ 'stars_red', "stars_purple", "stars_orange", "stars_green", "stars_blue", "lines_purple", "lines_red", "lines_orange", "lines_green", "lines_blue", "flowers_purple", "flowers_orange", "flowers_green", "flowers_blue", "diamonds", ];
 
   return (
       <>
