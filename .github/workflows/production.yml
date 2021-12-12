@@ -27,5 +27,5 @@ jobs:
         run: |
           rm -rf /var/www/keymash-next || true
           mkdir -p /var/www/keymash-next
-          mv build/* /var/www/keymash-next
+          mv ./* /var/www/keymash-next
         working-directory: ./
