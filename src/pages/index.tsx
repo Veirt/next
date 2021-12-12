@@ -72,7 +72,7 @@ const Home = (props: IProps) => {
         },
         {
             image: '/assets/buttons/githubbutton.webp',
-            href: 'https://github.com/keyma-sh/game-tracker',
+            href: 'https://github.com/keyma-sh/next',
         }
     ]
 
