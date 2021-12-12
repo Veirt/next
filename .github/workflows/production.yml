@@ -19,13 +19,11 @@ jobs:
         run: npm ci
         working-directory: ./
 
-      - name: Build the client app
+      - name: Build Next App
         run: npm run build
         working-directory: ./
 
-      - name: Move the build directory
+      - name: Run Next App
         run: |
-          rm -rf /var/www/keymash-next || true
-          mkdir -p /var/www/keymash-next
-          mv ./* /var/www/keymash-next
+          pm2 startOrReload ecosystem.config.js
         working-directory: ./
