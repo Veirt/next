@@ -29,7 +29,6 @@ const Userbar = (props: IProps) => {
     const [ notificationsCount, setNotificationsCount ] = useState(0);
     const [ notificationsLoaded, setNotificationsLoaded ] = useState(false);
     const [ toggleNotifications, setToggleNotifications ] = useState(false);
-    const [ toggleSignIn, setToggleSignIn ] = useState(false);
     const [ isLoaded, setIsLoaded ] = useState(false);
     const { isSidebar } = props;
 
@@ -150,20 +149,6 @@ const Userbar = (props: IProps) => {
                                     <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
                                     <span>{t('component.navbar.login')}</span>
                                 </Link>
-                                <div className={`w-40 dropdown ${toggleSignIn ? 'is-active' : 'is-not'}`}>
-                                    {playerItems[playerItems.length - 1]?.submenu?.map((item) => (
-                                        <a key={"userbar" + item.name} href={item.route} className={"item"}>
-                                            <div className={"flex"}>
-                                                <div className={"w-auto pr-2"}>
-                                                    <FontAwesomeIcon icon={item.icon.name} className={item.icon.css} />
-                                                </div>
-                                                <div className={"w-auto"}>
-                                                    {item.name}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    ))}
-                                </div>
                             </div>
                         </>
                     ) : playerItems.map(item => ((!item.isAuth && isGuest) || (!isGuest && item.isAuth)) && (
