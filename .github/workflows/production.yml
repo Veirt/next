@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ['self-hosted', 'Linux', 'X64', 'production', 'v2']
+    runs-on: ['self-hosted', 'linux', 'x64', 'production', 'v2']
 
     steps:
       - uses: actions/checkout@v2
