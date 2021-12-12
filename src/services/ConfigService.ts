@@ -147,7 +147,7 @@ class ConfigService extends Cookie {
       let config: ConfigData = {} as ConfigData;
       cookieData.forEach(item => {
         const [key, value] = item.split('=');
-        if (key === 'useConfig')
+        if (key === 'useConfig' && value && value !== 'undefined')
           config = JSON.parse(value as string);
       });
       return config;

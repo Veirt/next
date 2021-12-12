@@ -40,7 +40,8 @@ const Login = () => {
         axios.post(`${Config.authUrl}/signup`, { emailAddress, password, displayName, _csrf }, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
             .then((response) => {
                 if (!response.data.error) {
-                    return setRedirect('/auth/activate')
+                    toast.success("A confirmation has been sent with an activation link, if you do not receive the email check your spam/junk folder!")
+                    return setRedirect('/auth/login')
                 } else
                     return toast.error(response.data.error);
             })

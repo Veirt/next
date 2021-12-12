@@ -100,6 +100,7 @@ const Queue = (props: IProps) => {
                     } else
                         console.log(response.data.error);
                 })
+                .catch((e) => console.log(e));
         }
     }, [ sessionData ]);
 

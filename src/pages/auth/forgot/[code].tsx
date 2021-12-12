@@ -37,9 +37,10 @@ const Forgot = (props: IProps) => {
 
         axios.post(`${Config.authUrl}/forgot`, { emailAddress, password, key: code, _csrf }, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
             .then((response) => {
-                if (!response.data.error) 
+                if (!response.data.error) {
+                    toast.success("Password has been successfully changed.")
                     return setRedirect('/auth/login');
-                else
+                } else
                     return toast.error(response.data.error);
             })
             .catch(() => toast.error("Unexpected error occurred!"));
