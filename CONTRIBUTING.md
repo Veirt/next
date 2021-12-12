@@ -36,3 +36,4 @@ These are more generic notes that will be helpful during development however any
 2. This repo is to not be used for adding translations, please use [OneskyApp](https://keymash.oneskyapp.com) instead.
 3. Our staging branch is strictly for Netlify deployment, therefore make sure your build is also able to be built on Netlify/Vercel (do not use Next's SWC as it's not supported).
 4. If you are doing any design changes and certain Tailwind CSS variables are not directly updating, try modifying `tailwind.config.js` by adding a space or just re-saving.
+5. Any issues that have "server" label should not be touched as these fixes will have to be performed server-side which is not accessible.
