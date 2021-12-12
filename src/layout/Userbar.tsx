@@ -90,7 +90,6 @@ const Userbar = (props: IProps) => {
     const playerItems = [
         {
             title: 'component.navbar.logout',
-            css: 'gray',
             icon: { name: faSignOutAlt },
             target: '_self',
             route: ``,
@@ -106,7 +105,6 @@ const Userbar = (props: IProps) => {
         },
         {
             title: 'component.navbar.settings',
-            css: 'teal',
             icon: { name: faCog },
             target: '_self',
             route: '',
@@ -115,7 +113,6 @@ const Userbar = (props: IProps) => {
         },
         {
             title: 'component.navbar.notifications',
-            css: 'indigo',
             icon: { name: faBell, css: 'text-pink-700' },
             target: '_self',
             route: '',
@@ -124,28 +121,10 @@ const Userbar = (props: IProps) => {
         },
         {
             title: 'component.navbar.login',
-            css: 'gray',
             icon: { name: faSignInAlt, css: 'text-gray-300' },
             target: '_self',
-            route: `/login`,
+            route: '/auth/login',
             isAuth: false,
-            submenu: [
-                {
-                    icon: { name: faDiscord, css: 'text-indigo-300' },
-                    name: 'Discord',
-                    route: `${Config.oauthUrl}/discord`
-                },
-                {
-                    icon: { name: faGoogle, css: 'text-red-500' },
-                    name: 'Google',
-                    route: `${Config.oauthUrl}/google`
-                },
-                {
-                    icon: { name: faGithub, css: 'text-white-100'},
-                    name: 'GitHub',
-                    route: `${Config.oauthUrl}/github`
-                },
-            ]
         },
     ];
 
@@ -168,10 +147,10 @@ const Userbar = (props: IProps) => {
                                 </div>
                             </div>
                             <div className={`w-auto relative ${isSidebar? 'pl-0 lg:pl-3' : 'pl-3'}`}>
-                                <button type={"button"} onClick={() => setToggleSignIn(!toggleSignIn)} className="focus:outline-none text-base hover:bg-gray-775 rounded tracking-wider uppercase py-2 px-3 transition ease-in-out duration-200 text-white font-semibold">
+                                <Link to="/auth/login" className="block focus:outline-none text-base hover:bg-gray-775 rounded tracking-wider uppercase py-2 px-3 hover:opacity-70 transition ease-in-out duration-200 text-white font-semibold">
                                     <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
                                     <span>{t('component.navbar.login')}</span>
-                                </button>
+                                </Link>
                                 <div className={`w-40 dropdown ${toggleSignIn ? 'is-active' : 'is-not'}`}>
                                     {playerItems[playerItems.length - 1]?.submenu?.map((item) => (
                                         <a key={"userbar" + item.name} href={item.route} className={"item"}>
