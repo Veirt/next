@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next';
 import axios, {CancelTokenSource} from "axios";
 import Config from "../Config";
 import {faBell, faCog, faShoppingCart, faSignInAlt, faSignOutAlt, faTrash} from "@fortawesome/free-solid-svg-icons";
-import {faDiscord, faGithub, faGoogle} from "@fortawesome/free-brands-svg-icons";
 import Socket from "../utils/socket/Socket";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Notification from "../components/Uncategorized/Notification";
