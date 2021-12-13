@@ -25,5 +25,5 @@ jobs:
 
       - name: Run Next App
         run: |
-          pm2 startOrReload ecosystem.config.js
+          pm2 startOrRestart ecosystem.config.js
         working-directory: ./
