@@ -25,11 +25,11 @@ const Play = (props: IProps) => {
         return <></>;
 }
 
-export async function getServerSideProps({ req, query }: GetServerSidePropsContext) {
+export async function getServerSideProps({ req, params }: GetServerSidePropsContext) {
     return {
         props: {
             ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
-            mode: query.mode || 'random',
+            mode: params?.mode || 'random',
         },
     };
 }
