@@ -3,6 +3,7 @@ import {PlayerExtendedData, PlayerMatchData} from "../../types.client.mongo";
 import PlayerCard from "../Player/PlayerCard";
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FormatIndex from '../Uncategorized/FormatIndex';
 
 export interface PlayerMatchExtendedData extends PlayerMatchData {
     player: PlayerExtendedData[];
@@ -32,7 +33,7 @@ const LeaderboardPlayerPoints:FC<IProps> = (props) => {
 
             {data.map((item, key) => (
                 <div key={(item.player && item.player[0]) ? item.player[0].playerId : key} className="flex leaderboards--row">
-                    <div className="hidden md:block w-10 text-center font-bold my-auto">{(key + skip + 1).toLocaleString()}</div>
+                    <div className="hidden md:block w-10 text-center font-bold my-auto"><FormatIndex index={(key + skip + 1)} /></div>
                     <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">
                         {(item.player && item.player[0]) ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : <div className={"py-7"} />}
                     </div>
