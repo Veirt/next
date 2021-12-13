@@ -2,6 +2,7 @@ import {FC} from 'react';
 import {PlayerExtendedData, PlayerStatisticData} from "../../types.client.mongo";
 import PlayerCard from "../Player/PlayerCard";
 import useConfig from "../../hooks/useConfig";
+import FormatIndex from '../Uncategorized/FormatIndex';
 
 export interface PlayerStatisticExtendedData extends PlayerStatisticData {
     player: PlayerExtendedData[];
@@ -54,7 +55,7 @@ const LeaderboardPlayerStatistic:FC<IProps> = (props) => {
 
             {data.map((item, key) => (
                 <div key={`${key + skip}${item.player[0]?.playerId}`} className="flex leaderboards--row">
-                    <div className="hidden md:block my-auto w-10 text-center font-bold">{(key + skip + 1).toLocaleString()}</div>
+                    <div className="hidden md:block my-auto w-10 text-center font-bold"><FormatIndex index={(key + skip + 1)} /></div>
                     <div className="w-96 md:w-96 mr-auto">
                         {item.player[0] && <PlayerCard {...item.player[0]} useTransparent isLeaderboard />}
                     </div>

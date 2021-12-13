@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import {PlayerChallengeData} from "../../types.client.mongo";
 import PlayerCard from "../Player/PlayerCard";
+import FormatIndex from '../Uncategorized/FormatIndex';
 
 interface IProps {
     data: PlayerChallengeData[];
@@ -21,7 +22,7 @@ const LeaderboardPlayerChallenges:FC<IProps> = (props) => {
 
             {data.map((item, key) => (
                 <div key={(item.player && item.player[0]) ? item.player[0].playerId : key} className="flex leaderboards--row">
-                    <div className="hidden md:block w-10 text-center font-bold my-auto">{(key + skip + 1).toLocaleString()}</div>
+                    <div className="hidden md:block w-10 text-center font-bold my-auto"><FormatIndex index={(key + skip + 1)} /></div>
                     <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">
                         {(item.player && item.player[0]) ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : <div className={"py-7"} />}
                     </div>

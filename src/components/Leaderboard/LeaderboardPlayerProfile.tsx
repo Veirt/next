@@ -34,7 +34,7 @@ const LeaderboardPlayerProfile:FC<IProps> = (props) => {
             {data.map((item) => (
                 <div key={item.matchId} className="flex leaderboards--row">
                     <div className="hidden md:block w-20 text-center font-bold my-auto">
-                        {(item.placement && item.placement <= 3) ? <FontAwesomeIcon icon={faTrophy} className={`${item.placement === 1 ? 'text-yellow-300' : item.placement === 2 ? 'text-gray-300' : 'text-orange-700'} mr-1`} /> : ''}
+                        {(item.placement && item.placement <= 3) ? <FontAwesomeIcon icon={faTrophy} className={`${item.placement === 1 ? 'text-yellow-400' : item.placement === 2 ? 'text-gray-300' : 'text-orange-700'} mr-1`} /> : ''}
                         <span className={"uppercase text-xs"}>
                             {item.placement ? `${ordinalSuffixOf(item.placement)}` : 'QUIT'}
                         </span>

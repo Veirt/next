@@ -4,6 +4,7 @@ import PlayerCard from "../Player/PlayerCard";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCoins} from "@fortawesome/free-solid-svg-icons";
 import useConfig from "../../hooks/useConfig";
+import FormatIndex from '../Uncategorized/FormatIndex';
 
 export interface PlayerTournamentExtendedData extends PlayerTournamentData {
     player: PlayerExtendedData[];
@@ -50,7 +51,7 @@ const LeaderboardPlayerTournament:FC<IProps> = (props) => {
 
             {isQualified.map((item, key) => (
                 <div key={item?.player[0]?.playerId} className="flex leaderboards--row">
-                    <div className={`hidden md:block my-auto w-10 text-center font-bold py-3 ${qualifier === 1 && (qualifierCutoff >= (key + 1) ? 'bg-green-400 bg-opacity-30' : 'bg-yellow-400 bg-opacity-30')}`}>{(key + 1).toLocaleString()}</div>
+                    <div className={`hidden md:block my-auto w-10 text-center font-bold py-3 ${qualifier === 1 && (qualifierCutoff >= (key + 1) ? 'bg-green-400 bg-opacity-30' : 'bg-yellow-400 bg-opacity-30')}`}><FormatIndex index={(key + 1)} /></div>
                     <div className="w-96 md:w-96 mr-auto">
                         {item?.player[0] && <PlayerCard {...item.player[0]} useTransparent isLeaderboard />}
                     </div>
@@ -69,7 +70,7 @@ const LeaderboardPlayerTournament:FC<IProps> = (props) => {
             {qualifierSort === "avgWPM" && (
                 isNotQualified.map((item) =>  (
                     <div key={item?.player[0]?.playerId} className="flex leaderboards--row opacity-70">
-                        <div className={`hidden md:block my-auto w-10 text-center font-bold bg-yellow-400 bg-opacity-50 py-3`}>X</div>
+                        <div className={`hidden md:block my-auto w-10 text-center font-bold bg-yellow-400 rounded-l-lg bg-opacity-50 py-3`}>X</div>
                         <div className="w-96 md:w-96 mr-auto">
                             {item?.player[0] && <PlayerCard {...item.player[0]} useTransparent isLeaderboard />}
                         </div>

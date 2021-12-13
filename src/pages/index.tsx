@@ -92,7 +92,7 @@ const Home = (props: IProps) => {
                               <h2 className="headingBox">
                                   {t('page.home.matches_high')}
                               </h2>
-                              <LeaderboardPlayerMatch data={leaderboardsData} skip={0} />
+                              <LeaderboardPlayerMatch data={leaderboardsData} skip={0} disableTrophy />
                               <Countdown minuteSeconds={60} onCountdownFinish={getResults} />
                               <ComboBottom />
                           </>

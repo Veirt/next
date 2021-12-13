@@ -395,7 +395,7 @@ const Queue = (props: IProps) => {
 
                                         {tab.name === 'component.navbar.tournaments' && (
                                             <>
-                                                {tournamentData?.map((item) => (item.status !== 2 && item.name.toLowerCase().includes('keyma.sh')) && (
+                                                {tournamentData?.map((item) => (item.status !== 2 && item.name.toLowerCase().includes('daily')) && (
                                                     <Link key={item.tournamentId} to={`/competitions/${item.tournamentId}`} className={"flex relative gap-2"}>
                                                         <div className={"w-full px-5 py-3 mr-auto rounded-xl bg-gray-825 hover:bg-gray-850 transition ease-in-out duration-300"}>
                                                             <div className={"text-white text-sm uppercase font-semibold"}>
