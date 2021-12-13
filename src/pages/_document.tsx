@@ -12,15 +12,6 @@ class MyDocument extends Document {
                     <script>0</script>
                     <Main />
                     <NextScript />
-                    <Script id="google-analytics" strategy="afterInteractive">
-                      {`
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){window.dataLayer.push(arguments);}
-                        gtag('js', new Date());
-              
-                        gtag('config', 'G-C9XCQ04FCC');
-                      `}
-                    </Script>
                     <Script src="https://www.googletagmanager.com/gtag/js?id=UA-169806672-1" strategy="afterInteractive" />
                     <Script id="google-analytics" strategy="afterInteractive">
                       {`
@@ -31,6 +22,19 @@ class MyDocument extends Document {
                         gtag('config', 'UA-169806672-1');
                       `}
                     </Script>
+
+
+                    <Script id="google-analytics" strategy="afterInteractive">
+                      {`
+                        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+                        ga('create', 'G-C9XCQ04FCC', 'auto');
+                        ga('send', 'pageview');
+                      `}
+                    </Script>
+                    <Script
+                      src="https://www.google-analytics.com/analytics.js"
+                      strategy="afterInteractive"
+                    />
 
                     <script dangerouslySetInnerHTML={{ __html: `
                         var ramp = { 
