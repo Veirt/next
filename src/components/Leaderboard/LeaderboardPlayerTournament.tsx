@@ -62,7 +62,7 @@ const LeaderboardPlayerTournament:FC<IProps> = (props) => {
                         </div>
                     )}
                     {/* @ts-ignore */}
-                    <div className="hidden md:block w-28 my-auto">{isWPM.includes(qualifierSort) ? (useCPM === '1' ? `${(item[qualifierSort] * 5).toFixed(2)} CPM` : `${item[qualifierSort].toFixed(2)} WPM`) : 'matches'}</div>
+                    <div className="hidden md:block w-28 my-auto">{isWPM.includes(qualifierSort) ? (useCPM === '1' ? `${(item[qualifierSort] * 5).toFixed(2)} CPM` : `${item[qualifierSort].toFixed(2)} WPM`) : `${item[qualifierSort].toLocaleString()} matches`}</div>
                     <div className={"w-8 md:hidden"} />
                 </div>
             ))}

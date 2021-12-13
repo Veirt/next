@@ -119,11 +119,11 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                                         </div>
                                     </div>
                                 )}
-                                {tournamentData?.qualifierSort === 'mostMatches' && (
+                                {tournamentData?.qualifierSort === 'matchesTotal' && (
                                     <div className={`mb-4 p-4 bg-gray-800 border-b-4 border-gray-700`}>
-                                        <div className={"font-semibold"}>Most Wins</div>
+                                        <div className={"font-semibold"}>Most Matches</div>
                                         <div>
-                                            All players that have completed at least one match will appear showing their total Wins.
+                                            All players that have completed at least one match will appear showing their total matches.
                                         </div>
                                     </div>
                                 )}
