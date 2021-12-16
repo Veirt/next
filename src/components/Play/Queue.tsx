@@ -399,7 +399,7 @@ const Queue = (props: IProps) => {
                                                     <Link key={item.tournamentId} to={`/competitions/${item.tournamentId}`} className={"flex relative gap-2"}>
                                                         <div className={"w-full px-5 py-3 mr-auto rounded-xl bg-gray-825 hover:bg-gray-850 transition ease-in-out duration-300"}>
                                                             <div className={"text-white text-sm uppercase font-semibold"}>
-                                                                {item.name.replace('Keyma.sh Daily', '').split('(')[0]}
+                                                                {item.name.replace('Daily', '').split('(')[0]}
                                                             </div>
                                                         </div>
                                                         <div className={"hidden lg:block w-24 pl-4 text-orange-400 bg-gray-825 rounded-xl text-left pt-2.5 text-base font-semibold"}>
