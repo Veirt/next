@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
 import LoadContent from '../components/LoadContent';
+import useGoogleAnalytics from '../hooks/useGoogleAnalytics';
 import Levelbar from '../layout/Levelbar';
 
 type IMainProps = {
@@ -16,6 +17,8 @@ type IMainProps = {
 };
 
 const Base = (props: IMainProps) => {
+
+    useGoogleAnalytics();
 
     const timer = useRef<NodeJS.Timeout | null>(null);
 

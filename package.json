@@ -32,6 +32,8 @@
     "react-countup": "^4.3.3",
     "react-datepicker": "^3.4.1",
     "react-dom": "^17.0.2",
+    "react-ga": "^3.3.0",
+    "react-ga4": "^1.4.1",
     "react-hotkeys": "^2.0.0",
     "react-markdown": "^6.0.2",
     "react-responsive": "^8.2.0",
