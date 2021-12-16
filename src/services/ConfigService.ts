@@ -155,6 +155,7 @@ class ConfigService extends Cookie {
               return false;
           }
         }
+        return null;
       });
       return config;
   }
