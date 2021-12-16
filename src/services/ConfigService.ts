@@ -147,8 +147,14 @@ class ConfigService extends Cookie {
       let config: ConfigData = {} as ConfigData;
       cookieData.forEach(item => {
         const [key, value] = item.split('=');
-        if (key === 'useConfig' && value && value !== 'undefined')
-          config = JSON.parse(value as string);
+        if (key === 'useConfig' && value && value !== 'undefined') {
+          try {
+              config = JSON.parse(value);
+              return config;
+          } catch {
+              return false;
+          }
+        }
       });
       return config;
   }
@@ -156,7 +162,7 @@ class ConfigService extends Cookie {
   getServerSideOption(key: string, cookieString: string) {
       const config = this.parseServerSideConfig(cookieString);
       // @ts-ignore
-      return config[key] || this.defaultJSON[key];
+      return (config && config[key]) ? config[key] : this.defaultJSON[key];
   }
 }
 
