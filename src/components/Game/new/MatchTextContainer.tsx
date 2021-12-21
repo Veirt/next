@@ -52,7 +52,7 @@ const MatchTextContainer = (props: IProps) => {
         const onFocus = () => setTimeout(() => inputElement.current?.focus(), 1);
 
         if (!refreshFPS.current) 
-            refreshFPS.current = setInterval(onRefreshFPS, 16);
+            refreshFPS.current = setInterval(onRefreshFPS, 33);
 
         if (inputElement.current) 
             inputElement.current?.addEventListener('blur', onFocus);
@@ -140,6 +140,7 @@ const MatchTextContainer = (props: IProps) => {
                         setInput('');
                         
                         if (currentIndex === quote.length) {
+                            setDisable(true);
                             console.log('Text is FINISHED');
                             
                         }
