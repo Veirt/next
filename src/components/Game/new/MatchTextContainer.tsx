@@ -63,6 +63,7 @@ const MatchTextContainer = (props: IProps) => {
             // eslint-disable-next-line
             if (inputElement.current) inputElement.current.removeEventListener('blur', onFocus);
         }
+        // eslint-disable-next-line
     }, [ ]);
 
     useEffect(() => setDisable(disabled), [ disabled ]);
