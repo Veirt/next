@@ -167,9 +167,25 @@ const MatchTextContainer = (props: IProps) => {
     // Timers
     const onRefreshFPS = () => {
         if (caretElement.current && currentElement.current) {
-            caretElement.current.style.left = `${currentElement.current!.offsetLeft - 3}px`;
-            caretElement.current.style.top = `${currentElement.current!.offsetTop}px`;
-            caretElement.current.style.height = `${currentElement.current!.offsetHeight || 0}px`;
+            let useAnimation;
+
+            const caretLeft = `${currentElement.current!.offsetLeft - 3}px`;
+            const caretTop = `${currentElement.current!.offsetTop}px`;
+            const caretHeight = `${currentElement.current!.offsetHeight || 0}px`;
+
+            if (smoothCaret === '1' && ('animate' in caretElement.current)) {
+                useAnimation = caretElement.current?.animate({ left: caretLeft, top: caretTop, height: caretHeight }, { duration: parseInt(smoothCaretSpeed, 10) || 100 });
+
+                useAnimation.onfinish = () => {
+                    caretElement.current!.style.left = caretLeft;
+                    caretElement.current!.style.top = caretTop;
+                    caretElement.current!.style.height = caretHeight;
+                }
+            } else {
+                caretElement.current!.style.left = caretLeft;
+                caretElement.current!.style.top = caretTop;
+                caretElement.current!.style.height = caretHeight;
+            }
         }
     }
 
@@ -183,7 +199,7 @@ const MatchTextContainer = (props: IProps) => {
 
     // CSS Inlines 
     // For Tailwind Purge: duration-50 duration-75 duration-100 duration-150 duration-175 duration-200
-    const smoothCaretCSS = smoothCaret === '1' ? `transition-all ease-out duration-${smoothCaretSpeed}` : '';
+    // const smoothCaretCSS = smoothCaret === '1' ? `transition-all ease-out duration-${smoothCaretSpeed}` : '';
     const upscaleMatchCSS = upscaleMatch === '1' ? 'text-base sm:text-lg md:text-xl lg:text-2xl' : 'text-sm sm:text-base md:text-lg lg:text-xl';
     const matchTextTypeCSS = matchTextType === '1' ? 'font-mono' : 'font-sans';
     const colorBlindCSS = colorBlindMode === '1' ? 'bg-blue-600 bg-opacity-40 text-white' : 'bg-red-600 bg-opacity-40 text-white';
@@ -198,7 +214,7 @@ const MatchTextContainer = (props: IProps) => {
         <>
             <div className={`${matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
                 <div className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none`}>
-                    <div ref={caretElement} className={`${(caretBlinker && !disabled) ? 'caret-idle' : ''} ${smoothCaretCSS} absolute rounded`} style={{ width: '2px', height: '24px', left: 0, top: 0, transform: 'scale(1.3)', background: '#FB923C' }} />
+                    <div ref={caretElement} className={`${(caretBlinker && !disabled) ? 'caret-idle' : ''} absolute rounded`} style={{ width: '1.5px', height: '24px', left: 0, top: 0, transform: 'scale(1.3)', background: '#FB923C' }} />
                     <span className="match--letter match--correct">{correct}</span>
                     <span ref={currentElement} className={`match--letter match--letter ${typoStreak ? colorBlindCSS : 'text-gray-400'}`}>{current}</span>
                     <span className={`match--letter match--letter ${colorBlindCSS}`}>{incorrect}</span>
