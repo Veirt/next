@@ -177,9 +177,11 @@ const MatchTextContainer = (props: IProps) => {
                 useAnimation = caretElement.current?.animate({ left: caretLeft, top: caretTop, height: caretHeight }, { duration: parseInt(smoothCaretSpeed, 10) || 100 });
 
                 useAnimation.onfinish = () => {
-                    caretElement.current!.style.left = caretLeft;
-                    caretElement.current!.style.top = caretTop;
-                    caretElement.current!.style.height = caretHeight;
+                    if (caretElement.current) {
+                        caretElement.current.style.left = caretLeft;
+                        caretElement.current.style.top = caretTop;
+                        caretElement.current.style.height = caretHeight;
+                    }
                 }
             } else {
                 caretElement.current!.style.left = caretLeft;
