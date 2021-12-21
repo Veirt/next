@@ -3,9 +3,9 @@ import { useTranslation } from 'next-i18next';
 import MatchMode from "../MatchMode";
 import {faQuestion, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import ConfigService from "../../../services/ConfigService";
 import {SocketMatchData, SocketMatchGameData, SocketMatchPlayerData} from "../../../types.client.socket";
 import Playerboard from "../participants/Playerboard";
+import useConfig from "../../../hooks/useConfig";
 
 interface IProps {
     matchData: SocketMatchData | null;
@@ -24,6 +24,8 @@ interface IProps {
 }
 
 const Spectator: FC<IProps> = (props) => {
+    const { smoothCaret, smoothCaretSpeed } = useConfig();
+
     const [ charHeight, setCharHeight ] = useState('0px');
     const [ showHelp, setShowHelp ] = useState(false);
     const { gameData, embedClose, embedOwner, firstWord, totalPlayers, quoteString, roundsTotal, matchData, participantsData } = props;
@@ -50,9 +52,6 @@ const Spectator: FC<IProps> = (props) => {
                         const getCaretPosition = (document.getElementsByClassName('cursor--locate')[correctKeystrokes ? correctKeystrokes : 0] as HTMLElement);
 
                         if (getCaretPosition && getUserCaret) {
-                            const smoothCaret = ConfigService.getSmoothCaret();
-                            const smoothCaretSpeed = ConfigService.getSmoothCaretSpeed();
-
                             const { offsetLeft, offsetTop } = getCaretPosition;
 
                             if (smoothCaret === '1') {

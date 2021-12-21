@@ -47,21 +47,6 @@ class ConfigService extends Cookie {
 
   public storageJSON: ConfigData = this.get('useConfig');
 
-  getColorBlindMode() {
-    if (this.storageJSON && this.storageJSON.colorBlindMode) return this.storageJSON.colorBlindMode;
-    return this.defaultJSON.colorBlindMode;
-  }
-
-  getMatchContainerTransparent() {
-    if (this.storageJSON && this.storageJSON.matchContainerTransparent) return this.storageJSON.matchContainerTransparent;
-    return this.defaultJSON.matchContainerTransparent;
-  }
-
-  getMatchTextType() {
-    if (this.storageJSON && this.storageJSON.matchTextType) return this.storageJSON.matchTextType;
-    return this.defaultJSON.matchTextType;
-  }
-
   getWorld() {
     if (this.storageJSON && this.storageJSON.world) return this.storageJSON.world;
     return this.defaultJSON.world;
@@ -77,31 +62,6 @@ class ConfigService extends Cookie {
     return this.defaultJSON.shortcutGameRedo;
   }
 
-  getSmoothCaret() {
-    if (this.storageJSON && this.storageJSON.smoothCaret) return this.storageJSON.smoothCaret;
-    return this.defaultJSON.smoothCaret;
-  }
-
-  getSmoothCaretSpeed() {
-    if (this.storageJSON && this.storageJSON.smoothCaretSpeed) return this.storageJSON.smoothCaretSpeed;
-    return this.defaultJSON.smoothCaretSpeed;
-  }
-
-  getHideInputBox() {
-    if (this.storageJSON && this.storageJSON.hideInputBox) return this.storageJSON.hideInputBox;
-    return this.defaultJSON.hideInputBox;
-  }
-
-  getGameplayParticipantStyle() {
-    if (this.storageJSON && this.storageJSON.gameplayParticipantStyle) return this.storageJSON.gameplayParticipantStyle;
-    return this.defaultJSON.gameplayParticipantStyle;
-  }
-
-  getUpscaleMatch() {
-    if (this.storageJSON && this.storageJSON.upscaleMatch) return this.storageJSON.upscaleMatch;
-    return this.defaultJSON.upscaleMatch;
-  }
-
   getUpscaleMatchContainer() {
     if (this.storageJSON && this.storageJSON.upscaleMatchContainer) return this.storageJSON.upscaleMatchContainer;
     return this.defaultJSON.upscaleMatchContainer;
@@ -110,26 +70,6 @@ class ConfigService extends Cookie {
   getCountdownBeep() {
     if (this.storageJSON && this.storageJSON.countdownBeep) return this.storageJSON.countdownBeep;
     return this.defaultJSON.countdownBeep;
-  }
-
-  getRankUpSound() {
-    if (this.storageJSON && this.storageJSON.rankUpSound) return this.storageJSON.rankUpSound;
-    return this.defaultJSON.rankUpSound;
-  }
-
-  getRankDownSound() {
-    if (this.storageJSON && this.storageJSON.rankDownSound) return this.storageJSON.rankDownSound;
-    return this.defaultJSON.rankDownSound;
-  }
-
-  getGlobalChatBeep() {
-    if (this.storageJSON && this.storageJSON.globalChatBeep) return this.storageJSON.globalChatBeep;
-    return this.defaultJSON.globalChatBeep;
-  }
-
-  getCustomChatBeep() {
-    if (this.storageJSON && this.storageJSON.customChatBeep) return this.storageJSON.customChatBeep;
-    return this.defaultJSON.customChatBeep;
   }
 
   getMatchFinishBeep() {
