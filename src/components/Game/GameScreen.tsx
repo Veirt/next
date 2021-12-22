@@ -213,17 +213,18 @@ const GameScreen = (props: IProps) => {
         // Players 
         socket.on('updatePlayers', (data: SocketMatchPlayerData[]) => {
             if (!data)
-                return toast.error("updatePlayers unable to fetch players!");
-
-            DebugService.add('[Match] Players have been fetched');
-            let i:number; const dataLength = data.length;
-            for (i = 0; i < dataLength; i++) {
-                /* @ts-ignore */ 
-                if (data[i].playerId === sessionData.playerId && data[i].teamId === 0) 
-                    setSpectator(true);
+                toast.error("updatePlayers unable to fetch players!");
+            else {
+                DebugService.add('[Match] Players have been fetched');
+                let i:number; const dataLength = data.length;
+                for (i = 0; i < dataLength; i++) {
+                    /* @ts-ignore */ 
+                    if (data[i].playerId === sessionData.playerId && data[i].teamId === 0) 
+                        setSpectator(true);
+                }
+                setGamePlayers(dataLength || 0);
+                setParticipantsData([ ...data ]);
             }
-            setGamePlayers(dataLength || 0);
-            setParticipantsData([ ...data ]);
         });
 
         socket.on('updateWPM', (data: SocketMatchPlayerData) => {
