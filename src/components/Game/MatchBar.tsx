@@ -2,14 +2,16 @@ import React, { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleDoubleLeft, faStopwatch, faWifi} from '@fortawesome/free-solid-svg-icons';
 import GameTimer from './countdown/GameTimer';
-import {SocketMatchGameData} from "../../types.client.socket";
 import {GamemodeData} from "../../types.client.mongo";
 import Link from '../Uncategorized/Link';
 
 interface IProps {
   redirectUrl: string;
-  gameData: SocketMatchGameData;
   modeData: GamemodeData;
+  countdown: number;
+  timer: number;
+  disabled: boolean;
+  latency: number;
   className?: string;
   isCapslock?: boolean;
   isSpectate: number;
@@ -19,7 +21,7 @@ interface IProps {
 }
 
 const MatchBar: FC<IProps> = (props) => {
-    const { redirectUrl, className, gameData, modeData, isSpectate, isCapslock, embedClose, embedOwner, embed } = props;
+    const { redirectUrl, className, timer, countdown, disabled, latency, modeData, isSpectate, isCapslock, embedClose, embedOwner, embed } = props;
 
     return (
         <>
@@ -46,23 +48,23 @@ const MatchBar: FC<IProps> = (props) => {
                   </div>
                 )}
                 <div className="w-auto my-auto font-semibold text-white text-right pt-px">
-                  {modeData && modeData.modeConfig && modeData.modeConfig.ROUND_LIMIT === 0 && gameData.countdown < 0 && gameData.timer > 0 && !gameData.isBanned && !gameData.isAnticheat && (
+                  {modeData && modeData.modeConfig && modeData.modeConfig.ROUND_LIMIT === 0 && countdown < 0 && timer > 0 && !disabled && (
                     <span className="px-3 w-auto mr-3">
                       <FontAwesomeIcon icon={faStopwatch} className="text-red-400 mr-2" />
-                      <GameTimer timer={gameData.timer} />
+                      <GameTimer timer={timer} />
                     </span>
                   )}
                   <span className="pl-3 w-auto">
-                    <FontAwesomeIcon icon={faWifi} className="text-blue-400 mr-1" /> {gameData.latency}ms
+                    <FontAwesomeIcon icon={faWifi} className="text-blue-400 mr-1" /> {latency}ms
                   </span>
                 </div>
               </div>
             ) : (
-              gameData.countdown < 0 && gameData.timer > 0 && !gameData.isBanned && !gameData.isAnticheat && (
+              (countdown < 0 && timer > 0 && !disabled) && (
                 <div>
                   <div className="bg-black bg-opacity-25 text-white w-64 text-center mx-auto mb-4 p-3 rounded text-4xl font-semibold tracking-wide rounded">
                     <FontAwesomeIcon icon={faStopwatch} className="text-red-400 mr-2" />
-                    <GameTimer timer={gameData.timer} />
+                    <GameTimer timer={timer} />
                   </div>
                 </div>
               )

@@ -1,12 +1,12 @@
-import React, {Component, FC, useEffect, useRef, useState} from 'react';
-import { useTranslation, withTranslation, WithTranslation } from 'next-i18next';
+import React, {Component, FC, useEffect} from 'react';
+import { withTranslation, WithTranslation } from 'next-i18next';
 import axios, { CancelTokenSource } from 'axios';
 import { GlobalHotKeys } from 'react-hotkeys';
 import Socket from '../../utils/socket/Socket';
-import MatchCountdown from './countdown/MatchCountdown';
+import MatchCountdown from '../../components/Game/countdown/MatchCountdown';
 import Config from '../../Config';
 import CookieService from '../../services/CookieService';
-import MatchToast from './MatchToast';
+import MatchToast from '../../components/Game/MatchToast';
 import Player from "./view/Player";
 import Spectator from "./view/Spectator";
 import {toast} from "react-toastify";
@@ -20,13 +20,11 @@ import {
     SocketMatchGameData,
     SocketMatchPlayerData
 } from "../../types.client.socket";
-import Redirect from '../Uncategorized/Redirect';
+import Redirect from '../../components/Uncategorized/Redirect';
 import Base from '../../templates/Base';
 import { Meta } from '../../layout/Meta';
 import SidebarSquare from '../Advertisement/SidebarSquare';
 import SidebarLong from '../Advertisement/SidebarLong';
-import useConfig from '../../hooks/useConfig';
-import { usePlayerContext } from '../../contexts/Player.context';
 
 interface IState {
     matchLoaded: boolean;
@@ -42,126 +40,24 @@ interface IState {
     redirect: string;
 }
 
-interface IProps {
+interface IProps extends WithTranslation {
     textType?: string;
     embed?: boolean;
     embedClose?: () => void | false;
     embedOwner?: boolean;
 }
 
+const CloseChat:FC = () => {
+    const { setToggleChat } = useChatContext();
 
-const Match = (props: IProps) => {
-    
-    // Core
-    const [ socket, setSocket ] = useState<Socket | null>(null);
-    const axiosCancelSource = useRef<CancelTokenSource | null>(null);
-    
-    // Contexts
-    const { t } = useTranslation();
-    const { world, matchFinishBeep } = useConfig();
-    const { sessionData } = usePlayerContext();
-
-    // States
-    const [ redirect, setRedirect ] = useState<string>('');
-    const [ loaded, setLoaded ] = useState<string>('');
-    const [ latency, setLatency ] = useState<number>(0);
-    const [ gameNotice, setGameNotice ] = useState<string>('');
-    const [ gameCountdown, setGameCountdown ] = useState<number>(-1);
-    const [ gameTimer, setGameTimer ] = useState<number>(-1);
-    const [ participantsData, setParticipantsData ] = useState<SocketMatchPlayerData[]>([]);
-    const [ endMatchData, setEndMatchData ] = useState<SocketMatchEndData | null>(null);
-    const [ matchData, setMatchData ] = useState<SocketMatchData | null>(null);
-
-
-    // Global Hot Keys
-    const keyMap = { GOTO_REDO: ConfigService.getShortcutGameRedo().toLowerCase() };
-    const handlers = { GOTO_REDO: () => (this.state.endMatchData && this.state.endMatchData.roundData) ? this.setState({ redirect: `/play/${this.props.textType || 'random'}` }) : false };
-
-    // Effects
     useEffect(() => {
-        axiosCancelSource.current = axios.CancelToken.source();
-        if (window) {
-            DebugService.add('[Match] Server has been called to be initialized');
-            setSocket(new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/game`, {
-              transports: ['websocket', 'polling'],
-            }));
-        }
-        return () => axiosCancelSource.current?.cancel();
-    }, [ ]);
+        setToggleChat(false);
+    }, [ setToggleChat ]);
 
-    // Socket
-    useEffect(() => {
-        if (!socket) 
-            return; 
-        
-        socket.onError(() => {
-            DebugService.add('[Match] onError called');
-            socket.emit('disconnect', {});
-        });
-
-        socket.onConnect(() => DebugService.add('[Match] Client made handshake with server'));
-        socket.onDisconnect((data) => DebugService.add(`[Match] onDisconnect called ${data}`))
-        socket.onReconnect(() => DebugService.add('[Match] onReconnect called'));
-        socket.onReconnecting(() => DebugService.add('[Match] onReconnecting called'));
-        socket.on('getLatency', (data: { latency: number; }) => setLatency(data.latency));
-        socket.on('sendLatencyPing', () => socket.emit('sendLatencyPong', {}))
-        socket.on('banDetected', () => setGameNotice('banDetected'));
-        socket.on('cheatDetected', () => setGameNotice('cheatDetected'));
-        socket.on('manyMistakes', () => setGameNotice('manyMistakes'));
-        socket.on('timeoutMatch', () => setGameNotice('timeoutMatch'));
-        socket.on('achievementUnlocked', (data: { message: string; }) => data.message ? toast.success(data.message) : false);
-        socket.on('levelUp', (data: { level: string; }) => data.level ? toast.success(`You have ranked up to Level ${data.level}!`) : false);
-        socket.on('forceEndMatch', () => socket.emit('sendWord', { forceEnd: 1 }));
-    }, [ socket ]);
-
-    // Methods
-    const sendKeystroke = (keystroke: string, event: boolean): void => {
-        const keyPayload = {
-            playerId: sessionData?.playerId,
-            keystroke,
-            event
-        };
-        socket?.emit('sendKeystroke', keyPayload);
-    };
-
-    const sendWord = (word: string): void => {
-        DebugService.add('[Match] Word has been sent');
-        const wordPayload = {
-            playerId: sessionData?.playerId,
-            word,
-        };
-        socket?.emit('sendWord', wordPayload);
-    };
-
-    const playSound = () => {
-        DebugService.add('[Match] Played Level Completed audio queue');
-        if (document.getElementById('LevelCompleted') && matchFinishBeep === '1') {
-            // @ts-ignore
-            document.getElementById('LevelCompleted').play();
-        }
-    };
-
-    const handleKeydown = (e: KeyboardEvent) {
-        if ( (e.key === 's' && e.ctrlKey) )
-            e.preventDefault();
-        if (!endMatchData || ((endMatchData && !endMatchData.roundData) && gameCountdown >= 1)) {
-            if (e.key === 'Backspace') {
-                e.preventDefault();
-            }
-        }
-    }
-
-    const beforeUnload = (e: BeforeUnloadEvent) {
-        if (!endMatchData || (endMatchData && !endMatchData.roundData)) {
-            e.preventDefault();
-            e.returnValue = true;
-        }
-    }
+    return(<></>)
 }
 
-
-class Match2 extends Component<IProps, IState> {
-    /*
+class Match extends Component<IProps, IState> {
     private axiosCancelSource: CancelTokenSource = axios.CancelToken.source();
 
     state: IState = {
@@ -192,9 +88,13 @@ class Match2 extends Component<IProps, IState> {
         redirect: '',
     };
 
-    keyMap = { GOTO_REDO: ConfigService.getShortcutGameRedo().toLowerCase() };
+    keyMap = {
+        GOTO_REDO: ConfigService.getShortcutGameRedo().toLowerCase()
+    };
 
-    handlers = { GOTO_REDO: () => (this.state.endMatchData && this.state.endMatchData.roundData) ? this.setState({ redirect: `/play/${this.props.textType || 'random'}` }) : false };
+    handlers = {
+        GOTO_REDO: () => (this.state.endMatchData && this.state.endMatchData.roundData) ? this.setState({ redirect: `/play/${this.props.textType || 'random'}` }) : false
+    };
 
     private io!: Socket;
     private playerData!: AuthenticationSessionData;
@@ -209,6 +109,7 @@ class Match2 extends Component<IProps, IState> {
         this.beforeUnload = this.beforeUnload.bind(this);
         document.addEventListener('keydown', this.handleKeydown);
         window.addEventListener('beforeunload', this.beforeUnload);
+        await this.initializeMatch();
     }
 
     async componentWillUnmount() {
@@ -219,7 +120,78 @@ class Match2 extends Component<IProps, IState> {
         document.removeEventListener('keydown', this.handleKeydown);
         window.removeEventListener('beforeunload', this.beforeUnload);
     }
-    */
+
+    playSound = () => {
+        DebugService.add('[Match] Played Level Completed audio queue');
+        if (document.getElementById('LevelCompleted') && ConfigService.getMatchFinishBeep() === '1') {
+            // @ts-ignore
+            document.getElementById('LevelCompleted').play();
+        }
+    };
+
+    handleKeydown(e: KeyboardEvent) {
+        const { endMatchData, gameData } = this.state;
+        if ( (e.key === 's' && e.ctrlKey) )
+            e.preventDefault();
+        if (!endMatchData || ((endMatchData && !endMatchData.roundData) && gameData.countdown >= 1)) {
+            if (e.key === 'Backspace') {
+                e.preventDefault();
+            }
+        }
+    }
+
+    beforeUnload(e: BeforeUnloadEvent) {
+        const { endMatchData } = this.state;
+        if (!endMatchData || (endMatchData && !endMatchData.roundData)) {
+            e.preventDefault();
+            e.returnValue = true;
+        }
+    }
+
+    public async getSession(): Promise<AuthenticationSessionData> {
+        DebugService.add('[Match] Grabbed Player session data');
+        const response = await axios.get(`${Config.authUrl}/session`, {
+            cancelToken: this.axiosCancelSource.token,
+            withCredentials: true
+        });
+        const json = await response.data.data;
+
+        if (json.redirect) {
+            window.removeEventListener('beforeunload', this.beforeUnload);
+            return window.location.href = json.redirect;
+        } else
+            return json;
+    }
+
+    private sendKeystroke = (keystroke: string, event: boolean): void => {
+        const keyPayload = {
+            playerId: this.playerData.playerId,
+            keystroke,
+            event
+        };
+        this.io.emit('sendKeystroke', keyPayload);
+    };
+
+    private sendWord = (word: string): void => {
+        DebugService.add('[Match] Word has been sent');
+        const wordPayload = {
+            playerId: this.playerData.playerId,
+            word,
+        };
+        this.io.emit('sendWord', wordPayload);
+    };
+
+    async initializeMatch(): Promise<void> {
+        DebugService.add('[Match] Server has been called to be initialized');
+        if (this.gameTimer) clearInterval(this.gameTimer);
+        this.playerData = await this.getSession();
+        if (!this.playerData.playerId) {
+            toast.info('User not found, redirecting...');
+            this.setState({ redirect: '/' });
+        }
+        if (this.io) this.io.disconnect();
+        else this.socketMatch();
+    }
 
     socketMatch(): void {
         DebugService.add('[Match] Server has been initialized');
@@ -227,6 +199,22 @@ class Match2 extends Component<IProps, IState> {
         const { matchLoaded } = this.state;
 
         this.setState({ matchData, participantsData: [] });
+
+        let wsString = '';
+        if (Config.gameServer.Port !== null) wsString = `:${Config.gameServer.Port}`;
+
+        this.io = new Socket(`${Config.gameServer.URL}${wsString}/game`, {
+            transports: ['websocket', 'polling']
+        });
+
+        this.io.onError(() => {
+            DebugService.add('[Match] onError called');
+            this.io.emit('disconnect', {});
+        });
+
+        this.io.onDisconnect((data) => DebugService.add(`[Match] onDisconnect called ${data}`))
+        this.io.onReconnect(() => DebugService.add('[Match] onReconnect called'));
+        this.io.onReconnecting(() => DebugService.add('[Match] onReconnecting called'));
 
         this.io.onConnectLost(() => {
             const { gameData } = this.state;
@@ -262,6 +250,7 @@ class Match2 extends Component<IProps, IState> {
             this.setState({ gameData });
         });
 
+        this.io.onConnect(() => DebugService.add('[Match] Client made handshake with server'));
         if (!matchLoaded) {
             DebugService.add('[Match] Match not joined, joining now...');
             const joinPayload = {
@@ -280,6 +269,29 @@ class Match2 extends Component<IProps, IState> {
             toast.info('Match not found, redirecting...');
             this.setState({ redirect: '/' });
         });
+
+        this.io.on('sendLatencyPing', () => {
+            DebugService.add('[Match] Ping to client sent');
+            this.io.emit('sendLatencyPong', {});
+        });
+
+        this.io.on('achievementUnlocked', (data: { message: string; }) => {
+            if (data.message)
+                toast.success(data.message);
+        });
+
+        this.io.on('levelUp', (data: { level: number }) => {
+           if (data.level)
+               toast.success(`You have ranked up to Level ${data.level}!`);
+        });
+
+        this.io.on('getLatency', (data: { latency: number }) => {
+            const { gameData } = this.state;
+            gameData.latency = data.latency;
+
+            this.setState({ gameData });
+        });
+
         this.io.on('endMatch', (data: SocketMatchEndData) => {
             DebugService.add('[Match] Match has been successfully ended.');
             this.playSound();
@@ -300,6 +312,30 @@ class Match2 extends Component<IProps, IState> {
                     gameData,
                 });
             }
+        });
+
+        this.io.on('banDetected', () => {
+            const { gameData } = this.state;
+            gameData.isBanned = true;
+            this.setState({ gameData });
+        });
+
+        this.io.on('cheatDetected', () => {
+            const { gameData } = this.state;
+            gameData.isAnticheat = true;
+            this.setState({ gameData });
+        });
+
+        this.io.on('manyMistakes', () => {
+            const { gameData } = this.state;
+            gameData.isTooManyMistakes = true;
+            this.setState({ gameData });
+        });
+
+        this.io.on('timeoutMatch', () => {
+            const { gameData } = this.state;
+            gameData.isTimeRanOut = true;
+            this.setState({ gameData });
         });
 
         this.io.on('sendTimer', (data: { timer: number }) => {
@@ -441,6 +477,7 @@ class Match2 extends Component<IProps, IState> {
             }
             this.setState({ participantsData });
         });
+        this.io.on('forceEndMatch', () => this.io.emit('sendWord', { forceEnd: 1 }));
     }
 
     render() {

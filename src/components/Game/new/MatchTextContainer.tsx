@@ -52,7 +52,7 @@ const MatchTextContainer = (props: IProps) => {
         const onFocus = () => setTimeout(() => inputElement.current?.focus(), 1);
 
         if (!refreshFPS.current) 
-            refreshFPS.current = setInterval(onRefreshFPS, 33);
+            refreshFPS.current = setInterval(onRefreshFPS, 17);
 
         if (inputElement.current) 
             inputElement.current?.addEventListener('blur', onFocus);

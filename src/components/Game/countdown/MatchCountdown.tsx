@@ -6,7 +6,7 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 export interface MatchCountdownProps {
   countdown: number;
   url: string;
-  isSpectator: number;
+  isSpectator: boolean;
   win?: boolean;
   roundEnd?: boolean;
   isDisabled?: boolean;
@@ -67,12 +67,12 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
 
               <div className="m-auto">
                 <div className={"max-w-screen-sm mx-auto"}>
-                  {isSpectator === 0 && roundEnd && (
+                  {!isSpectator && roundEnd && (
                       <div className={"text-center text-2xl pb-8 uppercase text-white font-bold tracking-wider"}>
                         You have <span className={"text-orange-400"}>{win ? 'won' : 'lost'}</span> the round!
                       </div>
                   )}
-                  {isSpectator === 1 && roundEnd && (
+                  {isSpectator && roundEnd && (
                       <div className={"text-center text-2xl pb-8 uppercase text-white font-bold tracking-wider"}>
                         Round Completed!
                       </div>
@@ -86,7 +86,7 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
                       )}
                     </div>
                   </div>
-                  {isSpectator === 0 && roundEnd && (
+                  {!isSpectator && roundEnd && (
                       <div className={"text-lg pt-8 uppercase text-white font-semibold tracking-wider"}>
                         The next round will be starting soon...
                       </div>
