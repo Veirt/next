@@ -1,3 +1,4 @@
+import { GetServerSidePropsContext } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Meta } from '../../layout/Meta';
@@ -24,10 +25,10 @@ const ErrorNotFound = () => {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ req }: GetServerSidePropsContext) {
   return {
     props: {
-      ...(await serverSideTranslations(ConfigService.getLocale()))  
+      ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
     }
   }
 }

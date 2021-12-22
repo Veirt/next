@@ -1,7 +1,7 @@
 import {FC, useEffect, useCallback} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ConfigService from "../../../services/ConfigService";
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import useConfig from '../../../hooks/useConfig';
 
 export interface MatchCountdownProps {
   countdown: number;
@@ -15,6 +15,7 @@ export interface MatchCountdownProps {
 const MatchCountdown: FC<MatchCountdownProps> = (props) => {
 
   const { countdown, win, roundEnd, isSpectator } = props;
+  const { countdownBeep } = useConfig();
 
   const playCountdownAudio = useCallback(() => {
     const getBeep = (document.getElementById('CountBeep') as HTMLAudioElement);
@@ -26,10 +27,10 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
     }
 
     if (countdown !== 99) {
-      if (countdown >= 1 && getBeep && ConfigService.getCountdownBeep() === '1')
+      if (countdown >= 1 && getBeep && countdownBeep === '1')
         getBeep.play();
 
-      if (countdown === 0 && getStart && ConfigService.getCountdownBeep() === '1')
+      if (countdown === 0 && getStart && countdownBeep === '1')
         getStart.play();
     }
   }, [ countdown ]);

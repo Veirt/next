@@ -176,7 +176,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
 
 export async function getServerSideProps({ req, params }: GetServerSidePropsContext) {
     const id = encodeURI(String(params?.id || ''));
-    const world = ConfigService.getWorld();
+    const world = ConfigService.getServerSideOption('world', req.headers.cookie || '');
 
     const getPlayer = await axios.get(`${Config.apiUrl}/player/info?name=${id}`).catch((e) => console.log(e));
     if (getPlayer && !getPlayer.data.error) {

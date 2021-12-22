@@ -11,7 +11,6 @@ import Player from "./view/Player";
 import Spectator from "./view/Spectator";
 import {toast} from "react-toastify";
 import DebugService from "../../services/DebugService";
-import ConfigService from "../../services/ConfigService";
 import {
     SocketMatchData,
     SocketMatchEndData,
@@ -25,13 +24,18 @@ import SidebarLong from '../Advertisement/SidebarLong';
 import useConfig from '../../hooks/useConfig';
 import { usePlayerContext } from '../../contexts/Player.context';
 
+/*
+    Known Problems
+    - When leaving match, notice is not showing up
+    - When leaving match after match is finished, notice is showing up
+*/
+
 interface IProps {
     textType?: string;
     embed?: boolean;
     embedClose?: () => void | false;
     embedOwner?: boolean;
 }
-
 
 const GameScreen = (props: IProps) => {
 
@@ -46,7 +50,7 @@ const GameScreen = (props: IProps) => {
     
     // Contexts
     const { t } = useTranslation();
-    const { matchFinishBeep, upscaleMatchContainer, performanceMode } = useConfig();
+    const { matchFinishBeep, upscaleMatchContainer, performanceMode, shortcutGameRedo } = useConfig();
     const { sessionData } = usePlayerContext();
 
     // States
@@ -70,7 +74,7 @@ const GameScreen = (props: IProps) => {
     const [ matchData, setMatchData ] = useState<SocketMatchData | null>(null);
 
     // Global Hot Keys
-    const keyMap = { GOTO_REDO: ConfigService.getShortcutGameRedo().toLowerCase() };
+    const keyMap = { GOTO_REDO: shortcutGameRedo.toLowerCase() };
     const handlers = { GOTO_REDO: () => (endMatchData && endMatchData.roundData) ? setRedirect(`/play/${textType || 'random'}`) : false };
 
     // Effects
