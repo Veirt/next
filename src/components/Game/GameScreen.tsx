@@ -24,12 +24,6 @@ import SidebarLong from '../Advertisement/SidebarLong';
 import useConfig from '../../hooks/useConfig';
 import { usePlayerContext } from '../../contexts/Player.context';
 
-/*
-    Known Problems
-    - When leaving match, notice is not showing up
-    - When leaving match after match is finished, notice is showing up
-*/
-
 interface IProps {
     textType?: string;
     embed?: boolean;
@@ -303,13 +297,13 @@ const GameScreen = (props: IProps) => {
         if ( (e.key === 's' && e.ctrlKey) )
             e.preventDefault();
 
-        // TODO: BUG HERE WITH BACKSPACE
         if (!endMatchData && gameCountdown >= 1 && e.key === 'Backspace') 
             e.preventDefault();
     }
 
     const beforeUnload = (e: BeforeUnloadEvent) => {
-        if (!endMatchData || (endMatchData && !endMatchData.roundData)) {
+        console.log('endMatchData', endMatchData);
+        if (!endMatchData || !endMatchData.roundData) {
             e.preventDefault();
             e.returnValue = true;
         }
@@ -325,10 +319,12 @@ const GameScreen = (props: IProps) => {
 
     let 
         noticeString = '',
-        firstWord = '',
-        leaveUrl = '',
-        restartUrl = '',
-        quoteString = ''
+        firstWord = '';
+
+    const 
+        quoteString = (matchData?.textCustom && matchData.textCustom !== '' ? matchData.textCustom : matchData?.textContent) || '',
+        leaveUrl = matchData?.flagId !== 3 ? (matchData?.referralId ? `/` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}` : `/`) : `/`,
+        restartUrl = matchData?.flagId !== 3 ? matchData?.referralId ? `/custom/${matchData?.referralId}` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}/`  : `/play${textType ? `/${textType}` : ''}`  : '/';
 
     if (gameNotice === 'banDetected')
         noticeString = "Your account is currently banned, please contact support.";
@@ -341,17 +337,9 @@ const GameScreen = (props: IProps) => {
     else if (gameNotice === 'reconnectFailed')
         noticeString = "We have failed to reconnect you back to the game."
 
-
     if (matchData?.flagId === 2 && matchData.referralId && noticeString === 'timeoutMatch') return <Redirect to={`/custom/${matchData.referralId}`} />;
     if (matchData?.flagId === 1 && matchData.tournamentId && noticeString === 'timeoutMatch') return <Redirect to={`/competitions/${matchData.tournamentId}`} />;
-
-    quoteString = (matchData?.textCustom && matchData.textCustom !== '' ? matchData.textCustom : matchData?.textContent) || '';
     if (quoteString && participantsData) firstWord = quoteString.split(' ')[0] || '';
-
-    leaveUrl = matchData?.flagId !== 3 ? (matchData?.referralId ? `/` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}` : `/`) : `/`;
-    restartUrl = matchData?.flagId !== 3 ? matchData?.referralId ? `/custom/${matchData?.referralId}` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}/`  : `/play${textType ? `/${textType}` : ''}`  : '/';
-
-    console.log('Match', quoteString);
 
     const gameContainer = (
         <>
