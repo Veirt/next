@@ -201,11 +201,7 @@ const GameScreen = (props: IProps) => {
             DebugService.add(`[Match] Ranked Text (old): ${matchData?.textContent}`);
             DebugService.add(`[Match] Ranked Text (new): ${data.textContent}`);
 
-            if (matchData) {
-                matchData.textContent = data.textContent;
-                matchData.textCustom = data.textContent;
-            }
-
+            setMatchData((matchData) => matchData !== null ? { ...matchData, textContent: data.textContent, textCustom: data.textContent } : null);
             setQueueRoundEnd(true);
             setQueueRoundWon((sessionData?.playerId === data.userRoundWon));
             setGameDisabled(true);
@@ -354,6 +350,8 @@ const GameScreen = (props: IProps) => {
 
     leaveUrl = matchData?.flagId !== 3 ? (matchData?.referralId ? `/` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}` : `/`) : `/`;
     restartUrl = matchData?.flagId !== 3 ? matchData?.referralId ? `/custom/${matchData?.referralId}` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}/`  : `/play${textType ? `/${textType}` : ''}`  : '/';
+
+    console.log('Match', quoteString);
 
     const gameContainer = (
         <>
