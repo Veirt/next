@@ -78,6 +78,8 @@ const Player: FC<IProps> = (props) => {
                                 totalPlayers={totalPlayers}
                                 matchData={matchData}
                                 roundsTotal={roundsTotal}
+                                timer={timer}
+                                countdown={countdown}
                             />
                             <MatchBar className="rounded-t" embed={embed} embedClose={embedClose} embedOwner={embedOwner} isCapslock={isCapslock} redirectUrl={(matchData && matchData.referralId) ? restartUrl : leaveUrl} modeData={matchData && matchData.modeData} timer={timer} countdown={countdown} disabled={disabled} latency={latency} isSpectate={0} />
                             {noticeString

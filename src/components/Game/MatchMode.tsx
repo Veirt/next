@@ -1,17 +1,18 @@
 import { useTranslation } from 'next-i18next';
 import GameTimer from "./countdown/GameTimer";
-import {SocketMatchData, SocketMatchGameData} from "../../types.client.socket";
+import {SocketMatchData} from "../../types.client.socket";
 
 interface IProps {
   matchData: SocketMatchData;
-  gameData?: SocketMatchGameData;
+  countdown: number;
+  timer: number;
   roundsTotal: number;
   totalPlayers: number;
   isSpectate?: boolean;
 }
 
 const MatchMode = (props: IProps) => {
-    const { matchData, gameData, isSpectate, totalPlayers, roundsTotal } = props;
+    const { matchData, countdown, timer, isSpectate, totalPlayers, roundsTotal } = props;
     const { t } = useTranslation();
 
     let flagName = '';
@@ -45,12 +46,12 @@ const MatchMode = (props: IProps) => {
               <div className="text-xl text-white uppercase font-semibold tracking-wider">{matchData.modeData.modeName}</div>
               <div className="text-xs text-gray-500 uppercase font-semibold tracking-wider">{flagName}</div>
             </div>
-            {isSpectate && gameData && gameData.timer && (
+            {isSpectate && timer && (
                 <div className={"w-full md:w-1/3 my-auto text-center"}>
-                  {gameData.countdown <= 0 && (
+                  {countdown <= 0 && (
                       <div className={"text-white text-xl font-semibold tracking-wider"}>
                         <div className={"text-gray-400 text-xl font-semibold tracking-wider"}>
-                          <GameTimer timer={gameData.timer} />
+                          <GameTimer timer={timer} />
                         </div>
                       </div>
                   )}
@@ -68,12 +69,12 @@ const MatchMode = (props: IProps) => {
               <div className="text-xl text-white uppercase font-semibold tracking-wider">{matchData.modeData.modeName}</div>
               <div className="text-xs text-gray-500 uppercase font-semibold tracking-wider">{flagName}</div>
             </div>
-            {isSpectate && gameData && gameData.timer && (
+            {isSpectate && timer && (
               <div className={"w-full md:w-1/3 my-auto text-center"}>
-                {gameData.countdown <= 0 && (
+                {countdown <= 0 && (
                     <div className={"text-white text-xl font-semibold tracking-wider"}>
                       <div className={"text-gray-400 text-xl font-semibold tracking-wider"}>
-                        <GameTimer timer={gameData.timer} />
+                        <GameTimer timer={timer} />
                       </div>
                     </div>
                 )}
