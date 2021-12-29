@@ -3,14 +3,15 @@ import { useTranslation } from 'next-i18next';
 import MatchMode from "../MatchMode";
 import {faQuestion, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import ConfigService from "../../../services/ConfigService";
-import {SocketMatchData, SocketMatchGameData, SocketMatchPlayerData} from "../../../types.client.socket";
+import {SocketMatchData, SocketMatchPlayerData} from "../../../types.client.socket";
 import Playerboard from "../participants/Playerboard";
+import useConfig from "../../../hooks/useConfig";
 
 interface IProps {
     matchData: SocketMatchData | null;
     participantsData: SocketMatchPlayerData[];
-    gameData: SocketMatchGameData | null;
+    timer: number;
+    countdown: number;
     restartUrl: string;
     leaveUrl: string;
     firstWord: string;
@@ -24,9 +25,11 @@ interface IProps {
 }
 
 const Spectator: FC<IProps> = (props) => {
+    const { smoothCaret, smoothCaretSpeed } = useConfig();
+
     const [ charHeight, setCharHeight ] = useState('0px');
     const [ showHelp, setShowHelp ] = useState(false);
-    const { gameData, embedClose, embedOwner, firstWord, totalPlayers, quoteString, roundsTotal, matchData, participantsData } = props;
+    const { timer, countdown, embedClose, embedOwner, firstWord, totalPlayers, quoteString, roundsTotal, matchData, participantsData } = props;
     const { t } = useTranslation();
 
     let caretTimer : NodeJS.Timer | null = null;
@@ -50,9 +53,6 @@ const Spectator: FC<IProps> = (props) => {
                         const getCaretPosition = (document.getElementsByClassName('cursor--locate')[correctKeystrokes ? correctKeystrokes : 0] as HTMLElement);
 
                         if (getCaretPosition && getUserCaret) {
-                            const smoothCaret = ConfigService.getSmoothCaret();
-                            const smoothCaretSpeed = ConfigService.getSmoothCaretSpeed();
-
                             const { offsetLeft, offsetTop } = getCaretPosition;
 
                             if (smoothCaret === '1') {
@@ -74,7 +74,7 @@ const Spectator: FC<IProps> = (props) => {
         }
     }, [ participantsData ]);
 
-    if (!matchData || !gameData)
+    if (!matchData)
         return <div>No data found</div>
     else
         return (
@@ -118,7 +118,8 @@ const Spectator: FC<IProps> = (props) => {
                         totalPlayers={totalPlayers}
                         matchData={matchData}
                         roundsTotal={roundsTotal}
-                        gameData={gameData}
+                        timer={timer}
+                        countdown={countdown}
                         isSpectate={true}
                     />
                     {quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" && (

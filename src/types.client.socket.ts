@@ -88,22 +88,6 @@ export interface SocketMatchEndData {
     }[];
 }
 
-export interface SocketMatchGameData {
-    countdown: number;
-    timer: number;
-    latency: number;
-    isDisabled: boolean;
-    isBanned: boolean;
-    isAnticheat: boolean;
-    isTooManyMistakes: boolean;
-    isTimeRanOut: boolean;
-    isConnectionTimedOut: boolean;
-    isReconnecting: boolean;
-    isReconnected: boolean;
-    isNotReconnected: boolean;
-    isSpectator: number;
-}
-
 export interface SocketMatchData extends MatchData {
     textContent: string;
     textCustom: string;

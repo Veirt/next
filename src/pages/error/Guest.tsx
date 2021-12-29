@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { Meta } from '../../layout/Meta';
 import ConfigService from '../../services/ConfigService';
 import Base from '../../templates/Base';
+import { GetServerSidePropsContext } from 'next';
 
 const Guest = () => {
     const { t } = useTranslation();
@@ -21,10 +22,10 @@ const Guest = () => {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps({ req }: GetServerSidePropsContext) {
   return {
     props: {
-      ...(await serverSideTranslations(ConfigService.getLocale()))  
+      ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
     }
   }
 }

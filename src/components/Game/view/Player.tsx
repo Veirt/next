@@ -1,13 +1,11 @@
-import {FC, useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import MatchNotice from "../MatchNotice";
 import MatchEnd from "../MatchEnd";
 import MatchMode from "../MatchMode";
 import MatchBar from "../MatchBar";
-import MatchContent from "../MatchContent";
 import {
     SocketMatchData,
     SocketMatchEndData,
-    SocketMatchGameData,
     SocketMatchPlayerData
 } from "../../../types.client.socket";
 import {AuthenticationSessionData} from "../../../types.client.mongo";
@@ -15,13 +13,17 @@ import Playercard from "../participants/Playercard";
 import Playerboard from "../participants/Playerboard";
 import useConfig from "../../../hooks/useConfig";
 import MatchLeaderboards from "../leaderboards/MatchLeaderboards";
+import MatchTextContainer from "../new/MatchTextContainer";
 
 interface IProps {
     matchData: SocketMatchData | null;
     participantsData: SocketMatchPlayerData[];
     endMatchData: SocketMatchEndData | null;
-    gameData: SocketMatchGameData | null;
     playerData: AuthenticationSessionData | null;
+    countdown: number;
+    timer: number;
+    disabled: boolean;
+    latency: number;
     restartUrl: string;
     totalPlayers: number;
     leaveUrl: string;
@@ -41,10 +43,10 @@ interface IProps {
 const Player: FC<IProps> = (props) => {
 
     const [ isCapslock, setIsCapslock ] = useState(false);
-    const { embed, embedClose, embedOwner, gameData, totalPlayers, sendKeystroke, firstWord, sendWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
+    const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, sendWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
     const handleCapslock = (e: KeyboardEvent) => setIsCapslock(e.getModifierState("CapsLock"));
     
-    const { gameplayParticipantStyle, performanceMode, matchContainerTransparent } = useConfig();
+    const { gameplayParticipantStyle, performanceMode } = useConfig();
 
     useEffect(() => {
         window.addEventListener('keyup', handleCapslock);
@@ -52,7 +54,7 @@ const Player: FC<IProps> = (props) => {
     }, [props]);
     return (
         <>
-            {matchData && playerData && gameData && (
+            {matchData && playerData && (
                 <div className={"my-auto w-full"}>
                     {matchData && endMatch ? (
                         <MatchEnd
@@ -76,21 +78,21 @@ const Player: FC<IProps> = (props) => {
                                 totalPlayers={totalPlayers}
                                 matchData={matchData}
                                 roundsTotal={roundsTotal}
+                                timer={timer}
+                                countdown={countdown}
                             />
-                            <MatchBar className="rounded-t" embed={embed} embedClose={embedClose} embedOwner={embedOwner} isCapslock={isCapslock} redirectUrl={(matchData && matchData.referralId) ? restartUrl : leaveUrl} modeData={matchData && matchData.modeData} gameData={gameData} isSpectate={0} />
+                            <MatchBar className="rounded-t" embed={embed} embedClose={embedClose} embedOwner={embedOwner} isCapslock={isCapslock} redirectUrl={(matchData && matchData.referralId) ? restartUrl : leaveUrl} modeData={matchData && matchData.modeData} timer={timer} countdown={countdown} disabled={disabled} latency={latency} isSpectate={0} />
                             {noticeString
                                 ? <MatchNotice message={noticeString} />
                                 : (
-                                    <div className={`${matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
-                                        <MatchContent
-                                            quote={quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? quoteString : ""}
-                                            sendKeystroke={sendKeystroke}
-                                            sendWord={sendWord}
-                                            isSuddenDeath={matchData.modeData.modeConfig.FINISH_TRIGGER.FIRST_TYPO || matchData.modeData.modeConfig.ROUND_TRIGGER.FIRST_TYPO}
-                                            disabled={gameData.isDisabled}
-                                        />
-                                    </div>
-                                )
+                                    <MatchTextContainer 
+                                        quote={quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? quoteString : ""}
+                                        sendKeystroke={sendKeystroke}
+                                        sendWord={sendWord}
+                                        isSuddenDeath={matchData.modeData.modeConfig.FINISH_TRIGGER.FIRST_TYPO || matchData.modeData.modeConfig.ROUND_TRIGGER.FIRST_TYPO}
+                                        disabled={disabled}
+                                    />
+                                  )
                             }
 
                         </div>

@@ -1,12 +1,12 @@
 import {FC, useEffect, useCallback} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ConfigService from "../../../services/ConfigService";
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import useConfig from '../../../hooks/useConfig';
 
 export interface MatchCountdownProps {
   countdown: number;
   url: string;
-  isSpectator: number;
+  isSpectator: boolean;
   win?: boolean;
   roundEnd?: boolean;
   isDisabled?: boolean;
@@ -15,6 +15,7 @@ export interface MatchCountdownProps {
 const MatchCountdown: FC<MatchCountdownProps> = (props) => {
 
   const { countdown, win, roundEnd, isSpectator } = props;
+  const { countdownBeep } = useConfig();
 
   const playCountdownAudio = useCallback(() => {
     const getBeep = (document.getElementById('CountBeep') as HTMLAudioElement);
@@ -26,13 +27,13 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
     }
 
     if (countdown !== 99) {
-      if (countdown >= 1 && getBeep && ConfigService.getCountdownBeep() === '1')
+      if (countdown >= 1 && getBeep && countdownBeep === '1')
         getBeep.play();
 
-      if (countdown === 0 && getStart && ConfigService.getCountdownBeep() === '1')
+      if (countdown === 0 && getStart && countdownBeep === '1')
         getStart.play();
     }
-  }, [ countdown ]);
+  }, [ countdown, countdownBeep ]);
 
   useEffect(() => {
     const countdownTimer = (document.getElementById('countdownTimer') as HTMLElement);
@@ -67,12 +68,12 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
 
               <div className="m-auto">
                 <div className={"max-w-screen-sm mx-auto"}>
-                  {isSpectator === 0 && roundEnd && (
+                  {!isSpectator && roundEnd && (
                       <div className={"text-center text-2xl pb-8 uppercase text-white font-bold tracking-wider"}>
                         You have <span className={"text-orange-400"}>{win ? 'won' : 'lost'}</span> the round!
                       </div>
                   )}
-                  {isSpectator === 1 && roundEnd && (
+                  {isSpectator && roundEnd && (
                       <div className={"text-center text-2xl pb-8 uppercase text-white font-bold tracking-wider"}>
                         Round Completed!
                       </div>
@@ -86,7 +87,7 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
                       )}
                     </div>
                   </div>
-                  {isSpectator === 0 && roundEnd && (
+                  {!isSpectator && roundEnd && (
                       <div className={"text-lg pt-8 uppercase text-white font-semibold tracking-wider"}>
                         The next round will be starting soon...
                       </div>
