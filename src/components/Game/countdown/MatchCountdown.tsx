@@ -33,7 +33,7 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
       if (countdown === 0 && getStart && countdownBeep === '1')
         getStart.play();
     }
-  }, [ countdown ]);
+  }, [ countdown, countdownBeep ]);
 
   useEffect(() => {
     const countdownTimer = (document.getElementById('countdownTimer') as HTMLElement);
