@@ -225,7 +225,7 @@ const MatchTextContainer = (props: IProps) => {
                     type="text"
                     name="textInput"
                     placeholder={disabled ? 'Type your text in here...' : ''}
-                    autoComplete="nope"
+                    autoComplete="off"
                     autoCorrect="off"
                     autoCapitalize="off"
                     spellCheck="false"
