@@ -123,12 +123,12 @@ const Levelbar = () => {
             window?.addEventListener(`resize`, handleDeviceSizing);
       
         return () => window?.removeEventListener('resize', handleDeviceSizing);
-    }, [ ])
+    }, [ isNotSmallDevice ])
 
     return (
         smallDevice ? (
             <>
-                <div className={"lg:hidden fixed top-0 left-0 right-0 z-50 bg-gray-775 shadow"}>
+                <div className={"fixed top-0 left-0 right-0 z-50 bg-gray-775 shadow"}>
                     <div className={"flex py-1 px-2 justify-between"}>
                         <div className={"w-auto pt-1 my-auto"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto focus:outline-none"}>
@@ -141,7 +141,7 @@ const Levelbar = () => {
                     </div>
                 </div>
 
-                <div className={"lg:hidden fixed grid grid-cols-4 bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-850 to-gray-775 border-t border-gray-750 shadow"}>
+                <div className={"fixed grid grid-cols-4 bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-850 to-gray-775 border-t border-gray-750 shadow"}>
                     <Link href={"/"}>
                         <div className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
                             <FontAwesomeIcon icon={faGamepad} className={"mb-2 text-2xl"} />
