@@ -128,9 +128,10 @@ const MatchTextContainer = (props: IProps) => {
             setLetterIndex(wordIndex);
         } else {
             if (inputLength > currentInputLength) {
-                if (typoStreak !== 0 || keystroke !== quote.charAt(currentIndex - 1))
+                if (typoStreak !== 0 || keystroke !== quote.charAt(currentIndex - 1)) {
                     setTypoStreak(typoStreak + 1);
-                else if (typoStreak === 0 && keystroke === quote.charAt(currentIndex - 1)) {
+                    sendWord(inputValue.endsWith(' ') ? inputValue.slice(0, -1) : inputValue);
+                } else if (typoStreak === 0 && keystroke === quote.charAt(currentIndex - 1)) {
                     setLetterIndex(currentIndex);
                     
                     // Checks if Word is Finished
