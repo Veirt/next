@@ -82,11 +82,9 @@ const GameScreen = (props: IProps) => {
 
             // Event Listeners
             document.addEventListener('keydown', handleKeydown);
-            window.addEventListener('beforeunload', beforeUnload);
         }
         return () => {
             document.removeEventListener('keydown', handleKeydown);
-            window.removeEventListener('beforeunload', beforeUnload);
             if (gameTimerInterval.current) {
                 clearInterval(gameTimerInterval.current);
                 gameTimerInterval.current = null;
@@ -95,6 +93,14 @@ const GameScreen = (props: IProps) => {
         };
     // eslint-disable-next-line
     }, [ ]);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined')
+            window.addEventListener('beforeunload', beforeUnload);
+        return () => {
+            window.removeEventListener('beforeunload', beforeUnload);
+        }
+    }, [ endMatchData ]);
 
     // Socket
     useEffect(() => {
