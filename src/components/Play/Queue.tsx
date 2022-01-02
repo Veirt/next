@@ -280,7 +280,7 @@ const Queue = (props: IProps) => {
                     color: 'text-pink-500',
                     onClick: () => joinQueue(),
                     disabled: {
-                        level: 10,
+                        level: 5,
                         isGuest: false
                     }
                 },
