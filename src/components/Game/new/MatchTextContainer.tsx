@@ -78,6 +78,7 @@ const MatchTextContainer = (props: IProps) => {
         setWordIndex(0);
         setTypoStreak(0);
         setCaretBlinker(true);
+        setInput('');
     }, [ props.quote ]);
 
     useEffect(() => {
