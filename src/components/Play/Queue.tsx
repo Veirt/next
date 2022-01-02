@@ -359,15 +359,15 @@ const Queue = (props: IProps) => {
                             <div className={"grid grid-cols-1 sm:grid-cols-3 3xl:grid-cols-1"}>
                                 <div className={"relative col-span-full sm:col-span-1 3xl:col-span-full"}>
                                     {(playerRank !== null && playerLevel !== null && tab.name === 'page.queue.ranked.title' && sessionData?.authName !== 'Guest' && playerLevel.Index >= 10) && (
-                                        <div className={`z-20 absolute ${playerRank.Games < 10 ? 'w-52' : 'w-32'} top-3 left-0 right-0 mx-auto bg-black bg-opacity-60 text-white font-semibold rounded-xl px-2 text-center py-1 text-sm`}>
-                                            {playerRank.Games < 10
-                                                ? <div><span className={"text-orange-400"}>{10 - playerRank.Games}</span> Games Remaining</div>
+                                        <div className={`z-20 absolute ${playerRank.Rank === 'undefined' ? 'w-52' : 'w-32'} top-3 left-0 right-0 mx-auto bg-black bg-opacity-60 text-white font-semibold rounded-xl px-2 text-center py-1 text-sm`}>
+                                            {playerRank.Rank === 'undefined'
+                                                ? <div><span className={"text-orange-400"}>{playerRank.Remaining}</span> Games Remaining</div>
                                                 : <div className={"text-3xl font-bold"}>{playerRank.SR}<span className={"text-gray-400 text-sm lg:text-lg"}>SR</span></div>
                                             }
                                         </div>
                                     )}
                                     {(tab.name === 'page.queue.ranked.title')
-                                        ? <img className={"block mx-auto w-auto h-40 3xl:h-72 object-fit transform scale-110"} alt="Rank" src={`/ranks/big/${((playerLevel !== null && playerLevel.Index < 10) || (playerRank && playerRank.Games < 10) || !playerRank || !playerLevel) ? 'unranked' : playerRank?.Rank.toLowerCase() }.webp`} />
+                                        ? <img className={"block mx-auto w-auto h-40 3xl:h-72 object-fit transform scale-110"} alt="Rank" src={`/ranks/big/${((playerLevel !== null && playerLevel.Index < 10) || (playerRank && playerRank.Rank === 'undefined') || !playerRank || !playerLevel) ? 'unranked' : playerRank?.Rank.toLowerCase() }.webp`} />
                                         : <img className={"block mx-auto w-auto h-40 3xl:h-72 object-fit transform scale-110"} src={tab.image || ''} alt={"Panel"} />
                                     }
                                 </div>
@@ -383,7 +383,7 @@ const Queue = (props: IProps) => {
                                                         </div>
                                                         <div className={"w-auto"}>
                                                             {(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? (
-                                                                (sessionData?.authName !== 'Guest' && playerLevel !== null && playerLevel.Index < item.disabled.level) ? 'Level 10' : 'Please Login'
+                                                                (sessionData?.authName !== 'Guest' && playerLevel !== null && playerLevel.Index < item.disabled.level) ? 'Level 5' : 'Please Login'
                                                             ) : (
                                                                 t(item.name)
                                                             )}

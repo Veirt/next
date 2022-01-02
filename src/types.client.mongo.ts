@@ -322,6 +322,7 @@ export interface SeasonData {
 export interface PlayerCompetitiveData {
     SR: number;
     Rank: string;
+    Remaining: number;
     Games: number;
 }
 

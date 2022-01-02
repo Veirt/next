@@ -115,15 +115,15 @@ const ProfileStatistics = (props: IProps) => {
                                 {rankedData && (
                                     <div className={"flex"}>
                                         <div className={"w-44 lg:w-52 my-auto"}>
-                                            <img className={"w-full h-full"} src={`/ranks/${(rankedData && rankedData.Rank.Games >= 10) ? rankedData?.Rank.Rank.toLowerCase() : 'unranked'}.png`} alt={(rankedData && rankedData.Rank.Games >= 10) ? rankedData?.Rank.Rank : 'unranked'} />
+                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.toLowerCase()}.png`} alt={rankedData?.Rank.Rank} />
                                         </div>
                                         <div className={"w-full my-auto"}>
-                                            {(rankedData && rankedData.Rank.Games >= 10) && (
+                                            {(rankedData && rankedData.Rank.Rank <= 'Unranked') && (
                                                 <div className={"text-white uppercase text-2xl lg:text-5xl font-bold"}>
                                                     {rankedData?.rating}<span className={"text-orange-400 text-xl lg:text-3xl"}>SR</span>
                                                 </div>
                                             )}
-                                            <div className={"text-white opacity-70 uppercase text-lg lg:text-2xl font-semibold"}>{(rankedData && rankedData.Rank.Games >= 10) ? rankedData?.Rank.Rank : 'Unranked'}</div>
+                                            <div className={"text-white opacity-70 uppercase text-lg lg:text-2xl font-semibold"}>{rankedData?.Rank.Rank}</div>
                                         </div>
                                     </div>
                                 )}
