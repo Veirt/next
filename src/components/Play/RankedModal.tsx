@@ -46,7 +46,7 @@ const RankedModal = (props: IProps) => {
                         <div className="text-white text-lg uppercase font-bold tracking-wider border-b border-gray-700 pb-2 mb-2">{t('page.queue.howToPlayGuide.1_title')}</div>
                         <div className="text-gray-300 text-sm tracking-wider">
                             <Trans i18nKey="page.queue.howToPlayGuide.1_description">
-                                In order to play Ranked Matchmaking you must be at least <span className="font-semibold">Level 10</span>. You will be placed through a calculation stage where you will not see your rank until you have finished <span className="font-semibold">10 matches</span>. This will ensure the accuracy of your skill level when you get matched against other players.
+                                In order to play Ranked Matchmaking you must be at least <span className="font-semibold">Level 10</span>. You will be placed through a calculation stage where you will not see your rank until you have finished <span className="font-semibold">5 matches</span>. This will ensure the accuracy of your skill level when you get matched against other players.
                             </Trans>
                         </div>
                     </div>

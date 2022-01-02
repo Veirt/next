@@ -71,8 +71,8 @@ const MatchEnd = (props: IProps) => {
       // Check on Rank
       // if = if your old SR is greater than your new SR = Lost SR
       // if = if your old SR is less than your new SR = Won SR
-      if (data.CompetitiveNew.Games >= 10) {
-        if (data.CompetitiveNew.Games > 10 && data.Competitive.Rank !== data.CompetitiveNew.Rank && data.Competitive.SR > data.CompetitiveNew.SR) {
+      if (data.CompetitiveNew.Remaining <= 0) {
+        if (data.CompetitiveNew.Remaining < 0 && data.Competitive.Rank !== data.CompetitiveNew.Rank && data.Competitive.SR > data.CompetitiveNew.SR) {
           if (showRankDown && !textInterval.current) {
             textInterval.current = setTimeout(() => {
               showRankDown.style.opacity = '1';
@@ -81,7 +81,7 @@ const MatchEnd = (props: IProps) => {
 
           if (rankDownSound)
             (document.getElementById('LevelDown') as HTMLAudioElement)?.play();
-        } else if ((data.CompetitiveNew.Games > 10 && data.Competitive.Rank !== data.CompetitiveNew.Rank && data.Competitive.SR < data.CompetitiveNew.SR) || data.CompetitiveNew.Games === 10) {
+        } else if ((data.CompetitiveNew.Remaining <= 0 && data.Competitive.Rank !== data.CompetitiveNew.Rank && data.Competitive.SR < data.CompetitiveNew.SR) || data.CompetitiveNew.Remaining === 0) {
           if (showRankUp && !textInterval.current) {
             textInterval.current = setTimeout(() => {
               showRankUp.style.opacity = '1';
@@ -260,9 +260,9 @@ const MatchEnd = (props: IProps) => {
                       <div className={`absolute w-full h-full rankBackdrop`} />
                       <div className="flex h-full">
                         <div className="m-auto text-center z-50">
-                          {data.CompetitiveNew.Games >= 10 && (
+                          {data.CompetitiveNew.Remaining <= 0 && (
                               <div className="uppercase text-white font-semibold text-2xl tracking-wider">
-                                {(data.CompetitiveNew.Games > 10 && data.CompetitiveNew.Rank !== data.Competitive.Rank && data.Competitive.SR < data.CompetitiveNew.SR) || data.CompetitiveNew.Games === 10 ? (
+                                {(data.CompetitiveNew.Remaining <= 0 && data.CompetitiveNew.Rank !== data.Competitive.Rank && data.Competitive.SR < data.CompetitiveNew.SR) || data.CompetitiveNew.Remaining === 0 ? (
                                     <div id="showRankUp" style={{ opacity: 0 }} className={"transition-all ease-in-out duration-500"}>
                                       You have been promoted to {data.CompetitiveNew.Rank}!
                                     </div>
@@ -274,7 +274,7 @@ const MatchEnd = (props: IProps) => {
                               </div>
                           )}
                           <div className="relative py-5">
-                            {data.CompetitiveNew.Games < 10 ? (
+                            {data.CompetitiveNew.Remaining < 0 ? (
                                 <>
                                   <div id="showRank" style={{ opacity: 0 }} className="absolute w-full transition-all ease-in-out duration-1000">
                                     <img
@@ -312,9 +312,9 @@ const MatchEnd = (props: IProps) => {
                             <div className="w-48 h-48" />
                           </div>
                           <div className="text-uppercase text-center text-4xl text-white font-bold tracking-wider">
-                            {data.CompetitiveNew.Games < 10
-                                ? <>{data.CompetitiveNew.Games} <span className="text-gray-400">/</span> 10</>
-                                : data.CompetitiveNew.Games !== 10 ? (
+                            {data.CompetitiveNew.Remaining >= 1
+                                ? <>{data.CompetitiveNew.Games} <span className="text-gray-400">/</span> {data.CompetitiveNew.Games + data.CompetitiveNew.Remaining}</>
+                                : data.CompetitiveNew.Remaining <= 0 ? (
                                     <>
                                       <ReactCountUp start={data.Competitive.SR} end={data.CompetitiveNew.SR} duration={5} />
                                       <span className="text-orange-400 text-2xl">SR</span>

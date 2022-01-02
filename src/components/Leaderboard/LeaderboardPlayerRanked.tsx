@@ -8,6 +8,7 @@ export interface PlayerRankedExtendedData extends PlayerRankedData {
     Rank: {
         Rank: string;
         Games: number;
+        Remaining: number;
         SR: number;
     }
 }

@@ -264,7 +264,7 @@
     "queue": {
       "howToPlayGuide": {
         "1_title": "How to Play?",
-        "1_description": "In order to play Ranked Matchmaking you must be at least <1>Level 10</1>. You will be placed through a calculation stage where you will not see your rank until you have finished <1>10 matches</1>. This will ensure the accuracy of your skill level when you get matched against other players.",
+        "1_description": "In order to play Ranked Matchmaking you must be at least <1>Level 10</1>. You will be placed through a calculation stage where you will not see your rank until you have finished <1>5 matches</1>. This will ensure the accuracy of your skill level when you get matched against other players.",
         "2_title": "What is Ranked?",
         "2_description": "Ranked matchmaking is a competitive environment where players are matched with others of similar skill level that is of greater accuracy than the current Quick Play modes.",
         "3_title": "How is SR determined?",

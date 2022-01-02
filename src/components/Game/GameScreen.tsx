@@ -100,6 +100,7 @@ const GameScreen = (props: IProps) => {
         return () => {
             window.removeEventListener('beforeunload', beforeUnload);
         }
+    // eslint-disable-next-line
     }, [ endMatchData ]);
 
     // Socket
