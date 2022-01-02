@@ -314,7 +314,7 @@ const MatchEnd = (props: IProps) => {
                           <div className="text-uppercase text-center text-4xl text-white font-bold tracking-wider">
                             {data.CompetitiveNew.Remaining >= 1
                                 ? <>{data.CompetitiveNew.Games} <span className="text-gray-400">/</span> {data.CompetitiveNew.Games + data.CompetitiveNew.Remaining}</>
-                                : data.CompetitiveNew.Remaining <= 0 ? (
+                                : data.CompetitiveNew.Remaining < 0 ? (
                                     <>
                                       <ReactCountUp start={data.Competitive.SR} end={data.CompetitiveNew.SR} duration={5} />
                                       <span className="text-orange-400 text-2xl">SR</span>
