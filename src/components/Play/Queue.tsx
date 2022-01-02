@@ -280,7 +280,7 @@ const Queue = (props: IProps) => {
                     color: 'text-pink-500',
                     onClick: () => joinQueue(),
                     disabled: {
-                        level: 10,
+                        level: 5,
                         isGuest: false
                     }
                 },
@@ -360,7 +360,7 @@ const Queue = (props: IProps) => {
                                 <div className={"relative col-span-full sm:col-span-1 3xl:col-span-full"}>
                                     {(playerRank !== null && playerLevel !== null && tab.name === 'page.queue.ranked.title' && sessionData?.authName !== 'Guest' && playerLevel.Index >= 10) && (
                                         <div className={`z-20 absolute ${playerRank.Rank === 'undefined' ? 'w-52' : 'w-32'} top-3 left-0 right-0 mx-auto bg-black bg-opacity-60 text-white font-semibold rounded-xl px-2 text-center py-1 text-sm`}>
-                                            {playerRank.Rank === 'undefined'
+                                            {playerRank.Rank === 'Unranked'
                                                 ? <div><span className={"text-orange-400"}>{playerRank.Remaining}</span> Games Remaining</div>
                                                 : <div className={"text-3xl font-bold"}>{playerRank.SR}<span className={"text-gray-400 text-sm lg:text-lg"}>SR</span></div>
                                             }
