@@ -154,12 +154,12 @@ const Userbar = (props: IProps) => {
                     ) : playerItems.map(item => ((!item.isAuth && isGuest) || (!isGuest && item.isAuth)) && (
                         <div key={"userbar" + item.title} className={`w-auto my-auto ${isSidebar? 'pl-0 lg:pl-3' : 'pl-3'}`}>
                             {!item.onClick ? (
-                                <Link to={item.route} className={`activeClassName[text-orange-400] nav-link text-white text-xl rounded tracking-wider uppercase px-1 hover:text-orange-400 transition ease-in-out duration-300 font-semibold`}>
+                                <Link to={item.route} className={`activeClassName[text-orange-400] nav-link text-white text-lg rounded tracking-wider uppercase px-0.5 hover:text-orange-400 transition ease-in-out duration-300 font-semibold`}>
                                     <FontAwesomeIcon icon={item.icon.name} />
                                 </Link>
                             ) : (
                               <div className="relative">
-                                  <button type="button" onClick={item.onClick} className={`nav-link ${(item.title === 'component.navbar.notifications' && toggleNotifications) ? 'text-orange-400' : 'text-white'} hover:text-orange-400 text-xl rounded tracking-wider uppercase px-1 hover:text-orange-400 transition ease-in-out duration-300 font-semibold`}>
+                                  <button type="button" onClick={item.onClick} className={`nav-link ${(item.title === 'component.navbar.notifications' && toggleNotifications) ? 'text-orange-400' : 'text-white'} hover:text-orange-400 text-lg rounded tracking-wider uppercase px-0.5 hover:text-orange-400 transition ease-in-out duration-300 font-semibold`}>
                                       <FontAwesomeIcon icon={item.icon.name} />
                                       {item.title === 'component.navbar.notifications' && notificationsCount > 0 && (
                                           <div className="absolute -bottom-px right-0 border-2 border-gray-775 bg-blue-400 rounded-full h-3 w-3 flex items-center justify-center" />
@@ -195,7 +195,7 @@ const Userbar = (props: IProps) => {
                     ))}
                     {!isGuest && (
                       <Link to={`/profile/${sessionData.name}-${sessionData.discriminator}`} className={`flex w-auto my-auto ${isSidebar? 'pl-0 lg:pl-3' : 'pl-3'}`}>
-                          <div className={'block w-10 my-auto p-0.5 border-2 border-gray-500 border-opacity-50 hover:border-orange-400 hover:border-opacity-50 transition ease-in-out duration-200 rounded-full'}>
+                          <div className={'block w-12 my-auto p-0.5 ml-3 border-2 border-gray-500 border-opacity-50 hover:border-orange-400 hover:border-opacity-50 transition ease-in-out duration-200 rounded-full'}>
                               <PlayerAvatar source={sessionData.avatarSrc} hideBorder />
                           </div>
                       </Link>

@@ -23,6 +23,7 @@ const Levelbar = () => {
     const isNotSmallDevice = useMediaQuery({ query: '(min-width: 1224px)' })
 
     const { sessionData, isGuest } = usePlayerContext();
+    const [ scroll, setScroll ] = useState<boolean>(false);
     const [ toggleSitebar, setToggleSitebar ] = useState(false);
     const [ smallDevice, setSmallDevice ] = useState<boolean>(false);
 
@@ -116,13 +117,19 @@ const Levelbar = () => {
     const mobileActiveCSS = `levelbar-active`;
 
     const handleDeviceSizing = () => { console.log('handleDeviceSizing Called'); setSmallDevice(!isNotSmallDevice); }
+    const handleDeviceScroll = () => setScroll(window.scrollY >= 100);
 
     useEffect(() => {
         handleDeviceSizing();
-        if (typeof window !== `undefined`) 
+        if (typeof window !== `undefined`) {
             window?.addEventListener(`resize`, handleDeviceSizing);
+            window?.addEventListener(`scroll`, handleDeviceScroll);
+        }
       
-        return () => window?.removeEventListener('resize', handleDeviceSizing);
+        return () => {
+            window?.removeEventListener('resize', handleDeviceSizing);
+            window?.removeEventListener('scroll', handleDeviceScroll);
+        }
     }, [ isNotSmallDevice ])
 
     return (
@@ -170,12 +177,17 @@ const Levelbar = () => {
             </>
         ) : (
             <>
-                <div className={"hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gray-775 bg-opacity-100 shadow"}>
+                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 ${scroll ? 'bg-gray-750' : ''} transition py-2.5`}>
                     <div className={"container flex"}>
-                        <div className={"w-16 flex bg-gray-800 bg-opacity-80 justify-center"}>
-                            <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
+                        <div className={"flex space-x-2"}>
+                            <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
                                 <img src={'/assets/logo_svg.svg'} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
+                            <div className="w-auto my-auto">
+                                <div className="text-3xl text-white uppercase font-bold" style={{ marginTop: '-2px' }}>
+                                    Keyma<span className="text-orange-400">.</span>sh
+                                </div>
+                            </div>
                         </div>
                         <Link href={"/"} passHref>
                           <a className={`${navCSS} ${router.asPath === "/" && activeCSS}`}>{t('component.navbar.play')}</a>
