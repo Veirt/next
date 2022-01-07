@@ -57,25 +57,6 @@ const Home = (props: IProps) => {
 
     const getLatestNewsId = typeof localStorage !== 'undefined' ? parseInt((localStorage.getItem('latestNewsId') || ''), 10) || 0 : 0;
 
-    const socialItems = [
-        {
-            image: '/assets/buttons/discordbutton.webp',
-            href: 'https://discord.gg/df4paUq',
-        },
-        {
-            image: '/assets/buttons/patreonbutton.webp',
-            href: 'https://patreon.com/KeymashGame',
-        },
-        {
-            image: '/assets/buttons/merchbutton.webp',
-            href: 'https://store.keyma.sh/',
-        },
-        {
-            image: '/assets/buttons/githubbutton.webp',
-            href: 'https://github.com/keyma-sh/next',
-        }
-    ]
-
     return (
         <Base meta={<Meta title={Config.slogan} />} ads={{ enableBottomRail: true }} isLoaded={leaderboardsLoaded}>
           <div className={"container container-margin py-10"}>
@@ -100,18 +81,6 @@ const Home = (props: IProps) => {
                   </div>
                   <div className={"w-full xl:w-1/4"}>
                       <div className={"grid grid-cols-1 gap-8 pt-8 xl:pt-0"}>
-                          <div>
-                              <h2 className="headingBox">
-                                  {t('page.home.links')}
-                              </h2>
-                              <div className={"grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-3"}>
-                                  {socialItems.map((item) => (
-                                      <a key={item.href} href={item.href} target={"_blank"} rel={"noopener noreferrer"} className={`focus:outline-none hover:opacity-60 transition ease-in-out duration-300`}>
-                                          <img className={"w-full h-auto"} src={item.image} alt={`Socials`} />
-                                      </a>
-                                  ))}
-                              </div>
-                          </div>
 
                           <SidebarSquare />
 
