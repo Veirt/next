@@ -1,6 +1,5 @@
 import {SocketMatchPlayerData} from "../../../types.client.socket";
 import PlayerCard from "../../../components/Player/PlayerCard";
-import PlayerProgress from "./PlayerProgress";
 import useConfig from "../../../hooks/useConfig";
 import PlayerPlacement from "./PlayerPlacement";
 import {faCircle} from "@fortawesome/free-solid-svg-icons";
