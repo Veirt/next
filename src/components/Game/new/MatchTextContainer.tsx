@@ -22,6 +22,8 @@ const MatchTextContainer = (props: IProps) => {
     const inputElement = useRef<HTMLInputElement | null>(null);
     const caretElement = useRef<HTMLDivElement | null>(null);
     const currentElement = useRef<HTMLDivElement | null>(null);
+    const containerElement = useRef<HTMLDivElement | null>(null);
+    const initialTop = useRef<number>(0);
 
     // Config
     const { 
@@ -46,6 +48,7 @@ const MatchTextContainer = (props: IProps) => {
 
     // Caret 
     const [ caretBlinker, setCaretBlinker ] = useState<boolean>(true);
+    const caretScale = 1.3;
 
     // Effect State Hooks
     useEffect(() => {
@@ -169,6 +172,32 @@ const MatchTextContainer = (props: IProps) => {
     }
 
     // Timers
+    const updateContainerOverflow = () => {
+        
+        if (containerElement.current && caretElement.current && currentElement.current) {
+
+            const caretHeight = (caretElement.current.offsetHeight * caretScale);
+            const lineIndex = Math.floor(caretElement.current.offsetTop / caretHeight);
+            //const totalLines = Math.floor(((caretHeight * 3) + initialTop.current) / caretHeight);
+            const totalLines = Math.floor(containerElement.current.scrollHeight / caretHeight) - 1;
+
+            if (lineIndex === 0 && caretElement.current.offsetTop <= 5)
+                initialTop.current = caretElement.current.offsetTop;
+
+            containerElement.current.style.height = `${(caretHeight * 3) + initialTop.current}px`;
+
+            /*
+                console.log('Line:', lineIndex, 'Total Lines:', totalLines, 'Initial Top:', initialTop.current);
+                console.log('Caret Offset Top', caretElement.current.offsetTop);
+                console.log('Caret Offset Top (margin)', (caretHeight * 2));
+                console.log('Container Scroll Top', caretHeight);
+                console.log('Hit Overflow', lineIndex);
+            */
+            if (lineIndex >= 2 && lineIndex < totalLines) 
+                containerElement.current.scrollTop = ((caretHeight * (lineIndex - 1)) + initialTop.current);
+        }
+    }
+
     const onRefreshFPS = () => {
         if (caretElement.current && currentElement.current) {
             let useAnimation;
@@ -176,6 +205,8 @@ const MatchTextContainer = (props: IProps) => {
             const caretLeft = `${currentElement.current!.offsetLeft - 3}px`;
             const caretTop = `${currentElement.current!.offsetTop}px`;
             const caretHeight = `${currentElement.current!.offsetHeight || 0}px`;
+
+            updateContainerOverflow();
 
             if (smoothCaret === '1' && ('animate' in caretElement.current)) {
                 useAnimation = caretElement.current?.animate({ left: caretLeft, top: caretTop, height: caretHeight }, { duration: parseInt(smoothCaretSpeed, 10) || 100 });
@@ -213,8 +244,8 @@ const MatchTextContainer = (props: IProps) => {
     return (
         <>
             <div className={`${matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
-                <div className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none`}>
-                    <div ref={caretElement} className={`${(caretBlinker && !disabled) ? 'caret-idle' : ''} absolute rounded`} style={{ width: '1.5px', height: '24px', left: 0, top: 0, transform: 'scale(1.3)', background: '#FB923C' }} />
+                <div ref={containerElement} className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none overflow-y-scroll`}>
+                    <div ref={caretElement} className={`${(caretBlinker && !disabled) ? 'caret-idle' : ''} absolute rounded`} style={{ width: '1.5px', height: '24px', left: 0, top: 0, transform: `scale(${caretScale})`, background: '#FB923C' }} />
                     <span className="match--letter match--correct">{correct}</span>
                     <span ref={currentElement} className={`match--letter match--letter ${typoStreak ? colorBlindCSS : 'text-gray-400'}`}>{current}</span>
                     <span className={`match--letter match--letter ${colorBlindCSS}`}>{incorrect}</span>

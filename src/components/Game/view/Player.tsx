@@ -14,6 +14,7 @@ import Playerboard from "../participants/Playerboard";
 import useConfig from "../../../hooks/useConfig";
 import MatchLeaderboards from "../leaderboards/MatchLeaderboards";
 import MatchTextContainer from "../new/MatchTextContainer";
+import PlayerRacetrack from "../participants/PlayerRacetrack";
 
 interface IProps {
     matchData: SocketMatchData | null;
@@ -100,7 +101,8 @@ const Player: FC<IProps> = (props) => {
                     {(performanceMode === '0' || endMatch) && (
                         <>
                             {(!participantsData || participantsData.length === 0) && <div className={"py-10"} />}
-                            {gameplayParticipantStyle === '0' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
+                            {gameplayParticipantStyle === '2' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
+                            {gameplayParticipantStyle === '0' && <PlayerRacetrack participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
                             {gameplayParticipantStyle === '1' && <Playerboard isSpectator={0} quoteString={quoteString} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
                             {(!embed && endMatch && !noticeString && matchData.flagId === 0) && (
                                 <div className="w-full">

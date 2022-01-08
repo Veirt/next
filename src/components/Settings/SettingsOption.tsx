@@ -143,11 +143,14 @@ const SettingsOption = (props: IProps) => {
                         <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
                     </div>
                     <div className={"w-1/2 flex justify-end"}>
-                        <button type={"button"} onClick={() => onChange('0')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
-                            Card
+                        <button type={"button"} onClick={() => onChange('0')} className={`w-20 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                            Default
                         </button>
                         <button type={"button"} onClick={() => onChange('1')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             List
+                        </button>
+                        <button type={"button"} onClick={() => onChange('2')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '2' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                            Legacy
                         </button>
                     </div>
                 </div>

@@ -7,16 +7,23 @@ import {
     faAngleDoubleLeft, faClock,
     faList, faLock,
     faPlusSquare,
+    faQuestionCircle,
     faRandom,
+    faBahai, 
+    faTrophy, 
     faUserFriends,
 } from '@fortawesome/free-solid-svg-icons';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../Config';
 import LobbiesRow from '../Custom/LobbiesRow';
-import {LobbyData, PlayerLevelData, TournamentData} from "../../types.client.mongo";
+import Socket from '../../utils/socket/Socket';
+import RankedModal from "./RankedModal";
+import QueueToast from "./QueueToast";
+import {LobbyData, PlayerCompetitiveData, PlayerLevelData, TournamentData} from "../../types.client.mongo";
 import {usePlayerContext} from "../../contexts/Player.context";
 import useCSRF from "../../hooks/useCSRF";
 import useConfig from "../../hooks/useConfig";
+import usePlayerToken from "../../hooks/usePlayerToken";
 import { toast } from 'react-toastify';
 import moment from "moment";
 import Link from '../Uncategorized/Link';
@@ -51,18 +58,38 @@ const Queue = (props: IProps) => {
     const axiosCancelSource = useRef<CancelTokenSource | null>();
 
     const { sessionData } = usePlayerContext();
+    const { playerToken } = usePlayerToken();
     const { _csrf } = useCSRF();
     const { world } = useConfig();
     const { t } = useTranslation();
 
+    const [ socket, setSocket ] = useState<Socket | null>(null);
     const [ tab, setTab ] = useState(0);
+    const [ showRankedHelp, setShowRankedHelp ] = useState(false);
+    const [ playerRank, setPlayerRank ] = useState<PlayerCompetitiveData | null>(null);
     const [ playerLevel, setPlayerLevel ] = useState<PlayerLevelData | null>(null);
     const [ lobbiesData, setLobbiesData ] = useState<LobbyData[]>([]);
     const [ lobbiesLoaded, setLobbiesLoaded ] = useState(false);
+    const [ queueJoined, setQueueJoined ] = useState(false);
+    const [ queueFound, setQueueFound ] = useState(false);
+    const [ queueTimer, setQueueTimer ] = useState(0);
     const [ redirect, setRedirect ] = useState('');
     const [ loading, setLoading ] = useState(false);
 
     const { tournamentData, mode } = props;
+
+    const getRanked = useCallback(() => {
+        if (sessionData) {
+            axios.get(`${Config.apiUrl}/player/ranked`, {withCredentials: true, cancelToken: axiosCancelSource.current?.token})
+                .then((response) => {
+                    if (!response.data.error) {
+                        setPlayerRank(response.data.Rank);
+                    } else
+                        toast.error(response.data.error);
+                })
+                .catch(e => console.log(e));
+        }
+    }, [ sessionData ]);
 
     const getLevel = useCallback(() => {
         if (sessionData) {
@@ -113,11 +140,88 @@ const Queue = (props: IProps) => {
         axiosCancelSource.current = axios.CancelToken.source();
 
         getLevel();
+        getRanked();
         getLobbies();
 
         return () => axiosCancelSource.current?.cancel();
-    }, [ getLevel ]);
-    
+    }, [ getLevel, getRanked ]);
+
+    useEffect(() => {
+        let redirectInterval: NodeJS.Timeout | null = null;
+
+        if (queueFound) {
+            redirectInterval = setTimeout(() => {
+                setRedirect('/game');
+            }, 5000);
+        }
+        return () => {
+            if (redirectInterval)
+                clearInterval(redirectInterval);
+        }
+    }, [ redirect, queueFound ]);
+
+    useEffect(() => {
+        let intervalQueue: NodeJS.Timer | null = null;
+        if (!mode) {
+
+            socket?.onError(() => {
+                setQueueJoined(false)
+                setQueueTimer(0);
+                if (intervalQueue)
+                    clearInterval(intervalQueue);
+            });
+
+            socket?.onDisconnect(() => {
+                setQueueJoined(false)
+                setQueueTimer(0);
+                if (intervalQueue)
+                    clearInterval(intervalQueue);
+            });
+            socket?.onConnect(() => {
+                socket?.emit('joinQueue', { playerToken });
+
+                socket?.on('isBanned', (data: { message: string }) => toast.error(data.message));
+
+                socket?.on('startQueue', () => {
+                    setQueueJoined(true);
+                    if (!intervalQueue)
+                        intervalQueue = setInterval(() => setQueueTimer(q => (q + 1)), 1000);
+                });
+
+                socket?.on('foundQueue', (data: { playersFound: string[] }) => {
+                    const array = data.playersFound;
+                    if (sessionData) {
+                        if (array.includes(sessionData.playerId)) {
+                            playSound();
+                            setQueueFound(array.includes(sessionData.playerId));
+                            document.title = 'Match Found!';
+                        }
+                    }
+                });
+            });
+        }
+
+        return () => {
+            socket?.disconnect();
+            setQueueTimer(0);
+            setQueueJoined(false);
+
+            if (intervalQueue)
+                clearInterval(intervalQueue);
+        }
+    }, [ mode, socket, sessionData, playerToken ]);
+
+    const joinQueue = () => {
+        if (window) {
+            setSocket(new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/queue`, {
+                transports: ['websocket', 'polling'],
+            }));
+        }
+        //toast.Error("Matchmaking is temporarily unavailable, please try again later.");
+    }
+
+    const playSound = () => (document.getElementById('MatchFound') as HTMLAudioElement).play();
+
     const getLobbies = () => {
         axios
             .get(`${Config.apiUrl}/lobby/list`, { cancelToken: axiosCancelSource.current?.token })
@@ -164,6 +268,39 @@ const Queue = (props: IProps) => {
             ],
         },
         {
+            name: 'page.queue.ranked.title',
+            description: 'page.queue.ranked.description',
+            enabled: true,
+            content: true,
+            modes: [
+                {
+                    name: 'page.queue.ranked.join',
+                    icon: faBahai,
+                    textType: 2,
+                    color: 'text-pink-500',
+                    onClick: () => joinQueue(),
+                    disabled: {
+                        level: 5,
+                        isGuest: false
+                    }
+                },
+                {
+                    name: 'page.queue.ranked.how',
+                    icon: faQuestionCircle,
+                    textType: 2,
+                    color: 'text-red-500',
+                    onClick: () => setShowRankedHelp(true),
+                },
+
+                {
+                    name: 'component.navbar.leaders',
+                    icon: faTrophy,
+                    color: 'text-yellow-400',
+                    onClick: () => setRedirect('/leaderboards/ranked/4'),
+                },
+            ],
+        },
+        {
             name: 'component.navbar.tournaments',
             enabled: true,
             description: '',
@@ -190,35 +327,12 @@ const Queue = (props: IProps) => {
                 },
             ],
         },
-        {
-            name: 'Social',
-            enabled: true,
-            description: 'page.queue.custom.description',
-        },
     ];
-
-    const socialItems = [
-        {
-            image: '/assets/buttons/discordbutton.webp',
-            href: 'https://discord.gg/df4paUq',
-        },
-        {
-            image: '/assets/buttons/patreonbutton.webp',
-            href: 'https://patreon.com/KeymashGame',
-        },
-        {
-            image: '/assets/buttons/merchbutton.webp',
-            href: 'https://store.keyma.sh/',
-        },
-        {
-            image: '/assets/buttons/githubbutton.webp',
-            href: 'https://github.com/keyma-sh/next',
-        }
-    ]
 
     return (
         <>
             {redirect && redirect !== '' && <Redirect to={redirect} />}
+            {queueJoined && <QueueToast onClick={() => setSocket(null)} timer={queueTimer} found={queueFound} />}
             <div style={{ zIndex: 100 }} className={`${loading ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition ease-in-out duration-200 fixed top-0 right-0 left-0 bottom-0 w-full h-screen bg-black bg-opacity-40`}>
                 <div className={"flex h-screen"}>
                     <div className={"m-auto w-80 flex p-4 rounded-2xl shadow-lg bg-gray-750 border border-gray-800"}>
@@ -241,13 +355,22 @@ const Queue = (props: IProps) => {
                             {t(tab?.name)}
                         </div>
 
-                        <div className={"rounded-lg bg-gradient-to-b from-gray-750 to-gray-775 border-b-4 border-gray-800 px-6 pb-6 pt-2 shadow-lg relative z-10 h-auto 3xl:h-128"}>
+                        <div className={"rounded-lg bg-gradient-to-b from-gray-750 to-gray-775 border-b-4 border-gray-800 px-6 pb-6 pt-2 shadow-lg relative z-10"}>
                             <div className={"grid grid-cols-1 sm:grid-cols-3 3xl:grid-cols-1"}>
-                                {tab.name !== 'Social' && (
-                                    <div className={"relative col-span-full sm:col-span-1 3xl:col-span-full"}>
-                                        <img className={"block mx-auto w-auto h-40 3xl:h-72 object-fit transform scale-110"} src={tab.image || ''} alt={"Panel"} />
-                                    </div>
-                                )}
+                                <div className={"relative col-span-full sm:col-span-1 3xl:col-span-full"}>
+                                    {(playerRank !== null && playerLevel !== null && tab.name === 'page.queue.ranked.title' && sessionData?.authName !== 'Guest' && playerLevel.Index >= 10) && (
+                                        <div className={`z-20 absolute ${playerRank.Rank === 'undefined' ? 'w-52' : 'w-32'} top-3 left-0 right-0 mx-auto bg-black bg-opacity-60 text-white font-semibold rounded-xl px-2 text-center py-1 text-sm`}>
+                                            {playerRank.Rank === 'Unranked'
+                                                ? <div><span className={"text-orange-400"}>{playerRank.Remaining}</span> Games Remaining</div>
+                                                : <div className={"text-3xl font-bold"}>{playerRank.SR}<span className={"text-gray-400 text-sm lg:text-lg"}>SR</span></div>
+                                            }
+                                        </div>
+                                    )}
+                                    {(tab.name === 'page.queue.ranked.title')
+                                        ? <img className={"block mx-auto w-auto h-40 3xl:h-72 object-fit transform scale-110"} alt="Rank" src={`/ranks/big/${((playerLevel !== null && playerLevel.Index < 10) || (playerRank && playerRank.Rank === 'undefined') || !playerRank || !playerLevel) ? 'unranked' : playerRank?.Rank.toLowerCase() }.webp`} />
+                                        : <img className={"block mx-auto w-auto h-40 3xl:h-72 object-fit transform scale-110"} src={tab.image || ''} alt={"Panel"} />
+                                    }
+                                </div>
 
                                 <div className={"col-span-full sm:col-span-2 3xl:col-span-full"}>
                                     <div className={`grid grid-cols-1 gap-3 mt-2`}>
@@ -302,16 +425,6 @@ const Queue = (props: IProps) => {
                                                 </div>
                                             </>
                                         )}
-
-                                        {tab.name === 'Social' && (
-                                            <div className={"grid grid-cols-1 gap-y-9 py-6"}>
-                                                {socialItems.map((item, index) => (
-                                                    <a key={item.href} href={item.href} target={"_blank"} rel={"noopener noreferrer"} className={`${index === 0 ? '' : 'hidden 3xl:block'} focus:outline-none hover:opacity-60 transition ease-in-out duration-300`}>
-                                                        <img className={"w-full h-auto"} src={item.image} alt={`Socials`} />
-                                                    </a>
-                                                ))}
-                                            </div>
-                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -319,6 +432,8 @@ const Queue = (props: IProps) => {
                     </div>
                 ))}
             </div>
+
+            <RankedModal toggle={() => setShowRankedHelp(!showRankedHelp)} isLoaded={showRankedHelp} />
 
             <div className={`${(lobbiesLoaded && tab === 1) ? 'opacity-100' : 'pointer-events-none opacity-0'} relative z-50 transition ease-in-out duration-300`}>
                 <div className="z-50 fixed bottom-0 left-0 right-0 top-0 w-full h-screen bg-black bg-opacity-80">

@@ -9,7 +9,7 @@ export interface ConfigData {
     smoothCaret: '0' | '1';
     smoothCaretSpeed: string;
     hideInputBox: '0' | '1';
-    gameplayParticipantStyle: '0' | '1';
+    gameplayParticipantStyle: '0' | '1' | '2';
     upscaleMatch: '0' | '1';
     upscaleMatchContainer: '0' | '1';
     streamerMode: '0' | '1';
