@@ -9,10 +9,10 @@
   &--container {
   }
   &--head {
-    @apply text-base uppercase font-medium text-white tracking-wider mb-2 bg-gray-775 shadow-md bg-opacity-90 text-gray-400 shadow-md py-2 rounded-t-lg border-b-2 border-orange-400;
+    @apply text-base uppercase font-medium text-white tracking-wider mb-2 bg-gray-800 shadow-md bg-opacity-90 text-gray-500 shadow-md py-1 rounded-xl;
   }
   &--row {
-    @apply text-gray-200 shadow-lg text-sm border-gray-825 bg-gray-750 rounded mb-2 shadow-md border border-gray-750;
+    @apply text-gray-200 shadow-lg text-sm border-gray-825 bg-gray-800 rounded-xl mb-2 shadow-md;
   }
 }
 

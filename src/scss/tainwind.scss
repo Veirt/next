@@ -199,6 +199,10 @@ body {
   }
 }
 
+.content-box {
+  @apply p-8 bg-gray-750 bg-opacity-80 rounded-xl;
+}
+
 @media print {
   .print-hidden {
     display: none;

@@ -47,7 +47,7 @@ const PlayerCard:FC<IProps | IPropsWithPlayer> = (props) => {
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundImage: `url('/playercards/${cardImage ? cardImage : 'dotted_generic'}${useTransparent ? '_transparent' : ''}.png')`,
-        }} className={`${className} ${isLeaderboard ? 'px-4 py-1.5' : ''}`}>
+        }} className={`${className} ${isLeaderboard ? 'px-4 py-1' : ''}`}>
             <div className={"flex"} draggable={draggable ? 'true' : 'false'}>
                 <Link to={`/profile/${name}-${discriminator}`} className={useImageCSS}>
                     <PlayerAvatar source={avatarSrc} border={noBorder ? 0 : 2} color={cardBorder} />

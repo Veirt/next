@@ -102,7 +102,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
 
     return (
         <Base meta={<Meta title={`${playerData.name}#${playerData.discriminator}'s Profile`} description={(playerData?.description.substr(0, 200) + '...') || ''} customImage={playerData?.avatarSrc || ''} reverseTitle />} isLoaded={loaded} ads={{ enableBottomRail: true }}>
-            <div className={"container container-margin container-padding"}>
+            <div className={"container container-margin"}>
                 <div className={"relative rounded-xl shadow-lg grid grid-cols-1 lg:grid-cols-5 p-6"} style={{ backgroundImage: `url('/banners/${playerData?.banner}.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                     <div className="lg:col-span-3">
                         <div className={"flex justify-center xl:justify-start space-x-6"}>

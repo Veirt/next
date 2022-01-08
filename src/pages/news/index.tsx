@@ -22,7 +22,7 @@ const News = ({ newsData }: IProps) => {
 
     return (
         <Base meta={<Meta title={t('page.queue.titles.latestNews')} />} ads={{ enableBottomRail: true }}>
-            <div className="container container-margin py-10">
+            <div className="container container-margin">
                 <DesktopTop />
                 <div>
                     <h1 className="mb-6 h1 uppercase text-white">

@@ -59,10 +59,7 @@ const Home = (props: IProps) => {
 
     return (
         <Base meta={<Meta title={Config.slogan} />} ads={{ enableBottomRail: true }} isLoaded={leaderboardsLoaded}>
-          <div className={"container container-margin py-10"}>
-              <h1 className={"h3 text-white pb-6 -mt-4 uppercase"}>
-                  <span className={"uppercase font-bold"}>Keyma<span className={"text-orange-400"}>.</span>sh</span> - <span className={"opacity-80"}>The future of competitive typing</span>
-              </h1>
+          <div className={"container container-margin"}>
               <Queue tournamentData={laddersData} />
               <div className={"flex flex-wrap xl:flex-row"}>
                   <div className={"w-full xl:w-3/4 xl:pr-12"}>
