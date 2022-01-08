@@ -244,7 +244,7 @@ const MatchTextContainer = (props: IProps) => {
     return (
         <>
             <div className={`${matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
-                <div ref={containerElement} className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none overflow-y-scroll`}>
+                <div ref={containerElement} className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none overflow-y-hidden`}>
                     <div ref={caretElement} className={`${(caretBlinker && !disabled) ? 'caret-idle' : ''} absolute rounded`} style={{ width: '1.5px', height: '24px', left: 0, top: 0, transform: `scale(${caretScale})`, background: '#FB923C' }} />
                     <span className="match--letter match--correct">{correct}</span>
                     <span ref={currentElement} className={`match--letter match--letter ${typoStreak ? colorBlindCSS : 'text-gray-400'}`}>{current}</span>
