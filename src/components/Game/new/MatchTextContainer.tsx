@@ -181,11 +181,13 @@ const MatchTextContainer = (props: IProps) => {
 
             const caretHeight = (caretElement.current.offsetHeight * caretScale);
             const lineIndex = Math.floor(caretElement.current.offsetTop / caretHeight);
+            //const totalLines = Math.floor(((caretHeight * 3) + initialTop.current) / caretHeight);
+            const totalLines = Math.floor(containerElement.current.scrollHeight / caretHeight) - 1;
 
             containerElement.current.style.height = `${(caretHeight * 3) + initialTop.current}px`;
 
-            console.log('Line:', lineIndex);
-            if (lineIndex >= 2) {
+            console.log('Line:', lineIndex, 'Total Lines:', totalLines, 'Initial Top:', initialTop.current);
+            if (lineIndex >= 2 && lineIndex < totalLines) {
                 /*
                 console.log('Caret Offset Top', caretElement.current.offsetTop);
                 console.log('Caret Offset Top (margin)', (caretHeight * 2));
@@ -193,7 +195,7 @@ const MatchTextContainer = (props: IProps) => {
                 console.log('Hit Overflow', lineIndex);
                 */
 
-                containerElement.current.scrollTop = (caretHeight * (lineIndex - 1));
+                containerElement.current.scrollTop = ((caretHeight * (lineIndex - 1)) + initialTop.current);
             }
         }
     }
