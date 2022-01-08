@@ -58,11 +58,6 @@ const Levelbar = () => {
             link: '/about/faq',
             external: false,
         },
-        {
-            name: 'component.bottombar.issueTracker',
-            link: '/github',
-            external: true,
-        },
     ];
 
     const socials = [
@@ -77,12 +72,6 @@ const Levelbar = () => {
             icon: faTwitter,
             color: 'hover:text-blue-400',
             link: 'https://twitter.com/KeymashGame',
-        },
-        {
-            name: 'Facebook',
-            icon: faFacebookF,
-            color: 'hover:text-blue-600',
-            link: 'https://facebook.com/KeymashGame',
         },
         {
             name: 'Reddit',
@@ -117,7 +106,7 @@ const Levelbar = () => {
     const mobileActiveCSS = `levelbar-active`;
 
     const handleDeviceSizing = () => { console.log('handleDeviceSizing Called'); setSmallDevice(!isNotSmallDevice); }
-    const handleDeviceScroll = () => setScroll(window.scrollY >= 100);
+    const handleDeviceScroll = () => setScroll(window.scrollY >= 20);
 
     useEffect(() => {
         handleDeviceSizing();
@@ -177,7 +166,7 @@ const Levelbar = () => {
             </>
         ) : (
             <>
-                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 ${scroll ? 'bg-gray-750' : ''} transition py-2.5`}>
+                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 ${scroll ? 'bg-gradient-to-r from-gray-750 to-gray-775 py-1.5 shadow-lg' : 'py-2.5'} transition-all`}>
                     <div className={"container flex"}>
                         <div className={"flex space-x-2"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
@@ -221,7 +210,7 @@ const Levelbar = () => {
                     </div>
                 </div>
 
-                <div style={{ left: `${!toggleSitebar ? '-80' : '0'}%` }} className={"w-44 z-20 mt-12 fixed top-0 left-0 bottom-0 h-screen bg-gray-900 transition-all ease-in-out duration-300"}>
+                <div style={{ left: `${!toggleSitebar ? '-80' : '0'}%` }} className={"w-44 z-20 fixed top-0 left-0 bottom-0 h-screen bg-gray-900 transition-all ease-in-out duration-300"}>
                     {links.map((item) => (
                       <Link key={item.link} href={item.link}>
                         <a className={`block hover:bg-gray-825 transition ease-in-out duration-300 p-3 text-sm uppercase font-semibold text-white tracking-tight ${router.asPath.startsWith(item.link) && "bg-gray-825"}`}>{t(item.name)}</a>
