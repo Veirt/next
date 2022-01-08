@@ -96,8 +96,8 @@ const Leaderboards = (props: IProps) => {
     }, [ getStatistics, getRanked, type ]);
     return (
         <Base meta={<Meta title={`${type.charAt(0).toUpperCase() + type.slice(1)} ${t('component.navbar.leaders')}`} />} ads={{ enableBottomRail: true }} isLoaded={(data && loaded)}>
-            <ComboTop />
-            <div className="container-small container-margin">
+            <div className="container-small container-margin py-10">
+                <ComboTop />
                 <div className="content-box">
                     <div className={"flex flex-wrap gap-x-6 pb-6"}>
                         <div className={"w-full text-center lg:text-left lg:w-auto lg:mr-auto"}>

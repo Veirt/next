@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import {faDiscord, faFacebookF, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faDiscord, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import Userbar from "./Userbar";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faGamepad,
+    faHome,
     faListAlt,
     faNewspaper,
     faStoreAlt,
@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {usePlayerContext} from "../contexts/Player.context";
 import { useRouter } from 'next/router';
+import Link from '../components/Uncategorized/Link';
 
 const Levelbar = () => {
 
@@ -23,7 +24,6 @@ const Levelbar = () => {
     const isNotSmallDevice = useMediaQuery({ query: '(min-width: 1224px)' })
 
     const { sessionData, isGuest } = usePlayerContext();
-    const [ scroll, setScroll ] = useState<boolean>(false);
     const [ toggleSitebar, setToggleSitebar ] = useState(false);
     const [ smallDevice, setSmallDevice ] = useState<boolean>(false);
 
@@ -106,18 +106,15 @@ const Levelbar = () => {
     const mobileActiveCSS = `levelbar-active`;
 
     const handleDeviceSizing = () => { console.log('handleDeviceSizing Called'); setSmallDevice(!isNotSmallDevice); }
-    const handleDeviceScroll = () => setScroll(window.scrollY >= 20);
 
     useEffect(() => {
         handleDeviceSizing();
         if (typeof window !== `undefined`) {
             window?.addEventListener(`resize`, handleDeviceSizing);
-            window?.addEventListener(`scroll`, handleDeviceScroll);
         }
       
         return () => {
             window?.removeEventListener('resize', handleDeviceSizing);
-            window?.removeEventListener('scroll', handleDeviceScroll);
         }
     }, [ isNotSmallDevice ])
 
@@ -137,68 +134,59 @@ const Levelbar = () => {
                     </div>
                 </div>
 
-                <div className={"fixed grid grid-cols-4 bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-850 to-gray-775 border-t border-gray-750 shadow"}>
-                    <Link href={"/"}>
-                        <div className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faGamepad} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.play')}</div>
-                        </div>
+                <div className={"fixed grid grid-cols-5 bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-850 to-gray-775 border-t border-gray-750 shadow"}>
+                    <Link to={"/"} className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faHome} className={"text-2xl"} />
                     </Link>
-                    <Link href={"/news"}>
-                        <div className={`${mobileNavCSS} ${router.asPath.startsWith("/news") && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faNewspaper} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.news')}</div>
-                        </div>
+                    <Link to={"/play"} className={`${mobileNavCSS} ${router.asPath.startsWith("/play") && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faGamepad} className={"text-2xl"} />
                     </Link>
-                    <Link href={"/leaderboards"}>
-                        <div className={`${mobileNavCSS} ${router.asPath.startsWith("/leaderboards") && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faListAlt} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.leaders')}</div>
-                        </div>
+                    <Link to={"/news"} className={`${mobileNavCSS} ${router.asPath.startsWith("/news") && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faNewspaper} className={"text-2xl"} />
                     </Link>
-                    <Link href={"/competitions"}>
-                        <div className={`${mobileNavCSS} ${router.asPath.startsWith("/competitions") && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faTrophy} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.tournaments')}</div>
-                        </div>
+                    <Link to={"/leaderboards"} className={`${mobileNavCSS} ${router.asPath.startsWith("/leaderboards") && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faListAlt} className={"text-2xl"} />
+                    </Link>
+                    <Link to={"/competitions"} className={`${mobileNavCSS} ${router.asPath.startsWith("/competitions") && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faTrophy} className={"text-2xl"} />
                     </Link>
                 </div>
             </>
         ) : (
             <>
-                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 ${scroll ? 'bg-gradient-to-r from-gray-750 to-gray-775 py-1.5 shadow-lg' : 'py-2.5'} transition-all`}>
+                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-750 to-gray-775 py-1 shadow-lg transition-all`}>
                     <div className={"container flex"}>
                         <div className={"flex space-x-2"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
                                 <img src={'/assets/logo_svg.svg'} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
                             <div className="w-auto my-auto">
-                                <div className="text-3xl text-white uppercase font-bold" style={{ marginTop: '-2px' }}>
+                                <Link to="/" className="text-3xl text-white uppercase font-bold" style={{ marginTop: '-2px' }}>
                                     Keyma<span className="text-orange-400">.</span>sh
-                                </div>
+                                </Link>
                             </div>
                         </div>
-                        <Link href={"/"} passHref>
-                          <a className={`${navCSS} ${router.asPath === "/" && activeCSS}`}>{t('component.navbar.play')}</a>
+                        <Link to={"/play"} className={`${navCSS} ${router.asPath.startsWith("/play") && activeCSS}`}>
+                            {t('component.navbar.play')}
                         </Link>
                         {isGuest && (
-                          <Link href={"/about/us"} passHref>
-                            <a className={`${navCSS} ${router.asPath.startsWith("/about/us") && activeCSS}`}>{t('component.bottombar.about')}</a>
+                          <Link to={"/about/us"} className={`${navCSS} ${router.asPath.startsWith("/about/us") && activeCSS}`}>
+                                {t('component.bottombar.about')}
                           </Link>
                         )}
-                        <Link href={"/news"} passHref>
-                          <a className={`${navCSS} ${router.asPath.startsWith("/news") && activeCSS}`}>{t('component.navbar.news')}</a>
+                        <Link to={"/news"} className={`${navCSS} ${router.asPath.startsWith("/news") && activeCSS}`}>
+                            {t('component.navbar.news')}
                         </Link>
                         {!isGuest && (
-                          <Link href={"/challenges"} passHref>
-                            <a className={`${navCSS} ${router.asPath.startsWith("/challenges") && activeCSS}`}>{t('component.navbar.challenges')}</a>
-                          </Link>
+                            <Link to={"/challenges"} className={`${navCSS} ${router.asPath.startsWith("/challenges") && activeCSS}`}>
+                                {t('component.navbar.challenges')}
+                            </Link>
                         )}
-                        <Link href={"/leaderboards"} passHref>
-                          <a className={`${navCSS} ${router.asPath.startsWith("/leaderboards") && activeCSS}`}>{t('component.navbar.leaders')}</a>
+                        <Link to={"/leaderboards"} className={`${navCSS} ${router.asPath.startsWith("/leaderboards") && activeCSS}`}>
+                            {t('component.navbar.leaders')}
                         </Link>
-                        <Link href={"/competitions"} passHref>
-                          <a className={`${navCSS} ${router.asPath.startsWith("/competitions") && activeCSS}`}>{t('component.navbar.tournaments')}</a>
+                        <Link to={"/competitions"} className={`${navCSS} ${router.asPath.startsWith("/competitions") && activeCSS}`}>
+                            {t('component.navbar.tournaments')}
                         </Link>
                         {sessionData && (
                             <div className={"ml-auto my-auto w-80"} >
@@ -210,11 +198,11 @@ const Levelbar = () => {
                     </div>
                 </div>
 
-                <div style={{ left: `${!toggleSitebar ? '-80' : '0'}%` }} className={"w-44 z-20 fixed top-0 left-0 bottom-0 h-screen bg-gray-900 transition-all ease-in-out duration-300"}>
+                <div style={{ left: `${!toggleSitebar ? '-80' : '0'}%` }} className={"w-44 mt-16 z-20 fixed top-0 left-0 bottom-0 h-screen bg-gray-900 transition-all ease-in-out duration-300"}>
                     {links.map((item) => (
-                      <Link key={item.link} href={item.link}>
-                        <a className={`block hover:bg-gray-825 transition ease-in-out duration-300 p-3 text-sm uppercase font-semibold text-white tracking-tight ${router.asPath.startsWith(item.link) && "bg-gray-825"}`}>{t(item.name)}</a>
-                      </Link>
+                        <Link key={item.link} to={item.link} className={`block hover:bg-gray-825 transition ease-in-out duration-300 p-3 text-sm uppercase font-semibold text-white tracking-tight ${router.asPath.startsWith(item.link) && "bg-gray-825"}`}>
+                            {t(item.name)}
+                        </Link>
                     ))}
                     <div className={"border-t border-gray-800"} />
                     {socials.map((item) => (
