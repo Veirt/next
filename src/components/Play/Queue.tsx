@@ -241,7 +241,7 @@ const Queue = (props: IProps) => {
                             {t(tab?.name)}
                         </div>
 
-                        <div className={"rounded-lg bg-gradient-to-b from-gray-750 to-gray-775 border-b-4 border-gray-800 px-6 pb-6 pt-2 shadow-lg relative z-10 h-128"}>
+                        <div className={"rounded-lg bg-gradient-to-b from-gray-750 to-gray-775 border-b-4 border-gray-800 px-6 pb-6 pt-2 shadow-lg relative z-10 h-auto 3xl:h-128"}>
                             <div className={"grid grid-cols-1 sm:grid-cols-3 3xl:grid-cols-1"}>
                                 {tab.name !== 'Social' && (
                                     <div className={"relative col-span-full sm:col-span-1 3xl:col-span-full"}>
@@ -305,8 +305,8 @@ const Queue = (props: IProps) => {
 
                                         {tab.name === 'Social' && (
                                             <div className={"grid grid-cols-1 gap-y-9 py-6"}>
-                                                {socialItems.map((item) => (
-                                                    <a key={item.href} href={item.href} target={"_blank"} rel={"noopener noreferrer"} className={`focus:outline-none hover:opacity-60 transition ease-in-out duration-300`}>
+                                                {socialItems.map((item, index) => (
+                                                    <a key={item.href} href={item.href} target={"_blank"} rel={"noopener noreferrer"} className={`${index === 0 ? '' : 'hidden 3xl:block'} focus:outline-none hover:opacity-60 transition ease-in-out duration-300`}>
                                                         <img className={"w-full h-auto"} src={item.image} alt={`Socials`} />
                                                     </a>
                                                 ))}
