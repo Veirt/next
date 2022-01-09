@@ -21,7 +21,7 @@ body {
   background-repeat: no-repeat;
 
   /* Use BG Color: 1E1E21 w/95% opacity */
-  @apply bg-gray-850;
+  @apply bg-gray-850 text-white;
 }
 
 ::-webkit-scrollbar {

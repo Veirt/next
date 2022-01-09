@@ -1,7 +1,7 @@
 import { useTranslation, Trans } from 'next-i18next';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDoubleRight} from "@fortawesome/free-solid-svg-icons";
-import Modal from '../Uncategorized/Modal';
+import Modal from '../../Uncategorized/Modal';
 
 interface IProps {
     toggle: () => void;

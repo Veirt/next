@@ -27,6 +27,8 @@ const LeaderboardPlayerStatistic:FC<IProps> = (props) => {
             return value ? (useCPM === '1' ? `${(value * 5).toFixed(2)} CPM` : `${value.toFixed(2)} WPM`) : '';
         else if (fieldName === "matchesWon")
             return (value || 0).toLocaleString() + ' wins';
+        else if (fieldName === "count") // Challenges
+        return (value || 0).toLocaleString() + ' challenges';
         else
             return value;
     }
@@ -40,6 +42,8 @@ const LeaderboardPlayerStatistic:FC<IProps> = (props) => {
             return "WPM";
         else if (fieldName === "matchesWon")
             return "Wins";
+        else if (fieldName === "count") // Challenges
+            return "Challenges";
         else
             return fieldName;
     }

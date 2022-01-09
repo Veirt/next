@@ -1,6 +1,6 @@
 import {MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
 import { useTranslation } from 'next-i18next';
-import {faBook, faQuoteRight, faCircleNotch} from '@fortawesome/free-solid-svg-icons';
+import {faBook, faQuoteRight, faCircleNotch, faBahai, faQuestionCircle, faTrophy} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -21,6 +21,7 @@ import { toast } from 'react-toastify';
 import moment from "moment";
 import Link from '../Uncategorized/Link';
 import Redirect from '../Uncategorized/Redirect';
+import Modal from '../Uncategorized/Modal';
 
 interface TabsInterface {
     name: string;
@@ -34,6 +35,7 @@ interface TabsInterface {
         icon: IconDefinition;
         textType?: number;
         color: string;
+        badge?: string | number;
         disabled?: {
             level: number;
             isGuest: boolean;
@@ -44,7 +46,6 @@ interface TabsInterface {
 
 interface IProps {
     mode?: string;
-    tournamentData?: TournamentData[];
 }
 
 const Queue = (props: IProps) => {
@@ -62,7 +63,7 @@ const Queue = (props: IProps) => {
     const [ redirect, setRedirect ] = useState('');
     const [ loading, setLoading ] = useState(false);
 
-    const { tournamentData, mode } = props;
+    const { mode } = props;
 
     const getLevel = useCallback(() => {
         if (sessionData) {
@@ -164,13 +165,6 @@ const Queue = (props: IProps) => {
             ],
         },
         {
-            name: 'component.navbar.tournaments',
-            enabled: true,
-            description: '',
-            image: '/assets/play/competitions.webp',
-            modes: [],
-        },
-        {
             name: 'page.queue.custom.title',
             enabled: true,
             description: 'page.queue.custom.description',
@@ -186,14 +180,48 @@ const Queue = (props: IProps) => {
                     name: 'page.queue.custom.browse',
                     icon: faList,
                     color: 'text-teal-500',
+                    badge: lobbiesData?.length || 0,
                     onClick: () => setTab(1),
                 },
             ],
         },
         {
-            name: 'Social',
+            name: 'page.queue.ranked.title',
+            description: 'page.queue.ranked.description',
+            image: '/ranks/big/gold.webp',
             enabled: true,
-            description: 'page.queue.custom.description',
+            content: true,
+            modes: [
+                {
+                    name: 'page.queue.ranked.join',
+                    icon: faBahai,
+                    textType: 2,
+                    color: 'text-pink-500',
+                    onClick: () => false,
+                    disabled: {
+                        level: 100000000,
+                        isGuest: false
+                    },
+                },
+                {
+                    name: 'page.queue.ranked.how',
+                    icon: faQuestionCircle,
+                    textType: 2,
+                    color: 'text-red-500',
+                    disabled: {
+                        level: 100000000,
+                        isGuest: false
+                    },
+                    onClick: () => false,
+                },
+
+                {
+                    name: 'component.navbar.leaders',
+                    icon: faTrophy,
+                    color: 'text-yellow-400',
+                    onClick: () => setRedirect('/leaderboards/ranked/4'),
+                },
+            ],
         },
     ];
 
@@ -234,116 +262,48 @@ const Queue = (props: IProps) => {
                 </div>
             </div>
             <audio id="MatchFound" src="/audio/MatchFound.wav" crossOrigin="anonymous" preload="auto" />
-            <div className={"grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-4 gap-8 lg:gap-4 2xl:gap-8 mb-8"}>
+
+            <div className={"grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-12 gap-8 lg:gap-4 mb-8"}>
                 {tabs.map((tab, index) => (
-                    <div key={index} className={"h-full"}>
-                        <div className={"bg-gray-750 text-2xl uppercase font-bold py-2.5 mb-4 rounded-xl text-center text-white"}>
-                            {t(tab?.name)}
-                        </div>
-
-                        <div className={"rounded-lg bg-gradient-to-b from-gray-750 to-gray-775 border-b-4 border-gray-800 px-6 pb-6 pt-2 shadow-lg relative z-10 h-auto 3xl:h-128"}>
-                            <div className={"grid grid-cols-1 sm:grid-cols-3 3xl:grid-cols-1"}>
-                                {tab.name !== 'Social' && (
-                                    <div className={"relative col-span-full sm:col-span-1 3xl:col-span-full"}>
-                                        <img className={"block mx-auto w-auto h-40 3xl:h-72 object-fit transform scale-110"} src={tab.image || ''} alt={"Panel"} />
-                                    </div>
-                                )}
-
-                                <div className={"col-span-full sm:col-span-2 3xl:col-span-full"}>
-                                    <div className={`grid grid-cols-1 gap-3 mt-2`}>
-                                        {tab?.modes?.map((item) => (
-                                            <div key={item.name} className={"px-0 lg:px-6 4xl:px-10"}>
-                                                <button onClick={item.onClick} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''} block h-auto py-2.5 flex w-full bg-gray-875 rounded-xl bg-opacity-70 hover:bg-gray-850 transition ease-in-out duration-200`}>
-                                                    <div className={"flex justify-center pl-0 md:pl-4 lg:pl-6 text-white text-sm lg:text-base uppercase font-bold tracking-tight"}>
-                                                        <div className={"w-10"}>
-                                                            <FontAwesomeIcon icon={(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? faLock : item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
-                                                        </div>
-                                                        <div className={"w-auto"}>
-                                                            {(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? (
-                                                                (sessionData?.authName !== 'Guest' && playerLevel !== null && playerLevel.Index < item.disabled.level) ? 'Level 5' : 'Please Login'
-                                                            ) : (
-                                                                t(item.name)
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </button>
+                    <div key={index} className={"col-span-full lg:col-span-1 3xl:col-span-4"}>
+                        {/* Flex / Icon */}
+                        <div className="content-box relative">
+                            <div className="absolute top-0 -right-2 z-0">
+                                <img className={"h-64 -mt-7 object-cover object-center transform opacity-50"} src={tab.image || ''} alt={"Panel"} />
+                            </div>
+                            <div className="h1 text-white relative z-10">{t(tab?.name)}</div>
+                            <p className="pt-1 pb-6 block relative z-10 text-gray-300">
+                                {t(tab?.description)}
+                            </p>
+                            {/* Buttons */}
+                            <div className="flex flex-wrap xl:space-x-2 relative z-10">
+                                {tab?.modes?.map((item) => (
+                                    <button key={item.name} onClick={item.onClick} className={`py-2 bg-gray-875 rounded-lg bg-opacity-70 hover:bg-gray-850 transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
+                                        <div className={"flex justify-center px-3 text-white text-xs lg:text-sm uppercase font-bold tracking-tight"}>
+                                            <div className={"w-5 mt-px text-left"}>
+                                                <FontAwesomeIcon icon={item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
                                             </div>
-                                        ))}
-
-                                        {tab.name === 'component.navbar.tournaments' && (
-                                            <>
-                                                {tournamentData?.map((item) => (item.status !== 2 && item.name.toLowerCase().includes('daily')) && (
-                                                    <Link key={item.tournamentId} to={`/competitions/${item.tournamentId}`} className={"flex relative gap-2"}>
-                                                        <div className={"w-full px-5 py-3 mr-auto rounded-xl bg-gray-825 hover:bg-gray-850 transition ease-in-out duration-300"}>
-                                                            <div className={"text-white text-sm uppercase font-semibold"}>
-                                                                {item.name.replace('Daily', '').split('(')[0]}
-                                                            </div>
-                                                        </div>
-                                                        <div className={"hidden lg:block w-24 pl-4 text-orange-400 bg-gray-825 rounded-xl text-left pt-2.5 text-base font-semibold"}>
-                                                            <FontAwesomeIcon icon={faUserFriends} className={"mr-1"} />
-                                                            {item.totalPlayers.toLocaleString()}
-                                                        </div>
-                                                    </Link>
-                                                ))}
-                                                {tournamentData && tournamentData[0] && (
-                                                    <div className="bg-gray-825 py-2.5 text-gray-500 font-semibold uppercase rounded-xl text-center">
-                                                        <FontAwesomeIcon icon={faClock} className={"mr-1"} /> Ends {moment.unix(tournamentData[0]?.endTime).fromNow()}
-                                                    </div>
-                                                )}
-                                            </>
-                                        )}
-
-                                        {tab.name === 'page.queue.custom.title' && (
-                                            <>
-                                                <div className={"px-0 lg:px-6 4xl:px-10 text-center pb-1"}>
-                                                    <div className="bg-gray-825 py-2 text-gray-500 font-semibold uppercase rounded-xl">
-                                                        <FontAwesomeIcon icon={faUserFriends} className={"mr-1"} /> {lobbiesData.length.toLocaleString()} {t('page.queue.custom.online')}
-                                                    </div>
-                                                </div>
-                                            </>
-                                        )}
-
-                                        {tab.name === 'Social' && (
-                                            <div className={"grid grid-cols-1 gap-y-9 py-6"}>
-                                                {socialItems.map((item, index) => (
-                                                    <a key={item.href} href={item.href} target={"_blank"} rel={"noopener noreferrer"} className={`${index === 0 ? '' : 'hidden 3xl:block'} focus:outline-none hover:opacity-60 transition ease-in-out duration-300`}>
-                                                        <img className={"w-full h-auto"} src={item.image} alt={`Socials`} />
-                                                    </a>
-                                                ))}
+                                            <div className={"w-auto"}>
+                                                {t(item.name)}
                                             </div>
-                                        )}
-                                    </div>
-                                </div>
+                                        </div>
+                                    </button>
+                                ))}
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className={`${(lobbiesLoaded && tab === 1) ? 'opacity-100' : 'pointer-events-none opacity-0'} relative z-50 transition ease-in-out duration-300`}>
-                <div className="z-50 fixed bottom-0 left-0 right-0 top-0 w-full h-screen bg-black bg-opacity-80">
-                    <div className="flex h-screen">
-                        <div className="m-auto h-128 p-4 lg:p-8 w-full md:w-3/4 lg:w-1/2 xl:w-1/3 bg-gray-900 rounded">
-                            <div className="flex mb-4 text-lg tracking-wide">
-                                <div className="w-auto my-auto">
-                                    <div className="uppercase text-white font-semibold">{t('page.queue.custom.public')}</div>
-                                </div>
-                                <div className="w-auto ml-auto">
-                                    <button onClick={() => setTab(0)} className="btn btn--red">
-                                        <FontAwesomeIcon icon={faAngleDoubleLeft} className="mr-1" /> Back
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="h-96 overflow-y-auto">
-                                {lobbiesData.length !== 0
-                                    ? lobbiesData.map(row => <LobbiesRow key={row.invite} {...row} />)
-                                    : <div className="py-32 w-full bg-black-light text-sm uppercase text-white font-semibold text-center">{t('page.queue.custom.none')}</div>
-                                }
-                            </div>
-                        </div>
-                    </div>
+            <Modal isOpened={(lobbiesLoaded && tab === 1)} onClose={() => setTab(0)}>
+                <div className="h3">{t('page.queue.custom.public')}</div>
+                <div className="h-full overflow-y-auto">
+                    {lobbiesData.length !== 0
+                        ? lobbiesData.map(row => <LobbiesRow key={row.invite} {...row} />)
+                        : <div className="py-32 w-full bg-black-light text-sm uppercase text-white font-semibold text-center">{t('page.queue.custom.none')}</div>
+                    }
                 </div>
-            </div>
+            </Modal>
         </>
     );
 }

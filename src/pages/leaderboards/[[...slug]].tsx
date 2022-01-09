@@ -40,8 +40,8 @@ const Leaderboards = (props: IProps) => {
     const [ dropdown, setDropdown ] = useState<number>(0);
 
     const modeList = useMemo(() => { return ['ranked', 'casual'] }, []);
-    const filterCasualList = ['experience', 'playtime', 'highestWPM', 'matchesWon'];
-    const filterItemToName = {'experience': 'Total Experience', 'playtime': 'Total Playtime', 'highestWPM': 'Fastest Speed', 'matchesWon': 'Most Wins'};
+    const filterCasualList = ['experience', 'playtime', 'challenges', 'highestWPM', 'matchesWon'];
+    const filterItemToName = {'experience': 'Total Experience', 'playtime': 'Total Playtime', 'challenges': 'Most Challenges', 'highestWPM': 'Fastest Speed', 'matchesWon': 'Most Wins'};
 
     const getRanked = useCallback(() => {
         axios.get(`${Config.apiUrl}/leaderboards/ranked?modeId=1&seasonId=${filter}&startNum=${skip}&limit=25`, { cancelToken: axiosCancelSource.current?.token })
@@ -57,6 +57,18 @@ const Leaderboards = (props: IProps) => {
 
     const getStatistics = useCallback(() => {
         axios.get(`${Config.apiUrl}/leaderboards/statistics?worldId=${world || 0}&modeId=1&filter=${filter}&startNum=${skip}&limit=25`, { cancelToken: axiosCancelSource.current?.token })
+            .then((response) => {
+                if (!response.data.error) {
+                    setData([ ...response.data.data ]);
+                    setDataPage(response.data.isNextPage);
+                    setLoaded(true);
+                } else
+                    toast.error("Unable to pull data");
+            })
+    }, [ filter, skip, world ]);
+
+    const getChallenges = useCallback(() => {
+        axios.get(`${Config.apiUrl}/leaderboards/challenges?startNum=${skip}&limit=25`, { cancelToken: axiosCancelSource.current?.token })
             .then((response) => {
                 if (!response.data.error) {
                     setData([ ...response.data.data ]);
@@ -91,8 +103,10 @@ const Leaderboards = (props: IProps) => {
     useEffect(() => {
         if (type === "ranked")
             getRanked();
-        else
+        else if (type === "casual" && filter !== "challenges")
             getStatistics();
+        else if (type === "casual" && filter === "challenges")
+            getChallenges();
     }, [ getStatistics, getRanked, type ]);
     return (
         <Base meta={<Meta title={`${type.charAt(0).toUpperCase() + type.slice(1)} ${t('component.navbar.leaders')}`} />} ads={{ enableBottomRail: true }} isLoaded={(data && loaded)}>
@@ -174,15 +188,9 @@ const Leaderboards = (props: IProps) => {
                     ) : '')}
                     <div className={"w-full lg:w-full"}>
                         <>
-                            {type === 'ranked'
-                                ? <LeaderboardPlayerRanked data={data as PlayerRankedExtendedData[]} skip={skip} />
-                                : (
-                                    <>
-                                        {/* @ts-ignore */}
-                                        <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} fieldName={filter} skip={skip} />
-                                    </>
-                                )
-                            }
+                            {type === 'ranked' && <LeaderboardPlayerRanked data={data as PlayerRankedExtendedData[]} skip={skip} />}
+                            {(type === 'casual' && filter !== 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} fieldName={filter} skip={skip} />}
+                            {(type === 'casual' && filter === 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} fieldName={"count"} skip={skip} />}
                             <Pagination isNextPage={dataPage} skip={skip} nextPage={() => setSkip(skip + 25)} prevPage={() => setSkip(skip - 25)} />
                         </>
                     </div>

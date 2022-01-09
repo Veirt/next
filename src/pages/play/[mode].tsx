@@ -19,12 +19,17 @@ const Play = (props: IProps) => {
 
     return (
         <Base meta={<Meta title="Joining Match" />} ads={{ enableBottomRail: true }} isLoaded={true}>
-            <div className="flex h-screen">
-                <div className="m-auto">
-                    <div className="container">
-                        <Queue mode={mode} tournamentData={laddersData} />
+            <div className="container container-margin container-padding">
+                <Queue mode={mode}/>
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                    <div>
+                        <div className="content-box h-48" />
+                    </div>
+                    <div>
+                        <div className="content-box h-48" />
                     </div>
                 </div>
+                
             </div>
         </Base>
     );

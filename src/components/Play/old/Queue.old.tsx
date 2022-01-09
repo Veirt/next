@@ -14,20 +14,20 @@ import {
     faUserFriends,
 } from '@fortawesome/free-solid-svg-icons';
 import axios, { CancelTokenSource } from 'axios';
-import Config from '../../Config';
-import LobbiesRow from '../Custom/LobbiesRow';
-import Socket from '../../utils/socket/Socket';
+import Config from '../../../Config';
+import LobbiesRow from '../../Custom/LobbiesRow';
+import Socket from '../../../utils/socket/Socket';
 import RankedModal from "./RankedModal";
 import QueueToast from "./QueueToast";
-import {LobbyData, PlayerCompetitiveData, PlayerLevelData, TournamentData} from "../../types.client.mongo";
-import {usePlayerContext} from "../../contexts/Player.context";
-import useCSRF from "../../hooks/useCSRF";
-import useConfig from "../../hooks/useConfig";
-import usePlayerToken from "../../hooks/usePlayerToken";
+import {LobbyData, PlayerCompetitiveData, PlayerLevelData, TournamentData} from "../../../types.client.mongo";
+import {usePlayerContext} from "../../../contexts/Player.context";
+import useCSRF from "../../../hooks/useCSRF";
+import useConfig from "../../../hooks/useConfig";
+import usePlayerToken from "../../../hooks/usePlayerToken";
 import { toast } from 'react-toastify';
 import moment from "moment";
-import Link from '../Uncategorized/Link';
-import Redirect from '../Uncategorized/Redirect';
+import Link from '../../Uncategorized/Link';
+import Redirect from '../../Uncategorized/Redirect';
 
 interface TabsInterface {
     name: string;
