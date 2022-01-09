@@ -16,7 +16,6 @@ const Challenges = () => {
 
     const { t } = useTranslation();
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
-    const [ redirect, setRedirect ] = useState<string>('');
 
     const [ challengesData, setChallengesData ] = useState<PlayerChallengeData[]>([]);
     const [ challengesLoaded, setChallengesLoaded ] = useState<boolean>(false);
@@ -27,10 +26,8 @@ const Challenges = () => {
                 if (!response.data.error) {
                     setChallengesData(response.data);
                     setChallengesLoaded(true);
-                } else {
+                } else 
                     toast.error(response.data.error);
-                    setRedirect('/');
-                }
             })
             .catch(e => console.log(e));
     }, []);
