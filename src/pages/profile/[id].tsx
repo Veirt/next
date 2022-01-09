@@ -142,8 +142,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                     <DesktopTop />
                     {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
                     {tab === 'matches' && (
-                        <>
-                          <h2 className={"headingBox"}>{t('component.navbar.recent_matches')}</h2>
+                        <div className="content-box">
                           {matchData && matchData.length !== 0 ? (
                               <>
                                 <LeaderboardPlayerProfile data={matchData} skip={skip} />
@@ -154,7 +153,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                                 This player has not played any matches.
                               </div>
                           )}
-                        </>
+                        </div>
                     )}
                     {tab === 'achievements' && <ProfileAchievements data={achievementsData} />}
                     {tab === 'tournaments' && <ProfileTournaments data={tournamentsData} />}

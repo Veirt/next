@@ -8,7 +8,6 @@ import '../scss/tainwind.scss';
 
 import CookieConsent from 'react-cookie-consent';
 import { ToastContainer } from 'react-toastify';
-import { ChatProvider } from '../contexts/Chat.context';
 import { PlayerProvider } from '../contexts/Player.context';
 
 import reportWebVitals from '../reportWebVitals';
@@ -21,7 +20,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     <>
       <ToastContainer />
       <PlayerProvider>
-        <ChatProvider>
         <NextNProgress
           color="#FB923C"
           startPosition={0.3}
@@ -42,7 +40,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
           >
               This website uses cookies to enhance the user experience.
           </CookieConsent>
-        </ChatProvider>
       </PlayerProvider>
     </>
 );

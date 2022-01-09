@@ -1,6 +1,7 @@
 import {FC, useState} from "react";
 import useConfig from "../../hooks/useConfig";
 import {Line} from "react-chartjs-2";
+import { useTranslation } from "next-i18next";
 
 interface IChartProps {
     labels: string[];
@@ -21,6 +22,7 @@ export interface PlayerStatisticChartData {
 const ProfileStatisticChart:FC<PlayerStatisticChartData> = (props) => {
 
     const { useCPM } = useConfig();
+    const { t } = useTranslation();
 
     const [ tab, setTab ] = useState<number>(0);
 
@@ -142,7 +144,7 @@ const ProfileStatisticChart:FC<PlayerStatisticChartData> = (props) => {
         <>
             <div className="flex flex-wrap justify-center lg:justify-between">
                 <div className="w-full pb-4 lg:pb-0 lg:w-auto">
-                    <h2 className="h3">Chart</h2> 
+                    <div className={"text-orange-400 pb-2 normal-case font-semibold text-3xl"}>{t('page.profile.progress')}</div>
                 </div>
                 <div>
                     <div className="flex justify-center mb-8">

@@ -20,8 +20,7 @@ const ProfileTournaments = (props: IProps) => {
     const { t } = useTranslation();
 
     return (
-        <div>
-            <h2 className={"headingBox"}>{t('statistics.tournaments')}</h2>
+        <div className="content-box">
             {data && data.length !== 0 ? (
                 <div className={"grid grid-cols-1 md:grid-cols-2 4xl:grid-cols-3 gap-4"}>
                     {data.map((item) => (item?.placement !== -1 && item?.placement !== 0) && (
@@ -37,7 +36,7 @@ const ProfileTournaments = (props: IProps) => {
                                         ) : <></>}
                                     </div>
                                 </div>
-                                <div className={"w-full my-auto bg-gray-750 rounded-xl pl-12 py-2 shadow-md pl-4"}>
+                                <div className={"w-full my-auto bg-gray-700 rounded-xl pl-12 py-2 shadow pl-4"}>
                                     <div className={"uppercase text-base lg:text-base font-semibold"}>{item.tournament[0]?.name}</div>
                                     <div className="flex space-x-4 text-xs lg:text-sm pt-1 uppercase">
                                       <div>

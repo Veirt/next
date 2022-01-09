@@ -93,11 +93,10 @@ const ProfileStatistics = (props: IProps) => {
 
     return (profileData && statisticData) ? (
         <>
-            <h2 className={"headingBox"}>{t('component.navbar.statistics')}</h2>
             <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4"}>
                 {blockItems.map((block, index) => block.title !== 'PROFILE_RANKED' ? (
-                    <div key={index} className={`bg-gray-750 rounded-xl shadow-lg p-4 ${block.css}`}>
-                        <div className={"text-orange-400 pb-2 font-semibold uppercase text-2xl"}>{t(block.title)}</div>
+                    <div key={index} className={`bg-gray-750 bg-opacity-70 rounded-xl shadow-lg p-4 ${block.css}`}>
+                        <div className={"text-orange-400 pb-2 font-semibold text-3xl"}>{t(block.title)}</div>
                         <div className={"grid grid-cols-1 gap-2"}>
                             {/* @ts-ignore */}
                             {block.items.map((item, key) => (item && (typeof item.value !== 'undefined' && (item.value !== null && item.value !== ""))) ? (
@@ -109,7 +108,7 @@ const ProfileStatistics = (props: IProps) => {
                         </div>
                     </div>
                 ) : (
-                    <div key={index} className={`bg-gray-750 shadow-lg rounded-xl p-4 ${block.css}`}>
+                    <div key={index} className={`bg-gray-750 bg-opacity-70 shadow-lg rounded-xl p-4 ${block.css}`}>
                         <div className={"flex h-full"}>
                             <div className={"m-auto"}>
                                 {rankedData && (
@@ -131,16 +130,14 @@ const ProfileStatistics = (props: IProps) => {
                         </div>
                     </div>
                 ))}
-            </div>
-
-            {chartData !== null && (
-                <div className="mt-10">
-                    <h2 className={"headingBox"}>{t('page.profile.progress')}</h2>
-                    <div className={"p-4 xl:p-8 rounded-xl shadow-lg bg-gray-750 text-white text-center font-semibold uppercase"}>
-                        <ProfileStatisticChart {...chartData} />
+                {chartData !== null && (
+                    <div className="col-span-full">
+                        <div className={"p-4 xl:p-8 rounded-xl shadow-lg bg-gray-750 bg-opacity-70 text-white text-center font-semibold uppercase"}>
+                            <ProfileStatisticChart {...chartData} />
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </>
     ) : <></>
 }
