@@ -34,6 +34,35 @@ const Challenge:FC<PlayerChallengeData> = (props) => {
 
     return (challenge[0] && mode[0]) ? (
         <div>
+            <div className="grid grid-cols-4 gap-4">
+                <div className="col-span-full xl:col-span-1 my-auto">
+                    <img src={`/challenges/${challenge[0].type}.png`} alt={challenge[0].text} className={"block mx-auto transform scale-challenge"} />
+                </div>
+                <div className="col-span-full xl:col-span-3">
+                    <div className="h4 text-orange-400">{mode[0].modeName}</div>
+                    <p className="pt-1 pb-4 block text-sm">
+                        {challenge[0].text}
+                    </p>
+                    <div className="flex flex-wrap xl:space-x-2">
+                        <div className={"w-auto py-1.5 px-4 bg-gray-825 text-center rounded-lg"}>
+                            <FontAwesomeIcon icon={faCoins} className={"text-yellow-400 mr-1"} />
+                            {challenge[0].rewards?.currency.toLocaleString()}
+                        </div>
+                        <div className={"w-auto py-1.5 px-4 bg-gray-825 text-center rounded-lg"}>
+                            {value > challenge[0].value ? challenge[0].value.toLocaleString() : value.toLocaleString()}<span className={"text-white"}>/{challenge[0].value.toLocaleString()}</span>
+                        </div>
+                        <button type={"button"} className={`button small orange ${(!finished || finished === 2 || redeem) ? 'opacity-50 pointer-events-none' : 'opacity-100'} `} onClick={redeemChallenges}>
+                            {(redeem || finished === 2) ? 'Redeemed' : 'Redeem'}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    ) : <></>;
+
+    /*
+    return (challenge[0] && mode[0]) ? (
+        <div>
             <div className={"w-full sm:w-64 mx-auto py-1 relative z-10 font-bold bg-gray-800 shadow -mb-6 text-center text-orange-400 text-2xl rounded-2xl"}>
                 {mode[0].modeName}
             </div>
@@ -57,6 +86,7 @@ const Challenge:FC<PlayerChallengeData> = (props) => {
             </div>
         </div>
     ) : <></>;
+    */
 }
 
 export default Challenge;

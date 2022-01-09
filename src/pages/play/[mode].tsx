@@ -2,6 +2,8 @@ import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+import Challenges from "../../components/Play/Challenges";
+import Leaderboards from "../../components/Play/Leaderboards";
 import Queue from "../../components/Play/Queue";
 import Config from "../../Config";
 import { Meta } from "../../layout/Meta";
@@ -21,12 +23,16 @@ const Play = (props: IProps) => {
         <Base meta={<Meta title="Joining Match" />} ads={{ enableBottomRail: true }} isLoaded={true}>
             <div className="container container-margin container-padding">
                 <Queue mode={mode}/>
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
                     <div>
-                        <div className="content-box h-48" />
+                        <div className="content-box h-108">
+                            <Challenges />
+                        </div>
                     </div>
-                    <div>
-                        <div className="content-box h-48" />
+                    <div className="xl:col-span-2">
+                        <div className="content-box h-auto">
+                            <Leaderboards />
+                        </div>
                     </div>
                 </div>
                 
