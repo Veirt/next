@@ -50,13 +50,10 @@ const Play = (props: IProps) => {
                         <div className="mb-4">
                             <Social />
                         </div>
-                        <div className="content-box xl:h-160 mb-4">
+                        <div className="content-box xl:h-212 mb-4">
                             <Leaderboards />
                         </div>
-                        <div className="content-box xl:h-88 mb-4">
-                            <News data={newsData} />
-                        </div>
-                        <AdvertisementDisplay type="leaderboard-small" className="mb-4 mt-5">
+                        <AdvertisementDisplay type="leaderboard" className="mb-4 mt-5">
                             <DesktopTop />
                         </AdvertisementDisplay>
                     </div>

@@ -1,12 +1,11 @@
 /* ---- */
 .news {
-  @apply relative block transition ease-in-out duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  @apply relative block transition ease-in-out duration-300 hover:opacity-80;
 }
 
 .news:after {
   content: "";
-  opacity: 0.85;
-  @apply absolute top-0 right-0 left-0 bottom-0 bg-gray-900 border border-gray-800 rounded-2xl;
+  @apply absolute top-0 right-0 left-0 bottom-0 bg-gray-900 bg-opacity-70 border border-gray-800 rounded-2xl;
 }
 
 .news .news-content {

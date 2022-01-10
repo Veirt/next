@@ -154,7 +154,7 @@ const Levelbar = () => {
             </>
         ) : (
             <>
-                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-750 to-gray-775 py-1 shadow-lg transition-all`}>
+                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gray-750 bg-opacity-80 py-1 shadow-lg transition-all`} style={{ backdropFilter: 'blur(8px)' }}>
                     <div className={"container flex"}>
                         <div className={"flex space-x-2"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>

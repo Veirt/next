@@ -3,7 +3,7 @@
 }
 
 .dropdown {
-  @apply z-20 transform absolute top-0 mt-10 bg-gray-600 text-white transition ease-in-out duration-300 focus:outline-none rounded;
+  @apply z-20 transform absolute top-0 mt-10 bg-gray-600 text-white transition ease-in-out duration-300 focus:outline-none rounded shadow-md border border-gray-500;
 }
 
 .dropdown-2xl {

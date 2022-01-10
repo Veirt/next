@@ -22,30 +22,22 @@ const News = ({ newsData }: IProps) => {
 
     return (
         <Base meta={<Meta title={t('page.queue.titles.latestNews')} />} ads={{ enableBottomRail: true }}>
-            <div className="container container-margin py-10">
-                <DesktopTop />
-                <div>
-                    <h1 className="mb-6 h1 uppercase text-white">
-                        {t('page.queue.titles.latestNews')}
-                    </h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                        <div className={"col-span-full sm:col-span-full xl:col-span-2"}>
-                            {newsData.map((row, index) => index === 0 && <NewsItem className={"pt-16"} isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
-                        </div>
-                        <div className={"col-span-full sm:col-span-1"}>
-                            {newsData.map((row, index) => index === 1 && <NewsItem className={"pt-16"} isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
-                        </div>
-                        <div className={"col-span-1 sm:col-span-1"}>
-                            {newsData.map((row, index) => index === 2 && <NewsItem className={"pt-16"} isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
-                        </div>
+            <div className="container container-margin">
+                <div className="grid grid-cols-3 gap-8 py-10">
+                    <div className="col-span-full lg:col-span-2 my-auto">
+                        <h1 className="h1-jumbo">{t('page.queue.titles.latestNews')}</h1>
+                        <p className="pt-6 text-lg">
+                            Check out our latest news and updates regarding Keyma.sh and learn about any upcoming tournaments and events!
+                        </p>
+                    </div>
+                    <div className="col-span-full lg:col-span-1 my-auto">
+                        {newsData.map((row, index) => (index === 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
                     </div>
                 </div>
-                <div className={"mt-12"}>
-                    <h2 className="mb-6 h2 uppercase text-white">
-                        {t('page.queue.titles.archiveNews')}
-                    </h2>
+                <DesktopTop />
+                <div className="content-box">
                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                        {newsData.map((row, index) => index >= 3 && index <= 18 && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
+                        {newsData.map((row, index) => (index > 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
                     </div>
                 </div>
                 <DesktopDynamicFooter />

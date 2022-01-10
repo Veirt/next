@@ -110,7 +110,7 @@ const Leaderboards = (props: IProps) => {
     }, [ getStatistics, getRanked, type ]);
     return (
         <Base meta={<Meta title={`${type.charAt(0).toUpperCase() + type.slice(1)} ${t('component.navbar.leaders')}`} />} ads={{ enableBottomRail: true }} isLoaded={(data && loaded)}>
-            <div className="container-small container-margin py-10">
+            <div className="container-smaller container-margin py-10">
                 <ComboTop />
                 <div className="content-box">
                     <div className={"flex flex-wrap gap-x-6 pb-6"}>
@@ -119,7 +119,7 @@ const Leaderboards = (props: IProps) => {
                         </div>
                         <div className={"w-full lg:w-auto lg:my-auto flex flex-wrap justify-center gap-2 lg:justify-end lg:text-left"}>
                             <div className={"relative"}>
-                                <button type={"button"} className={"w-32 button-dropdown border-transparent bg-gray-700 hover:bg-gray-750"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
+                                <button type={"button"} className={"w-32 button-dropdown border-transparent bg-gray-600 hover:bg-gray-700"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
                                     <FontAwesomeIcon icon={faFilter} className={"mr-1"} />
                                     {type}
                                     <div className={"absolute right-0 top-0 mt-1.5 mr-3"}>
@@ -137,7 +137,7 @@ const Leaderboards = (props: IProps) => {
 
                             {type === 'casual' && (
                                 <div className={"relative"}>
-                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-750"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
+                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-600 hover:bg-gray-700"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
                                         <FontAwesomeIcon icon={faSort} className={"mr-1"} />
                                         {/* @ts-ignore */}
                                         {filterItemToName[filter]}
