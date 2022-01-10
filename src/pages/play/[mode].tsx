@@ -3,11 +3,14 @@ import { GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
+import DesktopDynamicFooter from "../../components/Advertisement/DesktopDynamicFooter";
+import DesktopDynamicTop from "../../components/Advertisement/DesktopDynamicTop";
 import DesktopTop from "../../components/Advertisement/DesktopTop";
+import SidebarDynamicLong from "../../components/Advertisement/SidebarDynamicLong";
 import SidebarSquare from "../../components/Advertisement/SidebarSquare";
 import Challenges from "../../components/Play/Challenges";
+import Guest from "../../components/Play/Guest";
 import Leaderboards from "../../components/Play/Leaderboards";
-import News from "../../components/Play/News";
 import Queue from "../../components/Play/Queue";
 import Social from "../../components/Play/Social";
 import Tournaments from "../../components/Play/Tournaments";
@@ -35,31 +38,40 @@ const Play = (props: IProps) => {
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">
                     <DesktopTop />
                 </AdvertisementDisplay>
-                <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
-                    <div>
-                        <div className="content-box xl:h-108 mb-4">
+                <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
+                    {(challengesData && challengesData.length !== 0) ? (
+                        <div className="content-box 4xl:h-124">
                             <Challenges data={challengesData} />
                         </div>
-                        <div className="content-box xl:h-108 mb-4">
-                            <Tournaments data={tournamentsData} />
+                    ) : (
+                        <div className="content-box 4xl:h-124">
+                            <Guest />
                         </div>
-                        <AdvertisementDisplay type="square" className="mb-4">
-                            <SidebarSquare />
-                        </AdvertisementDisplay>
+                    )}
+                    
+                    <div className="content-box 4xl:h-124">
+                        <Tournaments data={tournamentsData} />
                     </div>
-                    <div className="xl:col-span-2">
-                        <div className="mb-4">
-                            <Social />
-                        </div>
-                        <div className="content-box xl:h-212 mb-4">
+
+                    <div className="content-box 4xl:h-124">
+                        <Social />
+                    </div>
+                </div>
+                <AdvertisementDisplay type="leaderboard-small" className="mb-4">
+                    <DesktopDynamicTop />
+                </AdvertisementDisplay>
+                <div className="grid grid-cols-1 lg:grid-cols-5 xl:grid-cols-3 gap-4">
+                    <div className="lg:col-span-3 xl:col-span-2">
+                        <div className="content-box 4xl:h-212 mb-4">
                             <Leaderboards />
                         </div>
-                        <AdvertisementDisplay type="leaderboard" className="mb-4 mt-5">
-                            <DesktopTop />
+                    </div>
+                    <div className="col-span-full lg:col-span-2 xl:col-span-1">
+                        <AdvertisementDisplay type="sidebar" className="mb-4">
+                            <SidebarDynamicLong />
                         </AdvertisementDisplay>
                     </div>
                 </div>
-                
             </div>
         </Base>
     );

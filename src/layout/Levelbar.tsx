@@ -169,9 +169,6 @@ const Levelbar = () => {
                         <Link to={"/"} className={`${navCSS} ${router.asPath === "/" && activeCSS}`}>
                             {t('component.navbar.play')}
                         </Link>
-                        <Link to={"/about/us"} className={`${navCSS} ${router.asPath.startsWith("/about/us") && activeCSS}`}>
-                            {t('component.bottombar.about')}
-                        </Link>
                         <Link to={"/news"} className={`${navCSS} ${router.asPath.startsWith("/news") && activeCSS}`}>
                             {t('component.navbar.news')}
                         </Link>

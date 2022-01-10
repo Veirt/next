@@ -17,7 +17,7 @@ const AdvertisementDisplay = (props: IProps) => {
     if (type === 'square') 
         useHeight = 'h-72';
     else if (type === 'sidebar')
-        useHeight = 'h-192';
+        useHeight = 'h-212';
     else if (type === 'leaderboard')
         useHeight = 'h-48';
     else if (type === 'leaderboard-small')

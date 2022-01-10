@@ -240,27 +240,27 @@ const Queue = (props: IProps) => {
             </div>
             <audio id="MatchFound" src="/audio/MatchFound.wav" crossOrigin="anonymous" preload="auto" />
 
-            <div className={"grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-12 gap-8 lg:gap-4 mb-4 content-box"}>
+            <div className={"grid grid-cols-1 lg:grid-cols-3 3xl:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box"}>
                 {tabs.map((tab, index) => (
-                    <div key={index} className={`col-span-full lg:col-span-1 3xl:col-span-4 ${(index !== (tabs.length - 1)) ? 'mr-8 pr-8 border-r-4 border-gray-800' : ''}`}>
+                    <div key={index} className={`col-span-full lg:col-span-1 3xl:col-span-1 ${(index !== (tabs.length - 1)) ? '2xl:mr-8 2xl:pr-8 2xl:border-r-4 2xl:border-gray-800' : ''}`}>
                         {/* Flex / Icon */}
                         <div className="relative">
                             <div className="absolute top-0 -right-8 z-0">
                                 <img className={"h-64 -mt-16 object-cover object-center transform opacity-50"} src={tab.image || ''} alt={"Panel"} />
                             </div>
                             <div className="h1 text-white relative z-10">{t(tab?.name)}</div>
-                            <p className="pt-1 pb-6 block relative z-10 text-gray-300">
+                            <p className="pt-1 pb-6 block relative z-10 text-gray-300 truncate">
                                 {t(tab?.description)}
                             </p>
                             {/* Buttons */}
-                            <div className="flex flex-wrap xl:space-x-2 relative z-10">
+                            <div className="flex flex-wrap space-x-2 relative z-10">
                                 {tab?.modes?.map((item) => (
                                     <button key={item.name} onClick={item.onClick} className={`py-2 bg-gray-875 rounded-lg bg-opacity-70 hover:bg-gray-850 transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
                                         <div className={"flex justify-center px-3 text-white text-xs lg:text-sm uppercase font-bold tracking-tight"}>
-                                            <div className={"w-5 mt-px text-left"}>
+                                            <div className={"w-5 mt-px text-left lg:text-center 4xl:text-left"}>
                                                 <FontAwesomeIcon icon={item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
                                             </div>
-                                            <div className={"w-auto"}>
+                                            <div className={"lg:hidden 4xl:block w-auto"}>
                                                 {t(item.name)}
                                             </div>
                                         </div>

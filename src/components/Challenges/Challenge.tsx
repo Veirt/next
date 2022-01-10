@@ -34,27 +34,29 @@ const Challenge:FC<PlayerChallengeData> = (props) => {
 
     return (challenge[0] && mode[0]) ? (
         <div>
-            <div className="grid grid-cols-4 gap-4">
-                <div className="col-span-full xl:col-span-1 my-auto">
+            <div className="grid grid-cols-5 gap-4">
+                <div className="hidden 4xl:block col-span-full xl:col-span-1 my-auto">
                     <img src={`/challenges/${challenge[0].type}.png`} alt={challenge[0].text} className={"block mx-auto transform scale-challenge"} />
                 </div>
-                <div className="col-span-full xl:col-span-3">
+                <div className="col-span-full 4xl:col-span-4 my-auto">
                     <div className="h4 text-orange-400">{mode[0].modeName}</div>
                     <p className="pt-1 pb-4 block text-sm">
                         {challenge[0].text}
                     </p>
-                    <div className="flex flex-wrap xl:space-x-2">
-                        <div className={"w-auto py-1.5 px-4 bg-gray-825 text-center rounded-lg"}>
+                </div>
+                <div className="col-span-full">
+                    <div className="flex flex-wrap"> 
+                        <div className={"w-auto py-1.5 px-4 bg-gray-825 text-center rounded-lg mr-2"}>
                             <FontAwesomeIcon icon={faCoins} className={"text-yellow-400 mr-1"} />
                             {challenge[0].rewards?.currency.toLocaleString()}
                         </div>
-                        <div className={"w-auto py-1.5 px-4 bg-gray-825 text-center rounded-lg"}>
+                        <div className={"w-auto py-1.5 px-4 bg-gray-825 text-center rounded-lg mr-auto"}>
                             {value > challenge[0].value ? challenge[0].value.toLocaleString() : value.toLocaleString()}<span className={"text-white"}>/{challenge[0].value.toLocaleString()}</span>
                         </div>
                         <button type={"button"} className={`button small orange ${(!finished || finished === 2 || redeem) ? 'opacity-50 pointer-events-none' : 'opacity-100'} `} onClick={redeemChallenges}>
                             {(redeem || finished === 2) ? 'Redeemed' : 'Redeem'}
                         </button>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>

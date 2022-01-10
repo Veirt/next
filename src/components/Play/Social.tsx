@@ -12,12 +12,16 @@ const Social = () => {
         {
             image: '/assets/buttons/merchbutton.webp',
             href: 'https://store.keyma.sh/',
+        },
+        {
+            image: '/assets/buttons/githubbutton.webp',
+            href: 'https://github.com/keyma-sh/next',
         }
     ]
 
     return (
-        <div className="grid grid-cols-3 gap-4">
-            {socialItems.map((item, index) => (
+        <div className="grid grid-cols-1 pl-4 gap-2">
+            {socialItems.map((item, index) => ( 
                 <a href="{item.href}" className="hover:opacity-70 transition ease-in-out duration-300" target="_blank" rel="noopener noreferrer" key={index}>
                     <img src={item.image} alt="social" />
                 </a>

@@ -16,14 +16,14 @@ const TournamentList = (props: IProps) => {
     const { t } = useTranslation();
   
     return props.simpleLayout ? (
-        <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`flex flex-wrap px-8 py-4 bg-gray-800 hover:bg-gray-850 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
+        <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`block w-full p-4 bg-gray-800 hover:bg-gray-850 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
             <div className={"h4 text-orange-400 truncate"}>
                 {props.name}
             </div>
-            <p className="block pt-1 pb-4">
-                {!props.info
+            <p className="block pt-2 pb-8 text-sm">
+                {!props.info.length
                   ? 'No information available.'
-                  : `${props.info.split('.')[0]}.${props.info.split('.')[1]}...`
+                  : `${props.info.split('.')[0]}.${props.info.split('.')[1]}.`
                 }
             </p>
             <div className={"w-full"}>
