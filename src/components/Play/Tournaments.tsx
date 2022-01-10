@@ -1,5 +1,4 @@
 import {TournamentData} from "../../types.client.mongo";
-import Challenge from "../../components/Challenges/Challenge";
 import {useTranslation} from "next-i18next";
 import TournamentList from "../Tournament/TournamentList";
 

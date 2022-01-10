@@ -1,5 +1,4 @@
 import {PlayerTournamentData, TournamentData} from "../../types.client.mongo";
-import {useTranslation} from "next-i18next";
 import {faClock, faGlobe} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import ordinalSuffixOf from "../../utils/ordinalSuffixOf";
@@ -17,7 +16,6 @@ interface IProps {
 const ProfileTournaments = (props: IProps) => {
 
     const { data } = props;
-    const { t } = useTranslation();
 
     return (
         <div className="content-box">

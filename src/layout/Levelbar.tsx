@@ -23,7 +23,7 @@ const Levelbar = () => {
 
     const isNotSmallDevice = useMediaQuery({ query: '(min-width: 1224px)' })
 
-    const { sessionData, isGuest } = usePlayerContext();
+    const { sessionData } = usePlayerContext();
     const [ toggleSitebar, setToggleSitebar ] = useState(false);
     const [ smallDevice, setSmallDevice ] = useState<boolean>(false);
 

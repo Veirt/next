@@ -1,5 +1,4 @@
 import {useState, useEffect, useRef, useCallback} from 'react';
-import { useTranslation } from 'next-i18next';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../Config';
 import ComboBottom from "../../components/Advertisement/Combo/ComboBottom";
@@ -37,7 +36,6 @@ interface IProps {
 const Profile = ({ playerData, statisticData, chartData, rankedData, achievementsData, tournamentsData }: IProps) => {
 
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
-    const { t } = useTranslation();
     const { world } = useConfig();
 
     // Player data
