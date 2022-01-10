@@ -1,14 +1,14 @@
 .container {
   @apply
     px-10 w-full mx-auto max-w-screen-4xl;
+}
 
-  &-content {
-    @apply bg-gradient-to-r from-gray-800 to-gray-850;
-  }
+.container-small {
+  @apply px-10 w-full mx-auto max-w-screen-xl;
+}
 
-  &-content-solid {
-    @apply bg-gray-825;
-  }
+.container-game, .container-smaller {
+  @apply px-10 w-full mx-auto max-w-screen-lg;
 }
 
 .container-padding {
@@ -19,10 +19,10 @@
   @apply mt-16;
 }
 
-.container-small {
-  @apply px-10 w-full mx-auto max-w-screen-xl;
+.container-padding.container-content {
+  @apply my-8;
 }
 
-.container-game, .container-smaller {
-  @apply px-10 w-full mx-auto max-w-screen-lg;
+.container-margin.container-content {
+  @apply py-8;
 }

@@ -263,13 +263,13 @@ const Queue = (props: IProps) => {
             </div>
             <audio id="MatchFound" src="/audio/MatchFound.wav" crossOrigin="anonymous" preload="auto" />
 
-            <div className={"grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-12 gap-8 lg:gap-4 mb-8"}>
+            <div className={"grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-12 gap-8 lg:gap-4 mb-4 content-box"}>
                 {tabs.map((tab, index) => (
-                    <div key={index} className={"col-span-full lg:col-span-1 3xl:col-span-4"}>
+                    <div key={index} className={`col-span-full lg:col-span-1 3xl:col-span-4 ${(index !== (tabs.length - 1)) ? 'mr-8 pr-8 border-r-4 border-gray-800' : ''}`}>
                         {/* Flex / Icon */}
-                        <div className="content-box relative">
-                            <div className="absolute top-0 -right-2 z-0">
-                                <img className={"h-64 -mt-7 object-cover object-center transform opacity-50"} src={tab.image || ''} alt={"Panel"} />
+                        <div className="relative">
+                            <div className="absolute top-0 -right-8 z-0">
+                                <img className={"h-64 -mt-16 object-cover object-center transform opacity-50"} src={tab.image || ''} alt={"Panel"} />
                             </div>
                             <div className="h1 text-white relative z-10">{t(tab?.name)}</div>
                             <p className="pt-1 pb-6 block relative z-10 text-gray-300">

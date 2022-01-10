@@ -1,5 +1,5 @@
 const colors = require('tailwindcss/colors')
-  
+    
 module.exports = {
   mode: 'jit',  
   purge: {    
@@ -27,12 +27,12 @@ module.exports = {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px',
+      xl: '1280px', 
       '2xl': '1300px',
       '3xl': '1366px', 
       '4xl': '1600px', 
       '16-9': '1920px',
-    },
+    }, 
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -127,11 +127,32 @@ module.exports = {
       144: '36rem',
       148: '37rem',
       152: '38rem',
+      156: '39rem',
       160: '40rem',
+      164: '41rem',
       168: '42rem',
+      172: '43rem',
       176: '44rem',
+      180: '45rem',
       184: '46rem',
-      192: '48rem'
+      188: '47rem',
+      192: '48rem',
+      196: '49rem',
+      200: '50rem',
+      204: '51rem',
+      208: '52rem',
+      212: '53rem',
+      216: '54rem',
+      220: '55rem',
+      224: '56rem',
+      228: '57rem',
+      232: '58rem',
+      236: '59rem',
+      240: '60rem',
+      244: '61rem',
+      248: '62rem',
+      252: '63rem',
+      256: '64rem',
     },
     animation: {
       none: 'none',

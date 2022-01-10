@@ -16,40 +16,43 @@ const TournamentList = (props: IProps) => {
     const { t } = useTranslation();
   
     return props.simpleLayout ? (
-      <Link key={props.tournamentId}
-            to={`/competitions/${props.tournamentId}`}
-            className={`flex flex-wrap rounded shadow border-l-4 bg-gray-750 hover:bg-gray-775 transition ease-in-out duration-300 px-4 py-2 ${props.status ? props.status === 1 ? ' border-yellow-500 ' : ' border-red-500 ' : ' border-blue-500 ' }`}
-      >
-        <div className={"w-full text-sm uppercase text-white font-semibold tracking-wide truncate"}>
-          {props.name}
-        </div>
-        <div className={"w-full"}>
-          <div className={"flex text-xs text-gray-400 mt-1"}>
-            <div className={"uppercase px-1 bg-gray-750 text-orange-400 py-0.5"}>
-              <FontAwesomeIcon icon={faUserFriends} className={"mr-1"} />
-              {props.totalPlayers.toLocaleString()}
+        <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`flex flex-wrap px-8 py-4 bg-gray-800 hover:bg-gray-850 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
+            <div className={"h4 text-orange-400 truncate"}>
+                {props.name}
             </div>
-            <div className={"uppercase px-1.5 bg-gray-750 border-l border-gray-775 py-0.5"}>
-              <FontAwesomeIcon icon={faGlobe} className={"mr-1"} />
-              {props.locale}
-            </div>
-            <div className={"uppercase px-1.5 bg-gray-750 border-l border-gray-775 py-0.5"}>
-              <FontAwesomeIcon icon={faClock} className={"mr-1"} />
-              {props.status === 0 &&
-              `${t('page.tournaments.starts')} ${moment.unix(props.startTime).fromNow()}`}
-              {props.status === 1 &&
-              `${t('page.tournaments.ends')} ${moment.unix(props.endTime).fromNow()}`}
-              {props.status === 2 && `${t('page.tournaments.finished')}`}
-            </div>
-            {props.prizing !== 0 && (
-                <div className={"uppercase px-1.5 bg-gray-750 border-l border-gray-775 text-green-500 py-0.5"}>
-                  <FontAwesomeIcon icon={faDollarSign} className={"mr-1"} />
-                  {props.prizing >= 25 ? props.prizing.toLocaleString() : `< 25`}
+            <p className="block pt-1 pb-4">
+                {!props.info
+                  ? 'No information available.'
+                  : `${props.info.split('.')[0]}.${props.info.split('.')[1]}...`
+                }
+            </p>
+            <div className={"w-full"}>
+                <div className={"flex space-x-2 text-sm"}>
+                    <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
+                        <FontAwesomeIcon icon={faUserFriends} className={"mr-1 text-orange-400"} />
+                        {props.totalPlayers.toLocaleString()}
+                    </div>
+                    <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
+                        <FontAwesomeIcon icon={faGlobe} className={"mr-1 text-orange-400"} />
+                        {props.locale}
+                    </div>
+                    <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
+                        <FontAwesomeIcon icon={faClock} className={"mr-1 text-orange-400"} />
+                        {props.status === 0 &&
+                        `${t('page.tournaments.starts')} ${moment.unix(props.startTime).fromNow()}`}
+                        {props.status === 1 &&
+                        `${t('page.tournaments.ends')} ${moment.unix(props.endTime).fromNow()}`}
+                        {props.status === 2 && `${t('page.tournaments.finished')}`}
+                    </div>
+                    {props.prizing !== 0 && (
+                        <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
+                          <FontAwesomeIcon icon={faDollarSign} className={"mr-1"} />
+                          {props.prizing >= 25 ? props.prizing.toLocaleString() : `< 25`}
+                        </div>
+                    )}
                 </div>
-            )}
-          </div>
-        </div>
-      </Link>
+            </div>
+        </Link>
     ) : (
         <Link to={`/competitions/${props.tournamentId}`} className="flex leaderboards--row hover:opacity-80 transition ease-in-out duration-300 py-2">
           <div className="hidden md:block w-8 text-center font-bold"></div>

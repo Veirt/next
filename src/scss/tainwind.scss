@@ -16,12 +16,13 @@ html {
 }
 
 body {
-  background: url('/assets/blur.webp') top center fixed;
+  background: url('/assets/v2bg.png') top center;
   background-size: cover;
   background-repeat: no-repeat;
 
   /* Use BG Color: 1E1E21 w/95% opacity */
-  @apply bg-gray-850 text-white;
+  background-color: #252525;
+  @apply text-white;
 }
 
 ::-webkit-scrollbar {

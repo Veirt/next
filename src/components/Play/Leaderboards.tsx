@@ -17,7 +17,7 @@ const Leaderboards = () => {
     const getResults = useCallback(() => {
       axios.get(`${Config.apiUrl}/leaderboards/recent?worldId=${world}`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token, })
           .then(response => {
-              setLeaderboardsData(response.data.slice(0, 10));
+              setLeaderboardsData(response.data.slice(0, 20));
               setLeaderboardsLoaded(true);
           })
           .catch(e => console.log(e));

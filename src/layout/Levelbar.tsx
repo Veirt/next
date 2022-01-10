@@ -169,19 +169,12 @@ const Levelbar = () => {
                         <Link to={"/play"} className={`${navCSS} ${router.asPath.startsWith("/play") && activeCSS}`}>
                             {t('component.navbar.play')}
                         </Link>
-                        {isGuest && (
-                          <Link to={"/about/us"} className={`${navCSS} ${router.asPath.startsWith("/about/us") && activeCSS}`}>
-                                {t('component.bottombar.about')}
-                          </Link>
-                        )}
+                        <Link to={"/about/us"} className={`${navCSS} ${router.asPath.startsWith("/about/us") && activeCSS}`}>
+                            {t('component.bottombar.about')}
+                        </Link>
                         <Link to={"/news"} className={`${navCSS} ${router.asPath.startsWith("/news") && activeCSS}`}>
                             {t('component.navbar.news')}
                         </Link>
-                        {!isGuest && (
-                            <Link to={"/challenges"} className={`${navCSS} ${router.asPath.startsWith("/challenges") && activeCSS}`}>
-                                {t('component.navbar.challenges')}
-                            </Link>
-                        )}
                         <Link to={"/leaderboards"} className={`${navCSS} ${router.asPath.startsWith("/leaderboards") && activeCSS}`}>
                             {t('component.navbar.leaders')}
                         </Link>

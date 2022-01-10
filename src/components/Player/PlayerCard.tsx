@@ -38,7 +38,7 @@ interface IPropsWithPlayer extends PlayerExtendedData {
 const PlayerCard:FC<IProps | IPropsWithPlayer> = (props) => {
     const { cardImage, cardBorder, className, name, discriminator, draggable, avatarSrc, verified, patreon, staff, noBorder, noImage, useTransparent, isLeaderboard, useSmall, children } = props;
 
-    const useImageCSS = isLeaderboard ? 'hidden md:block w-9' : 'hidden md:block w-16';
+    const useImageCSS = isLeaderboard ? 'hidden md:block w-8' : 'hidden md:block w-16';
 
     return (
         <div style={noImage ? {} : {
@@ -50,7 +50,7 @@ const PlayerCard:FC<IProps | IPropsWithPlayer> = (props) => {
         }} className={`${className} ${isLeaderboard ? 'px-4 py-1' : ''}`}>
             <div className={"flex"} draggable={draggable ? 'true' : 'false'}>
                 <Link to={`/profile/${name}-${discriminator}`} className={useImageCSS}>
-                    <PlayerAvatar source={avatarSrc} border={noBorder ? 0 : 2} color={cardBorder} />
+                    <PlayerAvatar source={avatarSrc} border={(noBorder) ? 1 : 2} color={cardBorder} />
                 </Link>
                 <div className={`w-full my-auto pl-2.5`}>
                     <Link to={`/profile/${name}-${discriminator}`}>
