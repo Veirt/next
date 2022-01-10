@@ -17,7 +17,7 @@ const Leaderboards = () => {
     const getResults = useCallback(() => {
       axios.get(`${Config.apiUrl}/leaderboards/recent?worldId=${world}`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token, })
           .then(response => {
-              setLeaderboardsData(response.data.slice(0, 20));
+              setLeaderboardsData(response.data.slice(0, 10));
               setLeaderboardsLoaded(true);
           })
           .catch(e => console.log(e));
@@ -33,9 +33,11 @@ const Leaderboards = () => {
         <>
             {(leaderboardsLoaded && leaderboardsData.length !== 0) && (
                 <>
-                    <div className="h1 mb-6">{t('page.home.matches_high')}</div>
+                    <div className="flex justify-between">
+                        <div className="h1 mb-6">{t('page.home.matches_high')}</div>
+                        <Countdown minuteSeconds={60} onCountdownFinish={getResults} />
+                    </div>
                     <LeaderboardPlayerMatch data={leaderboardsData} skip={0} disableTrophy />
-                    <Countdown minuteSeconds={60} onCountdownFinish={getResults} />
                 </>
             )}
         </>

@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors')
     
 module.exports = {
   mode: 'jit',  
-  purge: {    
+  purge: {       
     enabled: true,  
     content: [ 
       './src/components/**/**/*.{js,jsx,ts,tsx}',
@@ -117,6 +117,9 @@ module.exports = {
       72: '18rem',
       76: '19rem',
       80: '20rem',
+      84: '21rem',
+      88: '22rem',
+      92: '23rem',
       96: '24rem',
       112: '28rem',
       120: '30rem',

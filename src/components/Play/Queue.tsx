@@ -4,22 +4,18 @@ import {faBook, faQuoteRight, faCircleNotch, faBahai, faQuestionCircle, faTrophy
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
-    faAngleDoubleLeft, faClock,
-    faList, faLock,
+    faList,
     faPlusSquare,
     faRandom,
-    faUserFriends,
 } from '@fortawesome/free-solid-svg-icons';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../Config';
 import LobbiesRow from '../Custom/LobbiesRow';
-import {LobbyData, PlayerLevelData, TournamentData} from "../../types.client.mongo";
+import {LobbyData, PlayerLevelData} from "../../types.client.mongo";
 import {usePlayerContext} from "../../contexts/Player.context";
 import useCSRF from "../../hooks/useCSRF";
 import useConfig from "../../hooks/useConfig";
 import { toast } from 'react-toastify';
-import moment from "moment";
-import Link from '../Uncategorized/Link';
 import Redirect from '../Uncategorized/Redirect';
 import Modal from '../Uncategorized/Modal';
 
@@ -224,25 +220,6 @@ const Queue = (props: IProps) => {
             ],
         },
     ];
-
-    const socialItems = [
-        {
-            image: '/assets/buttons/discordbutton.webp',
-            href: 'https://discord.gg/df4paUq',
-        },
-        {
-            image: '/assets/buttons/patreonbutton.webp',
-            href: 'https://patreon.com/KeymashGame',
-        },
-        {
-            image: '/assets/buttons/merchbutton.webp',
-            href: 'https://store.keyma.sh/',
-        },
-        {
-            image: '/assets/buttons/githubbutton.webp',
-            href: 'https://github.com/keyma-sh/next',
-        }
-    ]
 
     return (
         <>

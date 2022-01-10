@@ -1,10 +1,6 @@
-import {useCallback, useEffect, useRef, useState} from "react";
 import {PlayerChallengeData} from "../../types.client.mongo";
-import axios, {CancelTokenSource} from "axios";
-import Config from "../../Config";
 import Challenge from "../../components/Challenges/Challenge";
 import {useTranslation} from "next-i18next";
-import {toast} from "react-toastify";
 
 interface IProps {
     data: PlayerChallengeData[];

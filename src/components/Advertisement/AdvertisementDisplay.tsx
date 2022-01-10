@@ -15,13 +15,13 @@ const AdvertisementDisplay = (props: IProps) => {
 
     let useHeight = 'h-64';
     if (type === 'square') 
-        useHeight = 'h-80';
+        useHeight = 'h-72';
     else if (type === 'sidebar')
         useHeight = 'h-192';
     else if (type === 'leaderboard')
-        useHeight = 'h-76';
-    else if (type === 'leaderboard-small')
         useHeight = 'h-48';
+    else if (type === 'leaderboard-small')
+        useHeight = 'h-32';
 
     return (sessionData && !sessionData.patreon) ? (
         <div className={`content-box w-full flex ${useHeight} ${className}`} style={{ paddingTop: 0, paddingBottom: 0 }}>
