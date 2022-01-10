@@ -138,7 +138,7 @@ const Levelbar = () => {
                     <Link to={"/"} className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
                         <FontAwesomeIcon icon={faHome} className={"text-2xl"} />
                     </Link>
-                    <Link to={"/play"} className={`${mobileNavCSS} ${router.asPath.startsWith("/play") && mobileActiveCSS} text-center text-xxs`}>
+                    <Link to={"/"} className={`${mobileNavCSS} ${router.asPath === "/play" && mobileActiveCSS} text-center text-xxs`}>
                         <FontAwesomeIcon icon={faGamepad} className={"text-2xl"} />
                     </Link>
                     <Link to={"/news"} className={`${mobileNavCSS} ${router.asPath.startsWith("/news") && mobileActiveCSS} text-center text-xxs`}>
@@ -154,7 +154,7 @@ const Levelbar = () => {
             </>
         ) : (
             <>
-                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gray-750 bg-opacity-80 py-1 shadow-lg transition-all`} style={{ backdropFilter: 'blur(8px)' }}>
+                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gray-750 bg-opacity-80 py-1 shadow-lg transition-all`} style={{ backdropFilter: 'blur(5px)' }}>
                     <div className={"container flex"}>
                         <div className={"flex space-x-2"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
@@ -166,7 +166,7 @@ const Levelbar = () => {
                                 </Link>
                             </div>
                         </div>
-                        <Link to={"/play"} className={`${navCSS} ${router.asPath.startsWith("/play") && activeCSS}`}>
+                        <Link to={"/"} className={`${navCSS} ${router.asPath === "/" && activeCSS}`}>
                             {t('component.navbar.play')}
                         </Link>
                         <Link to={"/about/us"} className={`${navCSS} ${router.asPath.startsWith("/about/us") && activeCSS}`}>
@@ -181,6 +181,11 @@ const Levelbar = () => {
                         <Link to={"/competitions"} className={`${navCSS} ${router.asPath.startsWith("/competitions") && activeCSS}`}>
                             {t('component.navbar.tournaments')}
                         </Link>
+                        {(sessionData && sessionData.authName !== 'Guest') && (
+                            <Link to={"/shop"} className={`${navCSS} ${router.asPath.startsWith("/competitions") && activeCSS}`}>
+                                Item {t('component.navbar.shop')}
+                            </Link>
+                        )}
                         {sessionData && (
                             <div className={"ml-auto my-auto w-80"} >
                                 <div className={"flex justify-end py-1"}>

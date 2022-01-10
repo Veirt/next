@@ -11,6 +11,7 @@ import News from "../../components/Play/News";
 import Queue from "../../components/Play/Queue";
 import Social from "../../components/Play/Social";
 import Tournaments from "../../components/Play/Tournaments";
+import Link from "../../components/Uncategorized/Link";
 import Config from "../../Config";
 import { Meta } from "../../layout/Meta";
 import ConfigService from "../../services/ConfigService";
@@ -25,7 +26,7 @@ interface IProps {
 }
 
 const Play = (props: IProps) => {
-    const { mode, newsData, challengesData, tournamentsData } = props;
+    const { mode, challengesData, tournamentsData } = props;
 
     return (
         <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={true}>

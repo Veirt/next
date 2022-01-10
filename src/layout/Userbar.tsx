@@ -95,13 +95,6 @@ const Userbar = (props: IProps) => {
             isAuth: true
         },
         {
-            title: 'component.navbar.shop',
-            icon: { name: faShoppingCart },
-            target: '_self',
-            route: '/shop',
-            isAuth: true,
-        },
-        {
             title: 'component.navbar.settings',
             icon: { name: faCog },
             target: '_self',
@@ -167,7 +160,7 @@ const Userbar = (props: IProps) => {
                                   </button>
                                   {item.title === 'component.navbar.notifications' && (
                                         <div className={`${toggleNotifications ? 'is-active' : 'is-not'} dropdown dropdown-2xl w-128 shadow-lg right-0`}>
-                                            <div className={"bg-gray-700 rounded-t-lg shadow flex py-2 px-4"}>
+                                            <div className={"bg-gray-700 rounded-t-2xl shadow flex py-2 px-4"}>
                                                 <div className={"w-auto mr-auto"}>
                                                     <span className={"text-base  text-white uppercase font-semibold"}>
                                                         {t('component.navbar.notifications')}
