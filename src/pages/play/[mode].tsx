@@ -32,9 +32,6 @@ const Play = (props: IProps) => {
         <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={true}>
             <div className="container container-margin container-content">
                 <Queue mode={mode}/>
-                <AdvertisementDisplay type="leaderboard-small" className="mb-4">
-                    <DesktopTop />
-                </AdvertisementDisplay>
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
                     {(challengesData && challengesData.length !== 0) ? (
                         <div className="content-box 4xl:h-124">

@@ -489,21 +489,21 @@ const MatchEnd = (props: IProps) => {
 
                 <div className="flex mt-3 lg:mt-6">
                   {!embed ? (
-                    <a href={leaveUrl} className="btn btn--blue btn--border-r">
-                      <FontAwesomeIcon className="mr-1" icon={faAngleDoubleLeft} />
-                      {t('button.leave')} {embed && 'Lobby'}
-                    </a>
+                      <a href={leaveUrl} className="button small blue">
+                          <FontAwesomeIcon className="mr-1" icon={faAngleDoubleLeft} />
+                          {t('button.leave')} {embed && 'Lobby'}
+                      </a>
                   ) : ''}
-                  {tournamentId && <a href={leaveUrl} className="btn btn--orange btn--border-x mx-auto">{t('button.ladder')}</a>}
+                  {tournamentId && <a href={leaveUrl} className="button small orange">{t('button.ladder')}</a>}
                   {!embed ? (
-                      <a href={restartUrl} className={`${!tournamentId ? 'ml-auto' : ''} btn btn--red`} >
+                      <a href={restartUrl} className={`${!tournamentId ? 'ml-auto' : ''} button small red`} >
                         {t(!isRanked ? 'button.newgame' : 'component.navbar.play' )}
                         <FontAwesomeIcon className="ml-1" icon={faAngleDoubleRight} />
                       </a>
                   ) : (
                       <>
                         {embedOwner ? (
-                            <button type={"button"} onClick={embedClose} className={"btn btn--red ml-auto"}>
+                            <button type={"button"} onClick={embedClose} className={"button small red ml-auto"}>
                               End Game
                             </button>
                         ) : (
