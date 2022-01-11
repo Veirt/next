@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from "react";
+import { ReactNode, useLayoutEffect, useRef, useState } from "react";
 import { usePlayerContext } from "../../contexts/Player.context";
 
 interface IProps {
@@ -12,7 +12,15 @@ const AdvertisementDisplay = (props: IProps) => {
     const { className, children } = props;
     const adRef = useRef<HTMLDivElement | null>(null);
 
+    const [ height, setHeight ] = useState<number>(0);
+
     const { sessionData } = usePlayerContext();
+
+    useLayoutEffect(() => {
+        console.log('Ad Ref Change');
+        if (adRef.current) 
+            setHeight(adRef.current.offsetHeight + 20);
+    });
 
     /*
     let useHeight = 'h-64';
@@ -27,7 +35,7 @@ const AdvertisementDisplay = (props: IProps) => {
     */
 
     return (sessionData && !sessionData.patreon) ? (
-        <div className={`content-box w-full flex ${className}`} style={{ height: `${(adRef.current?.offsetHeight || 0) + 20}px` }}>
+        <div className={`content-box w-full flex ${className}`} style={{ paddingTop: 0, paddingBottom: 0, height: `${height + 20}px` }}>
             <div className={`w-full flex justify-center items-center`}>
                 <div ref={adRef}>
                     {children}
