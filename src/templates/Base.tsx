@@ -4,6 +4,7 @@ import { GlobalHotKeys } from 'react-hotkeys';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
 import SidebarLong from '../components/Advertisement/SidebarLong';
 import SidebarLongTwo from '../components/Advertisement/SidebarLongTwo';
+import SidebarSquare from '../components/Advertisement/SidebarSquare';
 import LoadContent from '../components/LoadContent';
 import Redirect from '../components/Uncategorized/Redirect';
 import useConfig from '../hooks/useConfig';
@@ -84,11 +85,11 @@ const Base = (props: IMainProps) => {
                     <PlaywireContainer {...props.ads} />
                     <>{props.children}</>
 
-                    <div className="hidden 2xl:block absolute top-20 left-5">
-                        <SidebarLong />
+                    <div className="hidden 3xl:block absolute top-20 left-0">
+                        <SidebarSquare key={"left"} />
                     </div>
-                    <div className="hidden 2xl:block absolute top-20 right-5">
-                        <SidebarLongTwo />
+                    <div className="hidden 3xl:block absolute top-20 right-0">
+                        <SidebarSquare key={"right"} />
                     </div>
                 </LoadContent>
             </main>
