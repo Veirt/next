@@ -2,8 +2,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { GlobalHotKeys } from 'react-hotkeys';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
-import SidebarLong from '../components/Advertisement/SidebarLong';
-import SidebarLongTwo from '../components/Advertisement/SidebarLongTwo';
 import SidebarSquare from '../components/Advertisement/SidebarSquare';
 import LoadContent from '../components/LoadContent';
 import Redirect from '../components/Uncategorized/Redirect';
