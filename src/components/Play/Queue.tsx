@@ -228,9 +228,11 @@ const Queue = (props: IProps) => {
             </div>
             <audio id="MatchFound" src="/audio/MatchFound.wav" crossOrigin="anonymous" preload="auto" />
 
-            <div className={"grid grid-cols-1 lg:grid-cols-3 3xl:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box"}>
+            <div className={"grid grid-cols-1 lg:grid-cols-3 3xl:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box"} style={{ paddingLeft: 0, paddingRight: 0 }}>
                 {tabs.map((tab, index) => (
-                    <div key={index} className={`col-span-full lg:col-span-1 3xl:col-span-1 ${(index !== (tabs.length - 1)) ? '2xl:mr-8 2xl:pr-8 2xl:border-r-4 2xl:border-gray-800' : ''}`}>
+                    <div key={index} className={`relative col-span-full lg:col-span-1 3xl:col-span-1 px-8`}>
+                        {/* Custom Border */}
+                        {index !== 0 && <div className="h-full border-r-4 border-gray-800 absolute -left-2 z-20" />}
                         {/* Flex / Icon */}
                         <div className="relative">
                             <div className="absolute top-0 -right-8 z-0">
