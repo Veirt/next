@@ -74,13 +74,13 @@ const Play = (props: IProps) => {
 export async function getServerSideProps({ req, params }: GetServerSidePropsContext) {
     const getTournaments = async () => {
         const response = await axios.get(`${Config.apiUrl}/tournaments/list?locale=en&limit=3`).catch((e) => console.log(e))
-        if (response) return response.data.data;
+        if (response && response.data) return response.data?.data || [];
         else return [];
     };
 
     const getNews = async () => {
         const response = await axios.get(`${Config.apiUrl}/newsletter/list?limit=2`).catch((e) => console.log(e))
-        if (response) return response.data.data;
+        if (response && response.data) return response.data?.data || [];
         else return [];
     };
 
@@ -89,7 +89,7 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
             withCredentials: true,
             headers: { cookie: req.headers.cookie }
         }).catch((e) => console.log(e))
-        if (response && !response.data.error) return response.data.splice(0, 2);
+        if (response && !response.data.error) return (response.data || []).splice(0, 2);
         else return [];
     };
 
