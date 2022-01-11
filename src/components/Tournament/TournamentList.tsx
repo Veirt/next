@@ -21,7 +21,7 @@ const TournamentList = (props: IProps) => {
                 {props.name.split('(')[0]}
             </div>
             <p className="block pt-2 pb-8 text-sm">
-                {!props.info.length
+                {(!props.info || props.info.length)
                   ? 'No information available.'
                   : `${props.info.split('.')[0]}.${props.info.split('.')[1]}.`
                 }
