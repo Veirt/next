@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faCircle, faClock, faGlobe, faUserFriends} from '@fortawesome/free-solid-svg-icons';
+import {faCircle, faClock, faUserFriends} from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'next-i18next';
 import {faDollarSign} from "@fortawesome/free-solid-svg-icons";
 import {TournamentData} from "../../types.client.mongo";
@@ -22,7 +22,7 @@ const TournamentList = (props: IProps) => {
             </div>
             <p className="block pt-2 pb-8 text-sm">
                 {(!props.info || props.info.length)
-                  ? 'No information available.'
+                  ? 'No information is currently available at this time. Please check back later!'
                   : `${props.info.split('.')[0]}.${props.info.split('.')[1]}.`
                 }
             </p>
@@ -31,10 +31,6 @@ const TournamentList = (props: IProps) => {
                     <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
                         <FontAwesomeIcon icon={faUserFriends} className={"mr-1 text-orange-400"} />
                         {props.totalPlayers.toLocaleString()}
-                    </div>
-                    <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
-                        <FontAwesomeIcon icon={faGlobe} className={"mr-1 text-orange-400"} />
-                        {props.locale}
                     </div>
                     <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
                         <FontAwesomeIcon icon={faClock} className={"mr-1 text-orange-400"} />

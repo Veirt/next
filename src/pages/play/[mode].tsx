@@ -7,6 +7,7 @@ import React from "react";
 import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
 import DesktopDynamicFooter from "../../components/Advertisement/DesktopDynamicFooter";
 import DesktopDynamicTop from "../../components/Advertisement/DesktopDynamicTop";
+import SidebarLong from "../../components/Advertisement/SidebarLong";
 import Challenges from "../../components/Play/Challenges";
 import Guest from "../../components/Play/Guest";
 import Leaderboards from "../../components/Play/Leaderboards";
@@ -32,6 +33,14 @@ const Play = (props: IProps) => {
 
     return (
         <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={loaded}>
+            
+            <div className="absolute left-2 top-15">
+                <SidebarLong />
+            </div>
+            <div className="absolute right-2 top-15">
+                <SidebarLong />
+            </div>
+
             <div className="container container-margin container-content">
                 <div className="mb-4">
                     <FontAwesomeIcon icon={faBullhorn} className="mr-1 text-yellow-400" />
@@ -73,8 +82,10 @@ const Play = (props: IProps) => {
 }
 
 export async function getServerSideProps({ req, params }: GetServerSidePropsContext) {
+    const getLocale = ConfigService.getServerSideOption('locale', req.headers.cookie || '');
+
     const getTournaments = async () => {
-        const response = await axios.get(`${Config.apiUrl}/tournaments/list?locale=en&limit=3`).catch((e) => console.log(e))
+        const response = await axios.get(`${Config.apiUrl}/tournaments/list?locale=${getLocale}&limit=3`).catch((e) => console.log(e))
         if (response && response.data) return response.data?.data || [];
         else return [];
     };
@@ -95,8 +106,9 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
     };
 
     return {
+        
         props: {
-            ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
+            ...(await serverSideTranslations(getLocale)),
             newsData: await getNews() || [], 
             tournamentsData: await getTournaments() || [], 
             challengesData: await getPlayerChallenges() || [], 

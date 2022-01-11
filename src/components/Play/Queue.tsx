@@ -1,6 +1,6 @@
 import {MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
 import { useTranslation } from 'next-i18next';
-import {faBook, faQuoteRight, faCircleNotch, faBahai, faQuestionCircle, faTrophy} from '@fortawesome/free-solid-svg-icons';
+import {faBook, faQuoteRight, faCircleNotch, faBahai, faTrophy} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -200,18 +200,6 @@ const Queue = (props: IProps) => {
                     },
                 },
                 {
-                    name: 'page.queue.ranked.how',
-                    icon: faQuestionCircle,
-                    textType: 2,
-                    color: 'text-red-500',
-                    disabled: {
-                        level: 100000000,
-                        isGuest: false
-                    },
-                    onClick: () => false,
-                },
-
-                {
                     name: 'component.navbar.leaders',
                     icon: faTrophy,
                     color: 'text-yellow-400',
@@ -253,10 +241,10 @@ const Queue = (props: IProps) => {
                                 {t(tab?.description)}
                             </p>
                             {/* Buttons */}
-                            <div className="flex flex-wrap space-x-2 relative z-10">
+                            <div className="flex flex-wrap space-x-1 relative z-10">
                                 {tab?.modes?.map((item) => (
-                                    <button key={item.name} onClick={item.onClick} className={`py-2 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
-                                        <div className={"flex justify-center px-3 text-white text-xs lg:text-sm uppercase font-bold tracking-tight"}>
+                                    <button key={item.name} onClick={item.onClick} className={`py-1.5 px-3 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
+                                        <div className={"flex justify-center text-white text-xs lg:text-sm uppercase font-bold tracking-tight"}>
                                             <div className={"w-5 mt-px text-left lg:text-center 4xl:text-left"}>
                                                 <FontAwesomeIcon icon={item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
                                             </div>

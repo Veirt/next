@@ -30,7 +30,7 @@ module.exports = {
       xl: '1280px', 
       '2xl': '1300px',
       '3xl': '1366px', 
-      '4xl': '1420px', 
+      '4xl': '1390px', 
       '16-9': '1920px',
     }, 
     colors: {
