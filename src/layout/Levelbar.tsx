@@ -179,7 +179,7 @@ const Levelbar = () => {
                             {t('component.navbar.tournaments')}
                         </Link>
                         {(sessionData && sessionData.authName !== 'Guest') && (
-                            <Link to={"/shop"} className={`${navCSS} ${router.asPath.startsWith("/competitions") && activeCSS}`}>
+                            <Link to={"/shop"} className={`${navCSS} ${router.asPath.startsWith("/shop") && activeCSS}`}>
                                 Item {t('component.navbar.shop')}
                             </Link>
                         )}

@@ -3,6 +3,7 @@ import { GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
+import DesktopDynamicFooter from "../../components/Advertisement/DesktopDynamicFooter";
 import DesktopDynamicTop from "../../components/Advertisement/DesktopDynamicTop";
 import DesktopTop from "../../components/Advertisement/DesktopTop";
 import SidebarDynamicLong from "../../components/Advertisement/SidebarDynamicLong";
@@ -34,38 +35,32 @@ const Play = (props: IProps) => {
                 <Queue mode={mode}/>
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
                     {(challengesData && challengesData.length !== 0) ? (
-                        <div className="content-box 4xl:h-124">
+                        <div className="content-box 4xl:h-136">
                             <Challenges data={challengesData} />
                         </div>
                     ) : (
-                        <div className="content-box 4xl:h-124">
+                        <div className="content-box 4xl:h-136">
                             <Guest />
                         </div>
                     )}
                     
-                    <div className="content-box 4xl:h-124">
+                    <div className="content-box 4xl:h-136">
                         <Tournaments data={tournamentsData} />
                     </div>
 
-                    <div className="content-box 4xl:h-124">
+                    <div className="content-box 4xl:h-136">
                         <Social />
                     </div>
                 </div>
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">
                     <DesktopDynamicTop />
                 </AdvertisementDisplay>
-                <div className="grid grid-cols-1 lg:grid-cols-5 xl:grid-cols-3 gap-4">
-                    <div className="lg:col-span-3 xl:col-span-2">
-                        <div className="content-box 4xl:h-212 mb-4">
-                            <Leaderboards />
-                        </div>
-                    </div>
-                    <div className="col-span-full lg:col-span-2 xl:col-span-1">
-                        <AdvertisementDisplay type="sidebar" className="mb-4">
-                            <SidebarDynamicLong />
-                        </AdvertisementDisplay>
-                    </div>
+                <div className="content-box 4xl:h-212 mb-4">
+                    <Leaderboards />
                 </div>
+                <AdvertisementDisplay type="leaderboard-small" className="mb-4">
+                    <DesktopDynamicFooter />
+                </AdvertisementDisplay>
             </div>
         </Base>
     );

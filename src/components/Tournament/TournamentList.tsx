@@ -16,9 +16,9 @@ const TournamentList = (props: IProps) => {
     const { t } = useTranslation();
   
     return props.simpleLayout ? (
-        <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`block w-full p-4 bg-gray-800 hover:bg-gray-850 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
+        <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`block w-full p-4 bg-gray-800 hover:bg-gray-825 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
             <div className={"h4 text-orange-400 truncate"}>
-                {props.name}
+                {props.name.split('(')[0]}
             </div>
             <p className="block pt-2 pb-8 text-sm">
                 {!props.info.length
@@ -41,7 +41,7 @@ const TournamentList = (props: IProps) => {
                         {props.status === 0 &&
                         `${t('page.tournaments.starts')} ${moment.unix(props.startTime).fromNow()}`}
                         {props.status === 1 &&
-                        `${t('page.tournaments.ends')} ${moment.unix(props.endTime).fromNow()}`}
+                        `${t('page.tournaments.ends')} ${moment.unix(props.endTime).fromNow()}`} 
                         {props.status === 2 && `${t('page.tournaments.finished')}`}
                     </div>
                     {props.prizing !== 0 && (

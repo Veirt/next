@@ -9,12 +9,9 @@
   &--container {
   }
   &--head {
-    @apply text-base uppercase font-medium text-white tracking-wider mb-2 bg-gray-700 opacity-80 shadow-md bg-opacity-90 text-gray-400 shadow-md py-1 rounded-xl;
+    @apply text-base uppercase font-medium text-white tracking-wider mb-2 bg-gray-900 bg-opacity-60 shadow-md text-orange-400 shadow-md py-1 rounded-xl;
   }
   &--row {
-    @apply text-gray-200 shadow-lg text-sm border-gray-750 bg-gray-700 rounded-xl mb-2 shadow-md;
+    @apply text-gray-200 text-sm bg-gray-800 rounded-xl mb-2;
   }
-}
-
-@media (prefers-color-scheme: light) {
 }
