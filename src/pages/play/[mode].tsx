@@ -7,8 +7,6 @@ import React from "react";
 import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
 import DesktopDynamicFooter from "../../components/Advertisement/DesktopDynamicFooter";
 import DesktopDynamicTop from "../../components/Advertisement/DesktopDynamicTop";
-import DesktopTop from "../../components/Advertisement/DesktopTop";
-import SidebarDynamicLong from "../../components/Advertisement/SidebarDynamicLong";
 import Challenges from "../../components/Play/Challenges";
 import Guest from "../../components/Play/Guest";
 import Leaderboards from "../../components/Play/Leaderboards";
@@ -34,7 +32,7 @@ const Play = (props: IProps) => {
     return (
         <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={true}>
             <div className="container container-margin container-content">
-                <div className="text-base mb-4">
+                <div className="mb-4">
                     <FontAwesomeIcon icon={faBullhorn} className="mr-1 text-yellow-400" />
                     <span className="font-semibold mr-2">January 1, 2022:</span>
                     Ranked Matchmaking's Future
