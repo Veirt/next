@@ -2,7 +2,6 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { GlobalHotKeys } from 'react-hotkeys';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
-import SidebarSquare from '../components/Advertisement/SidebarSquare';
 import LoadContent from '../components/LoadContent';
 import Redirect from '../components/Uncategorized/Redirect';
 import useConfig from '../hooks/useConfig';
@@ -82,13 +81,6 @@ const Base = (props: IMainProps) => {
                 <LoadContent isLoaded={loaded}>
                     <PlaywireContainer {...props.ads} />
                     <>{props.children}</>
-
-                    <div className="hidden 3xl:block absolute top-20 left-0">
-                        <SidebarSquare key={"left"} />
-                    </div>
-                    <div className="hidden 3xl:block absolute top-20 right-0">
-                        <SidebarSquare key={"right"} />
-                    </div>
                 </LoadContent>
             </main>
         </>
