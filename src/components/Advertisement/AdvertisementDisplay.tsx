@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { usePlayerContext } from "../../contexts/Player.context";
 
 interface IProps {
@@ -17,7 +17,7 @@ const AdvertisementDisplay = (props: IProps) => {
     const { sessionData } = usePlayerContext();
 
 
-    const updateAdHeight = () => {
+    const updateAdHeight = useCallback(() => {
         console.log('Ad Height Updated');
         if (height <= 20) 
             setHeight((adRef.current?.offsetHeight || 0) + 20);
@@ -27,7 +27,7 @@ const AdvertisementDisplay = (props: IProps) => {
                 updateTimer.current = null; 
             }
         }
-    };
+    }, [ height, adRef ]);
 
     useEffect(() => {
         updateTimer.current = setInterval(updateAdHeight, 250);
