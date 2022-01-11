@@ -24,13 +24,14 @@ interface IProps {
     newsData: NewsletterData[];
     tournamentsData: TournamentData[];
     challengesData: PlayerChallengeData[];
+    loaded: boolean;
 }
 
 const Play = (props: IProps) => {
-    const { mode, challengesData, tournamentsData } = props;
+    const { mode, challengesData, tournamentsData, loaded } = props;
 
     return (
-        <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={true}>
+        <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={loaded}>
             <div className="container container-margin container-content">
                 <div className="mb-4">
                     <FontAwesomeIcon icon={faBullhorn} className="mr-1 text-yellow-400" />
@@ -100,6 +101,7 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
             tournamentsData: await getTournaments() || [], 
             challengesData: await getPlayerChallenges() || [], 
             mode: params?.mode || '',
+            loaded: true
         },
     };
 }
