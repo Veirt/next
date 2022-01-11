@@ -27,7 +27,7 @@ const AdvertisementDisplay = (props: IProps) => {
                 updateTimer.current = null; 
             }
         }
-    }, [ height, adRef ]);
+    }, [ height ]);
 
     useEffect(() => {
         updateTimer.current = setInterval(updateAdHeight, 250);
