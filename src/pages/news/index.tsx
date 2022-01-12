@@ -36,7 +36,7 @@ const News = ({ newsData }: IProps) => {
                 </div>
                 <DesktopTop />
                 <div className="content-box">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                         {newsData.map((row, index) => (index > 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
                     </div>
                 </div>

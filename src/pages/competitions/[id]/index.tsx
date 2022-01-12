@@ -55,9 +55,9 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
     if (redirect) return <Redirect to={redirect} />;
     return (
         <Base meta={<Meta title={tournamentData?.name || ''} />} ads={{ enableBottomRail: true }} isLoaded={(tournamentData !== null)}>
-            <div className="container container-margin py-10">
+            <div className="container container-margin container-content">
                 <ComboTop />
-                <div>
+                <div className="content-box">
                     <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                         <div className="w-full text-center lg:w-auto lg:text-left my-auto">
                             <h1 className={"text-white uppercase"}>{tournamentData?.name}</h1>
