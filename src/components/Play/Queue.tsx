@@ -243,7 +243,7 @@ const Queue = (props: IProps) => {
                 {tabs.map((tab, index) => (
                     <div key={index} className={`relative col-span-full lg:col-span-1 3xl:col-span-1 px-8`}>
                         {/* Custom Border */}
-                        {index !== 0 && <div className="h-full border-r-4 border-gray-800 absolute -left-2 z-20" />}
+                        {index !== 0 && <div className="h-full border-r-4 border-gray-800 absolute -left-2.5 z-20" />}
                         {/* Flex / Icon */}
                         <div className="relative">
                             <div className="absolute top-0 -right-8 z-0">
