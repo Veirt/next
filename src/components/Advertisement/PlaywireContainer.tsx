@@ -64,7 +64,7 @@ function Playwire(props: IProps) {
             });
         };
 
-        if ((sessionData && !sessionData.patreon && !sessionData.staff)) init();
+        if ((!sessionData || (sessionData && !sessionData.patreon && !sessionData.staff))) init();
         // eslint-disable-next-line
     }, [ ]);
 
