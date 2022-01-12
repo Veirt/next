@@ -50,27 +50,27 @@ const Play = (props: IProps) => {
                 <Queue mode={mode}/>
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
                     {(challengesData && challengesData.length !== 0) ? (
-                        <div className="content-box 4xl:h-136">
+                        <div className="content-box 3xl:h-136">
                             <Challenges data={challengesData} />
                         </div>
                     ) : (
-                        <div className="content-box 4xl:h-136">
+                        <div className="content-box 3xl:h-136">
                             <Guest />
                         </div>
                     )}
                     
-                    <div className="content-box 4xl:h-136">
+                    <div className="content-box 3xl:h-136">
                         <Tournaments data={tournamentsData} />
                     </div>
 
-                    <div className="content-box 4xl:h-136">
+                    <div className="content-box 3xl:h-136">
                         <Social />
                     </div>
                 </div>
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">
                     <DesktopDynamicTop />
                 </AdvertisementDisplay>
-                <div className="content-box 4xl:h-212 mb-4">
+                <div className="content-box 3xl:h-212 mb-4">
                     <Leaderboards />
                 </div>
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">

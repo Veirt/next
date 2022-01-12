@@ -20,7 +20,7 @@ const ProfileTournaments = (props: IProps) => {
     return (
         <div className="content-box">
             {data && data.length !== 0 ? (
-                <div className={"grid grid-cols-1 md:grid-cols-2 4xl:grid-cols-3 gap-4"}>
+                <div className={"grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-3 gap-4"}>
                     {data.map((item) => (item?.placement !== -1 && item?.placement !== 0) && (
                         <Link key={item.tournamentId} to={`/competitions/${item.tournamentId}`} >
                             <div className={"flex text-white hover:opacity-70 transition ease-in-out duration-300"}>

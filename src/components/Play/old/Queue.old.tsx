@@ -375,7 +375,7 @@ const Queue = (props: IProps) => {
                                 <div className={"col-span-full sm:col-span-2 3xl:col-span-full"}>
                                     <div className={`grid grid-cols-1 gap-3 mt-2`}>
                                         {tab?.modes?.map((item) => (
-                                            <div key={item.name} className={"px-0 lg:px-6 4xl:px-10"}>
+                                            <div key={item.name} className={"px-0 lg:px-6 3xl:px-10"}>
                                                 <button onClick={item.onClick} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''} block h-auto py-2.5 flex w-full bg-gray-875 rounded-xl bg-opacity-70 hover:bg-gray-850 transition ease-in-out duration-200`}>
                                                     <div className={"flex justify-center pl-0 md:pl-4 lg:pl-6 text-white text-sm lg:text-base uppercase font-bold tracking-tight"}>
                                                         <div className={"w-10"}>
@@ -418,7 +418,7 @@ const Queue = (props: IProps) => {
 
                                         {tab.name === 'page.queue.custom.title' && (
                                             <>
-                                                <div className={"px-0 lg:px-6 4xl:px-10 text-center pb-1"}>
+                                                <div className={"px-0 lg:px-6 3xl:px-10 text-center pb-1"}>
                                                     <div className="bg-gray-825 py-2 text-gray-500 font-semibold uppercase rounded-xl">
                                                         <FontAwesomeIcon icon={faUserFriends} className={"mr-1"} /> {lobbiesData.length.toLocaleString()} {t('page.queue.custom.online')}
                                                     </div>

@@ -35,10 +35,10 @@ const Challenge:FC<PlayerChallengeData> = (props) => {
     return (challenge[0] && mode[0]) ? (
         <div>
             <div className="grid grid-cols-5 gap-4">
-                <div className="hidden 4xl:block col-span-full xl:col-span-1 my-auto">
+                <div className="hidden 3xl:block col-span-full xl:col-span-1 my-auto">
                     <img src={`/challenges/${challenge[0].type}.png`} alt={challenge[0].text} className={"block mx-auto transform scale-challenge"} />
                 </div>
-                <div className="col-span-full 4xl:col-span-4 my-auto">
+                <div className="col-span-full 3xl:col-span-4 my-auto">
                     <div className="h4 text-orange-400">{mode[0].modeName}</div>
                     <p className="pt-1 pb-4 block text-sm">
                         {challenge[0].text}

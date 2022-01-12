@@ -371,11 +371,11 @@ const GameScreen = (props: IProps) => {
                 )}
             </div>
 
-            <div className="absolute top-1/3 left-8 hidden 4xl:block">
+            <div className="absolute top-1/3 left-8 hidden 3xl:block">
                 <SidebarSquare />
             </div>
 
-            <div className="absolute top-1/4 left-8 hidden 4xl:block">
+            <div className="absolute top-1/4 left-8 hidden 3xl:block">
                 <SidebarLong />
             </div>
         </>
