@@ -17,20 +17,10 @@ const AdvertisementDisplay = (props: IProps) => {
     const { sessionData } = usePlayerContext();
 
     useEffect(() => {
-        const updateAdHeight = () => {
-            console.log('Ad Height Updated');
-            if (height <= 20) 
-                setHeight((adRef.current?.offsetHeight || 0) + 20);
-            else {
-                if (updateTimer.current) {
-                    clearInterval(updateTimer.current);
-                    updateTimer.current = null; 
-                }
-            }
-        };
+        const updateAdHeight = () => setHeight((adRef.current?.offsetHeight || 0) + 20);
 
         if (!updateTimer.current && height <= 20)
-            updateTimer.current = setInterval(updateAdHeight, 250);
+            updateTimer.current = setInterval(updateAdHeight, 500);
 
         return () => {
             if (updateTimer.current) {
