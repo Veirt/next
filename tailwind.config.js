@@ -29,7 +29,7 @@ module.exports = {
       lg: '1024px',
       xl: '1280px', 
       '2xl': '1300px',
-      '3xl': '1366px', 
+      '3xl': '1340px', 
       '16-9': '1920px',
     }, 
     colors: {
