@@ -4,6 +4,7 @@ import { GlobalHotKeys } from 'react-hotkeys';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
 import LoadContent from '../components/LoadContent';
 import Redirect from '../components/Uncategorized/Redirect';
+import { usePlayerContext } from '../contexts/Player.context';
 import useConfig from '../hooks/useConfig';
 import useGoogleAnalytics from '../hooks/useGoogleAnalytics';
 import Levelbar from '../layout/Levelbar';
@@ -26,6 +27,7 @@ const Base = (props: IMainProps) => {
     const timer = useRef<NodeJS.Timeout | null>(null);
     const [ redirect, setRedirect ] = useState<string>('');
     const [ loaded, setLoaded ] = useState<boolean>(props.noAnimate === true);
+    const { sessionData } = usePlayerContext();
     const { shortcutHome, shortcutExit, shortcutPlayRandom, shortcutPlayQuotes, shortcutPlayDictionary } = useConfig();
 
     const onTimerCalled = () => setLoaded(true);
@@ -79,7 +81,7 @@ const Base = (props: IMainProps) => {
             {!props.noNav ? <Levelbar /> : ''}
             <main>
                 <LoadContent isLoaded={loaded}>
-                    <PlaywireContainer {...props.ads} />
+                    {sessionData !== null && <PlaywireContainer {...props.ads} />}
                     <>{props.children}</>
                 </LoadContent>
             </main>
