@@ -226,6 +226,17 @@ const Queue = (props: IProps) => {
                     </div>
                 </div>
             </div>
+
+            <Modal isOpened={(lobbiesLoaded && tab === 1)} onClose={() => setTab(0)}>
+                <div className="h3">{t('page.queue.custom.public')}</div>
+                <div className="h-full overflow-y-auto">
+                    {lobbiesData.length !== 0
+                        ? lobbiesData.map(row => <LobbiesRow key={row.invite} {...row} />)
+                        : <div className="py-32 w-full bg-black-light text-sm uppercase text-white font-semibold text-center">{t('page.queue.custom.none')}</div>
+                    }
+                </div>
+            </Modal>
+
             <audio id="MatchFound" src="/audio/MatchFound.wav" crossOrigin="anonymous" preload="auto" />
 
             <div className={"grid grid-cols-1 lg:grid-cols-3 3xl:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box"} style={{ paddingLeft: 0, paddingRight: 0 }}>
@@ -247,10 +258,10 @@ const Queue = (props: IProps) => {
                                 {tab?.modes?.map((item) => (
                                     <button key={item.name} onClick={item.onClick} className={`py-1.5 px-3 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
                                         <div className={"flex justify-center text-white text-xs lg:text-sm uppercase font-bold tracking-tight"}>
-                                            <div className={"w-5 mt-px text-left lg:text-center 4xl:text-left"}>
+                                            <div className={"w-5 lg:mt-px text-center sm:text-left lg:text-center 4xl:text-left"}>
                                                 <FontAwesomeIcon icon={item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
                                             </div>
-                                            <div className={"lg:hidden 4xl:block w-auto"}>
+                                            <div className={"hidden sm:block lg:hidden 4xl:block w-auto"}>
                                                 {t(item.name)}
                                             </div>
                                         </div>
@@ -261,16 +272,6 @@ const Queue = (props: IProps) => {
                     </div>
                 ))}
             </div>
-
-            <Modal isOpened={(lobbiesLoaded && tab === 1)} onClose={() => setTab(0)}>
-                <div className="h3">{t('page.queue.custom.public')}</div>
-                <div className="h-full overflow-y-auto">
-                    {lobbiesData.length !== 0
-                        ? lobbiesData.map(row => <LobbiesRow key={row.invite} {...row} />)
-                        : <div className="py-32 w-full bg-black-light text-sm uppercase text-white font-semibold text-center">{t('page.queue.custom.none')}</div>
-                    }
-                </div>
-            </Modal>
         </>
     );
 }
