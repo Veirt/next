@@ -20,7 +20,7 @@ const Social = () => {
     ]
 
     return (
-        <div className="grid grid-cols-1 gap-8 mt-2">
+        <div className="grid grid-cols-1 gap-7">
             {socialItems.map((item, index) => ( 
                 <a href="{item.href}" className="hover:opacity-70 transition ease-in-out duration-300" target="_blank" rel="noopener noreferrer" key={index}>
                     <img src={item.image} alt="social" />

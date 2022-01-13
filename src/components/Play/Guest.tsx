@@ -13,7 +13,6 @@ const Guest = () => {
                     <li>Show up in all leaderboards</li>
                     <li>Ability to personalize your profile</li>
                     <li>Exchange coins for in game items</li>
-                    <li>And more...</li>
                 </ul>
                 <Link to="/auth/signin" className="flex w-60 button default orange">
                     Create an account!

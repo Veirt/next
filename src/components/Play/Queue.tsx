@@ -257,7 +257,7 @@ const Queue = (props: IProps) => {
                             <div className="flex flex-wrap space-x-1 relative z-10">
                                 {tab?.modes?.map((item) => (
                                     <button key={item.name} onClick={item.onClick} className={`py-1.5 px-3 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
-                                        <div className={"flex justify-center text-white text-xs lg:text-sm uppercase font-bold tracking-tight"}>
+                                        <div className={"flex justify-center text-white text-xs lg:text-sm uppercase font-bold"}>
                                             <div className={"w-5 lg:mt-px text-center sm:text-left lg:text-center 3xl:text-left"}>
                                                 <FontAwesomeIcon icon={item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
                                             </div>

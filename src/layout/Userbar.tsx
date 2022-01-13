@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef, useCallback} from 'react';
 import { useTranslation } from 'next-i18next';
 import axios, {CancelTokenSource} from "axios";
 import Config from "../Config";
-import {faBell, faCog, faSignInAlt, faSignOutAlt, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faBell, faCog, faSignInAlt, faSignOutAlt, faSpinner, faTrash} from "@fortawesome/free-solid-svg-icons";
 import Socket from "../utils/socket/Socket";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Notification from "../components/Uncategorized/Notification";
@@ -123,7 +123,7 @@ const Userbar = (props: IProps) => {
         <>
             {!isGuest && <SettingsFrame isVisible={showSettings} onClose={() => setShowSettings(false)} />}
             {(isLoaded && toggleNotifications) && <div className={"notificationsWrapper fixed z-10 top-0 right-0 left-0 bottom-0 w-screen h-screen "} />}
-            {(isLoaded && sessionData) && (
+            {(isLoaded && sessionData !== null) ? (
                 <div className={`flex flex-wrap ${isSidebar ? 'flex-row-reverse justify-center gap-y-4 lg:gap-y-0' : 'justify-center lg:justify-end'}`}>
                     {(sessionData && isGuest) ? (
                         <>
@@ -194,6 +194,11 @@ const Userbar = (props: IProps) => {
                       </Link>
                     )}
                     
+                </div>
+            ) : (
+                <div className="font-semibold">
+                    <FontAwesomeIcon icon={faSpinner} className="mr-2" spin />
+                    Loading
                 </div>
             )}
         </>

@@ -122,7 +122,7 @@ const Levelbar = () => {
         smallDevice ? (
             <>
                 <div className={"fixed top-0 left-0 right-0 z-50 bg-gray-775 shadow"}>
-                    <div className={"flex py-1 px-2 justify-between"}>
+                    <div className={"flex py-1 px-10 justify-between"}>
                         <div className={"w-auto pt-1 my-auto"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto focus:outline-none"}>
                                 <img src={"/assets/logo_svg.svg"} alt={"Logo"} className={"w-full h-auto"} />
@@ -156,7 +156,7 @@ const Levelbar = () => {
             <>
                 <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gray-750 bg-opacity-80 py-1 shadow-lg transition-all`} style={{ backdropFilter: 'blur(5px)' }}>
                     <div className={"container flex"}>
-                        <div className={"flex space-x-2"}>
+                        <div className={"flex space-x-2 py-3"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
                                 <img src={'/assets/logo_svg.svg'} alt={"Logo"} className={"w-full h-auto"} />
                             </button>

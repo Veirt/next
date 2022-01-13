@@ -20,13 +20,13 @@ const TournamentList = (props: IProps) => {
             <div className={"h4 text-orange-400 truncate"}>
                 {props.name.split('(')[0]}
             </div>
-            <p className="block pt-2 pb-8 text-sm">
+            <p className="block pt-2 text-sm">
                 {(!props.info || props.info.length)
                   ? 'No information is currently available at this time. Please check back later!'
                   : `${props.info.split('.')[0]}.${props.info.split('.')[1]}.`
                 }
             </p>
-            <div className={"w-full"}>
+            <div className={"w-full mt-5"}>
                 <div className={"flex space-x-2 text-sm"}>
                     <div className={"uppercase px-3 py-1.5 bg-gray-825 rounded-lg"}>
                         <FontAwesomeIcon icon={faUserFriends} className={"mr-1 text-orange-400"} />

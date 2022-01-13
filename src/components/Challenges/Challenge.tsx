@@ -40,12 +40,12 @@ const Challenge:FC<PlayerChallengeData> = (props) => {
                 </div>
                 <div className="col-span-full 3xl:col-span-4 my-auto">
                     <div className="h4 text-orange-400">{mode[0].modeName}</div>
-                    <p className="pt-1 pb-4 block text-sm">
+                    <p className="pt-1 block text-sm">
                         {challenge[0].text}
                     </p>
                 </div>
-                <div className="col-span-full">
-                    <div className="flex flex-wrap"> 
+                <div className="col-span-full mt-2">
+                    <div className="flex flex-wrap text-sm"> 
                         <div className={"w-auto py-1.5 px-4 bg-gray-825 text-center rounded-lg mr-2"}>
                             <FontAwesomeIcon icon={faCoins} className={"text-yellow-400 mr-1"} />
                             {challenge[0].rewards?.currency.toLocaleString()}
