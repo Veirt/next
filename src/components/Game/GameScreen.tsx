@@ -385,7 +385,7 @@ const GameScreen = (props: IProps) => {
         return <Redirect to={redirect} />;
     else
         return !embed ? (
-            <Base meta={<Meta title="In Game" />} isLoaded={(matchData !== null && sessionData !== null)}>
+            <Base meta={<Meta title="In Game" />} isLoaded={(matchData !== null && sessionData !== null)} ads={{ enableTrendiVideo: true }}>
                 {gameContainer}
             </Base>
         ) : (
