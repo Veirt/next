@@ -15,7 +15,7 @@ function VideoFullscreen(props: IProps) {
                     <button type="button" className="absolute top-10 right-10 text-4xl text-white hover:text-gray-700 transition ease-in-out duration-300" onClick={toggle}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
-                    <div id="pwTrendiVideo" />
+                    <div id="pwTrendiVideo" style={{ display: 'hidden' }} />
                 </div>
             </div>
         </div>
