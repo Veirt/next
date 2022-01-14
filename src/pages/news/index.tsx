@@ -2,8 +2,6 @@ import axios from 'axios';
 import { useTranslation } from 'next-i18next';
 import NewsItem from '../../components/News/NewsItem';
 import Config from '../../Config';
-import DesktopDynamicFooter from "../../components/Advertisement/DesktopDynamicFooter";
-import DesktopTop from "../../components/Advertisement/DesktopTop";
 import {NewsletterData} from "../../types.client.mongo";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ConfigService from '../../services/ConfigService';
@@ -37,7 +35,7 @@ const News = ({ newsData }: IProps) => {
                 </div>
 
                 <AdvertisementDisplay className="mb-4">
-                    <DesktopTop />
+                   
                 </AdvertisementDisplay>
                 
                 <div className="content-box">
@@ -47,7 +45,7 @@ const News = ({ newsData }: IProps) => {
                 </div>
 
                 <AdvertisementDisplay className="mt-4">
-                    <DesktopDynamicFooter />
+                   
                 </AdvertisementDisplay>
                 
             </div>

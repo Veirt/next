@@ -9,7 +9,6 @@ import Match from "../../components/Game/GameScreen";
 import LoadingScreen from "../../components/Uncategorized/LoadingScreen";
 import {faAngleDoubleRight, faPaperclip} from "@fortawesome/free-solid-svg-icons";
 import {toast} from "react-toastify";
-import SidebarDynamicLong from "../../components/Advertisement/SidebarDynamicLong";
 import usePlayerToken from "../../hooks/usePlayerToken";
 import { LobbyData, GamemodeData } from "../../types.client.mongo";
 import {SocketCustomChatData, SocketCustomPlayerData} from "../../types.client.socket";
@@ -501,7 +500,6 @@ const Custom = (props: IProps) => {
                                 onDrop={(e) => { e.preventDefault(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 3); }}
                             />
                         )}
-                        <SidebarDynamicLong />
                       </div>
                     </div>
                   </div>

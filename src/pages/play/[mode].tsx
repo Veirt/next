@@ -5,9 +5,6 @@ import { GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
-import DesktopDynamicFooter from "../../components/Advertisement/DesktopDynamicFooter";
-import DesktopDynamicTop from "../../components/Advertisement/DesktopDynamicTop";
-import SidebarLong from "../../components/Advertisement/SidebarLong";
 import Challenges from "../../components/Play/Challenges";
 import Guest from "../../components/Play/Guest";
 import Leaderboards from "../../components/Play/Leaderboards";
@@ -68,13 +65,13 @@ const Play = (props: IProps) => {
                     </div>
                 </div>
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">
-                    <DesktopDynamicTop />
+                    
                 </AdvertisementDisplay>
                 <div className="content-box 3xl:h-212 mb-4">
                     <Leaderboards />
                 </div>
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">
-                    <DesktopDynamicFooter />
+                    
                 </AdvertisementDisplay>
             </div>
         </Base>

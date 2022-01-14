@@ -2,10 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import { useTranslation } from 'next-i18next';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../../Config';
-import ComboTop from "../../../components/Advertisement/Combo/ComboTop";
-import SidebarSquare from "../../../components/Advertisement/SidebarSquare";
-import SidebarDynamicLong from "../../../components/Advertisement/SidebarDynamicLong";
-import DesktopDynamicFooter from "../../../components/Advertisement/DesktopDynamicFooter";
 import {TournamentData} from "../../../types.client.mongo";
 import {toast} from "react-toastify";
 import moment from "moment";
@@ -21,8 +17,6 @@ import Base from '../../../templates/Base';
 import { Meta } from '../../../layout/Meta';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../../components/Advertisement/AdvertisementDisplay';
-import SidebarLong from '../../../components/Advertisement/SidebarLong';
-import SidebarLongTwo from '../../../components/Advertisement/SidebarLongTwo';
 
 interface IProps {
     tournamentData: TournamentData;
@@ -59,15 +53,6 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
     return (
         <Base meta={<Meta title={tournamentData?.name || ''} />} ads={{ enableBottomRail: true }} isLoaded={(tournamentData !== null)}>
             <div className="container container-margin container-content">
-                <div className="absolute top-20 left-0">
-                    <SidebarLong />
-                </div>
-                <div className="absolute top-20 right-0">
-                    <SidebarLongTwo />
-                </div>
-                <AdvertisementDisplay className="mb-6">
-                    <ComboTop />
-                </AdvertisementDisplay>
                 <div className="content-box">
                     <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                         <div className="w-full text-center lg:w-auto lg:text-left my-auto">
@@ -106,7 +91,6 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                                     </div>
                                 )
                             }
-                            <DesktopDynamicFooter />
                         </div>
                         <div className="w-full lg:w-1/3">
                             <div className={"text-sm text-white"}>
@@ -178,7 +162,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                             )}
 
                             <AdvertisementDisplay className="mb-4">
-                                <SidebarSquare />
+                                
                             </AdvertisementDisplay>
 
                             {tournamentData?.rules && (
@@ -193,7 +177,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                             )}
 
                             <AdvertisementDisplay>
-                                <SidebarDynamicLong />
+                                
                             </AdvertisementDisplay>
                         </div>
                     </div>

@@ -1,8 +1,6 @@
 import {useState, useEffect, useRef, useCallback} from 'react';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../Config';
-import ComboBottom from "../../components/Advertisement/Combo/ComboBottom";
-import DesktopTop from "../../components/Advertisement/DesktopTop";
 import {
   PlayerExtendedData,
   PlayerStatisticData,
@@ -139,7 +137,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                 </div>
                 <div className={"mt-4"}>
                     <AdvertisementDisplay className="mt-4">
-                        <DesktopTop />
+                        
                     </AdvertisementDisplay>
                     {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
                     {tab === 'matches' && (
@@ -158,7 +156,6 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                     )}
                     {tab === 'achievements' && <ProfileAchievements data={achievementsData} />}
                     {tab === 'tournaments' && <ProfileTournaments data={tournamentsData} />}
-                    <ComboBottom />
                 </div>
             </div>
         </Base>

@@ -17,7 +17,7 @@ import {ChartOptions} from "chart.js";
 import {SocketMatchEndData} from "../../types.client.socket";
 import useConfig from "../../hooks/useConfig";
 import ReactTooltip from "react-tooltip";
-import VideoFullscreen from '../../components/Advertisement/VideoFullscreen';
+import VideoFullscreen from '../Advertisement/Units/VideoFullscreen';
 import { useTranslation } from 'next-i18next';
 
 interface EndMatchFormatRow {

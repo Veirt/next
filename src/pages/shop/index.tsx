@@ -5,8 +5,6 @@ import Config from '../../Config';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
-import ComboTop from "../../components/Advertisement/Combo/ComboTop";
-import ComboBottom from "../../components/Advertisement/Combo/ComboBottom";
 import {usePlayerContext} from "../../contexts/Player.context";
 import useCSRF from "../../hooks/useCSRF";
 import {ItemData, PlayerLevelData} from "../../types.client.mongo";

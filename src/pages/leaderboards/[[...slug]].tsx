@@ -11,8 +11,6 @@ import {faCaretDown, faFilter, faSort} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useConfig from "../../hooks/useConfig";
 import moment from "moment";
-import ComboBottom from '../../components/Advertisement/Combo/ComboBottom';
-import ComboTop from '../../components/Advertisement/Combo/ComboTop';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ConfigService from '../../services/ConfigService';
 import { GetServerSidePropsContext } from 'next';
@@ -20,8 +18,6 @@ import Link from '../../components/Uncategorized/Link';
 import { Meta } from '../../layout/Meta';
 import Base from '../../templates/Base';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
-import SidebarLong from '../../components/Advertisement/SidebarLong';
-import SidebarLongTwo from '../../components/Advertisement/SidebarLongTwo';
 
 interface IProps {
     type: string;
@@ -114,14 +110,8 @@ const Leaderboards = (props: IProps) => {
     return (
         <Base meta={<Meta title={`${type.charAt(0).toUpperCase() + type.slice(1)} ${t('component.navbar.leaders')}`} />} ads={{ enableBottomRail: true }} isLoaded={(data && loaded)}>
             <div className="container-smaller container-margin container-content">
-                <div className="absolute top-20 left-0">
-                    <SidebarLong />
-                </div>
-                <div className="absolute top-20 right-0">
-                    <SidebarLongTwo />
-                </div>
                 <AdvertisementDisplay className="mb-6">
-                    <ComboTop />
+                    
                 </AdvertisementDisplay>
                 <div className="content-box">
                     <div className={"flex flex-wrap gap-x-6 pb-6"}>
@@ -207,7 +197,6 @@ const Leaderboards = (props: IProps) => {
                     </div>
                 </div>
             </div>
-            <ComboBottom />
         </Base>
     )
 }

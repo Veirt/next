@@ -5,8 +5,6 @@ import Config from '../../Config';
 import Tournament from '../../components/Tournament/TournamentList';
 import {faCaretDown, faFilter, faGlobe, faSearch} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import ComboTop from "../../components/Advertisement/Combo/ComboTop";
-import ComboBottom from "../../components/Advertisement/Combo/ComboBottom";
 import {TournamentData} from "../../types.client.mongo";
 import Pagination from "../../components/Uncategorized/Pagination";
 import Base from '../../templates/Base';
@@ -15,8 +13,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ConfigService from '../../services/ConfigService';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
-import SidebarLong from '../../components/Advertisement/SidebarLong';
-import SidebarLongTwo from '../../components/Advertisement/SidebarLongTwo';
 
 interface ILocales {
   key: string;
@@ -84,13 +80,13 @@ const Tournaments = () => {
         <Base meta={<Meta title={t('page.tournaments.title')} />} ads={{ enableBottomRail: true }} isLoaded={(loaded && tournamentsData !== null)}>
             <div className="container-smaller container-margin container-content">
                 <div className="absolute top-20 left-0">
-                    <SidebarLong />
+                    
                 </div>
                 <div className="absolute top-20 right-0">
-                    <SidebarLongTwo />
+                    
                 </div>
                 <AdvertisementDisplay className="mb-6">
-                    <ComboTop />
+                    
                 </AdvertisementDisplay>
                 <div className="content-box">
                     <h1 className={"text-white uppercase"}>{t('page.tournaments.title')}</h1>

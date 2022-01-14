@@ -1,45 +1,9 @@
 import { FC } from 'react';
-import ComboBottom from './Advertisement/Combo/ComboBottom';
-import ComboTop from './Advertisement/Combo/ComboTop';
-import DesktopFooter from './Advertisement/DesktopFooter';
-import DesktopTop from './Advertisement/DesktopTop';
-import MobileTop from './Advertisement/MobileTop';
-import SidebarSquare from './Advertisement/SidebarSquare';
-import SidebarLong from './Advertisement/SidebarLong';
-import SidebarDynamicLong from './Advertisement/SidebarDynamicLong';
-import SidebarLongTwo from './Advertisement/SidebarLongTwo';
 
 const Playground:FC = () => {
     return (
         <div className={"container container-margin text-white text-center py-10"}>
-            <div className="bg-gray-700 p-3 text-white font-semibold">Ads</div>
-            <div className={"grid grid-cols-1 gap-8"}>
-                <div>
-                    <ComboBottom />
-                    <ComboTop />
-                </div>
-                <div>
-                    <MobileTop />
-                </div>
-                <div>
-                    <SidebarLong />
-                </div>
-                <div>
-                    <SidebarLongTwo />
-                </div>
-                <div>
-                    <SidebarSquare />
-                </div>
-                <div>
-                    <DesktopTop />
-                </div>
-                <div>
-                    <DesktopFooter />
-                </div>
-                <div>
-                    <SidebarDynamicLong />
-                </div>
-            </div>
+            
         </div>
     )
 }
