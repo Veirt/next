@@ -20,6 +20,9 @@ import ConfigService from '../../../services/ConfigService';
 import Base from '../../../templates/Base';
 import { Meta } from '../../../layout/Meta';
 import { GetServerSidePropsContext } from 'next';
+import AdvertisementDisplay from '../../../components/Advertisement/AdvertisementDisplay';
+import SidebarLong from '../../../components/Advertisement/SidebarLong';
+import SidebarLongTwo from '../../../components/Advertisement/SidebarLongTwo';
 
 interface IProps {
     tournamentData: TournamentData;
@@ -56,7 +59,15 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
     return (
         <Base meta={<Meta title={tournamentData?.name || ''} />} ads={{ enableBottomRail: true }} isLoaded={(tournamentData !== null)}>
             <div className="container container-margin container-content">
-                <ComboTop />
+                <div className="absolute top-20 left-0">
+                    <SidebarLong />
+                </div>
+                <div className="absolute top-20 right-0">
+                    <SidebarLongTwo />
+                </div>
+                <AdvertisementDisplay className="mb-6">
+                    <ComboTop />
+                </AdvertisementDisplay>
                 <div className="content-box">
                     <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                         <div className="w-full text-center lg:w-auto lg:text-left my-auto">
@@ -166,9 +177,9 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                                 </div>
                             )}
 
-                            <div className={"mb-4"}>
+                            <AdvertisementDisplay className="mb-4">
                                 <SidebarSquare />
-                            </div>
+                            </AdvertisementDisplay>
 
                             {tournamentData?.rules && (
                                 <div className={"panel mb-4"}>
@@ -181,7 +192,9 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                                 </div>
                             )}
 
-                            <SidebarDynamicLong />
+                            <AdvertisementDisplay>
+                                <SidebarDynamicLong />
+                            </AdvertisementDisplay>
                         </div>
                     </div>
                 </div>

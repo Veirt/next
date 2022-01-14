@@ -14,6 +14,9 @@ import { Meta } from '../../layout/Meta';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ConfigService from '../../services/ConfigService';
 import { GetServerSidePropsContext } from 'next';
+import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import SidebarLong from '../../components/Advertisement/SidebarLong';
+import SidebarLongTwo from '../../components/Advertisement/SidebarLongTwo';
 
 interface ILocales {
   key: string;
@@ -80,7 +83,15 @@ const Tournaments = () => {
     return (
         <Base meta={<Meta title={t('page.tournaments.title')} />} ads={{ enableBottomRail: true }} isLoaded={(loaded && tournamentsData !== null)}>
             <div className="container-smaller container-margin container-content">
-                <ComboTop />
+                <div className="absolute top-20 left-0">
+                    <SidebarLong />
+                </div>
+                <div className="absolute top-20 right-0">
+                    <SidebarLongTwo />
+                </div>
+                <AdvertisementDisplay className="mb-6">
+                    <ComboTop />
+                </AdvertisementDisplay>
                 <div className="content-box">
                     <h1 className={"text-white uppercase"}>{t('page.tournaments.title')}</h1>
                     <div className={"flex flex-wrap mt-5"}>
@@ -146,8 +157,9 @@ const Tournaments = () => {
                             </div>
                         </div>
                     </div>
-
-                    <ComboBottom />
+                    <AdvertisementDisplay className="mt-6">
+                        <ComboBottom />
+                    </AdvertisementDisplay>
                 </div>
             </div>
         </Base>

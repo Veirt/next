@@ -10,6 +10,7 @@ import ConfigService from '../../services/ConfigService';
 import { Meta } from '../../layout/Meta';
 import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
+import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
 
 interface IProps {
     newsData: NewsletterData[];
@@ -34,13 +35,21 @@ const News = ({ newsData }: IProps) => {
                         {newsData.map((row, index) => (index === 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
                     </div>
                 </div>
-                <DesktopTop />
+
+                <AdvertisementDisplay className="mb-4">
+                    <DesktopTop />
+                </AdvertisementDisplay>
+                
                 <div className="content-box">
                     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                         {newsData.map((row, index) => (index > 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
                     </div>
                 </div>
-                <DesktopDynamicFooter />
+
+                <AdvertisementDisplay className="mt-4">
+                    <DesktopDynamicFooter />
+                </AdvertisementDisplay>
+                
             </div>
         </Base>
     );

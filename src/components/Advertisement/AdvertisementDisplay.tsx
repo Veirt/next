@@ -3,7 +3,7 @@ import { usePlayerContext } from "../../contexts/Player.context";
 
 interface IProps {
     className?: string;
-    type: string;
+    type?: string;
     children: ReactNode;
 }
 

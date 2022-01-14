@@ -23,6 +23,7 @@ import ConfigService from '../../services/ConfigService';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PlayerStatisticChartData } from '../../components/Profile/ProfileStatisticChart';
 import { PlayerRankedExtendedData } from '../../components/Leaderboard/LeaderboardPlayerRanked';
+import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
 
 interface IProps {
     playerData: PlayerExtendedData;
@@ -100,7 +101,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
 
     return (
         <Base meta={<Meta title={`${playerData.name}#${playerData.discriminator}'s Profile`} description={(playerData?.description.substr(0, 200) + '...') || ''} customImage={playerData?.avatarSrc || ''} reverseTitle />} isLoaded={loaded} ads={{ enableBottomRail: true }}>
-            <div className={"container container-margin py-10"}>
+            <div className={"container container-margin container-content"}>
                 <div className={"relative rounded-xl shadow-lg grid grid-cols-1 lg:grid-cols-5 p-6"} style={{ backgroundImage: `url('/banners/${playerData?.banner}.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                     <div className="lg:col-span-3">
                         <div className={"flex justify-center xl:justify-start space-x-6"}>
@@ -136,8 +137,10 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                         </div>
                     </div>
                 </div>
-                <div className={""}>
-                    <DesktopTop />
+                <div className={"mt-4"}>
+                    <AdvertisementDisplay className="mt-4">
+                        <DesktopTop />
+                    </AdvertisementDisplay>
                     {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
                     {tab === 'matches' && (
                         <div className="content-box">

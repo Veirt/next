@@ -19,6 +19,9 @@ import { GetServerSidePropsContext } from 'next';
 import Link from '../../components/Uncategorized/Link';
 import { Meta } from '../../layout/Meta';
 import Base from '../../templates/Base';
+import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import SidebarLong from '../../components/Advertisement/SidebarLong';
+import SidebarLongTwo from '../../components/Advertisement/SidebarLongTwo';
 
 interface IProps {
     type: string;
@@ -110,8 +113,16 @@ const Leaderboards = (props: IProps) => {
     }, [ getStatistics, getRanked, type ]);
     return (
         <Base meta={<Meta title={`${type.charAt(0).toUpperCase() + type.slice(1)} ${t('component.navbar.leaders')}`} />} ads={{ enableBottomRail: true }} isLoaded={(data && loaded)}>
-            <div className="container-smaller container-margin py-10">
-                <ComboTop />
+            <div className="container-smaller container-margin container-content">
+                <div className="absolute top-20 left-0">
+                    <SidebarLong />
+                </div>
+                <div className="absolute top-20 right-0">
+                    <SidebarLongTwo />
+                </div>
+                <AdvertisementDisplay className="mb-6">
+                    <ComboTop />
+                </AdvertisementDisplay>
                 <div className="content-box">
                     <div className={"flex flex-wrap gap-x-6 pb-6"}>
                         <div className={"w-full text-center lg:text-left lg:w-auto lg:mr-auto"}>
