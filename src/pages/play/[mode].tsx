@@ -33,10 +33,6 @@ const Play = (props: IProps) => {
     
     return (
         <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={loaded}>
-            
-            <div className="hidden 3xl:block absolute top-32">
-                <SidebarLong />
-            </div>
 
             <div className="container container-margin container-content">
                 <div className="mb-4">

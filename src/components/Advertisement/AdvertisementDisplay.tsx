@@ -35,7 +35,7 @@ const AdvertisementDisplay = (props: IProps) => {
         <div className={`${height > 50 ? `content-box w-full flex ${className}` : ''}`} style={{ paddingTop: 0, paddingBottom: 0, height: `${height}px` }}>
             <div className={`w-full flex justify-center items-center`}>
                 <div ref={adRef}>
-                    {children}
+                    {!children ? <div className="bg-black h-32 w-80" /> : children}
                 </div>
             </div>
         </div>
