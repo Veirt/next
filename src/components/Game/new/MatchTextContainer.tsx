@@ -23,7 +23,7 @@ const MatchTextContainer = (props: IProps) => {
     const caretElement = useRef<HTMLDivElement | null>(null);
     const currentElement = useRef<HTMLDivElement | null>(null);
     const containerElement = useRef<HTMLDivElement | null>(null);
-    const initialTop = useRef<number>(0);
+    // const initialTop = useRef<number>(0);
 
     // Config
     const { 
@@ -172,6 +172,7 @@ const MatchTextContainer = (props: IProps) => {
     }
 
     // Timers
+    /*
     const updateContainerOverflow = () => {
         
         if (containerElement.current && caretElement.current && currentElement.current) {
@@ -186,17 +187,10 @@ const MatchTextContainer = (props: IProps) => {
 
             containerElement.current.style.height = `${(caretHeight * 3) + initialTop.current}px`;
 
-            /*
-                console.log('Line:', lineIndex, 'Total Lines:', totalLines, 'Initial Top:', initialTop.current);
-                console.log('Caret Offset Top', caretElement.current.offsetTop);
-                console.log('Caret Offset Top (margin)', (caretHeight * 2));
-                console.log('Container Scroll Top', caretHeight);
-                console.log('Hit Overflow', lineIndex);
-            */
             if (lineIndex >= 2 && lineIndex < totalLines) 
                 containerElement.current.scrollTop = ((caretHeight * (lineIndex - 1)) + initialTop.current);
         }
-    }
+    }*/
 
     const onRefreshFPS = () => {
         if (caretElement.current && currentElement.current) {
@@ -206,7 +200,7 @@ const MatchTextContainer = (props: IProps) => {
             const caretTop = `${currentElement.current!.offsetTop}px`;
             const caretHeight = `${currentElement.current!.offsetHeight || 0}px`;
 
-            updateContainerOverflow();
+            // updateContainerOverflow();
 
             if (smoothCaret === '1' && ('animate' in caretElement.current)) {
                 useAnimation = caretElement.current?.animate({ left: caretLeft, top: caretTop, height: caretHeight }, { duration: parseInt(smoothCaretSpeed, 10) || 100 });
