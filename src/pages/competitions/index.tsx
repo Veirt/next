@@ -2,7 +2,7 @@ import {FormEvent, useEffect, useState, useCallback, useRef} from 'react';
 import { useTranslation } from 'next-i18next';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../Config';
-import Tournament from '../../components/Tournament/TournamentList';
+import TournamentItem from '../../components/Tournament/TournamentItem';
 import {faCaretDown, faFilter, faGlobe, faSearch} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {TournamentData} from "../../types.client.mongo";
@@ -78,13 +78,7 @@ const Tournaments = () => {
 
     return (
         <Base meta={<Meta title={t('page.tournaments.title')} />} ads={{ enableBottomRail: true }} isLoaded={(loaded && tournamentsData !== null)}>
-            <div className="container-smaller container-margin container-content">
-                <div className="absolute top-20 left-0">
-                    
-                </div>
-                <div className="absolute top-20 right-0">
-                    
-                </div>
+            <div className="container container-margin container-content">
                 <AdvertisementDisplay className="mb-6">
                     
                 </AdvertisementDisplay>
@@ -132,31 +126,22 @@ const Tournaments = () => {
                         </div>
                     </div>
                     <div className={"mt-6"}>
-                        <div className="flex leaderboards--head">
-                            <div className="hidden md:block w-8 text-center font-bold" />
-                            <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">Name</div>
-                            <div className="hidden md:block w-20" />
-                            <div className="hidden md:block w-44">Status</div>
-                            <div className="hidden md:block w-24">Players</div>
-                            <div className={"w-8 md:hidden"} />
-                        </div>
-                        <div>
-                            {tournamentsData?.data.length ? tournamentsData.data.map(
-                                tournament => (
-                                    <div key={tournament.tournamentId}>
-                                        <Tournament {...tournament} />
-                                    </div>
-                                ),
-                            ) : <div className={"py-48 text-white font-semibold text-center bg-gray-700"}>No results found!</div>}
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                            {tournamentsData?.data.length 
+                                ? tournamentsData.data.map(tournament => <TournamentItem key={tournament.tournamentId} {...tournament} />)
+                                : <div className={"col-span-full py-48 text-white font-semibold text-center bg-gray-700"}>No results found!</div>
+                            }
+
                             <div className={"col-span-full flex justify-end"}>
                                 <Pagination isNextPage={(tournamentsData && tournamentsData.isNextPage) ? true : false} skip={startNum} nextPage={() => setStartNum(startNum + limit)} prevPage={() => setStartNum(startNum - limit)} />
                             </div>
                         </div>
                     </div>
-                    <AdvertisementDisplay className="mt-6">
-                        <ComboBottom />
-                    </AdvertisementDisplay>
                 </div>
+
+                <AdvertisementDisplay className="mt-6">
+                        
+                </AdvertisementDisplay>
             </div>
         </Base>
     );

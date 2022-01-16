@@ -1,6 +1,6 @@
 import {TournamentData} from "../../types.client.mongo";
 import {useTranslation} from "next-i18next";
-import TournamentList from "../Tournament/TournamentList";
+import TournamentItem from "../Tournament/TournamentItem";
 
 interface IProps {
     data: TournamentData[];
@@ -21,7 +21,7 @@ const Tournaments = (props: IProps) => {
             <div className="grid grid-cols-1 gap-6">
                 {data.map((item) => (item.status === 1) && (
                     <div key={item.tournamentId}>
-                        <TournamentList {...item} simpleLayout />
+                        <TournamentItem {...item} />
                     </div>
                 ))}
             </div>

@@ -76,24 +76,24 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
 
     const profileItems = [
         {
-        name: 'General',
-        tab: 'statistics',
-        onClick: () => setTab('statistics')
+            name: 'General',
+            tab: 'statistics',
+            onClick: () => setTab('statistics')
         },
         {
-        name: 'Matches',
-        tab: 'matches',
-        onClick: () => setTab('matches')
+            name: 'Matches',
+            tab: 'matches',
+            onClick: () => setTab('matches')
         },
         {
-        name: 'Achievements',
-        tab: 'achievements',
-        onClick: () => setTab('achievements')
+            name: 'Achievements',
+            tab: 'achievements',
+            onClick: () => setTab('achievements')
         },
         {
-        name: 'Tournaments',
-        tab: 'tournaments',
-        onClick: () => setTab('tournaments')
+            name: 'Tournaments',
+            tab: 'tournaments',
+            onClick: () => setTab('tournaments')
         }
     ]
 
@@ -136,8 +136,8 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                     </div>
                 </div>
                 <div className={"mt-4"}>
-                    <AdvertisementDisplay className="mt-4">
-                        
+                    <AdvertisementDisplay className="mb-4">
+                            
                     </AdvertisementDisplay>
                     {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
                     {tab === 'matches' && (
@@ -156,6 +156,9 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                     )}
                     {tab === 'achievements' && <ProfileAchievements data={achievementsData} />}
                     {tab === 'tournaments' && <ProfileTournaments data={tournamentsData} />}
+                    <AdvertisementDisplay className="mt-4">
+                            
+                    </AdvertisementDisplay>
                 </div>
             </div>
         </Base>
