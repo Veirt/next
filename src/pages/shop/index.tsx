@@ -15,12 +15,13 @@ import { Meta } from '../../layout/Meta';
 import ConfigService from '../../services/ConfigService';
 import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
+import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
 
 interface IProps {
     gameData: {
         playercards: ItemData[];
         borders: ItemData[];
-        banners: ItemData[];
+        banners: ItemData[]; 
     };
     playerData: {
         level: PlayerLevelData
@@ -166,32 +167,36 @@ const Shop = (props: IProps) => {
                   ))}
 
                   <div className={'py-8'}>
-                      <ComboTop />
-                      {tab === 'page.shop.featured' && (
-                          <div>
-                              <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
-                              <div className={"mt-10"}>
-                                <h2 className={"py-2.5 bg-gray-775 shadow rounded-lg w-80 text-center text-2xl uppercase font-bold text-orange-400"}>
-                                    Newest Additions
-                                </h2>
+                    <AdvertisementDisplay className="mb-6">
+                    
+                    </AdvertisementDisplay>
+                    {tab === 'page.shop.featured' && (
+                        <div>
+                            <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
+                            <div className={"mt-10"}>
+                            <h2 className={"py-2.5 bg-gray-775 shadow rounded-lg w-80 text-center text-2xl uppercase font-bold text-orange-400"}>
+                                Newest Additions
+                            </h2>
 
-                                <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 gap-6 mt-6'}>
-                                    {tabs.map(row => row.data && row.data.map((item) => (featuredItems.includes(item.file) && !item.secret) && (
-                                        <ShopItem key={item.file} showType player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
-                                    )))}
-                                </div>
-                              </div>
-                          </div>
-                      )}
-                      {tab !== 'page.shop.featured' && (
-                          <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 gap-6'}>
-                              {tabs.map(row => row.name === tab && row.data && row.data.map(item => !item.secret && (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
-                                  <ShopItem key={item.file} player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
-                              )))}
-                          </div>
-                      )}
+                            <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 gap-6 mt-6'}>
+                                {tabs.map(row => row.data && row.data.map((item) => (featuredItems.includes(item.file) && !item.secret) && (
+                                    <ShopItem key={item.file} showType player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
+                                )))}
+                            </div>
+                            </div>
+                        </div>
+                    )}
+                    {tab !== 'page.shop.featured' && (
+                        <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 gap-6'}>
+                            {tabs.map(row => row.name === tab && row.data && row.data.map(item => !item.secret && (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
+                                <ShopItem key={item.file} player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
+                            )))}
+                        </div>
+                    )}
                   </div>
-                  <ComboBottom />
+                  <AdvertisementDisplay className="mt-6">
+                    
+                  </AdvertisementDisplay>
               </div>
           </Base>
       </>

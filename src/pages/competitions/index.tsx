@@ -37,7 +37,7 @@ const Tournaments = () => {
 
     const [ tournamentsData, setTournamentsData ] = useState<TournamentDataProps | null>(null);
     const [ search, setSearch ] = useState('');
-    const [ limit ] = useState(20);
+    const [ limit ] = useState(21);
     const [ startNum, setStartNum ] = useState(0);
     const [ filterLocale, setFilterLocale ] = useState('en');
     const [ filterType, setFilterType ] = useState(0);
@@ -131,7 +131,6 @@ const Tournaments = () => {
                                 ? tournamentsData.data.map(tournament => <TournamentItem key={tournament.tournamentId} {...tournament} />)
                                 : <div className={"col-span-full py-48 text-white font-semibold text-center bg-gray-700"}>No results found!</div>
                             }
-
                             <div className={"col-span-full flex justify-end"}>
                                 <Pagination isNextPage={(tournamentsData && tournamentsData.isNextPage) ? true : false} skip={startNum} nextPage={() => setStartNum(startNum + limit)} prevPage={() => setStartNum(startNum - limit)} />
                             </div>
