@@ -11,6 +11,7 @@ import moment from "moment";
 import Base from "../../templates/Base";
 import { Meta } from "../../layout/Meta";
 import { useEffect } from "react";
+import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
 
 interface IProps {
   slug: string
@@ -37,6 +38,10 @@ const News = ({ data }: IProps) => {
                 <div className="content-box blogContent">
                     <ReactMarkdown plugins={[breaks, gfm]}>{data.content}</ReactMarkdown>
                 </div>
+
+                <AdvertisementDisplay className="mt-6">
+                   
+                </AdvertisementDisplay>
             </div>
         </Base>
     );
