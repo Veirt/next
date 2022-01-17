@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 import { useTranslation } from 'next-i18next';
 import MatchMode from "../MatchMode";
 import {faQuestion, faTimes} from "@fortawesome/free-solid-svg-icons";
@@ -25,6 +25,8 @@ interface IProps {
 }
 
 const Spectator: FC<IProps> = (props) => {
+    const caretTimer = useRef<NodeJS.Timer | null>(null);
+
     const { smoothCaret, smoothCaretSpeed } = useConfig();
 
     const [ charHeight, setCharHeight ] = useState('0px');
@@ -32,17 +34,14 @@ const Spectator: FC<IProps> = (props) => {
     const { timer, countdown, embedClose, embedOwner, firstWord, totalPlayers, quoteString, roundsTotal, matchData, participantsData } = props;
     const { t } = useTranslation();
 
-    let caretTimer : NodeJS.Timer | null = null;
-
     const newQuote:string = (quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? quoteString : "");
     const borderColors = [ 'border-orange-400', 'border-green-400', 'border-blue-400', 'border-purple-400', 'border-teal-400', 'border-pink-400', 'border-indigo-400', 'border-gray-400', 'border-gray-400', 'border-gray-400', 'border-gray-400', 'border-gray-400', 'border-gray-400', 'border-gray-400', 'border-gray-400', 'border-gray-400' ];
     const caretColors = [ 'bg-orange-400', 'bg-green-400', 'bg-blue-400', 'bg-purple-400', 'bg-teal-400', 'bg-pink-400', 'bg-indigo-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400' ];
 
     useEffect(() => setCharHeight(`${(document.getElementsByClassName('cursor--locate')[0] as HTMLDivElement)?.offsetHeight}px`), [ quoteString ]);
     useEffect(() => {
-        if (!caretTimer) {
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-            caretTimer = setInterval(() => {
+        if (!caretTimer.current) {
+            caretTimer.current = setInterval(() => {
                 const participantsLength = participantsData.length;
                 let i:number;
 
@@ -69,10 +68,12 @@ const Spectator: FC<IProps> = (props) => {
         }
 
         return () => {
-            if (caretTimer !== null)
-                clearInterval(caretTimer);
+            if (caretTimer.current !== null) {
+                clearInterval(caretTimer.current);
+                caretTimer.current = null;
+            }
         }
-    }, [ participantsData ]);
+    }, [ participantsData, smoothCaret, smoothCaretSpeed ]);
 
     if (!matchData)
         return <div>No data found</div>
@@ -124,7 +125,7 @@ const Spectator: FC<IProps> = (props) => {
                     />
                     {quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" && (
                         <>
-                            <div className={"break-words mb-6 match--container text-gray-200 text-xl"}>
+                            <div className={"break-words mb-6 match--container text-gray-200 text-xl rounded-t-xl"}>
                                 <div className={"relative"}>
                                     {participantsData.map((participant, x) => (participant.teamId !== 0 && (participant.Progress ? participant.Progress : 0) < 100) && (
                                         <div
