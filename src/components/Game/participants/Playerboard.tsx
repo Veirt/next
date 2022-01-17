@@ -18,6 +18,11 @@ interface IProps {
     borderColors?: string[];
 }
 
+const getCorrectKeystrokeString = (quote: string, correctKeystrokes: number) => {
+    const useStartIndex = correctKeystrokes > 33 ? correctKeystrokes - 33 : 0;
+    return quote.substring(useStartIndex, correctKeystrokes - 1);
+}
+
 const Playerboard = (props: IProps) => {
 
     const { participantsData, firstWord, roundLimit, isSpectator, quoteString, borderColors } = props;
@@ -67,7 +72,10 @@ const Playerboard = (props: IProps) => {
                             <>
                                 {item.Progress !== 100 && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? (
                                     <div className={"truncate px-3 py-1 rounded bg-gray-700 font-semibold text-white"}>
-                                        {item.correctKeystrokeString || ''}<span className={"border-b border-orange-400 text-orange-400"}>{item.currentKeystroke ? item.currentKeystroke : (firstWord ? firstWord[0] : '')}</span>
+                                        {getCorrectKeystrokeString(quoteString, item.correctKeystrokes)}
+                                        <span className={"border-b border-orange-400 text-orange-400"}>
+                                            {item.currentKeystroke ? item.currentKeystroke : (firstWord ? firstWord[0] : '')}
+                                        </span>
                                     </div>
                                 ) : (item.Progress === 100 || quoteString === "KEYMASH_GAMEMODE_ROUND_END") && <div className={"text-gray-500 uppercase text-base font-semibold tracking-wide"}>{t('other.finished')}</div>}
                             </>
