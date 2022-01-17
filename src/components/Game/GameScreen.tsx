@@ -229,7 +229,7 @@ const GameScreen = (props: IProps) => {
         });
 
         socket.on('updateWPM', (data: SocketMatchPlayerData) => {
-            let i, j;
+            let i;
             setParticipantsData((participantsData) => {
                 const pLength = participantsData ? participantsData.length : 0;
                 for (i = 0; i < pLength; i++) {
