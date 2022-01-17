@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {SocketMatchData, SocketMatchPlayerData} from "../../../types.client.socket";
 import Playerboard from "../participants/Playerboard";
 import useConfig from "../../../hooks/useConfig";
+import Modal from "../../Uncategorized/Modal";
 
 interface IProps {
     matchData: SocketMatchData | null;
@@ -79,42 +80,33 @@ const Spectator: FC<IProps> = (props) => {
         return <div>No data found</div>
     else
         return (
-            <div className="mt-10 w-full px-2">
-                {showHelp && (
-                    <div className={"fixed top-0 bottom-0 right-0 left-0 w-screen h-screen bg-black bg-opacity-70"}>
-                        <div className={"flex h-screen"}>
-                            <div className={"flex m-auto"}>
-                                <div className={"w-128 bg-gray-775 p-4 text-white"}>
-                                    <div>
-                                        <div className={"text-xl uppercase font-semibold tracking-wider pb-3 mb-3 border-b border-orange-400"}>{t('component.spectator.help_title')}</div>
-                                        <div className={"text-gray-300"}>
-                                            <div className={"pb-2"}>{t('component.spectator.help_1')}</div>
-                                            <div className={"pb-2"}>{t('component.spectator.help_2')}</div>
-                                            <div className={"pb-2"}>{t('component.spectator.help_3')}</div>
-                                            <div className={"pb-2"}>{t('component.spectator.help_4')}</div>
-                                        </div>
-                                        <button onClick={() => setShowHelp(false)} className={"btn btn--red mt-2"}>
-                                            {t('button.close')}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+            <>
+                <Modal isOpened={showHelp} onClose={() => setShowHelp(false)}>
+                    <div>
+                        <div className={"text-xl uppercase font-semibold tracking-wider pb-3 mb-3 border-b border-orange-400"}>{t('component.spectator.help_title')}</div>
+                        <div className={"text-gray-300"}>
+                            <div className={"pb-2"}>{t('component.spectator.help_1')}</div>
+                            <div className={"pb-2"}>{t('component.spectator.help_2')}</div>
+                            <div className={"pb-2"}>{t('component.spectator.help_3')}</div>
+                            <div className={"pb-2"}>{t('component.spectator.help_4')}</div>
                         </div>
+                        <button onClick={() => setShowHelp(false)} className={"button small orange mt-4"}>
+                            {t('button.close')}
+                        </button>
                     </div>
-                )}
-                <div className={"absolute w-16 h-screen top-24 bottom-0 right-0 left-0"}>
+                </Modal>
+                <div className={"absolute w-16 top-20 right-0 left-2"}>
                     {embedOwner && (
-                        <button type={"button"} onClick={embedClose} className={"block bg-black bg-opacity-50 hover:bg-opacity-70 w-16 text-center py-4 rounded-r"}>
-                            <FontAwesomeIcon icon={faTimes} className={"text-pink-500 text-2xl mr-2"}/>
+                        <button type={"button"} onClick={embedClose} data-tip="Close" className={"block bg-black bg-opacity-50 hover:bg-opacity-70 w-12 text-center py-3 rounded-xl"}>
+                            <FontAwesomeIcon icon={faTimes} className={"text-pink-500 text-xl"}/>
                         </button>
                     )}
-                </div>
-                <div className={"absolute w-16 h-screen top-24 bottom-0 right-0"}>
-                    <button onClick={() => setShowHelp(true)} className={"block bg-black bg-opacity-50 hover:bg-opacity-70 w-16 text-center py-4 rounded-l"}>
-                        <FontAwesomeIcon icon={faQuestion} className={"text-white text-2xl mr-1"}/>
+
+                    <button onClick={() => setShowHelp(true)} className={"mt-2 block bg-black bg-opacity-50 hover:bg-opacity-70 w-12 text-center py-3 rounded-xl"}>
+                        <FontAwesomeIcon icon={faQuestion} className={"text-white text-xl"}/>
                     </button>
                 </div>
-                <div className={"max-w-screen-lg mx-auto"}>
+                <div className="container-smaller container-margin">
                     <MatchMode
                         totalPlayers={totalPlayers}
                         matchData={matchData}
@@ -145,24 +137,21 @@ const Spectator: FC<IProps> = (props) => {
                             </div>
                         </>
                     )}
-                    <div className={"hidden md:flex flex-wrap uppercase text-gray-500 pb-1 font-semibold text-xs tracking-wider"}>
-                        <div className={"w-1/2 md:w-64"} />
-                        <div className={"w-1/2 md:w-auto mr-auto"} />
-                        <div className={"w-2/4 md:w-80"} />
-                        <div className={"w-1/4 text-right md:w-24 pr-3"}>
-                            Acc %
+                    <div className={"flex flex-wrap uppercase text-gray-500 pb-1 font-semibold text-xs tracking-wider"}>
+                        <div className={"w-auto ml-auto"} />
+                        <div className={"ml-auto hidden lg:block w-2/4 md:w-80"} />
+                        <div className={"hidden lg:block text-right w-24 pr-3"}>
+                            Accuracy
                         </div>
-                        <div className={"w-1/4 text-right md:w-32 pr-3"}>
+                        <div className={"text-right w-32 pr-3"}>
                             Speed
                         </div>
                     </div>
-                    {matchData && (
-                        <>
-                            <Playerboard isSpectator={1} quoteString={quoteString} borderColors={borderColors} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />
-                        </>
-                    )}
+                    {matchData 
+                        && <Playerboard isSpectator={1} quoteString={quoteString} borderColors={borderColors} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />
+                    }
                 </div>
-            </div>
+            </>
         )
 }
 
