@@ -232,7 +232,6 @@ const GameScreen = (props: IProps) => {
             let i, j;
             setParticipantsData((participantsData) => {
                 const pLength = participantsData ? participantsData.length : 0;
-                const quoteString = matchData?.textContent;
                 for (i = 0; i < pLength; i++) {
                     const participantData = participantsData[i];
                     if (participantData && participantData.playerId === data.playerId) {
@@ -255,14 +254,6 @@ const GameScreen = (props: IProps) => {
                             if (data.correctKeystrokes) participantData.correctKeystrokes = data.correctKeystrokes;
                             if (data.currentKeystroke) participantData.currentKeystroke = data.currentKeystroke;
                             if (data.Accuracy) participantData.Accuracy = data.Accuracy;
-                            if (spectator && participantData.correctKeystrokes) {
-                                participantData.correctKeystrokeString = '';
-                                for (j = 35; j >= 2; j--) {
-                                    const keystroke = participantData.correctKeystrokes - j;
-                                    if (quoteString?.charAt(keystroke) && quoteString?.charAt(keystroke) !== 'undefined') 
-                                        participantData.correctKeystrokeString += quoteString?.charAt(keystroke);
-                                }
-                            }
                         }
                     }
                 }
