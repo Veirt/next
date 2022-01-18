@@ -119,8 +119,8 @@ const Tournaments = () => {
                         <div className={"w-full lg:w-auto"}>
                             <form method={"post"} onSubmit={handleSubmit}>
                                 <div className={"flex"}>
-                                    <input type={"text"} name="search" value={search} className={"form-settings form-settings-small w-auto"} style={{ borderTopRightRadius: '0', borderBottomRightRadius: '0' }} onChange={(e) => setSearch(e.target.value)} />
-                                    <button type={"submit"} className={"bg-gray-700 hover:bg-gray-600 focus:outline-none transition ease-in-out duration-200 w-16 text-white rounded-r"}><FontAwesomeIcon icon={faSearch} /></button>
+                                    <input type={"text"} name="search" value={search} className={"form-settings form-settings-small w-auto rounded-l-lg"} style={{ borderTopRightRadius: '0', borderBottomRightRadius: '0' }} onChange={(e) => setSearch(e.target.value)} />
+                                    <button type={"submit"} className={"bg-gray-700 hover:bg-gray-600 focus:outline-none transition ease-in-out duration-200 w-16 text-white rounded-r-lg"}><FontAwesomeIcon icon={faSearch} /></button>
                                 </div>
                             </form>
                         </div>
