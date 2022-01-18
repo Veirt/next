@@ -33,7 +33,6 @@ const Base = (props: IMainProps) => {
     const onTimerCalled = () => setLoaded(true);
 
     const redirectTo = (uri: string, isRefresh?: boolean, isBack?: boolean) => {
-        console.log('shortcut called', uri);
         if (isRefresh) return window.location.reload();
         if (isBack) return window.history.back();
         if (!isRefresh && !isBack) {

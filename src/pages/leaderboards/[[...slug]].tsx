@@ -159,7 +159,7 @@ const Leaderboards = (props: IProps) => {
 
                             {type === 'ranked' && (
                                 <div className={"relative"}>
-                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-750"} onClick={() => setDropdown(dropdown ? 0 : 2)}>
+                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-600 hover:bg-gray-700"} onClick={() => setDropdown(dropdown ? 0 : 2)}>
                                         <FontAwesomeIcon icon={faSort} className={"mr-1"} />
                                         {seasons.map((item) => item.id === parseInt(filter, 10) ? item.name : '')}
                                         <div className={"absolute right-0 top-0 mt-1.5 mr-3"}>

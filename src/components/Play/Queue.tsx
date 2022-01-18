@@ -229,7 +229,7 @@ const Queue = (props: IProps) => {
 
             <Modal isOpened={(lobbiesLoaded && tab === 1)} onClose={() => setTab(0)}>
                 <div className="h3">{t('page.queue.custom.public')}</div>
-                <div className="h-full overflow-y-auto">
+                <div style={{ height: '70vh' }} >
                     {lobbiesData.length !== 0
                         ? lobbiesData.map(row => <LobbiesRow key={row.invite} {...row} />)
                         : <div className="py-32 w-full bg-black-light text-sm uppercase text-white font-semibold text-center">{t('page.queue.custom.none')}</div>
