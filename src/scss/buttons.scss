@@ -16,6 +16,14 @@
     @apply px-6 py-3;
   }
   
+  .button.xlarge {
+    @apply px-6 py-4;
+  }
+
+  .button.xxlarge {
+    @apply px-6 py-5;
+  }
+  
   .button.gray {
     @apply bg-gray-750 hover:bg-gray-775 text-gray-400;
   }

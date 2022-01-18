@@ -58,8 +58,7 @@ const Custom = (props: IProps) => {
   const [ typingData, setTypingData ] = useState<string[]>([]);
   const [ isDragging, setIsDragging ] = useState(false);
 
-  const [ dropdownText, setDropdownText ] = useState(false);
-  const [ dropdownCountdown, setDropdownCountdown ] = useState(false);
+  const [ dropdown, setDropdown ] = useState<number | null>(null);
 
   const [ redirect, setRedirect ] = useState('');
 
@@ -228,14 +227,12 @@ const Custom = (props: IProps) => {
       textCustom: newtextCustom
     });
 
-    setDropdownCountdown(false);
     if (name === 'textId' && value !== 9)
-      setDropdownText(false);
+      setDropdown(null);
   }
 
   const handleStartMatch = () => {
-    setDropdownCountdown(false);
-    setDropdownText(false);
+    setDropdown(null);
     socket?.emit('startLobby', {});
   }
   const handleUpdateTeam = (playerId: string, teamId: number) => socket?.emit('updateLobbyPlayerTeam', { playerId, teamId });
@@ -261,9 +258,8 @@ const Custom = (props: IProps) => {
     if (teamLengths[1] !== 0 && countLobbyTotal === useGameMode.modeConfig.MAX_TEAMS * useGameMode.modeConfig.TEAM_SIZE) enableStartLobby = true;
   }
 
-  const buttonCSS = `bg-gray-750 text-left text-center px-2 border-b-2 border-transparent ${sessionData?.playerId === owner ? 'hover:border-orange-400 focus:outline-none' : 'pointer-events-none'} transition ease-in-out duration-300 py-3 text-white font-semibold text-sm`;
-  const tabCSS = `bg-gray-750 text-left text-center px-2 border-b-2 border-transparent transition ease-in-out duration-300 py-3 text-white font-semibold text-sm`;
-  const dropdownCSS = `block w-full text-left px-3 py-2 text-white text-sm uppercase font-semibold transition ease-in-out duration-300 hover:bg-gray-750`;
+  const buttonCSS = `bg-gray-750 text-left text-center px-2 ${sessionData?.playerId === owner ? 'hover:bg-gray-775 focus:outline-none' : 'pointer-events-none'} transition ease-in-out duration-300 py-3 text-white font-semibold text-sm`;
+  const tabCSS = `bg-gray-750 text-left text-center px-2 transition ease-in-out duration-300 py-3 text-white font-semibold text-sm`;
 
   return (
     <Base meta={<Meta title={(!name || name === 'undefined') ? 'Joining Lobby' : name} reverseTitle />} ads={{ enableBottomRail: true }} isLoaded={(lobbyId !== '0')}>
@@ -285,8 +281,8 @@ const Custom = (props: IProps) => {
                           <div className={"w-full xl:w-auto my-auto"}>
                             {sessionData?.playerId === owner && (
                                 <>
-                                  <button type="button" onClick={enableStartLobby ? handleStartMatch : () => false} data-tip={enableStartLobby ? t('page.custom.startmatch') : t('page.custom.error.team_size')} className={`${!enableStartLobby ? 'disabled opacity-50' : ''} w-full py-5 px-6 text-orange-800 bg-orange-400 hover:bg-orange-300 text-sm uppercase font-semibold rounded-md transition ease-in-out duration-300`}>
-                                    <FontAwesomeIcon icon={faAngleDoubleRight} className={"mr-1"} />
+                                  <button type="button" onClick={enableStartLobby ? handleStartMatch : () => false} data-tip={enableStartLobby ? t('page.custom.startmatch') : t('page.custom.error.team_size')} className={`${!enableStartLobby ? 'disabled opacity-50' : ''} button xxlarge orange`}>
+                                    <FontAwesomeIcon icon={faAngleDoubleRight} className={"mr-1 my-auto"} />
                                     {t('page.custom.startmatch')}
                                   </button>
                                 </>
@@ -315,7 +311,7 @@ const Custom = (props: IProps) => {
                             {!allowGuests || allowGuests === 0 ? <span>{t('options.no')}</span> : <span>{t('options.yes')}</span>}
                           </button>
                           <div className={"w-full sm:w-1/2 md:w-1/3 xl:w-28 relative"}>
-                            <button type="button" className={`w-full ${buttonCSS}`} disabled={owner !== sessionData?.playerId} onClick={() => setDropdownText(!dropdownText)}>
+                            <button type="button" className={`w-full ${buttonCSS}`} disabled={owner !== sessionData?.playerId} onClick={() => setDropdown(dropdown === 0 ? null : 0)}>
                               <div className={"text-xxs text-gray-400"}>{t('page.custom.text')}</div>
                               {!textCustom && textId === 0 && <span>{t('options.random')}</span>}
                               {!textCustom && textId === 1 && <span>{t('options.quotes')}</span>}
@@ -323,18 +319,18 @@ const Custom = (props: IProps) => {
                               {textId === 9 && <span>{t('options.custom')}</span>}
                             </button>
 
-                            {dropdownText && (
-                                <div className={"z-10 absolute top-0 left-0 mt-16 bg-gray-700 w-64"}>
-                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 0)} className={`${dropdownCSS} ${textId === 0 ? 'bg-gray-750' : ''}`}>
+                            {dropdown === 0 && (
+                                <div className={"dropdown dropdown-gap w-64"}>
+                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 0)} className={`item`}>
                                     Random
                                   </button>
-                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 1)} className={`${dropdownCSS} ${textId === 1 ? 'bg-gray-750' : ''}`}>
+                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 1)} className={`item ${textId === 1 ? 'is-active' : ''}`}>
                                     Quotes
                                   </button>
-                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 2)} className={`${dropdownCSS} ${textId === 2 ? 'bg-gray-750' : ''}`}>
+                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 2)} className={`item ${textId === 2 ? 'is-active' : ''}`}>
                                     Dictionary
                                   </button>
-                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 9)} className={`${dropdownCSS} ${textId === 9 ? 'bg-gray-750' : ''}`}>
+                                  <button type={"button"} onClick={() => handleUpdateSettings('textId', 9)} className={`item ${textId === 9 ? 'is-active' : ''}`}>
                                     Custom
                                   </button>
 
@@ -352,15 +348,15 @@ const Custom = (props: IProps) => {
                             )}
                           </div>
                           <div className={"w-full sm:w-1/2 md:w-1/3 xl:w-32 relative"}>
-                            <button type="button" className={`w-full xl:rounded-r-md ${buttonCSS}`} disabled={owner !== sessionData?.playerId} onClick={() => setDropdownCountdown(!dropdownCountdown)}>
+                            <button type="button" className={`w-full xl:rounded-r-md ${buttonCSS}`} disabled={owner !== sessionData?.playerId} onClick={() => setDropdown(dropdown === 1 ? null : 1)}>
                               <div className={"text-xxs text-gray-400"}>{t('page.custom.countdown')}</div>
                               {countdown} seconds
                             </button>
 
-                            {dropdownCountdown && (
-                                <div className={"z-10 absolute top-0 left-0 mt-16 bg-gray-700 w-32"}>
+                            {dropdown === 1 && (
+                                <div className={"dropdown dropdown-gap w-32"}>
                                   {([12,11,10,9,8,7,6]).map((item) => (
-                                      <button type={"button"} key={item} onClick={() => handleUpdateSettings('countdown', item)} className={`${dropdownCSS} ${countdown === item ? 'bg-gray-750' : ''}`}>
+                                      <button type={"button"} key={item} onClick={() => handleUpdateSettings('countdown', item)} className={`item ${countdown === item ? 'is-active' : ''}`}>
                                         {item} seconds
                                       </button>
                                   ))}
@@ -410,19 +406,19 @@ const Custom = (props: IProps) => {
                             {typingData.length !== 0 && ' typing...'}
                           </div>
                           <div className={"mt-2"}>
-                              <input type="text" name="message" className="form-settings" placeholder={t('form.message')} value={message || ''} autoComplete="off" onChange={chatOnChange} onKeyDown={chatOnKeyDown} />
+                              <input type="text" name="message" className="form-settings rounded-lg" placeholder={t('form.message')} value={message || ''} autoComplete="off" onChange={chatOnChange} onKeyDown={chatOnKeyDown} />
                           </div>
                         </div>
 
                         <div className={"flex flex-wrap gap-x-6 mt-4"}>
                             <div className="w-5/12">
-                              <div className={"py-3 px-4 bg-gray-750 rounded-lg text-gray-400 font-semibold text-sm"}>
+                              <div className={"py-3.5 px-4 bg-gray-750 rounded-lg text-gray-400 font-semibold text-sm"}>
                                 Invite your friends by sending them the invite link!
                               </div>
                             </div>
                             <div className={`w-36 my-auto`}>
-                              <button type={"button"} onClick={() => { toast.success("Copied to clipboard!"); navigator?.clipboard.writeText(`${Config.webUrl}/custom/${invite}`) }} className={"text-center py-2 px-4 rounded-lg text-orange-800 bg-orange-400 hover:bg-orange-300 uppercase font-semibold text-xl h-full"}>
-                                <FontAwesomeIcon icon={faPaperclip} className={"mr-1 text-base"} />
+                              <button type={"button"} onClick={() => { toast.success("Copied to clipboard!"); navigator?.clipboard.writeText(`${Config.webUrl}/custom/${invite}`) }} className={"button large orange"}>
+                                <FontAwesomeIcon icon={faPaperclip} className={"mr-1 my-auto text-base"} />
                                 {streamerMode === '0' ? invite : 'Hidden'}
                               </button>
                             </div>
