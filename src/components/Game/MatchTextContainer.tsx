@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
-import useConfig from "../../../hooks/useConfig";
+import useConfig from "../../hooks/useConfig";
 
 
 interface IProps {

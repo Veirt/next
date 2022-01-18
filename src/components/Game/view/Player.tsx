@@ -13,7 +13,7 @@ import Playercard from "../participants/Playercard";
 import Playerboard from "../participants/Playerboard";
 import useConfig from "../../../hooks/useConfig";
 import MatchLeaderboards from "../leaderboards/MatchLeaderboards";
-import MatchTextContainer from "../new/MatchTextContainer";
+import MatchTextContainer from "../MatchTextContainer";
 import PlayerRacetrack from "../participants/PlayerRacetrack";
 
 interface IProps {

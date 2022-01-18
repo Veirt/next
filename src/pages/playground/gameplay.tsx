@@ -3,7 +3,7 @@ import { Meta } from '../../layout/Meta';
 import ConfigService from '../../services/ConfigService';
 import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
-import MatchTextContainer from '../../components/Game/new/MatchTextContainer';
+import MatchTextContainer from '../../components/Game/MatchTextContainer';
 
 const Index = () => {
 
