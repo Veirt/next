@@ -56,8 +56,8 @@ const Spectator: FC<IProps> = (props) => {
                             const { offsetLeft, offsetTop } = getCaretPosition;
 
                             if (smoothCaret === '1') {
-                                const caretAnimation = getUserCaret.animate({ marginLeft: `${offsetLeft - 1}px` }, { duration: parseInt(smoothCaretSpeed, 10) });
-                                caretAnimation.onfinish = () => { getUserCaret.style.marginLeft = `${offsetLeft - 1}px`; getUserCaret.style.marginTop = `${offsetTop}px`; }
+                                const caretAnimation = getUserCaret.animate({ marginLeft: `${offsetLeft - 2}px` }, { duration: parseInt(smoothCaretSpeed, 10) });
+                                caretAnimation.onfinish = () => { getUserCaret.style.marginLeft = `${offsetLeft - 2}px`; getUserCaret.style.marginTop = `${offsetTop}px`; }
                             } else {
                                 getUserCaret.style.marginLeft = `${offsetLeft - 1}px`;
                                 getUserCaret.style.marginTop = `${offsetTop}px`;
@@ -118,17 +118,20 @@ const Spectator: FC<IProps> = (props) => {
                     {quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" && (
                         <>
                             <div className={"break-words mb-6 match--container text-gray-200 text-xl rounded-t-xl"}>
-                                <div className={"relative"}>
+                                <div className={"relative"} style={{ lineHeight: '2.5' }}>
                                     {participantsData.map((participant, x) => (participant.teamId !== 0 && (participant.Progress ? participant.Progress : 0) < 100) && (
-                                        <div
-                                            key={`key${participant.playerId}`}
-                                            id={`${participant.playerId}`}
-                                            className={`absolute rounded ${caretColors[x]}`}
-                                            style={{ width: '2px', height: charHeight || '2px', marginLeft: '0px', marginTop: '0px', transform: 'scale(1.1)' }}
-                                        />
+                                        <div key={`key${participant.playerId}`} id={`${participant.playerId}`} className="absolute" style={{ marginLeft: '0px', marginTop: '0px', }}>
+                                            <div className="absolute -top-4 z-10 bg-gray-600 bg-opacity-40 text-gray-200 shadow-sm px-1.5 py-0.5 text-xs rounded-lg">
+                                                {participant.name}
+                                            </div>
+                                            <div
+                                                className={`rounded ${caretColors[x]}`}
+                                                style={{ width: '2px', height: charHeight || '2px', transform: 'scale(1.1)' }}
+                                            />
+                                        </div>
                                     ))}
                                     {newQuote.split('').map((item, key) => (
-                                        <span key={key} className={`cursor--locate my-1 pr-px`}>
+                                        <span key={key} className={`cursor--locate pr-px`}>
                                             {item === ' ' ? <span className={"pr-2"}> </span> : item}
                                         </span>
                                     ))}

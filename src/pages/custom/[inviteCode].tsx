@@ -416,12 +416,12 @@ const Custom = (props: IProps) => {
 
                         <div className={"flex flex-wrap gap-x-6 mt-4"}>
                             <div className="w-5/12">
-                              <div className={"py-3 px-4 bg-gray-750 rounded text-gray-400 font-semibold text-sm"}>
+                              <div className={"py-3 px-4 bg-gray-750 rounded-lg text-gray-400 font-semibold text-sm"}>
                                 Invite your friends by sending them the invite link!
                               </div>
                             </div>
                             <div className={`w-36 my-auto`}>
-                              <button type={"button"} onClick={() => { toast.success("Copied to clipboard!"); navigator?.clipboard.writeText(`${Config.webUrl}/custom/${invite}`) }} className={"text-center py-2 px-4 rounded text-orange-800 bg-orange-400 hover:bg-orange-300 uppercase font-semibold text-xl h-full"}>
+                              <button type={"button"} onClick={() => { toast.success("Copied to clipboard!"); navigator?.clipboard.writeText(`${Config.webUrl}/custom/${invite}`) }} className={"text-center py-2 px-4 rounded-lg text-orange-800 bg-orange-400 hover:bg-orange-300 uppercase font-semibold text-xl h-full"}>
                                 <FontAwesomeIcon icon={faPaperclip} className={"mr-1 text-base"} />
                                 {streamerMode === '0' ? invite : 'Hidden'}
                               </button>
