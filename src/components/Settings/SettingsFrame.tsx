@@ -257,13 +257,13 @@ const SettingsFrame = (props: IProps) => {
             <div className={`fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 flex w-screen h-screen z-50 ${isVisible ? 'visible opacity-100' : 'invisible opacity-0'}  transition-all ease-in-out duration-300`}>
                 <div className={`m-auto max-w-screen-lg w-full ${isVisible ? 'translate-y-0' : 'translate-y-2'} transition-all ease-in-out duration-300`}>
                     <div className={"relative mx-5"}>
-                        <button type={"button"} onClick={onClose} className={"focus:outline-none top-0 right-0 mt-1 lg:mt-2 mr-2 absolute text-2xl text-gray-400 hover:text-gray-600 transition ease-in-out duration-300"}>
+                        <button type={"button"} onClick={onClose} className={"focus:outline-none top-0 right-0 mr-2 absolute text-2xl text-gray-400 hover:text-gray-600 transition ease-in-out duration-300"}>
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
                         <div className={"bg-gray-750 text-white shadow-lg rounded-t-2xl"}>
                             <div className={"flex flex-wrap justify-start bg-gray-800 rounded-t-2xl"}>
                                 {tabs.map((item) => (
-                                    <button key={item.tab} type={"button"} onClick={() => setTab(item.tab)} className={`rounded-t-lg w-auto px-6 py-1.5 sm:py-3 focus:outline-none block text-center border-b-2 ${tab === item.tab ? 'text-orange-400 border-orange-400' : 'text-white border-transparent'} text-base uppercase font-semibold`}>
+                                    <button key={item.tab} type={"button"} onClick={() => setTab(item.tab)} className={`rounded-t-lg w-auto px-6 py-1.5 sm:py-2 focus:outline-none block text-center text-sm ${tab === item.tab ? 'text-orange-400 bg-gray-750' : 'text-white bg-gray-800 hover:bg-gray-775'} text-base uppercase font-semibold`}>
                                         <FontAwesomeIcon icon={item.icon} className={"lg:mr-2"} />
                                         <span className="hidden lg:inline">{item.name}</span>
                                     </button>
@@ -285,7 +285,7 @@ const SettingsFrame = (props: IProps) => {
                                         {/* @ts-ignore */}
                                         {options[index].form.map((item) => (
                                             <div key={item.title} className={"mb-6"}>
-                                                <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3"}>{t(item.title)}</h3>
+                                                <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg"}>{t(item.title)}</h3>
                                                 <div className={"grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4"}>
                                                     {/* @ts-ignore */}
                                                     {item.options.map((option) => <SettingsOption key={option.title} type={option.type} select={option.data} {...option} />)}
@@ -297,7 +297,7 @@ const SettingsFrame = (props: IProps) => {
 
                                 {tab === 0 && (
                                     <div className={"mb-6"}>
-                                        <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3"}>Developers (coming soon)</h3>
+                                        <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg"}>Developers (coming soon)</h3>
                                         <div className={"flex w-48"}>
                                             <div className={"w-auto my-auto font-semibold mr-2"}>
                                                 Show API Key
@@ -328,7 +328,7 @@ const SettingsFrame = (props: IProps) => {
                                         {playercardList.map((item) => (inventory.includes(item.file)) && (
                                             <label key={item.file}>
                                                 <input type={"radio"} className={"form-control-radio-div"} name={"cardImage"} value={item.file} onChange={e => { setUnsaved(true); setCardImage(e.target.value) }} defaultChecked={cardImage === item.file} />
-                                                <div className={"relative h-40 flex bg-gray-700"}>
+                                                <div className={"relative h-40 flex bg-gray-700 rounded-lg"}>
                                                     <div className={"w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110"}>
                                                         <ItemPlayercard file={item.file} />
                                                     </div>
@@ -344,7 +344,7 @@ const SettingsFrame = (props: IProps) => {
                                         {borderList.map((item) => (inventory.includes(item.file)) && (
                                             <label key={item.file}>
                                                 <input type={"radio"} className={"form-control-radio-div"} name={"cardBorder"} value={item.file} onChange={e => { setUnsaved(true); setCardBorder(e.target.value) }} defaultChecked={cardBorder === item.file} />
-                                                <div className={"relative h-40 flex bg-gray-700"}>
+                                                <div className={"relative h-40 flex bg-gray-700 rounded-lg"}>
                                                     <div className={"w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110"}>
                                                         <ItemBorder file={item.file} />
                                                     </div>
@@ -360,7 +360,7 @@ const SettingsFrame = (props: IProps) => {
                                         {bannerList.map((item) => (inventory.includes(item.file)) && (
                                             <label key={item.file}>
                                                 <input type={"radio"} className={"form-control-radio-div"} name={"banner"} value={item.file} onChange={e => { setUnsaved(true); setBanner(e.target.value) }} defaultChecked={banner === item.file} />
-                                                <div className={"relative h-40 flex bg-gray-700"}>
+                                                <div className={"relative h-40 flex bg-gray-700 rounded-lg"}>
                                                     <div className={"w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110"}>
                                                         <ItemBanner file={item.file} />
                                                     </div>
@@ -375,23 +375,28 @@ const SettingsFrame = (props: IProps) => {
                                     <>
                                         <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-red-700 bg-opacity-30 mb-3"}>Danger Zone</h3>
                                         <div className={"grid grid-cols-1 md:grid-cols-2 gap-6"}>
-                                            <div className={"p-6 bg-gray-775"}>
+                                            <div className={"p-6 bg-gray-775 rounded-lg"}>
                                                 <h4>Your Data</h4>
                                                 <p className={"pt-1 pb-6 text-sm"}>
                                                     Click the button below to see all of the Data that has ever been stored on Keyma.sh.
                                                 </p>
-                                                <a target={"_blank"} rel={"noopener noreferrer"} href={`${Config.apiUrl}/player/gdpr`} className={"btn btn--blue"}>
-                                                    Raw JSON
-                                                </a>
+                                                <div className="flex">
+                                                    <a target={"_blank"} rel={"noopener noreferrer"} href={`${Config.apiUrl}/player/gdpr`} className={"button small blue"}>
+                                                        Raw JSON
+                                                    </a>
+                                                </div>
+                                                
                                             </div>
-                                            <div className={"p-6 bg-gray-775"}>
+                                            <div className={"p-6 bg-gray-775 rounded-lg"}>
                                                 <h4>Delete Account</h4>
                                                 <p className={"pt-1 pb-6 text-sm"}>
                                                     By hitting the button below, your account will be placed in an automatic deletion queue that executes once a day.
                                                 </p>
-                                                <button type={"button"} onClick={() => setDeletionModel(true)}className={"btn btn--red"}>
-                                                    Delete
-                                                </button>
+                                                <div className="flex">
+                                                    <button type={"button"} onClick={() => setDeletionModel(true)} className={"button small red"}>
+                                                        Delete
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </>
