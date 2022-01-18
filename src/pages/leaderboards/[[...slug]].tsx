@@ -76,7 +76,7 @@ const Leaderboards = (props: IProps) => {
                 } else
                     toast.error("Unable to pull data");
             })
-    }, [ filter, skip, world ]);
+    }, [ skip ]);
 
     const getSeasons = useCallback(() => {
         axios.get(`${Config.gameUrl}/seasons`, { cancelToken: axiosCancelSource.current?.token })
@@ -106,7 +106,7 @@ const Leaderboards = (props: IProps) => {
             getStatistics();
         else if (type === "casual" && filter === "challenges")
             getChallenges();
-    }, [ getStatistics, getRanked, type ]);
+    }, [ getStatistics, getRanked, getChallenges, filter, type ]);
     return (
         <Base meta={<Meta title={`${type.charAt(0).toUpperCase() + type.slice(1)} ${t('component.navbar.leaders')}`} />} ads={{ enableBottomRail: true }} isLoaded={(data && loaded)}>
             <div className="container-smaller container-margin container-content">
@@ -192,7 +192,7 @@ const Leaderboards = (props: IProps) => {
                             {type === 'ranked' && <LeaderboardPlayerRanked data={data as PlayerRankedExtendedData[]} skip={skip} />}
                             {(type === 'casual' && filter !== 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} fieldName={filter} skip={skip} />}
                             {(type === 'casual' && filter === 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} fieldName={"count"} skip={skip} />}
-                            <Pagination isNextPage={dataPage} skip={skip} nextPage={() => setSkip(skip + 25)} prevPage={() => setSkip(skip - 25)} />
+                            {loaded && <Pagination isNextPage={dataPage} skip={skip} nextPage={() => setSkip(skip + 25)} prevPage={() => setSkip(skip - 25)} />}
                         </>
                     </div>
                 </div>

@@ -11,13 +11,13 @@ interface LoadContentProps {
 const LoadContent = (props: LoadContentProps) => {
 
     const { isLoaded } = props;
-    
+
     const clearInterval = useRef<NodeJS.Timeout | null>(null);
     const [ mountTranslate, setMountTranslate ] = useState<boolean>(true);
 
     useEffect(() => {
         if (!clearInterval.current) 
-            clearInterval.current = setTimeout(() => setMountTranslate(false), 100);
+            clearInterval.current = setTimeout(() => setMountTranslate(false), 300);
 
         return () => {
             if (clearInterval.current) {
