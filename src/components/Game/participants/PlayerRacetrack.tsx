@@ -63,7 +63,7 @@ const PlayerRacetrack = (props: IProps) => {
                         )}
                     </div>
 
-                    <div className="w-32 mr-4 my-auto font-semibold text-white">
+                    <div className="w-36 mr-4 my-auto font-semibold text-white">
                         {hideWPM === '0' && (
                             <>
                                 {(item?.WPM || 0).toFixed(2)}
