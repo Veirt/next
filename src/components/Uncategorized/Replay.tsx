@@ -25,6 +25,7 @@ const parseReplay = (logString: string) => {
 };
 
 const Replay = (props: IProps) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { logString, quote } = props;
     const parsedReplay: ReplayData[] = parseReplay(logString);
 
@@ -47,6 +48,7 @@ const Replay = (props: IProps) => {
 
     // States
     const [ iteration, setIteration ] = useState<number>(0);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [ speed, setSpeed ] = useState<number>(1);
 
     // Consts
@@ -67,6 +69,7 @@ const Replay = (props: IProps) => {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const playInterval = () => {
         stopInterval(replayInterval.current);
         if (iteration < parsedReplay.length && parsedReplay[iteration]) 
@@ -75,6 +78,7 @@ const Replay = (props: IProps) => {
 
     return (
         <div>
+            {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
             {parsedReplay.map((item, index) => (
                 <>{item.input}-{item.delay}</>
             ))}
