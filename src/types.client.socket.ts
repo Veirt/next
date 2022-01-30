@@ -98,7 +98,6 @@ export interface SocketMatchData extends MatchData {
 }
 
 export interface GlobalMatchData {
-
     roundData: {
         timeStart: number;
         timeEnd: number;

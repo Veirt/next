@@ -151,7 +151,7 @@ const Spectator: FC<IProps> = (props) => {
                         </div>
                     </div>
                     {matchData 
-                        && <Playerboard isSpectator={1} quoteString={quoteString} borderColors={borderColors} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />
+                        && <Playerboard isSpectator={1} quoteString={quoteString} borderColors={borderColors} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />
                     }
                 </div>
             </>

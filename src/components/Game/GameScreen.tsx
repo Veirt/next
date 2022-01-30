@@ -165,8 +165,6 @@ const GameScreen = (props: IProps) => {
         // Timers
         socket.on('sendTimer', (data: { timer: number; }) => {
             DebugService.add('[Match] Timer has been sent and initialized');
-
-            // TODO: might need to be re-looked
             if (!gameTimerInterval.current) {
                 let newTimer = data.timer;
                 gameTimerInterval.current = setInterval(() => {
@@ -207,7 +205,22 @@ const GameScreen = (props: IProps) => {
             setGameDisabled(true);
             setGameRoundsTotal(data.roundsTotal);
 
-            socket.emit('roundReset', {});
+            setParticipantsData((participants) => {
+                participants.map((item) => {
+                    item.currentWord = data.textContent.split(' ')[0] || '';
+                    item.currentKeystroke = data.textContent.charAt(0) || '';
+                    item.Progress = 0;
+                    item.WPM = 0;
+                    item.Accuracy = 0;
+                    item.correctKeystrokes = 0;
+                    item.correctKeystrokeString = '';
+                    item.Quit = 0;
+                    item.Placement = 0;
+                    item.PlacementFinal = 0;
+                });
+
+                return [ ...participants ];
+            });
         });
 
         // Players 
@@ -228,32 +241,22 @@ const GameScreen = (props: IProps) => {
         });
 
         socket.on('updateWPM', (data: SocketMatchPlayerData) => {
-            let i;
             setParticipantsData((participantsData) => {
+                let i;
                 const pLength = participantsData ? participantsData.length : 0;
                 for (i = 0; i < pLength; i++) {
                     const participantData = participantsData[i];
                     if (participantData && participantData.playerId === data.playerId) {
-                        if (data.forceReset) {
-                            participantData.WPM = 0;
-                            participantData.Progress = 0;
-                            participantData.correctKeystrokes = 0;
-                            participantData.Accuracy = 100;
-                            participantData.correctKeystrokeString = "";
-                            participantData.currentKeystroke = data.currentKeystroke;
-                            participantData.currentWord = data.currentWord;
-                        } else {
-                            if (data.currentWord) participantData.currentWord = data.currentWord;
-                            if (data.WPM) participantData.WPM = data.WPM;
-                            if (data.Progress) participantData.Progress = data.Progress;
-                            if (data.Quit) participantData.Quit = data.Quit;
-                            if (data.roundsWon) participantData.roundsWon = data.roundsWon;
-                            if (data.Placement) participantData.Placement = data.Placement;
-                            if (data.PlacementFinal) participantData.PlacementFinal = data.PlacementFinal;
-                            if (data.correctKeystrokes) participantData.correctKeystrokes = data.correctKeystrokes;
-                            if (data.currentKeystroke) participantData.currentKeystroke = data.currentKeystroke;
-                            if (data.Accuracy) participantData.Accuracy = data.Accuracy;
-                        }
+                        if (data.currentWord) participantData.currentWord = data.currentWord;
+                        if (data.WPM) participantData.WPM = data.WPM;
+                        if (data.Progress) participantData.Progress = data.Progress;
+                        if (data.Quit) participantData.Quit = data.Quit;
+                        if (data.roundsWon) participantData.roundsWon = data.roundsWon;
+                        if (data.Placement) participantData.Placement = data.Placement;
+                        if (data.PlacementFinal) participantData.PlacementFinal = data.PlacementFinal;
+                        if (data.correctKeystrokes) participantData.correctKeystrokes = data.correctKeystrokes;
+                        if (data.currentKeystroke) participantData.currentKeystroke = data.currentKeystroke;
+                        if (data.Accuracy) participantData.Accuracy = data.Accuracy;
                     }
                 }
                 return [ ...participantsData ];

@@ -62,7 +62,7 @@ const Player: FC<IProps> = (props) => {
                             playersLength={participantsData.length}
                             data={endMatchData}
                             isRanked={matchData.flagId === 3}
-                            isRounds={matchData.modeData.modeConfig.ROUND_LIMIT !== 0}
+                            isRounds={matchData.modeData.modeConfig.ROUNDS.LIMIT !== 0}
                             showRewards={matchData.flagId === 0 || matchData.flagId === 3}
                             isMode={matchData.modeId}
                             leaveUrl={matchData.referralId ? restartUrl : leaveUrl}
@@ -90,7 +90,7 @@ const Player: FC<IProps> = (props) => {
                                         quote={quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? quoteString : ""}
                                         sendKeystroke={sendKeystroke}
                                         sendWord={sendWord}
-                                        isSuddenDeath={matchData.modeData.modeConfig.FINISH_TRIGGER.FIRST_TYPO || matchData.modeData.modeConfig.ROUND_TRIGGER.FIRST_TYPO}
+                                        isSuddenDeath={matchData.modeData.modeConfig.TRIGGERS.FIRST_TYPO}
                                         disabled={disabled}
                                     />
                                   )
@@ -101,9 +101,9 @@ const Player: FC<IProps> = (props) => {
                     {(performanceMode === '0' || endMatch) && (
                         <>
                             {(!participantsData || participantsData.length === 0) && <div className={"py-10"} />}
-                            {gameplayParticipantStyle === '2' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
-                            {gameplayParticipantStyle === '0' && <PlayerRacetrack participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
-                            {gameplayParticipantStyle === '1' && <Playerboard isSpectator={0} quoteString={quoteString} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
+                            {gameplayParticipantStyle === '2' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
+                            {gameplayParticipantStyle === '0' && <PlayerRacetrack participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
+                            {gameplayParticipantStyle === '1' && <Playerboard isSpectator={0} quoteString={quoteString} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
                             {(!embed && endMatch && !noticeString && matchData.flagId === 0) && (
                                 <div className="w-full">
                                     <div className="my-8 md:my-16 lg:my-32">

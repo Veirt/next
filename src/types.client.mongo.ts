@@ -289,23 +289,24 @@ export interface GamemodeData {
     modeId: number;
     modeName: string;
     modeConfig: {
-        PLACEMENTS_SORT: string;
-        MAX_TEAMS: number;
-        STRICT_TEAMS: number;
-        MATCH_TIME: number;
-        TEAM_SIZE: number;
-        ROUND_LIMIT: number;
-        ROUND_FIRST: number;
-        ROUND_TRIGGER: {
-            FINISH_FIRST: boolean;
+        TIMER: number;
+        TEAMS: {
+            MAX: number;
+            SIZE: number;
+            STRICT: boolean;
+          }
+          ROUNDS: {
+            LIMIT: number;
+            FIRST: number;
+          }
+          TRIGGERS: {
             FIRST_TYPO: boolean;
-        },
-        FINISH_TRIGGER: {
-            FINISH_FIRST: boolean;
-            ROUNDS_FIRST: boolean;
-            FIRST_TYPO: boolean;
-        },
-        PLACEMENTS_KEYSTROKE: boolean;
+            FIRST_FINISH: boolean;
+          }
+          SORT: {
+            ROUND: string; // 'WPM' | 'Elapsed' | 'Accuracy';
+            GLOBAL: string; // 'WPM' | 'Elapsed' | 'Accuracy' | 'roundsWon';
+          }
     };
 }
 

@@ -48,7 +48,7 @@ const MatchBar: FC<IProps> = (props) => {
                   </div>
                 )}
                 <div className="w-auto my-auto font-semibold text-white text-right pt-px">
-                  {modeData && modeData.modeConfig && modeData.modeConfig.ROUND_LIMIT === 0 && countdown < 0 && timer > 0 && !disabled && (
+                  {modeData && modeData.modeConfig && modeData.modeConfig.ROUNDS.LIMIT === 0 && countdown < 0 && timer > 0 && !disabled && (
                     <span className="px-3 w-auto mr-3">
                       <FontAwesomeIcon icon={faStopwatch} className="text-red-400 mr-2" />
                       <GameTimer timer={timer} />
