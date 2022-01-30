@@ -155,6 +155,7 @@ const MatchTextContainer = (props: IProps) => {
                     }
                 }
             } else {
+                let difference = currentInputLength - inputLength;
                 if (inputLength === 1) {
                     if (keystroke !== quote.charAt(currentIndex - 1)) {
                         setTypoStreak(1);
@@ -164,10 +165,12 @@ const MatchTextContainer = (props: IProps) => {
                         setLetterIndex(currentIndex);
                     }
                 } else {
-                    if (typoStreak > 0)
-                        setTypoStreak(typoStreak - 1);
-                    else 
-                        setLetterIndex(letterIndex - 1);
+                    // TODO: Potential bugfix could be here
+                    if (typoStreak > 0) {
+                        setTypoStreak(difference > typoStreak ? 0 : typoStreak - difference);
+                        difference = difference > typoStreak ? (difference - typoStreak) : (typoStreak - difference);
+                    } else 
+                        setLetterIndex(letterIndex - difference);
                 }
             }
             
