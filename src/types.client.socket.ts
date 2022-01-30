@@ -1,4 +1,5 @@
 import {
+    GamemodeData,
     MatchData,
     PlayerCompetitiveData,
     PlayerData,
@@ -94,4 +95,33 @@ export interface SocketMatchData extends MatchData {
     textSourceSource: string;
     textSourceContributor: string;
     textSourceAuthor: string;
+}
+
+export interface GlobalMatchData {
+
+    roundData: {
+        timeStart: number;
+        timeEnd: number;
+        total: number;
+    };
+    textData: {
+        textId: number;
+        content: string;
+        custom: string;
+        author: string;
+        source: string;
+        contributor: string;
+    }[];
+    matchData: {
+        locale: string;
+        textId: number;
+        worldId: number;
+        flagId: number;
+        modeId: number;
+        modeData: GamemodeData;
+        tournamentId: string,
+        referralId: string,
+    };
+    playerCount: number;
+    placementsFinalized: boolean;
 }

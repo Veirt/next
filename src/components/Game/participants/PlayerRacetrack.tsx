@@ -58,7 +58,7 @@ const PlayerRacetrack = (props: IProps) => {
                             </div>
                         ) : (
                             <div className="text-right">
-                                {(item.Progress === 100 && item.Placement !== 0) && <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} />}
+                                {(item.Placement >= 1) ? <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} /> : ''}
                             </div>
                         )}
                     </div>
