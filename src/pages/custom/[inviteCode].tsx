@@ -253,9 +253,9 @@ const Custom = (props: IProps) => {
   const useGameMode = gameModes[modeId];
 
   if (useGameMode) {
-    for (let i = 1; i <= useGameMode.modeConfig.MAX_TEAMS; i++)
-      if (teamLengths[i] === useGameMode.modeConfig.TEAM_SIZE) countLobbyTotal += useGameMode.modeConfig.TEAM_SIZE;
-    if (teamLengths[1] !== 0 && countLobbyTotal === useGameMode.modeConfig.MAX_TEAMS * useGameMode.modeConfig.TEAM_SIZE) enableStartLobby = true;
+    for (let i = 1; i <= useGameMode.modeConfig.TEAMS.MAX; i++)
+      if (teamLengths[i] === useGameMode.modeConfig.TEAMS.SIZE) countLobbyTotal += useGameMode.modeConfig.TEAMS.SIZE;
+    if (teamLengths[1] !== 0 && countLobbyTotal === useGameMode.modeConfig.TEAMS.MAX * useGameMode.modeConfig.TEAMS.SIZE) enableStartLobby = true;
   }
 
   const buttonCSS = `bg-gray-750 text-left text-center px-2 ${sessionData?.playerId === owner ? 'hover:bg-gray-775 focus:outline-none' : 'pointer-events-none'} transition ease-in-out duration-300 py-3 text-white font-semibold text-sm`;
@@ -429,9 +429,9 @@ const Custom = (props: IProps) => {
                         <TeamData
                             teamId={0}
                             teamSize={64}
-                            teamStrict={0}
+                            teamStrict={false}
                             data={participantsData}
-                            maxTeams={useGameMode.modeConfig.MAX_TEAMS}
+                            maxTeams={useGameMode.modeConfig.TEAMS.MAX}
                             dataLength={teamLengths[0]}
                             lobbyOwner={owner}
                             draggable={owner === sessionData?.playerId}
@@ -442,12 +442,12 @@ const Custom = (props: IProps) => {
                             onDragEnd={toggleDragging}
                             onDrop={(e: DragEvent<HTMLDivElement>) => { e.preventDefault(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 0); }}
                         />
-                        {((useGameMode && useGameMode.modeConfig.MAX_TEAMS >= 1) || teamLengths[1] !== 0) && (
+                        {((useGameMode && useGameMode.modeConfig.TEAMS.MAX >= 1) || teamLengths[1] !== 0) && (
                             <TeamData
                                 teamId={1}
-                                teamSize={useGameMode.modeConfig.MAX_TEAMS >= 1 ? useGameMode.modeConfig.TEAM_SIZE : 0}
-                                maxTeams={useGameMode.modeConfig.MAX_TEAMS}
-                                teamStrict={useGameMode.modeConfig.STRICT_TEAMS}
+                                teamSize={useGameMode.modeConfig.TEAMS.MAX >= 1 ? useGameMode.modeConfig.TEAMS.SIZE : 0}
+                                maxTeams={useGameMode.modeConfig.TEAMS.MAX}
+                                teamStrict={useGameMode.modeConfig.TEAMS.STRICT}
                                 data={participantsData}
                                 dataLength={teamLengths[1]}
                                 draggable={owner === sessionData?.playerId}
@@ -460,12 +460,12 @@ const Custom = (props: IProps) => {
                                 onDrop={(e) => { e.preventDefault(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 1); }}
                             />
                         )}
-                        {((useGameMode && useGameMode.modeConfig.MAX_TEAMS >= 2) || teamLengths[2] !== 0) && (
+                        {((useGameMode && useGameMode.modeConfig.TEAMS.MAX >= 2) || teamLengths[2] !== 0) && (
                             <TeamData
                                 teamId={2}
-                                teamSize={useGameMode.modeConfig.MAX_TEAMS >= 2 ? useGameMode.modeConfig.TEAM_SIZE : 0}
-                                maxTeams={useGameMode.modeConfig.MAX_TEAMS}
-                                teamStrict={useGameMode.modeConfig.STRICT_TEAMS}
+                                teamSize={useGameMode.modeConfig.TEAMS.MAX >= 2 ? useGameMode.modeConfig.TEAMS.SIZE : 0}
+                                maxTeams={useGameMode.modeConfig.TEAMS.MAX}
+                                teamStrict={useGameMode.modeConfig.TEAMS.STRICT}
                                 lobbyOwner={owner}
                                 data={participantsData}
                                 dataLength={teamLengths[2]}
@@ -478,12 +478,12 @@ const Custom = (props: IProps) => {
                                 onDrop={(e) => { e.preventDefault(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 2); }}
                             />
                         )}
-                        {((useGameMode && useGameMode.modeConfig.MAX_TEAMS >= 3) || teamLengths[3] !== 0) && (
+                        {((useGameMode && useGameMode.modeConfig.TEAMS.MAX >= 3) || teamLengths[3] !== 0) && (
                             <TeamData
                                 teamId={3}
-                                teamSize={useGameMode.modeConfig.MAX_TEAMS >= 3 ? useGameMode.modeConfig.TEAM_SIZE : 0}
-                                maxTeams={useGameMode.modeConfig.MAX_TEAMS}
-                                teamStrict={useGameMode.modeConfig.STRICT_TEAMS}
+                                teamSize={useGameMode.modeConfig.TEAMS.MAX >= 3 ? useGameMode.modeConfig.TEAMS.SIZE : 0}
+                                maxTeams={useGameMode.modeConfig.TEAMS.MAX}
+                                teamStrict={useGameMode.modeConfig.TEAMS.STRICT}
                                 data={participantsData}
                                 lobbyOwner={owner}
                                 dataLength={teamLengths[3]}

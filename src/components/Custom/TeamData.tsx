@@ -8,7 +8,7 @@ import PlayerCard from "../Player/PlayerCard";
 interface IProps {
   teamId: number;
   teamSize: number;
-  teamStrict: number;
+  teamStrict: boolean;
   lobbyOwner: string;
   data: SocketCustomPlayerData[];
   dataLength: number;

@@ -263,6 +263,7 @@ const GameScreen = (props: IProps) => {
             })
         });
 
+        return () => setSocket(null);
     // eslint-disable-next-line
     }, [ socket, sessionData?.playerId ]);
 
