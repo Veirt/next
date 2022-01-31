@@ -7,14 +7,13 @@ interface IProps {
     disabled: boolean;
     removeLimit?: boolean;
     sendKeystroke: (keystroke: string, event: boolean) => void;
-    sendWord: (word: string) => void;
     isSuddenDeath?: boolean;
   }
 
 const MatchTextContainer = (props: IProps) => {
 
     // Props 
-    const { quote, disabled, removeLimit, sendKeystroke, sendWord, isSuddenDeath } = props;
+    const { quote, disabled, removeLimit, sendKeystroke, isSuddenDeath } = props;
 
     // Refs 
     const refreshFPS = useRef<NodeJS.Timer | null>(null);
@@ -137,13 +136,11 @@ const MatchTextContainer = (props: IProps) => {
             if (inputLength > currentInputLength) {
                 if (typoStreak !== 0 || keystroke !== quote.charAt(currentIndex - 1)) {
                     setTypoStreak(typoStreak + 1);
-                    sendWord(inputValue.endsWith(' ') ? inputValue.slice(0, -1) : inputValue);
                 } else if (typoStreak === 0 && keystroke === quote.charAt(currentIndex - 1)) {
                     setLetterIndex(currentIndex);
                     
                     // Checks if Word is Finished
                     if (keystroke === ' ' || currentIndex === quote.length) {
-                        sendWord(inputValue.endsWith(' ') ? inputValue.slice(0, -1) : inputValue);
                         setWordIndex(currentIndex);
                         setInput('');
                         

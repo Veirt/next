@@ -35,7 +35,6 @@ interface IProps {
     quoteString: string;
     translation: string;
     sendKeystroke: (keystroke: string, event: boolean) => void;
-    sendWord: (word: string) => void;
     embed: boolean;
     embedClose?: () => void | false;
     embedOwner?: boolean;
@@ -44,7 +43,7 @@ interface IProps {
 const Player: FC<IProps> = (props) => {
 
     const [ isCapslock, setIsCapslock ] = useState(false);
-    const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, sendWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
+    const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
     const handleCapslock = (e: KeyboardEvent) => setIsCapslock(e.getModifierState("CapsLock"));
     
     const { gameplayParticipantStyle, performanceMode } = useConfig();
@@ -84,7 +83,6 @@ const Player: FC<IProps> = (props) => {
                                     <MatchTextContainer 
                                         quote={quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? quoteString : ""}
                                         sendKeystroke={sendKeystroke}
-                                        sendWord={sendWord}
                                         isSuddenDeath={matchData.modeData.modeConfig.TRIGGERS.FIRST_TYPO}
                                         disabled={disabled}
                                     />
