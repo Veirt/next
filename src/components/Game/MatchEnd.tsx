@@ -281,7 +281,7 @@ const MatchEnd = (props: IProps) => {
                     <div className="flex mt-3 lg:mt-6">
                         {!embed ? (
                             <a href={leaveUrl} className="button small blue">
-                                <FontAwesomeIcon className="mr-1" icon={faAngleDoubleLeft} />
+                                <FontAwesomeIcon className="mr-1 my-auto" icon={faAngleDoubleLeft} />
                                 {t('button.leave')} {embed && 'Lobby'}
                             </a>
                         ) : ''}
@@ -289,7 +289,7 @@ const MatchEnd = (props: IProps) => {
                         {!embed ? (
                             <a href={restartUrl} className={`${!matchData.tournamentId ? 'ml-auto' : ''} button small red`} >
                                 {t(matchData.flagId !== 3 ? 'button.newgame' : 'component.navbar.play' )}
-                                <FontAwesomeIcon className="ml-1" icon={faAngleDoubleRight} />
+                                <FontAwesomeIcon className="ml-1 my-auto" icon={faAngleDoubleRight} />
                             </a>
                         ) : (
                             <>
