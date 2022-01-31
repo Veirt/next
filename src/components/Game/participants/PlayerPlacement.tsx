@@ -27,14 +27,15 @@ const PlayerPlacement:FC<IProps> = (props) => {
                     {placement === 1 ? (
                         <FontAwesomeIcon
                             icon={faCrown}
+                            data-tip={placementFinal ? `You have placed ${numberSuffix(placement || 0)}!` : `Placements are not final until all players have completed due to our FKD system.`}
                             className={`mr-2 font-normal ${
                                 placementFinal ? 'text-yellow-400' : 'text-white text-opacity-25'
                             }`}
                         />
                     ) : placement !== 999 ? (
-                        <span className={placementFinal === 1 ? 'text-white text-opacity-100' : ''}>
-                                {numberSuffix(placement || 0)}
-                              </span>
+                        <span className={placementFinal === 1 ? 'text-white text-opacity-100' : ''} data-tip={placementFinal ? `You have placed ${numberSuffix(placement || 0)}!` : `Placements are not final until all players have completed due to our FKD system.`}>
+                            {numberSuffix(placement || 0)}
+                        </span>
                     ) : (
                         ''
                     )}

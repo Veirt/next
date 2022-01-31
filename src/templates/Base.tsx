@@ -1,6 +1,7 @@
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { GlobalHotKeys } from 'react-hotkeys';
+import ReactTooltip from 'react-tooltip';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
 import LoadContent from '../components/LoadContent';
 import Redirect from '../components/Uncategorized/Redirect';
@@ -76,6 +77,7 @@ const Base = (props: IMainProps) => {
     return props ? (
         <>
             <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
+            <ReactTooltip /> 
             {props.meta}
             {!props.noNav ? <Levelbar /> : ''}
             <main>

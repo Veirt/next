@@ -61,6 +61,7 @@ const Player: FC<IProps> = (props) => {
                         <MatchEnd
                             playersLength={participantsData.length}
                             data={endMatchData}
+                            matchData={matchData}
                             isRanked={matchData.flagId === 3}
                             isRounds={matchData.modeData.modeConfig.ROUNDS.LIMIT !== 0}
                             showRewards={matchData.flagId === 0 || matchData.flagId === 3}

@@ -12,6 +12,7 @@ import Spectator from "./view/Spectator";
 import {toast} from "react-toastify";
 import DebugService from "../../services/DebugService";
 import {
+    SocketGameEndData,
     SocketMatchData,
     SocketMatchEndData,
     SocketMatchPlayerData
@@ -56,14 +57,15 @@ const GameScreen = (props: IProps) => {
     const [ gameTimer, setGameTimer ] = useState<number>(-1);
     const [ gameDisabled, setGameDisabled ] = useState<boolean>(true);
     const [ gamePlayers, setGamePlayers ] = useState<number>(0);
+    const [ participantsData, setParticipantsData ] = useState<SocketMatchPlayerData[]>([]);
+    const [ endMatchData, setEndMatchData ] = useState<SocketGameEndData | null>(null);
+    const [ matchData, setMatchData ] = useState<SocketMatchData | null>(null);
+
     // TODO: might need to be re-looked below
     const [ queueRoundEnd, setQueueRoundEnd ] = useState<boolean>(false);
     const [ queueRoundWon, setQueueRoundWon ] = useState<boolean>(false);
     // 
     const [ gameRoundsTotal, setGameRoundsTotal ] = useState<number>(0);
-    const [ participantsData, setParticipantsData ] = useState<SocketMatchPlayerData[]>([]);
-    const [ endMatchData, setEndMatchData ] = useState<SocketMatchEndData | null>(null);
-    const [ matchData, setMatchData ] = useState<SocketMatchData | null>(null);
 
     // Global Hot Keys
     const keyMap = { GOTO_REDO: shortcutGameRedo.toLowerCase() };
@@ -148,7 +150,7 @@ const GameScreen = (props: IProps) => {
             setLoaded(true);
         });
 
-        socket.on('endMatch', (data: SocketMatchEndData) => {
+        socket.on('endMatch', (data: SocketGameEndData) => {
             DebugService.add('[Match] Match has been successfully ended.');
             playSound();
 
@@ -358,7 +360,7 @@ const GameScreen = (props: IProps) => {
                     <>
                         {(performanceMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData))) && <div className={"fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen"} />}
                         <div className={`relative ${performanceMode === '1' ? 'z-50' : 'z-20'} flex ${endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? 'h-auto container-margin' : `h-auto lg:h-game container-padding`}`}>
-                            <Player embed={embed || false} embedClose={embedClose} embedOwner={embedOwner} totalPlayers={gamePlayers} translation={t('page.match.statistics_unsaved')} firstWord={firstWord} sendKeystroke={sendKeystroke} sendWord={sendWord} playerData={sessionData} countdown={gameCountdown} timer={gameTimer} disabled={gameDisabled} latency={latency} quoteString={quoteString} endMatch={endMatchData !== null} endMatchData={endMatchData} leaveUrl={leaveUrl} matchData={matchData} participantsData={participantsData} noticeString={noticeString} restartUrl={restartUrl} roundsTotal={gameRoundsTotal} />
+                            <Player embed={embed || false} embedClose={embedClose} embedOwner={embedOwner} totalPlayers={gamePlayers} translation={t('page.match.statistics_unsaved')} firstWord={firstWord} sendKeystroke={sendKeystroke} sendWord={sendWord} playerData={sessionData} countdown={gameCountdown} timer={gameTimer} disabled={gameDisabled} latency={latency} quoteString={quoteString} endMatch={endMatchData !== null} endMatchData={endMatchData as SocketGameEndData} leaveUrl={leaveUrl} matchData={matchData} participantsData={participantsData} noticeString={noticeString} restartUrl={restartUrl} roundsTotal={gameRoundsTotal} />
                         </div>
                     </>
                 ) : (
