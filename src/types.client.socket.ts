@@ -5,7 +5,8 @@ import {
     PlayerData,
     PlayerExtendedData,
     PlayerLevelData,
-    PlayerMatchData
+    PlayerMatchData,
+    PlayerRoundData
 } from "./types.client.mongo";
 
 export interface ChatroomMessageProps {
@@ -123,4 +124,54 @@ export interface GlobalMatchData {
     };
     playerCount: number;
     placementsFinalized: boolean;
+}
+
+export interface SocketGameEndData {
+    average: {
+        wpm: number;
+        accuracy: number;
+        elapsed: number;
+    };
+    rewards: {
+        exp: number;
+        currency: number;
+        achievements: string[];
+        challenges: string[];
+    };
+    level: {
+        before: {
+            Index: number;
+            Next: number;
+            Prev: number;
+            Percentage: number;
+        };
+        after: {
+            Index: number;
+            Next: number;
+            Prev: number;
+            Percentage: number;
+        };
+    };
+    ranked: {
+        before: {
+            SR: number;
+            Games: number;
+            Rank: string;
+        };
+        after: {
+            SR: number;
+            Games: number;
+            Rank: string;
+        };
+    };
+    personalBest: boolean;
+    roundData: PlayerRoundData[];
+}
+
+export interface SocketChartData {
+    wpm: number[];
+    labels: string[];
+    accuracy: number[];
+    words: number[];
+    step?: number;
 }

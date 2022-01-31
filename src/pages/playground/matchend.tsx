@@ -24,77 +24,176 @@ const Index = () => {
         embedOwner?: boolean;
       }
 
-    const endMatchData: EndProps = {
+    const endMatchData: any = {
         data: {
-            calculateEXP: 250,
-            calculateCurrency: 2395,
-            achievementsUnlocked: 5,
-            personalBest: true, 
-            Competitive: {
-                SR: 2500,
-                Rank: 'bronze',
-                Remaining: 0,
-                Games: 9
+            "average": {
+                "wpm": 0,
+                "accuracy": 0,
+                "elapsed": 0
             },
-            CompetitiveNew: {
-                SR: 2520,
-                Rank: 'silver',
-                Remaining: 0,
-                Games: 10
+            "rewards": {
+                "exp": 0,
+                "currency": 0,
+                "achievements": [],
+                "challenges": []
             },
-            levelBefore: {
-                Index: 54,
-                Next: 10000,
-                Prev: 8000,
-                Percentage: 36.234
-            },
-            levelAfter: {
-                Index: 54,
-                Next: 10000,
-                Prev: 8000,
-                Percentage: 38
-            },
-            roundData: [
-                {
-                    Accuracy: 100,
-                    Mistakes: 0,
-                    Incorrect: [ { timestamp: 0, word: 'Yes' },   { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, { timestamp: 0, word: 'Yes' }, ],
-                    WPM: 250,
-                    Replay: [ { delay: 0, word: 'Yes' }],
-                    ElapsedTime: 2,
-                    calculateEXP: 100,
-                    Chart: {
-                        labels: ['sdf'],
-                        word: ['word'],
-                        wpm: [ 250 ],
-                        accuracy: [ 100 ]
-                    },
-                    Text: {
-                        textSourceSource: "V for Vendetta",
-                        textContent: "It is at this point in our story that along comes a spider.",
-                        textSourceContributor: "Lachney#8129",
-                        textSourceAuthor: "Hunger Games"
-                    }
+            "level": {
+                "before": {
+                    "Index": 12,
+                    "Next": 8684,
+                    "Prev": 7847,
+                    "Percentage": 50.77658303464755
                 },
+                "after": {
+                    "Index": 14,
+                    "Next": 10460,
+                    "Prev": 9555,
+                    "Percentage": 86.62983425414365
+                }
+            },
+            "ranked": {
+                "before": {
+                    "SR": 0,
+                    "Games": 0,
+                    "Rank": "Unrated"
+                },
+                "after": {
+                    "SR": 0,
+                    "Games": 0,
+                    "Rank": "Unrated"
+                }
+            },
+            "personalBest": true,
+            "roundData": [
                 {
-                    Accuracy: 98,
-                    Mistakes: 0,
-                    Incorrect: [ { timestamp: 0, word: 'Ask' }, { timestamp: 0, word: 'your' }, { timestamp: 0, word: 'day.' }],
-                    WPM: 200,
-                    Replay: [ { delay: 0, word: 'Yes' }],
-                    ElapsedTime: 5.98,
-                    calculateEXP: 100,
-                    Chart: {
-                        labels: ['sdf'],
-                        word: ['word'],
-                        wpm: [ 250 ],
-                        accuracy: [ 100 ]
+                    "WPM": 152.91,
+                    "Mistakes": 3,
+                    "Incorrect": [
+                        {
+                            "timestamp": 1643597964175,
+                            "word": "who"
+                        },
+                        {
+                            "timestamp": 1643597968629,
+                            "word": "thick"
+                        },
+                        {
+                            "timestamp": 1643597970695,
+                            "word": "slices"
+                        }
+                    ],
+                    "Accuracy": 96,
+                    "ElapsedTime": 17.5,
+                    "Chart": {
+                        "wpm": [
+                            75.14,
+                            102.81,
+                            121.16,
+                            133.29,
+                            142.51,
+                            146.47,
+                            153.63,
+                            158.79,
+                            159.81,
+                            165.81,
+                            165.8,
+                            166.77,
+                            168.81,
+                            170.38,
+                            173.93,
+                            175.14,
+                            173.93,
+                            174.85,
+                            175.24,
+                            170.66,
+                            162.48,
+                            159.41,
+                            152.91
+                        ],
+                        "labels": [
+                            "was",
+                            "knock",
+                            "the",
+                            "and",
+                            "half",
+                            "in",
+                            "chair",
+                            "meet",
+                            "a",
+                            "her",
+                            "landlady",
+                            "came",
+                            "carrying",
+                            "tray",
+                            "which",
+                            "a",
+                            "cup",
+                            "tea",
+                            "two",
+                            "and",
+                            "slices",
+                            "bread",
+                            "jam."
+                        ],
+                        "accuracy": [
+                            100,
+                            100,
+                            100,
+                            100,
+                            100,
+                            100,
+                            100,
+                            100,
+                            100,
+                            100,
+                            100,
+                            99,
+                            99,
+                            99,
+                            99,
+                            99,
+                            99,
+                            99,
+                            99,
+                            98,
+                            95,
+                            95,
+                            96
+                        ],
+                        "words": [
+                            0.24,
+                            0.369,
+                            0.211,
+                            0.211,
+                            0.347,
+                            0.15,
+                            0.366,
+                            0.296,
+                            0.128,
+                            0.182,
+                            0.722,
+                            0.203,
+                            0.609,
+                            0.299,
+                            0.281,
+                            0.125,
+                            0.301,
+                            0.249,
+                            0.291,
+                            0.28,
+                            1.324,
+                            0.748,
+                            0.979
+                        ],
+                        "step": 0
                     },
-                    Text: {
-                        textSourceSource: "V for Vendetta",
-                        textContent: "It is at this point in our story that along comes a spider.",
-                        textSourceContributor: "Lachney#8129",
-                        textSourceAuthor: "Hunger Games"
+                    "Text": {
+                        "textId": 296,
+                        "content": "There was a knock at the door, and she half turned in her chair to meet with a smile her stout landlady who came in carrying a tray on which stood a large cup of tea and two thick and wholesome slices of bread and jam.",
+                        "custom": "There was a knock at the door, and she half turned in her chair to meet with a smile her stout landlady who came in carrying a tray on which stood a large cup of tea and two thick and wholesome slices of bread and jam.",
+                        "author": "Edgar Wallace",
+                        "source": "The Angel of Terror",
+                        "contributor": "Fruit#7132"
                     }
                 }
             ]

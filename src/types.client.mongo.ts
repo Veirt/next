@@ -1,3 +1,4 @@
+import { SocketChartData } from "./types.client.socket";
 
 
 export interface PlayerLogData {
@@ -100,6 +101,16 @@ export interface PlayerRankedData {
     matchesLost: number;
     matchesQuit: number;
     created: number;
+}
+
+export interface PlayerRoundData {
+    WPM: number;
+    Mistakes: number;
+    Incorrect: { timestamp: number; word: string; }[];
+    Accuracy: number;
+    ElapsedTime: number;
+    Chart: SocketChartData;
+    Text: TextData;
 }
 
 /*

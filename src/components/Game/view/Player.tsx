@@ -5,7 +5,7 @@ import MatchMode from "../MatchMode";
 import MatchBar from "../MatchBar";
 import {
     SocketMatchData,
-    SocketMatchEndData,
+    SocketGameEndData,
     SocketMatchPlayerData
 } from "../../../types.client.socket";
 import {AuthenticationSessionData} from "../../../types.client.mongo";
@@ -19,7 +19,7 @@ import PlayerRacetrack from "../participants/PlayerRacetrack";
 interface IProps {
     matchData: SocketMatchData | null;
     participantsData: SocketMatchPlayerData[];
-    endMatchData: SocketMatchEndData | null;
+    endMatchData: SocketGameEndData | null;
     playerData: AuthenticationSessionData | null;
     countdown: number;
     timer: number;
@@ -57,7 +57,7 @@ const Player: FC<IProps> = (props) => {
         <>
             {matchData && playerData && (
                 <div className={"my-auto w-full"}>
-                    {matchData && endMatch ? (
+                    {(matchData && endMatch && endMatchData !== null) ? (
                         <MatchEnd
                             playersLength={participantsData.length}
                             data={endMatchData}
