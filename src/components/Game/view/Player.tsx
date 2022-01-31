@@ -62,14 +62,8 @@ const Player: FC<IProps> = (props) => {
                             playersLength={participantsData.length}
                             data={endMatchData}
                             matchData={matchData}
-                            isRanked={matchData.flagId === 3}
-                            isRounds={matchData.modeData.modeConfig.ROUNDS.LIMIT !== 0}
-                            showRewards={matchData.flagId === 0 || matchData.flagId === 3}
-                            isMode={matchData.modeId}
                             leaveUrl={matchData.referralId ? restartUrl : leaveUrl}
                             restartUrl={restartUrl}
-                            tournamentId={matchData.tournamentId}
-                            lobbyReferral={matchData.referralId || ''}
                             embed={embed}
                             embedClose={embedClose}
                             embedOwner={embedOwner}

@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBullseye,
@@ -24,20 +24,12 @@ interface IProps {
   data: SocketGameEndData;
   matchData: SocketMatchData;
   
-
-  showRewards: boolean;
   playersLength: number;
   leaveUrl: string;
   restartUrl: string;
   embed: boolean;
   embedClose?: () => void | false;
   embedOwner?: boolean;
-
-  // This should be checked
-  lobbyReferral: string;
-  tournamentId?: string;
-  isRanked: boolean;
-  isMode: number;
 }
 
 const MatchEnd = (props: IProps) => {
@@ -51,7 +43,7 @@ const MatchEnd = (props: IProps) => {
 
     const { useCPM, adsGameplay } = useConfig();
 
-    const { data, matchData, showRewards, leaveUrl, restartUrl, embed, embedOwner, embedClose } = props;
+    const { data, matchData, leaveUrl, restartUrl, embed, embedOwner, embedClose } = props;
 
     const useRoundData = data?.roundData[showRound] || null;
 
@@ -101,9 +93,9 @@ const MatchEnd = (props: IProps) => {
             <div className="relative">
                 <div id="matchEnd">
                     <div className={"bg-gray-775 rounded-t-2xl flex flex-wrap justify-center text-white"}>
-                        {tabs.map((item) => (item.tab !== 'rewards' || (item.tab === 'rewards' && showRewards)) && (
-                            <button type={"button"} onClick={() => setTab(item.tab)} className={`w-32 focus:outline-none py-2 text-sm font-semibold text-center border-b-2 ${tab === item.tab ? 'border-orange-400' : 'border-transparent'} hover:border-orange-400 transition ease-in-out duration-300`}>
-                              {item.name}
+                        {tabs.map((item) => (
+                            <button key={item.tab} type={"button"} onClick={() => setTab(item.tab)} className={`w-32 focus:outline-none py-2 text-sm font-semibold text-center border-b-2 ${tab === item.tab ? 'border-orange-400' : 'border-transparent'} hover:border-orange-400 transition ease-in-out duration-300`}>
+                                {item.name}
                             </button>
                         ))}
                     </div>
@@ -199,89 +191,89 @@ const MatchEnd = (props: IProps) => {
                         {tab === 'match' && (
                             <>
                                 <div className={"pb-8 flex flex-wrap justify-center sm:justify-between"}>
-                                  <div className={"w-auto pb-4 sm:pb-0"}>
-                                    <div className={"flex text-white"}>
-                                      {subtabs.map((item, index) => (
-                                          <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`${index === 0 ? 'rounded-l-lg' : 'rounded-r-lg'} transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${subtab !== item.tab ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
-                                            {item.name}
-                                          </button>
-                                      ))}
+                                    <div className={"w-auto pb-4 sm:pb-0"}>
+                                        <div className={"flex text-white"}>
+                                            {subtabs.map((item, index) => (
+                                                <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`${index === 0 ? 'rounded-l-lg' : 'rounded-r-lg'} transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${subtab !== item.tab ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
+                                                  {item.name}
+                                                </button>
+                                            ))}
+                                        </div>
                                     </div>
-                                  </div>
-                                  <div className={"w-auto"}>
-                                    <div className={"flex text-white"}>
-                                      {matchData.modeData.modeConfig.ROUNDS.LIMIT >= 1 && (
-                                          [...Array(data?.roundData.length || 0)].map((_i, k) => (
-                                              <button key={k} type="button" onClick={() => setShowRound(k)} className={`transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${showRound !== k ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
-                                                Round {k + 1}
-                                              </button>
-                                          ))
-                                      )}
+                                    <div className={"w-auto"}>
+                                        <div className={"flex text-white"}>
+                                            {matchData.modeData.modeConfig.ROUNDS.LIMIT >= 1 && (
+                                                [...Array(data?.roundData.length || 0)].map((_i, k) => (
+                                                    <button key={k} type="button" onClick={() => setShowRound(k)} className={`transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${showRound !== k ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
+                                                      Round {k + 1}
+                                                    </button>
+                                                ))
+                                            )}
+                                        </div>
                                     </div>
-                                  </div>
                                 </div>
                                 {useRoundData && (
-                                  <div className={"text-white"}>
-                                      {subtab === 'overview' && (
-                                          <div className={"grid grid-cols-1 sm:grid-cols-3 gap-8"}>
-                                              <div className={"col-span-full md:col-span-1"}>
-                                                  <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4"}>
-                                                    {rows.map(stat => (
-                                                        <div key={stat.Name} className={"relative bg-gray-825 shadow-md rounded-2xl px-5 py-3"}>
-                                                          <div className={"uppercase text-xs font-semibold text-white"}>{t(stat.Name)}</div>
-                                                          <div className={"text-4xl text-orange-400 font-bold"}>
-                                                            <ReactCountUp start={0} end={stat.Value || 0} decimal={'.'} decimals={['statistics.time', 'statistics.wpm', 'statistics.cpm'].includes(stat.Name) ? 2 : 0} />
-                                                            <span className={"text-2xl"}>{stat.Extension}</span>
-                                                          </div>
-                                                          {(['statistics.wpm', 'statistics.cpm'].includes(stat.Name) && data.personalBest) ? (
-                                                              <div className={"absolute top-0 right-0 mt-8 mr-4"} data-tip="New Personal Best for this Text!">
-                                                                <FontAwesomeIcon icon={faCrown} className={"text-yellow-400"} />
+                                    <div className={"text-white"}>
+                                        {subtab === 'overview' && (
+                                            <div className={"grid grid-cols-1 sm:grid-cols-3 gap-8"}>
+                                                <div className={"col-span-full md:col-span-1"}>
+                                                    <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4"}>
+                                                      {rows.map(stat => (
+                                                          <div key={stat.Name} className={"relative bg-gray-825 shadow-md rounded-2xl px-5 py-3"}>
+                                                              <div className={"uppercase text-xs font-semibold text-white"}>{t(stat.Name)}</div>
+                                                              <div className={"text-4xl text-orange-400 font-bold"}>
+                                                                  <ReactCountUp start={0} end={stat.Value || 0} decimal={'.'} decimals={['statistics.time', 'statistics.wpm', 'statistics.cpm'].includes(stat.Name) ? 2 : 0} />
+                                                                  <span className={"text-2xl"}>{stat.Extension}</span>
                                                               </div>
-                                                          ): ''}
-                                                        </div>
-                                                    ))}
-                                                  </div>
-                                              </div>
-                                              <div className={"col-span-full md:col-span-2"}>
-                                                  <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md"}>
-                                                    {useRoundData.Text.source !== 'CUSTOM_TEXT' ? (
-                                                        <div className={"flex flex-wrap"}>
-                                                          <div className={"w-full md:w-1/2 lg:w-1/3"}>
-                                                            <div>
-                                                              <div className={"text-white text-xs sm:text-xs uppercase font-semibold"}>Title</div>
-                                                              <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.source}</div>
-                                                            </div>
-                                                            <div className={"mt-4"}>
-                                                              <div className={"text-white text-xs uppercase font-semibold"}>Author</div>
-                                                              <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.author}</div>
-                                                            </div>
-                                                            {useRoundData.Text.contributor && useRoundData.Text.contributor !== 'admin' && (
-                                                                <div className={"mt-4"}>
-                                                                  <div className={"text-white text-xs uppercase font-semibold"}>Contributor</div>
-                                                                  <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold truncate"}>{useRoundData.Text.contributor}</div>
+                                                              {(['statistics.wpm', 'statistics.cpm'].includes(stat.Name) && data.personalBest) ? (
+                                                                  <div className={"absolute top-0 right-0 mt-8 mr-4"} data-tip="New Personal Best for this Text!">
+                                                                    <FontAwesomeIcon icon={faCrown} className={"text-yellow-400"} />
+                                                                  </div>
+                                                              ): ''}
+                                                          </div>
+                                                      ))}
+                                                    </div>
+                                                </div>
+                                                <div className={"col-span-full md:col-span-2"}>
+                                                    <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md"}>
+                                                        {useRoundData.Text.source !== 'CUSTOM_TEXT' ? (
+                                                            <div className={"flex flex-wrap"}>
+                                                                <div className={"w-full md:w-1/2 lg:w-1/3"}>
+                                                                    <div>
+                                                                        <div className={"text-white text-xs sm:text-xs uppercase font-semibold"}>Title</div>
+                                                                        <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.source}</div>
+                                                                    </div>
+                                                                    <div className={"mt-4"}>
+                                                                        <div className={"text-white text-xs uppercase font-semibold"}>Author</div>
+                                                                        <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.author}</div>
+                                                                    </div>
+                                                                    {useRoundData.Text.contributor && useRoundData.Text.contributor !== 'admin' && (
+                                                                        <div className={"mt-4"}>
+                                                                            <div className={"text-white text-xs uppercase font-semibold"}>Contributor</div>
+                                                                            <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold truncate"}>{useRoundData.Text.contributor}</div>
+                                                                        </div>
+                                                                    )}
                                                                 </div>
-                                                            )}
-                                                          </div>
-                                                          <div className={"w-full md:w-1/2 lg:w-2/3 my-auto md:pl-4"}>
-                                                            <div className={"border-l-2 border-orange-400 pl-4 py-2 mt-4 sm:mt-0 text-xs lg:text-sm"}>
-                                                              {useRoundData.Text.content}
+                                                                <div className={"w-full md:w-1/2 lg:w-2/3 my-auto md:pl-4"}>
+                                                                    <div className={"border-l-2 border-orange-400 pl-4 py-2 mt-4 sm:mt-0 text-xs lg:text-sm"}>
+                                                                        {useRoundData.Text.content}
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                          </div>
-                                                        </div>
-                                                    ) : <div>Dictionary - Random Words</div>}
-                                                  </div>
+                                                        ) : <div>Dictionary - Random Words</div>}
+                                                    </div>
 
-                                                  <div className={"text-lg uppercase font-semibold"}>{t('page.match.mistakes')}</div>
-                                                  <div className={"flex flex-wrap gap-x-6 gap-y-2 pt-2"}>
-                                                    {useRoundData.Incorrect.map((item, index) => <div key={`${index}-${item.word}`} className={"px-3 py-1 rounded bg-red-500 bg-opacity-20 text-sm text-white"}>{item.word}</div>)}
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      )}
+                                                    <div className={"text-lg uppercase font-semibold"}>{t('page.match.mistakes')}</div>
+                                                    <div className={"flex flex-wrap gap-x-6 gap-y-2 pt-2"}>
+                                                        {useRoundData.Incorrect.map((item, index) => <div key={`${index}-${item.word}`} className={"px-3 py-1 rounded bg-red-500 bg-opacity-20 text-sm text-white"}>{item.word}</div>)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
 
-                                      {subtab === 'graph' && <Chart {...useRoundData.Chart} />}
-                                  </div>
-                              )}
+                                        {subtab === 'graph' && <Chart {...useRoundData.Chart} />}
+                                    </div>
+                                )}
                             </>
                         )}
                     </div>
@@ -296,21 +288,21 @@ const MatchEnd = (props: IProps) => {
                         {matchData.tournamentId && <a href={leaveUrl} className="button small orange">{t('button.ladder')}</a>}
                         {!embed ? (
                             <a href={restartUrl} className={`${!matchData.tournamentId ? 'ml-auto' : ''} button small red`} >
-                              {t(matchData.flagId !== 3 ? 'button.newgame' : 'component.navbar.play' )}
-                              <FontAwesomeIcon className="ml-1" icon={faAngleDoubleRight} />
+                                {t(matchData.flagId !== 3 ? 'button.newgame' : 'component.navbar.play' )}
+                                <FontAwesomeIcon className="ml-1" icon={faAngleDoubleRight} />
                             </a>
                         ) : (
                             <>
-                              {embedOwner ? (
-                                  <button type={"button"} onClick={embedClose} className={"button small red ml-auto"}>
-                                    End Game
-                                  </button>
-                              ) : (
-                                  <div className={"text-white text-sm uppercase font-semibold tracking-wider ml-auto pt-2"}>
-                                    <FontAwesomeIcon icon={faSpinner} className={"text-white mr-1"} spin />
-                                    Waiting on Lobby Leader
-                                  </div>
-                              )}
+                                {embedOwner ? (
+                                    <button type={"button"} onClick={embedClose} className={"button small red ml-auto"}>
+                                      End Game
+                                    </button>
+                                ) : (
+                                    <div className={"text-white text-sm uppercase font-semibold tracking-wider ml-auto pt-2"}>
+                                      <FontAwesomeIcon icon={faSpinner} className={"text-white mr-1"} spin />
+                                      Waiting on Lobby Leader
+                                    </div>
+                                )}
                             </>
                         )}
                     </div>

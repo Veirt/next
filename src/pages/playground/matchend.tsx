@@ -4,25 +4,8 @@ import MatchEnd from "../../components/Game/MatchEnd";
 import { Meta } from "../../layout/Meta";
 import ConfigService from "../../services/ConfigService";
 import Base from "../../templates/Base";
-import { SocketMatchEndData } from "../../types.client.socket";
 
 const Index = () => {
-
-    interface EndProps {
-        data: SocketMatchEndData | null;
-        lobbyReferral: string;
-        tournamentId?: string;
-        playersLength: number;
-        isRanked: boolean;
-        isRounds: boolean;
-        isMode: number;
-        showRewards: boolean;
-        leaveUrl: string;
-        restartUrl: string;
-        embed: boolean;
-        embedClose?: () => void | false;
-        embedOwner?: boolean;
-      }
 
     const endMatchData: any = {
         data: {

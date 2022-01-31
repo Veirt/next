@@ -5,7 +5,7 @@ import { SocketChartData } from "../../../types.client.socket";
 
 
 const Chart = (props: SocketChartData) => {
-    const { wpm, labels, words, accuracy, step } = props;
+    const { wpm, labels, words } = props;
     const { useCPM } = useConfig();
 
     let chartLabel = 'Words Per Minute';

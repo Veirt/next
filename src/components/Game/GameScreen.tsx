@@ -14,7 +14,6 @@ import DebugService from "../../services/DebugService";
 import {
     SocketGameEndData,
     SocketMatchData,
-    SocketMatchEndData,
     SocketMatchPlayerData
 } from "../../types.client.socket";
 import Redirect from '../Uncategorized/Redirect';
