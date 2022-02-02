@@ -42,7 +42,7 @@ const GameScreen = (props: IProps) => {
     
     // Contexts
     const { t } = useTranslation();
-    const { matchFinishBeep, upscaleMatchContainer, performanceMode, shortcutGameRedo } = useConfig();
+    const { matchFinishBeep, upscaleMatchContainer, focusMode, shortcutGameRedo } = useConfig();
     const { sessionData } = usePlayerContext();
 
     // States
@@ -348,8 +348,8 @@ const GameScreen = (props: IProps) => {
             <div className={`${matchContainerCSS ?? 'container-small'} pt-10`}>
                 {!spectator ? (
                     <>
-                        {(performanceMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData))) && <div className={"fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen"} />}
-                        <div className={`relative ${performanceMode === '1' ? 'z-50' : 'z-20'} flex ${endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? 'h-auto container-margin' : `h-auto lg:h-game container-padding`}`}>
+                        {(focusMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData))) && <div className={"fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen"} />}
+                        <div className={`relative ${focusMode === '1' ? 'z-50' : 'z-20'} flex ${endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? 'h-auto container-margin' : `h-auto lg:h-game container-padding`}`}>
                             <Player embed={embed || false} embedClose={embedClose} embedOwner={embedOwner} totalPlayers={gamePlayers} translation={t('page.match.statistics_unsaved')} firstWord={firstWord} sendKeystroke={sendKeystroke} playerData={sessionData} countdown={gameCountdown} timer={gameTimer} disabled={gameDisabled} latency={latency} quoteString={quoteString} endMatch={endMatchData !== null} endMatchData={endMatchData as SocketGameEndData} leaveUrl={leaveUrl} matchData={matchData} participantsData={participantsData} noticeString={noticeString} restartUrl={restartUrl} roundsTotal={gameRoundsTotal} />
                         </div>
                     </>
@@ -366,7 +366,7 @@ const GameScreen = (props: IProps) => {
         return <Redirect to={redirect} />;
     else
         return !embed ? (
-            <Base meta={<Meta title="In Game" />} isLoaded={(matchData !== null && sessionData !== null)} ads={{ enableTrendiVideo: true }}>
+            <Base meta={<Meta title="In Game" />} isLoaded={(matchData !== null && sessionData !== null)} ads={{ enableTrendiVideo: (focusMode === '0') }}>
                 {gameContainer}
             </Base>
         ) : (

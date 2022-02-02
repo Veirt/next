@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {Fragment, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBullseye,
@@ -18,6 +18,7 @@ import { useTranslation } from 'next-i18next';
 import Chart from './MatchEnd/Chart';
 import PlayerPlacement from './participants/PlayerPlacement';
 import PlayerExperience from '../Player/PlayerExperience';
+import ReactTooltip from 'react-tooltip';
 
 
 interface IProps {
@@ -32,6 +33,15 @@ interface IProps {
   embedOwner?: boolean;
 }
 
+const filterDelayCSS = (index: number, delay: number, average: number, incorrect: number[]) => {
+    // const delayDifference = delay - average;
+
+    if (!incorrect.includes(index))
+        return 'text-white';
+    
+    return 'text-red-400';
+}
+
 const MatchEnd = (props: IProps) => {
     const { t } = useTranslation();
     
@@ -44,6 +54,8 @@ const MatchEnd = (props: IProps) => {
     const { useCPM, adsGameplay } = useConfig();
 
     const { data, matchData, leaveUrl, restartUrl, embed, embedOwner, embedClose } = props;
+
+    console.log(data);
 
     const useRoundData = data?.roundData[showRound] || null;
 
@@ -67,7 +79,7 @@ const MatchEnd = (props: IProps) => {
         },
         {
             Name: 'statistics.mistakes',
-            Value: useRoundData?.Mistakes,
+            Value: useRoundData?.Words.incorrect.length || 0,
             Icon: { name: faCircle, css: 'yellow-500' },
         },
     ];
@@ -86,6 +98,7 @@ const MatchEnd = (props: IProps) => {
 
     return useRoundData ? (
         <div className="relative">
+            <ReactTooltip />
             {(adsGameplay && toggleAd) && <VideoFullscreen toggle={() => setToggleAd(false)} />}
             <audio id="LevelUp" src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="LevelDown" src="/audio/LevelDown.wav" crossOrigin="anonymous" preload="auto" />
@@ -236,36 +249,32 @@ const MatchEnd = (props: IProps) => {
                                                 </div>
                                                 <div className={"col-span-full md:col-span-2"}>
                                                     <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md"}>
-                                                        {useRoundData.Text.source !== 'CUSTOM_TEXT' ? (
-                                                            <div className={"flex flex-wrap"}>
-                                                                <div className={"w-full md:w-1/2 lg:w-1/3"}>
-                                                                    <div>
-                                                                        <div className={"text-white text-xs sm:text-xs uppercase font-semibold"}>Title</div>
-                                                                        <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.source}</div>
-                                                                    </div>
-                                                                    <div className={"mt-4"}>
-                                                                        <div className={"text-white text-xs uppercase font-semibold"}>Author</div>
-                                                                        <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.author}</div>
-                                                                    </div>
-                                                                    {useRoundData.Text.contributor && useRoundData.Text.contributor !== 'admin' && (
-                                                                        <div className={"mt-4"}>
-                                                                            <div className={"text-white text-xs uppercase font-semibold"}>Contributor</div>
-                                                                            <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold truncate"}>{useRoundData.Text.contributor}</div>
-                                                                        </div>
-                                                                    )}
-                                                                </div>
-                                                                <div className={"w-full md:w-1/2 lg:w-2/3 my-auto md:pl-4"}>
-                                                                    <div className={"border-l-2 border-orange-400 pl-4 py-2 mt-4 sm:mt-0 text-xs lg:text-sm"}>
-                                                                        {useRoundData.Text.content}
-                                                                    </div>
-                                                                </div>
+                                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                            <div>
+                                                                <div className={"text-white text-xs sm:text-xs uppercase font-semibold"}>Title</div>
+                                                                <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.source}</div>
                                                             </div>
-                                                        ) : <div>Dictionary - Random Words</div>}
-                                                    </div>
-
-                                                    <div className={"text-lg uppercase font-semibold"}>{t('page.match.mistakes')}</div>
-                                                    <div className={"flex flex-wrap gap-x-6 gap-y-2 pt-2"}>
-                                                        {useRoundData.Incorrect.map((item, index) => <div key={`${index}-${item.word}`} className={"px-3 py-1 rounded bg-red-500 bg-opacity-20 text-sm text-white"}>{item.word}</div>)}
+                                                            <div>
+                                                                <div className={"text-white text-xs uppercase font-semibold"}>Author</div>
+                                                                <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold"}>{useRoundData.Text.author}</div>
+                                                            </div>
+                                                            {useRoundData.Text.contributor && useRoundData.Text.contributor !== 'admin' && (
+                                                                <div>
+                                                                    <div className={"text-white text-xs uppercase font-semibold"}>Contributor</div>
+                                                                    <div className={"text-orange-400 sm:text-base lg:text-lg uppercase font-semibold truncate"}>{useRoundData.Text.contributor}</div>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        
+                                                        <div className="col-span-full mt-8 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg py-3 px-5">
+                                                            <div className="inline-flex flex-wrap font-semibold">
+                                                                {useRoundData.Text.content.split(' ').map((item, index) => (
+                                                                    <Fragment key={index}>
+                                                                        <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`mr-2 ${filterDelayCSS(index, useRoundData.Words.wpm[index] as number, useRoundData.Words.averageWPM, useRoundData.Words.incorrect)}`}>{item}</div>
+                                                                    </Fragment>
+                                                                ))}
+                                                            </div>
+                                                        </div> 
                                                     </div>
                                                 </div>
                                             </div>

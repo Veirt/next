@@ -46,7 +46,7 @@ const Player: FC<IProps> = (props) => {
     const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
     const handleCapslock = (e: KeyboardEvent) => setIsCapslock(e.getModifierState("CapsLock"));
     
-    const { gameplayParticipantStyle, performanceMode } = useConfig();
+    const { gameplayParticipantStyle, focusMode } = useConfig();
 
     useEffect(() => {
         window.addEventListener('keyup', handleCapslock);
@@ -91,7 +91,7 @@ const Player: FC<IProps> = (props) => {
 
                         </div>
                     )}
-                    {(performanceMode === '0' || endMatch) && (
+                    {(focusMode === '0' || endMatch) && (
                         <>
                             {(!participantsData || participantsData.length === 0) && <div className={"py-10"} />}
                             {gameplayParticipantStyle === '2' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}

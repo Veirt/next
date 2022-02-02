@@ -29,7 +29,7 @@ const MatchTextContainer = (props: IProps) => {
         smoothCaret, smoothCaretSpeed, 
         matchTextType, matchContainerTransparent,
         hideInputBox, colorBlindMode, 
-        upscaleMatch 
+        upscaleMatch, performanceMode
     } = useConfig();
 
     // States
@@ -51,10 +51,11 @@ const MatchTextContainer = (props: IProps) => {
 
     // Effect State Hooks
     useEffect(() => {
+        const useFPS = performanceMode === '1' ? 34 : 17;
         const onFocus = () => setTimeout(() => inputElement.current?.focus(), 1);
 
         if (!refreshFPS.current) 
-            refreshFPS.current = setInterval(onRefreshFPS, 17);
+            refreshFPS.current = setInterval(onRefreshFPS, useFPS);
 
         if (inputElement.current) 
             inputElement.current?.addEventListener('blur', onFocus);
@@ -66,7 +67,7 @@ const MatchTextContainer = (props: IProps) => {
             if (inputElement.current) inputElement.current.removeEventListener('blur', onFocus);
         }
         // eslint-disable-next-line
-    }, [ ]);
+    }, [ performanceMode ]);
 
     useEffect(() => setDisable(disabled), [ disabled ]);
 

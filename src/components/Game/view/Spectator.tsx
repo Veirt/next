@@ -28,7 +28,7 @@ interface IProps {
 const Spectator: FC<IProps> = (props) => {
     const caretTimer = useRef<NodeJS.Timer | null>(null);
 
-    const { smoothCaret, smoothCaretSpeed } = useConfig();
+    const { smoothCaret, smoothCaretSpeed, performanceMode } = useConfig();
 
     const [ charHeight, setCharHeight ] = useState('0px');
     const [ showHelp, setShowHelp ] = useState(false);
@@ -65,7 +65,7 @@ const Spectator: FC<IProps> = (props) => {
                         }
                     }
                 }
-            }, 17);
+            }, (performanceMode === '1' ? 34 : 17));
         }
 
         return () => {
@@ -74,7 +74,7 @@ const Spectator: FC<IProps> = (props) => {
                 caretTimer.current = null;
             }
         }
-    }, [ participantsData, smoothCaret, smoothCaretSpeed ]);
+    }, [ participantsData, smoothCaret, smoothCaretSpeed, performanceMode ]);
 
     if (!matchData)
         return <div>No data found</div>

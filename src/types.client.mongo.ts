@@ -105,8 +105,16 @@ export interface PlayerRankedData {
 
 export interface PlayerRoundData {
     WPM: number;
-    Mistakes: number;
-    Incorrect: { timestamp: number; word: string; }[];
+    Keystrokes: { 
+        averageDelay: number;
+        delay: number[];
+        incorrect: number[];
+    };
+    Words: { 
+        averageWPM: number;
+        wpm: number[];
+        incorrect: number[];
+    };
     Accuracy: number;
     ElapsedTime: number;
     Chart: SocketChartData;
