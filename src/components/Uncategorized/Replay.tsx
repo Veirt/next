@@ -2,7 +2,6 @@ import { faPause, faPlay, faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import MatchTextContainer from "../Game/MatchTextContainer";
-import ItemBanner from "../Inventory/ItemBanner";
 
 interface IProps {
     logString: string;
@@ -29,78 +28,77 @@ const parseReplay = (logString: string) => {
 };
 
 const Replay = (props: IProps) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { logString, quote } = props;
     const parsedReplay: ReplayData[] = parseReplay(logString);
-
-    /*
-        State Information
-        0 - Not Playing
-        1 - Playing
-
-        State Iteration = Which iteration of the replay we are on
-        State Speed = What speed the iteration is playing at, 1 being regular and 0.25 being 25%
-
-        -- 
-
-        Using `setTimeout` for this functionality. Make it so setTimeout is called for that iteration's delay,
-        once that iteration is called after specific MS then update iteration to go to next state and reset timeout and recreate new timeout
-    */
 
     // Refs
     const replayInterval = useRef<NodeJS.Timeout | null>(null);
 
     // States
+    const [ state, setState ] = useState<string>('PAUSE');
     const [ iteration, setIteration ] = useState<number>(0);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [ speed, setSpeed ] = useState<number>(1);
+    const [ mount, setMount ] = useState<boolean>(true);
+    const [ elapsed, setElapsed ] = useState<number>(0);
+
+    // Use Effect for Timer
+    useEffect(() => {
+        const onIterationCalled = () => {
+            setIteration(iteration + 1);
+            setElapsed((t) => t + (parsedReplay[iteration]?.delay || 50));
+        }
+
+        stopIntervalOperation();
+
+        // Refresh
+        if (!mount)
+            setMount(true);
+
+        // Other
+        if (state === 'PLAY') {
+            if (parsedReplay.length && iteration < parsedReplay.length)
+                replayInterval.current = setTimeout(onIterationCalled, ((parsedReplay[iteration]?.delay || 50) / speed));
+        } else if (state === 'RESTART') {
+            setIteration(0);
+            setMount(false);
+            setState('PAUSE');
+        }
+    }, [ state, iteration, speed, parsedReplay, mount ]);
 
     // Consts
-    const onIterationCalled = (i: number) => {
-        stopInterval(replayInterval.current);
-        if (parsedReplay.length && i < parsedReplay.length)
-            replayInterval.current = setTimeout(() => onIterationCalled(iteration), ((parsedReplay[i]?.delay || 50) / speed));
-
-        // New Iteration
-        setIteration((it) => it + 1);
-        console.log('Updated Iteration: ' + (iteration + 1));
-    }
-    
-    const stopInterval = (interval: NodeJS.Timeout | null) => {
-        if (interval) {
-            clearInterval(interval);
-            interval = null;
+    const stopInterval = () => setState('PAUSE');
+    const playInterval = () => setState('PLAY');
+    const resetInterval = () => setState('RESTART');
+    const stopIntervalOperation = () => {
+        if (replayInterval.current) {
+            clearInterval(replayInterval.current);
+            replayInterval.current = null;
         }
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const playInterval = () => {
-        stopInterval(replayInterval.current);
-        if (iteration < parsedReplay.length && parsedReplay[iteration]) 
-            replayInterval.current = setTimeout(() => onIterationCalled(iteration), ((parsedReplay[iteration]?.delay || 50) / speed));
-    }
-
-    const resetInterval = () => {
-        stopInterval(replayInterval.current);
-        setIteration(0);
     }
 
     return (
         <div>
+            <div className="h4">Replay (beta)</div>
+            <p className="pt-1 pb-6">
+                If you notice any issues, please don't hesitate to report it on GitHub!
+            </p>
             <div className="game--content--bar">
                 <div className="flex justify-between">
-                    <div className="w-auto flex space-x-4">
+                    <div className="w-auto flex space-x-2">
                         <button type="button" className="button small lightgray" onClick={playInterval}>
                             <FontAwesomeIcon icon={faPlay} />
                         </button>
-                        <button type="button" className="button small lightgray" onClick={() => stopInterval(replayInterval.current)}>
+                        <button type="button" className="button small lightgray" onClick={stopInterval}>
                             <FontAwesomeIcon icon={faPause} />
                         </button>
                         <button type="button" className="button small lightgray" onClick={resetInterval}>
                             <FontAwesomeIcon icon={faRedo} />
                         </button>
+                        <div className="hidden">
+                            {(iteration / 5) / ((elapsed / 1000) / 60)} - {(elapsed / 1000)}s - {iteration}
+                        </div>
                     </div>
-                    <div className="w-auto flex space-x-4">
+                    <div className="w-auto flex space-x-2">
                         <button type="button" className={`button small ${speed === 1 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(1)}>
                             100%
                         </button>
@@ -116,9 +114,11 @@ const Replay = (props: IProps) => {
                     </div>
                 </div>
             </div>
-            <div className="pointer-events-none">
-                <MatchTextContainer quote={quote} sendKeystroke={() => false} disabled={false} replayInput={parsedReplay[iteration]?.input || ''} />
-            </div>
+            {mount && (
+                <div className="pointer-events-none">
+                    <MatchTextContainer quote={quote} sendKeystroke={() => false} disabled={false} replayInput={parsedReplay[iteration]?.input || ''} />
+                </div>
+            )}
         </div>
     )
 }

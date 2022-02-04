@@ -105,6 +105,7 @@ export interface PlayerRankedData {
 
 export interface PlayerRoundData {
     WPM: number;
+    Replay: string;
     Keystrokes: { 
         averageDelay: number;
         delay: number[];

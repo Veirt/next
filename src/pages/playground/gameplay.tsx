@@ -17,7 +17,6 @@ const Index = () => {
                             disabled={false}
                             removeLimit={false}
                             sendKeystroke={() => false}
-                            sendWord={() => false}
                             isSuddenDeath={false}
                         />
                     </div>

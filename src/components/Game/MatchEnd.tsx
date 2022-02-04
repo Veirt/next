@@ -19,6 +19,7 @@ import Chart from './MatchEnd/Chart';
 import PlayerPlacement from './participants/PlayerPlacement';
 import PlayerExperience from '../Player/PlayerExperience';
 import ReactTooltip from 'react-tooltip';
+import Replay from '../Uncategorized/Replay';
 
 
 interface IProps {
@@ -33,7 +34,7 @@ interface IProps {
   embedOwner?: boolean;
 }
 
-const filterDelayCSS = (index: number, delay: number, average: number, incorrect: number[]) => {
+const filterDelayCSS = (index: number, incorrect: number[]) => {
     // const delayDifference = delay - average;
 
     if (!incorrect.includes(index))
@@ -91,7 +92,8 @@ const MatchEnd = (props: IProps) => {
 
     const subtabs = [
         { name: 'Statistics', tab: 'overview' },
-        { name: 'Performance', tab: 'graph' }
+        { name: 'Performance', tab: 'graph' },
+        { name: 'Replay', tab: 'replay' }
     ];
 
     const boxCSS = 'p-4 lg:px-8 lg:py-4 text-center bg-gray-825 rounded-2xl shadow-md';
@@ -207,7 +209,7 @@ const MatchEnd = (props: IProps) => {
                                     <div className={"w-auto pb-4 sm:pb-0"}>
                                         <div className={"flex text-white"}>
                                             {subtabs.map((item, index) => (
-                                                <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`${index === 0 ? 'rounded-l-lg' : 'rounded-r-lg'} transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${subtab !== item.tab ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
+                                                <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`${index === 0 ? 'rounded-l-lg' : ''} ${index === 2 ? 'rounded-r-lg' : ''} transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${subtab !== item.tab ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
                                                   {item.name}
                                                 </button>
                                             ))}
@@ -270,7 +272,7 @@ const MatchEnd = (props: IProps) => {
                                                             <div className="inline-flex flex-wrap font-semibold">
                                                                 {useRoundData.Text.content.split(' ').map((item, index) => (
                                                                     <Fragment key={index}>
-                                                                        <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`mr-2 ${filterDelayCSS(index, useRoundData.Words.wpm[index] as number, useRoundData.Words.averageWPM, useRoundData.Words.incorrect)}`}>{item}</div>
+                                                                        <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`mr-2 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
                                                                     </Fragment>
                                                                 ))}
                                                             </div>
@@ -281,6 +283,7 @@ const MatchEnd = (props: IProps) => {
                                         )}
 
                                         {subtab === 'graph' && <Chart {...useRoundData.Chart} />}
+                                        {subtab === 'replay' && <Replay logString={useRoundData.Replay} quote={useRoundData.Text.content || ''} />}
                                     </div>
                                 )}
                             </>

@@ -70,12 +70,6 @@ const MatchTextContainer = (props: IProps) => {
         // eslint-disable-next-line
     }, [ performanceMode ]);
 
-    useEffect(() => {
-        if (replayInput) {
-            setInput(replayInput);
-            onChange({ target: { value: replayInput } } as ChangeEvent<HTMLInputElement>);
-        }
-    }, [ replayInput ]);
     useEffect(() => setDisable(disabled), [ disabled ]);
 
     useEffect(() => {
@@ -244,6 +238,13 @@ const MatchTextContainer = (props: IProps) => {
             caretIdle.current = null;
         }
     };
+
+    useEffect(() => {
+        if (replayInput) {
+            setInput(replayInput);
+            setTimeout(() => onChange({ target: { value: replayInput } } as ChangeEvent<HTMLInputElement>), 1);
+        }
+    }, [ replayInput ]);
 
     // CSS Inlines 
     // For Tailwind Purge: duration-50 duration-75 duration-100 duration-150 duration-175 duration-200
