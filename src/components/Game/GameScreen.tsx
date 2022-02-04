@@ -272,14 +272,10 @@ const GameScreen = (props: IProps) => {
     }, [ socket, sessionData?.playerId ]);
 
     // Methods
-    const sendKeystroke = (keystroke: string, event: boolean): void => {
-        const keyPayload = {
-            playerId: sessionData?.playerId,
-            keystroke,
-            event
-        };
-        socket?.emit('sendKeystroke', keyPayload);
-    };
+    const sendKeystroke = (keystroke: string, event: boolean): void => socket?.emit('sendKeystroke', {
+        keystroke,
+        event
+    });
 
     const playSound = () => {
         DebugService.add('[Match] Played Level Completed audio queue');
