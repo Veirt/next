@@ -8,12 +8,13 @@ interface IProps {
     removeLimit?: boolean;
     sendKeystroke: (keystroke: string, event: boolean) => void;
     isSuddenDeath?: boolean;
+    replayInput?: string;
   }
 
 const MatchTextContainer = (props: IProps) => {
 
     // Props 
-    const { quote, disabled, removeLimit, sendKeystroke, isSuddenDeath } = props;
+    const { quote, disabled, removeLimit, sendKeystroke, isSuddenDeath, replayInput } = props;
 
     // Refs 
     const refreshFPS = useRef<NodeJS.Timer | null>(null);
@@ -33,7 +34,7 @@ const MatchTextContainer = (props: IProps) => {
     } = useConfig();
 
     // States
-    const [ input, setInput ] = useState<string>('');
+    const [ input, setInput ] = useState<string>(replayInput || '');
     const [ correct, setCorrect ] = useState<string>('');
     const [ current, setCurrent ] = useState<string>(quote.charAt(0));
     const [ incorrect, setIncorrect ] = useState<string>('');
@@ -69,6 +70,12 @@ const MatchTextContainer = (props: IProps) => {
         // eslint-disable-next-line
     }, [ performanceMode ]);
 
+    useEffect(() => {
+        if (replayInput) {
+            setInput(replayInput);
+            onChange({ target: { value: replayInput } } as ChangeEvent<HTMLInputElement>);
+        }
+    }, [ replayInput ]);
     useEffect(() => setDisable(disabled), [ disabled ]);
 
     useEffect(() => {
