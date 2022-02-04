@@ -76,8 +76,8 @@ const ProfileStatistics = (props: IProps) => {
             css: 'lg:col-span-3',
             items: [
                 { label: 'statistics.won', value: (statisticData?.matchesWon || 0).toLocaleString() },
-                { label: 'statistics.lost', value: (statisticData?.matchesLost || 0).toLocaleString() },
-                { label: 'statistics.ratio', value: (statisticData?.matchesWon && statisticData?.matchesLost) ? (statisticData.matchesWon / statisticData.matchesLost).toFixed(1) : 0 },
+                { label: 'statistics.total', value:  ((statisticData?.matchesWon || 0) + (statisticData?.matchesLost || 0) + (statisticData?.matchesQuit || 0)).toLocaleString() },
+                { label: 'statistics.ratio', value: ((statisticData?.matchesWon || 0) / ((statisticData?.matchesLost || 0) + (statisticData?.matchesQuit || 0))).toFixed(2) },
             ]
         },
         {
