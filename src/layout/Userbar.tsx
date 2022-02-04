@@ -155,7 +155,7 @@ const Userbar = (props: IProps) => {
                                   <button type="button" onClick={item.onClick} className={`nav-link ${(item.title === 'component.navbar.notifications' && toggleNotifications) ? 'text-orange-400' : 'text-white'} hover:text-orange-400 text-lg rounded tracking-wider uppercase px-0.5 hover:text-orange-400 transition ease-in-out duration-300 font-semibold`}>
                                       <FontAwesomeIcon icon={item.icon.name} />
                                       {item.title === 'component.navbar.notifications' && notificationsCount > 0 && (
-                                          <div className="absolute -bottom-px right-0 border-2 border-gray-775 bg-blue-400 rounded-full h-3 w-3 flex items-center justify-center" />
+                                          <div className="absolute -bottom-px -right-0.5 bottom-0.5 border-2 border-gray-775 bg-blue-400 rounded-full h-3 w-3 flex items-center justify-center" />
                                       )}
                                   </button>
                                   {item.title === 'component.navbar.notifications' && (
