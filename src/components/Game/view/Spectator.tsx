@@ -48,7 +48,7 @@ const Spectator: FC<IProps> = (props) => {
 
                 for (i = 0; i < participantsLength; i++) {
                     if (participantsData[i] && participantsData[i]?.playerId) {
-                        const correctKeystrokes = (participantsData[i]?.correctKeystrokes ? participantsData[i]?.correctKeystrokes : 0);
+                        const correctKeystrokes = (participantsData[i]?.wordLetterIndex || 0) + (participantsData[i]?.currentInput?.length || 0);
                         const getUserCaret:HTMLElement | null = document.getElementById(String(participantsData[i]?.playerId));
                         const getCaretPosition = (document.getElementsByClassName('cursor--locate')[correctKeystrokes ? correctKeystrokes : 0] as HTMLElement);
 

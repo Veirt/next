@@ -45,11 +45,13 @@ export interface SocketMatchPlayerData extends PlayerData, PlayerMatchData {
     Level: PlayerLevelData;
     WPM: number;
     Progress: number;
-    correctKeystrokes: number;
     Accuracy: number;
     correctKeystrokeString: string;
     currentKeystroke: string;
+    currentInput: string;
     currentWord: string;
+    correctWords: number;
+    wordLetterIndex: number;
     Placement: number;
     PlacementFinal: number;
     teamId: number;

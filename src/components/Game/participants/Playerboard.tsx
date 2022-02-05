@@ -72,10 +72,10 @@ const Playerboard = (props: IProps) => {
                         {isSpectator ? (
                             <>
                                 {item.Progress !== 100 && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? (
-                                    <div className={"truncate px-3 py-1 rounded bg-gray-700 font-semibold text-white"}>
-                                        {getCorrectKeystrokeString(quoteString, item.correctKeystrokes)}
+                                    <div className={"truncate px-3 h-6 pt-1 rounded bg-gray-700 font-semibold text-white"}>
+                                        {getCorrectKeystrokeString(quoteString, (item?.wordLetterIndex || 0)) + ' '}
                                         <span className={"border-b border-orange-400 text-orange-400"}>
-                                            {item.currentKeystroke ? item.currentKeystroke : (firstWord ? firstWord[0] : '')}
+                                            {item.currentInput || ''}
                                         </span>
                                     </div>
                                 ) : (item.Progress === 100 || quoteString === "KEYMASH_GAMEMODE_ROUND_END") && <div className={"text-gray-500 uppercase text-base font-semibold tracking-wide"}>{t('other.finished')}</div>}

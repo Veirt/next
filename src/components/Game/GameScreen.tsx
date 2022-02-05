@@ -213,8 +213,10 @@ const GameScreen = (props: IProps) => {
                     item.Progress = 0;
                     item.WPM = 0;
                     item.Accuracy = 0;
-                    item.correctKeystrokes = 0;
+                    item.wordLetterIndex = 0;
+                    item.correctWords = 0;
                     item.correctKeystrokeString = '';
+                    item.currentInput = '';
                     item.Quit = 0;
                     item.Placement = 0;
                     item.PlacementFinal = 0;
@@ -255,9 +257,10 @@ const GameScreen = (props: IProps) => {
                         if (data.roundsWon) participantData.roundsWon = data.roundsWon;
                         if (data.Placement) participantData.Placement = data.Placement;
                         if (data.PlacementFinal) participantData.PlacementFinal = data.PlacementFinal;
-                        if (data.correctKeystrokes) participantData.correctKeystrokes = data.correctKeystrokes;
-                        if (data.currentKeystroke) participantData.currentKeystroke = data.currentKeystroke;
+                        if (data.wordLetterIndex) participantData.wordLetterIndex = data.wordLetterIndex;
+                        if (data.correctWords) participantData.correctWords = data.correctWords;
                         if (data.Accuracy) participantData.Accuracy = data.Accuracy;
+                        if (typeof data.currentInput !== 'undefined') participantData.currentInput = data.currentInput;
                     }
                 }
                 return [ ...participantsData ];
