@@ -91,14 +91,17 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                 </div>
                 <div className="relative grid grid-cols-3 gap-4 mt-4">
                     <div className={`col-span-full lg:col-span-2`}>
-                        {playersData?.length !== 0
-                            ? <LeaderboardPlayerTournament data={playersData || []} status={tournamentData?.status || 0} recentWPMCutoff={tournamentData?.recentWPMTotal || 0} qualifier={tournamentData?.qualifier || 0} qualifierSort={tournamentData?.qualifierSort || 'maxWPM'} qualifierCutoff={tournamentData?.qualifierCutoff || 0} prizingJSON={tournamentData?.prizingJSON} />
-                            : (
-                                <div className={"content-box text-center font-semibold"} style={{ padding: '10rem 2rem' }}>
-                                    {t('page.tournaments.none')}
-                                </div>
-                            )
-                        }
+                        <div className="content-box">
+                            <h2 className="h3 mb-4">Leaderboards</h2>
+                            {playersData?.length !== 0
+                                ? <LeaderboardPlayerTournament data={playersData || []} status={tournamentData?.status || 0} recentWPMCutoff={tournamentData?.recentWPMTotal || 0} qualifier={tournamentData?.qualifier || 0} qualifierSort={tournamentData?.qualifierSort || 'maxWPM'} qualifierCutoff={tournamentData?.qualifierCutoff || 0} prizingJSON={tournamentData?.prizingJSON} />
+                                : (
+                                    <div className={"content-box text-center font-semibold"} style={{ padding: '10rem 2rem' }}>
+                                        {t('page.tournaments.none')}
+                                    </div>
+                                )
+                            }
+                        </div>
 
                         <AdvertisementDisplay className="mt-4">
                             
@@ -108,7 +111,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         <div className={"text-sm text-white"}>
                             {tournamentData?.qualifierSort === 'maxWPM' && (
                                 <div className={`mb-4 content-box`}>
-                                    <div className={"h4 mb-2"}>Highest WPM</div>
+                                    <h3 className={"h4 mb-2"}>Highest WPM</h3>
                                     <div>
                                         All players that have completed at least one match will appear showing their highest speed in a match.
                                     </div>
@@ -116,7 +119,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                             )}
                             {tournamentData?.qualifierSort === 'avgWPM' && (
                                 <div className={`mb-4 content-box`}>
-                                    <div className={"h4 mb-2"}>Average WPM</div>
+                                    <h3 className={"h4 mb-2"}>Average WPM</h3>
                                     <div>
                                         All players that have at least {tournamentData?.recentWPMTotal} matches will appear showing their Average speed based off their {tournamentData?.recentWPMTotal} most recent matches.
 
@@ -128,7 +131,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                             )}
                             {tournamentData?.qualifierSort === 'matchesTotal' && (
                                 <div className={`mb-4 content-box`}>
-                                    <div className={"h4 mb-2"}>Most Matches</div>
+                                    <h3 className={"h4 mb-2"}>Most Matches</h3>
                                     <div>
                                         All players that have completed at least one match will appear showing their total matches.
                                     </div>
@@ -136,7 +139,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                             )}
                         </div>
                         {tournamentData?.qualifier ? (
-                            <div className="flex flex-wrap justify-center bg-gray-800 shadow-md py-2 mb-4">
+                            <div className="content-box">
                                 <div className="w-24">
                                     <div className="flex">
                                         <div className="w-4 my-auto">
@@ -166,9 +169,9 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
 
                         {tournamentData?.info && (
                             <div className={"content-box mb-4"}>
-                                <div className={"h4 mb-2"}>
+                                <h3 className={"h4 mb-2"}>
                                     {t('page.tournaments.info')}
-                                </div>
+                                </h3>
                                 {tournamentData?.info.split('\n').map((item, key) => <span key={key}>{item}<br /></span>)}
                             </div>
                         )}
@@ -179,9 +182,9 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
 
                         {tournamentData?.rules && (
                             <div className={"content-box mb-4"}>
-                                <div className={"h4 mb-2"}>
+                                <h3 className={"h4 mb-2"}>
                                     {t('page.tournaments.rules')}
-                                </div>
+                                </h3>
                                 {tournamentData?.rules.split('\n').map((item, key) => <span key={key}>{item}<br /></span>)}
                             </div>
                         )}
