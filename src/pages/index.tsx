@@ -120,12 +120,6 @@ export async function getServerSideProps({ req }: GetServerSidePropsContext) {
         else return [];
     };
 
-    const getTwitch = async () => {
-        const response = await axios.get(`${Config.gameUrl}/twitch?limit=6`).catch((e) => console.log(e))
-        if (response) return response.data;
-        else return [];
-    };
-
     const getTournaments = async () => {
         const response = await axios.get(`${Config.apiUrl}/tournaments/list?locale=en&limit=3`).catch((e) => console.log(e))
         if (response) return response.data.data;
@@ -135,7 +129,7 @@ export async function getServerSideProps({ req }: GetServerSidePropsContext) {
     return {
         props: {
             ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
-            twitchData: await getTwitch(),
+            twitchData: [],
             laddersData: await getTournaments(),
             newsData: await getNews(),
             loaded: true
