@@ -9,12 +9,13 @@ interface IProps {
   teamId: number;
   teamSize: number;
   teamStrict: boolean;
-  lobbyOwner: string;
-  data: SocketCustomPlayerData[];
   dataLength: number;
   maxTeams: number;
   draggable: boolean;
   isDragging: boolean;
+
+  lobbyOwner: string;
+  data: SocketCustomPlayerData[];
 
   handlePlayerBan: (playerId: string) => void;
   handleGiveOwner: (playerId: string) => void;

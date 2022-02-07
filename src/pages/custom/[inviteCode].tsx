@@ -64,13 +64,11 @@ const Custom = (props: IProps) => {
         if (!inviteCode) {
             axios.get(`${Config.apiUrl}/lobby/create`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token, })
                 .then(response => {
-                    if (response.data.error) {
+                    if (response.data.error)
                         toast.error(response.data.error);
-                        setRedirect('/');
-                    } else
-                      setRedirect(`/custom/${response.data.lobbyInvite}`)
-                })
-                .catch(e => console.log(e));
+
+                    setRedirect(!response.data.error ? `/custom/${response.data.lobbyInvite}` : `/`);
+                }).catch(e => console.log(e));
         } else {
             setRedirect('');
             if (window) {
@@ -139,8 +137,8 @@ const Custom = (props: IProps) => {
             if (customChatBeep === '1' && data.type !== 'global' && data.name !== sessionData?.name && data.discriminator !== sessionData?.discriminator) {
                 const chatBeepElement = document.getElementById('ChatBeep') as HTMLAudioElement;
                 if (chatBeepElement) {
-                  chatBeepElement.currentTime = 0;
-                  chatBeepElement.play().then();
+                    chatBeepElement.currentTime = 0;
+                    chatBeepElement.play().then();
                 }
             }
 
