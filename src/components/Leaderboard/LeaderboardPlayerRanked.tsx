@@ -40,10 +40,13 @@ const LeaderboardPlayerRanked:FC<IProps> = (props) => {
                         {item.player[0] ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : ''}
                     </div>
                     <div className={"w-10 my-auto"}>
-                        <img className={"w-7"} src={`/ranks/${item.Rank ? item.Rank.Rank.toLowerCase() : 'unranked'}.png`} alt={"Unranked"} />
+                        <img className={"w-7"} src={`/ranks/${item.Rank ? `${item.Rank.Rank.replaceAll(' ', '').toLowerCase()}` : 'unranked'}.svg`} alt={"Unranked"} />
                     </div>
                     <div className={"w-24 my-auto font-semibold"}>
-                        {item.rating}<span className={"opacity-50"}>±{item.deviation}</span>
+                        {item.Rank.Rank}
+                        <div className="opacity-50 text-xs -mt-1">
+                            {item.rating} SR
+                        </div>
                     </div>
                     <div className={"hidden md:block w-16 my-auto text-center font-semibold"}>
                         {item.matchesWon.toLocaleString()}

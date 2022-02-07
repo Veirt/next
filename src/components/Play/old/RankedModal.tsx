@@ -82,7 +82,7 @@ const RankedModal = (props: IProps) => {
                     {ranks.map(item => (
                         <div key={item.name} className="flex text-white py-3">
                             <div className="w-10 my-auto">
-                                <img src={`/ranks/${item.name.toLowerCase()}.png`} className="w-full h-auto" alt="skillrank" />
+                                <img src={`/ranks/${item.name.replaceAll(' ', '').toLowerCase()}.svg`} className="w-full h-auto" alt="skillrank" />
                             </div>
                             <div className="pl-2 w-full">
                                 <div className="text-xl font-semibold uppercase tracking-wider">{item.name}</div>

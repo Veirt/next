@@ -114,7 +114,7 @@ const ProfileStatistics = (props: IProps) => {
                                 {rankedData && (
                                     <div className={"flex"}>
                                         <div className={"w-44 lg:w-52 my-auto"}>
-                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.toLowerCase()}.png`} alt={rankedData?.Rank.Rank} />
+                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank.Rank} />
                                         </div>
                                         <div className={"w-full my-auto"}>
                                             {(rankedData && rankedData.Rank.Rank <= 'Unranked') && (
