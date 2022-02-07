@@ -57,12 +57,14 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
             <div className="container container-margin container-content">
                 <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                     <div className="w-full text-center lg:w-auto lg:text-left my-auto">
-                        <h1 className={"text-white"}>
-                            {tournamentData?.name}
-                            <span data-tip="Achievements and Records are disabled in Competition matches." className="hidden 3xl:inline ml-3 text-gray-200">
+                        <div className="flex">
+                            <h1 className={"text-white"}>
+                                {tournamentData?.name}
+                            </h1>
+                            <div data-tip="Achievements and Records are disabled in Competition matches." className="hidden 3xl:block ml-3 mt-3 text-gray-200">
                                 <FontAwesomeIcon icon={faInfoCircle} className="text-xl" />
-                            </span>
-                        </h1>
+                            </div>
+                        </div>
                     </div>
                     <div className="w-auto text-center lg:ml-auto my-auto">
                         <div className={"py-3 uppercase rounded-lg font-bold bg-gray-700 text-gray-400 px-5"}>
@@ -87,8 +89,8 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         )}
                     </div>
                 </div>
-                <div className="relative flex flex-wrap mt-4">
-                    <div className={`w-full lg:w-2/3 lg:pr-4`}>
+                <div className="relative grid grid-cols-3 gap-4 mt-4">
+                    <div className={`col-span-full lg:col-span-2`}>
                         {playersData?.length !== 0
                             ? <LeaderboardPlayerTournament data={playersData || []} status={tournamentData?.status || 0} recentWPMCutoff={tournamentData?.recentWPMTotal || 0} qualifier={tournamentData?.qualifier || 0} qualifierSort={tournamentData?.qualifierSort || 'maxWPM'} qualifierCutoff={tournamentData?.qualifierCutoff || 0} prizingJSON={tournamentData?.prizingJSON} />
                             : (
@@ -97,8 +99,12 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                                 </div>
                             )
                         }
+
+                        <AdvertisementDisplay className="mt-4">
+                            
+                        </AdvertisementDisplay>
                     </div>
-                    <div className="w-full lg:w-1/3">
+                    <div className="col-span-full lg:col-span-1">
                         <div className={"text-sm text-white"}>
                             {tournamentData?.qualifierSort === 'maxWPM' && (
                                 <div className={`mb-4 content-box`}>

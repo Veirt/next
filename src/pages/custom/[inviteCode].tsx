@@ -245,11 +245,9 @@ const Custom = (props: IProps) => {
                                 </div>
                             </div>
                             {/* Content */}
-                            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4">
-                                <div className="col-span-full lg:col-span-3">
-                                    <div className="grid grid-cols-1 gap-4">
-                                        <Chat chatData={chatData} typingData={typingData} message={message} chatOnChange={chatOnChange} chatOnKeyDown={chatOnKeyDown} />
-                                    </div>
+                            <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 mt-4">
+                                <div className="col-span-full lg:col-span-7">
+                                    <Chat chatData={chatData} typingData={typingData} message={message} chatOnChange={chatOnChange} chatOnKeyDown={chatOnKeyDown} />
                                     <div className="hidden 3xl:block">
                                         <div className={"flex flex-wrap gap-x-6 mt-4"}>
                                             <div className="w-5/12">
@@ -267,7 +265,7 @@ const Custom = (props: IProps) => {
                                     </div>
                                 </div>
 
-                                <div className="col-span-1">
+                                <div className="col-span-full lg:col-span-3">
                                     {/* Start */}
                                     {sessionData?.playerId === owner && (
                                         <button type="button" style={{ display: 'block' }} className={`${!enableStartLobby ? 'disabled opacity-50' : ''} mb-4 w-full text-xl button xxlarge orange`} onClick={enableStartLobby ? handleStartMatch : () => false} data-tip={enableStartLobby ? t('page.custom.startmatch') : t('page.custom.error.team_size')}>
