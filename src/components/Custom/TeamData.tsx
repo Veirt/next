@@ -32,14 +32,15 @@ const TeamData = (props: IProps) => {
             <div className="h5 font-semibold bg-gray-750 px-6 py-2 rounded-lg mb-2">
                 {teamId === 0 ? 'Spectators' : !teamStrict && maxTeams >= teamId ? `Players` : `Players (${dataLength}/${teamSize})`}
             </div>
-            <div className={`relative`} onDragOver={e => e.preventDefault()} onDrop={onDrop} onDragEnd={onDragEnd}>
-                <div className="grid grid-cols-1 gap-4 min-h-16">
+            <div className={`relative`} onDragOver={e => e.preventDefault()} onDrop={onDrop}>
+                <div className="grid grid-cols-1 gap-4 h-16">
                     {data.map((userData) => userData.teamId === teamId && (
                         <div 
                             key={userData.playerId}
-                            className="flex" 
+                            className="flex z-10 relative" 
                             draggable={draggable ? 'true' : 'false'}
                             onDragStart={e => { onDragStart(); e.dataTransfer.setData('playerId', `${userData.playerId}`); }} 
+                            onDragEnd={onDragEnd}
                         >
                             {draggable ? (
                                 <div className={`w-8 flex items-center justify-center rounded-l-lg text-gray-500 bg-gray-700 ${draggable && 'cursor-move'}`}>
@@ -72,7 +73,7 @@ const TeamData = (props: IProps) => {
                             )}
                         </div>
                     ))}
-                    {isDragging && <div className={"rounded-xl bg-green-500 bg-opacity-10 border-2 border-green-800 h-16"} />}
+                    {isDragging && <div className={"rounded-xl bg-green-500 bg-opacity-10 border-2 border-green-800 h-16 z-0"} />}
                 </div>
             </div>
         </div>

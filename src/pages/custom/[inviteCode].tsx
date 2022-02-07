@@ -29,204 +29,193 @@ interface IProps {
 }
 
 const Custom = (props: IProps) => {
-  const { inviteCode } = props;
-  const { t } = useTranslation();
+    const { inviteCode } = props;
+    const { t } = useTranslation();
 
-  const axiosCancelSource = useRef<CancelTokenSource | null>(null);
+    const axiosCancelSource = useRef<CancelTokenSource | null>(null);
 
-  const { sessionData } = usePlayerContext();
-  const { playerToken } = usePlayerToken();
-  const { customChatBeep, streamerMode } = useConfig();
+    const { sessionData } = usePlayerContext();
+    const { playerToken } = usePlayerToken();
+    const { customChatBeep, streamerMode } = useConfig();
 
-  const [ showMatch, setShowMatch ] = useState(false);
-  const [ loaded, setLoaded ] = useState<boolean>(false);
-  const [ socket, setSocket ] = useState<Socket | null>(null);
-  const [ name, setName ] = useState('undefined');
-  const [ invite, setInvite ] = useState('0');
-  const [ owner, setOwner ] = useState('0');
-  const [ textId, setTextId ] = useState(0);
-  const [ allowGuests, setAllowGuests ] = useState(0);
-  const [ modeId, setModeId ] = useState(0);
-  const [ textCustom, setTextCustom ] = useState('undefined');
-  const [ privacy, setPrivacy ] = useState(0);
-  const [ countdown, setCountdown ] = useState(0);
-  const [ gameModes, setGameModes ] = useState<GamemodeData[]>([]);
-  const [ chatData, setChatData ] = useState<SocketCustomChatData[]>([]);
-  const [ participantsData, setParticipantsData ] = useState<SocketCustomPlayerData[]>([]);
-  const [ message, setMessage ] = useState('');
-  const [ typingData, setTypingData ] = useState<string[]>([]);
-  const [ isDragging, setIsDragging ] = useState<number | null>(null);
+    const [ showMatch, setShowMatch ] = useState(false);
+    const [ loaded, setLoaded ] = useState<boolean>(false);
+    const [ socket, setSocket ] = useState<Socket | null>(null);
+    const [ name, setName ] = useState('undefined');
+    const [ invite, setInvite ] = useState('0');
+    const [ owner, setOwner ] = useState('0');
+    const [ textId, setTextId ] = useState(0);
+    const [ allowGuests, setAllowGuests ] = useState(0);
+    const [ modeId, setModeId ] = useState(0);
+    const [ textCustom, setTextCustom ] = useState('undefined');
+    const [ privacy, setPrivacy ] = useState(0);
+    const [ countdown, setCountdown ] = useState(0);
+    const [ gameModes, setGameModes ] = useState<GamemodeData[]>([]);
+    const [ chatData, setChatData ] = useState<SocketCustomChatData[]>([]);
+    const [ participantsData, setParticipantsData ] = useState<SocketCustomPlayerData[]>([]);
+    const [ message, setMessage ] = useState('');
+    const [ typingData, setTypingData ] = useState<string[]>([]);
+    const [ isDragging, setIsDragging ] = useState<number | null>(null);
 
-  const [ dropdown, setDropdown ] = useState<number | null>(null);
-  const [ redirect, setRedirect ] = useState('');
+    const [ redirect, setRedirect ] = useState('');
 
-  useEffect(() => {
-      axiosCancelSource.current = axios.CancelToken.source();
-      if (!inviteCode) {
-          axios.get(`${Config.apiUrl}/lobby/create`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token, })
-              .then(response => {
-                  if (response.data.error) {
-                      toast.error(response.data.error);
-                      setRedirect('/');
-                  } else
-                    setRedirect(`/custom/${response.data.lobbyInvite}`)
-              })
-              .catch(e => console.log(e));
-      } else {
-          setRedirect('');
-          if (window) {
-              setSocket(new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/lobby`, {
-                  transports: ['websocket', 'polling'],
-              }));
-          }
-      }
+    useEffect(() => {
+        axiosCancelSource.current = axios.CancelToken.source();
+        if (!inviteCode) {
+            axios.get(`${Config.apiUrl}/lobby/create`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token, })
+                .then(response => {
+                    if (response.data.error) {
+                        toast.error(response.data.error);
+                        setRedirect('/');
+                    } else
+                      setRedirect(`/custom/${response.data.lobbyInvite}`)
+                })
+                .catch(e => console.log(e));
+        } else {
+            setRedirect('');
+            if (window) {
+                setSocket(new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/lobby`, {
+                    transports: ['websocket', 'polling'],
+                }));
+            }
+        }
 
-      return () => axiosCancelSource.current?.cancel();
-  }, [ inviteCode, sessionData ]);
+        return () => axiosCancelSource.current?.cancel();
+    }, [ inviteCode, sessionData ]);
 
-  useEffect(() => {
-      if (!inviteCode) return;
-      const joinPayload = { lobbyInvite: inviteCode, playerToken };
+    useEffect(() => resetChatScroll(), [ showMatch ]);
 
-      socket?.onError(() => socket?.disconnect());
-      socket?.onDisconnect(() => console.log('[Socket] Disconnected from Lobby!'));
-      socket?.onConnect(() => console.log('[Socket] Connected to Lobby!'));
-      socket?.on('redirectLobby', () => setShowMatch(true));
-      socket?.on('forceEndLobby', () => setShowMatch(false));
-      socket?.on('isStaff', () => toast.error("You cannot remove staff members from lobbies."));
-      socket?.on('tooFast', (data: { message: string}) => toast.error(data.message));
-      socket?.on('updateLobbyPlayers', (data: SocketCustomPlayerData[]) => setParticipantsData(data));
-      socket?.on('isBanned', () => toastAndRedirect("You are banned from this lobby.", "/"));
-      socket?.on('isKickedGuest', () => toastAndRedirect("Guests are not allowed to join this lobby.", "/"));
-      socket?.emit('getLobby', joinPayload);
+    useEffect(() => {
+        if (!inviteCode) return;
+        const joinPayload = { lobbyInvite: inviteCode, playerToken };
 
-      socket?.on('updateLobby', (data: LobbyData) => {
-          setName(data.name);
-          setInvite(data.invite);
-          setPrivacy(data.privacy);
-          setTextCustom(data.textCustom && data.textCustom !== 'null' ? data.textCustom : '');
-          setOwner(data.owner);
-          setTextId(data.textId);
-          setAllowGuests(data.allowGuests);
-          setModeId(data.modeId);
-          setCountdown(data.countdown);
-          setGameModes(data.gameModes);
-          setLoaded(true);
-      });
+        socket?.onError(() => socket?.disconnect());
+        socket?.onDisconnect(() => console.log('[Socket] Disconnected from Lobby!'));
+        socket?.onConnect(() => console.log('[Socket] Connected to Lobby!'));
+        socket?.on('redirectLobby', () => setShowMatch(true));
+        socket?.on('forceEndLobby', () => setShowMatch(false));
+        socket?.on('isStaff', () => toast.error("You cannot remove staff members from lobbies."));
+        socket?.on('tooFast', (data: { message: string}) => toast.error(data.message));
+        socket?.on('updateLobbyPlayers', (data: SocketCustomPlayerData[]) => setParticipantsData(data));
+        socket?.on('isBanned', () => toastAndRedirect("You are banned from this lobby.", "/"));
+        socket?.on('isKickedGuest', () => toastAndRedirect("Guests are not allowed to join this lobby.", "/"));
+        socket?.emit('getLobby', joinPayload);
 
-      socket?.on('sendTyping', (data: { name: string, isTyping: boolean }) => {
-        setTypingData(typing => {
-            let currentState = [ ...typing ];
-
-            if (!currentState.includes(data.name) && data.isTyping)
-                currentState.push(data.name);
-
-            if (currentState.includes(data.name) && !data.isTyping)
-                currentState = currentState.filter(name => name !== data.name);
-
-            return currentState;
+        socket?.on('updateLobby', (data: LobbyData) => {
+            setName(data.name);
+            setInvite(data.invite);
+            setPrivacy(data.privacy);
+            setTextCustom(data.textCustom && data.textCustom !== 'null' ? data.textCustom : '');
+            setOwner(data.owner);
+            setTextId(data.textId);
+            setAllowGuests(data.allowGuests);
+            setModeId(data.modeId);
+            setCountdown(data.countdown);
+            setGameModes(data.gameModes);
+            setLoaded(true);
         });
-      });
 
-      socket?.on('isKicked', (data: { playerId: string, message: string }) => {
-          if (data.playerId === sessionData?.playerId) 
-              toastAndRedirect(!data.message ? "You have been removed from this lobby." : data.message, "/");
-      });
-      socket?.on('updateLobbyChat', (data: SocketCustomChatData) => {
-          setChatData(chatData => [...chatData, data ]);
+        socket?.on('sendTyping', (data: { name: string, isTyping: boolean }) => {
+            setTypingData(typing => {
+                let currentState = [ ...typing ];
 
-          if (customChatBeep === '1' && data.type !== 'global' && data.name !== sessionData?.name && data.discriminator !== sessionData?.discriminator) {
-              const chatBeepElement = document.getElementById('ChatBeep') as HTMLAudioElement;
-              if (chatBeepElement) {
-                chatBeepElement.currentTime = 0;
-                chatBeepElement.play().then();
-              }
-          }
+                if (!currentState.includes(data.name) && data.isTyping)
+                    currentState.push(data.name);
 
-          updateChatScroll();
-      });
+                if (currentState.includes(data.name) && !data.isTyping)
+                    currentState = currentState.filter(name => name !== data.name);
 
-      return () => socket?.disconnect();
-  }, [socket, customChatBeep, playerToken, inviteCode, sessionData ]);
+                return currentState;
+            });
+        });
+
+        socket?.on('isKicked', (data: { playerId: string, message: string }) => {
+            if (data.playerId === sessionData?.playerId) 
+                toastAndRedirect(!data.message ? "You have been removed from this lobby." : data.message, "/");
+        });
+        socket?.on('updateLobbyChat', (data: SocketCustomChatData) => {
+            setChatData(chatData => [...chatData, data ]);
+
+            if (customChatBeep === '1' && data.type !== 'global' && data.name !== sessionData?.name && data.discriminator !== sessionData?.discriminator) {
+                const chatBeepElement = document.getElementById('ChatBeep') as HTMLAudioElement;
+                if (chatBeepElement) {
+                  chatBeepElement.currentTime = 0;
+                  chatBeepElement.play().then();
+                }
+            }
+
+            updateChatScroll();
+        });
+
+        return () => socket?.disconnect();
+    }, [socket, customChatBeep, playerToken, inviteCode, sessionData ]);
 
 
-  const toastAndRedirect = (message: string, redirect: string) => {
-      toast.error(message);
-      setRedirect(redirect);
-  }
-
-  const updateChatScroll = () => {
-    const overflowChatElement: HTMLElement | null = document.getElementById('chatbox');
-    if (overflowChatElement) {
-      const isNotBottom = (overflowChatElement.scrollHeight - (overflowChatElement.offsetHeight + overflowChatElement.scrollTop)) >= 75;
-      if (!isNotBottom) overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
+    const toastAndRedirect = (message: string, redirect: string) => {
+        toast.error(message);
+        setRedirect(redirect);
     }
-  }
 
-  const resetChatScroll = () => {
-    const overflowChatElement: HTMLElement | null = document.getElementById('chatbox');
-    if (overflowChatElement) 
-        overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
-  }
-
-  const chatOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-      socket?.emit('sendTyping', { isTyping: e.target.value.trim() !== "" });
-      setMessage(e.target.value);
-  }
-
-  const chatOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-        if (sessionData && message) {
-            socket?.emit('sendMessage', {message});
-            socket?.emit('sendTyping', {isTyping: false});
-            setMessage('');
+    const updateChatScroll = () => {
+        const overflowChatElement: HTMLElement | null = document.getElementById('chatbox');
+        if (overflowChatElement) {
+            const isNotBottom = (overflowChatElement.scrollHeight - (overflowChatElement.offsetHeight + overflowChatElement.scrollTop)) >= 75;
+            if (!isNotBottom) overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
         }
     }
-  }
 
-  const handlePlayerBan = (playerId: string) => socket?.emit('banPlayer', { playerId });
-  const handleGiveOwner = (playerId: string) => socket?.emit('giveOwner', { playerId });
+    const resetChatScroll = () => {
+        const overflowChatElement: HTMLElement | null = document.getElementById('chatbox');
+        if (overflowChatElement) 
+            overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
+    }
 
-  const handleUpdateSettings = (fieldName: string, value?: any) => {
-      const newtextId = (fieldName === 'textId' ? parseInt(value, 10) : textId);
-      let newtextCustom = (fieldName === 'textCustom' ? value : textCustom);
-      if (fieldName === 'textId' && newtextId !== 9)
-          newtextCustom = '';
+    const chatOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        socket?.emit('sendTyping', { isTyping: e.target.value.trim() !== "" });
+        setMessage(e.target.value);
+    }
 
-      socket?.emit('updateLobbySettings', {
-          name: (fieldName === 'name' ? value : name),
-          privacy: (fieldName === 'privacy' ? parseInt(value, 10) : privacy),
-          modeId: (fieldName === 'modeId' ? parseInt(value, 10) : modeId),
-          countdown: (fieldName === 'countdown' ? parseInt(value, 10) : countdown),
-          allowGuests: (fieldName === 'allowGuests' ? parseInt(value, 10) : allowGuests),
-          textId: newtextId,
-          textCustom: newtextCustom
-      });
+    const chatOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+          if (sessionData && message) {
+              socket?.emit('sendMessage', {message});
+              socket?.emit('sendTyping', {isTyping: false});
+              setMessage('');
+          }
+      }
+    }
 
-      if (fieldName !== 'textId' || (fieldName === 'textId' && value !== 9))
-          setDropdown(null);
-  }
+    const handleStartMatch = () => socket?.emit('startLobby', {}); 
+    const handleUpdateTeam = (playerId: string, teamId: number) => socket?.emit('updateLobbyPlayerTeam', { playerId, teamId });
+    const handlePlayerBan = (playerId: string) => socket?.emit('banPlayer', { playerId });
+    const handleGiveOwner = (playerId: string) => socket?.emit('giveOwner', { playerId });
+    const handleUpdateSettings = (fieldName: string, value?: any) => {
+        const newTextId = (fieldName === 'textId' ? parseInt(value, 10) : textId);
+        let newTextCustom = (fieldName === 'textCustom' ? value : textCustom);
+        if (fieldName === 'textId' && newTextId !== 9)
+            newTextCustom = '';
 
-  const handleStartMatch = () => {
-      setDropdown(null);
-      socket?.emit('startLobby', {});
-  }
-  const handleUpdateTeam = (playerId: string, teamId: number) => socket?.emit('updateLobbyPlayerTeam', { playerId, teamId });
+        socket?.emit('updateLobbySettings', {
+            name: (fieldName === 'name' ? value : name),
+            privacy: (fieldName === 'privacy' ? parseInt(value, 10) : privacy),
+            modeId: (fieldName === 'modeId' ? parseInt(value, 10) : modeId),
+            countdown: (fieldName === 'countdown' ? parseInt(value, 10) : countdown),
+            allowGuests: (fieldName === 'allowGuests' ? parseInt(value, 10) : allowGuests),
+            textId: newTextId,
+            textCustom: newTextCustom
+        });
+    }
 
-  useEffect(() => resetChatScroll(), [ showMatch ]);
+    const getTeamLength = (teamId: number) => {
+        let x: number = 0;
+        participantsData.map((item) => item.teamId === teamId ? x++ : null);
+        return x;
+    }
 
-  const getTeamLength = (teamId: number) => {
-      let x: number = 0;
-      participantsData.map((item) => item.teamId === teamId ? x++ : null);
-      return x;
-  }
+    const useGameMode = gameModes[modeId];
+    const enableStartLobby = (getTeamLength(1) >= (useGameMode?.modeConfig.TEAMS.SIZE || 0));
 
-  const useGameMode = gameModes[modeId];
-  const enableStartLobby = (getTeamLength(1) >= (useGameMode?.modeConfig.TEAMS.SIZE || 0));
-
-  console.log('Currently dragging teamId: ', isDragging);
-
-  return (
+    return (
         <>
             {redirect && <Redirect to={redirect} />}
             <Base meta={<Meta title={(!name || name === 'undefined') ? 'Joining Lobby' : name} reverseTitle />} ads={{ enableBottomRail: true }} isLoaded={loaded}>
@@ -245,73 +234,15 @@ const Custom = (props: IProps) => {
                                 </div>
                                 <div className="flex flex-wrap justify-end">
                                     <Settings 
-                                          className="3xl:rounded-l-xl"
-                                          label={t('page.custom.mode')} 
-                                          value={modeId} 
-                                          options={gameModes.map((item) => { return { label: item.modeName, value: item.modeId } })}
-                                          onUpdate={(v: number) => handleUpdateSettings('modeId', v)} 
-                                          onDropdown={() => setDropdown(dropdown !== 0 ? 0 : null)}
-                                          isActive={dropdown === 0}
-                                          isOwner={owner === sessionData?.playerId} 
-                                          textCustom={textCustom} 
-                                    />
-
-                                    <Settings 
-                                          label={t('page.custom.privacy')}
-                                          value={privacy} 
-                                          options={[
-                                              { label: t('page.custom.public'), value: 0 },
-                                              { label: t('page.custom.unlisted'), value: 1 },
-                                          ]}
-                                          onUpdate={(v: number) => handleUpdateSettings('privacy', v)} 
-                                          onDropdown={() => setDropdown(dropdown !== 1 ? 1 : null)}
-                                          isActive={dropdown === 1}
-                                          isOwner={owner === sessionData?.playerId} 
-                                          textCustom={textCustom} 
-                                    />
-
-                                    <Settings 
-                                          label={t('page.custom.guests')}
-                                          value={allowGuests}  
-                                          options={[
-                                              { label: t('options.no'), value: 0 },
-                                              { label: t('options.yes'), value: 1 },
-                                          ]}
-                                          onUpdate={(v: number) => handleUpdateSettings('allowGuests', v)} 
-                                          onDropdown={() => setDropdown(dropdown !== 2 ? 2 : null)}
-                                          isActive={dropdown === 2}
-                                          isOwner={owner === sessionData?.playerId} 
-                                          textCustom={textCustom} 
-                                    />
-
-                                    <Settings 
-                                          label={t('page.custom.text')}
-                                          value={textId} 
-                                          options={[
-                                              { label: t('options.random'), value: 0 },
-                                              { label: t('options.quotes'), value: 1 },
-                                              { label: t('options.dict'), value: 2 },
-                                              { label: t('options.custom'), value: 9 },
-                                          ]}
-                                          onUpdate={(v: number) => handleUpdateSettings('textId', v)} 
-                                          onDropdown={() => setDropdown(dropdown !== 3 ? 3 : null)}
-                                          isActive={dropdown === 3} 
-                                          isOwner={owner === sessionData?.playerId} 
-                                          isTextDropdown={(v: string) => handleUpdateSettings('textCustom', v)}
-                                          textCustom={textCustom} 
-                                    />
-
-                                    <Settings 
-                                          className="3xl:rounded-r-xl"
-                                          label={t('page.custom.countdown')}
-                                          value={countdown} 
-                                          options={[0,1,2,3,4,5,6,7,8,9,10,11,12].map((_item, index) => { return { label: `${index + 1} seconds`, value: index + 1 } })}
-                                          onUpdate={(v: number) => handleUpdateSettings('countdown', v)} 
-                                          onDropdown={() => setDropdown(dropdown !== 4 ? 4 : null)}
-                                          isActive={dropdown === 4}
-                                          isOwner={owner === sessionData?.playerId} 
-                                          isCustomValue={"countdown"}
-                                          textCustom={textCustom} 
+                                        modeId={modeId} 
+                                        privacy={privacy} 
+                                        allowGuests={allowGuests} 
+                                        textId={textId} 
+                                        countdown={countdown} 
+                                        textCustom={textCustom} 
+                                        gameModes={gameModes} 
+                                        owner={sessionData?.playerId === owner} 
+                                        handleUpdateSettings={handleUpdateSettings}
                                     />
                                 </div>
                             </div>
@@ -396,12 +327,12 @@ const Custom = (props: IProps) => {
 }
 
 export async function getServerSideProps({ req, query }: GetServerSidePropsContext) {
-  return {
-      props: {
-          ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
-          inviteCode: query.inviteCode || '',
-      }
-  }
+    return {
+        props: {
+            ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
+            inviteCode: query.inviteCode || '',
+        }
+    }
 }
 
 export default Custom;
