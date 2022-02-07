@@ -34,7 +34,7 @@ const ProfileTournaments = (props: IProps) => {
                                         ) : <></>}
                                     </div>
                                 </div>
-                                <div className={"w-full my-auto bg-gray-700 rounded-xl pl-12 py-2 shadow pl-4"}>
+                                <div className={"w-full my-auto bg-gray-700 rounded-xl pl-12 pr-4 py-2 shadow"}>
                                     <div className={"uppercase text-base lg:text-base font-semibold"}>{item.tournament[0]?.name}</div>
                                     <div className="flex space-x-4 text-xs lg:text-sm pt-1 uppercase">
                                       <div>

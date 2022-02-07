@@ -156,12 +156,12 @@ const Levelbar = () => {
             <>
                 <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gray-750 bg-opacity-80 py-1 shadow-lg transition-all`} style={{ backdropFilter: 'blur(5px)' }}>
                     <div className={"container flex"}>
-                        <div className={"flex space-x-2 py-3"}>
+                        <div className={"flex space-x-2 py-2"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
                                 <img src={'/assets/logo_svg.svg'} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
                             <div className="w-auto my-auto">
-                                <Link to="/" className="text-3xl text-white uppercase font-bold" style={{ marginTop: '-2px' }}>
+                                <Link to="/" className="text-2.5xl text-white uppercase font-bold">
                                     Keyma<span className="text-orange-400">.</span>sh
                                 </Link>
                             </div>

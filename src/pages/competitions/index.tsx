@@ -83,7 +83,7 @@ const Tournaments = () => {
                     
                 </AdvertisementDisplay>
                 <div className="content-box">
-                    <h1 className={"text-white uppercase"}>{t('page.tournaments.title')}</h1>
+                    <h1>{t('page.tournaments.title')}</h1>
                     <div className={"flex flex-wrap mt-5"}>
                         <div className={"w-full lg:w-auto mr-auto my-auto"}>
                             <div className={"flex flex-wrap gap-x-2 text-lg text-white uppercase"}>

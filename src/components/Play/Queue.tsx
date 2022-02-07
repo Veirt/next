@@ -131,7 +131,7 @@ const Queue = (props: IProps) => {
         {
             name: 'page.queue.quickplay.title',
             description: 'page.queue.quickplay.description',
-            image: '/assets/play/quickplay.webp',
+            image: '/assets/play/quick_play.svg',
             enabled: true,
             modes: [
                 {
@@ -164,7 +164,7 @@ const Queue = (props: IProps) => {
             name: 'page.queue.custom.title',
             enabled: true,
             description: 'page.queue.custom.description',
-            image: '/assets/play/custom_users.webp',
+            image: '/assets/play/custom.svg',
             modes: [
                 {
                     name: 'page.queue.custom.create',
@@ -184,7 +184,7 @@ const Queue = (props: IProps) => {
         {
             name: 'page.queue.ranked.title',
             description: 'page.queue.ranked.description',
-            image: '/ranks/big/gold.webp',
+            image: '/ranks/bronze2.svg',
             enabled: true,
             content: true,
             modes: [
@@ -239,26 +239,28 @@ const Queue = (props: IProps) => {
 
             <audio id="MatchFound" src="/audio/MatchFound.wav" crossOrigin="anonymous" preload="auto" />
 
-            <div className={"grid grid-cols-1 lg:grid-cols-3 3xl:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box"} style={{ paddingLeft: 0, paddingRight: 0 }}>
+            <div className={"grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box"} style={{ paddingLeft: 0, paddingRight: 0 }}>
                 {tabs.map((tab, index) => (
-                    <div key={index} className={`relative col-span-full lg:col-span-1 3xl:col-span-1 px-8`}>
+                    <div key={index} className={`relative col-span-full lg:col-span-1 px-8`}>
                         {/* Custom Border */}
-                        {index !== 0 && <div className="h-full border-r-4 border-gray-800 absolute -left-2.5 z-20" />}
+                        {index !== 0 && <div className="hidden lg:block h-full border-r-4 rounded-full border-gray-800 absolute -left-2.5 z-20" />}
                         {/* Flex / Icon */}
                         <div className="relative">
-                            <div className="absolute top-0 -right-8 z-0">
-                                <img className={"h-64 -mt-16 object-cover object-center transform opacity-50"} src={tab.image || ''} alt={"Panel"} />
+                            <div className="h1 text-white relative z-10 inline relative">
+                                {t(tab?.name)}
+                                <div className="absolute top-0 bottom-0 -right-10 lg:-right-14">
+                                    <img className={"h-8 lg:h-10 object-cover mt-1 lg:mt-2"} src={tab.image || ''} alt={t(tab?.name)} />
+                                </div>
                             </div>
-                            <div className="h1 text-white relative z-10">{t(tab?.name)}</div>
-                            <p className="pt-1 pb-6 block relative z-10 text-gray-300 truncate">
+                            <p className="pt-2 pb-6 block relative z-10 text-gray-300 truncate">
                                 {t(tab?.description)}
                             </p>
                             {/* Buttons */}
                             <div className="flex flex-wrap space-x-1 relative z-10">
                                 {tab?.modes?.map((item) => (
-                                    <button key={item.name} onClick={item.onClick} className={`py-1.5 px-3 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
-                                        <div className={"flex justify-center text-white text-xs lg:text-sm uppercase font-bold"}>
-                                            <div className={"w-5 lg:mt-px text-center sm:text-left lg:text-center 3xl:text-left"}>
+                                    <button key={item.name} onClick={item.onClick} className={`py-2 px-4 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
+                                        <div className={"flex justify-center text-white text-xs uppercase font-semibold"}>
+                                            <div className={"w-4 mr-0.5 text-center sm:text-left lg:text-center 3xl:text-left"}>
                                                 <FontAwesomeIcon icon={item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
                                             </div>
                                             <div className={"hidden sm:block lg:hidden 3xl:block w-auto"}>

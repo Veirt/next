@@ -39,7 +39,7 @@ const Challenge:FC<PlayerChallengeData> = (props) => {
                     <img src={`/challenges/${challenge[0].type}.png`} alt={challenge[0].text} className={"block mx-auto transform scale-challenge"} />
                 </div>
                 <div className="col-span-full 3xl:col-span-4 my-auto">
-                    <div className="h4 text-orange-400">{mode[0].modeName}</div>
+                    <div className="h4 text-orange-400" style={{ fontWeight: '700' }}>{mode[0].modeName}</div>
                     <p className="pt-1 block text-sm">
                         {challenge[0].text}
                     </p>

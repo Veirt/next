@@ -15,7 +15,7 @@ const Tournaments = (props: IProps) => {
     return (data && data.length !== 0) ? (
         <div>
             <div className="h1">{t('component.navbar.tournaments')}</div>
-            <p className="block pb-6 pt-2"> 
+            <p className="block text-gray-300 pb-6 pt-2"> 
                 See how you match with players worldwide.
             </p>
             <div className="grid grid-cols-1 gap-6">

@@ -15,7 +15,7 @@ const Challenges = (props: IProps) => {
     return (data && data.length !== 0) ? (
         <div>
             <div className="h1">{t('Challenges')}</div>
-            <p className="pb-6 pt-2">
+            <p className="text-gray-300 pb-6 pt-2">
                 You will be given two challenges every day.
             </p>
             <div className="grid grid-cols-1 gap-6">

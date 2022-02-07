@@ -29,8 +29,7 @@ const LeaderboardPlayerRanked:FC<IProps> = (props) => {
                 <div className="w-10" />
                 <div className="w-24">Rank</div>
                 <div className="hidden md:block w-16 text-center">W</div>
-                <div className="hidden md:block w-16 text-center">L</div>
-                <div className="hidden md:block w-16 text-center">Q</div>
+                <div className="hidden md:block w-16 text-center">T</div>
                 <div className={"w-8 md:hidden"} />
             </div>
 
@@ -50,10 +49,7 @@ const LeaderboardPlayerRanked:FC<IProps> = (props) => {
                         {item.matchesWon.toLocaleString()}
                     </div>
                     <div className={"hidden md:block w-16 my-auto text-center font-semibold"}>
-                        {item.matchesLost.toLocaleString()}
-                    </div>
-                    <div className={"hidden md:block w-16 my-auto text-center font-semibold"}>
-                        {item.matchesQuit.toLocaleString()}
+                        {(item.matchesWon + item.matchesLost + item.matchesQuit).toLocaleString()}
                     </div>
                     <div className={"w-8 md:hidden"} />
                 </div>
