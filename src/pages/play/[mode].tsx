@@ -71,7 +71,7 @@ const Play = (props: IProps) => {
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">
                     
                 </AdvertisementDisplay>
-                <div className="content-box 3xl:h-212 mb-4">
+                <div className="content-box 3xl:h-208 mb-4">
                     <Leaderboards />
                 </div>
                 <AdvertisementDisplay type="leaderboard-small" className="mb-4">

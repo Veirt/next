@@ -89,7 +89,7 @@ const Tournaments = () => {
                             <div className={"flex flex-wrap gap-x-2 text-lg text-white uppercase"}>
 
                                 <div className={"relative"}>
-                                    <button type={"button"} className={"w-44 button-dropdown border-transparent bg-gray-700 hover:bg-gray-750"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
+                                    <button type={"button"} className={"w-44 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
                                         <FontAwesomeIcon icon={faFilter} className={"mr-1"} />
                                         {types[filterType]?.name}
                                         <div className={"absolute right-0 top-0 mt-1.5 mr-3"}>
@@ -102,7 +102,7 @@ const Tournaments = () => {
                                 </div>
 
                                 <div className={"relative"}>
-                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-750"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
+                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
                                         <FontAwesomeIcon icon={faGlobe} className={"mr-1"} />
                                         {locales.map(item => item.key === filterLocale ? item.name : '')}
                                         <div className={"absolute right-0 top-0 mt-1.5 mr-3"}>
@@ -118,9 +118,9 @@ const Tournaments = () => {
                         </div>
                         <div className={"w-full lg:w-auto"}>
                             <form method={"post"} onSubmit={handleSubmit}>
-                                <div className={"flex"}>
-                                    <input type={"text"} name="search" value={search} className={"form-settings form-settings-small w-auto rounded-l-lg"} style={{ borderTopRightRadius: '0', borderBottomRightRadius: '0' }} onChange={(e) => setSearch(e.target.value)} />
-                                    <button type={"submit"} className={"bg-gray-700 hover:bg-gray-600 focus:outline-none transition ease-in-out duration-200 w-16 text-white rounded-r-lg"}><FontAwesomeIcon icon={faSearch} /></button>
+                                <div className={"form-search"}>
+                                    <input type={"text"} name="search" value={search} placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
+                                    <button type={"submit"}><FontAwesomeIcon icon={faSearch} /></button>
                                 </div>
                             </form>
                         </div>

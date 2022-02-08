@@ -8,15 +8,10 @@
     text-white 
     transition ease-in-out duration-300 
     font-semibold 
-    rounded-lg
-    hover:bg-gray-700
+    rounded-xl
+    hover:bg-gray-775
     hover:text-orange-400
     ml-6;
-}
-
-.desktopNav-item:hover::after, .desktopNav-item.levelbar-active::after, .desktopNav-item.levelbar-active {
-  transform: scaleX(1);
-  @apply text-orange-400
 }
 
 .mobileNav-item {
@@ -28,5 +23,5 @@
 }
 
 .desktopNav-item.levelbar-active {
-  @apply bg-gradient-to-r from-gray-775 to-gray-800;
+  @apply bg-gray-800 text-orange-400;
 }

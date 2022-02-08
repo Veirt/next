@@ -120,9 +120,9 @@ const Leaderboards = (props: IProps) => {
                         </div>
                         <div className={"w-full lg:w-auto lg:my-auto flex flex-wrap justify-center gap-2 lg:justify-end lg:text-left"}>
                             <div className={"relative"}>
-                                <button type={"button"} className={"w-32 button-dropdown border-transparent bg-gray-600 hover:bg-gray-700"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
+                                <button type={"button"} className={"w-32 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
                                     <FontAwesomeIcon icon={faFilter} className={"mr-1"} />
-                                    {type}
+                                    {type.slice(0, 1).toUpperCase()}{type.slice(1, type.length)}
                                     <div className={"absolute right-0 top-0 mt-1.5 mr-3"}>
                                         <FontAwesomeIcon icon={faCaretDown} />
                                     </div>
@@ -138,7 +138,7 @@ const Leaderboards = (props: IProps) => {
 
                             {type === 'casual' && (
                                 <div className={"relative"}>
-                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-600 hover:bg-gray-700"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
+                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
                                         <FontAwesomeIcon icon={faSort} className={"mr-1"} />
                                         {/* @ts-ignore */}
                                         {filterItemToName[filter]}
@@ -159,7 +159,7 @@ const Leaderboards = (props: IProps) => {
 
                             {type === 'ranked' && (
                                 <div className={"relative"}>
-                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-600 hover:bg-gray-700"} onClick={() => setDropdown(dropdown ? 0 : 2)}>
+                                    <button type={"button"} className={"w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725"} onClick={() => setDropdown(dropdown ? 0 : 2)}>
                                         <FontAwesomeIcon icon={faSort} className={"mr-1"} />
                                         {seasons.map((item) => item.id === parseInt(filter, 10) ? item.name : '')}
                                         <div className={"absolute right-0 top-0 mt-1.5 mr-3"}>

@@ -1,11 +1,11 @@
 .button-dropdown {
-   @apply relative px-4 py-1.5 text-left focus:outline-none transition ease-in-out duration-300 text-white text-sm uppercase font-medium tracking-wide border rounded;
+   @apply relative px-4 py-1.5 text-left focus:outline-none transition ease-in-out duration-300 text-white text-sm border rounded-lg;
 }
 
 .dropdown {
-  @apply z-20 transform absolute top-0 mt-10 bg-gray-600 text-white transition ease-in-out duration-300 focus:outline-none rounded shadow-md border border-gray-600;
+  @apply z-20 transform absolute top-0 mt-10 bg-gray-600 text-white transition ease-in-out duration-300 focus:outline-none rounded-lg shadow-md border border-gray-600;
 }
-
+ 
 .dropdown-gap {
   @apply mt-16 #{!important};
 } 
@@ -23,7 +23,7 @@
 }
 
 .dropdown .item {
-  @apply block w-full text-left px-4 py-1.5 hover:bg-gray-700 transition ease-in-out duration-200;
+  @apply block w-full text-left px-4 py-2.5 text-sm hover:bg-gray-700 transition ease-in-out duration-200;
 }
 
 .dropdown .item.is-active {
@@ -32,10 +32,10 @@
 
 .dropdown .item:first-child,
 .dropdown .item.is-active:first-child {
-  @apply rounded-t #{!important};;
+  @apply rounded-t-lg #{!important};
 }
 
 .dropdown .item:last-child,
 .dropdown .item.is-active:last-child {
-  @apply rounded-b #{!important};;
+  @apply rounded-b-lg #{!important};
 }
