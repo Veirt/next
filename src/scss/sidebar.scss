@@ -20,11 +20,11 @@
 }
 
 .mobileNav-item {
-  @apply my-auto w-auto pb-1 pt-2 border-b-2 border-transparent hover:border-orange-400 text-sm uppercase text-center text-white transition ease-in-out duration-300 font-semibold hover:text-orange-400
+  @apply my-auto w-auto py-3 text-sm uppercase text-center text-white transition ease-in-out duration-300 font-semibold hover:text-orange-400
 }
 
 .mobileNav-item.levelbar-active {
-  @apply border-orange-400 text-orange-400 #{!important};;
+  @apply text-orange-400 #{!important};;
 }
 
 .desktopNav-item.levelbar-active {

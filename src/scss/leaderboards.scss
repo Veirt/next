@@ -10,15 +10,14 @@
   }
   &--head {
     /* @apply text-base uppercase font-medium text-white tracking-wider mb-2 bg-gray-900 bg-opacity-60 shadow-md text-orange-400 shadow-md py-1 rounded-xl; */
-    @apply text-gray-400 mb-1 font-semibold text-base rounded-t-xl;
-  }
-  &--row {
-    /* @apply text-gray-200 text-sm bg-gray-800 rounded-xl mb-2; */
-    @apply text-white bg-gray-800 rounded-xl mb-0.5 py-0.5 text-sm;
+    @apply text-gray-400 py-2 bg-gray-825 font-semibold text-base border-b-2 border-orange-400 rounded-t-xl;
   }
 
-  /*
+  &--row {
+    @apply text-white bg-gray-800 border-b-2 border-gray-850 text-xs md:text-sm overflow-hidden;
+  }
+
   &--row:last-child {
     @apply rounded-b-xl border-transparent;
-  }*/
+  }
 }

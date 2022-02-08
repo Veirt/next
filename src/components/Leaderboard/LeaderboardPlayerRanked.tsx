@@ -27,7 +27,7 @@ const LeaderboardPlayerRanked:FC<IProps> = (props) => {
                 <div className="hidden md:block w-10 text-center font-bold">#</div>
                 <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">Name</div>
                 <div className="w-10" />
-                <div className="w-24">Rank</div>
+                <div className="w-32">Rank</div>
                 <div className="hidden md:block w-16 text-center">W</div>
                 <div className="hidden md:block w-16 text-center">T</div>
                 <div className={"w-8 md:hidden"} />
@@ -39,10 +39,10 @@ const LeaderboardPlayerRanked:FC<IProps> = (props) => {
                     <div className="w-96 md:w-96 mr-auto">
                         {item.player[0] ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : ''}
                     </div>
-                    <div className={"w-10 my-auto"}>
+                    <div className={"w-12 lg:w-10 my-auto"}>
                         <img className={"w-7"} src={`/ranks/${item.Rank ? `${item.Rank.Rank.replaceAll(' ', '').toLowerCase()}` : 'unranked'}.svg`} alt={"Unranked"} />
                     </div>
-                    <div className={"w-24 my-auto font-semibold"}>
+                    <div className={"hidden md:block w-32 my-auto font-semibold"}>
                         {item.Rank.Rank}
                         <div className="opacity-50 text-xs -mt-1">
                             {item.rating} SR

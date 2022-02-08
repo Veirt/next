@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faGamepad,
     faHome,
+    faInfoCircle,
     faListAlt,
     faNewspaper,
     faStoreAlt,
@@ -138,8 +139,8 @@ const Levelbar = () => {
                     <Link to={"/"} className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
                         <FontAwesomeIcon icon={faHome} className={"text-2xl"} />
                     </Link>
-                    <Link to={"/"} className={`${mobileNavCSS} ${router.asPath === "/play" && mobileActiveCSS} text-center text-xxs`}>
-                        <FontAwesomeIcon icon={faGamepad} className={"text-2xl"} />
+                    <Link to={"/about/us"} className={`${mobileNavCSS} ${router.asPath === "/play" && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faInfoCircle} className={"text-2xl"} />
                     </Link>
                     <Link to={"/news"} className={`${mobileNavCSS} ${router.asPath.startsWith("/news") && mobileActiveCSS} text-center text-xxs`}>
                         <FontAwesomeIcon icon={faNewspaper} className={"text-2xl"} />
