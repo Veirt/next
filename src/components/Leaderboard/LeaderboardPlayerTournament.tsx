@@ -70,7 +70,7 @@ const LeaderboardPlayerTournament:FC<IProps> = (props) => {
             {qualifierSort === "avgWPM" && (
                 isNotQualified.map((item) =>  (
                     <div key={item?.player[0]?.playerId} className="flex leaderboards--row opacity-70">
-                        <div className={`hidden md:block my-auto w-10 text-center font-bold bg-yellow-400 rounded-l-lg bg-opacity-50 py-3`}>X</div>
+                        <div className={`hidden md:block my-auto w-10 text-center font-bold bg-yellow-400 bg-opacity-30 py-3`}>X</div>
                         <div className="w-96 md:w-96 mr-auto">
                             {item?.player[0] && <PlayerCard {...item.player[0]} useTransparent isLeaderboard />}
                         </div>

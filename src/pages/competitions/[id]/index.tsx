@@ -139,7 +139,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                             )}
                         </div>
                         {tournamentData?.qualifier ? (
-                            <div className="content-box">
+                            <div className="content-box flex justify-center space-x-4 mb-4">
                                 <div className="w-24">
                                     <div className="flex">
                                         <div className="w-4 my-auto">

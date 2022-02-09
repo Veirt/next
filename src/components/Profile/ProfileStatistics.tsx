@@ -112,17 +112,19 @@ const ProfileStatistics = (props: IProps) => {
                         <div className={"flex h-full"}>
                             <div className={"m-auto"}>
                                 {rankedData && (
-                                    <div className={"flex"}>
-                                        <div className={"w-44 lg:w-52 my-auto"}>
+                                    <div>
+                                        <div className={"block mx-auto w-20 lg:w-20"}>
                                             <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank.Rank} />
                                         </div>
-                                        <div className={"w-full my-auto"}>
+                                        <div className={"text-center mt-2"}>
                                             {(rankedData && rankedData.Rank.Rank <= 'Unranked') && (
-                                                <div className={"text-white uppercase text-2xl lg:text-5xl font-bold"}>
-                                                    {rankedData?.rating}<span className={"text-orange-400 text-xl lg:text-3xl"}>SR</span>
+                                                <div className={"text-white text-2xl lg:text-3xl font-bold"}>
+                                                    {rankedData?.Rank.Rank}
                                                 </div>
                                             )}
-                                            <div className={"text-white opacity-70 uppercase text-lg lg:text-2xl font-semibold"}>{rankedData?.Rank.Rank}</div>
+                                            <div className={"text-white opacity-70 uppercase text-xl font-semibold"}>
+                                                {rankedData?.rating} <span className={"text-orange-400"}>SR</span>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
