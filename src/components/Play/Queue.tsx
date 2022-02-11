@@ -18,6 +18,8 @@ import useConfig from "../../hooks/useConfig";
 import { toast } from 'react-toastify';
 import Redirect from '../Uncategorized/Redirect';
 import Modal from '../Uncategorized/Modal';
+import RankedModal from './old/RankedModal';
+import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
 interface TabsInterface {
     name: string;
@@ -56,6 +58,7 @@ const Queue = (props: IProps) => {
     const [ playerLevel, setPlayerLevel ] = useState<PlayerLevelData | null>(null);
     const [ lobbiesData, setLobbiesData ] = useState<LobbyData[]>([]);
     const [ lobbiesLoaded, setLobbiesLoaded ] = useState(false);
+    const [ modal, setModal ] = useState<number | null>(null);
     const [ redirect, setRedirect ] = useState('');
     const [ loading, setLoading ] = useState(false);
 
@@ -205,6 +208,12 @@ const Queue = (props: IProps) => {
                     color: 'text-yellow-400',
                     onClick: () => setRedirect('/leaderboards/ranked/4'),
                 },
+                {
+                    name: '',
+                    icon: faQuestionCircle,
+                    color: 'text-blue-400',
+                    onClick: () => setModal(0),
+                },
             ],
         },
     ];
@@ -212,6 +221,7 @@ const Queue = (props: IProps) => {
     return (
         <>
             {redirect && redirect !== '' && <Redirect to={redirect} />}
+            <RankedModal isLoaded={modal === 0} toggle={() => setModal(null)} />
             <div style={{ zIndex: 100 }} className={`${loading ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition ease-in-out duration-200 fixed top-0 right-0 left-0 bottom-0 w-full h-screen bg-black bg-opacity-40`}>
                 <div className={"flex h-screen"}>
                     <div className={"m-auto w-80 flex p-4 rounded-2xl shadow-lg bg-gray-750 border border-gray-800"}>
@@ -260,12 +270,14 @@ const Queue = (props: IProps) => {
                                 {tab?.modes?.map((item) => (
                                     <button key={item.name} onClick={item.onClick} className={`py-2 px-4 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
                                         <div className={"flex justify-center text-white text-xs uppercase font-semibold"}>
-                                            <div className={"w-4 mr-0.5 text-center sm:text-left lg:text-center 3xl:text-left"}>
+                                            <div className={`w-4 text-center ${item.name ? 'mr-0.5 sm:text-left lg:text-center 3xl:text-left' : ''}`}>
                                                 <FontAwesomeIcon icon={item.icon} className={`${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'text-gray-600' : item.color}`} />
                                             </div>
-                                            <div className={"hidden sm:block lg:hidden 3xl:block w-auto"}>
-                                                {t(item.name)}
-                                            </div>
+                                            {item.name && (
+                                                <div className={"hidden sm:block lg:hidden 3xl:block w-auto"}>
+                                                    {t(item.name)}
+                                                </div>
+                                            )}
                                         </div>
                                     </button>
                                 ))}

@@ -5,7 +5,6 @@ import {faDiscord, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/
 import Userbar from "./Userbar";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faGamepad,
     faHome,
     faInfoCircle,
     faListAlt,
