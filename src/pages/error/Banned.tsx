@@ -15,8 +15,8 @@ const Banned = () => {
                     <div className={"text-5xl font-bold text-white uppercase"}>{t('page.banned.title')}</div>
                     <div className={"text-xl text-white pt-6"}>
                         <div>{t('page.banned.text')}</div>
-                        <a className="text-orange-400 pb-1 border-b-2 border-transparent hover:border-orange-400 transition ease-in-out duration-300" href="mailto:support@keyma.sh" target="_blank" rel="noopener noreferrer">
-                            support@keyma.sh
+                        <a className="text-orange-400 pb-1 border-b-2 border-transparent hover:border-orange-400 transition ease-in-out duration-300" href="mailto:support@Keymash" target="_blank" rel="noopener noreferrer">
+                            support@Keymash
                         </a>
                     </div>
                 </div>

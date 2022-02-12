@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Uw account is verbannen, neem contact op met support@keyma.sh!",
+        "account_banned": "Uw account is verbannen, neem contact op met support@Keymash!",
         "twitch_none": "Er is momenteel niemand live :( Kom later terug of start zelf een stream!",
         "grades": {
             "passed": "Geslaagd",
@@ -132,7 +132,7 @@
     "page": {
         "banned": {
             "title": "Uw account is geblokkeerd",
-            "text": "Uw Keyma.sh account is voorlopig geblokkeerd. Dit kan komen door het overtreden van onze algemene voorwaarden. Heeft u vragen? Neem dan contact op via support@keyma.sh"
+            "text": "Uw Keymash account is voorlopig geblokkeerd. Dit kan komen door het overtreden van onze algemene voorwaarden. Heeft u vragen? Neem dan contact op via support@Keymash"
         },
         "guest": {
             "title": "Uw gast account is gereset"
@@ -210,7 +210,7 @@
             "news": "Laatste nieuws",
             "slogan": "Til typen naar een hoger niveau",
             "hero": {
-                "content1": "Als u vragen of opmerkingen heeft, aarzel dan niet om contact met ons op te nemen op Discord of direct via <1>support@keyma.sh<\/1>.",
+                "content1": "Als u vragen of opmerkingen heeft, aarzel dan niet om contact met ons op te nemen op Discord of direct via <1>support@Keymash<\/1>.",
                 "content2": "Oh ja, vergeten te vermelden... We zijn altijd op zoek naar een bijdrage van de gemeenschap, inclusief tekstinzendingen, taalvertalingen en meer! <1>Klik hier<\/1> voor meer informatie.",
                 "button": "Start nu met typen!"
             },

@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Sua conta foi banida, por favor contate support@keyma.sh!",
+        "account_banned": "Sua conta foi banida, por favor contate support@Keymash!",
         "twitch_none": "Ningu\u00e9m est\u00e1 transmitindo agora :( Retorne mais tarde ou comece a transmitir!",
         "grades": {
             "passed": "Aprovado",
@@ -14,7 +14,7 @@
         },
         "debug": {
             "title": "Relat\u00f3rio de Erros",
-            "message": "Se voc\u00ea estiver com algum dos problemas abaixo, por favor clique no bot\u00e3o abaixo e mande um email para support@keyma.sh com o m\u00e1ximo de informa\u00e7\u00f5es poss\u00edvel sobre como o problema aconteceu e como reproduzi-lo. As informa\u00e7\u00f5es extra providas ir\u00e3o nos ajudar permitindo-nos reproduzir o problema exato e resolver.",
+            "message": "Se voc\u00ea estiver com algum dos problemas abaixo, por favor clique no bot\u00e3o abaixo e mande um email para support@Keymash com o m\u00e1ximo de informa\u00e7\u00f5es poss\u00edvel sobre como o problema aconteceu e como reproduzi-lo. As informa\u00e7\u00f5es extra providas ir\u00e3o nos ajudar permitindo-nos reproduzir o problema exato e resolver.",
             "list": [
                 "Desconex\u00e3o repentina no meio de uma partida.",
                 "Sua contagem de palavras\/caracteres por minuto n\u00e3o atualizando automaticamente ou a de outros jogadores.",
@@ -136,11 +136,11 @@
     "page": {
         "banned": {
             "title": "Sua conta foi banida.",
-            "text": "Sua conta do Keyma.sh foi infinitamente banida, isso poderia ter causado em nossas viola\u00e7\u00f5es de termos de servi\u00e7os ou trapa\u00e7as. Se voc\u00ea tem qualquer quest\u00e3o, por favor contate support@keyma.sh!"
+            "text": "Sua conta do Keymash foi infinitamente banida, isso poderia ter causado em nossas viola\u00e7\u00f5es de termos de servi\u00e7os ou trapa\u00e7as. Se voc\u00ea tem qualquer quest\u00e3o, por favor contate support@Keymash!"
         },
         "guest": {
             "title": "Sua conta de visitante foi reiniciada.",
-            "text": "Obrigado por jogar Keyma.sh! N\u00f3s estamos alegre que voc\u00ea esta gostando e n\u00f3s recomendamos em criar uma conta no futuro. Para contexto, n\u00f3s removemos contas de visitantes que s\u00e3o mais velho do que 7 dias."
+            "text": "Obrigado por jogar Keymash! N\u00f3s estamos alegre que voc\u00ea esta gostando e n\u00f3s recomendamos em criar uma conta no futuro. Para contexto, n\u00f3s removemos contas de visitantes que s\u00e3o mais velho do que 7 dias."
         },
         "match": {
             "completed": "Partida Completa",
@@ -215,7 +215,7 @@
             "news": "\u00daltimas Novidades",
             "slogan": "Leve sua digita\u00e7\u00e3o para o pr\u00f3ximo n\u00edvel",
             "hero": {
-                "content1": "Se voc\u00ea tiver qualquer perguntas ou preocupa\u00e7\u00f5es, n\u00e3o se resista para falar com n\u00f3s no Discord ou direto pelo support@keyma.sh",
+                "content1": "Se voc\u00ea tiver qualquer perguntas ou preocupa\u00e7\u00f5es, n\u00e3o se resista para falar com n\u00f3s no Discord ou direto pelo support@Keymash",
                 "content2": "Ah sim, esquecemos de mencionar, n\u00f3s estamos olhando por uma contribui\u00e7\u00e3o de comunidade incluindo submiss\u00e3o de texto, tradutores de linguagens e mais! Clique aqui para saber mais.",
                 "button": "Comece a digitar agora!"
             },

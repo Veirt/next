@@ -6,7 +6,7 @@ export default (
             <div className={"col-span-full lg:col-span-1"}>
               <h1 className={"text-2xl sm:text-3xl lg:text-4xl xl:text-5xl uppercase text-orange-400"}>Contribute</h1>
               <p className={"text-white text-lg font- pt-6"}>
-                  Start contributing to Keyma.sh by submitting texts that can be used in the game or helping with translations
+                  Start contributing to Keymash by submitting texts that can be used in the game or helping with translations
               </p>
             </div>
           </div>
@@ -21,9 +21,9 @@ export default (
             <div>
               <h2 className={"text-orange-400"}>Information</h2>
               <p className={"pt-2 text-white text-lg"}>
-                Keyma.sh was started as a hobby project and still is a hobby project. The staff generate no proper source of
+                Keymash was started as a hobby project and still is a hobby project. The staff generate no proper source of
                 income for the game or has any financial backing besides one person's bank account. Because of this we rely on
-                community feedback to make sure that Keyma.sh is a game that everyone can stand by and be proud of.
+                community feedback to make sure that Keymash is a game that everyone can stand by and be proud of.
               </p>
             </div>
 
@@ -34,12 +34,12 @@ export default (
                 the game. If you would like to submit your own quote that you would want to see in the game, click the link
                 below:
                 <a
-                    href="https://keyma.sh/submit"
+                    href="https://Keymash/submit"
                     target="_blank"
                     className="block my-2 text-orange-300 hover:text-orange-400 uppercase font-semibold transition ease-in-out duration-300"
                     rel="noopener noreferrer"
                 >
-                  Keyma.sh Text Submission
+                  Keymash Text Submission
                 </a>
                 All quotes submitted must abide by the rules provided in the URL.
               </p>
@@ -58,7 +58,7 @@ export default (
                     className="block mt-2 text-orange-300 hover:text-orange-400 uppercase font-semibold transition ease-in-out duration-300"
                     rel="noopener noreferrer"
                 >
-                  Keyma.sh Translation Center
+                  Keymash Translation Center
                 </a>
               </p>
             </div>
@@ -66,7 +66,7 @@ export default (
             <div>
               <h2 className={"text-orange-400"}>Patreon</h2>
               <p className={"pt-2 text-white text-lg"}>
-                Our main source of income is through our Ad Provider, Teespring Merch and most importantly our Patreon. Patreon is our highest source of income compared to Keyma.sh as a whole therefore most of our costs
+                Our main source of income is through our Ad Provider, Teespring Merch and most importantly our Patreon. Patreon is our highest source of income compared to Keymash as a whole therefore most of our costs
                 in terms of hosting, domain and our contests are provided to the community through our Patreon. We want to thank all of our contributors who have helped thus far, if you would like to become a Patron you can check out the link below:
                 <a
                     href="https://patreon.com/keymashgame"
@@ -74,7 +74,7 @@ export default (
                     className="block mt-2 text-orange-300 hover:text-orange-400 uppercase font-semibold transition ease-in-out duration-300"
                     rel="noopener noreferrer"
                 >
-                  Keyma.sh Official Patreon
+                  Keymash Official Patreon
                 </a>
               </p>
             </div>

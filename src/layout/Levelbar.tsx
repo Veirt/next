@@ -125,7 +125,7 @@ const Levelbar = () => {
                     <div className={"flex py-1 px-10 justify-between"}>
                         <div className={"w-auto pt-1 my-auto"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto focus:outline-none"}>
-                                <img src={"/assets/logo_svg.svg"} alt={"Logo"} className={"w-full h-auto"} />
+                                <img src={"/assets/orange_gata_head.svg"} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
                         </div>
                         <div className={"w-auto"}>
@@ -158,11 +158,11 @@ const Levelbar = () => {
                     <div className={"container flex"}>
                         <div className={"flex space-x-2 py-2"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
-                                <img src={'/assets/logo_svg.svg'} alt={"Logo"} className={"w-full h-auto"} />
+                                <img src={'/assets/orange_gata_head.svg'} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
                             <div className="w-auto my-auto">
-                                <Link to="/" className="text-2.5xl text-white uppercase font-bold">
-                                    Keyma<span className="text-orange-400">.</span>sh
+                                <Link to="/" className="text-2.5xl text-white font-bold">
+                                    Keymash
                                 </Link>
                             </div>
                         </div>

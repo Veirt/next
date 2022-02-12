@@ -250,7 +250,7 @@ const MatchTextContainer = (props: IProps) => {
     // CSS Inlines 
     // For Tailwind Purge: duration-50 duration-75 duration-100 duration-150 duration-175 duration-200
     const upscaleMatchCSS = upscaleMatch === '1' ? 'text-base sm:text-lg md:text-xl lg:text-2xl' : 'text-sm sm:text-base md:text-lg lg:text-xl';
-    const matchTextTypeCSS = matchTextType === '1' ? 'font-mono' : 'font-sans';
+    const matchTextTypeCSS = matchTextType === '1' ? 'match-mono' : 'font-sans';
     const colorBlindCSS = colorBlindMode === '1' ? 'bg-blue-600 bg-opacity-40 text-white' : 'bg-red-600 bg-opacity-40 text-white';
     const colorBlindInputCSS = colorBlindMode === '1' ? 'bg-blue-600 bg-opacity-10 text-white' : 'bg-red-600 bg-opacity-10 text-white';
     

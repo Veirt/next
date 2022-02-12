@@ -23,7 +23,11 @@
 }
 
 .match {
+  &--mono {
+    font-family: 'Roboto Mono', monospace;
+  }
   &--text {
+    
     word-break: break-word;
   }
 

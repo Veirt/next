@@ -11,7 +11,7 @@ const Social = () => {
         },
         {
             image: '/assets/buttons/merch.svg',
-            href: 'https://store.keyma.sh/',
+            href: 'https://store.Keymash/',
         },
         {
             image: '/assets/buttons/github.svg',

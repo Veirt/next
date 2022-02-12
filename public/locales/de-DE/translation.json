@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Dein Benutzerkonto wurde gesperrt, kontaktiere uns bitte per Mail: support@keyma.sh!",
+        "account_banned": "Dein Benutzerkonto wurde gesperrt, kontaktiere uns bitte per Mail: support@Keymash!",
         "twitch_none": "Niemand streamt gerade :( Komme sp\u00e4ter wieder oder starte selbst einen Stream!",
         "grades": {
             "passed": "Bestanden",
@@ -117,11 +117,11 @@
     "page": {
         "banned": {
             "title": "Du wurdest gebannt.",
-            "text": "Ihr Keyma.sh Konto wurde auf unbestimmte Zeit gesperrt. Dies kann durch einen Versto\u00df gegen unsere Nutzungsbedingungen oder durch Betrug verursacht werden. Bei Fragen wenden Sie sich bitte an support@keyma.sh!"
+            "text": "Ihr Keymash Konto wurde auf unbestimmte Zeit gesperrt. Dies kann durch einen Versto\u00df gegen unsere Nutzungsbedingungen oder durch Betrug verursacht werden. Bei Fragen wenden Sie sich bitte an support@Keymash!"
         },
         "guest": {
             "title": "Dein G\u00e4ste Account wurde zur\u00fcckgesetzt.",
-            "text": "Danke das du Keyma.sh benutzt! Wir freuen uns, dass dir das Spiel gef\u00e4llt und wir w\u00fcrden dir empfehlen einen Account zu erstellen, damit du deine Fortschritte in Zukunft speichern kannst. Hinweis: Wir l\u00f6schen G\u00e4ste Accounts die \u00e4lter als 7 Tage sind."
+            "text": "Danke das du Keymash benutzt! Wir freuen uns, dass dir das Spiel gef\u00e4llt und wir w\u00fcrden dir empfehlen einen Account zu erstellen, damit du deine Fortschritte in Zukunft speichern kannst. Hinweis: Wir l\u00f6schen G\u00e4ste Accounts die \u00e4lter als 7 Tage sind."
         },
         "match": {
             "completed": "Beendete Spiele",
@@ -196,7 +196,7 @@
             "news": "Letzte Neuigkeiten",
             "slogan": "Bring dein Tippen zum n\u00e4chsten Level.",
             "hero": {
-                "content1": "Falls du irgendwelche Fragen oder Bedenken haben solltest, z\u00f6gere nicht uns \u00fcber Discord oder direkt \u00fcber <1>support@keyma.sh<\/1> zu kontaktieren.",
+                "content1": "Falls du irgendwelche Fragen oder Bedenken haben solltest, z\u00f6gere nicht uns \u00fcber Discord oder direkt \u00fcber <1>support@Keymash<\/1> zu kontaktieren.",
                 "content2": "Ah ja, ich habe ganz vergessen zu erw\u00e4hnen, dass wir immer auf der Suche nach Beitr\u00e4gen der Community sind, wie Texteinreichungen, \u00dcbersetzungen und mehr! <1>Hier klicken<\/1>, um dar\u00fcber zu erfahren.",
                 "button": "Jetzt anfangen zu tippen!"
             },

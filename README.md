@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="https://i.imgur.com/SdkWIdX.png" width="350" title="Keyma.sh logo">
+  <img src="https://i.imgur.com/SdkWIdX.png" width="350" title="Keymash logo">
 </p>
 
 ## Information
-This is the **official** NextJS Client for Keyma.sh - here you can find or report bugs or even suggest a potential new feature to the game. For archiving reasons, you can find our old Trello [here](https://trello.com/b/Rlx2qSvq/keymash).
+This is the **official** NextJS Client for Keymash - here you can find or report bugs or even suggest a potential new feature to the game. For archiving reasons, you can find our old Trello [here](https://trello.com/b/Rlx2qSvq/keymash).
 
 ## Contributing
 **Community:**
- - [Text/Quote submissions](https://keyma.sh/submit)
+ - [Text/Quote submissions](https://Keymash/submit)
  - [Internationalization](https://keymash.oneskyapp.com/)
  
 **Directly / Financial:**

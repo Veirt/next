@@ -379,7 +379,7 @@ const SettingsFrame = (props: IProps) => {
                                             <div className={"p-6 bg-gray-775 rounded-lg"}>
                                                 <h4>Your Data</h4>
                                                 <p className={"pt-1 pb-6 text-sm"}>
-                                                    Click the button below to see all of the Data that has ever been stored on Keyma.sh.
+                                                    Click the button below to see all of the Data that has ever been stored on Keymash.
                                                 </p>
                                                 <div className="flex">
                                                     <a target={"_blank"} rel={"noopener noreferrer"} href={`${Config.apiUrl}/player/gdpr`} className={"button small blue"}>

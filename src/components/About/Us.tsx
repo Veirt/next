@@ -7,7 +7,7 @@ export default (
                     <div className={"col-span-full lg:col-span-1"}>
                         <h1 className={"text-2xl sm:text-3xl lg:text-4xl xl:text-5xl uppercase text-orange-400"}>ABOUT US</h1>
                         <p className={"text-white text-lg font- pt-6"}>
-                            Keyma.sh is an online multiplayer typing game that allows typists from all around the world go against each other and find out who comes on top. You can find several quotes that are community supplied from books, songs, movies and more!
+                            Keymash is an online multiplayer typing game that allows typists from all around the world go against each other and find out who comes on top. You can find several quotes that are community supplied from books, songs, movies and more!
                         </p>
                     </div>
                     <div className={"col-span-full lg:col-span-2 my-auto"}>
@@ -112,11 +112,11 @@ export default (
                 <div className={"text-lg font-semibold py-20 text-white"}>
                     <h2 className={"h1 text-orange-400 pb-6"}>Contact Us</h2>
                     <div className={"text-white text-base font-normal"}>
-                        If you are looking to get a  hold of us for general inquiries or are from an educational facility looking to use Keyma.sh privately with your students:
+                        If you are looking to get a  hold of us for general inquiries or are from an educational facility looking to use Keymash privately with your students:
                     </div>
 
-                    <a href="mailto:support@keyma.sh" target="_blank" rel="noopener noreferrer">
-                        support@keyma.sh
+                    <a href="mailto:support@Keymash" target="_blank" rel="noopener noreferrer">
+                        support@Keymash
                     </a>
                 </div>
             </div>

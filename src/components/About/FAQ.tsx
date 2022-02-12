@@ -23,7 +23,7 @@ export default (
                       <div className="font-semibold text-lg pb-2">How do I change my profile picture?</div>
                       Your profile picture is synced with the Single Sign On provider that you use (Facebook, Discord, Twitter,
                       etc). If you change your profile picture on the provider that your account is from, then logging out and
-                      logging in of Keyma.sh will refresh it.
+                      logging in of Keymash will refresh it.
                     </div>
 
                   <div>

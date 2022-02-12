@@ -39,7 +39,7 @@ export const PlayerProvider: FC = ({ children }) => {
             setIsGuest(true);
 
         if (data.versionControl !== Config.versionControl) {
-            toast.error(`Keyma.sh version mismatch detected, please clear your cache!`);
+            toast.error(`Keymash version mismatch detected, please clear your cache!`);
             console.log(`[SERVER MISMATCH WITH CLIENT] Server v${data.versionControl} - Client v${Config.versionControl}`);
         }
     }, []);

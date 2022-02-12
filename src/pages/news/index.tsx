@@ -26,7 +26,7 @@ const News = ({ newsData }: IProps) => {
                     <div className="col-span-full lg:col-span-2 my-auto">
                         <h1 className="h1-jumbo">{t('page.queue.titles.latestNews')}</h1>
                         <p className="pt-6 text-lg">
-                            Check out our latest news and updates regarding Keyma.sh and learn about any upcoming tournaments and events!
+                            Check out our latest news and updates regarding Keymash and learn about any upcoming tournaments and events!
                         </p>
                     </div>
                     <div className="col-span-full lg:col-span-1 my-auto">
