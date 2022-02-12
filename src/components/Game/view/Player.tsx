@@ -49,9 +49,10 @@ const Player: FC<IProps> = (props) => {
     const { gameplayParticipantStyle, focusMode } = useConfig();
 
     useEffect(() => {
+        console.log('updated');
         window.addEventListener('keyup', handleCapslock);
         return () => window.removeEventListener('keyup', handleCapslock);
-    }, [props]);
+    }, []);
     return (
         <>
             {matchData && playerData && (

@@ -46,6 +46,7 @@ const filterDelayCSS = (index: number, incorrect: number[]) => {
 const MatchEnd = (props: IProps) => {
     const { t } = useTranslation();
     
+    const { data, matchData, leaveUrl, restartUrl, embed, embedOwner, embedClose } = props;
     const [ showRound, setShowRound ] = useState(0);
 
     const [ tab, setTab ] = useState('summary');
@@ -53,10 +54,6 @@ const MatchEnd = (props: IProps) => {
     const [ toggleAd, setToggleAd ] = useState(true);
 
     const { useCPM, adsGameplay } = useConfig();
-
-    const { data, matchData, leaveUrl, restartUrl, embed, embedOwner, embedClose } = props;
-
-    console.log(data);
 
     const useRoundData = data?.roundData[showRound] || null;
 

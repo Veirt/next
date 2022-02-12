@@ -334,7 +334,7 @@ const GameScreen = (props: IProps) => {
 
     if (matchData?.flagId === 2 && matchData.referralId && noticeString === 'timeoutMatch') return <Redirect to={`/custom/${matchData.referralId}`} />;
     if (matchData?.flagId === 1 && matchData.tournamentId && noticeString === 'timeoutMatch') return <Redirect to={`/competitions/${matchData.tournamentId}`} />;
-    if (quoteString && participantsData) firstWord = quoteString.split(' ')[0] || '';
+    firstWord = quoteString.split(' ')[0] || '';
 
     const gameContainer = (
         <>
