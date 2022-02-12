@@ -58,6 +58,7 @@ export interface SocketMatchPlayerData extends PlayerData, PlayerMatchData {
     forceReset?: boolean;
     Quit: number;
     roundsWon: number;
+    spectatorOnly: boolean;
 }
 
 export interface SocketMatchEndData {

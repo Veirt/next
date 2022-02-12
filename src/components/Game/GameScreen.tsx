@@ -36,6 +36,7 @@ const GameScreen = (props: IProps) => {
     // Core
     const [ socket, setSocket ] = useState<Socket | null>(null);
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
+    const spectator = useRef<boolean>(false);
 
     // Intervals
     const gameTimerInterval = useRef<NodeJS.Timer | null>(null);
@@ -47,7 +48,6 @@ const GameScreen = (props: IProps) => {
 
     // States
     const [ redirect, setRedirect ] = useState<string>('');
-    const [ spectator, setSpectator ] = useState<boolean>(false);
     const [ loaded, setLoaded ] = useState<boolean>(false);
     const [ latency, setLatency ] = useState<number>(0);
     const [ gameToast, setGameToast ] = useState<string>('');
@@ -236,14 +236,17 @@ const GameScreen = (props: IProps) => {
                 for (i = 0; i < dataLength; i++) {
                     /* @ts-ignore */ 
                     if (data[i].playerId === sessionData.playerId && data[i].teamId === 0) 
-                        setSpectator(true);
+                        spectator.current = true;
                 }
                 setGamePlayers(dataLength || 0);
                 setParticipantsData([ ...data ]);
-            }
+            } 
         });
 
         socket.on('updateWPM', (data: SocketMatchPlayerData) => {
+            if (data.spectatorOnly && !spectator.current)
+                return;
+
             setParticipantsData((participantsData) => {
                 let i;
                 const pLength = participantsData ? participantsData.length : 0;
@@ -310,7 +313,7 @@ const GameScreen = (props: IProps) => {
     }
 
     // Rendering
-    const matchContainerCSS = (upscaleMatchContainer === '1' && !spectator) ? 'container-small' : 'container-game';
+    const matchContainerCSS = (upscaleMatchContainer === '1' && !spectator.current) ? 'container-small' : 'container-game';
 
     let 
         noticeString = '',
@@ -342,10 +345,10 @@ const GameScreen = (props: IProps) => {
             <audio id="LevelCompleted" src="/audio/LevelCompleted.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="CountBeep" src="/audio/CountBeep.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="CountStart" src="/audio/CountStart.wav" crossOrigin="anonymous" preload="auto" />
-            {matchData && gameCountdown !== -1 && <MatchCountdown url={matchData.referralId ? restartUrl : leaveUrl} isSpectator={spectator} isDisabled={gameDisabled} countdown={gameCountdown} win={queueRoundWon} roundEnd={queueRoundEnd} />}
+            {matchData && gameCountdown !== -1 && <MatchCountdown url={matchData.referralId ? restartUrl : leaveUrl} isSpectator={spectator.current} isDisabled={gameDisabled} countdown={gameCountdown} win={queueRoundWon} roundEnd={queueRoundEnd} />}
             <MatchToast isReconnecting={gameToast === 'connectionSaved'} isConnectionLost={gameToast === 'connectionTimedOut'} />
             <div className={`${matchContainerCSS ?? 'container-small'} pt-10`}>
-                {!spectator ? (
+                {!spectator.current ? (
                     <>
                         {(focusMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData))) && <div className={"fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen"} />}
                         <div className={`relative ${focusMode === '1' ? 'z-50' : 'z-20'} flex ${endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? 'h-auto container-margin' : `h-auto lg:h-game container-padding`}`}>
