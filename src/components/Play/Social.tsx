@@ -10,12 +10,12 @@ const Social = () => {
             href: 'https://patreon.com/KeymashGame',
         },
         {
-            image: '/assets/buttons/merch.svg',
-            href: 'https://store.Keymash/',
-        },
-        {
             image: '/assets/buttons/github.svg',
             href: 'https://github.com/keyma-sh/next',
+        },
+        {
+            image: '/assets/buttons/merch.svg',
+            href: 'https://store.Keymash/',
         }
     ]
 
