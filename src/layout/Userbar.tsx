@@ -130,7 +130,7 @@ const Userbar = (props: IProps) => {
                             <div className={`w-auto my-auto`}>
                                 <div className="hidden lg:flex text-base text-white font-semibold tracking-wider">
                                     <div className={"w-8"}>
-                                        <PlayerAvatar />
+                                        <PlayerAvatar source={sessionData?.avatarSrc || ''} />
                                     </div>
                                     <div className={"w-auto my-auto pl-2"}>
                                         {sessionData.name}
@@ -187,11 +187,11 @@ const Userbar = (props: IProps) => {
                         </div>
                     ))}
                     {!isGuest && (
-                      <Link to={`/profile/${sessionData.name}-${sessionData.discriminator}`} className={`flex w-auto my-auto ${isSidebar? 'pl-0 lg:pl-3' : 'pl-3'}`}>
-                          <div className={'block w-12 my-auto p-0.5 ml-3 border-2 border-gray-500 border-opacity-50 hover:border-orange-400 hover:border-opacity-50 transition ease-in-out duration-200 rounded-full'}>
-                              <PlayerAvatar source={sessionData.avatarSrc} hideBorder />
-                          </div>
-                      </Link>
+                        <Link to={`/profile/${sessionData.name}-${sessionData.discriminator}`} className={`flex w-auto my-auto ${isSidebar? 'pl-0 lg:pl-3' : 'pl-3'}`}>
+                            <div className={'block w-12 my-auto p-0.5 ml-3 border-2 border-gray-500 border-opacity-50 hover:border-orange-400 hover:border-opacity-50 transition ease-in-out duration-200 rounded-full'}>
+                                <PlayerAvatar source={sessionData.avatarSrc} hideBorder />
+                            </div>
+                        </Link>
                     )}
                     
                 </div>
