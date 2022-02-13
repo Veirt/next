@@ -188,7 +188,24 @@ const MatchTextContainer = (props: IProps) => {
     const updateContainerOverflow = () => {
         
         if (containerElement.current && caretElement.current && currentElement.current) {
+            if (currentElement.current.offsetTop <= 12)
+                initialTop.current = currentElement.current.offsetTop;
 
+            const letterHeight = currentElement.current.offsetHeight + (currentElement.current.offsetHeight / 2.25);
+            const totalLines = Math.round(containerElement.current.scrollHeight / letterHeight);
+            const currentLine = Math.round(currentElement.current.offsetTop / letterHeight) + 1;
+
+            // Initial Height
+            containerElement.current.style.height = `${(letterHeight * 3) - initialTop.current}px`;
+
+            if (currentLine >= 3) {
+                containerElement.current.scrollTop = ((letterHeight * (currentLine - 1)));
+            }
+
+            console.log(containerElement.current.scrollHeight, currentElement.current.offsetTop, letterHeight, 'Total Lines:', totalLines, 'Current Line:', currentLine);
+
+
+            /*
             const caretHeight = (caretElement.current.offsetHeight * caretScale);
             const lineIndex = Math.floor(caretElement.current.offsetTop / caretHeight);
             //const totalLines = Math.floor(((caretHeight * 3) + initialTop.current) / caretHeight);
@@ -199,6 +216,9 @@ const MatchTextContainer = (props: IProps) => {
 
             containerElement.current.style.height = `${(caretHeight * 3) + initialTop.current}px`;
 
+            if (lineIndex >= 2 && lineIndex < totalLines) 
+                containerElement.current.scrollTop = ((caretHeight * (lineIndex - 1)) + initialTop.current);
+            */
             /*
                 console.log('Line:', lineIndex, 'Total Lines:', totalLines, 'Initial Top:', initialTop.current);
                 console.log('Caret Offset Top', caretElement.current.offsetTop);
@@ -206,8 +226,6 @@ const MatchTextContainer = (props: IProps) => {
                 console.log('Container Scroll Top', caretHeight);
                 console.log('Hit Overflow', lineIndex);
             */
-            if (lineIndex >= 2 && lineIndex < totalLines) 
-                containerElement.current.scrollTop = ((caretHeight * (lineIndex - 1)) + initialTop.current);
         }
     }
 

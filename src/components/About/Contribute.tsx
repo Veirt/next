@@ -34,7 +34,7 @@ export default (
                 the game. If you would like to submit your own quote that you would want to see in the game, click the link
                 below:
                 <a
-                    href="https://Keymash/submit"
+                    href="https://keymash.io/submit"
                     target="_blank"
                     className="block my-2 text-orange-300 hover:text-orange-400 uppercase font-semibold transition ease-in-out duration-300"
                     rel="noopener noreferrer"

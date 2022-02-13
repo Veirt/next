@@ -7,7 +7,7 @@ This is the **official** NextJS Client for Keymash - here you can find or report
 
 ## Contributing
 **Community:**
- - [Text/Quote submissions](https://Keymash/submit)
+ - [Text/Quote submissions](https://keymash.io/submit)
  - [Internationalization](https://keymash.oneskyapp.com/)
  
 **Directly / Financial:**
