@@ -59,7 +59,7 @@ const GameScreen = (props: IProps) => {
     const [ participantsData, setParticipantsData ] = useState<SocketMatchPlayerData[]>([]);
     const [ endMatchData, setEndMatchData ] = useState<SocketGameEndData | null>(null);
     const [ matchData, setMatchData ] = useState<SocketMatchData | null>(null);
-
+    
     // TODO: might need to be re-looked below
     const [ queueRoundEnd, setQueueRoundEnd ] = useState<boolean>(false);
     const [ queueRoundWon, setQueueRoundWon ] = useState<boolean>(false);

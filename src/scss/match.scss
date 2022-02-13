@@ -30,11 +30,17 @@
 
     &--text {
         word-break: break-word;
-        padding: 5px;
+        padding: 0px 5px;
+        letter-spacing: 1px;
+    }
+
+    &--letter {
+        @apply leading-loose #{!important};
     }
 
     &--container {
-        @apply p-8 bg-black bg-gray-775 shadow-lg rounded-b-2xl;
+        line-height: 0 !important;
+        @apply p-8 bg-black bg-gray-775 shadow-lg rounded-b-2xl font-medium;
     }
 
     &--container-transparent {
@@ -49,13 +55,6 @@
         &--container-transparent {
           @apply py-4;
         }
-    }
-
-    &--letter {
-        letter-spacing: 1px;
-        /* Setting to 0.05em or 1.2px causes letter shifting "Th(er)e" as an example. */
-        line-height: 175% #{!important};
-        @apply font-medium;
     }
 
     &--correct {

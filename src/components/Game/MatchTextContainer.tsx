@@ -20,6 +20,7 @@ const MatchTextContainer = (props: IProps) => {
     const refreshFPS = useRef<NodeJS.Timer | null>(null);
     const caretIdle = useRef<NodeJS.Timer | null>(null);
     const inputElement = useRef<HTMLInputElement | null>(null);
+    const letterElement = useRef<HTMLDivElement | null>(null);
     const caretElement = useRef<HTMLDivElement | null>(null);
     const currentElement = useRef<HTMLDivElement | null>(null);
     const containerElement = useRef<HTMLDivElement | null>(null);
@@ -110,7 +111,7 @@ const MatchTextContainer = (props: IProps) => {
     }, [ disable ]);
 
     useEffect(() => {
-        if (replayInput) {
+        if (typeof replayInput !== 'undefined') {
             setInput(replayInput);
             onChange({ target: { value: replayInput } } as ChangeEvent<HTMLInputElement>);
         }
@@ -202,46 +203,22 @@ const MatchTextContainer = (props: IProps) => {
     // Timers
     const updateContainerOverflow = () => {
         
-        if (containerElement.current && caretElement.current && currentElement.current) {
+        if (containerElement.current && caretElement.current && currentElement.current && letterElement.current) {
+            // console.log('Get Real Letter Height', letterElement.current.offsetHeight);
             if (currentElement.current.offsetTop <= 12)
                 initialTop.current = currentElement.current.offsetTop;
 
-            const letterHeight = currentElement.current.offsetHeight + (currentElement.current.offsetHeight / 2.25);
+            const letterHeight = letterElement.current.offsetHeight;
             const totalLines = Math.round(containerElement.current.scrollHeight / letterHeight);
             const currentLine = Math.round(currentElement.current.offsetTop / letterHeight) + 1;
 
             // Initial Height
-            containerElement.current.style.height = `${(letterHeight * 3) - initialTop.current}px`;
+            containerElement.current.style.height = `${(letterHeight * 3)}px`;
 
-            if (currentLine >= 3) {
-                containerElement.current.scrollTop = ((letterHeight * (currentLine - 1)));
-            }
-
-            console.log(containerElement.current.scrollHeight, currentElement.current.offsetTop, letterHeight, 'Total Lines:', totalLines, 'Current Line:', currentLine);
-
-
-            /*
-            const caretHeight = (caretElement.current.offsetHeight * caretScale);
-            const lineIndex = Math.floor(caretElement.current.offsetTop / caretHeight);
-            //const totalLines = Math.floor(((caretHeight * 3) + initialTop.current) / caretHeight);
-            const totalLines = Math.floor(containerElement.current.scrollHeight / caretHeight) - 1;
-
-            if (lineIndex === 0 && caretElement.current.offsetTop <= 5)
-                initialTop.current = caretElement.current.offsetTop;
-
-            containerElement.current.style.height = `${(caretHeight * 3) + initialTop.current}px`;
-
-            if (lineIndex >= 2 && lineIndex < totalLines) 
-                containerElement.current.scrollTop = ((caretHeight * (lineIndex - 1)) + initialTop.current);
-            */
-            /*
-                console.log('Line:', lineIndex, 'Total Lines:', totalLines, 'Initial Top:', initialTop.current);
-                console.log('Caret Offset Top', caretElement.current.offsetTop);
-                console.log('Caret Offset Top (margin)', (caretHeight * 2));
-                console.log('Container Scroll Top', caretHeight);
-                console.log('Hit Overflow', lineIndex);
-            */
+            if (currentLine >= 3 && currentLine < totalLines) 
+                containerElement.current.scrollTop = ((letterHeight * (currentLine - 2)));
         }
+
     }
 
     const onRefreshFPS = () => {
@@ -289,12 +266,15 @@ const MatchTextContainer = (props: IProps) => {
     
     return (
         <>
+            <div className="flex flex-wrap match--text w-4 opacity-0 absolute left-0 top-0 pointer-events-none">
+                <div ref={letterElement} className={`match--letter ${upscaleMatchCSS || ''}`}>A</div> 
+            </div>
             <div className={`${matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
                 <div ref={containerElement} className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none overflow-y-scroll`}>
                     <div ref={caretElement} className={`${(caretBlinker && !disabled) ? 'caret-idle' : ''} absolute rounded`} style={{ width: '1.5px', height: '24px', left: 0, top: 0, transform: `scale(${caretScale})`, background: '#FB923C' }} />
                     <span className="match--letter match--correct">{correct}</span>
-                    <span ref={currentElement} className={`match--letter match--letter ${typoStreak ? colorBlindCSS : 'text-gray-400'}`}>{current}</span>
-                    <span className={`match--letter match--letter ${colorBlindCSS}`}>{incorrect}</span>
+                    <span ref={currentElement} className={`match--letter ${typoStreak ? colorBlindCSS : 'text-gray-400'}`}>{current}</span>
+                    <span className={`match--letter ${colorBlindCSS}`}>{incorrect}</span>
                     <span className="match--letter text-gray-400">{next}</span>
                 </div>
                 <input

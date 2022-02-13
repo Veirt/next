@@ -1,6 +1,7 @@
 import { faPause, faPlay, faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import ReactTooltip from "react-tooltip";
 import MatchTextContainer from "../Game/MatchTextContainer";
 
 interface IProps {
@@ -21,7 +22,22 @@ const parseReplay = (logString: string) => {
         const input = String(item.split("«")[0]);
         const delay = Number(item.split("«")[1]);
 
+        // Check if Last Keystrokes Match
+        const useLastEvent = parsedEvents[parsedEvents.length - 1] || null;
+        if (useLastEvent) {
+            if (
+                !useLastEvent?.input.endsWith(' ') && 
+                (
+                    (useLastEvent.input.length === input.length && useLastEvent?.input.charAt(useLastEvent.input.length - 1) !== input.charAt(input.length - 1)) || 
+                    useLastEvent?.input.charAt(0) !== input.charAt(0)
+                )
+            )  {
+                parsedEvents.push({ input: '', delay: 0 });
+            }
+        }
+
         parsedEvents.push({ input, delay });
+        console.log('test');
     });
 
     return [ { input: '', delay: 0 }, ...parsedEvents ];
@@ -29,7 +45,7 @@ const parseReplay = (logString: string) => {
 
 const Replay = (props: IProps) => {
     const { logString, quote } = props;
-    const parsedReplay: ReplayData[] = parseReplay(logString);
+    const parsedReplay = useMemo(() => parseReplay(logString), [logString]);
 
     // Refs
     const replayInterval = useRef<NodeJS.Timeout | null>(null);
@@ -78,6 +94,7 @@ const Replay = (props: IProps) => {
 
     return (
         <div>
+            <ReactTooltip />
             <div className="h4">Replay (beta)</div>
             <p className="pt-1 pb-6">
                 If you notice any issues, please don't hesitate to report it on GitHub!
@@ -94,22 +111,33 @@ const Replay = (props: IProps) => {
                         <button type="button" className="button small lightgray" onClick={resetInterval}>
                             <FontAwesomeIcon icon={faRedo} />
                         </button>
-                        <div className="hidden">
-                            {(iteration / 5) / ((elapsed / 1000) / 60)} - {(elapsed / 1000)}s - {iteration}
+                        <div className="flex space-x-4 pl-4 text-xs my-auto" data-tip="These results may be slightly inaccurate from your final speed.">
+                            <div className="text-orange-400 font-semibold">
+                                {(((iteration / 5) / ((elapsed / 1000) / 60)) || 0).toFixed(2)} WPM
+                            </div>
+                            <div className="text-orange-400 font-semibold">
+                                {iteration}f of {parsedReplay.length}f
+                            </div>
                         </div>
                     </div>
                     <div className="w-auto flex space-x-2">
-                        <button type="button" className={`button small ${speed === 1 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(1)}>
-                            100%
+                        <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 2 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(2)}>
+                            2x
                         </button>
-                        <button type="button" className={`button small ${speed === 0.75 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.75)}>
-                            75%
+                        <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 1.5 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(1.5)}>
+                            1.5x
                         </button>
-                        <button type="button" className={`button small ${speed === 0.5 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.5)}>
-                            50%
+                        <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 1 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(1)}>
+                            1x
                         </button>
-                        <button type="button" className={`button small ${speed === 0.25 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.25)}>
-                            25%
+                        <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 0.75 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.75)}>
+                            3/4x
+                        </button>
+                        <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 0.5 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.5)}>
+                            1/2x
+                        </button>
+                        <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 0.25 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.25)}>
+                            1/4x
                         </button>
                     </div>
                 </div>
