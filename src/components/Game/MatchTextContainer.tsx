@@ -163,6 +163,21 @@ const MatchTextContainer = (props: IProps) => {
                 }
             } else {
                 let difference = currentInputLength - inputLength;
+                if (typoStreak > difference) {
+                    setTypoStreak(typoStreak - difference);
+
+                    if (inputLength === 1 && keystroke === quote.charAt(currentIndex - 1)) {
+                        setTypoStreak(0);
+                        setLetterIndex(currentIndex);
+                    }
+                } else {
+                    difference -= typoStreak;
+                    setTypoStreak(0);
+
+                    if (difference > 0) 
+                        setLetterIndex(letterIndex - difference);
+                }
+                /*
                 if (inputLength === 1) {
                     if (keystroke !== quote.charAt(currentIndex - 1)) {
                         setTypoStreak(1);
@@ -178,7 +193,7 @@ const MatchTextContainer = (props: IProps) => {
                         difference = difference > typoStreak ? (difference - typoStreak) : (typoStreak - difference);
                     } else 
                         setLetterIndex(letterIndex - difference);
-                }
+                }*/
             }
             
         }
