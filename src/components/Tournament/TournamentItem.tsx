@@ -20,7 +20,7 @@ const TournamentItem = (props: IProps) => {
     if (useSplit.length > 128)
         useValue = props.info?.substring(0, 100) + '...' || '';
     else 
-        useValue = props.info?.split('Keymash')[0] + '\nKeymash' || '';
+        useValue = props.info?.split('KEYMA.SH')[0] + '\nKeymash' || '';
   
     return (
         <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`block w-full h-full flex flex-col p-4 bg-gray-800 hover:bg-gray-825 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
