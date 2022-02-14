@@ -1,6 +1,6 @@
 export default (
     <div className={"mt-12 text-center lg:text-left"}>
-      <div className={"relative hero flex py-24 xl:pt-24 xl:pb-56 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/CONTRIBUTE.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/CONTRIBUTE.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className={"container m-auto"}>
           <div className={"w-full grid grid-cols-3 gap-16"}>
             <div className={"col-span-full lg:col-span-1"}>
@@ -11,8 +11,6 @@ export default (
             </div>
           </div>
         </div>
-
-        <img src={'/assets/about/wave.svg'} alt={"Wave"} className={"w-full absolute bottom-0 left-0 right-0 -mb-1 object-cover"}/>
       </div>
 
       <div className={"h-full bg-gray-775 py-10"}>
