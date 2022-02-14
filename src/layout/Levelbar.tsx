@@ -105,7 +105,7 @@ const Levelbar = () => {
     const mobileNavCSS = `mobileNav-item`;
     const mobileActiveCSS = `levelbar-active`;
 
-    const handleDeviceSizing = () => { console.log('handleDeviceSizing Called'); setSmallDevice(!isNotSmallDevice); }
+    const handleDeviceSizing = () => setSmallDevice(!isNotSmallDevice);
 
     useEffect(() => {
         handleDeviceSizing();
@@ -158,7 +158,7 @@ const Levelbar = () => {
                     <div className={"container flex"}>
                         <div className={"flex space-x-2 py-2"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-7 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
-                                <img src={'/assets/orange_gata_head.svg'} alt={"Logo"} className={"w-full h-auto"} />
+                                <img src={'/assets/logo_svg.svg'} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
                             <div className="w-auto my-auto">
                                 <Link to="/" className="text-2.5xl text-white font-bold">
