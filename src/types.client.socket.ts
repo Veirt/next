@@ -52,6 +52,7 @@ export interface SocketMatchPlayerData extends PlayerData, PlayerMatchData {
     currentWord: string;
     correctWords: number;
     wordLetterIndex: number;
+    Replay: string;
     Placement: number;
     PlacementFinal: number;
     teamId: number;

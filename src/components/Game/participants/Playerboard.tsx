@@ -65,8 +65,8 @@ const Playerboard = (props: IProps) => {
                                     ? <FontAwesomeIcon icon={faCircle} className={"text-orange-400"} />
                                     : <FontAwesomeIcon icon={faCircle} className={"text-gray-600"} />
                                 )}
-                            </div>
-                        ) : item.Placement ? <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} /> : ''}
+                            </div> 
+                        ) : item.Placement ? <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} replayText={quoteString} replay={item.Replay} /> : ''}
                     </div>
                     <div className={"hidden lg:block w-60 my-auto"}>
                         {isSpectator ? (

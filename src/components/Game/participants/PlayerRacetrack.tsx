@@ -11,12 +11,13 @@ interface IProps {
     firstWord?: string;
     modeId: number;
     roundLimit: number;
+    quoteString: string;
     isFinished: boolean;
 }
 
 const PlayerRacetrack = (props: IProps) => {
 
-    const { participantsData, firstWord, roundLimit } = props;
+    const { participantsData, firstWord, roundLimit, quoteString } = props;
     const { hideWPM, useCPM } = useConfig();
 
     return (
@@ -58,7 +59,7 @@ const PlayerRacetrack = (props: IProps) => {
                             </div>
                         ) : (
                             <div className="text-right">
-                                {(item.Placement >= 1) ? <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} /> : ''}
+                                {(item.Placement >= 1) ? <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} replayText={quoteString} replay={item.Replay} /> : ''}
                             </div>
                         )}
                     </div>

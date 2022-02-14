@@ -247,6 +247,8 @@ const GameScreen = (props: IProps) => {
             if (data.spectatorOnly && !spectator.current)
                 return;
 
+            console.log(data);
+
             setParticipantsData((participantsData) => {
                 let i;
                 const pLength = participantsData ? participantsData.length : 0;
@@ -263,6 +265,7 @@ const GameScreen = (props: IProps) => {
                         if (data.wordLetterIndex) participantData.wordLetterIndex = data.wordLetterIndex;
                         if (data.correctWords) participantData.correctWords = data.correctWords;
                         if (data.Accuracy) participantData.Accuracy = data.Accuracy;
+                        if (data.Replay) participantData.Replay = data.Replay;
                         if (typeof data.currentInput !== 'undefined') participantData.currentInput = data.currentInput;
                     }
                 }

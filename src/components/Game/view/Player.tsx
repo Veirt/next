@@ -96,7 +96,7 @@ const Player: FC<IProps> = (props) => {
                         <>
                             {(!participantsData || participantsData.length === 0) && <div className={"py-10"} />}
                             {gameplayParticipantStyle === '2' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
-                            {gameplayParticipantStyle === '0' && <PlayerRacetrack participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
+                            {gameplayParticipantStyle === '0' && <PlayerRacetrack quoteString={quoteString} participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
                             {gameplayParticipantStyle === '1' && <Playerboard isSpectator={0} quoteString={quoteString} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
                             {(!embed && endMatch && !noticeString && matchData.flagId === 0) && (
                                 <div className="w-full">

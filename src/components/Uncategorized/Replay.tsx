@@ -95,10 +95,10 @@ const Replay = (props: IProps) => {
     return (
         <div>
             <ReactTooltip />
-            <div className="h4">Replay (beta)</div>
-            <p className="pt-1 pb-6">
-                If you notice any issues, please don't hesitate to report it on GitHub!
-            </p>
+            <div className="h4 mb-6">
+                Replay
+                <span className="ml-2 -mt-2 bg-gray-700 px-2 py-0.5 text-xs rounded-full">Beta</span>
+            </div>
             <div className="game--content--bar">
                 <div className="flex justify-between">
                     <div className="w-auto flex space-x-2">
@@ -112,7 +112,7 @@ const Replay = (props: IProps) => {
                             <FontAwesomeIcon icon={faRedo} />
                         </button>
                         <div className="flex space-x-4 pl-4 text-xs my-auto" data-tip="These results may be slightly inaccurate from your final speed.">
-                            <div className="text-orange-400 font-semibold">
+                            <div className="text-orange-400 font-semibold hidden">
                                 {(((iteration / 5) / ((elapsed / 1000) / 60)) || 0).toFixed(2)} WPM
                             </div>
                             <div className="text-orange-400 font-semibold">
