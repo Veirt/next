@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { GlobalHotKeys } from 'react-hotkeys';
 import ReactTooltip from 'react-tooltip';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
+import AdvertisementUnit from '../components/Advertisement/Units/AdvertisementUnit';
 import LoadContent from '../components/LoadContent';
 import Redirect from '../components/Uncategorized/Redirect';
 import { usePlayerContext } from '../contexts/Player.context';
@@ -16,6 +17,7 @@ type IMainProps = {
     ads?: {
       enableBottomRail?: boolean;
       enableTrendiVideo?: boolean;
+      disableStickyVertical?: boolean;
     }
     isLoaded?: boolean;
     noAnimate?: boolean;
@@ -81,6 +83,16 @@ const Base = (props: IMainProps) => {
             {props.meta}
             {!props.noNav ? <Levelbar /> : ''}
             <main>
+                {!props.ads?.disableStickyVertical && (
+                    <>
+                        <div className="absolute top-32 left-4">
+                            <AdvertisementUnit type="responsive-skyscraper-one" />
+                        </div>
+                        <div className="absolute top-32 right-4">
+                            <AdvertisementUnit type="responsive-skyscraper-two" />
+                        </div>
+                    </>
+                )}
                 <LoadContent isLoaded={loaded}>
                     {sessionData !== null && <PlaywireContainer {...props.ads} />}
                     <>{props.children}</>

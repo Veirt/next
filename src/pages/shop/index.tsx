@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
 import {usePlayerContext} from "../../contexts/Player.context";
 import useCSRF from "../../hooks/useCSRF";
-import {ItemData, PlayerLevelData} from "../../types.client.mongo";
 import ShopItem from "../../components/Shop/ShopItem";
 import Redirect from '../../components/Uncategorized/Redirect';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -17,19 +16,6 @@ import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
 import { useGlobalContext } from '../../contexts/Global.context';
-
-interface IProps {
-    gameData: {
-        playercards: ItemData[];
-        borders: ItemData[];
-        banners: ItemData[]; 
-    };
-    playerData: {
-        level: PlayerLevelData
-        currency: number;
-        owned: string[];
-    };
-}
 
 const Shop = () => {
   const axiosCancelSource = useRef<CancelTokenSource | null>(null);
