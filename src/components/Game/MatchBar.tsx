@@ -4,6 +4,7 @@ import {faAngleDoubleLeft, faStopwatch, faWifi} from '@fortawesome/free-solid-sv
 import GameTimer from './countdown/GameTimer';
 import {GamemodeData} from "../../types.client.mongo";
 import Link from '../Uncategorized/Link';
+import useConfig from '../../hooks/useConfig';
 
 interface IProps {
   redirectUrl: string;
@@ -23,10 +24,12 @@ interface IProps {
 const MatchBar: FC<IProps> = (props) => {
     const { redirectUrl, className, timer, countdown, disabled, latency, modeData, isSpectate, isCapslock, embedClose, embedOwner, embed } = props;
 
+    const { matchContainerTransparent } = useConfig();
+
     return (
         <>
             {!isSpectate ? (
-              <div className={`game--content--bar ${className} flex flex-wrap`}>
+              <div className={`game--content--bar ${matchContainerTransparent === '1' ? 'is-transparent' : ''} ${className} flex flex-wrap`}>
                   {embedOwner && embedClose ? (
                       <div className={`w-auto my-auto pl-3 ${!isCapslock ? 'mr-auto' : ''}`}>
                           <button type={"button"} onClick={embedClose} className="text-pink-400 focus:outline-none text-sm uppercase font-semibold">

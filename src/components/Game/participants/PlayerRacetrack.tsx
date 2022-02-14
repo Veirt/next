@@ -18,10 +18,10 @@ interface IProps {
 const PlayerRacetrack = (props: IProps) => {
 
     const { participantsData, firstWord, roundLimit } = props;
-    const { hideWPM, useCPM } = useConfig();
+    const { hideWPM, useCPM, matchContainerTransparent } = useConfig();
 
     return (
-        <div className={`grid grid-cols-1 gap-2 mt-5`}>
+        <div className={`grid grid-cols-1 gap-2 ${matchContainerTransparent === '1' ? '' : 'mt-5'}`}>
             {participantsData.map((item) => item.teamId !== 0 && (
                 <div key={item.playerId} className={"flex bg-gray-750 bg-opacity-50 rounded-xl shadow-md"}>
                     <div className="w-96">
