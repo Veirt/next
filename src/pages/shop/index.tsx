@@ -16,6 +16,7 @@ import ConfigService from '../../services/ConfigService';
 import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import { useGlobalContext } from '../../contexts/Global.context';
 
 interface IProps {
     gameData: {
@@ -30,12 +31,11 @@ interface IProps {
     };
 }
 
-const Shop = (props: IProps) => {
-  const { gameData } = props;
-
+const Shop = () => {
   const axiosCancelSource = useRef<CancelTokenSource | null>(null);
 
   const { sessionData } = usePlayerContext();
+  const { playercards, borders, banners } = useGlobalContext();
   const { _csrf } = useCSRF();
   const { t } = useTranslation();
 
@@ -66,7 +66,7 @@ const Shop = (props: IProps) => {
         { order: 7, name: 'Systems', },
         { order: 10, name: 'Countries', },
       ],
-      data: gameData.playercards,
+      data: playercards,
       onClick: () => {
         setSubtab(1);
         setTab('page.shop.playercards');
@@ -74,7 +74,7 @@ const Shop = (props: IProps) => {
     },
     {
       name: 'page.shop.borders',
-      data: gameData.borders,
+      data: borders,
       onClick: () => {
         setSubtab(0);
         setTab('page.shop.borders');
@@ -82,7 +82,7 @@ const Shop = (props: IProps) => {
     },
     {
       name: 'page.shop.banners',
-      data: gameData.banners,
+      data: banners,
       onClick: () => {
         setSubtab(0);
         setTab('page.shop.banners');
@@ -203,16 +203,9 @@ const Shop = (props: IProps) => {
 };
 
 export async function getServerSideProps({ req }: GetServerSidePropsContext) {
-  const getData = async () => {
-      const response = await axios.get(`${Config.gameUrl}/all`).catch((e) => console.log(e));
-      if (response && response.data) return response.data;
-      else return {};
-  };
-
   return {
       props: {
           ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
-          gameData: await getData(),
       }
   }
 }

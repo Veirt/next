@@ -261,6 +261,14 @@ export interface ChallengeData {
     }
 }
 
+export interface AchievementData {
+    key: string;
+    title: string;
+    type: string;
+    require: number;
+    exp: number;
+}
+
 export interface NewsletterData {
     _id?: string;
     increment: number;
