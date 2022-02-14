@@ -11,7 +11,7 @@ const config = {
     authUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:8080/auth/v2' : toggleStaging ? 'https://apistaging.keymash.io/auth/v2' : 'https://api.keymash.io/auth/v2',
     gameUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:8080/data' : toggleStaging ? 'https://apistaging.keymash.io/data' : 'https://api.keymash.io/data',
     oauthUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:8080/auth/v2' : toggleStaging ? 'https://apistaging.keymash.io/auth/v2' : 'https://api.keymash.io/auth/v2',
-    cookieUrl: process.env.NODE_ENV === 'development' ? 'localhost' : '.Keymash',
+    cookieUrl: process.env.NODE_ENV === 'development' ? 'localhost' : '.keymash.io',
     gameServer:
         process.env.NODE_ENV === 'development'
             ? { URL: 'http://localhost', Port: 2095, }
