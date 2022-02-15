@@ -9,12 +9,13 @@ interface IProps {
     sendKeystroke: (keystroke: string, event: boolean) => void;
     isSuddenDeath?: boolean;
     replayInput?: string;
+    isReplay?: boolean;
   }
 
 const MatchTextContainer = (props: IProps) => {
 
     // Props 
-    const { quote, disabled, removeLimit, sendKeystroke, isSuddenDeath, replayInput } = props;
+    const { quote, disabled, removeLimit, sendKeystroke, isSuddenDeath, replayInput, isReplay } = props;
 
     // Refs 
     const refreshFPS = useRef<NodeJS.Timer | null>(null);
@@ -177,23 +178,6 @@ const MatchTextContainer = (props: IProps) => {
                     if (difference > 0) 
                         setLetterIndex(letterIndex - difference);
                 }
-                /*
-                if (inputLength === 1) {
-                    if (keystroke !== quote.charAt(currentIndex - 1)) {
-                        setTypoStreak(1);
-                        setLetterIndex(wordIndex);
-                    } else {
-                        setTypoStreak(0);
-                        setLetterIndex(currentIndex);
-                    }
-                } else {
-                    // TODO: Potential bugfix could be here
-                    if (typoStreak > 0) {
-                        setTypoStreak(difference > typoStreak ? 0 : typoStreak - difference);
-                        difference = difference > typoStreak ? (difference - typoStreak) : (typoStreak - difference);
-                    } else 
-                        setLetterIndex(letterIndex - difference);
-                }*/
             }
             
         }
@@ -265,7 +249,7 @@ const MatchTextContainer = (props: IProps) => {
             <div className="flex flex-wrap match--text w-4 opacity-0 absolute left-0 top-0 pointer-events-none">
                 <div ref={letterElement} className={`match--letter ${upscaleMatchCSS || ''}`}>A</div> 
             </div>
-            <div className={`${matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
+            <div className={`${(!isReplay && matchContainerTransparent === '1') ? 'match--container-transparent' : 'match--container'}`}>
                 <div ref={containerElement} className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none overflow-y-hidden`}>
                     <div ref={caretElement} className={`${(caretBlinker && !disabled) ? 'caret-idle' : ''} absolute rounded`} style={{ width: '1.5px', height: '24px', left: 0, top: 0, transform: `scale(${caretScale})`, background: '#FB923C' }} />
                     <span className="match--letter match--correct">{correct}</span>

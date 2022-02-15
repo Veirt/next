@@ -144,7 +144,7 @@ const Replay = (props: IProps) => {
             </div>
             {mount && (
                 <div className="pointer-events-none">
-                    <MatchTextContainer quote={quote} sendKeystroke={() => false} disabled={false} replayInput={parsedReplay[iteration]?.input || ''} />
+                    <MatchTextContainer quote={quote} sendKeystroke={() => false} disabled={false} replayInput={parsedReplay[iteration]?.input || ''} isReplay />
                 </div>
             )}
         </div>
