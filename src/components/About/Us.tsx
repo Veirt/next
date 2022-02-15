@@ -1,7 +1,7 @@
 
 export default (
     <div className={"mt-6 text-center lg:text-left pt-10"}>
-        <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/hero.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/US.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className={"container m-auto"}>
                 <div className={"w-full grid grid-cols-3 gap-16"}>
                     <div className={"col-span-full lg:col-span-1 my-auto"}>

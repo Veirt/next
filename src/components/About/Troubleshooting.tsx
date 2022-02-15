@@ -17,7 +17,7 @@ export default (
             
         </div>
 
-        <div className={"h-full bg-gray-775 text-white py-10"}>
+        <div className={"max-h-screen bg-gray-775 text-white py-10"}>
             <div className={"container"}>
                 <div>
                     <p className={"text-white text-lg"}>

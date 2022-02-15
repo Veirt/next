@@ -13,7 +13,7 @@ export default (
         </div>
       </div>
 
-      <div className={"h-full bg-gray-775 py-10"}>
+      <div className={"bg-gray-775 py-10"}>
         <div className={"container"}>
           <div className={"grid grid-cols-1 gap-8"}>
             <div>
