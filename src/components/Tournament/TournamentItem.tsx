@@ -15,7 +15,7 @@ const TournamentItem = (props: IProps) => {
     const { t } = useTranslation();
 
     let useValue = '';
-    const useSplit = String(props.info?.split('.')[0] + '.' + props.info?.split('.')[1]) || '';
+    const useSplit = String(props.info?.split('.')[0] + '.') || '';
 
     if (useSplit.length > 128)
         useValue = props.info?.substring(0, 100) + '...' || '';
