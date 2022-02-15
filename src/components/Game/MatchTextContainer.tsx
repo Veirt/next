@@ -204,16 +204,13 @@ const MatchTextContainer = (props: IProps) => {
     const updateContainerOverflow = () => {
         
         if (containerElement.current && caretElement.current && currentElement.current && letterElement.current) {
-            // console.log('Get Real Letter Height', letterElement.current.offsetHeight);
-            if (currentElement.current.offsetTop <= 12)
-                initialTop.current = currentElement.current.offsetTop;
-
             const letterHeight = letterElement.current.offsetHeight;
             const totalLines = Math.round(containerElement.current.scrollHeight / letterHeight);
             const currentLine = Math.round(currentElement.current.offsetTop / letterHeight) + 1;
 
             // Initial Height
-            containerElement.current.style.height = `${(letterHeight * 3)}px`;
+            if (containerElement.current.scrollHeight > (letterHeight * 3))
+                containerElement.current.style.height = `${(letterHeight * 3)}px`;
 
             if (currentLine >= 3 && currentLine < totalLines) 
                 containerElement.current.scrollTop = ((letterHeight * (currentLine - 2)));
