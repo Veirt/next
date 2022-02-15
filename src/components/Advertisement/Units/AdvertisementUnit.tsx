@@ -3,15 +3,6 @@ interface IProps {
 }
 
 const AdvertisementUnit = (props: IProps) => {
-    /*
-    { selectorId: 'desktop-top-leaderboard', type: 'leaderboard_atf' },
-        { selectorId: 'desktop-bottom-leaderboard', type: 'leaderboard_btf' },
-        { selectorId: 'mobile-leaderboard', type: '320x50' },
-        { selectorId: 'responsive-top-square', type: 'med_rect_atf' },
-        { selectorId: 'responsive-bottom-square', type: 'med_rect_btf' },
-        { selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
-        { selectorId: 'responsive-bottom-skyscraper', type: 'sky_btf' },
-    */
 
     const { type } = props;
 
@@ -31,7 +22,7 @@ const AdvertisementUnit = (props: IProps) => {
     else if (type === 'responsive-skyscraper-two')
         useName = 'responsive-bottom-skyscraper';
 
-    return <div id={useName} className="pwUnit" />;
+    return <div id={useName} className="pw pwUnit" />;
 }
 
 export default AdvertisementUnit;

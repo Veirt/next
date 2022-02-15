@@ -14,7 +14,7 @@ const Challenges = (props: IProps) => {
 
     return (data && data.length !== 0) ? (
         <div>
-            <div className="h1">{t('Challenges')}</div>
+            <div className="h1">{t('component.navbar.challenges')}</div>
             <p className="text-gray-300 pb-6 pt-2">
                 You will be given two challenges every day.
             </p>
