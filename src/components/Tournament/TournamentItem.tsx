@@ -17,8 +17,8 @@ const TournamentItem = (props: IProps) => {
     let useValue = '';
     const useSplit = String(props.info?.split('.')[0] + '.' + props.info?.split('.')[1]) || '';
 
-    if (useSplit.length > 128)
-        useValue = props.info?.substring(0, 100) + '...' || '';
+    if (useSplit.length > 96)
+        useValue = props.info?.substring(0, 80) + '...' || '';
     else 
         useValue = props.info?.split('Keymash')[0] + '\nKeymash.' || '';
   
