@@ -24,7 +24,6 @@ const MatchTextContainer = (props: IProps) => {
     const caretElement = useRef<HTMLDivElement | null>(null);
     const currentElement = useRef<HTMLDivElement | null>(null);
     const containerElement = useRef<HTMLDivElement | null>(null);
-    const initialTop = useRef<number>(0);
 
     // Config
     const { 
