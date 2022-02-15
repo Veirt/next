@@ -2,7 +2,7 @@ export default (
     <div className={"mt-12 text-center lg:text-left"}>
       <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/PRIVACY.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className={"container m-auto"}>
-          <div className={"w-full grid grid-cols-3 gap-16"}>
+          <div className={"w-full grid grid-cols-2 gap-16"}>
             <div className={"col-span-full lg:col-span-1"}>
               <h1 className={"text-2xl sm:text-3xl lg:text-4xl xl:text-5xl uppercase text-orange-400"}>Privacy Policy</h1>
               <p className={"text-white text-lg font- pt-6"}>

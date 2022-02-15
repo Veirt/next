@@ -3,15 +3,15 @@ export default (
     <div className={"mt-6 text-center lg:text-left pt-10"}>
         <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/US.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className={"container m-auto"}>
-                <div className={"w-full grid grid-cols-3 gap-16"}>
+                <div className={"w-full grid grid-cols-2 gap-16"}>
                     <div className={"col-span-full lg:col-span-1 my-auto"}>
                         <h1 className={"text-2xl sm:text-3xl lg:text-4xl xl:text-5xl uppercase text-orange-400"}>ABOUT US</h1>
                         <p className={"text-white text-base pt-6"}>
                             Keymash is an online multiplayer typing game that allows typists from all around the world go against each other and find out who comes on top.
                         </p>
                     </div>
-                    <div className={"col-span-full lg:col-span-2 my-auto"}>
-                        <img src={'/assets/about/match.png'} className={"w-64 lg:w-full h-auto block mx-auto"} alt={"Match mockup"} />
+                    <div className={"col-span-full lg:col-span-1 my-auto"}>
+                        <img src={'/assets/about/match.png'} className={"w-10/12 lg:w-full h-auto block mx-auto transform lg:scale-110"} alt={"Match mockup"} />
                     </div>
                 </div>
             </div>
