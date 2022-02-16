@@ -69,7 +69,7 @@ const MatchTextContainer = (props: IProps) => {
             if (inputElement.current) inputElement.current.removeEventListener('blur', onFocus);
         }
         // eslint-disable-next-line
-    }, [ performanceMode ]);
+    }, [ isReplay, performanceMode ]);
 
     useEffect(() => setDisable(disabled), [ disabled ]);
 
@@ -268,7 +268,7 @@ const MatchTextContainer = (props: IProps) => {
                     autoCorrect="off"
                     autoCapitalize="off"
                     spellCheck="false"
-                    onChange={onChange}
+                    onChange={!isReplay ? onChange : () => false}
                     onPaste={(e) => e.preventDefault()}
                     value={input}
                     maxLength={removeLimit ? 2000 : 50}

@@ -1,6 +1,7 @@
-import { faPause, faPlay, faRedo } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleRight, faPause, faPlay, faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import ReactTooltip from "react-tooltip";
 import MatchTextContainer from "../Game/MatchTextContainer";
 
@@ -95,11 +96,14 @@ const Replay = (props: IProps) => {
     return (
         <div>
             <ReactTooltip />
-            <div className="h4 mb-6">
+            <div className="h4">
                 Replay
                 <span className="ml-2 -mt-2 bg-gray-700 px-2 py-0.5 text-xs rounded-full">Beta</span>
             </div>
-            <div className="game--content--bar">
+            <button type="button" onClick={() => { toast.success("Copied to clipboard!"); navigator?.clipboard.writeText(logString) }} className="text-sm font-semibold text-orange-400 mt-2 hover:opacity-70 transition ease-in-out duration-300">
+                <FontAwesomeIcon icon={faAngleDoubleRight} /> Download Keystroke Log Data (debugging)
+            </button>
+            <div className="game--content--bar mt-4">
                 <div className="flex justify-between">
                     <div className="w-auto flex space-x-2">
                         <button type="button" className="button small lightgray" onClick={playInterval}>
