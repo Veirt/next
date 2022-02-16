@@ -47,7 +47,7 @@ function useConfig() {
         smoothCaretSpeed: '100',
         hideInputBox: '0',
         gameplayParticipantStyle: '0',
-        upscaleMatch: '0',
+        upscaleMatch: '1',
         upscaleMatchContainer: '0',
         streamerMode: '0',
         hideWPM: '0',
