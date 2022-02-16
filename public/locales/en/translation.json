@@ -275,19 +275,19 @@
       },
       "quickplay": {
         "title": "Quick Play",
-        "description": "Join a match anywhere instantly worldwide"
+        "description": "Join a match, anywhere, instantly, worldwide."
       },
       "ranked": {
         "title": "Ranked",
-        "description": "Place yourself against the world of competition",
+        "description": "Place yourself against the world of competition.",
         "join": "Duel (1v1)",
-        "how": "How to Play"
+        "info": "Info"
       },
       "custom": {
         "title": "Custom",
-        "description": "Play with your friends and family",
-        "create": "Create Lobby",
-        "browse": "Browse List",
+        "description": "Play with your friends and family.",
+        "create": "Create",
+        "browse": "Browse",
         "public": "Public Lobbies",
         "online": "Lobbies Online",
         "none": "There are currently no public lobbies."

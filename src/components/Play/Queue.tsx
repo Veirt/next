@@ -209,7 +209,7 @@ const Queue = (props: IProps) => {
                     onClick: () => setRedirect('/leaderboards/ranked/4'),
                 },
                 {
-                    name: '',
+                    name: 'page.queue.ranked.info',
                     icon: faQuestionCircle,
                     color: 'text-blue-400',
                     onClick: () => setModal(0),
@@ -276,6 +276,11 @@ const Queue = (props: IProps) => {
                                             {item.name && (
                                                 <div className={"hidden sm:block lg:hidden 3xl:block w-auto"}>
                                                     {t(item.name)}
+                                                    {typeof item.badge !== 'undefined' && (
+                                                        <span className="ml-1.5 bg-gray-700 px-1.5 pb-0.5 pt-px text-xs rounded-full">
+                                                            {item.badge || 0}
+                                                        </span>
+                                                    )}
                                                 </div>
                                             )}
                                         </div>

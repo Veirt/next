@@ -95,7 +95,7 @@ const Levelbar = () => {
             name: 'GitHub',
             icon: faGithub,
             color: 'hover:text-gray-400',
-            link: 'https://github.com/Keyma-sh/game-tracker',
+            link: 'https://github.com/Keyma-sh/next',
         }
     ];
 
@@ -125,7 +125,7 @@ const Levelbar = () => {
                     <div className={"flex py-1 px-10 justify-between"}>
                         <div className={"w-auto pt-1 my-auto"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto focus:outline-none"}>
-                                <img src={"/assets/orange_gata_head.svg"} alt={"Logo"} className={"w-full h-auto"} />
+                                <img src={"/assets/logo_svg.svg"} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
                         </div>
                         <div className={"w-auto"}>
