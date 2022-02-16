@@ -60,7 +60,7 @@ const Queue = (props: IProps) => {
     const [ lobbiesLoaded, setLobbiesLoaded ] = useState(false);
     const [ modal, setModal ] = useState<number | null>(null);
     const [ redirect, setRedirect ] = useState('');
-    const [ loading, setLoading ] = useState(false);
+    const [ loading, setLoading ] = useState<number | null>(null);
 
     const { mode } = props;
 
@@ -78,7 +78,7 @@ const Queue = (props: IProps) => {
     }, [ sessionData ]);
 
     const pingCreateMatch = useCallback(async (textType: string) => {
-        setLoading(true);
+        setLoading(1);
 
         let text = 0;
         if (textType === 'regular') text = 1;
@@ -95,10 +95,11 @@ const Queue = (props: IProps) => {
 
         axios.post(`${Config.apiUrl}/match/search`, postData, { withCredentials: true, cancelToken: axiosCancelSource.current?.token })
             .then((response) => {
-                if (!response.data.error)
+                if (!response.data.error) {
+                    setLoading(2);
                     setRedirect(`/game/${textType}`);
-                else {
-                    setLoading(false);
+                } else {
+                    setLoading(null);
                     toast.error(response.data.error);
                 }
             })
@@ -222,16 +223,15 @@ const Queue = (props: IProps) => {
         <>
             {redirect && redirect !== '' && <Redirect to={redirect} />}
             <RankedModal isLoaded={modal === 0} toggle={() => setModal(null)} />
-            <div style={{ zIndex: 100 }} className={`${loading ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition ease-in-out duration-200 fixed top-0 right-0 left-0 bottom-0 w-full h-screen bg-black bg-opacity-40`}>
+            <div style={{ zIndex: 100 }} className={`${loading !== null ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition ease-in-out duration-200 fixed top-0 right-0 left-0 bottom-0 w-full h-screen bg-black bg-opacity-40`}>
                 <div className={"flex h-screen"}>
-                    <div className={"m-auto w-80 flex p-4 rounded-2xl shadow-lg bg-gray-750 border border-gray-800"}>
-                        <div className={"w-12"}>
-                            <FontAwesomeIcon icon={faCircleNotch} className={"text-blue-400 text-center"} size={"2x"} spin />
-                        </div>
-                        <div className={"w-auto my-auto"}>
-                            <div className={"text-xl uppercase font-semibold text-white"}>
-                                Finding Match
+                    <div className={"m-auto w-11/12 sm:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-4/12 3xl:w-96 px-4 py-12 xl:py-16 rounded-2xl shadow-lg bg-gray-750"}>
+                        <div className="text-center">
+                            <FontAwesomeIcon icon={faCircleNotch} className={"text-orange-400 text-center"} size={"6x"} spin />
+                            <div className="h2 mt-10">
+                                {loading === 2 ? 'Joining Match' : 'Finding Match'}
                             </div>
+                            <p className="mt-4">Get ready to start typing!</p>
                         </div>
                     </div>
                 </div>
