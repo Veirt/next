@@ -22,7 +22,7 @@ class MyDocument extends Document {
                     <script dangerouslySetInnerHTML={{ __html: `
                         var ramp = { 
                             mode: "ramp", 
-                            config: "//config.playwire.com/1024504/v2/websites/73290/banner.json",
+                            config: "//config.playwire.com/1024504/v2/websites/73412/banner.json",
                             passiveMode: true,
                         }
                     ` }} />
