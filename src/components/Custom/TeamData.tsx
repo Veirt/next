@@ -28,20 +28,26 @@ const TeamData = (props: IProps) => {
     const { handlePlayerBan, handleGiveOwner, lobbyOwner, teamId, teamSize, teamStrict, data, dataLength, onDrop, draggable, maxTeams, isDragging, onDragStart, onDragEnd } = props;
     const { t } = useTranslation();
 
+    const playerCount = (data: SocketCustomPlayerData[], teamId: number) => {
+        let totalPlayers = 0;
+        data.map((item) => item.teamId === teamId ? totalPlayers++ : null);
+        
+        return totalPlayers;
+    };
+
     return (
-        <div key={teamId} className="mb-8">
+        <div key={teamId} className="mb-8" onDragEnd={onDragEnd}>
             <div className="h5 font-semibold bg-gray-750 px-6 py-2 rounded-lg mb-2">
                 {teamId === 0 ? 'Spectators' : !teamStrict && maxTeams >= teamId ? `Players` : `Players (${dataLength}/${teamSize})`}
             </div>
-            <div className={`relative`} onDragOver={e => e.preventDefault()} onDrop={onDrop}>
-                <div className="grid grid-cols-1 gap-4 h-16">
+            <div className={`relative`}>
+                <div className="grid grid-cols-1 gap-2">
                     {data.map((userData) => userData.teamId === teamId && (
                         <div 
                             key={userData.playerId}
                             className="flex z-10 relative" 
                             draggable={draggable ? 'true' : 'false'}
                             onDragStart={e => { onDragStart(); e.dataTransfer.setData('playerId', `${userData.playerId}`); }} 
-                            onDragEnd={onDragEnd}
                         >
                             {draggable ? (
                                 <div className={`w-8 flex items-center justify-center rounded-l-lg text-gray-500 bg-gray-700 ${draggable && 'cursor-move'}`}>
@@ -74,7 +80,13 @@ const TeamData = (props: IProps) => {
                             )}
                         </div>
                     ))}
-                    {isDragging && <div className={"rounded-xl bg-green-500 bg-opacity-10 border-2 border-green-800 h-16 z-0"} />}
+                    {playerCount(data, teamId) === 0 && <div className="rounded-xl bg-gray-725 py-8" />}
+                    <div 
+                        onDragEnd={onDragEnd}
+                        onDragOver={e => e.preventDefault()} 
+                        onDrop={onDrop}
+                        className={`${isDragging ? 'opacity-100' : 'opacity-0 pointer-events-none'} absolute inset-0 rounded-xl bg-green-500 bg-opacity-10 border-2 border-green-800 py-8 w-full z-20`} 
+                    />
                 </div>
             </div>
         </div>

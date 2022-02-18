@@ -35,7 +35,7 @@ const Settings = (props: IProps) => {
             </button>
 
             {isActive && (
-                <div className={"dropdown dropdown-gap w-48"}>
+                <div className={"dropdown dropdown-gap w-48"} style={{ zIndex: 40 }}>
                     {options.map((item, index) => (!isCustomValue || isCustomValue === 'countdown' && index >= 6) && (
                         <button key={index} type={"button"} onClick={() => onUpdate(item.value)} className={`item`}>
                             {item.label}

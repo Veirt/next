@@ -184,7 +184,7 @@ const Custom = (props: IProps) => {
     }
 
     const handleStartMatch = () => socket?.emit('startLobby', {}); 
-    const handleUpdateTeam = (playerId: string, teamId: number) => socket?.emit('updateLobbyPlayerTeam', { playerId, teamId });
+    const handleUpdateTeam = (playerId: string, teamId: number) => { socket?.emit('updateLobbyPlayerTeam', { playerId, teamId }); setIsDragging(null); }
     const handlePlayerBan = (playerId: string) => socket?.emit('banPlayer', { playerId });
     const handleGiveOwner = (playerId: string) => socket?.emit('giveOwner', { playerId });
     const handleUpdateSettings = (fieldName: string, value?: any) => {
@@ -289,7 +289,7 @@ const Custom = (props: IProps) => {
                                             handleGiveOwner={handleGiveOwner}
                                             isDragging={(isDragging !== null && isDragging !== 1)} 
                                             onDragStart={() => setIsDragging(1)}
-                                            onDrop={(e) => { e.preventDefault(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 1); }}
+                                            onDrop={(e) => { e.preventDefault(); e.stopPropagation(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 1); }}
                                             onDragEnd={() => setIsDragging(null)}
                                         />
                                     )}
@@ -307,7 +307,7 @@ const Custom = (props: IProps) => {
                                         handleGiveOwner={handleGiveOwner}
                                         isDragging={(isDragging !== null && isDragging !== 0)}
                                         onDragStart={() => setIsDragging(0)}
-                                        onDrop={(e) => { e.preventDefault(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 0);}}
+                                        onDrop={(e) => { e.preventDefault(); e.stopPropagation(); handleUpdateTeam(e.dataTransfer.getData('playerId'), 0);}}
                                         onDragEnd={() => setIsDragging(null)}
                                     />
                                 </div>
