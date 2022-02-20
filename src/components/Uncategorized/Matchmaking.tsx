@@ -23,6 +23,7 @@ const Queue = () => {
             if (redirectInterval)
                 clearInterval(redirectInterval);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ redirect, queueFound ]);
 
     const timerString = new Date(queueTimer * 1000).toISOString().substr(14, 5);

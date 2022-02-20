@@ -6,8 +6,6 @@ import {faBell, faCog, faSignInAlt, faSignOutAlt, faSpinner, faTrash} from "@for
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Notification from "../components/Uncategorized/Notification";
 import {usePlayerContext} from "../contexts/Player.context";
-import usePlayerToken from "../hooks/usePlayerToken";
-import {PlayerNotificationData} from "../types.client.mongo";
 import PlayerAvatar from "../components/Player/PlayerAvatar";
 import SettingsFrame from "../components/Settings/SettingsFrame";
 import Link from '../components/Uncategorized/Link';
