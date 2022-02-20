@@ -3,7 +3,6 @@ import { useTranslation } from 'next-i18next';
 import axios, {CancelTokenSource} from "axios";
 import Config from "../Config";
 import {faBell, faCog, faSignInAlt, faSignOutAlt, faSpinner, faTrash} from "@fortawesome/free-solid-svg-icons";
-import Socket from "../utils/socket/Socket";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Notification from "../components/Uncategorized/Notification";
 import {usePlayerContext} from "../contexts/Player.context";
@@ -20,14 +19,9 @@ interface IProps {
 const Userbar = (props: IProps) => {
     const axiosCancelSource = useRef<CancelTokenSource | null>();
 
-    const { playerToken } = usePlayerToken();
-    const { sessionData, isGuest } = usePlayerContext();
+    const { sessionData, isGuest, notificationData, notificationCount, deleteNotifications, readNotifications } = usePlayerContext();
     const { t } = useTranslation();
 
-    const [ socket, setSocket ] = useState<Socket | null>(null);
-    const [ notificationsList, setNotificationsList ] = useState<PlayerNotificationData[]>([]);
-    const [ notificationsCount, setNotificationsCount ] = useState(0);
-    const [ notificationsLoaded, setNotificationsLoaded ] = useState(false);
     const [ toggleNotifications, setToggleNotifications ] = useState(false);
     const [ isLoaded, setIsLoaded ] = useState(false);
     const { isSidebar } = props;
@@ -39,9 +33,6 @@ const Userbar = (props: IProps) => {
         axiosCancelSource.current = axios.CancelToken.source();
 
         if (window) {
-            setSocket(new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/account`, {
-                transports: ['websocket', 'polling'],
-            }));
             setIsLoaded(true);
             window.addEventListener('click', notificationToggleManual);
         }
@@ -59,26 +50,14 @@ const Userbar = (props: IProps) => {
     }
 
     const notificationsEffect = useCallback(() => {
-        if (socket && !toggleNotifications)
-            socket?.emit('readNotifications', {});
-    }, [ toggleNotifications, socket ]);
+        if (!toggleNotifications)
+            readNotifications();
+    }, [ toggleNotifications ]);
 
     useEffect(() => {
         notificationsEffect();
     }, [ notificationsEffect ]);
 
-    useEffect(() => {
-        socket?.onError(() => console.log('[Notifications] errored'));
-        socket?.emit('joinNotifications', { playerToken });
-        socket?.on('updateNotifications', async (data: { unread: number, data: PlayerNotificationData[] }) => {
-            setNotificationsList(data.data);
-            setNotificationsCount(data.unread);
-            setNotificationsLoaded(true);
-        });
-        return () => socket?.disconnect();
-    }, [socket, playerToken]);
-
-    const deleteNotifications = async () => socket?.emit('deleteNotifications', {});
 
     const notificationToggleManual = (e: MouseEvent) => {
         if ((e.target as Element).classList.contains('notificationsWrapper'))
@@ -154,7 +133,7 @@ const Userbar = (props: IProps) => {
                               <div className="relative">
                                   <button type="button" onClick={item.onClick} className={`nav-link ${(item.title === 'component.navbar.notifications' && toggleNotifications) ? 'text-orange-400' : 'text-white'} hover:text-orange-400 text-lg rounded tracking-wider uppercase px-0.5 hover:text-orange-400 transition ease-in-out duration-300 font-semibold`}>
                                       <FontAwesomeIcon icon={item.icon.name} />
-                                      {item.title === 'component.navbar.notifications' && notificationsCount > 0 && (
+                                      {item.title === 'component.navbar.notifications' && notificationCount > 0 && (
                                           <div className="absolute -bottom-px -right-0.5 bottom-0.5 border-2 border-gray-775 bg-blue-400 rounded-full h-3 w-3 flex items-center justify-center" />
                                       )}
                                   </button>
@@ -172,10 +151,10 @@ const Userbar = (props: IProps) => {
                                                     </button>
                                                 </div>
                                             </div>
-                                            {notificationsLoaded && (
+                                            {notificationData !== null && (
                                                 <div className={"h-96 bg-gray-750 rounded-b-2xl overflow-y-scroll overflow-x-hidden"}>
-                                                    {notificationsList.length !== 0 
-                                                        ? notificationsList.map((row, index) => <Notification key={"notification" + (row._id || index)} {...row} />)
+                                                    {notificationData?.length !== 0 
+                                                        ? notificationData?.map((row, index) => <Notification key={"notification" + (row._id || index)} {...row} />)
                                                         : <div className="pt-16 text-center">You have no notifications!</div>
                                                     }
                                                 </div>

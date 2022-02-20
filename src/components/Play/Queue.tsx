@@ -49,7 +49,7 @@ interface IProps {
 const Queue = (props: IProps) => {
     const axiosCancelSource = useRef<CancelTokenSource | null>();
 
-    const { sessionData } = usePlayerContext();
+    const { sessionData, inQueue, setInQueue } = usePlayerContext();
     const { _csrf } = useCSRF();
     const { world } = useConfig();
     const { t } = useTranslation();
@@ -197,9 +197,9 @@ const Queue = (props: IProps) => {
                     icon: faBahai,
                     textType: 2,
                     color: 'text-pink-500',
-                    onClick: () => false,
+                    onClick: () =>  setInQueue(true),
                     disabled: {
-                        level: 100000000,
+                        level: !inQueue ? 10 : 99999,
                         isGuest: false
                     },
                 },

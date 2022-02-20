@@ -5,6 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
 import AdvertisementUnit from '../components/Advertisement/Units/AdvertisementUnit';
 import LoadContent from '../components/LoadContent';
+import Matchmaking from '../components/Uncategorized/Matchmaking';
 import Redirect from '../components/Uncategorized/Redirect';
 import { usePlayerContext } from '../contexts/Player.context';
 import useConfig from '../hooks/useConfig';
@@ -93,6 +94,7 @@ const Base = (props: IMainProps) => {
                         </div>
                     </>
                 )}
+                {sessionData !== null && <Matchmaking />}
                 <LoadContent isLoaded={loaded}>
                     {sessionData !== null && <PlaywireContainer {...props.ads} />}
                     <>{props.children}</>
