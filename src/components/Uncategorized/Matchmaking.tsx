@@ -34,7 +34,7 @@ const Queue = () => {
             {inQueue && (
                 <div className="fixed top-14 xl:top-16 xl:mt-0 right-0 left-0 z-50">
                     <div className="flex justify-center"> 
-                        <div className={`rounded-b-xl bg-orange-300 shadow-md border-orange-500 text-orange-900 w-72 px-4 py-2`}>
+                        <div className={`${!queueFound ? 'bg-orange-300 border-orange-500 text-orange-900' : 'bg-green-300 border-green-500 text-green-900'} rounded-b-xl shadow-md w-72 px-4 py-2`}>
                             <div className="flex justify-between">
                                 <div>
                                     <FontAwesomeIcon icon={!queueFound ? faCircleNotch : faCheck} className="mr-2" spin={!queueFound} />
