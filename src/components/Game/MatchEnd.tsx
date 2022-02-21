@@ -16,7 +16,6 @@ import useConfig from "../../hooks/useConfig";
 import VideoFullscreen from '../Advertisement/Units/VideoFullscreen';
 import { useTranslation } from 'next-i18next';
 import Chart from './MatchEnd/Chart';
-import PlayerPlacement from './participants/PlayerPlacement';
 import PlayerExperience from '../Player/PlayerExperience';
 import ReactTooltip from 'react-tooltip';
 import Replay from '../Uncategorized/Replay';
@@ -123,71 +122,89 @@ const MatchEnd = (props: IProps) => {
 
                                         <div className="w-full lg:w-auto">
                                             <div className="flex space-x-2">
-                                                <div className="py-1 pl-2 flex justify-center bg-gray-775 rounded-lg">
-                                                    <PlayerPlacement placement={1} placementFinal={1} />
-                                                </div>
+                                                {data.level.before.Index !== data.level.after.Index && (
+                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You are now Level ${data.level.after.Index}!`} >
+                                                        <FontAwesomeIcon icon={faLevelUpAlt} className="text-teal-400 mt-1" />
+                                                    </div>
+                                                )}
+                                                
+                                                {data.rewards.achievements.length !== 0 && (
+                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You have unlocked ${data.rewards.achievements.length} new achievement${data.rewards.achievements.length === 1 ? '' : 's'}!`} >
+                                                        <FontAwesomeIcon icon={faAward} className="text-yellow-400 mt-1" />
+                                                    </div>
+                                                )}
 
-                                                <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You are now Level ${data.level.after.Index}!`} >
-                                                    <FontAwesomeIcon icon={faLevelUpAlt} className="text-teal-400 mt-1" />
-                                                </div>
-
-                                                <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You have unlocked ${data.rewards.achievements.length} new achievement${data.rewards.achievements.length === 1 ? '' : 's'}!`} >
-                                                    <FontAwesomeIcon icon={faAward} className="text-yellow-400 mt-1" />
-                                                </div>
-
-                                                <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You have completed ${data.rewards.challenges.length} challenge${data.rewards.challenges.length === 1 ? '' : 's'}!`} >
-                                                    <FontAwesomeIcon icon={faTasks} className="text-blue-400 mt-1" />
-                                                </div>
+                                                {data.rewards.challenges.length !== 0 && (
+                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You have completed ${data.rewards.challenges.length} challenge${data.rewards.challenges.length === 1 ? '' : 's'}!`} >
+                                                        <FontAwesomeIcon icon={faTasks} className="text-blue-400 mt-1" />
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                          <div>
-                                              <div className={`${boxCSS} mb-4`}>
-                                                  <div className="flex">
-                                                      <div className="w-10 text-left my-auto">
-                                                          <FontAwesomeIcon icon={faCircle} className="text-yellow-400 text-2xl mt-1" />
-                                                      </div>
-                                                      <div className="text-left w-auto my-auto">
-                                                          <div className="font-bold text-xl">{data.rewards.exp.toLocaleString()} EXP</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                        <div>
+                                            <div className={`${boxCSS} mb-4`}>
+                                                <div className="flex">
+                                                    <div className="w-10 text-left my-auto">
+                                                        <FontAwesomeIcon icon={faCircle} className="text-yellow-400 text-2xl mt-1" />
+                                                    </div>
+                                                    <div className="text-left w-auto my-auto">
+                                                        <div className="font-bold text-xl">{data.rewards.exp.toLocaleString()} EXP</div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                              <div className={`${boxCSS} mb-4`}>
-                                                  <div className="flex">
-                                                      <div className="w-10 text-left my-auto">
-                                                          <FontAwesomeIcon icon={faCoins} className="text-yellow-400 text-2xl mt-1" />
-                                                      </div>
-                                                      <div className="text-left w-auto my-auto">
-                                                          <div className="font-bold text-xl">{data.rewards.currency.toLocaleString()} Coins</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
+                                            <div className={`${boxCSS} mb-4`}>
+                                                <div className="flex">
+                                                    <div className="w-10 text-left my-auto">
+                                                        <FontAwesomeIcon icon={faCoins} className="text-yellow-400 text-2xl mt-1" />
+                                                    </div>
+                                                    <div className="text-left w-auto my-auto">
+                                                        <div className="font-bold text-xl">{data.rewards.currency.toLocaleString()} Coins</div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                              <div className={`${boxCSS} mb-4`}>
-                                                  <div className="flex">
-                                                      <div className="w-10 text-left my-auto">
-                                                          <FontAwesomeIcon icon={faAward} className="text-yellow-400 text-2xl mt-1" />
-                                                      </div>
-                                                      <div className="text-left w-auto my-auto">
-                                                          <div className="font-bold text-xl">{data.rewards.achievements.length.toLocaleString()} Achievements</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
+                                            <div className={`${boxCSS} mb-4`}>
+                                                <div className="flex">
+                                                    <div className="w-10 text-left my-auto">
+                                                        <FontAwesomeIcon icon={faAward} className="text-yellow-400 text-2xl mt-1" />
+                                                    </div>
+                                                    <div className="text-left w-auto my-auto">
+                                                        <div className="font-bold text-xl">{data.rewards.achievements.length.toLocaleString()} Achievements</div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                              <div className={`${boxCSS} mb-4`}>
-                                                  <div className="flex">
-                                                      <div className="w-10 text-left my-auto">
-                                                          <FontAwesomeIcon icon={faList} className="text-blue-400 text-2xl mt-1" />
-                                                      </div>
-                                                      <div className="text-left w-auto my-auto">
-                                                          <div className="font-bold text-xl">{data.rewards.challenges.length.toLocaleString()} Challenges</div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
+                                            <div className={`${boxCSS} mb-4`}>
+                                                <div className="flex">
+                                                    <div className="w-10 text-left my-auto">
+                                                        <FontAwesomeIcon icon={faList} className="text-blue-400 text-2xl mt-1" />
+                                                    </div>
+                                                    <div className="text-left w-auto my-auto">
+                                                        <div className="font-bold text-xl">{data.rewards.challenges.length.toLocaleString()} Challenges</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-span-full lg:col-span-2 mb-4">
+                                            <div className={`${boxCSS} flex h-full`}>
+                                                <div className="m-auto">
+                                                    {matchData.flagId === 3 ? (
+                                                        <>
+                                                            Ranked
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            Not Ranked
+                                                        </>
+                                                    )}
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className="absolute bottom-8 left-8 right-8">
@@ -264,17 +281,18 @@ const MatchEnd = (props: IProps) => {
                                                                 </div>
                                                             )}
                                                         </div>
-                                                        
-                                                        <div className="col-span-full mt-8 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg py-3 px-5">
-                                                            <div className="inline-flex flex-wrap font-semibold">
-                                                                {useRoundData.Text.content.split(' ').map((item, index) => (
-                                                                    <Fragment key={index}>
-                                                                        <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`mr-2 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
-                                                                    </Fragment>
-                                                                ))}
-                                                            </div>
-                                                        </div> 
+                                                    
                                                     </div>
+
+                                                    <div className="p-5 bg-gray-825 rounded-2xl shadow-md">
+                                                        <div className="inline-flex flex-wrap font-semibold">
+                                                            {useRoundData.Text.content.split(' ').map((item, index) => (
+                                                                <Fragment key={index}>
+                                                                    <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`mr-2 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
+                                                                </Fragment>
+                                                            ))}
+                                                        </div>
+                                                    </div> 
                                                 </div>
                                             </div>
                                         )}

@@ -18,7 +18,7 @@ import useConfig from "../../hooks/useConfig";
 import { toast } from 'react-toastify';
 import Redirect from '../Uncategorized/Redirect';
 import Modal from '../Uncategorized/Modal';
-import RankedModal from './old/RankedModal';
+import RankedModal from './RankedModal';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
 interface TabsInterface {
@@ -199,7 +199,7 @@ const Queue = (props: IProps) => {
                     color: 'text-pink-500',
                     onClick: () =>  setInQueue(true),
                     disabled: {
-                        level: !inQueue ? 10 : 99999,
+                        level: !inQueue ? 5 : 99999,
                         isGuest: false
                     },
                 },
