@@ -259,7 +259,7 @@ const MatchTextContainer = (props: IProps) => {
                 </div>
                 <input
                     ref={inputElement}
-                    className={`match--input ${typoStreak > 0 ? colorBlindInputCSS || '' : 'bg-gray-800 border-orange-400'} ${hideInputBox === '1' ? 'absolute opacity-0' : 'relative'}`}
+                    className={`match--input ${typoStreak > 0 ? colorBlindInputCSS || '' : 'bg-gray-800 border-orange-400'} ${hideInputBox === '1' ? 'absolute left-0 opacity-0' : 'relative'}`}
                     lang="en"
                     type="text"
                     name="textInput"
