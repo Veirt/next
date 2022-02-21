@@ -1,4 +1,4 @@
-import Modal from '../../Uncategorized/Modal';
+import Modal from '../Uncategorized/Modal';
 
 interface IProps {
     toggle: () => void;
