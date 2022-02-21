@@ -20,12 +20,32 @@ const parseReplay = (logString: string) => {
     const listOfEvents = logString.split("»");
 
     listOfEvents.map((item) => {
+        let triggerFakeEvent = false;
+
         const input = String(item.split("«")[0]);
         const delay = Number(item.split("«")[1]);
 
         // Check if Last Keystrokes Match
         const useLastEvent = parsedEvents[parsedEvents.length - 1] || null;
-        if (useLastEvent) {
+        if (useLastEvent && !useLastEvent?.input.endsWith(' ')) {
+            const prevInput = useLastEvent.input;
+            const longestInput = prevInput.length > input.length ? 'current' : 'previous';
+            const difference = Math.abs(prevInput.length - input.length);
+            const useLength = (longestInput === 'current' ? input.length : prevInput.length) - difference;
+
+            let i:number;
+            for (i = 0; i < useLength; i++) {
+                if (prevInput[i] !== input[i]) {
+                    triggerFakeEvent = true;
+                    break;
+                }
+            }
+
+            if (triggerFakeEvent) 
+                parsedEvents.push({ input: '', delay: 0 });
+
+
+            /*
             if (
                 !useLastEvent?.input.endsWith(' ') && 
                 (
@@ -35,10 +55,10 @@ const parseReplay = (logString: string) => {
             )  {
                 parsedEvents.push({ input: '', delay: 0 });
             }
+            */
         }
 
         parsedEvents.push({ input, delay });
-        console.log('test');
     });
 
     return [ { input: '', delay: 0 }, ...parsedEvents ];
