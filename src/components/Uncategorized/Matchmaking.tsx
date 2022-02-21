@@ -14,7 +14,6 @@ const Queue = () => {
         if (queueFound) {
             (document.getElementById('MatchFound') as HTMLAudioElement).play();
             redirectInterval = setTimeout(() => {
-                (document.getElementById('MatchFound') as HTMLAudioElement).play();
                 setInQueue(false);
                 setRedirect('/game');
             }, 5000);
