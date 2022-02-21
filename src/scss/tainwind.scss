@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=IBM+Plex+Mono:wght@700&display=swap');
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/utilities';
@@ -32,6 +32,14 @@ body {
 
 .content-box {
   @apply relative p-8 bg-gray-750 bg-opacity-80 rounded-xl;
+}
+
+.font-ibm {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.font-roboto {
+  font-family: 'Roboto Mono', monospace !important;
 }
 
 .progress-smooth {
