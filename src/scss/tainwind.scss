@@ -30,6 +30,12 @@ body {
   @apply text-white;
 }
 
+@media screen and (min-device-aspect-ratio: 21/9) {
+  body {
+    background-size: cover !important;
+  }
+}
+
 .content-box {
   @apply relative p-8 bg-gray-750 bg-opacity-80 rounded-xl;
 }
