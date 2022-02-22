@@ -85,8 +85,10 @@ const MatchTextContainer = (props: IProps) => {
         setCaretBlinker(true);
         setInput('');
 
-        if (containerElement.current)
+        if (containerElement.current) {
             containerElement.current.scrollTop = 0;
+            containerElement.current.style.height = 'auto';
+        }
     }, [ props.quote ]);
 
     useEffect(() => {
