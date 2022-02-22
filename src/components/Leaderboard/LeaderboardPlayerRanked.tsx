@@ -40,7 +40,7 @@ const LeaderboardPlayerRanked:FC<IProps> = (props) => {
                         {item.player[0] ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : ''}
                     </div>
                     <div className={"w-12 lg:w-10 my-auto"}>
-                        <img className={"w-7"} src={`/ranks/${item.Rank ? `${item.Rank.Rank.replaceAll(' ', '').toLowerCase()}` : 'unranked'}.svg`} alt={"Unranked"} />
+                        <img className={"w-7"} src={`/ranks/${item.Rank ? `${item.Rank.Rank.replaceAll(' ', '').toLowerCase()}` : 'unrated'}.svg`} alt={"Unranked"} />
                     </div>
                     <div className={"hidden md:block w-32 my-auto font-semibold"}>
                         {item.Rank.Rank}

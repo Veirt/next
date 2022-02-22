@@ -19,6 +19,7 @@ import Chart from './MatchEnd/Chart';
 import PlayerExperience from '../Player/PlayerExperience';
 import ReactTooltip from 'react-tooltip';
 import Replay from '../Uncategorized/Replay';
+import Ranked from './MatchEnd/Ranked';
 
 
 interface IProps {
@@ -194,7 +195,7 @@ const MatchEnd = (props: IProps) => {
                                                 <div className="m-auto">
                                                     {matchData.flagId === 3 ? (
                                                         <>
-                                                            Ranked
+                                                            <Ranked {...data.ranked} />
                                                         </>
                                                     ) : (
                                                         <>

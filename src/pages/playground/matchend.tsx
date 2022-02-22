@@ -39,11 +39,13 @@ const Index = () => {
                 "before": {
                     "SR": 0,
                     "Games": 0,
+                    "Remaining": 0,
                     "Rank": "Unrated"
                 },
                 "after": {
                     "SR": 0,
                     "Games": 0,
+                    "Remaining": 0,
                     "Rank": "Unrated"
                 }
             },
@@ -463,7 +465,7 @@ const Index = () => {
             "locale": "en",
             "worldId": 0,
             "modeId": 0,
-            "flagId": 0,
+            "flagId": 3,
             "textId": 1860,
             "textCustom": "",
             "tournamentId": "",

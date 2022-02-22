@@ -157,16 +157,8 @@ export interface SocketGameEndData {
         };
     };
     ranked: {
-        before: {
-            SR: number;
-            Games: number;
-            Rank: string;
-        };
-        after: {
-            SR: number;
-            Games: number;
-            Rank: string;
-        };
+        before: PlayerCompetitiveData;
+        after: PlayerCompetitiveData;
     };
     personalBest: boolean;
     roundData: PlayerRoundData[];
