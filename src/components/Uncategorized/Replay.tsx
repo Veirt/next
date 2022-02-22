@@ -41,8 +41,10 @@ const parseReplay = (logString: string) => {
                 }
             }
 
-            if (triggerFakeEvent) 
+            if (triggerFakeEvent) {
+                console.log('BAD INPUT');
                 parsedEvents.push({ input: '', delay: 0 });
+            }
 
 
             /*
@@ -57,6 +59,7 @@ const parseReplay = (logString: string) => {
             }
             */
         }
+        console.log(input + '|');
 
         parsedEvents.push({ input, delay });
     });

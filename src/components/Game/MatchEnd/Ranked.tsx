@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { PlayerCompetitiveData } from "../../../types.client.mongo";
 
 interface IProps {
@@ -12,9 +12,9 @@ const Ranked = (props: IProps) => {
 
     const beforeScene = useRef<HTMLDivElement | null>(null);
     const afterScene = useRef<HTMLDivElement | null>(null);
-    const sceneTimeout = useRef<NodeJS.Timeout | null>(null);
+    // const sceneTimeout = useRef<NodeJS.Timeout | null>(null);
 
-    const [ triggerScene, setTriggerScene ] = useState<boolean>(false);
+    // const [ triggerScene, setTriggerScene ] = useState<boolean>(false);
 
     useEffect(() => {
         console.log('Effect');

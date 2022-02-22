@@ -167,9 +167,10 @@ const MatchTextContainer = (props: IProps) => {
             } else {
                 let difference = currentInputLength - inputLength;
                 if (typoStreak > difference) {
+                    console.log('Triggered TypoStream > Difference', typoStreak, difference);
                     setTypoStreak(typoStreak - difference);
 
-                    if (inputLength === 1 && keystroke === quote.charAt(currentIndex - 1)) {
+                    if (keystroke === quote.charAt(currentIndex - 1)) {
                         setTypoStreak(0);
                         setLetterIndex(currentIndex);
                     }
