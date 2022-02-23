@@ -37,16 +37,16 @@ const Index = () => {
             },
             "ranked": {
                 "before": {
-                    "SR": 0,
+                    "SR": 1300,
                     "Games": 0,
                     "Remaining": 0,
-                    "Rank": "Unrated"
+                    "Rank": "Gold 1"
                 },
                 "after": {
-                    "SR": 0,
+                    "SR": 1350,
                     "Games": 0,
                     "Remaining": 0,
-                    "Rank": "Unrated"
+                    "Rank": "Gold 1"
                 }
             },
             "personalBest": true,
