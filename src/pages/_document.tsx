@@ -24,7 +24,7 @@ class MyDocument extends Document {
                             passiveMode: true,
                         }
                     ` }} />
-                    <script id="ramp" src="//cdn.intergient.com/ramp.js" type="text/javascript" />
+                    <script id="ramp" src="//cdn.intergient.com/pageos/pageos.js" type="text/javascript" />
                     <script src="https://btloader.com/tag?o=5150306120761344&upapi=true" />
                 </body>
             </Html>
