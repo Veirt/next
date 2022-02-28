@@ -8,7 +8,7 @@ import {
   faCircle,
   faHourglass,
   faAngleDoubleLeft,
-  faAngleDoubleRight, faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy,
+  faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy,
 } from '@fortawesome/free-solid-svg-icons';
 import ReactCountUp from 'react-countup';
 import {SocketGameEndData, SocketMatchData} from "../../types.client.socket";
