@@ -8,7 +8,7 @@ import {
   faCircle,
   faHourglass,
   faAngleDoubleLeft,
-  faAngleDoubleRight, faSpinner, faCoins, faLevelUpAlt, faTasks, faList,
+  faAngleDoubleRight, faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy,
 } from '@fortawesome/free-solid-svg-icons';
 import ReactCountUp from 'react-countup';
 import {SocketGameEndData, SocketMatchData} from "../../types.client.socket";
@@ -309,27 +309,24 @@ const MatchEnd = (props: IProps) => {
 
                     <div className="flex justify-between mt-3 lg:mt-6">
                         {!embed ? (
-                            <a href={leaveUrl} className="button small blue">
-                                <FontAwesomeIcon className="mr-1 my-auto" icon={faAngleDoubleLeft} />
-                                {t('button.leave')} {embed && 'Lobby'}
+                            <a data-tip="Leave Game" href={leaveUrl} className="button small blue">
+                                <FontAwesomeIcon className="my-1" icon={faAngleDoubleLeft} />
                             </a>
                         ) : ''}
-                        {matchData.tournamentId && <a href={leaveUrl} className="button small orange">{t('button.ladder')}</a>}
+                        {matchData.tournamentId && <a data-tip="Back to Competition page" href={leaveUrl} className="button small orange"><FontAwesomeIcon icon={faTrophy} /></a>}
                         {!embed ? (
-                            <a href={restartUrl} className={`button small red`} >
-                                {t(matchData.flagId !== 3 ? 'button.newgame' : 'component.navbar.play' )}
-                                <FontAwesomeIcon className="ml-1 my-auto" icon={faAngleDoubleRight} />
+                            <a href={restartUrl} data-tip={`${matchData.flagId === 3 ? 'Play another game' : 'Return to Home'}`} className={`button small red`} >
+                                <FontAwesomeIcon className="my-1" icon={faPlay} />
                             </a>
                         ) : (
                             <>
                                 {embedOwner ? (
-                                    <button type={"button"} onClick={embedClose} className={"button small red"}>
-                                      End Game
+                                    <button data-tip="End Game" type={"button"} onClick={embedClose} className={"button small red"}>
+                                      <FontAwesomeIcon className="my-1" icon={faTimes} />
                                     </button>
                                 ) : (
-                                    <div className={"text-white text-sm uppercase font-semibold tracking-wider pt-2"}>
-                                      <FontAwesomeIcon icon={faSpinner} className={"text-white mr-1"} spin />
-                                      Waiting on Lobby Leader
+                                    <div data-tip="Waiting for Lobby Leader" className={"text-white text-sm uppercase font-semibold tracking-wider pt-2"}>
+                                        <FontAwesomeIcon className="my-1" icon={faSpinner} spin />
                                     </div>
                                 )}
                             </>
