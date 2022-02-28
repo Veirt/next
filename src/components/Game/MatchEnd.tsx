@@ -307,7 +307,7 @@ const MatchEnd = (props: IProps) => {
                         )}
                     </div>
 
-                    <div className="flex mt-3 lg:mt-6">
+                    <div className="flex justify-between mt-3 lg:mt-6">
                         {!embed ? (
                             <a href={leaveUrl} className="button small blue">
                                 <FontAwesomeIcon className="mr-1 my-auto" icon={faAngleDoubleLeft} />
@@ -316,18 +316,18 @@ const MatchEnd = (props: IProps) => {
                         ) : ''}
                         {matchData.tournamentId && <a href={leaveUrl} className="button small orange">{t('button.ladder')}</a>}
                         {!embed ? (
-                            <a href={restartUrl} className={`${!matchData.tournamentId ? 'ml-auto' : ''} button small red`} >
+                            <a href={restartUrl} className={`button small red`} >
                                 {t(matchData.flagId !== 3 ? 'button.newgame' : 'component.navbar.play' )}
                                 <FontAwesomeIcon className="ml-1 my-auto" icon={faAngleDoubleRight} />
                             </a>
                         ) : (
                             <>
                                 {embedOwner ? (
-                                    <button type={"button"} onClick={embedClose} className={"button small red ml-auto"}>
+                                    <button type={"button"} onClick={embedClose} className={"button small red"}>
                                       End Game
                                     </button>
                                 ) : (
-                                    <div className={"text-white text-sm uppercase font-semibold tracking-wider ml-auto pt-2"}>
+                                    <div className={"text-white text-sm uppercase font-semibold tracking-wider pt-2"}>
                                       <FontAwesomeIcon icon={faSpinner} className={"text-white mr-1"} spin />
                                       Waiting on Lobby Leader
                                     </div>
