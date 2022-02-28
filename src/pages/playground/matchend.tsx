@@ -43,10 +43,10 @@ const Index = () => {
                     "Rank": "Gold 1"
                 },
                 "after": {
-                    "SR": 1350,
+                    "SR": 1301,
                     "Games": 0,
                     "Remaining": 0,
-                    "Rank": "Gold 1"
+                    "Rank": "Gold 2"
                 }
             },
             "personalBest": true,

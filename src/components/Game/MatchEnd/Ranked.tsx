@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import useConfig from "../../../hooks/useConfig";
 import { PlayerCompetitiveData } from "../../../types.client.mongo";
 
 interface IProps {
@@ -9,6 +10,7 @@ interface IProps {
 const Ranked = (props: IProps) => {
 
     const { before, after } = props;
+    const { rankUpSound } = useConfig();
 
     const beforeScene = useRef<HTMLDivElement | null>(null);
     const afterScene = useRef<HTMLDivElement | null>(null);
@@ -16,11 +18,14 @@ const Ranked = (props: IProps) => {
 
     useEffect(() => {
         const handleSceneSwitch = () => {
-            if (!afterScene.current || !beforeScene.current || before.Rank === after.Rank)
+            if (!afterScene.current || !beforeScene.current || before.Rank === after.Rank || (before.Rank !== after.Rank && before.SR > after.SR))
                 return;
 
             beforeScene.current.style.opacity = '0';
             afterScene.current.style.opacity = '1';
+
+            if (rankUpSound === '1' && before.SR < after.SR)
+                (document.getElementById('LevelUp') as HTMLAudioElement)?.play();
         }
 
         if (!sceneTimeout.current) 
@@ -56,10 +61,21 @@ const Ranked = (props: IProps) => {
 
     return (
         <div className="relative">
+            <audio id="LevelUp" src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
+            <audio id="LevelDown" src="/audio/LevelDown.wav" crossOrigin="anonymous" preload="auto" />
             <div ref={beforeScene} className={"transition ease-in-out duration-300"} style={{ opacity: 100 }}>
-                {before.Rank === after.Rank ? renderScene(after) : renderScene(before)}
+                {(before.Rank === after.Rank || (before.Rank !== after.Rank && before.SR > after.SR)) ? renderScene(after) : renderScene(before)}
             </div>
             <div ref={afterScene} className={"absolute inset-0 w-full h-full z-20 transition ease-in-out duration-500"} style={{ opacity: 0 }}>
+                {(after.Rank !== before.Rank) && (
+                    <div className="absolute top-24 -left-4 mt-2">
+                        <div className="w-40">
+                            <div className="px-4 py-2 rounded-lg bg-black bg-opacity-80 shadow-sm text-base font-semibold">
+                                New Rank!
+                            </div>
+                        </div>
+                    </div>
+                )}
                 {renderScene(after)}
             </div>
         </div>
