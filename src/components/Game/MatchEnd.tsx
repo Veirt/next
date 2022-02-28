@@ -20,6 +20,7 @@ import PlayerExperience from '../Player/PlayerExperience';
 import ReactTooltip from 'react-tooltip';
 import Replay from '../Uncategorized/Replay';
 import Ranked from './MatchEnd/Ranked';
+import { toggleStaging } from '../../Config';
 
 
 interface IProps {
@@ -98,7 +99,7 @@ const MatchEnd = (props: IProps) => {
     return useRoundData ? (
         <div className="relative">
             <ReactTooltip />
-            {(adsGameplay && toggleAd) && <VideoFullscreen toggle={() => setToggleAd(false)} />}
+            {(toggleStaging && adsGameplay && toggleAd) && <VideoFullscreen toggle={() => setToggleAd(false)} />}
             <audio id="LevelUp" src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="LevelDown" src="/audio/LevelDown.wav" crossOrigin="anonymous" preload="auto" />
 
