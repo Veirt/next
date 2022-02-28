@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Va\u0161 ra\u010dun je bio zabranjen, molimo vas kontaktirajte support@Keymash!",
+        "account_banned": "Va\u0161 ra\u010dun je bio zabranjen, molimo vas kontaktirajte support@keymash.io!",
         "grades": {
             "passed": "Pro\u0161ao",
             "failed": "Propao"
@@ -174,7 +174,7 @@
             "news": "Najnovije novosti",
             "slogan": "Podignite tipkanje na sljede\u0107u razinu",
             "hero": {
-                "content1": "Ako imate bilo kakvih pitanja ili nedoumica, nemojte se ustru\u010davati kontaktirati nas na Discord ili izravno putem <1> support@Keymash <\/1>.",
+                "content1": "Ako imate bilo kakvih pitanja ili nedoumica, nemojte se ustru\u010davati kontaktirati nas na Discord ili izravno putem <1> support@keymash.io <\/1>.",
                 "content2": "O da, zaboravio sam spomenuti ... Uvijek tra\u017eimo doprinos zajednice, uklju\u010duju\u0107i prijave teksta, jezi\u010dne prijevode i jo\u0161 mnogo toga! <1> Kliknite ovdje <\/1> da biste saznali vi\u0161e.",
                 "button": "Po\u010dnite tipkati odmah!"
             },

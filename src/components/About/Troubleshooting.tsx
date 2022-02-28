@@ -42,7 +42,7 @@ export default (
                             <div className="font-semibold text-lg pb-2">When playing in a match it does not show the end match results screen</div>
                             Unfortunately this problem happens for players that may have an inconsistent internet connection. While there's not a lot of ways we can solve this, we are actively monitoring this issue each and
                             every day so we can at least create a more consistent experience for our typists. While your match isn't finishing, in the bottom right we have a new "Report an issue" icon where you can copy your debug
-                            logs and can either message Staff on Discord or email us directly at support@Keymash
+                            logs and can either message Staff on Discord or email us directly at support@keymash.io
                         </div>
                     </p>
                 </div>

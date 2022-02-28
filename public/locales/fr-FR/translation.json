@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Votre compte a \u00e9t\u00e9 banni, veuillez contacter support@Keymash !",
+        "account_banned": "Votre compte a \u00e9t\u00e9 banni, veuillez contacter support@keymash.io !",
         "twitch_none": "Personne ne stream en ce moment :( Revenez plus tard ou commencez \u00e0 streamer !",
         "grades": {
             "passed": "Pass\u00e9",
@@ -13,7 +13,7 @@
         },
         "debug": {
             "title": "Signaler un bug",
-            "message": "Si vous rencontrez un ou plusieurs des probl\u00e8mes ci-dessous, veuillez cliquer sur le bouton ci-dessous et envoyer un email \u00e0 support@Keymash avec un maximum d'information sur la fa\u00e7on dont vous avez rencontr\u00e9 ce probl\u00e8me et comment le recr\u00e9er. Plus vous nous fournirez d'informations, plus nous serons en mesure de recr\u00e9er votre probl\u00e8me et le r\u00e9soudre.",
+            "message": "Si vous rencontrez un ou plusieurs des probl\u00e8mes ci-dessous, veuillez cliquer sur le bouton ci-dessous et envoyer un email \u00e0 support@keymash.io avec un maximum d'information sur la fa\u00e7on dont vous avez rencontr\u00e9 ce probl\u00e8me et comment le recr\u00e9er. Plus vous nous fournirez d'informations, plus nous serons en mesure de recr\u00e9er votre probl\u00e8me et le r\u00e9soudre.",
             "list": [
                 "D\u00e9connexion inopin\u00e9e au milieu d'un match",
                 "Vos MPM\/CPM ne s'actualisent plus pour vous ou pour les autres joueurs",
@@ -214,7 +214,7 @@
             "news": "Derni\u00e8res nouvelles",
             "slogan": "Amenez votre dactylo au niveau sup\u00e9rieur",
             "hero": {
-                "content1": "Si vous avez des questions ou soucis, n'h\u00e9sitez pas \u00e0 nous contacter sur Discord ou directement par <1>support@Keymash<\/1>.",
+                "content1": "Si vous avez des questions ou soucis, n'h\u00e9sitez pas \u00e0 nous contacter sur Discord ou directement par <1>support@keymash.io<\/1>.",
                 "content2": "Ah oui, un l\u00e9ger oubli\u2026 Nous sommes toujours \u00e0 la recherche de contributions de la communaut\u00e9, incluant des propositions de texte, des traductions dans d'autres langues et plus encore! <1>Cliquez ici<\/1> pour en apprendre plus.",
                 "button": "Commencez \u00e0 taper maintenant!"
             },

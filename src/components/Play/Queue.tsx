@@ -103,6 +103,10 @@ const Queue = (props: IProps) => {
                     toast.error(response.data.error);
                 }
             })
+            .catch((e) => {
+                toast.error(e.message || 'Unknown error occured, please try again later!');
+                setLoading(null);
+            })
     }, [ _csrf, world ]);
 
     useEffect(() => {
@@ -136,7 +140,7 @@ const Queue = (props: IProps) => {
             name: 'page.queue.quickplay.title',
             description: 'page.queue.quickplay.description',
             image: '/assets/play/quick_play.svg',
-            enabled: true,
+            enabled: (loading === null),
             modes: [
                 {
                     name: 'page.queue.random.title',
@@ -166,7 +170,7 @@ const Queue = (props: IProps) => {
         },
         {
             name: 'page.queue.custom.title',
-            enabled: true,
+            enabled: (loading === null),
             description: 'page.queue.custom.description',
             image: '/assets/play/custom.svg',
             modes: [
@@ -189,7 +193,7 @@ const Queue = (props: IProps) => {
             name: 'page.queue.ranked.title',
             description: 'page.queue.ranked.description',
             image: '/ranks/bronze2.svg',
-            enabled: true,
+            enabled: (loading === null),
             content: true,
             modes: [
                 {

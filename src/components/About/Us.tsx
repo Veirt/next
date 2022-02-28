@@ -115,8 +115,8 @@ export default (
                         If you are looking to get a  hold of us for general inquiries or are from an educational facility looking to use Keymash privately with your students:
                     </div>
 
-                    <a href="mailto:support@Keymash" target="_blank" rel="noopener noreferrer">
-                        support@Keymash
+                    <a href="mailto:support@keymash.io" target="_blank" rel="noopener noreferrer">
+                        support@keymash.io
                     </a>
                 </div>
             </div>

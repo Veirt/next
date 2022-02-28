@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Kontoen din er utestengt, vennligst kontakt support@Keymash!",
+        "account_banned": "Kontoen din er utestengt, vennligst kontakt support@keymash.io!",
         "twitch_none": "Ingen str\u00f8mmer for \u00f8yeblikket :( Kom tilbake senere, eller begynn \u00e5 str\u00f8mme!",
         "grades": {
             "passed": "Best\u00e5tt",
@@ -14,7 +14,7 @@
         },
         "debug": {
             "title": "Feilrapportering",
-            "message": "Hvis du opplever en eller flere av problemene under, venligst klikk knappen under og send en epost til support@Keymash med s\u00e5 mye informasjon som mulig om hvordan det oppstod, og hvordan man kan gjenskape det. Jo mer informasjon du gir, jo enklere blir det for oss \u00e5 gjenskape problemet for \u00e5 fikse det.",
+            "message": "Hvis du opplever en eller flere av problemene under, venligst klikk knappen under og send en epost til support@keymash.io med s\u00e5 mye informasjon som mulig om hvordan det oppstod, og hvordan man kan gjenskape det. Jo mer informasjon du gir, jo enklere blir det for oss \u00e5 gjenskape problemet for \u00e5 fikse det.",
             "list": [
                 "Plutselig avkobling midt i en kamp",
                 "WPM\/CPM'en blir ikke lengre oppdatert for deg selv eller andre spillere",
@@ -135,7 +135,7 @@
     "page": {
         "banned": {
             "title": "Du har blitt utestengt",
-            "text": "Din Keymash konto har blitt utestengt for alltid. Dette kan skyldes et brudd p\u00e5 v\u00e5re retningslinjer, eller juksing. Hvis du har noen sp\u00f8rsm\u00e5l, venligst kontakt support@Keymash!"
+            "text": "Din Keymash konto har blitt utestengt for alltid. Dette kan skyldes et brudd p\u00e5 v\u00e5re retningslinjer, eller juksing. Hvis du har noen sp\u00f8rsm\u00e5l, venligst kontakt support@keymash.io!"
         },
         "guest": {
             "title": "Din gjestekonto har blitt nullstilt",
@@ -214,7 +214,7 @@
             "news": "Siste Nytt",
             "slogan": "Ta skriveferdighetene dine til neste niv\u00e5",
             "hero": {
-                "content1": "Hvis du har noen sp\u00f8rsm\u00e5l, ta gjerne kontakt med oss p\u00e5 Discord, eller direkte gjennom <1>support@Keymash<\/1>.",
+                "content1": "Hvis du har noen sp\u00f8rsm\u00e5l, ta gjerne kontakt med oss p\u00e5 Discord, eller direkte gjennom <1>support@keymash.io<\/1>.",
                 "content2": "\u00c5 ja, jeg glemte \u00e5 nevne... Vi er alltid p\u00e5 utkikk etter samfunnsbidrag. Dette inkluderer tekst bidrag, spr\u00e5koversettelser og mer! <1>Klikk her<\/1> for \u00e5 l\u00e6re mer.",
                 "button": "Begynn \u00e5 skrive n\u00e5!"
             },

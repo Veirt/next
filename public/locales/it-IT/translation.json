@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Il tuo account \u00e8 stato bannato, sei pregato di contattare support@Keymash!",
+        "account_banned": "Il tuo account \u00e8 stato bannato, sei pregato di contattare support@keymash.io!",
         "twitch_none": "Nessuno \u00e8 in streaming in questo momento :( Torna pi\u00f9 tardi oppure avvia tu uno streaming!",
         "grades": {
             "passed": "Passato",
@@ -194,7 +194,7 @@
             "news": "Notizie pi\u00f9 recenti",
             "slogan": "Porta la tua battitura al prossimo livello",
             "hero": {
-                "content1": "Se hai domande o dubbi, non esitare a contattarci su Discord o direttamente da support@Keymash",
+                "content1": "Se hai domande o dubbi, non esitare a contattarci su Discord o direttamente da support@keymash.io",
                 "content2": "Oh s\u00ec, ho dimenticato di menzionare che... Siamo sempre alla ricerca di contributi della Community, inclusi invii di testi, traduzioni in lingue e altro! Clicca qui per saperne di pi\u00f9.",
                 "button": "Inizia a scrivere ora!"
             },

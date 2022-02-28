@@ -1,6 +1,6 @@
 {
     "other": {
-        "account_banned": "Su cuenta ha sido suspendida, p\u00f3ngase en contacto con support@Keymash.",
+        "account_banned": "Su cuenta ha sido suspendida, p\u00f3ngase en contacto con support@keymash.io.",
         "twitch_none": "Nadie esta transmitiendo en vivo en estos momentos :( Vuelve mas tarde o empieza t\u00fa a transmitir!",
         "grades": {
             "passed": "Aprobado",
@@ -192,7 +192,7 @@
             "news": "\u00daltimas noticias",
             "slogan": "Lleva tu mecanograf\u00eda al siguiente nivel",
             "hero": {
-                "content1": "Si tiene alguna pregunta o inquietud, no dude en contactarnos en Discord o directamente a trav\u00e9s de <1> support@Keymash <\/1>.",
+                "content1": "Si tiene alguna pregunta o inquietud, no dude en contactarnos en Discord o directamente a trav\u00e9s de <1> support@keymash.io <\/1>.",
                 "content2": "Ah, s\u00ed, olvid\u00e9 mencionar ... \u00a1Siempre estamos buscando contribuciones de la comunidad, incluidos env\u00edos de texto, traducciones de idiomas y m\u00e1s! <1> Haga clic aqu\u00ed <\/1> para obtener m\u00e1s informaci\u00f3n.",
                 "button": "\u00a1Empieza a escribir ahora!"
             },

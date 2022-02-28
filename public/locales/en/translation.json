@@ -1,6 +1,6 @@
 {
   "other": {
-    "account_banned": "Your account has been banned, please contact support@Keymash!",
+    "account_banned": "Your account has been banned, please contact support@keymash.io!",
     "twitch_none": "No one is streaming right now :( Come back later or start streaming!",
     "grades": {
       "passed": "Passed",
@@ -14,7 +14,7 @@
     },
     "debug": {
       "title": "Bug Reporting",
-      "message": "If you experience one or more of the issues below, please click the button below and email support@Keymash with as much information regarding how you initially received it and how to recreate it. The more information provided will help us as it will allow us to recreate your exact issue and resolve it.",
+      "message": "If you experience one or more of the issues below, please click the button below and email support@keymash.io with as much information regarding how you initially received it and how to recreate it. The more information provided will help us as it will allow us to recreate your exact issue and resolve it.",
       "list": {
         "0": "Sudden disconnect in the middle of a match",
         "1": "Your WPM/CPM no longer updating for yourself or other players",
@@ -217,7 +217,7 @@
       "news": "Latest News",
       "slogan": "Take your typing to the next level",
       "hero": {
-        "content1": "If you have any questions or concerns, don't hesitate to contact us on Discord or directly through <1>support@Keymash</1>.",
+        "content1": "If you have any questions or concerns, don't hesitate to contact us on Discord or directly through <1>support@keymash.io</1>.",
         "content2": "Oh yeah, forgot to mention... We are always looking for community contribution including text submissions, language translations and more! <1>Click here</1> to learn more.",
         "button": "Start typing now!"
       },
