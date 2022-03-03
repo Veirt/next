@@ -247,8 +247,6 @@ const GameScreen = (props: IProps) => {
             if (data.spectatorOnly && !spectator.current)
                 return;
 
-            console.log(data);
-
             setParticipantsData((participantsData) => {
                 let i;
                 const pLength = participantsData ? participantsData.length : 0;

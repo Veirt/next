@@ -242,7 +242,7 @@ const Queue = (props: IProps) => {
             </div>
 
             <Modal isOpened={(lobbiesLoaded && tab === 1)} onClose={() => setTab(0)}>
-                <div className="h3">{t('page.queue.custom.public')}</div>
+                <div className="h3 mb-4">{t('page.queue.custom.public')}</div>
                 <div style={{ height: '70vh' }} >
                     {lobbiesData.length !== 0
                         ? lobbiesData.map(row => <LobbiesRow key={row.invite} {...row} />)
@@ -281,7 +281,7 @@ const Queue = (props: IProps) => {
                                                 <div className={"hidden sm:block lg:hidden 3xl:block w-auto"}>
                                                     {t(item.name)}
                                                     {typeof item.badge !== 'undefined' && (
-                                                        <span className="ml-1.5 bg-gray-700 px-1.5 pb-0.5 pt-px text-xs rounded-full">
+                                                        <span className="ml-1.5 bg-gray-700 px-1.5 pb-0.5 pt-px text-xs rounded">
                                                             {item.badge || 0}
                                                         </span>
                                                     )}

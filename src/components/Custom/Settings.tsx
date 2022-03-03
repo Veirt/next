@@ -46,8 +46,8 @@ const Settings = (props: IProps) => {
                     label={t('page.custom.privacy')}
                     value={privacy} 
                     options={[
-                        { label: t('page.custom.public'), value: 0 },
-                        { label: t('page.custom.unlisted'), value: 1 },
+                        { label: t('page.custom.unlisted'), value: 0 },
+                        { label: t('page.custom.public'), value: 1 },
                     ]}
                     onUpdate={(v: number) => { setDropdown(null); handleUpdateSettings('privacy', v) }} 
                     onDropdown={() => setDropdown(dropdown !== 1 ? 1 : null)}
@@ -95,7 +95,7 @@ const Settings = (props: IProps) => {
                     className="3xl:rounded-r-xl"
                     label={t('page.custom.countdown')}
                     value={countdown} 
-                    options={[0,1,2,3,4,5,6,7,8,9,10,11,12].map((_item, index) => { return { label: `${index + 1} seconds`, value: index + 1 } })}
+                    options={[0,1,2,3,4,5,6,7,8,9,10,11,12].map((_item, index) => { return { label: `${index} seconds`, value: index } })}
                     onUpdate={(v: number) => { setDropdown(null); handleUpdateSettings('countdown', v) }} 
                     onDropdown={() => setDropdown(dropdown !== 4 ? 4 : null)}
                     isActive={dropdown === 4}
