@@ -135,7 +135,10 @@ const GameScreen = (props: IProps) => {
         socket.on('achievementUnlocked', (data: { message: string; }) => data.message ? toast.success(data.message) : false);
         socket.on('levelUp', (data: { level: string; }) => data.level ? toast.success(`You have ranked up to Level ${data.level}!`) : false);
         socket.on('forceEndMatch', () => socket.emit('sendWord', { forceEnd: 1 }));
-        socket.on('globalForceEnd', (data: { type: string }) => socket.emit('globalForceEnd', data));
+        socket.on('globalForceEnd', (data: { type: string }) => {
+            setGameDisabled(true);
+            socket.emit('globalForceEnd', data);
+        })
 
         // Match Fetching
         socket.on('matchNotFound', () => {
