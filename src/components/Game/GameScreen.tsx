@@ -192,6 +192,7 @@ const GameScreen = (props: IProps) => {
                 setQueueRoundWon(false);
                 setGameDisabled(false);
             }
+
             setGameCountdown(roundedTimer);
         });
 
@@ -244,6 +245,7 @@ const GameScreen = (props: IProps) => {
         });
 
         socket.on('updateWPM', (data: SocketMatchPlayerData) => {
+            console.log('Update WPM Called');
             if (data.spectatorOnly && !spectator.current)
                 return;
 
@@ -346,7 +348,7 @@ const GameScreen = (props: IProps) => {
             <audio id="LevelCompleted" src="/audio/LevelCompleted.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="CountBeep" src="/audio/CountBeep.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="CountStart" src="/audio/CountStart.wav" crossOrigin="anonymous" preload="auto" />
-            {matchData && gameCountdown !== -1 && <MatchCountdown url={matchData.referralId ? restartUrl : leaveUrl} isSpectator={spectator.current} isDisabled={gameDisabled} countdown={gameCountdown} win={queueRoundWon} roundEnd={queueRoundEnd} />}
+            {matchData && <MatchCountdown url={matchData.referralId ? restartUrl : leaveUrl} isSpectator={spectator.current} isDisabled={gameDisabled} countdown={gameCountdown} win={queueRoundWon} roundEnd={queueRoundEnd} />}
             <MatchToast isReconnecting={gameToast === 'connectionSaved'} isConnectionLost={gameToast === 'connectionTimedOut'} />
             <div className={`${matchContainerCSS ?? 'container-small'} pt-10`}>
                 {!spectator.current ? (
