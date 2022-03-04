@@ -61,7 +61,7 @@ const Playerboard = (props: IProps) => {
                     <div className={"w-auto px-6 my-auto ml-auto"}>
                         {roundLimit >= 1 ? (
                             <div className={"flex justify-center gap-3 text-xs md:text-sm"}>
-                                {[...Array(roundLimit)].map((index) => (index < (item.roundsWon ? item.roundsWon : 0))
+                                {[...Array(roundLimit)].map((_circle, index) => (index < (item.roundsWon ? item.roundsWon : 0))
                                     ? <FontAwesomeIcon icon={faCircle} className={"text-orange-400"} />
                                     : <FontAwesomeIcon icon={faCircle} className={"text-gray-600"} />
                                 )}
