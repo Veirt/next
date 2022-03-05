@@ -53,8 +53,8 @@ const PlayerRacetrack = (props: IProps) => {
                         {roundLimit >= 1 ? (
                             <div className={"flex justify-center gap-3"}>
                                 {[...Array(roundLimit)].map((_circle, index) => (index < (item.roundsWon ? item.roundsWon : 0))
-                                    ? <FontAwesomeIcon icon={faCircle} className={"text-orange-400"} />
-                                    : <FontAwesomeIcon icon={faCircle} className={"text-gray-600"} />
+                                    ? <FontAwesomeIcon key={index} icon={faCircle} className={"text-orange-400"} />
+                                    : <FontAwesomeIcon key={index} icon={faCircle} className={"text-gray-600"} />
                                 )}
                             </div>
                         ) : (

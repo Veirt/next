@@ -65,6 +65,9 @@ const Chart = (props: SocketChartData) => {
     const lineOptions: ChartOptions = {
         responsive: true,
         maintainAspectRatio: false,
+        animation: {
+            duration: 0
+        },
         legend: {
             display: false
         },
