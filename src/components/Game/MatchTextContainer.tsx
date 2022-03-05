@@ -166,20 +166,33 @@ const MatchTextContainer = (props: IProps) => {
                 }
             } else {
                 let difference = currentInputLength - inputLength;
-                if (typoStreak > difference) {
-                    console.log('Triggered TypoStream > Difference', typoStreak, difference);
-                    setTypoStreak(typoStreak - difference);
+                if (difference > 0) {
+                    if (typoStreak > difference) {
+                        console.log('TypoStreak > Difference', typoStreak, difference);
+                        setTypoStreak(typoStreak - difference);
 
-                    if (keystroke === quote.charAt(currentIndex - 1)) {
+                        if (keystroke === quote.charAt(currentIndex - 1)) {
+                            setTypoStreak(0);
+                            setLetterIndex(currentIndex);
+                        }
+                    } else {
+                        console.log('TypoStreak < Difference', typoStreak, difference);
+                        difference -= typoStreak;
                         setTypoStreak(0);
-                        setLetterIndex(currentIndex);
+
+                        if (difference > 0) 
+                            setLetterIndex(letterIndex - difference);
                     }
                 } else {
-                    difference -= typoStreak;
-                    setTypoStreak(0);
-
-                    if (difference > 0) 
-                        setLetterIndex(letterIndex - difference);
+                    console.log('No Difference', typoStreak, difference);
+                    // Difference is 0, possibly used CTRL+A
+                    if (keystroke !== quote.charAt(currentIndex - 1)) {
+                        setTypoStreak(1);
+                        setLetterIndex(letterIndex - 1);
+                    } else {
+                        setTypoStreak(0);
+                        setLetterIndex(letterIndex + 1)
+                    }
                 }
             }
             
