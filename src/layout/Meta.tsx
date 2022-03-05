@@ -17,8 +17,8 @@ const Meta = (props: IMetaProps) => {
 
     const useTitle = props.reverseTitle ? `${props.title} - ${Config.name}` : `${Config.name} - ${props.title}`;
     const useImage = !props.isThumbnail ? Config.defaultIcon : Config.defaultImage;
-    const useKeywords = 'keymash,Keymash,keyma sh,keysmash,typing,typing practice,type,type test,type practice,typing games,online typing,multiplayer typing,learn typing,how to type,multiplayer typing game,multiplayer typing website,typeracer alternative,typing website,new games,competitive typing,speed typing,type faster,mavis beacon,typing tutor,free typing games,typing test,typing lessons,wpm,typing software,typing game,typing practice,free typing program,typing games for kids,best typing game,typing skills,free typing test,typing speedtest,typing test,speedtest,speed test,typing,test,typing-test,typing test,smooth caret,smooth,new,new typing site,new typing website';
-    const useDescription = props.description || 'An online multiplayer typing game where you can go head to head versus players around the world.'
+    const useKeywords = 'keyma.sh,keymash,Keymash,keyma sh,keysmash,typing,typing practice,type,type test,type practice,typing games,online typing,multiplayer typing,learn typing,how to type,multiplayer typing game,multiplayer typing website,typeracer alternative,typing website,new games,competitive typing,speed typing,type faster,mavis beacon,typing tutor,free typing games,typing test,typing lessons,wpm,typing software,typing game,typing practice,free typing program,typing games for kids,best typing game,typing skills,free typing test,typing speedtest,typing test,speedtest,speed test,typing,test,typing-test,typing test,smooth caret,smooth,new,new typing site,new typing website';
+    const useDescription = props.description || 'A fast-paced multiplayer typing game where you can play against friends and foes around the world in various competitions.'
 
     return (
         <>
