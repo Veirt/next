@@ -136,7 +136,6 @@ const GameScreen = (props: IProps) => {
         socket.on('levelUp', (data: { level: string; }) => data.level ? toast.success(`You have ranked up to Level ${data.level}!`) : false);
         socket.on('forceEndMatch', () => socket.emit('sendWord', { forceEnd: 1 }));
         socket.on('globalForceEnd', (data: { type: string }) => {
-            toast.success('globalForceEnd: ' + data.type);
             setGameDisabled(true);
             socket.emit('globalForceEnd', data);
         })
