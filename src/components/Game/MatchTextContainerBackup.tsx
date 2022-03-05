@@ -160,58 +160,42 @@ const MatchTextContainer = (props: IProps) => {
                         if (currentIndex === quote.length) {
                             setDisable(true);
                             console.log('Text is FINISHED');
+                            
                         }
                     }
                 }
             } else {
-                let currentTypoStreak = 0;
-                let currentCorrectStreak = 0;
-
-                let i: number, isTypoStreak: boolean = false;
-                for (i = 0; i < inputLength; i++) {
-                    // console.log(inputValue.charAt(i), ' vs ', quote.charAt(wordIndex + i));
-
-                    if (inputValue.charAt(i) !== quote.charAt(wordIndex + i)) 
-                        isTypoStreak = true;
-
-                    if (isTypoStreak)
-                        currentTypoStreak++;
-                    else 
-                        currentCorrectStreak++;
-                }
-
-                setTypoStreak(currentTypoStreak);
-                setLetterIndex(wordIndex + currentCorrectStreak);
-
-                /*
                 let difference = currentInputLength - inputLength;
-                if (typoStreak > difference) {
-                    console.log('TypoStreak > Difference', typoStreak, difference);
-                    setTypoStreak(typoStreak - difference);
-                } else {
-                    console.log('TypoStreak < Difference', typoStreak, difference);
-                    difference -= typoStreak;
-                    setTypoStreak(0);
+                if (difference > 0) {
+                    if (typoStreak > difference) {
+                        console.log('TypoStreak > Difference', typoStreak, difference);
+                        setTypoStreak(typoStreak - difference);
 
-                    if (difference > 0) 
-                        setLetterIndex(letterIndex - difference);
-                }
-
-                // ---------------------
-                if (inputLength > 0) {
-                    let i: number, isTypoStreak: boolean = false;
-                    for (i = 0; i < (difference + 1); i++) {
-                        console.log(keystroke, ' vs ', quote.charAt(wordIndex + i));
-                        if (isTypoStreak && keystroke !== quote.charAt(wordIndex + i)) {
-                            setTypoStreak(typoStreak + 1);
-                            isTypoStreak = true;
-                        } else if (!isTypoStreak && keystroke === quote.charAt(wordIndex + i)) {
-                            setLetterIndex(wordIndex + i);
+                        if (keystroke === quote.charAt(currentIndex - 1)) {
+                            setTypoStreak(0);
+                            setLetterIndex(currentIndex);
                         }
+                    } else {
+                        console.log('TypoStreak < Difference', typoStreak, difference);
+                        difference -= typoStreak;
+                        setTypoStreak(0);
+
+                        if (difference > 0) 
+                            setLetterIndex(letterIndex - difference);
+                    }
+                } else {
+                    console.log('No Difference', typoStreak, difference);
+                    // Difference is 0, possibly used CTRL+A
+                    if (keystroke !== quote.charAt(currentIndex - 1)) {
+                        setTypoStreak(1);
+                        setLetterIndex(letterIndex - 1);
+                    } else {
+                        setTypoStreak(0);
+                        setLetterIndex(letterIndex + 1)
                     }
                 }
-                */
             }
+            
         }
     }
 
