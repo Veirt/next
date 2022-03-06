@@ -134,7 +134,7 @@ const Levelbar = () => {
                     </div>
                 </div>
 
-                <div className={"fixed grid grid-cols-5 bottom-0 left-0 right-0 navigationBar is-mobile"}>
+                <div className={"fixed grid grid-cols-5 bottom-0 left-0 right-0 z-50 navigationBar is-mobile"}>
                     <Link to={"/"} className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
                         <FontAwesomeIcon icon={faHome} className={"text-2xl"} />
                     </Link>

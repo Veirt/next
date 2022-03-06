@@ -47,18 +47,18 @@ const Play = (props: IProps) => {
                 <Queue mode={mode}/>
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
                     <div className="col-span-2 content-box 3xl:h-128">
-                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-y-4 gap-x-4">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 gap-x-4">
                             {(challengesData && challengesData.length !== 0) ? (
-                                <div className="xl:pr-8">
+                                <div className="lg:pr-8">
                                     <Challenges data={challengesData} />
                                 </div>
                             ) : (
-                                <div className="xl:pr-8">
+                                <div className="lg:pr-8">
                                     <Guest />
                                 </div>
                             )}
 
-                            <div className="relative xl:pl-8">
+                            <div className="relative lg:pl-8">
                                 <div className="hidden lg:block h-full border-r-4 rounded-full border-gray-800 absolute -left-2.5 z-20" />
                                 <Tournaments data={tournamentsData} />
                             </div>
