@@ -56,6 +56,7 @@ const Queue = (props: IProps) => {
 
     const [ tab, setTab ] = useState(0);
     const [ playerLevel, setPlayerLevel ] = useState<PlayerLevelData | null>(null);
+    const [ playerRank, setPlayerRank ] = useState<string>('Unrated');
     const [ lobbiesData, setLobbiesData ] = useState<LobbyData[]>([]);
     const [ lobbiesLoaded, setLobbiesLoaded ] = useState(false);
     const [ modal, setModal ] = useState<number | null>(null);
@@ -66,10 +67,14 @@ const Queue = (props: IProps) => {
 
     const getLevel = useCallback(() => {
         if (sessionData) {
-            axios.get(`${Config.apiUrl}/player/level`, {withCredentials: true, cancelToken: axiosCancelSource.current?.token})
+            axios.get(`${Config.apiUrl}/player/ranked`, {withCredentials: true, cancelToken: axiosCancelSource.current?.token})
                 .then((response) => {
+                    console.log('ranked');
+                    console.log(response);
                     if (!response.data.error) {
-                        setPlayerLevel(response.data);
+                        setPlayerLevel(response.data.Level);
+                        setPlayerRank(response.data?.Rank?.Rank || 'Unrated');
+                        console.log(response.data);
                     } else
                         console.log(response.data.error);
                 })
@@ -192,7 +197,7 @@ const Queue = (props: IProps) => {
         {
             name: 'page.queue.ranked.title',
             description: 'page.queue.ranked.description',
-            image: '/ranks/bronze2.svg',
+            image: `/ranks/${(playerRank || 'Unrated').toLowerCase()}.svg`,
             enabled: (loading === null),
             content: true,
             modes: [

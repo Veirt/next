@@ -117,7 +117,7 @@ const ProfileStatistics = (props: IProps) => {
                                             <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank.Rank} />
                                         </div>
                                         <div className={"text-center mt-2"}>
-                                            {(rankedData && rankedData.Rank.Rank <= 'Unranked') && (
+                                            {(rankedData && rankedData.Rank.Rank <= 'Unrated') && (
                                                 <div className={"text-white text-2xl lg:text-3xl font-bold"}>
                                                     {rankedData?.Rank.Rank}
                                                 </div>
