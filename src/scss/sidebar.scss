@@ -1,4 +1,9 @@
 
+.navigationBar {
+  backdrop-filter: 'blur(8px)';
+  @apply bg-gray-750 bg-opacity-90 shadow-lg border-b border-gray-725;
+}
+
 .desktopNav-item {
   @apply 
     relative my-auto w-auto 

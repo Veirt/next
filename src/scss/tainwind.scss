@@ -36,6 +36,15 @@ body {
   }
 }
 
+.bgOverlay {
+    display: block;
+    position: absolute;
+    height: 50vh;
+
+    z-index: -1;
+    @apply overflow-hidden block absolute top-0 w-full bg-gradient-to-b from-black to-transparent opacity-10;
+}
+
 .content-box {
   @apply relative p-8 bg-gray-750 bg-opacity-80 rounded-xl shadow-xl;
 }

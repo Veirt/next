@@ -84,6 +84,7 @@ const Base = (props: IMainProps) => {
             {props.meta}
             {!props.noNav ? <Levelbar /> : ''}
             <main>
+                <div className="bgOverlay" />
                 {!props.ads?.disableStickyVertical && (
                     <>
                         <div className="absolute top-32 left-4">
