@@ -41,7 +41,8 @@ const Challenge:FC<PlayerChallengeData> = (props) => {
                 <div className="col-span-full 3xl:col-span-4 my-auto">
                     <div className="h4 text-orange-400" style={{ fontWeight: '700' }}>{mode[0].modeName}</div>
                     <p className="pt-1 block text-sm">
-                        {challenge[0].text}
+                        {challenge[0].text.split('(')[0]}
+                        <div>({challenge[0].text.split('(')[1]}</div>
                     </p>
                 </div>
                 <div className="col-span-full mt-2">
