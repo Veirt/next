@@ -521,7 +521,7 @@ module.exports = {
       full: '100%',
       screen: '100vh',
       nav: '84.1vh',
-      game: '90vh',
+      game: '85vh',
     }),
     inset: (theme, { negative }) => ({
       auto: 'auto',

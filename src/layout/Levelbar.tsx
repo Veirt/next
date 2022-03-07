@@ -5,6 +5,7 @@ import {faDiscord, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/
 import Userbar from "./Userbar";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
+    faCaretUp,
     faHome,
     faInfoCircle,
     faListAlt,
@@ -26,6 +27,7 @@ const Levelbar = () => {
     const { sessionData } = usePlayerContext();
     const [ toggleSitebar, setToggleSitebar ] = useState(false);
     const [ smallDevice, setSmallDevice ] = useState<boolean>(false);
+    const [ scroll, setScroll ] = useState<boolean>(false);
 
     const links = [
         {
@@ -106,15 +108,19 @@ const Levelbar = () => {
     const mobileActiveCSS = `levelbar-active`;
 
     const handleDeviceSizing = () => setSmallDevice(!isNotSmallDevice);
+    const handleDeviceScrolling = () => setScroll(window.scrollY > 20);
 
     useEffect(() => {
         handleDeviceSizing();
+        handleDeviceScrolling();
         if (typeof window !== `undefined`) {
             window?.addEventListener(`resize`, handleDeviceSizing);
+            window?.addEventListener('scroll', handleDeviceScrolling);
         }
       
         return () => {
             window?.removeEventListener('resize', handleDeviceSizing);
+            window?.removeEventListener('scroll', handleDeviceScrolling);
         }
     }, [ isNotSmallDevice ])
 
@@ -154,6 +160,11 @@ const Levelbar = () => {
             </>
         ) : (
             <>
+                {scroll && (
+                    <button type="button" onClick={() => window.scroll({ top: 0, left: 0, behavior: 'smooth' })} className="z-50 button gray border border-gray-700 fixed bottom-16 right-16 w-12 h-12">
+                        <FontAwesomeIcon icon={faCaretUp} className="text-2xl m-auto" />
+                    </button>
+                )}
                 <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 navigationBar`}>
                     <div className={"container flex"}>
                         <div className="w-44 relative my-auto py-3">
