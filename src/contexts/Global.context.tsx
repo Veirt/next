@@ -7,6 +7,7 @@ interface GlobalAnnouncement {
     key: string;
     value: string;
     url?: string;
+    created: number;
 }
 
 interface ContextType {
@@ -31,6 +32,7 @@ export const GlobalProvider: FC = ({ children }) => {
         key: "",
         value: "",
         url: "",
+        created: 0
     });
     const [ playercards, setPlayercards ] = useState<ItemData[]>([]);
     const [ borders, setBorders ] = useState<ItemData[]>([]);

@@ -121,7 +121,7 @@ const Shop = () => {
       <>
           {redirect && <Redirect to={redirect} />}
           <Base meta={<Meta title={t('component.navbar.shop')} />} isLoaded={loaded}>
-              <div className={'container container-margin py-10'}>
+              <div className={'container container-margin'}>
                   <AdvertisementDisplay className="mb-6">
 
                   </AdvertisementDisplay>

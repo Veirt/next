@@ -1,9 +1,9 @@
-import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
+import { faBullhorn, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { GetServerSidePropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React from "react";
+import React, { useState } from "react";
 import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
 import AdvertisementUnit from "../../components/Advertisement/Units/AdvertisementUnit";
 import Challenges from "../../components/Play/Challenges";
@@ -29,25 +29,37 @@ interface IProps {
 
 const Play = (props: IProps) => {
     const { mode, challengesData, tournamentsData, loaded } = props;
-
     const { announcement } = useGlobalContext();
-    
+
+    const [ latestAnnouncement, setLatestAnnouncement ] = useState<string>(typeof window !== 'undefined' ? (window.localStorage.getItem('announcement') || '') : '');
+
+    const updateLatestAnnouncement = (v: string) => typeof window !== 'undefined' ? window.localStorage.setItem('announcement', v) : null;
+
     return (
         <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={loaded}>
 
             <div className="container container-margin container-content">
-                {(announcement && announcement.value) && (
-                    <div className="mb-4">
-                        <FontAwesomeIcon icon={faBullhorn} className="mr-1 text-yellow-400" />
-                        <span className="font-semibold mr-2">{announcement.value.split(': ')[0]}:</span>
-                        {announcement.value.split(': ')[1]}
+
+                {(latestAnnouncement !== String(announcement.created) && announcement && announcement.value) && (
+                    <div className="mb-4 bg-orange-400 px-1 py-1 rounded-xl shadow-xl flex relative">
+                        <div className="px-3 py-1 bg-orange-900 text-orange-200 font-semibold rounded-xl mr-2">
+                            <FontAwesomeIcon icon={faBullhorn} className="mr-1" />
+                            {announcement.value.split(': ')[0]}
+                        </div>
+                        <div className="my-auto text-orange-900 font-semibold">
+                            {announcement.value.split(': ')[1]}
+                        </div>
+
+                        <button type="button" className="absolute top-1.5 right-4 text-xl text-orange-900 hover:opacity-70 transition ease-in-out duration-300">
+                            <FontAwesomeIcon icon={faTimes} onClick={() => { setLatestAnnouncement(String(announcement.created)); updateLatestAnnouncement(String(announcement.created)); }} />
+                        </button>
                     </div>
                 )}
                 
                 <Queue mode={mode}/>
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
                     <div className="col-span-2 content-box 3xl:h-128">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 gap-x-4">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 gap-x-4">
                             {(challengesData && challengesData.length !== 0) ? (
                                 <div className="lg:pr-8">
                                     <Challenges data={challengesData} />
@@ -65,7 +77,7 @@ const Play = (props: IProps) => {
                         </div>
                     </div>
 
-                    <div className="content-box 3xl:h-128">
+                    <div className="content-box 3xl:h-128 hidden lg:block">
                         <Social />
                     </div>
                 </div>

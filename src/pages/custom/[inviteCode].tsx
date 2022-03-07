@@ -221,7 +221,7 @@ const Custom = (props: IProps) => {
                 <audio id="ChatBeep" src="/audio/ChatBeep.wav" crossOrigin="anonymous" preload="auto" />
                 {(useGameMode && !showMatch) ? (
                     <>
-                        <div className="container container-margin py-10">
+                        <div className="container container-margin">
                             {/* Title */}
                             <div className="grid grid-cols-1 3xl:grid-cols-2 gap-4">
                                 <div>

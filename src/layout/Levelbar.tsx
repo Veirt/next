@@ -21,7 +21,7 @@ const Levelbar = () => {
     const router = useRouter();
     const { t } = useTranslation();
 
-    const isNotSmallDevice = useMediaQuery({ query: '(min-width: 1224px)' })
+    const isNotSmallDevice = useMediaQuery({ query: '(min-width: 1024px)' })
 
     const { sessionData } = usePlayerContext();
     const [ toggleSitebar, setToggleSitebar ] = useState(false);
@@ -175,7 +175,7 @@ const Levelbar = () => {
                             {t('component.navbar.tournaments')}
                         </Link>
                         {(sessionData && sessionData.authName !== 'Guest') && (
-                            <Link to={"/shop"} className={`${navCSS} ${router.asPath.startsWith("/shop") && activeCSS}`}>
+                            <Link to={"/shop"} className={`hidden xl:block ${navCSS} ${router.asPath.startsWith("/shop") && activeCSS}`}>
                                 Item {t('component.navbar.shop')}
                             </Link>
                         )}

@@ -1,7 +1,11 @@
 
 .navigationBar {
   backdrop-filter: 'blur(8px)';
-  @apply bg-gray-750 bg-opacity-90 shadow-lg border-b border-gray-725;
+  @apply my-3 relative;
+}
+
+.navigationBar.is-mobile {
+  @apply bg-gray-750 bg-opacity-90 shadow-lg my-0 fixed;
 }
 
 .desktopNav-item {
@@ -28,5 +32,5 @@
 }
 
 .desktopNav-item.levelbar-active {
-  @apply bg-gray-800 text-orange-400;
+  @apply bg-gray-750 text-orange-400;
 }

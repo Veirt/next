@@ -260,7 +260,7 @@ const Queue = (props: IProps) => {
 
             <div className={"grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box"} style={{ paddingLeft: 0, paddingRight: 0 }}>
                 {tabs.map((tab, index) => (
-                    <div key={index} className={`relative col-span-full lg:col-span-1 px-8`}>
+                    <div key={index} className={`relative col-span-full lg:col-span-1 px-8 text-center lg:text-left`}>
                         {/* Custom Border */}
                         {index !== 0 && <div className="hidden lg:block h-full border-r-4 rounded-full border-gray-800 absolute -left-2.5 z-20" />}
                         {/* Flex / Icon */}
@@ -268,14 +268,14 @@ const Queue = (props: IProps) => {
                             <div className="h1 text-white relative z-10 inline relative">
                                 {t(tab?.name)}
                                 <div className="absolute top-0 bottom-0 -right-10 lg:-right-14">
-                                    <img className={"h-8 lg:h-10 object-cover mt-1 lg:mt-2"} src={tab.image || ''} alt={t(tab?.name)} />
+                                    <img className={"h-8 xl:h-10 object-cover mt-1 md:mt-2"} src={tab.image || ''} alt={t(tab?.name)} />
                                 </div>
                             </div>
                             <p className="pt-2 pb-6 block relative z-10 text-gray-300 truncate">
                                 {t(tab?.description)}
                             </p>
                             {/* Buttons */}
-                            <div className="flex flex-wrap space-x-1 relative z-10">
+                            <div className="flex flex-wrap space-x-1 relative z-10 justify-center lg:justify-start">
                                 {tab?.modes?.map((item) => (
                                     <button key={item.name} onClick={item.onClick} className={`py-2 px-4 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${(item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest')) ? 'pointer-events-none opacity-80' : ''}`}>
                                         <div className={"flex justify-center text-white text-xs uppercase font-semibold"}>

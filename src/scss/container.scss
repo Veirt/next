@@ -12,17 +12,17 @@
 }
 
 .container-padding {
-  @apply pt-16;
+  @apply pt-16 lg:pt-0 #{!important};
 }
 
 .container-margin {
-  @apply mt-16;
+  @apply mt-16 lg:mt-0 #{!important};
 }
 
 .container-padding.container-content {
-  @apply my-8;
+  @apply my-8 lg:mt-0; /* my-8 */ 
 }
 
 .container-margin.container-content {
-  @apply py-8;
+  @apply my-8 lg:mt-0; /* py-8 */
 }
