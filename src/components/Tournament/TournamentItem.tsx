@@ -14,13 +14,13 @@ const TournamentItem = (props: IProps) => {
 
     const { t } = useTranslation();
 
-    let useValue = '';
-    const useSplit = String(props.info?.split('.')[0] + '.' + props.info?.split('.')[1]) || '';
+    let useValue = props.info.replaceAll('KEYMA.SH', 'Keymash');
+    const useSplit = String(useValue?.split('.')[0] + '.' + useValue?.split('.')[1]) || '';
 
     if (useSplit.length > 96)
-        useValue = props.info?.substring(0, 80) + '...' || '';
+        useValue = useValue?.substring(0, 80) + '...' || '';
     else 
-        useValue = props.info?.split('Keymash')[0] + '\nKeymash.' || '';
+        useValue = useValue?.split('Keymash')[0] + '\nKeymash.' || '';
   
     return (
         <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`block w-full h-full flex flex-col p-4 bg-gray-800 hover:bg-gray-825 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
