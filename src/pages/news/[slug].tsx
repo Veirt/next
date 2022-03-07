@@ -27,21 +27,25 @@ const News = ({ data }: IProps) => {
 
     return (
         <Base meta={<Meta title={data.title} description={data.content.substr(0, 150) + '...'} customImage={`/news/${data.thumbnail}.jpg`} isThumbnail reverseTitle />} ads={{ enableBottomRail: true }}>
-            <div className={"container-smaller container-margin mb-12"}>
-                <div className="py-12">
-                    <h1 className="h1">{data.title}</h1>
-                    <p className="pt-2 text-lg">
-                        Published {moment.unix(data.created).fromNow()}
-                    </p>
-                </div>
+            <div className="container">
+                <div className="border-t border-gray-800" />
+                
+                <div className={"container-smaller container-margin container-content"}>
+                    <div className="py-14">
+                        <h1 className="h1">{data.title}</h1>
+                        <p className="pt-2 text-lg">
+                            Published {moment.unix(data.created).fromNow()}
+                        </p>
+                    </div>
 
-                <div className="content-box blogContent">
-                    <ReactMarkdown plugins={[breaks, gfm]}>{data.content}</ReactMarkdown>
-                </div>
+                    <div className="content-box blogContent">
+                        <ReactMarkdown plugins={[breaks, gfm]}>{data.content}</ReactMarkdown>
+                    </div>
 
-                <AdvertisementDisplay className="mt-6">
-                   
-                </AdvertisementDisplay>
+                    <AdvertisementDisplay className="mt-6">
+                    
+                    </AdvertisementDisplay>
+                </div>
             </div>
         </Base>
     );
