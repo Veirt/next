@@ -1,6 +1,6 @@
 
 export default (
-    <div className={"mt-6 text-center lg:text-left"}>
+    <div className={"text-center lg:text-left"}>
         <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/US.png')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className={"container m-auto"}>
                 <div className={"w-full grid grid-cols-2 gap-16"}>
