@@ -1,7 +1,7 @@
 import Config from "../../Config";
 
 export default (
-    <div className={"mt-12 text-center lg:text-left"}>
+    <div className={"text-center lg:text-left"}>
         <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/TROUBLESHOOTING.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className={"container m-auto"}>
                 <div className={"w-full grid grid-cols-2 gap-16"}>
@@ -13,11 +13,9 @@ export default (
                     </div>
                 </div>
             </div>
-
-            
         </div>
 
-        <div className={"max-h-screen bg-gray-775 text-white py-10"}>
+        <div className={"max-h-screen bg-gray-800 text-white py-10"}>
             <div className={"container"}>
                 <div>
                     <p className={"text-white text-lg"}>

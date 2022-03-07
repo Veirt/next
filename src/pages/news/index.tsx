@@ -21,27 +21,18 @@ const News = ({ newsData }: IProps) => {
 
     return (
         <Base meta={<Meta title={t('page.queue.titles.latestNews')} />} ads={{ enableBottomRail: true }}>
-            <div className="container container-margin pb-8">
-                <div className="grid grid-cols-3 gap-8 py-10">
+            <div className="container container-padding container-content">
+                <div className="grid grid-cols-3 gap-8 mb-4 py-16 border-t border-gray-800">
                     <div className="col-span-full lg:col-span-2 lg:pr-32 my-auto">
                         <h1 className="h1-jumbo">{t('page.queue.titles.latestNews')}</h1>
                         <p className="pt-6 text-lg">
                             Check out our latest news and updates regarding Keymash and learn about any upcoming tournaments and events!
                         </p>
                     </div>
-                    <div className="col-span-full lg:col-span-1 my-auto">
-                        {newsData.map((row, index) => (index === 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
-                    </div>
                 </div>
 
-                <AdvertisementDisplay className="mb-4">
-                   
-                </AdvertisementDisplay>
-                
-                <div className="content-box">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                        {newsData.map((row, index) => (index > 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                    {newsData.map((row, index) => (index > 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
                 </div>
 
                 <AdvertisementDisplay className="mt-4">

@@ -124,15 +124,41 @@ const Levelbar = () => {
         }
     }, [ isNotSmallDevice ])
 
+    const renderDropdown = () => (
+        <div className={`dropdown w-40 ${toggleSitebar ? 'is-open' : 'is-not'}`} style={{ marginTop: '4rem' }}>
+            {links.map((item) => (
+                <Link key={item.link} to={item.link} className={`item ${router.asPath.startsWith(item.link) && "is-active"}`}>
+                    {t(item.name)}
+                </Link>
+            ))}
+
+            <div className="border-t border-gray-500" />
+
+            {socials.map((item) => (
+                <a key={item.link} href={item.link} target="_blank" rel="noreferrer" className={"item"}>
+                    <div className="flex">
+                        <div className={"w-8"}>
+                            <FontAwesomeIcon icon={item.icon} />
+                        </div>
+                        <div className={"w-auto"}>
+                            {item.name}
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+    );
+
     return (
         smallDevice ? (
             <>
                 <div className={"fixed top-0 left-0 right-0 z-50 bg-gray-775 shadow"}>
                     <div className={"flex py-1 px-10 justify-between"}>
-                        <div className={"w-auto pt-1 my-auto"}>
+                        <div className={"w-auto pt-1 my-auto relative"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto focus:outline-none"}>
                                 <img src={"/assets/logo_icon.svg"} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
+                            {renderDropdown()}
                         </div>
                         <div className={"w-auto"}>
                             <Userbar />
@@ -168,10 +194,12 @@ const Levelbar = () => {
                 <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 navigationBar`}>
                     <div className={"container flex"}>
                         <div className="w-44 relative my-auto py-3">
-                            <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-11 h-11 absolute -left-1 mb-px top-2 bottom-0 h-full hover:opacity-10 bg-white opacity-0 rounded-xl transition ease-in-out duration-300"} />
+                            <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={`w-11 h-11 absolute -left-1 mb-px top-2 bottom-0 h-full ${toggleSitebar ? 'opacity-10' : 'opacity-0 hover:opacity-10'} bg-white opacity-0 rounded-xl transition ease-in-out duration-300`} />
                             <Link to="/" className="my-auto">
                                 <img src={'/assets/logo_text.svg'} alt={"Logo"} className={"w-full h-auto"} />
                             </Link>
+
+                            {renderDropdown()}
                         </div>
                         <Link to={"/"} className={`${navCSS} ${router.asPath === "/" && activeCSS}`}>
                             {t('component.navbar.play')}
@@ -198,26 +226,6 @@ const Levelbar = () => {
                             </div>
                         )}
                     </div>
-                </div>
-
-                <div style={{ left: `${!toggleSitebar ? '-80' : '0'}%` }} className={"w-44 mt-16 z-20 fixed -top-1 left-0 bottom-0 h-screen bg-gray-900 transition-all ease-in-out duration-300"}>
-                    {links.map((item) => (
-                        <Link key={item.link} to={item.link} className={`block hover:bg-gray-825 transition ease-in-out duration-300 p-3 text-sm uppercase font-semibold text-white tracking-tight ${router.asPath.startsWith(item.link) && "bg-gray-825"}`}>
-                            {t(item.name)}
-                        </Link>
-                    ))}
-                    <div className={"border-t border-gray-800"} />
-                    {socials.map((item) => (
-                        <a key={item.link} href={item.link} target="_blank" rel="noreferrer" className={"flex hover:bg-gray-825 transition ease-in-out duration-300 p-3 text-sm uppercase font-semibold text-white tracking-tight"}>
-                            <div className={"w-12"}>
-                                <FontAwesomeIcon icon={item.icon} />
-                            </div>
-                            <div className={"w-auto"}>
-                                {item.name}
-                            </div>
-                        </a>
-                    ))}
-
                 </div>
             </>
         )

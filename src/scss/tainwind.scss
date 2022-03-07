@@ -45,6 +45,10 @@ body {
     @apply overflow-hidden block absolute top-0 w-full bg-gradient-to-b from-gray-900 to-transparent opacity-100;
 }
 
+.content-box-basic {
+  @apply bg-gray-750 bg-opacity-90 rounded-xl shadow-xl;
+}
+
 .content-box {
   @apply relative p-8 bg-gray-750 bg-opacity-90 rounded-xl shadow-xl;
 }

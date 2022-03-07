@@ -1,5 +1,5 @@
 export default (
-    <div className={"mt-12 text-center lg:text-left"}>
+    <div className={"text-center lg:text-left"}>
       <div className={"relative hero flex py-24 bg-gray-900"} style={{ backgroundImage: `url('/assets/about/CONTRIBUTE.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className={"container m-auto"}>
           <div className={"w-full grid grid-cols-2 gap-16"}>
@@ -13,7 +13,7 @@ export default (
         </div>
       </div>
 
-      <div className={"bg-gray-775 py-10"}>
+      <div className={"py-10 bg-gray-800"}>
         <div className={"container"}>
           <div className={"grid grid-cols-1 gap-8"}>
             <div>

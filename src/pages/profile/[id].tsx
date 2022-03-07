@@ -125,7 +125,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                         </div>
                     </div> 
                     <div className={"lg:col-span-2"}>
-                        <div className={"m-auto mb-3 rounded-xl py-6 truncate font-semibold text-center text-white text-sm xl:text-base bg-gray-900 bg-opacity-70"}>{playerData?.description}</div>
+                        <div className={"m-auto mb-4 rounded-xl py-6 h-20 truncate font-semibold text-center text-white text-sm xl:text-base bg-gray-900 bg-opacity-70"}>{playerData?.description}</div>
                         <div className={"grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 bg-gray-750 shadow-lg rounded-xl"}>
                             {profileItems.map((item, index) => (
                                 <button key={item.tab} onClick={item.onClick} className={`${index === 0 ? 'rounded-l-xl' : ''} ${index === profileItems.length ? 'rounded-r-xl' : ''} ${item.tab === tab ? 'bg-gray-775 bg-opacity-70' : ''} block text-center text-white uppercase font-semibold tracking-wider text-xxs sm:text-xs py-2 focus:outline-none hover:border-orange-400 transition ease-in-out duration-300`}>
