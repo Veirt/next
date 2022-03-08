@@ -18,6 +18,7 @@ import Link from '../../components/Uncategorized/Link';
 import { Meta } from '../../layout/Meta';
 import Base from '../../templates/Base';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import AdvertisementUnit from '../../components/Advertisement/Units/AdvertisementUnit';
 
 interface IProps {
     type: string;
@@ -197,16 +198,16 @@ const Leaderboards = (props: IProps) => {
                         </div>
 
                         <AdvertisementDisplay className="mt-4" downSize>
-                        
+                            <AdvertisementUnit type="responsive-square-one" />
                         </AdvertisementDisplay>
 
                         <AdvertisementDisplay className="mt-4" downSize>
-                        
+                            <AdvertisementUnit type="responsive-square-two" />
                         </AdvertisementDisplay>
                     </div>
 
                     <AdvertisementDisplay className="col-span-full">
-                    
+                        <AdvertisementUnit type="leaderboard-bottom" />
                     </AdvertisementDisplay>
                 </div>
             </div>

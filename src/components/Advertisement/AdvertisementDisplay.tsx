@@ -37,7 +37,7 @@ const AdvertisementDisplay = (props: IProps) => {
         <div className={`${height > 50 ? `content-box w-full flex ${className}` : ''}`} style={{ paddingTop: 0, paddingBottom: 0, height: `${height}px` }}>
             <div className={`w-full flex justify-center items-center`}>
                 <div ref={adRef} className={` ${downSize ? 'transform scale-90' : ''}`}>
-                    {!children ? <div className="bg-black h-32 w-80" /> : children}
+                    {!children ? <div className="bg-gray-900 h-32 w-80 rounded-lg flex justify-center items-center">Ad Unit Not Inserted</div> : children}
                 </div>
             </div>
         </div>
