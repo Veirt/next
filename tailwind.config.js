@@ -31,6 +31,7 @@ module.exports = {
       '2xl': '1300px',
       '3xl': '1340px', 
       '16-9': '1920px',
+      'ads': '1920px', 
     }, 
     colors: {
       transparent: 'transparent',

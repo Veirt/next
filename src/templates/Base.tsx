@@ -93,10 +93,10 @@ const Base = (props: IMainProps) => {
                 <div className="bgOverlay" />
                 {!props.ads?.disableStickyVertical && (
                     <>
-                        <div className="absolute top-32 left-4">
+                        <div className="absolute top-32 left-4 hidden ads:block">
                             <AdvertisementUnit type="responsive-skyscraper-one" />
                         </div>
-                        <div className="absolute top-32 right-4">
+                        <div className="absolute top-32 right-4 hidden ads:block">
                             <AdvertisementUnit type="responsive-skyscraper-two" />
                         </div>
                     </>

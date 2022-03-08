@@ -22,7 +22,16 @@ const AdvertisementUnit = (props: IProps) => {
     else if (type === 'responsive-skyscraper-two')
         useName = 'responsive-bottom-skyscraper';
 
-    return <div id={useName} className="pw pwUnit" />;
+    // return <div id={useName} className="pw pwUnit" />;
+
+    if (useName.includes('leaderboard'))
+        return <div className="w-64 sm:w-80 md:w-92 lg:w-128 xl:w-164 mx-auto rounded-lg bg-gray-700 h-16" />
+    else if (useName.includes('square'))
+        return <div className="w-64 mx-auto rounded-lg bg-gray-700 h-64" />
+    else if (useName.includes('skyscraper'))
+        return <div className="w-64 mx-auto rounded-lg bg-gray-700 h-128" />
+    else 
+        return <></>;
 }
 
 export default AdvertisementUnit;
