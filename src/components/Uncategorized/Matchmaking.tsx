@@ -31,7 +31,7 @@ const Queue = () => {
         <>
             {redirect && redirect !== '' && <Redirect to={redirect} />}
             {inQueue && (
-                <div className="fixed top-14 xl:top-16 xl:mt-0 right-0 left-0 z-50">
+                <div className="fixed top-14 xl:top-0 xl:mt-0 right-0 left-0 z-50">
                     <div className="flex justify-center"> 
                         <div className={`${!queueFound ? 'bg-orange-300 border-orange-500 text-orange-900' : 'bg-green-300 border-green-500 text-green-900'} rounded-b-xl shadow-md w-72 px-4 py-2`}>
                             <div className="flex justify-between">
@@ -43,7 +43,7 @@ const Queue = () => {
                                     }
                                 </div>
                                 {!queueFound && (
-                                    <button type="button" className="focus:outline-none text-orange-900" onClick={() => setInQueue(false)}>
+                                    <button type="button" className="focus:outline-none text-orange-900 hover:opacity-70 transition ease-in-out duration-300" onClick={() => setInQueue(false)}>
                                         <FontAwesomeIcon icon={faTimes} className="mr-2" />
                                     </button>
                                 )}
