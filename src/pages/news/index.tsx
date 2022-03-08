@@ -20,9 +20,9 @@ const News = ({ newsData }: IProps) => {
     const getLatestNewsId = typeof localStorage !== 'undefined' ? parseInt((localStorage.getItem('latestNewsId') || ''), 10) || 0 : 0;
 
     return (
-        <Base meta={<Meta title={t('page.queue.titles.latestNews')} />} ads={{ enableBottomRail: true }}>
+        <Base meta={<Meta title={t('page.queue.titles.latestNews')} />} ads={{ enableBottomRail: true }} contentTopBorder>
             <div className="container container-padding container-content">
-                <div className="grid grid-cols-3 gap-8 mb-4 py-16 border-t border-gray-800">
+                <div className="grid grid-cols-3 gap-8 mb-4 py-16">
                     <div className="col-span-full lg:col-span-2 lg:pr-32 my-auto">
                         <h1 className="h1-jumbo">{t('page.queue.titles.latestNews')}</h1>
                         <p className="pt-6 text-lg">

@@ -5,11 +5,13 @@ interface IProps {
     className?: string;
     type?: string;
     children: ReactNode;
+
+    downSize?: boolean;
 }
 
 const AdvertisementDisplay = (props: IProps) => {
 
-    const { className, children } = props;
+    const { className, children, downSize } = props;
     const adRef = useRef<HTMLDivElement | null>(null);
     const updateTimer = useRef<NodeJS.Timer | null>(null);
 
@@ -34,7 +36,7 @@ const AdvertisementDisplay = (props: IProps) => {
     return (sessionData && !sessionData.patreon) ? (
         <div className={`${height > 50 ? `content-box w-full flex ${className}` : ''}`} style={{ paddingTop: 0, paddingBottom: 0, height: `${height}px` }}>
             <div className={`w-full flex justify-center items-center`}>
-                <div ref={adRef}>
+                <div ref={adRef} className={` ${downSize ? 'transform scale-90' : ''}`}>
                     {!children ? <div className="bg-black h-32 w-80" /> : children}
                 </div>
             </div>

@@ -1,5 +1,9 @@
 .button-dropdown {
-   @apply relative px-4 py-1.5 text-left focus:outline-none transition ease-in-out duration-300 text-white text-sm border rounded-lg;
+  @apply relative px-4 py-1.5 text-left focus:outline-none transition ease-in-out duration-300 text-white text-sm border rounded-lg;
+}
+
+.button-dropdown-alt {
+  @apply relative px-6 py-3 text-left focus:outline-none transition ease-in-out duration-300 text-white text-sm border rounded-lg;
 }
 
 .dropdown {
@@ -8,6 +12,10 @@
  
 .dropdown-gap {
   @apply mt-16 #{!important};
+} 
+
+.dropdown-gap-small {
+  @apply mt-12 #{!important};
 } 
 
 .dropdown-2xl {

@@ -26,10 +26,8 @@ const News = ({ data }: IProps) => {
     }, [data]);
 
     return (
-        <Base meta={<Meta title={data.title} description={data.content.substr(0, 150) + '...'} customImage={`/news/${data.thumbnail}.jpg`} isThumbnail reverseTitle />} ads={{ enableBottomRail: true }}>
+        <Base meta={<Meta title={data.title} description={data.content.substr(0, 150) + '...'} customImage={`/news/${data.thumbnail}.jpg`} isThumbnail reverseTitle />} ads={{ enableBottomRail: true }} contentTopBorder>
             <div className="container">
-                <div className="border-t border-gray-800" />
-                
                 <div className={"container-smaller container-margin container-content"}>
                     <div className="py-14">
                         <h1 className="h1">{data.title}</h1>

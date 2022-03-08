@@ -52,9 +52,9 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
 
     if (redirect) return <Redirect to={redirect} />;
     return (
-        <Base meta={<Meta title={tournamentData?.name || ''} />} ads={{ enableBottomRail: true }} isLoaded={(tournamentData !== null)}>
+        <Base meta={<Meta title={tournamentData?.name || ''} />} ads={{ enableBottomRail: true }} isLoaded={(tournamentData !== null)} contentTopBorder>
             <ReactTooltip />
-            <div className="container container-margin container-content">
+            <div className="container container-margin container-content pt-8">
                 <div className="flex flex-wrap justify-center lg:justify-start gap-2">
                     <div className="w-full text-center lg:w-auto lg:text-left my-auto">
                         <div className="flex">

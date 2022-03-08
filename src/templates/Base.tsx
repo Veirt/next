@@ -23,6 +23,7 @@ type IMainProps = {
     isLoaded?: boolean;
     noAnimate?: boolean;
     noNav?: boolean;
+    contentTopBorder?: boolean;
 };
 
 const Base = (props: IMainProps) => {
@@ -83,6 +84,11 @@ const Base = (props: IMainProps) => {
             <ReactTooltip /> 
             {props.meta}
             {!props.noNav ? <Levelbar /> : ''}
+            {props.contentTopBorder && (
+                <div className="container">
+                    <div className="border-t border-gray-800" />
+                </div>
+            )}
             <main>
                 <div className="bgOverlay" />
                 {!props.ads?.disableStickyVertical && (
