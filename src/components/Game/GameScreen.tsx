@@ -194,7 +194,8 @@ const GameScreen = (props: IProps) => {
                 setQueueRoundEnd(false);
                 setQueueRoundWon(false);
                 setGameDisabled(false);
-            }
+            } else 
+                setGameDisabled(true);
 
             setGameCountdown(roundedTimer);
         });
@@ -248,7 +249,6 @@ const GameScreen = (props: IProps) => {
         });
 
         socket.on('updateWPM', (data: SocketMatchPlayerData) => {
-            console.log('Update WPM Called');
             if (data.spectatorOnly && !spectator.current)
                 return;
 

@@ -59,7 +59,7 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
     return (
         <>
             {renderCountdown >= -1 && (
-                <div id="countdownTimer" style={{ opacity: renderCountdown > 0 ? '1' : '0', zIndex: 55 }} className="fixed left-0 right-0 top-0 transition ease-in-out duration-500">
+                <div id="countdownTimer" style={{ opacity: renderCountdown > 0 ? '1' : '0', zIndex: 1000 }} className="fixed inset-0 transition ease-in-out duration-500">
                     <div className="w-full flex h-screen bg-black bg-opacity-70">
                         <div className="m-auto">
                             <div className={"max-w-screen-sm mx-auto"}>
