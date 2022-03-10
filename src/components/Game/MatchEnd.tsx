@@ -96,6 +96,8 @@ const MatchEnd = (props: IProps) => {
 
     const boxCSS = 'p-4 lg:px-8 lg:py-4 text-center bg-gray-825 rounded-2xl shadow-md';
 
+    const isPublicOrRankedMatch = (matchData.flagId === 0 || matchData.flagId === 1 || matchData.flagId === 3);
+
     return useRoundData ? (
         <div className="relative">
             <ReactTooltip />
@@ -209,13 +211,15 @@ const MatchEnd = (props: IProps) => {
                                         </div>
                                     </div>
 
-                                    <div className="absolute bottom-8 left-8 right-8">
-                                        <PlayerExperience experience={0} level={data.level.after.Index} next={data.level.after.Next} percentage={data.level.after.Percentage} size={2} />
-                                        <div className="flex justify-between mt-2">
-                                            <div>Level {data.level.after.Index}</div>
-                                            <div>Level {data.level.after.Index + 1}</div>
+                                    {isPublicOrRankedMatch ? (
+                                        <div className="absolute bottom-8 left-8 right-8">
+                                            <PlayerExperience experience={0} level={data.level.after.Index} next={data.level.after.Next} percentage={data.level.after.Percentage} size={2} />
+                                            <div className="flex justify-between mt-2">
+                                                <div>Level {data.level.after.Index}</div>
+                                                <div>Level {data.level.after.Index + 1}</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    ) : <></>}
                                 </div>
                             </>
                         )}

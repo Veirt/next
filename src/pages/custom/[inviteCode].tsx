@@ -226,7 +226,7 @@ const Custom = (props: IProps) => {
                             <div className="grid grid-cols-1 3xl:grid-cols-2 gap-4">
                                 <div>
                                     <input disabled={owner !== sessionData?.playerId} className="w-full xl:w-auto p-4 text-white bg-gray-750 rounded-md text-xl tracking-wide uppercase text-white font-semibold focus:outline-none" name="title" maxLength={24} onChange={e => handleUpdateSettings('name', e.target.value)} defaultValue={name} />
-                                    <span data-tip="Achievements and Records are disabled in Custom matches." className="hidden 3xl:inline ml-3 text-gray-200">
+                                    <span data-tip="Rewards, Achievements and Records are disabled in Custom matches." className="hidden 3xl:inline ml-3 text-gray-200">
                                         <FontAwesomeIcon icon={faInfoCircle} className="text-xl" />
                                     </span>
                                 </div>
