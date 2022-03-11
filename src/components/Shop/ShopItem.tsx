@@ -18,9 +18,9 @@ const ShopItem:FC<IProps> = (props) => {
     const { t } = useTranslation();
 
     return (
-        <div className={`relative bg-gray-775 rounded-lg shadow-lg ${props.level > props.player.level.Index || props.price > props.player.currency || props.player.inventory.includes(props.file) ? 'opacity-70' : ''}`}>
+        <div className={`relative bg-gray-800 rounded-lg ${props.level > props.player.level.Index || props.price > props.player.currency || props.player.inventory.includes(props.file) ? 'opacity-70' : ''}`}>
             {props.showType && (
-                <div className={"absolute top-0 right-5 -mt-2 text-white uppercase font-semibold text-xs bg-gray-700 px-3 rounded-full"}>
+                <div className={"absolute top-0 right-5 -mt-2 text-white uppercase font-semibold text-xs bg-gray-700 border border-gray-600 border-opacity-50 px-3 rounded-full"}>
                     {(t(props.itemType)).substring(0, t(props.itemType).length - 1)}
                 </div>
             )}
@@ -62,7 +62,7 @@ const ShopItem:FC<IProps> = (props) => {
                     </div>
                     <div className={"w-auto my-auto"}>
                         {!props.player.inventory.includes(props.file) && (
-                            <div className={"bg-black bg-opacity-40 text-white text-sm uppercase font-semibold px-4 py-0.5 rounded-xl"}>
+                            <div className={"bg-gray-850 text-white text-sm uppercase font-semibold px-4 py-0.5 rounded-xl"}>
                                 <FontAwesomeIcon icon={faCoins} className={'text-yellow-400'} /> {props.price.toLocaleString()}
                             </div>
                         )}
