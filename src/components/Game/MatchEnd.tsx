@@ -229,7 +229,7 @@ const MatchEnd = (props: IProps) => {
                                     <div className={"w-auto pb-4 sm:pb-0"}>
                                         <div className={"flex text-white"}>
                                             {subtabs.map((item, index) => (
-                                                <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`${index === 0 ? 'rounded-l-lg' : ''} ${index === 2 ? 'rounded-r-lg' : ''} transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${subtab !== item.tab ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
+                                                <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`${index === 0 ? 'rounded-l-lg' : ''} ${index === 2 ? 'rounded-r-lg' : ''} transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-4 text-sm ${subtab !== item.tab ? 'bg-gray-775' : 'bg-gray-800'} hover:bg-gray-800 animation-short`}>
                                                   {item.name}
                                                 </button>
                                             ))}
