@@ -195,6 +195,7 @@ const GameScreen = (props: IProps) => {
                 setQueueRoundWon(false);
                 setGameDisabled(false);
             } else {
+                console.log('RESET ITEMS HERE');
                 setGameDisabled(true);
                 setParticipantsData((participants) => {
                     participants.map((item) =>  {
@@ -232,7 +233,6 @@ const GameScreen = (props: IProps) => {
                     item.correctWords = 0;
                     item.correctKeystrokeString = '';
                     item.currentInput = '';
-                    item.Quit = 0;
                     item.Placement = 0;
                     item.PlacementFinal = 0;
                 });
