@@ -42,15 +42,15 @@ const Play = (props: IProps) => {
 
                 {(latestAnnouncement !== String(announcement.created) && announcement && announcement.value) && (
                     <div className="mb-4 bg-orange-400 px-1 py-1 rounded-xl shadow-xl flex relative">
-                        <div className="px-3 py-1 bg-orange-900 text-orange-200 font-semibold rounded-xl mr-2">
+                        <div className="hidden sm:block px-3 py-1 bg-orange-900 text-orange-200 font-semibold rounded-xl mr-2">
                             <FontAwesomeIcon icon={faBullhorn} className="mr-1" />
                             {announcement.value.split(': ')[0]}
                         </div>
-                        <div className="my-auto text-orange-900 font-semibold">
+                        <div className="pl-2 sm:pl-0 my-auto text-orange-900 font-semibold">
                             {announcement.value.split(': ')[1]}
                         </div>
 
-                        <button type="button" className="absolute top-1.5 right-4 text-xl text-orange-900 hover:opacity-70 transition ease-in-out duration-300">
+                        <button type="button" className="absolute top-0.5 sm:top-1.5 right-4 text-xl text-orange-900 hover:opacity-70 transition ease-in-out duration-300">
                             <FontAwesomeIcon icon={faTimes} onClick={() => { setLatestAnnouncement(String(announcement.created)); updateLatestAnnouncement(String(announcement.created)); }} />
                         </button>
                     </div>
