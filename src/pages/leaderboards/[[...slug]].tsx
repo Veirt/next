@@ -140,7 +140,7 @@ const Leaderboards = (props: IProps) => {
                     <div className="col-span-full lg:col-span-1">
                         <div className={"grid grid cols-2 gap-4"}>
                             <div className="relative w-full">
-                                <button type={"button"} className={"w-full button-dropdown-alt border-transparent bg-gray-700 hover:bg-gray-725"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
+                                <button type={"button"} className={"w-full button-dropdown-alt border-transparent bg-gray-750 hover:bg-gray-775"} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
                                     <FontAwesomeIcon icon={faFilter} className={"mr-3"} />
                                     {type.slice(0, 1).toUpperCase()}{type.slice(1, type.length)}
                                     <div className={"absolute right-0 top-0 mt-3 mr-6"}>
@@ -158,7 +158,7 @@ const Leaderboards = (props: IProps) => {
 
                             {type === 'casual' && (
                                 <div className={"relative w-full"}>
-                                    <button type={"button"} className={"w-full button-dropdown-alt border-transparent bg-gray-700 hover:bg-gray-725"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
+                                    <button type={"button"} className={"w-full button-dropdown-alt border-transparent bg-gray-750 hover:bg-gray-775"} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
                                         <FontAwesomeIcon icon={faSort} className={"mr-4"} />
                                         {/* @ts-ignore */}
                                         {filterItemToName[filter]}

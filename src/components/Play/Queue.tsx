@@ -197,7 +197,7 @@ const Queue = (props: IProps) => {
         {
             name: 'page.queue.ranked.title',
             description: 'page.queue.ranked.description',
-            image: `/ranks/${(playerRank || 'Unrated').toLowerCase()}.svg`,
+            image: `/ranks/${(playerRank || 'Unrated').replaceAll(' ', '').toLowerCase()}.svg`,
             enabled: (loading === null),
             content: true,
             modes: [

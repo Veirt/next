@@ -194,8 +194,18 @@ const GameScreen = (props: IProps) => {
                 setQueueRoundEnd(false);
                 setQueueRoundWon(false);
                 setGameDisabled(false);
-            } else 
+            } else {
                 setGameDisabled(true);
+                setParticipantsData((participants) => {
+                    participants.map((item) =>  {
+                        item.Progress = 0;
+                        item.WPM = 0;
+                        item.Accuracy = 0;
+                    });
+    
+                    return [ ...participants ];
+                });
+            }  
 
             setGameCountdown(roundedTimer);
         });
