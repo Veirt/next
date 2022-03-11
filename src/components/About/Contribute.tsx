@@ -3,7 +3,7 @@ export default (
         <div className={"relative py-16 px-8 bg-gray-900 rounded-xl shadow-lg"} style={{ backgroundImage: `url('/assets/about/CONTRIBUTE.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
               <h1 className={"text-2xl sm:text-3xl lg:text-4xl xl:text-5xl uppercase text-orange-400"}>Contribute</h1>
               <p className={"block text-lg w-full md:w-10/12 lg:w-8/12 xl:w-6/12 pt-6"}>
-                  Start contributing to Keymash by submitting texts that can be used in the game or helping with translations
+                  Start contributing to Keymash by submitting texts that can be used in the game or helping with translations.
               </p>
         </div>
 
