@@ -122,65 +122,68 @@ const Shop = () => {
           {redirect && <Redirect to={redirect} />}
           <Base meta={<Meta title={t('component.navbar.shop')} />} isLoaded={loaded}>
               <div className={'container container-margin'}>
-                  <AdvertisementDisplay className="mb-6">
-
-                  </AdvertisementDisplay>
-                  <div className="content-box">
-                      <div className={"flex flex-wrap gap-4"}>
-                          <div className={"w-full lg:w-auto"}>
-                              <h1 className={"text-white uppercase"}>{t('component.navbar.shop')}</h1>
+                  <div className="content-box mb-4" style={{ padding: '1.25rem 2rem' }}>
+                      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                          <div className="text-center lg:text-left">
+                              <h1>{t('component.navbar.shop')}</h1>
                           </div>
-                          {tabs.map((item) => (
-                              <button key={item.name} type={"button"} onClick={item.onClick} className={`${item.name === tab ? 'bg-gray-800 text-orange-400' : 'bg-gray-775 text-white'} hover:bg-gray-800 text-sm  uppercase font-semibold px-6 py-1 rounded-xl shadow h-10 my-auto transition ease-in-out duration-300`}>
-                                {t(item.name)}
-                              </button>
-                          ))}
-
-                          <div className={"w-auto lg:ml-auto my-auto"}>
+                          <div className="md:col-span-2 lg:col-span-3 text-center my-auto">
+                              {tabs.map((item) => (
+                                  <button key={item.name} type={"button"} onClick={item.onClick} className={`mb-2 md:mb-0 ${item.name === tab ? 'bg-gray-800 text-orange-400' : 'bg-gray-775 text-white'} hover:bg-gray-800 text-sm uppercase font-semibold px-6 py-1 rounded-xl h-8 my-auto mr-3 transition ease-in-out duration-300`}>
+                                    {t(item.name)}
+                                  </button>
+                              ))}
+                          </div>
+                          <div className="text-center lg:text-right my-auto">
                               <div className={"text-xl font-semibold"}>
                                   <FontAwesomeIcon icon={faCoins} className={'text-yellow-400 mr-3'} />
                                   {currency.toLocaleString()}
                               </div>
                           </div>
                       </div>
-
-                      {tabs.map(row => row.name === tab && row.subtabs && (
-                          <div className={'flex flex-wrap mt-4 bg-black bg-opacity-20 rounded-l-lg rounded-r-lg shadow'}>
-                              {row.subtabs.map((item, index) => (
-                                  <button key={item.name} type={'button'} onClick={() => setSubtab(item.order)}
-                                      className={`${index === 0 && 'rounded-l-lg'} ${index === row.subtabs.length && 'rounded-r-lg'} ${subtab === item.order ? 'text-orange-400 bg-gray-850' : 'text-white border-transparent'} py-2 w-32 text-center text-xs hover:text-gray-300 font-semibold uppercase transition ease-in-out duration-300`}
-                                  >
-                                      {item.name}
-                                  </button>
-                              ))}
-                          </div>
-                      ))}
-
-                      <div className={'py-8'}>
-                        {tab === 'page.shop.featured' && (
-                            <div>
-                                <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
-                                <div className={"mt-10"}>
-                                    <h2>Newest Additions</h2>
-                                    <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6'}>
-                                        {tabs.map(row => row.data && row.data.map((item) => (featuredItems.includes(item.file) && !item.secret) && (
-                                            <ShopItem key={item.file} showType player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
-                                        )))}
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                        {tab !== 'page.shop.featured' && (
-                            <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'}>
-                                {tabs.map(row => row.name === tab && row.data && row.data.map(item => !item.secret && (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
-                                    <ShopItem key={item.file} player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
-                                )))}
-                            </div>
-                        )}
-                      </div>
                   </div>
-                  <AdvertisementDisplay className="mt-6">
-                    
+
+                  {tabs.map(row => row.name === tab && row.subtabs && (
+                      <div className={'bg-gray-750 flex flex-wrap justify-center mb-4 rounded-lg shadow'}>
+                          {row.subtabs.map((item, index) => (
+                              <button 
+                                  key={item.name} 
+                                  type={'button'} 
+                                  onClick={() => setSubtab(item.order)}
+                                  className={`${index === row.subtabs.length && 'rounded-r-lg'} ${subtab === item.order ? 'text-orange-400 bg-gray-775' : 'bg-gray-750 hover:bg-gray-775'} py-2.5 w-32 text-center text-sm font-semibold transition ease-in-out duration-300`}
+                              >
+                                  {item.name}
+                              </button>
+                          ))}
+                      </div>
+                  ))}
+
+                  {tab === 'page.shop.featured' && (
+                      <div>
+                          <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
+                          <AdvertisementDisplay className="mt-4">
+
+                          </AdvertisementDisplay>
+                          <div className={"content-box mt-4"}>
+                              <h2>Newest Additions</h2>
+                              <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6'}>
+                                  {tabs.map(row => row.data && row.data.map((item) => (featuredItems.includes(item.file) && !item.secret) && (
+                                      <ShopItem key={item.file} showType player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
+                                  )))}
+                              </div>
+                          </div>
+                      </div>
+                  )}
+                  {tab !== 'page.shop.featured' && (
+                      <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 content-box'}>
+                          {tabs.map(row => row.name === tab && row.data && row.data.map(item => !item.secret && (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
+                              <ShopItem key={item.file} player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
+                          )))}
+                      </div>
+                  )}
+
+                  <AdvertisementDisplay className="mt-4">
+                  
                   </AdvertisementDisplay>
               </div>
           </Base>
