@@ -195,7 +195,6 @@ const GameScreen = (props: IProps) => {
                 setQueueRoundWon(false);
                 setGameDisabled(false);
             } else {
-                console.log('RESET ITEMS HERE');
                 setGameDisabled(true);
                 setParticipantsData((participants) => {
                     participants.map((item) =>  {
@@ -249,10 +248,18 @@ const GameScreen = (props: IProps) => {
                 DebugService.add('[Match] Players have been fetched');
                 let i:number; const dataLength = data.length;
                 for (i = 0; i < dataLength; i++) {
-                    /* @ts-ignore */ 
-                    if (data[i].playerId === sessionData.playerId && data[i].teamId === 0) 
+                    const usePlayer = data[i] as SocketMatchPlayerData;
+                    const participantIndex = participantsData.findIndex((item) => item.playerId === usePlayer.playerId);
+
+                    if (usePlayer.playerId === sessionData?.playerId && usePlayer.teamId === 0) 
                         spectator.current = true;
+
+                    if (participantIndex !== -1) {
+                        usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
+                        usePlayer.Progress = participantsData[participantIndex]?.Progress || 0;
+                    }
                 }
+
                 setGamePlayers(dataLength || 0);
                 setParticipantsData([ ...data ]);
             } 
