@@ -115,7 +115,7 @@ const Userbar = (props: IProps) => {
                                 </div>
                             </div>
                             <div className={`w-auto relative ${isSidebar? 'pl-0 lg:pl-3' : 'pl-3'}`}>
-                                <Link to="/auth/login" className="block focus:outline-none text-base hover:bg-gray-775 rounded tracking-wider uppercase py-2 px-3 hover:opacity-70 transition ease-in-out duration-200 text-white font-semibold">
+                                <Link to="/auth/login" className="block focus:outline-none text-base hover:bg-gray-775 rounded-lg tracking-wider uppercase py-2 px-3 hover:bg-opacity-70 transition ease-in-out duration-200 text-white font-semibold">
                                     <FontAwesomeIcon icon={faSignInAlt} className="mr-2" />
                                     <span>{t('component.navbar.login')}</span>
                                 </Link>
