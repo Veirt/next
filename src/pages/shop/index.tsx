@@ -124,7 +124,7 @@ const Shop = () => {
               <div className={'container container-margin'}>
                   <div className="content-box mb-4" style={{ padding: '1.25rem 2rem' }}>
                       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                          <div className="text-center lg:text-left">
+                          <div className="text-center lg:text-left -mt-1">
                               <h1>{t('component.navbar.shop')}</h1>
                           </div>
                           <div className="md:col-span-2 lg:col-span-3 text-center my-auto">
