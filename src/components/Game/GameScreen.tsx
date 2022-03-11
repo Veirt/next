@@ -246,22 +246,27 @@ const GameScreen = (props: IProps) => {
                 toast.error("updatePlayers unable to fetch players!");
             else {
                 DebugService.add('[Match] Players have been fetched');
-                let i:number; const dataLength = data.length;
-                for (i = 0; i < dataLength; i++) {
-                    const usePlayer = data[i] as SocketMatchPlayerData;
-                    const participantIndex = participantsData.findIndex((item) => item.playerId === usePlayer.playerId);
 
-                    if (usePlayer.playerId === sessionData?.playerId && usePlayer.teamId === 0) 
-                        spectator.current = true;
+                setGamePlayers(data.length || 0);
+                setParticipantsData((participantsData) => {
 
-                    if (participantIndex !== -1) {
-                        usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
-                        usePlayer.Progress = participantsData[participantIndex]?.Progress || 0;
+                    let i:number; const dataLength = data.length;
+                    for (i = 0; i < dataLength; i++) {
+                        const usePlayer = data[i] as SocketMatchPlayerData;
+                        const participantIndex = participantsData.findIndex((item) => item.playerId === usePlayer.playerId);
+
+                        if (usePlayer.playerId === sessionData?.playerId && usePlayer.teamId === 0) 
+                            spectator.current = true;
+
+                        if (participantIndex !== -1) {
+                            console.log(participantsData[participantIndex]);
+                            usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
+                            usePlayer.Progress = participantsData[participantIndex]?.Progress || 0;
+                        }
                     }
-                }
 
-                setGamePlayers(dataLength || 0);
-                setParticipantsData([ ...data ]);
+                    return [ ...data ];
+                });
             } 
         });
 
