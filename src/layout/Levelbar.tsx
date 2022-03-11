@@ -127,7 +127,7 @@ const Levelbar = () => {
     const renderDropdown = () => (
         <div className={`dropdown w-40 ${toggleSitebar ? 'is-open' : 'is-not'}`} style={{ marginTop: '4rem' }}>
             {links.map((item) => (
-                <Link key={item.link} to={item.link} className={`item ${router.asPath.startsWith(item.link) && "is-active"}`}>
+                <Link key={item.link} to={item.link} onClick={() => setToggleSitebar(false)} className={`item ${router.asPath.startsWith(item.link) && "is-active"}`}>
                     {t(item.name)}
                 </Link>
             ))}
