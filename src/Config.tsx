@@ -1,7 +1,7 @@
 export const toggleStaging = false;
 
 const config = {
-    versionControl: "2.1.0",
+    versionControl: "3.0.0",
     name: 'Keymash',
     slogan: 'Take your typing to the next level',
     defaultIcon: '/extras/avatar.jpg',

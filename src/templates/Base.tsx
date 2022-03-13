@@ -7,6 +7,7 @@ import AdvertisementUnit from '../components/Advertisement/Units/AdvertisementUn
 import LoadContent from '../components/LoadContent';
 import Matchmaking from '../components/Uncategorized/Matchmaking';
 import Redirect from '../components/Uncategorized/Redirect';
+import { toggleStaging } from '../Config';
 import { usePlayerContext } from '../contexts/Player.context';
 import useConfig from '../hooks/useConfig';
 import useGoogleAnalytics from '../hooks/useGoogleAnalytics';
@@ -91,7 +92,7 @@ const Base = (props: IMainProps) => {
             )}
             <main>
                 <div className="bgOverlay" />
-                {!props.ads?.disableStickyVertical && (
+                {(toggleStaging && !props.ads?.disableStickyVertical) && (
                     <>
                         <div className="absolute top-24 mt-1 left-4 hidden ads:block">
                             <AdvertisementUnit type="responsive-skyscraper-one" />
