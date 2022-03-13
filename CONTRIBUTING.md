@@ -11,9 +11,9 @@
 
 ## Getting Started
 
-Thank you for your interest in contributing to Keyma.sh - we are fairly new to this so we expect there to be some issues here and there. If you think this guide can be improved, then please submit a PR!
+Thank you for your interest in contributing to Keymash - we are fairly new to this so we expect there to be some issues here and there. If you think this guide can be improved, then please submit a PR!
 
-Keyma.sh was built with an esports-focused mindset while maintaining a simplified experience. Most new additions are expected to connect to multiple areas of the game intentionally and are generally thought-out.
+Keymash was built with an esports-focused mindset while maintaining a simplified experience. Most new additions are expected to connect to multiple areas of the game intentionally and are generally thought-out.
 
 While anyone can contribute to this repo, we expect that you have basic knowledge of HTML, CSS and Javascript. Our frontend is built with NextJS and was previously built with React, with Tailwind as our main form of styling.
 

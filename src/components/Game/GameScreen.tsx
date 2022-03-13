@@ -12,15 +12,13 @@ import Spectator from "./view/Spectator";
 import {toast} from "react-toastify";
 import DebugService from "../../services/DebugService";
 import {
+    SocketGameEndData,
     SocketMatchData,
-    SocketMatchEndData,
     SocketMatchPlayerData
 } from "../../types.client.socket";
 import Redirect from '../Uncategorized/Redirect';
 import Base from '../../templates/Base';
 import { Meta } from '../../layout/Meta';
-import SidebarSquare from '../Advertisement/SidebarSquare';
-import SidebarLong from '../Advertisement/SidebarLong';
 import useConfig from '../../hooks/useConfig';
 import { usePlayerContext } from '../../contexts/Player.context';
 
@@ -38,18 +36,18 @@ const GameScreen = (props: IProps) => {
     // Core
     const [ socket, setSocket ] = useState<Socket | null>(null);
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
+    const spectator = useRef<boolean>(false);
 
     // Intervals
     const gameTimerInterval = useRef<NodeJS.Timer | null>(null);
     
     // Contexts
     const { t } = useTranslation();
-    const { matchFinishBeep, upscaleMatchContainer, performanceMode, shortcutGameRedo } = useConfig();
+    const { matchFinishBeep, upscaleMatchContainer, focusMode, shortcutGameRedo } = useConfig();
     const { sessionData } = usePlayerContext();
 
     // States
     const [ redirect, setRedirect ] = useState<string>('');
-    const [ spectator, setSpectator ] = useState<boolean>(false);
     const [ loaded, setLoaded ] = useState<boolean>(false);
     const [ latency, setLatency ] = useState<number>(0);
     const [ gameToast, setGameToast ] = useState<string>('');
@@ -58,14 +56,15 @@ const GameScreen = (props: IProps) => {
     const [ gameTimer, setGameTimer ] = useState<number>(-1);
     const [ gameDisabled, setGameDisabled ] = useState<boolean>(true);
     const [ gamePlayers, setGamePlayers ] = useState<number>(0);
+    const [ participantsData, setParticipantsData ] = useState<SocketMatchPlayerData[]>([]);
+    const [ endMatchData, setEndMatchData ] = useState<SocketGameEndData | null>(null);
+    const [ matchData, setMatchData ] = useState<SocketMatchData | null>(null);
+    
     // TODO: might need to be re-looked below
     const [ queueRoundEnd, setQueueRoundEnd ] = useState<boolean>(false);
     const [ queueRoundWon, setQueueRoundWon ] = useState<boolean>(false);
     // 
     const [ gameRoundsTotal, setGameRoundsTotal ] = useState<number>(0);
-    const [ participantsData, setParticipantsData ] = useState<SocketMatchPlayerData[]>([]);
-    const [ endMatchData, setEndMatchData ] = useState<SocketMatchEndData | null>(null);
-    const [ matchData, setMatchData ] = useState<SocketMatchData | null>(null);
 
     // Global Hot Keys
     const keyMap = { GOTO_REDO: shortcutGameRedo.toLowerCase() };
@@ -136,6 +135,10 @@ const GameScreen = (props: IProps) => {
         socket.on('achievementUnlocked', (data: { message: string; }) => data.message ? toast.success(data.message) : false);
         socket.on('levelUp', (data: { level: string; }) => data.level ? toast.success(`You have ranked up to Level ${data.level}!`) : false);
         socket.on('forceEndMatch', () => socket.emit('sendWord', { forceEnd: 1 }));
+        socket.on('globalForceEnd', (data: { type: string }) => {
+            setGameDisabled(true);
+            socket.emit('globalForceEnd', data);
+        })
 
         // Match Fetching
         socket.on('matchNotFound', () => {
@@ -149,7 +152,7 @@ const GameScreen = (props: IProps) => {
             setLoaded(true);
         });
 
-        socket.on('endMatch', (data: SocketMatchEndData) => {
+        socket.on('endMatch', (data: SocketGameEndData) => {
             DebugService.add('[Match] Match has been successfully ended.');
             playSound();
 
@@ -166,8 +169,6 @@ const GameScreen = (props: IProps) => {
         // Timers
         socket.on('sendTimer', (data: { timer: number; }) => {
             DebugService.add('[Match] Timer has been sent and initialized');
-
-            // TODO: might need to be re-looked
             if (!gameTimerInterval.current) {
                 let newTimer = data.timer;
                 gameTimerInterval.current = setInterval(() => {
@@ -193,7 +194,19 @@ const GameScreen = (props: IProps) => {
                 setQueueRoundEnd(false);
                 setQueueRoundWon(false);
                 setGameDisabled(false);
-            }
+            } else {
+                setGameDisabled(true);
+                setParticipantsData((participants) => {
+                    participants.map((item) =>  {
+                        item.Progress = 0;
+                        item.WPM = 0;
+                        item.Accuracy = 0;
+                    });
+    
+                    return [ ...participants ];
+                });
+            }  
+
             setGameCountdown(roundedTimer);
         });
 
@@ -208,7 +221,23 @@ const GameScreen = (props: IProps) => {
             setGameDisabled(true);
             setGameRoundsTotal(data.roundsTotal);
 
-            socket.emit('roundReset', {});
+            setParticipantsData((participants) => {
+                participants.map((item) => {
+                    item.currentWord = data.textContent.split(' ')[0] || '';
+                    item.currentKeystroke = data.textContent.charAt(0) || '';
+                    item.Progress = 0;
+                    item.WPM = 0;
+                    item.Accuracy = 0;
+                    item.wordLetterIndex = 0;
+                    item.correctWords = 0;
+                    item.correctKeystrokeString = '';
+                    item.currentInput = '';
+                    item.Placement = 0;
+                    item.PlacementFinal = 0;
+                });
+
+                return [ ...participants ];
+            });
         });
 
         // Players 
@@ -217,71 +246,70 @@ const GameScreen = (props: IProps) => {
                 toast.error("updatePlayers unable to fetch players!");
             else {
                 DebugService.add('[Match] Players have been fetched');
-                let i:number; const dataLength = data.length;
-                for (i = 0; i < dataLength; i++) {
-                    /* @ts-ignore */ 
-                    if (data[i].playerId === sessionData.playerId && data[i].teamId === 0) 
-                        setSpectator(true);
-                }
-                setGamePlayers(dataLength || 0);
-                setParticipantsData([ ...data ]);
-            }
+
+                setGamePlayers(data.length || 0);
+                setParticipantsData((participantsData) => {
+
+                    let i:number; const dataLength = data.length;
+                    for (i = 0; i < dataLength; i++) {
+                        const usePlayer = data[i] as SocketMatchPlayerData;
+                        const participantIndex = participantsData.findIndex((item) => item.playerId === usePlayer.playerId);
+
+                        if (usePlayer.playerId === sessionData?.playerId && usePlayer.teamId === 0) 
+                            spectator.current = true;
+
+                        if (participantIndex !== -1) {
+                            console.log(participantsData[participantIndex]);
+                            usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
+                            usePlayer.Progress = participantsData[participantIndex]?.Progress || 0;
+                        }
+                    }
+
+                    return [ ...data ];
+                });
+            } 
         });
 
         socket.on('updateWPM', (data: SocketMatchPlayerData) => {
-            let i;
+            if (data.spectatorOnly && !spectator.current)
+                return;
+
             setParticipantsData((participantsData) => {
+                let i;
                 const pLength = participantsData ? participantsData.length : 0;
                 for (i = 0; i < pLength; i++) {
                     const participantData = participantsData[i];
                     if (participantData && participantData.playerId === data.playerId) {
-                        if (data.forceReset) {
-                            participantData.WPM = 0;
-                            participantData.Progress = 0;
-                            participantData.correctKeystrokes = 0;
-                            participantData.Accuracy = 100;
-                            participantData.correctKeystrokeString = "";
-                            participantData.currentKeystroke = data.currentKeystroke;
-                            participantData.currentWord = data.currentWord;
-                        } else {
-                            if (data.currentWord) participantData.currentWord = data.currentWord;
-                            if (data.WPM) participantData.WPM = data.WPM;
-                            if (data.Progress) participantData.Progress = data.Progress;
-                            if (data.Quit) participantData.Quit = data.Quit;
-                            if (data.roundsWon) participantData.roundsWon = data.roundsWon;
-                            if (data.Placement) participantData.Placement = data.Placement;
-                            if (data.PlacementFinal) participantData.PlacementFinal = data.PlacementFinal;
-                            if (data.correctKeystrokes) participantData.correctKeystrokes = data.correctKeystrokes;
-                            if (data.currentKeystroke) participantData.currentKeystroke = data.currentKeystroke;
-                            if (data.Accuracy) participantData.Accuracy = data.Accuracy;
-                        }
+                        if (data.currentWord) participantData.currentWord = data.currentWord;
+                        if (data.WPM) participantData.WPM = data.WPM;
+                        if (data.Progress) participantData.Progress = data.Progress;
+                        if (data.Quit) participantData.Quit = data.Quit;
+                        if (data.roundsWon) participantData.roundsWon = data.roundsWon;
+                        if (data.Placement) participantData.Placement = data.Placement;
+                        if (data.PlacementFinal) participantData.PlacementFinal = data.PlacementFinal;
+                        if (data.wordLetterIndex) participantData.wordLetterIndex = data.wordLetterIndex;
+                        if (data.correctWords) participantData.correctWords = data.correctWords;
+                        if (data.Accuracy) participantData.Accuracy = data.Accuracy;
+                        if (data.Replay) participantData.Replay = data.Replay;
+                        if (typeof data.currentInput !== 'undefined') participantData.currentInput = data.currentInput;
                     }
                 }
                 return [ ...participantsData ];
             })
         });
 
+        return () => { 
+            socket.disconnect();
+            setSocket(null);
+        };
     // eslint-disable-next-line
     }, [ socket, sessionData?.playerId ]);
 
     // Methods
-    const sendKeystroke = (keystroke: string, event: boolean): void => {
-        const keyPayload = {
-            playerId: sessionData?.playerId,
-            keystroke,
-            event
-        };
-        socket?.emit('sendKeystroke', keyPayload);
-    };
-
-    const sendWord = (word: string): void => {
-        DebugService.add('[Match] Word has been sent');
-        const wordPayload = {
-            playerId: sessionData?.playerId,
-            word,
-        };
-        socket?.emit('sendWord', wordPayload);
-    };
+    const sendKeystroke = (keystroke: string, event: boolean): void => socket?.emit('sendKeystroke', {
+        keystroke,
+        event
+    });
 
     const playSound = () => {
         DebugService.add('[Match] Played Level Completed audio queue');
@@ -313,7 +341,7 @@ const GameScreen = (props: IProps) => {
     }
 
     // Rendering
-    const matchContainerCSS = (upscaleMatchContainer === '1' && !spectator) ? 'container-small' : 'container-game';
+    const matchContainerCSS = (upscaleMatchContainer === '1' && !spectator.current) ? 'container-small' : 'container-game';
 
     let 
         noticeString = '',
@@ -337,7 +365,7 @@ const GameScreen = (props: IProps) => {
 
     if (matchData?.flagId === 2 && matchData.referralId && noticeString === 'timeoutMatch') return <Redirect to={`/custom/${matchData.referralId}`} />;
     if (matchData?.flagId === 1 && matchData.tournamentId && noticeString === 'timeoutMatch') return <Redirect to={`/competitions/${matchData.tournamentId}`} />;
-    if (quoteString && participantsData) firstWord = quoteString.split(' ')[0] || '';
+    firstWord = quoteString.split(' ')[0] || '';
 
     const gameContainer = (
         <>
@@ -345,14 +373,14 @@ const GameScreen = (props: IProps) => {
             <audio id="LevelCompleted" src="/audio/LevelCompleted.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="CountBeep" src="/audio/CountBeep.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="CountStart" src="/audio/CountStart.wav" crossOrigin="anonymous" preload="auto" />
-            {matchData && gameCountdown !== -1 && <MatchCountdown url={matchData.referralId ? restartUrl : leaveUrl} isSpectator={spectator} isDisabled={gameDisabled} countdown={gameCountdown} win={queueRoundWon} roundEnd={queueRoundEnd} />}
+            {(matchData && endMatchData === null && gameCountdown > -1) && <MatchCountdown url={matchData.referralId ? restartUrl : leaveUrl} isSpectator={spectator.current} isDisabled={gameDisabled} countdown={gameCountdown} win={queueRoundWon} roundEnd={queueRoundEnd} />}
             <MatchToast isReconnecting={gameToast === 'connectionSaved'} isConnectionLost={gameToast === 'connectionTimedOut'} />
-            <div className={`${matchContainerCSS ?? 'container-small'} pt-10`}>
-                {!spectator ? (
+            <div className={`${matchContainerCSS ?? 'container-small'}`}>
+                {!spectator.current ? (
                     <>
-                        {(performanceMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData))) && <div className={"fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen"} />}
-                        <div className={`relative ${performanceMode === '1' ? 'z-50' : 'z-20'} flex ${endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? 'h-auto container-margin' : `h-auto lg:h-game container-padding`}`}>
-                            <Player embed={embed || false} embedClose={embedClose} embedOwner={embedOwner} totalPlayers={gamePlayers} translation={t('page.match.statistics_unsaved')} firstWord={firstWord} sendKeystroke={sendKeystroke} sendWord={sendWord} playerData={sessionData} countdown={gameCountdown} timer={gameTimer} disabled={gameDisabled} latency={latency} quoteString={quoteString} endMatch={endMatchData !== null} endMatchData={endMatchData} leaveUrl={leaveUrl} matchData={matchData} participantsData={participantsData} noticeString={noticeString} restartUrl={restartUrl} roundsTotal={gameRoundsTotal} />
+                        {(focusMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData))) && <div className={"fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen"} />}
+                        <div className={`relative ${focusMode === '1' ? 'z-50' : 'z-20'} flex ${endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? 'h-auto container-margin' : `h-auto lg:h-game container-padding`}`}>
+                            <Player embed={embed || false} embedClose={embedClose} embedOwner={embedOwner} totalPlayers={gamePlayers} translation={t('page.match.statistics_unsaved')} firstWord={firstWord} sendKeystroke={sendKeystroke} playerData={sessionData} countdown={gameCountdown} timer={gameTimer} disabled={gameDisabled} latency={latency} quoteString={quoteString} endMatch={endMatchData !== null} endMatchData={endMatchData as SocketGameEndData} leaveUrl={leaveUrl} matchData={matchData} participantsData={participantsData} noticeString={noticeString} restartUrl={restartUrl} roundsTotal={gameRoundsTotal} />
                         </div>
                     </>
                 ) : (
@@ -361,14 +389,6 @@ const GameScreen = (props: IProps) => {
                     </div>
                 )}
             </div>
-
-            <div className="absolute top-1/3 left-8 hidden 4xl:block">
-                <SidebarSquare />
-            </div>
-
-            <div className="absolute top-1/4 left-8 hidden 4xl:block">
-                <SidebarLong />
-            </div>
         </>
     )
 
@@ -376,7 +396,7 @@ const GameScreen = (props: IProps) => {
         return <Redirect to={redirect} />;
     else
         return !embed ? (
-            <Base meta={<Meta title="In Game" />} isLoaded={(matchData !== null && sessionData !== null)}>
+            <Base meta={<Meta title="In Game" />} isLoaded={(matchData !== null && sessionData !== null)} ads={{ enableTrendiVideo: (focusMode === '0') }}>
                 {gameContainer}
             </Base>
         ) : (

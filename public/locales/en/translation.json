@@ -1,6 +1,6 @@
 {
   "other": {
-    "account_banned": "Your account has been banned, please contact support@keyma.sh!",
+    "account_banned": "Your account has been banned, please contact support@keymash.io!",
     "twitch_none": "No one is streaming right now :( Come back later or start streaming!",
     "grades": {
       "passed": "Passed",
@@ -14,7 +14,7 @@
     },
     "debug": {
       "title": "Bug Reporting",
-      "message": "If you experience one or more of the issues below, please click the button below and email support@keyma.sh with as much information regarding how you initially received it and how to recreate it. The more information provided will help us as it will allow us to recreate your exact issue and resolve it.",
+      "message": "If you experience one or more of the issues below, please click the button below and email support@keymash.io with as much information regarding how you initially received it and how to recreate it. The more information provided will help us as it will allow us to recreate your exact issue and resolve it.",
       "list": {
         "0": "Sudden disconnect in the middle of a match",
         "1": "Your WPM/CPM no longer updating for yourself or other players",
@@ -217,7 +217,7 @@
       "news": "Latest News",
       "slogan": "Take your typing to the next level",
       "hero": {
-        "content1": "If you have any questions or concerns, don't hesitate to contact us on Discord or directly through <1>support@keyma.sh</1>.",
+        "content1": "If you have any questions or concerns, don't hesitate to contact us on Discord or directly through <1>support@keymash.io</1>.",
         "content2": "Oh yeah, forgot to mention... We are always looking for community contribution including text submissions, language translations and more! <1>Click here</1> to learn more.",
         "button": "Start typing now!"
       },
@@ -262,16 +262,6 @@
       "none": "No players have participated yet, be the first!"
     },
     "queue": {
-      "howToPlayGuide": {
-        "1_title": "How to Play?",
-        "1_description": "In order to play Ranked Matchmaking you must be at least <1>Level 10</1>. You will be placed through a calculation stage where you will not see your rank until you have finished <1>5 matches</1>. This will ensure the accuracy of your skill level when you get matched against other players.",
-        "2_title": "What is Ranked?",
-        "2_description": "Ranked matchmaking is a competitive environment where players are matched with others of similar skill level that is of greater accuracy than the current Quick Play modes.",
-        "3_title": "How is SR determined?",
-        "3_description": "Famously used in Chess, Ranked matchmaking utilizes a form of \"rating system\" also famously known as Glicko-2 Rating system. It uses a form of calculation to determine your skill rating (SR) by matching your skill rating versus your opponents and your ratings reliability also known as \"Ratings Deviation\".",
-        "4_title": "Can we quit mid-game?",
-        "4_description": "Due to the competitive nature it is extremely discouraged to quit a game. If you quit before you finish playing your ranked game then <1>20 points</1> will be deducted from your skill rating. Additionally if your opponent finishes the game you will suffer the loss as if you had completed the match."
-      },
       "shortcut": "Did you know that using <1>CTRL+ALT+I</1> can get you here faster?",
       "titles": {
         "casual": "Casual",
@@ -285,19 +275,19 @@
       },
       "quickplay": {
         "title": "Quick Play",
-        "description": "Join a match anywhere instantly worldwide"
+        "description": "Join a match, anywhere, instantly, worldwide."
       },
       "ranked": {
         "title": "Ranked",
-        "description": "Place yourself against the world of competition",
+        "description": "Place yourself against the world of competition.",
         "join": "Duel (1v1)",
-        "how": "How to Play"
+        "info": "Info"
       },
       "custom": {
         "title": "Custom",
-        "description": "Play with your friends and family",
-        "create": "Create Lobby",
-        "browse": "Browse List",
+        "description": "Play with your friends and family.",
+        "create": "Create",
+        "browse": "Browse",
         "public": "Public Lobbies",
         "online": "Lobbies Online",
         "none": "There are currently no public lobbies."
@@ -341,6 +331,7 @@
       "smoothCaret": "Smooth Caret (beta)",
       "adsGameplay": "Side Ads",
       "gameplayParticipantStyle": "Participants Style",
+      "focusMode": "Focus Mode",
       "performanceMode": "Performance Mode",
       "inputbox": "Hide Input Box?",
       "displayname": "Username",

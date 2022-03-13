@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
-import {faDiscord, faFacebookF, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faDiscord, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import Userbar from "./Userbar";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    faGamepad,
+    faCaretUp,
+    faHome,
+    faInfoCircle,
     faListAlt,
     faNewspaper,
     faStoreAlt,
@@ -14,17 +15,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {usePlayerContext} from "../contexts/Player.context";
 import { useRouter } from 'next/router';
+import Link from '../components/Uncategorized/Link';
 
 const Levelbar = () => {
 
     const router = useRouter();
     const { t } = useTranslation();
 
-    const isNotSmallDevice = useMediaQuery({ query: '(min-width: 1224px)' })
+    const isNotSmallDevice = useMediaQuery({ query: '(min-width: 1024px)' })
 
-    const { sessionData, isGuest } = usePlayerContext();
+    const { sessionData } = usePlayerContext();
     const [ toggleSitebar, setToggleSitebar ] = useState(false);
     const [ smallDevice, setSmallDevice ] = useState<boolean>(false);
+    const [ scroll, setScroll ] = useState<boolean>(false);
 
     const links = [
         {
@@ -57,11 +60,6 @@ const Levelbar = () => {
             link: '/about/faq',
             external: false,
         },
-        {
-            name: 'component.bottombar.issueTracker',
-            link: '/github',
-            external: true,
-        },
     ];
 
     const socials = [
@@ -76,12 +74,6 @@ const Levelbar = () => {
             icon: faTwitter,
             color: 'hover:text-blue-400',
             link: 'https://twitter.com/KeymashGame',
-        },
-        {
-            name: 'Facebook',
-            icon: faFacebookF,
-            color: 'hover:text-blue-600',
-            link: 'https://facebook.com/KeymashGame',
         },
         {
             name: 'Reddit',
@@ -105,7 +97,7 @@ const Levelbar = () => {
             name: 'GitHub',
             icon: faGithub,
             color: 'hover:text-gray-400',
-            link: 'https://github.com/Keyma-sh/game-tracker',
+            link: 'https://github.com/Keyma-sh/next',
         }
     ];
 
@@ -115,25 +107,58 @@ const Levelbar = () => {
     const mobileNavCSS = `mobileNav-item`;
     const mobileActiveCSS = `levelbar-active`;
 
-    const handleDeviceSizing = () => { console.log('handleDeviceSizing Called'); setSmallDevice(!isNotSmallDevice); }
+    const handleDeviceSizing = () => setSmallDevice(!isNotSmallDevice);
+    const handleDeviceScrolling = () => setScroll(window.scrollY > 20);
 
     useEffect(() => {
         handleDeviceSizing();
-        if (typeof window !== `undefined`) 
+        handleDeviceScrolling();
+        if (typeof window !== `undefined`) {
             window?.addEventListener(`resize`, handleDeviceSizing);
+            window?.addEventListener('scroll', handleDeviceScrolling);
+        }
       
-        return () => window?.removeEventListener('resize', handleDeviceSizing);
+        return () => {
+            window?.removeEventListener('resize', handleDeviceSizing);
+            window?.removeEventListener('scroll', handleDeviceScrolling);
+        }
     }, [ isNotSmallDevice ])
+
+    const renderDropdown = () => (
+        <div className={`dropdown w-40 ${toggleSitebar ? 'is-open' : 'is-not'}`} style={{ marginTop: '4rem' }}>
+            {links.map((item) => (
+                <Link key={item.link} to={item.link} onClick={() => setToggleSitebar(false)} className={`item ${router.asPath.startsWith(item.link) && "is-active"}`}>
+                    {t(item.name)}
+                </Link>
+            ))}
+
+            <div className="border-t border-gray-500" />
+
+            {socials.map((item) => (
+                <a key={item.link} href={item.link} target="_blank" rel="noreferrer" className={"item"}>
+                    <div className="flex">
+                        <div className={"w-8"}>
+                            <FontAwesomeIcon icon={item.icon} />
+                        </div>
+                        <div className={"w-auto"}>
+                            {item.name}
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+    );
 
     return (
         smallDevice ? (
             <>
                 <div className={"fixed top-0 left-0 right-0 z-50 bg-gray-775 shadow"}>
-                    <div className={"flex py-1 px-2 justify-between"}>
-                        <div className={"w-auto pt-1 my-auto"}>
+                    <div className={"flex py-1 px-10 justify-between"}>
+                        <div className={"w-auto pt-1 my-auto relative"}>
                             <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto focus:outline-none"}>
-                                <img src={"/assets/logo_svg.svg"} alt={"Logo"} className={"w-full h-auto"} />
+                                <img src={"/assets/logo_icon.svg"} alt={"Logo"} className={"w-full h-auto"} />
                             </button>
+                            {renderDropdown()}
                         </div>
                         <div className={"w-auto"}>
                             <Userbar />
@@ -141,64 +166,58 @@ const Levelbar = () => {
                     </div>
                 </div>
 
-                <div className={"fixed grid grid-cols-4 bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-850 to-gray-775 border-t border-gray-750 shadow"}>
-                    <Link href={"/"}>
-                        <div className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faGamepad} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.play')}</div>
-                        </div>
+                <div className={"fixed grid grid-cols-5 bottom-0 left-0 right-0 z-50 navigationBar is-mobile"}>
+                    <Link to={"/"} className={`${mobileNavCSS} ${router.asPath === "/" && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faHome} className={"text-2xl"} />
                     </Link>
-                    <Link href={"/news"}>
-                        <div className={`${mobileNavCSS} ${router.asPath.startsWith("/news") && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faNewspaper} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.news')}</div>
-                        </div>
+                    <Link to={"/about/us"} className={`${mobileNavCSS} ${router.asPath === "/play" && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faInfoCircle} className={"text-2xl"} />
                     </Link>
-                    <Link href={"/leaderboards"}>
-                        <div className={`${mobileNavCSS} ${router.asPath.startsWith("/leaderboards") && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faListAlt} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.leaders')}</div>
-                        </div>
+                    <Link to={"/news"} className={`${mobileNavCSS} ${router.asPath.startsWith("/news") && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faNewspaper} className={"text-2xl"} />
                     </Link>
-                    <Link href={"/competitions"}>
-                        <div className={`${mobileNavCSS} ${router.asPath.startsWith("/competitions") && mobileActiveCSS} text-center text-xxs`}>
-                            <FontAwesomeIcon icon={faTrophy} className={"mb-2 text-2xl"} />
-                            <div>{t('component.navbar.tournaments')}</div>
-                        </div>
+                    <Link to={"/leaderboards"} className={`${mobileNavCSS} ${router.asPath.startsWith("/leaderboards") && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faListAlt} className={"text-2xl"} />
+                    </Link>
+                    <Link to={"/competitions"} className={`${mobileNavCSS} ${router.asPath.startsWith("/competitions") && mobileActiveCSS} text-center text-xxs`}>
+                        <FontAwesomeIcon icon={faTrophy} className={"text-2xl"} />
                     </Link>
                 </div>
             </>
         ) : (
             <>
-                <div className={"hidden lg:block fixed top-0 left-0 right-0 z-50 bg-gray-775 bg-opacity-100 shadow"}>
+                {scroll && (
+                    <button type="button" onClick={() => window.scroll({ top: 0, left: 0, behavior: 'smooth' })} className="z-50 button gray border border-gray-700 fixed bottom-16 right-16 w-12 h-12">
+                        <FontAwesomeIcon icon={faCaretUp} className="text-2xl m-auto" />
+                    </button>
+                )}
+                <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 navigationBar`}>
                     <div className={"container flex"}>
-                        <div className={"w-16 flex bg-gray-800 bg-opacity-80 justify-center"}>
-                            <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={"w-8 my-auto hover:opacity-50 transition ease-in-out duration-300 focus:outline-none"}>
-                                <img src={'/assets/logo_svg.svg'} alt={"Logo"} className={"w-full h-auto"} />
-                            </button>
+                        <div className="w-44 relative my-auto py-3">
+                            <button type={"button"} onClick={() => setToggleSitebar(!toggleSitebar)} className={`w-11 h-11 absolute -left-1 mb-px top-2 bottom-0 h-full ${toggleSitebar ? 'opacity-10' : 'opacity-0 hover:opacity-10'} bg-white opacity-0 rounded-xl transition ease-in-out duration-300`} />
+                            <Link to="/" className="my-auto">
+                                <img src={'/assets/logo_text.svg'} alt={"Logo"} className={"w-full h-auto"} />
+                            </Link>
+
+                            {renderDropdown()}
                         </div>
-                        <Link href={"/"} passHref>
-                          <a className={`${navCSS} ${router.asPath === "/" && activeCSS}`}>{t('component.navbar.play')}</a>
+                        <Link to={"/"} className={`${navCSS} ${router.asPath === "/" && activeCSS}`}>
+                            {t('component.navbar.play')}
                         </Link>
-                        {isGuest && (
-                          <Link href={"/about/us"} passHref>
-                            <a className={`${navCSS} ${router.asPath.startsWith("/about/us") && activeCSS}`}>{t('component.bottombar.about')}</a>
-                          </Link>
+                        <Link to={"/news"} className={`${navCSS} ${router.asPath.startsWith("/news") && activeCSS}`}>
+                            {t('component.navbar.news')}
+                        </Link>
+                        <Link to={"/leaderboards"} className={`${navCSS} ${router.asPath.startsWith("/leaderboards") && activeCSS}`}>
+                            {t('component.navbar.leaders')}
+                        </Link>
+                        <Link to={"/competitions"} className={`${navCSS} ${router.asPath.startsWith("/competitions") && activeCSS}`}>
+                            {t('component.navbar.tournaments')}
+                        </Link>
+                        {(sessionData && sessionData.authName !== 'Guest') && (
+                            <Link to={"/shop"} className={`hidden xl:block ${navCSS} ${router.asPath.startsWith("/shop") && activeCSS}`}>
+                                Item {t('component.navbar.shop')}
+                            </Link>
                         )}
-                        <Link href={"/news"} passHref>
-                          <a className={`${navCSS} ${router.asPath.startsWith("/news") && activeCSS}`}>{t('component.navbar.news')}</a>
-                        </Link>
-                        {!isGuest && (
-                          <Link href={"/challenges"} passHref>
-                            <a className={`${navCSS} ${router.asPath.startsWith("/challenges") && activeCSS}`}>{t('component.navbar.challenges')}</a>
-                          </Link>
-                        )}
-                        <Link href={"/leaderboards"} passHref>
-                          <a className={`${navCSS} ${router.asPath.startsWith("/leaderboards") && activeCSS}`}>{t('component.navbar.leaders')}</a>
-                        </Link>
-                        <Link href={"/competitions"} passHref>
-                          <a className={`${navCSS} ${router.asPath.startsWith("/competitions") && activeCSS}`}>{t('component.navbar.tournaments')}</a>
-                        </Link>
                         {sessionData && (
                             <div className={"ml-auto my-auto w-80"} >
                                 <div className={"flex justify-end py-1"}>
@@ -207,26 +226,6 @@ const Levelbar = () => {
                             </div>
                         )}
                     </div>
-                </div>
-
-                <div style={{ left: `${!toggleSitebar ? '-80' : '0'}%` }} className={"w-44 z-20 mt-12 fixed top-0 left-0 bottom-0 h-screen bg-gray-900 transition-all ease-in-out duration-300"}>
-                    {links.map((item) => (
-                      <Link key={item.link} href={item.link}>
-                        <a className={`block hover:bg-gray-825 transition ease-in-out duration-300 p-3 text-sm uppercase font-semibold text-white tracking-tight ${router.asPath.startsWith(item.link) && "bg-gray-825"}`}>{t(item.name)}</a>
-                      </Link>
-                    ))}
-                    <div className={"border-t border-gray-800"} />
-                    {socials.map((item) => (
-                        <a key={item.link} href={item.link} target="_blank" rel="noreferrer" className={"flex hover:bg-gray-825 transition ease-in-out duration-300 p-3 text-sm uppercase font-semibold text-white tracking-tight"}>
-                            <div className={"w-12"}>
-                                <FontAwesomeIcon icon={item.icon} />
-                            </div>
-                            <div className={"w-auto"}>
-                                {item.name}
-                            </div>
-                        </a>
-                    ))}
-
                 </div>
             </>
         )

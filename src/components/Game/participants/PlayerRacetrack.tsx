@@ -11,16 +11,17 @@ interface IProps {
     firstWord?: string;
     modeId: number;
     roundLimit: number;
+    quoteString: string;
     isFinished: boolean;
 }
 
 const PlayerRacetrack = (props: IProps) => {
 
     const { participantsData, firstWord, roundLimit } = props;
-    const { hideWPM, useCPM } = useConfig();
+    const { hideWPM, useCPM, matchContainerTransparent } = useConfig();
 
     return (
-        <div className={`grid grid-cols-1 gap-2 mt-5`}>
+        <div className={`grid grid-cols-1 gap-2 ${matchContainerTransparent === '1' ? '' : 'mt-5'}`}>
             {participantsData.map((item) => item.teamId !== 0 && (
                 <div key={item.playerId} className={"flex bg-gray-750 bg-opacity-50 rounded-xl shadow-md"}>
                     <div className="w-96">
@@ -52,18 +53,18 @@ const PlayerRacetrack = (props: IProps) => {
                         {roundLimit >= 1 ? (
                             <div className={"flex justify-center gap-3"}>
                                 {[...Array(roundLimit)].map((_circle, index) => (index < (item.roundsWon ? item.roundsWon : 0))
-                                    ? <FontAwesomeIcon icon={faCircle} className={"text-orange-400"} />
-                                    : <FontAwesomeIcon icon={faCircle} className={"text-gray-600"} />
+                                    ? <FontAwesomeIcon key={index} icon={faCircle} className={"text-orange-400"} />
+                                    : <FontAwesomeIcon key={index} icon={faCircle} className={"text-gray-600"} />
                                 )}
                             </div>
                         ) : (
                             <div className="text-right">
-                                {(item.Progress === 100 && item.Placement !== 0) && <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} />}
+                                {(item.Placement >= 1) ? <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} /> : ''}
                             </div>
                         )}
                     </div>
 
-                    <div className="w-32 mr-4 my-auto font-semibold text-white">
+                    <div className="w-36 mr-4 my-auto font-semibold text-white">
                         {hideWPM === '0' && (
                             <>
                                 {(item?.WPM || 0).toFixed(2)}

@@ -5,11 +5,8 @@ import Config from '../../Config';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { toast } from 'react-toastify';
-import ComboTop from "../../components/Advertisement/Combo/ComboTop";
-import ComboBottom from "../../components/Advertisement/Combo/ComboBottom";
 import {usePlayerContext} from "../../contexts/Player.context";
 import useCSRF from "../../hooks/useCSRF";
-import {ItemData, PlayerLevelData} from "../../types.client.mongo";
 import ShopItem from "../../components/Shop/ShopItem";
 import Redirect from '../../components/Uncategorized/Redirect';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -17,26 +14,14 @@ import { Meta } from '../../layout/Meta';
 import ConfigService from '../../services/ConfigService';
 import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
+import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import { useGlobalContext } from '../../contexts/Global.context';
 
-interface IProps {
-    gameData: {
-        playercards: ItemData[];
-        borders: ItemData[];
-        banners: ItemData[];
-    };
-    playerData: {
-        level: PlayerLevelData
-        currency: number;
-        owned: string[];
-    };
-}
-
-const Shop = (props: IProps) => {
-  const { gameData } = props;
-
+const Shop = () => {
   const axiosCancelSource = useRef<CancelTokenSource | null>(null);
 
   const { sessionData } = usePlayerContext();
+  const { playercards, borders, banners } = useGlobalContext();
   const { _csrf } = useCSRF();
   const { t } = useTranslation();
 
@@ -67,7 +52,7 @@ const Shop = (props: IProps) => {
         { order: 7, name: 'Systems', },
         { order: 10, name: 'Countries', },
       ],
-      data: gameData.playercards,
+      data: playercards,
       onClick: () => {
         setSubtab(1);
         setTab('page.shop.playercards');
@@ -75,7 +60,7 @@ const Shop = (props: IProps) => {
     },
     {
       name: 'page.shop.borders',
-      data: gameData.borders,
+      data: borders,
       onClick: () => {
         setSubtab(0);
         setTab('page.shop.borders');
@@ -83,7 +68,7 @@ const Shop = (props: IProps) => {
     },
     {
       name: 'page.shop.banners',
-      data: gameData.banners,
+      data: banners,
       onClick: () => {
         setSubtab(0);
         setTab('page.shop.banners');
@@ -136,30 +121,36 @@ const Shop = (props: IProps) => {
       <>
           {redirect && <Redirect to={redirect} />}
           <Base meta={<Meta title={t('component.navbar.shop')} />} isLoaded={loaded}>
-              <div className={'container container-margin py-10'}>
-                  <div className={"flex flex-wrap gap-4"}>
-                      <div className={"w-full lg:w-auto"}>
-                          <h1 className={"text-white uppercase"}>{t('component.navbar.shop')}</h1>
-                      </div>
-                      {tabs.map((item) => (
-                          <button key={item.name} type={"button"} onClick={item.onClick} className={`${item.name === tab ? 'bg-gray-750 text-orange-400' : 'bg-gray-775 text-white'} hover:bg-gray-750 text-sm  uppercase font-semibold px-6 py-1 rounded-xl shadow h-10 my-auto transition ease-in-out duration-300`}>
-                            {t(item.name)}
-                          </button>
-                      ))}
-
-                      <div className={"w-auto lg:ml-auto my-auto"}>
-                          <div className={"text-white text-lg px-6 py-1.5 bg-gray-775 rounded-xl shadow font-semibold"}>
-                              <FontAwesomeIcon icon={faCoins} className={'text-yellow-400 mr-3'} />
-                              {currency.toLocaleString()}
+              <div className={'container container-margin'}>
+                  <div className="content-box mb-4" style={{ padding: '1.25rem 2rem' }}>
+                      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                          <div className="text-center lg:text-left -mt-1">
+                              <h1>{t('component.navbar.shop')}</h1>
+                          </div>
+                          <div className="md:col-span-2 lg:col-span-3 text-center my-auto">
+                              {tabs.map((item) => (
+                                  <button key={item.name} type={"button"} onClick={item.onClick} className={`mb-2 md:mb-0 ${item.name === tab ? 'bg-gray-800 text-orange-400' : 'bg-gray-775 text-white'} hover:bg-gray-800 text-sm uppercase font-semibold px-6 py-1 rounded-xl h-8 my-auto mr-3 transition ease-in-out duration-300`}>
+                                    {t(item.name)}
+                                  </button>
+                              ))}
+                          </div>
+                          <div className="text-center lg:text-right my-auto">
+                              <div className={"text-xl font-semibold"}>
+                                  <FontAwesomeIcon icon={faCoins} className={'text-yellow-400 mr-3'} />
+                                  {currency.toLocaleString()}
+                              </div>
                           </div>
                       </div>
                   </div>
 
                   {tabs.map(row => row.name === tab && row.subtabs && (
-                      <div className={'flex flex-wrap mt-4 bg-black bg-opacity-20 rounded-l rounded-r shadow'}>
+                      <div className={'bg-gray-750 flex flex-wrap justify-center mb-4 rounded-lg shadow'}>
                           {row.subtabs.map((item, index) => (
-                              <button key={item.name} type={'button'} onClick={() => setSubtab(item.order)}
-                                  className={`${index === 0 && 'rounded-l'} ${index === row.subtabs.length && 'rounded-r'} ${subtab === item.order ? 'text-orange-400 border-orange-400' : 'text-white border-transparent'} py-2 w-32 text-center text-xs border-b-2 hover:text-gray-300 font-semibold uppercase transition ease-in-out duration-300`}
+                              <button 
+                                  key={item.name} 
+                                  type={'button'} 
+                                  onClick={() => setSubtab(item.order)}
+                                  className={`${index === row.subtabs.length && 'rounded-r-lg'} ${subtab === item.order ? 'text-orange-400 bg-gray-775' : 'bg-gray-750 hover:bg-gray-775'} py-2.5 w-32 text-center text-sm font-semibold transition ease-in-out duration-300`}
                               >
                                   {item.name}
                               </button>
@@ -167,33 +158,33 @@ const Shop = (props: IProps) => {
                       </div>
                   ))}
 
-                  <div className={'py-8'}>
-                      <ComboTop />
-                      {tab === 'page.shop.featured' && (
-                          <div>
-                              <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
-                              <div className={"mt-10"}>
-                                <h2 className={"py-2.5 bg-gray-775 shadow rounded-lg w-80 text-center text-2xl uppercase font-bold text-orange-400"}>
-                                    Newest Additions
-                                </h2>
+                  {tab === 'page.shop.featured' && (
+                      <div>
+                          <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
+                          <AdvertisementDisplay className="mt-4">
 
-                                <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 gap-6 mt-6'}>
-                                    {tabs.map(row => row.data && row.data.map((item) => (featuredItems.includes(item.file) && !item.secret) && (
-                                        <ShopItem key={item.file} showType player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
-                                    )))}
-                                </div>
+                          </AdvertisementDisplay>
+                          <div className={"content-box mt-4"}>
+                              <h2>Newest Additions</h2>
+                              <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6'}>
+                                  {tabs.map(row => row.data && row.data.map((item) => (featuredItems.includes(item.file) && !item.secret) && (
+                                      <ShopItem key={item.file} showType player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
+                                  )))}
                               </div>
                           </div>
-                      )}
-                      {tab !== 'page.shop.featured' && (
-                          <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 gap-6'}>
-                              {tabs.map(row => row.name === tab && row.data && row.data.map(item => !item.secret && (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
-                                  <ShopItem key={item.file} player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
-                              )))}
-                          </div>
-                      )}
-                  </div>
-                  <ComboBottom />
+                      </div>
+                  )}
+                  {tab !== 'page.shop.featured' && (
+                      <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 content-box'}>
+                          {tabs.map(row => row.name === tab && row.data && row.data.map(item => !item.secret && (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
+                              <ShopItem key={item.file} player={{ level: { Index: level, Next: 0, Prev: 0, Percentage: 0 }, inventory: owned, currency }} itemType={row.name} purchaseItem={purchaseItem} {...item} />
+                          )))}
+                      </div>
+                  )}
+
+                  <AdvertisementDisplay className="mt-4">
+                  
+                  </AdvertisementDisplay>
               </div>
           </Base>
       </>
@@ -201,16 +192,9 @@ const Shop = (props: IProps) => {
 };
 
 export async function getServerSideProps({ req }: GetServerSidePropsContext) {
-  const getData = async () => {
-      const response = await axios.get(`${Config.gameUrl}/all`).catch((e) => console.log(e));
-      if (response && response.data) return response.data;
-      else return {};
-  };
-
   return {
       props: {
           ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
-          gameData: await getData(),
       }
   }
 }

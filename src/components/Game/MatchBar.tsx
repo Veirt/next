@@ -4,6 +4,7 @@ import {faAngleDoubleLeft, faStopwatch, faWifi} from '@fortawesome/free-solid-sv
 import GameTimer from './countdown/GameTimer';
 import {GamemodeData} from "../../types.client.mongo";
 import Link from '../Uncategorized/Link';
+import useConfig from '../../hooks/useConfig';
 
 interface IProps {
   redirectUrl: string;
@@ -23,10 +24,12 @@ interface IProps {
 const MatchBar: FC<IProps> = (props) => {
     const { redirectUrl, className, timer, countdown, disabled, latency, modeData, isSpectate, isCapslock, embedClose, embedOwner, embed } = props;
 
+    const { matchContainerTransparent } = useConfig();
+
     return (
         <>
             {!isSpectate ? (
-              <div className={`game--content--bar ${className} flex flex-wrap`}>
+              <div className={`game--content--bar ${matchContainerTransparent === '1' ? 'is-transparent' : ''} ${className} flex flex-wrap`}>
                   {embedOwner && embedClose ? (
                       <div className={`w-auto my-auto pl-3 ${!isCapslock ? 'mr-auto' : ''}`}>
                           <button type={"button"} onClick={embedClose} className="text-pink-400 focus:outline-none text-sm uppercase font-semibold">
@@ -48,7 +51,7 @@ const MatchBar: FC<IProps> = (props) => {
                   </div>
                 )}
                 <div className="w-auto my-auto font-semibold text-white text-right pt-px">
-                  {modeData && modeData.modeConfig && modeData.modeConfig.ROUND_LIMIT === 0 && countdown < 0 && timer > 0 && !disabled && (
+                  {modeData && modeData.modeConfig && modeData.modeConfig.ROUNDS.LIMIT === 0 && countdown < 0 && timer > 0 && !disabled && (
                     <span className="px-3 w-auto mr-3">
                       <FontAwesomeIcon icon={faStopwatch} className="text-red-400 mr-2" />
                       <GameTimer timer={timer} />

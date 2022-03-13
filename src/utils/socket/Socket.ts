@@ -1,4 +1,7 @@
+/// <reference path='../../../@types/socket.io-msgpack-parser.d.ts' />
+
 import { connect, Socket as SocketClient, ManagerOptions, SocketOptions } from 'socket.io-client';
+import msgPackParser from 'socket.io-msgpack-parser';
 
 type Callback<T> = (data: T) => void;
 
@@ -6,7 +9,10 @@ class Socket {
   private client: SocketClient;
 
   constructor(uri?: string, opts?: Partial<ManagerOptions & SocketOptions>) {
-    this.client = connect(uri || 'http://localhost', opts || {});
+    this.client = connect(uri || 'http://localhost', {
+      ...opts,
+      parser: msgPackParser
+    });
   }
 
   public on<T>(name: string, callback: Callback<T>): void {

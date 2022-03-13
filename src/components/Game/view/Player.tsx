@@ -5,7 +5,7 @@ import MatchMode from "../MatchMode";
 import MatchBar from "../MatchBar";
 import {
     SocketMatchData,
-    SocketMatchEndData,
+    SocketGameEndData,
     SocketMatchPlayerData
 } from "../../../types.client.socket";
 import {AuthenticationSessionData} from "../../../types.client.mongo";
@@ -13,13 +13,13 @@ import Playercard from "../participants/Playercard";
 import Playerboard from "../participants/Playerboard";
 import useConfig from "../../../hooks/useConfig";
 import MatchLeaderboards from "../leaderboards/MatchLeaderboards";
-import MatchTextContainer from "../new/MatchTextContainer";
+import MatchTextContainer from "../MatchTextContainer";
 import PlayerRacetrack from "../participants/PlayerRacetrack";
 
 interface IProps {
     matchData: SocketMatchData | null;
     participantsData: SocketMatchPlayerData[];
-    endMatchData: SocketMatchEndData | null;
+    endMatchData: SocketGameEndData | null;
     playerData: AuthenticationSessionData | null;
     countdown: number;
     timer: number;
@@ -35,7 +35,6 @@ interface IProps {
     quoteString: string;
     translation: string;
     sendKeystroke: (keystroke: string, event: boolean) => void;
-    sendWord: (word: string) => void;
     embed: boolean;
     embedClose?: () => void | false;
     embedOwner?: boolean;
@@ -44,31 +43,27 @@ interface IProps {
 const Player: FC<IProps> = (props) => {
 
     const [ isCapslock, setIsCapslock ] = useState(false);
-    const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, sendWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
+    const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
     const handleCapslock = (e: KeyboardEvent) => setIsCapslock(e.getModifierState("CapsLock"));
     
-    const { gameplayParticipantStyle, performanceMode } = useConfig();
+    const { gameplayParticipantStyle, focusMode } = useConfig();
 
     useEffect(() => {
+        console.log('updated');
         window.addEventListener('keyup', handleCapslock);
         return () => window.removeEventListener('keyup', handleCapslock);
-    }, [props]);
+    }, []);
     return (
         <>
             {matchData && playerData && (
                 <div className={"my-auto w-full"}>
-                    {matchData && endMatch ? (
+                    {(matchData && endMatch && endMatchData !== null) ? (
                         <MatchEnd
                             playersLength={participantsData.length}
                             data={endMatchData}
-                            isRanked={matchData.flagId === 3}
-                            isRounds={matchData.modeData.modeConfig.ROUND_LIMIT !== 0}
-                            showRewards={matchData.flagId === 0 || matchData.flagId === 3}
-                            isMode={matchData.modeId}
+                            matchData={matchData}
                             leaveUrl={matchData.referralId ? restartUrl : leaveUrl}
                             restartUrl={restartUrl}
-                            tournamentId={matchData.tournamentId}
-                            lobbyReferral={matchData.referralId || ''}
                             embed={embed}
                             embedClose={embedClose}
                             embedOwner={embedOwner}
@@ -89,8 +84,7 @@ const Player: FC<IProps> = (props) => {
                                     <MatchTextContainer 
                                         quote={quoteString && quoteString !== "KEYMASH_GAMEMODE_ROUND_END" ? quoteString : ""}
                                         sendKeystroke={sendKeystroke}
-                                        sendWord={sendWord}
-                                        isSuddenDeath={matchData.modeData.modeConfig.FINISH_TRIGGER.FIRST_TYPO || matchData.modeData.modeConfig.ROUND_TRIGGER.FIRST_TYPO}
+                                        isSuddenDeath={matchData.modeData.modeConfig.TRIGGERS.FIRST_TYPO}
                                         disabled={disabled}
                                     />
                                   )
@@ -98,12 +92,12 @@ const Player: FC<IProps> = (props) => {
 
                         </div>
                     )}
-                    {(performanceMode === '0' || endMatch) && (
+                    {(focusMode === '0' || endMatch) && (
                         <>
                             {(!participantsData || participantsData.length === 0) && <div className={"py-10"} />}
-                            {gameplayParticipantStyle === '2' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
-                            {gameplayParticipantStyle === '0' && <PlayerRacetrack participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
-                            {gameplayParticipantStyle === '1' && <Playerboard isSpectator={0} quoteString={quoteString} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUND_FIRST} />}
+                            {gameplayParticipantStyle === '2' && <Playercard participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
+                            {gameplayParticipantStyle === '0' && <PlayerRacetrack quoteString={quoteString} participantsData={participantsData} isFinished={(endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0) ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
+                            {gameplayParticipantStyle === '1' && <Playerboard isSpectator={0} quoteString={quoteString} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
                             {(!embed && endMatch && !noticeString && matchData.flagId === 0) && (
                                 <div className="w-full">
                                     <div className="my-8 md:my-16 lg:my-32">

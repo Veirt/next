@@ -18,11 +18,11 @@ import useCSRF from "../../hooks/useCSRF";
 import axios, {CancelTokenSource} from "axios";
 import Config from '../../Config';
 import {toast} from "react-toastify";
-import {ItemData} from "../../types.client.mongo";
 import ItemPlayercard from "../Inventory/ItemPlayercard";
 import ItemBorder from "../Inventory/ItemBorder";
 import ItemBanner from "../Inventory/ItemBanner";
 import {usePlayerContext} from "../../contexts/Player.context";
+import { useGlobalContext } from '../../contexts/Global.context';
 
 interface IProps {
     isVisible?: boolean;
@@ -34,6 +34,7 @@ const SettingsFrame = (props: IProps) => {
     const { isVisible, onClose } = props;
 
     const [ tab, setTab ] = useState<number>(0);
+    const { playercards, banners, borders, worlds, locales, countries, keyboards } = useGlobalContext();
     const { setSessionData } = usePlayerContext();
     const { fullConfig } = useConfig();
     const { _csrf } = useCSRF();
@@ -56,15 +57,6 @@ const SettingsFrame = (props: IProps) => {
 
     // Config Settings
     const [ config, setConfig ] = useState<ConfigData>({ ...fullConfig });
-
-    // Data
-    const [ playercardList, setPlayercardList ] = useState<ItemData[]>([]);
-    const [ borderList, setBorderList ] = useState<ItemData[]>([]);
-    const [ bannerList, setBannerList ] = useState<ItemData[]>([]);
-    const [ countryList, setCountryList ] = useState<{ name: string, code: string }[]>([]);
-    const [ keyboardList, setKeyboardList ] = useState<{ id: number, name: string }[]>([]);
-    const [ localeList, setLocaleList ] = useState<{ name: string, locale: string }[]>([]);
-    const [ worldList, setWorldList ] = useState<{ id: number, name: string }[]>([]);
 
     // Deletion
     const [ deletionModel, setDeletionModel ] = useState<boolean>(false);
@@ -90,20 +82,6 @@ const SettingsFrame = (props: IProps) => {
 
     useEffect(() => {
         axiosCancelSource.current = axios.CancelToken.source();
-
-        axios.get(`${Config.gameUrl}/all`, { cancelToken: axiosCancelSource.current?.token })
-            .then((response) => {
-                if (!response.data.error) {
-                    setPlayercardList(response.data.playercards);
-                    setBorderList(response.data.borders);
-                    setBannerList(response.data.banners);
-                    setKeyboardList(response.data.keyboards);
-                    setWorldList(response.data.worlds);
-                    setLocaleList(response.data.locales);
-                    setCountryList(response.data.countries);
-                } else
-                    toast.error(response.data.error);
-            })
 
         axios.get(`${Config.apiUrl}/player/info`, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
             .then((response) => {
@@ -184,14 +162,14 @@ const SettingsFrame = (props: IProps) => {
                     options: [
                         { title: 'page.profile.displayname', name: 'displayName', value: name, onChange: (v: string) => { setUnsaved(true);  setName(v) }, type: 'string' },
                         { title: 'page.profile.fullname', name: 'fullName', value: fullName, onChange: (v: string) => { setUnsaved(true);  setFullName(v) }, type: 'string' },
-                        { title: 'page.profile.country', name: 'countryId', value: country, onChange: (v: number) => { setUnsaved(true);  setCountry(v) }, type: 'selectCountry', countryList },
+                        { title: 'page.profile.country', name: 'countryId', value: country, onChange: (v: number) => { setUnsaved(true);  setCountry(v) }, type: 'selectCountry', countryList: countries },
                         { title: 'page.profile.about', name: 'description', value: description, onChange: (v: string) => { setUnsaved(true);  setDescription(v) }, type: 'textarea' },
                     ]
                 },
                 {
                     title: 'page.profile.keyboard.title',
                     options: [
-                        { title: 'page.profile.keyboard.layout', name: 'keyboardLayout', value: keyboardLayout, onChange: (v: number) => { setUnsaved(true);  setKeyboardLayout(v) }, type: 'selectKeyboard', keyboardList },
+                        { title: 'page.profile.keyboard.layout', name: 'keyboardLayout', value: keyboardLayout, onChange: (v: number) => { setUnsaved(true);  setKeyboardLayout(v) }, type: 'selectKeyboard', keyboardList: keyboards },
                         { title: 'page.profile.keyboard.brand', name: 'keyboardBrand', value: keyboardBrand, onChange: (v: string) => { setUnsaved(true);  setKeyboardBrand(v) }, type: 'string' },
                         { title: 'page.profile.keyboard.model', name: 'keyboardModel', value: keyboardModel, onChange: (v: string) => { setUnsaved(true);  setKeyboardModel(v) }, type: 'string' }
                     ]
@@ -203,8 +181,8 @@ const SettingsFrame = (props: IProps) => {
                 {
                     title: 'page.profile.general',
                     options: [
-                        { title: 'page.profile.locale', name: 'locale', value: config.locale, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, locale: String(v) }) }, type: 'selectLocale', localeList },
-                        { title: 'page.profile.defaultworld', name: 'defaultWorld', value: config.world, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, world: Number(v) }) }, type: 'selectWorld', worldList },
+                        { title: 'page.profile.locale', name: 'locale', value: config.locale, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, locale: String(v) }) }, type: 'selectLocale', localeList: locales },
+                        { title: 'page.profile.defaultworld', name: 'defaultWorld', value: config.world, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, world: Number(v) }) }, type: 'selectWorld', worldList: worlds },
                         { title: 'page.profile.streamerMode', name: 'streamerMode', value: config.streamerMode, onChange: (v: number) => { setUnsaved(true);  setConfig({ ...config, streamerMode: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.wpm', name: 'useCPM', value: config.useCPM, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, useCPM: String(v) as '0' | '1' }) }, type: 'configWPM' },
                     ]
@@ -221,6 +199,7 @@ const SettingsFrame = (props: IProps) => {
                         { title: 'page.profile.smoothCaret', name: 'smoothCaret', value: config.smoothCaret, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, smoothCaret: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.smoothCaretSpeed', name: 'smoothCaretSpeed', value: config.smoothCaretSpeed, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, smoothCaretSpeed: String(v) as '0' | '1' }) }, type: 'selectSmoothCaretSpeed', smoothCaretList },
                         { title: 'page.profile.hideWPM', name: 'hideWPM', value: config.hideWPM, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, hideWPM: String(v) as '0' | '1' }) }, type: 'configBoolean' },
+                        { title: 'page.profile.focusMode', name: 'focusMode', value: config.focusMode, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, focusMode: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.performanceMode', name: 'performanceMode', value: config.performanceMode, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, performanceMode: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.colorBlindMode', name: 'colorBlindMode', value: config.colorBlindMode, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, colorBlindMode: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.adsGameplay', name: 'adsGameplay', value: config.adsGameplay, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, adsGameplay: String(v) as '0' | '1' }) }, type: 'configBoolean' },
@@ -257,13 +236,13 @@ const SettingsFrame = (props: IProps) => {
             <div className={`fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 flex w-screen h-screen z-50 ${isVisible ? 'visible opacity-100' : 'invisible opacity-0'}  transition-all ease-in-out duration-300`}>
                 <div className={`m-auto max-w-screen-lg w-full ${isVisible ? 'translate-y-0' : 'translate-y-2'} transition-all ease-in-out duration-300`}>
                     <div className={"relative mx-5"}>
-                        <button type={"button"} onClick={onClose} className={"focus:outline-none top-0 right-0 mt-1 lg:mt-2 mr-2 absolute text-2xl text-gray-400 hover:text-gray-600 transition ease-in-out duration-300"}>
+                        <button type={"button"} onClick={onClose} className={"focus:outline-none top-0 right-0 mr-2 absolute text-2xl text-gray-400 hover:text-gray-600 transition ease-in-out duration-300"}>
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
                         <div className={"bg-gray-750 text-white shadow-lg rounded-t-2xl"}>
                             <div className={"flex flex-wrap justify-start bg-gray-800 rounded-t-2xl"}>
                                 {tabs.map((item) => (
-                                    <button key={item.tab} type={"button"} onClick={() => setTab(item.tab)} className={`rounded-t-lg w-auto px-6 py-1.5 sm:py-3 focus:outline-none block text-center border-b-2 ${tab === item.tab ? 'text-orange-400 border-orange-400' : 'text-white border-transparent'} text-base uppercase font-semibold`}>
+                                    <button key={item.tab} type={"button"} onClick={() => setTab(item.tab)} className={`rounded-t-lg w-auto px-6 py-1.5 sm:py-2 focus:outline-none block text-center text-sm ${tab === item.tab ? 'text-orange-400 bg-gray-750' : 'text-white bg-gray-800 hover:bg-gray-775'} text-base uppercase font-semibold`}>
                                         <FontAwesomeIcon icon={item.icon} className={"lg:mr-2"} />
                                         <span className="hidden lg:inline">{item.name}</span>
                                     </button>
@@ -285,7 +264,7 @@ const SettingsFrame = (props: IProps) => {
                                         {/* @ts-ignore */}
                                         {options[index].form.map((item) => (
                                             <div key={item.title} className={"mb-6"}>
-                                                <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3"}>{t(item.title)}</h3>
+                                                <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg"}>{t(item.title)}</h3>
                                                 <div className={"grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4"}>
                                                     {/* @ts-ignore */}
                                                     {item.options.map((option) => <SettingsOption key={option.title} type={option.type} select={option.data} {...option} />)}
@@ -297,7 +276,7 @@ const SettingsFrame = (props: IProps) => {
 
                                 {tab === 0 && (
                                     <div className={"mb-6"}>
-                                        <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3"}>Developers (coming soon)</h3>
+                                        <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg"}>Developers (coming soon)</h3>
                                         <div className={"flex w-48"}>
                                             <div className={"w-auto my-auto font-semibold mr-2"}>
                                                 Show API Key
@@ -325,10 +304,10 @@ const SettingsFrame = (props: IProps) => {
 
                                 {tab === 2 && (
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                                        {playercardList.map((item) => (inventory.includes(item.file)) && (
+                                        {playercards.map((item) => (inventory.includes(item.file)) && (
                                             <label key={item.file}>
                                                 <input type={"radio"} className={"form-control-radio-div"} name={"cardImage"} value={item.file} onChange={e => { setUnsaved(true); setCardImage(e.target.value) }} defaultChecked={cardImage === item.file} />
-                                                <div className={"relative h-40 flex bg-gray-700"}>
+                                                <div className={"relative h-40 flex bg-gray-700 rounded-lg"}>
                                                     <div className={"w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110"}>
                                                         <ItemPlayercard file={item.file} />
                                                     </div>
@@ -341,10 +320,10 @@ const SettingsFrame = (props: IProps) => {
 
                                 {tab === 3 && (
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                                        {borderList.map((item) => (inventory.includes(item.file)) && (
+                                        {borders.map((item) => (inventory.includes(item.file)) && (
                                             <label key={item.file}>
                                                 <input type={"radio"} className={"form-control-radio-div"} name={"cardBorder"} value={item.file} onChange={e => { setUnsaved(true); setCardBorder(e.target.value) }} defaultChecked={cardBorder === item.file} />
-                                                <div className={"relative h-40 flex bg-gray-700"}>
+                                                <div className={"relative h-40 flex bg-gray-700 rounded-lg"}>
                                                     <div className={"w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110"}>
                                                         <ItemBorder file={item.file} />
                                                     </div>
@@ -357,10 +336,10 @@ const SettingsFrame = (props: IProps) => {
 
                                 {tab === 4 && (
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                                        {bannerList.map((item) => (inventory.includes(item.file)) && (
+                                        {banners.map((item) => (inventory.includes(item.file)) && (
                                             <label key={item.file}>
-                                                <input type={"radio"} className={"form-control-radio-div"} name={"banner"} value={item.file} onChange={e => { setUnsaved(true); setBanner(e.target.value) }} defaultChecked={banner === item.file} />
-                                                <div className={"relative h-40 flex bg-gray-700"}>
+                                                <input type={"radio"} className={"form-control-radio-div"} name={"banners"} value={item.file} onChange={e => { setUnsaved(true); setBanner(e.target.value) }} defaultChecked={banner === item.file} />
+                                                <div className={"relative h-40 flex bg-gray-700 rounded-lg"}>
                                                     <div className={"w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110"}>
                                                         <ItemBanner file={item.file} />
                                                     </div>
@@ -375,23 +354,28 @@ const SettingsFrame = (props: IProps) => {
                                     <>
                                         <h3 className={"uppercase text-white p-2 text-sm uppercase font-semibold bg-red-700 bg-opacity-30 mb-3"}>Danger Zone</h3>
                                         <div className={"grid grid-cols-1 md:grid-cols-2 gap-6"}>
-                                            <div className={"p-6 bg-gray-775"}>
+                                            <div className={"p-6 bg-gray-775 rounded-lg"}>
                                                 <h4>Your Data</h4>
                                                 <p className={"pt-1 pb-6 text-sm"}>
-                                                    Click the button below to see all of the Data that has ever been stored on Keyma.sh.
+                                                    Click the button below to see all of the Data that has ever been stored on Keymash.
                                                 </p>
-                                                <a target={"_blank"} rel={"noopener noreferrer"} href={`${Config.apiUrl}/player/gdpr`} className={"btn btn--blue"}>
-                                                    Raw JSON
-                                                </a>
+                                                <div className="flex">
+                                                    <a target={"_blank"} rel={"noopener noreferrer"} href={`${Config.apiUrl}/player/gdpr`} className={"button small blue"}>
+                                                        Raw JSON
+                                                    </a>
+                                                </div>
+                                                
                                             </div>
-                                            <div className={"p-6 bg-gray-775"}>
+                                            <div className={"p-6 bg-gray-775 rounded-lg"}>
                                                 <h4>Delete Account</h4>
                                                 <p className={"pt-1 pb-6 text-sm"}>
                                                     By hitting the button below, your account will be placed in an automatic deletion queue that executes once a day.
                                                 </p>
-                                                <button type={"button"} onClick={() => setDeletionModel(true)}className={"btn btn--red"}>
-                                                    Delete
-                                                </button>
+                                                <div className="flex">
+                                                    <button type={"button"} onClick={() => setDeletionModel(true)} className={"button small red"}>
+                                                        Delete
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </>

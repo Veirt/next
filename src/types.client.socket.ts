@@ -1,10 +1,12 @@
 import {
+    GamemodeData,
     MatchData,
     PlayerCompetitiveData,
     PlayerData,
     PlayerExtendedData,
     PlayerLevelData,
-    PlayerMatchData
+    PlayerMatchData,
+    PlayerRoundData
 } from "./types.client.mongo";
 
 export interface ChatroomMessageProps {
@@ -43,17 +45,21 @@ export interface SocketMatchPlayerData extends PlayerData, PlayerMatchData {
     Level: PlayerLevelData;
     WPM: number;
     Progress: number;
-    correctKeystrokes: number;
     Accuracy: number;
     correctKeystrokeString: string;
     currentKeystroke: string;
+    currentInput: string;
     currentWord: string;
+    correctWords: number;
+    wordLetterIndex: number;
+    Replay: string;
     Placement: number;
     PlacementFinal: number;
     teamId: number;
     forceReset?: boolean;
     Quit: number;
     roundsWon: number;
+    spectatorOnly: boolean;
 }
 
 export interface SocketMatchEndData {
@@ -94,4 +100,74 @@ export interface SocketMatchData extends MatchData {
     textSourceSource: string;
     textSourceContributor: string;
     textSourceAuthor: string;
+}
+
+export interface GlobalMatchData {
+    roundData: {
+        timeStart: number;
+        timeEnd: number;
+        total: number;
+    };
+    textData: {
+        textId: number;
+        content: string;
+        custom: string;
+        author: string;
+        source: string;
+        contributor: string;
+    }[];
+    matchData: {
+        locale: string;
+        textId: number;
+        worldId: number;
+        flagId: number;
+        modeId: number;
+        modeData: GamemodeData;
+        tournamentId: string,
+        referralId: string,
+    };
+    playerCount: number;
+    placementsFinalized: boolean;
+}
+
+export interface SocketGameEndData {
+    average: {
+        wpm: number;
+        accuracy: number;
+        elapsed: number;
+    };
+    rewards: {
+        exp: number;
+        currency: number;
+        achievements: string[];
+        challenges: string[];
+    };
+    level: {
+        before: {
+            Index: number;
+            Next: number;
+            Prev: number;
+            Percentage: number;
+        };
+        after: {
+            Index: number;
+            Next: number;
+            Prev: number;
+            Percentage: number;
+        };
+    };
+    ranked: {
+        before: PlayerCompetitiveData;
+        after: PlayerCompetitiveData;
+    };
+    personalBest: boolean;
+    roundData: PlayerRoundData[];
+}
+
+export interface SocketChartData {
+    wpm: number[];
+    labels: string[];
+    accuracy: number[];
+    words: number[];
+    step?: number;
 }

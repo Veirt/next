@@ -90,3 +90,17 @@ option {
 .form-combo input {
   @apply placeholder-gray-400 w-full block mr-4 py-2.5 bg-transparent focus:outline-none;
 }
+
+/* Form Search */
+
+.form-search {
+  @apply flex bg-gray-775 rounded-xl;
+}
+
+.form-search input {
+  @apply w-full bg-transparent focus:outline-none text-white placeholder-gray-400 rounded-l-xl py-1.5 px-4;
+}
+
+.form-search button {
+  @apply block rounded-r-xl bg-gray-700 hover:bg-gray-725 focus:bg-gray-725 text-white px-4 transition ease-in-out duration-300;
+}

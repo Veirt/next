@@ -3,7 +3,7 @@ import { Meta } from '../../layout/Meta';
 import ConfigService from '../../services/ConfigService';
 import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
-import MatchTextContainer from '../../components/Game/new/MatchTextContainer';
+import MatchTextContainer from '../../components/Game/MatchTextContainer';
 
 const Index = () => {
 
@@ -13,11 +13,10 @@ const Index = () => {
                 <div className={"flex h-screen"}>
                     <div className={"m-auto max-w-screen-lg"}>
                         <MatchTextContainer 
-                            quote={"This is a test sentence. This is another sentence. This is a test sentence. This is another sentence. This is a test sentence. This is another sentence. This is a test sentence. This is another sentence. This is a test sentence. This is another sentence. This is a test sentence. This is another sentence."}
+                            quote={"Now, if you're part of Control Group Kepler-Seven, we implanted a tiny microchip about the size of a postcard into your skull. Most likely you've forgotten it's even there, but if it starts vibrating and beeping during this next test, let us know, because that means it's about to hit five hundred degrees, so we're gonna need to go ahead and get that out of you pretty fast."}
                             disabled={false}
                             removeLimit={false}
                             sendKeystroke={() => false}
-                            sendWord={() => false}
                             isSuddenDeath={false}
                         />
                     </div>

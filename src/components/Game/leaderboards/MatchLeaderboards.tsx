@@ -42,11 +42,8 @@ const MatchLeaderboards: FC<MatchLeaderboardsProps> = (props) => {
   }, [ getLeaderboards ]);
 
   return (
-      <>
-
-        <div className={"text-lg uppercase text-white font-semibold mt-6 mb-2"}>
-          {t('page.match.highscores')}
-        </div>
+      <div className="content-box mt-6">
+        <div className={"h2 mb-6"}>{t('page.match.highscores')}</div>
         {leaderboardsLoaded
             ? (
                 <>
@@ -55,7 +52,7 @@ const MatchLeaderboards: FC<MatchLeaderboardsProps> = (props) => {
                 </>
             ) : <LoadingScreen isPartial />
         }
-      </>  
+      </div>  
   );
 }
 

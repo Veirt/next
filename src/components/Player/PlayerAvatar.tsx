@@ -29,7 +29,7 @@ const PlayerAvatar: FC<UserAvatarProps> = (props) => {
 
     useEffect(() => {
         if (errored || !source)
-            setImage(`/extras/avatar.jpg`);
+            setImage(`/avatars/default1.jpg`);
         else
             setImage(source);
     }, [ image, errored, source ]);

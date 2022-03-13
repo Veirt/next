@@ -14,7 +14,7 @@ function Playwire(props: IProps) {
     const pwUnits = [
         { selectorId: 'desktop-top-leaderboard', type: 'leaderboard_atf' },
         { selectorId: 'desktop-bottom-leaderboard', type: 'leaderboard_btf' },
-        { selectorId: 'mobile-leaderboard', type: '320x50' },
+        // { selectorId: 'mobile-leaderboard', type: '320x50' },
         { selectorId: 'responsive-top-square', type: 'med_rect_atf' },
         { selectorId: 'responsive-bottom-square', type: 'med_rect_btf' },
         { selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
@@ -64,7 +64,7 @@ function Playwire(props: IProps) {
             });
         };
 
-        if ((sessionData && !sessionData.patreon && !sessionData.staff)) init();
+        if (sessionData && !sessionData.patreon && !sessionData.staff) init();
         // eslint-disable-next-line
     }, [ ]);
 

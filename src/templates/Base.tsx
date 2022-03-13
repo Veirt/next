@@ -1,9 +1,14 @@
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { GlobalHotKeys } from 'react-hotkeys';
+import ReactTooltip from 'react-tooltip';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
+import AdvertisementUnit from '../components/Advertisement/Units/AdvertisementUnit';
 import LoadContent from '../components/LoadContent';
+import Matchmaking from '../components/Uncategorized/Matchmaking';
 import Redirect from '../components/Uncategorized/Redirect';
+import { toggleStaging } from '../Config';
+import { usePlayerContext } from '../contexts/Player.context';
 import useConfig from '../hooks/useConfig';
 import useGoogleAnalytics from '../hooks/useGoogleAnalytics';
 import Levelbar from '../layout/Levelbar';
@@ -14,10 +19,12 @@ type IMainProps = {
     ads?: {
       enableBottomRail?: boolean;
       enableTrendiVideo?: boolean;
+      disableStickyVertical?: boolean;
     }
     isLoaded?: boolean;
     noAnimate?: boolean;
     noNav?: boolean;
+    contentTopBorder?: boolean;
 };
 
 const Base = (props: IMainProps) => {
@@ -26,12 +33,12 @@ const Base = (props: IMainProps) => {
     const timer = useRef<NodeJS.Timeout | null>(null);
     const [ redirect, setRedirect ] = useState<string>('');
     const [ loaded, setLoaded ] = useState<boolean>(props.noAnimate === true);
+    const { sessionData } = usePlayerContext();
     const { shortcutHome, shortcutExit, shortcutPlayRandom, shortcutPlayQuotes, shortcutPlayDictionary } = useConfig();
 
     const onTimerCalled = () => setLoaded(true);
 
     const redirectTo = (uri: string, isRefresh?: boolean, isBack?: boolean) => {
-        console.log('shortcut called', uri);
         if (isRefresh) return window.location.reload();
         if (isBack) return window.history.back();
         if (!isRefresh && !isBack) {
@@ -75,11 +82,29 @@ const Base = (props: IMainProps) => {
     return props ? (
         <>
             <GlobalHotKeys keyMap={keyMap} handlers={handlers} />
+            <ReactTooltip /> 
             {props.meta}
             {!props.noNav ? <Levelbar /> : ''}
+            {props.contentTopBorder && (
+                <div className="container">
+                    <div className="border-t border-gray-800" />
+                </div>
+            )}
             <main>
+                <div className="bgOverlay" />
+                {(toggleStaging && !props.ads?.disableStickyVertical) && (
+                    <>
+                        <div className="absolute top-24 mt-1 left-4 hidden ads:block">
+                            <AdvertisementUnit type="responsive-skyscraper-one" />
+                        </div>
+                        <div className="absolute top-24 mt-1 right-4 hidden ads:block">
+                            <AdvertisementUnit type="responsive-skyscraper-two" />
+                        </div>
+                    </>
+                )}
+                {sessionData !== null && <Matchmaking />}
                 <LoadContent isLoaded={loaded}>
-                    <PlaywireContainer {...props.ads} />
+                    {sessionData !== null && <PlaywireContainer {...props.ads} />}
                     <>{props.children}</>
                 </LoadContent>
             </main>
