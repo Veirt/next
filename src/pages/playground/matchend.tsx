@@ -18,8 +18,8 @@ const Index = () => {
             "rewards": {
                 "exp": 154,
                 "currency": 163,
-                "achievements": ["MAX_WPM_10", "MAX_WPM_50"],
-                "challenges": ["0_0_MATCHESTOTAL_1"]
+                "achievements": [],
+                "challenges": []
             },
             "level": {
                 "before": {

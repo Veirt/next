@@ -96,7 +96,7 @@ const Chart = (props: SocketChartData) => {
     return (
         <>
             <div style={{ zIndex: -1 }} className="w-full h-full text-gray-100 text-center bg-gray-825 rounded-lg px-2 py-3.5" >
-                <div style={{ height: '350px' }}>
+                <div className="h-48 sm:h-56 md:h-64 lg:h-88">
                     <Line data={lineData} options={lineOptions} redraw={true} />
                 </div>
             </div>

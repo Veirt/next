@@ -23,7 +23,6 @@ import Ranked from './MatchEnd/Ranked';
 import { toggleStaging } from '../../Config';
 import AchievementItem from '../Achievement/AchievementItem';
 import { useGlobalContext } from '../../contexts/Global.context';
-import { PlayerAchievementExtendedData } from '../Profile/ProfileAchievements';
 import Challenge from '../Challenges/Challenge';
 
 
@@ -120,7 +119,7 @@ const MatchEnd = (props: IProps) => {
                         ))}
                     </div>
 
-                    <div className={"bg-black bg-opacity-20 h-auto md:min-h-128 rounded-b-2xl shadow-lg p-4 sm:p-6 md:p-8 relative"}>
+                    <div className={"bg-black bg-opacity-20 h-auto lg:min-h-128 rounded-b-2xl shadow-lg p-4 sm:p-6 md:p-8 relative"}>
                         {tab === 'summary' && (
                             <>
                                 <div>
@@ -152,7 +151,7 @@ const MatchEnd = (props: IProps) => {
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                                         <div>
                                             <div className={`${boxCSS} mb-4`}>
                                                 <div className="flex">
@@ -160,7 +159,7 @@ const MatchEnd = (props: IProps) => {
                                                         <FontAwesomeIcon icon={faCircle} className="text-yellow-400 text-2xl mt-1" />
                                                     </div>
                                                     <div className="text-left w-auto my-auto">
-                                                        <div className="font-bold text-xl">{data.rewards.exp.toLocaleString()} EXP</div>
+                                                        <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.exp.toLocaleString()} EXP</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,7 +170,7 @@ const MatchEnd = (props: IProps) => {
                                                         <FontAwesomeIcon icon={faCoins} className="text-yellow-400 text-2xl mt-1" />
                                                     </div>
                                                     <div className="text-left w-auto my-auto">
-                                                        <div className="font-bold text-xl">{data.rewards.currency.toLocaleString()} Coins</div>
+                                                        <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.currency.toLocaleString()} Coins</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,7 +181,7 @@ const MatchEnd = (props: IProps) => {
                                                         <FontAwesomeIcon icon={faAward} className="text-yellow-400 text-2xl mt-1" />
                                                     </div>
                                                     <div className="text-left w-auto my-auto">
-                                                        <div className="font-bold text-xl">{data.rewards.achievements.length.toLocaleString()} Achievements</div>
+                                                        <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.achievements.length.toLocaleString()} Achievements</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,13 +192,13 @@ const MatchEnd = (props: IProps) => {
                                                         <FontAwesomeIcon icon={faList} className="text-blue-400 text-2xl mt-1" />
                                                     </div>
                                                     <div className="text-left w-auto my-auto">
-                                                        <div className="font-bold text-xl">{data.rewards.challenges.length.toLocaleString()} Challenges</div>
+                                                        <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.challenges.length.toLocaleString()} Challenges</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="col-span-full lg:col-span-2 mb-4">
-                                            <div className={`${boxCSS} flex h-full`}>
+                                            <div className={`${boxCSS} h-full hidden lg:flex`}>
                                                 <div className="my-auto w-full">
                                                     {matchData.flagId === 3 ? (
                                                         <>
@@ -207,24 +206,33 @@ const MatchEnd = (props: IProps) => {
                                                         </>
                                                     ) : (
                                                         <>
-                                                            <div className="h3 mb-6 text-left">Rewards</div>
-                                                            <div className="h-48 overflow-y-scroll pr-8">
-                                                                <div className="grid grid-cols-1 gap-8">
-                                                                    {data.rewards.achievements.map((item, index) => (
-                                                                        <div key={index}>
-                                                                            {/* @ts-ignore */}
-                                                                            <AchievementItem {...achievements[item as any]} value={1} created={Math.round((new Date().getTime() / 1000) - 15)} />
-                                                                        </div>
-                                                                    ))}
-
-                                                                    {data.rewards.challenges.map((item, index) => (
-                                                                        <div key={index}>
-                                                                            {/* @ts-ignore */}
-                                                                            <Challenge mini {...challenges[item as any]} mode={[ gamemodes[challenges[item as any]?.modeId || 0] ]} challenge={[ challenges[item as any] ]} />
-                                                                        </div>
-                                                                    ))}
+                                                            {(data.rewards.achievements.length === 0 && data.rewards.challenges.length === 0) ? (
+                                                                <div>
+                                                                    If you believe in yourself and have dedication and pride - and never quit, you'll be a winner. The price of victory is high but so are the rewards.
+                                                                    <div className="font-semibold">- Bear Bryant</div>
                                                                 </div>
-                                                            </div>
+                                                            ) : (
+                                                                <>
+                                                                    <div className="h3 mb-6 text-left">Rewards</div>
+                                                                    <div className="h-48 overflow-y-scroll pr-8">
+                                                                        <div className="grid grid-cols-1 gap-8">
+                                                                            {data.rewards.achievements.map((item, index) => (
+                                                                                <div key={index}>
+                                                                                    {/* @ts-ignore */}
+                                                                                    <AchievementItem {...achievements[item as any]} value={1} created={Math.round((new Date().getTime() / 1000) - 15)} />
+                                                                                </div>
+                                                                            ))}
+
+                                                                            {data.rewards.challenges.map((item, index) => (
+                                                                                <div key={index}>
+                                                                                    {/* @ts-ignore */}
+                                                                                    <Challenge mini {...challenges[item as any]} mode={[ gamemodes[challenges[item as any]?.modeId || 0] ]} challenge={[ challenges[item as any] ]} />
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            )}
                                                         </>
                                                     )}
                                                 </div>
@@ -234,7 +242,7 @@ const MatchEnd = (props: IProps) => {
                                     </div>
 
                                     {isPublicOrRankedMatch ? (
-                                        <div className="absolute bottom-8 left-8 right-8">
+                                        <div className="absolute left-4 bottom-4 right-4 sm:left-6 sm:bottom-6 sm:right-6 md:bottom-8 md:left-8 md:right-8">
                                             <PlayerExperience experience={0} level={data.level.after.Index} next={data.level.after.Next} percentage={data.level.after.Percentage} size={2} />
                                             <div className="flex justify-between mt-2">
                                                 <div>Level {data.level.after.Index}</div>
@@ -247,11 +255,11 @@ const MatchEnd = (props: IProps) => {
                         )}
                         {tab === 'match' && (
                             <>
-                                <div className={"pb-8 flex flex-wrap justify-center sm:justify-between"}>
+                                <div className={"pb-8 flex flex-wrap justify-center md:justify-between"}>
                                     <div className={"w-auto pb-4 sm:pb-0"}>
-                                        <div className={"flex text-white"}>
+                                        <div className={"flex flex-wrap text-white"}>
                                             {subtabs.map((item, index) => (
-                                                <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`${index === 0 ? 'rounded-l-lg' : ''} ${index === 2 ? 'rounded-r-lg' : ''} transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-4 text-sm ${subtab !== item.tab ? 'bg-gray-775' : 'bg-gray-800'} hover:bg-gray-800 animation-short`}>
+                                                <button key={item.tab} type="button" onClick={() => setSubtab(item.tab)} className={`w-full xs:w-auto ${index === 0 ? 'xs:rounded-l-lg' : ''} ${index === 2 ? 'xs:rounded-r-lg' : ''} transition ease-in-out duration-300 focus:outline-none py-2 px-4 text-sm ${subtab !== item.tab ? 'bg-gray-775' : 'bg-gray-800'} hover:bg-gray-800 animation-short`}>
                                                   {item.name}
                                                 </button>
                                             ))}
@@ -274,11 +282,11 @@ const MatchEnd = (props: IProps) => {
                                         {subtab === 'overview' && (
                                             <div className={"grid grid-cols-1 sm:grid-cols-3 gap-8"}>
                                                 <div className={"col-span-full md:col-span-1"}>
-                                                    <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4"}>
+                                                    <div className={"grid grid-cols-1 xs:grid-cols-2 md:grid-cols-1 gap-4"}>
                                                       {rows.map(stat => (
                                                           <div key={stat.Name} className={"relative bg-gray-825 shadow-md rounded-2xl px-5 py-3"}>
                                                               <div className={"uppercase text-xs font-semibold text-white"}>{t(stat.Name)}</div>
-                                                              <div className={"text-4xl text-orange-400 font-bold"}>
+                                                              <div className={"text-xl sm:text-2xl md:text-3xl lg:text-4xl text-orange-400 font-bold"}>
                                                                   <ReactCountUp start={0} end={stat.Value || 0} decimal={'.'} decimals={['statistics.time', 'statistics.wpm', 'statistics.cpm'].includes(stat.Name) ? 2 : 0} />
                                                                   <span className={"text-2xl"}>{stat.Extension}</span>
                                                               </div>
@@ -292,7 +300,7 @@ const MatchEnd = (props: IProps) => {
                                                     </div>
                                                 </div>
                                                 <div className={"col-span-full md:col-span-2"}>
-                                                    <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md"}>
+                                                    <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md hidden lg:block"}>
                                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                             <div>
                                                                 <div className={"text-white text-xs sm:text-xs uppercase font-semibold"}>Title</div>
@@ -312,7 +320,7 @@ const MatchEnd = (props: IProps) => {
                                                     
                                                     </div>
 
-                                                    <div className="p-5 bg-gray-825 rounded-2xl shadow-md">
+                                                    <div className="p-5 bg-gray-825 rounded-2xl shadow-md hidden md:block">
                                                         <div className="inline-flex flex-wrap font-semibold">
                                                             {useRoundData.Text.content.split(' ').map((item, index) => (
                                                                 <Fragment key={index}>

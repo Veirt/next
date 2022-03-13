@@ -138,7 +138,7 @@ const Replay = (props: IProps) => {
                         <button type="button" className="button small lightgray" onClick={resetInterval}>
                             <FontAwesomeIcon icon={faRedo} />
                         </button>
-                        <div className="flex space-x-4 pl-4 text-xs my-auto" data-tip="These results may be slightly inaccurate from your final speed.">
+                        <div className="flex space-x-4 pl-4 text-xs my-auto hidden lg:block" data-tip="These results may be slightly inaccurate from your final speed.">
                             <div className="text-orange-400 font-semibold hidden">
                                 {(((iteration / 5) / ((elapsed / 1000) / 60)) || 0).toFixed(2)} WPM
                             </div>
@@ -147,7 +147,7 @@ const Replay = (props: IProps) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-auto flex space-x-2">
+                    <div className="w-auto space-x-2 hidden lg:flex">
                         <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 2 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(2)}>
                             2x
                         </button>
