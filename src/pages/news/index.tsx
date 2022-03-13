@@ -32,7 +32,7 @@ const News = ({ newsData }: IProps) => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                    {newsData.map((row, index) => (index > 0) && <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
+                    {newsData.map((row) => <NewsItem isBig key={row.slug} {...row} showUnread={row.increment > getLatestNewsId} /> )}
                 </div>
 
                 <AdvertisementDisplay className="mt-4">
