@@ -1,27 +1,36 @@
 
+.navigationBar {
+  backdrop-filter: 'blur(8px)';
+  @apply my-5 relative;
+}
+
+.navigationBar.is-mobile {
+  @apply bg-gray-750 bg-opacity-90 shadow-lg my-0 fixed;
+}
+
 .desktopNav-item {
-  @apply relative my-auto w-auto px-5 xl:px-8 py-3.5 border-transparent text-sm xl:text-base uppercase text-center text-white transition ease-in-out duration-300 font-semibold hover:text-orange-400;
-}
-
-.desktopNav-item::after {
-  content: "";
-  transform: scaleX(0);
-  @apply absolute transition-all ease-in-out duration-200 absolute top-0 right-0 left-0 bottom-0 border-b-2 border-orange-400;
-}
-
-.desktopNav-item:hover::after, .desktopNav-item.levelbar-active::after, .desktopNav-item.levelbar-active {
-  transform: scaleX(1);
-  @apply text-orange-400
+  @apply 
+    relative my-auto w-auto 
+    px-4 xl:px-4 py-1
+    border-transparent 
+    text-sm xl:text-base uppercase text-center 
+    text-white 
+    transition ease-in-out duration-300 
+    font-semibold 
+    rounded-xl
+    hover:bg-gray-775
+    hover:text-orange-400
+    ml-6;
 }
 
 .mobileNav-item {
-  @apply my-auto w-auto pb-1 pt-2 border-b-2 border-transparent hover:border-orange-400 text-sm uppercase text-center text-white transition ease-in-out duration-300 font-semibold hover:text-orange-400
+  @apply my-auto w-auto py-3 text-sm uppercase text-center text-white transition ease-in-out duration-300 font-semibold hover:text-orange-400
 }
 
 .mobileNav-item.levelbar-active {
-  @apply border-orange-400 text-orange-400 #{!important};;
+  @apply text-orange-400 #{!important};;
 }
 
 .desktopNav-item.levelbar-active {
-  @apply bg-gradient-to-r from-gray-775 to-gray-800;
+  @apply bg-gray-750 text-orange-400;
 }

@@ -22,6 +22,7 @@ export interface ConfigData {
     matchFinishBeep: '0' | '1';
     matchContainerTransparent: '0' | '1';
     matchTextType: '0' | '1';
+    focusMode: '0' | '1';
     performanceMode: '0' | '1';
     colorBlindMode: '0' | '1';
     adsGameplay: '0' | '1';
@@ -46,7 +47,7 @@ function useConfig() {
         smoothCaretSpeed: '100',
         hideInputBox: '0',
         gameplayParticipantStyle: '0',
-        upscaleMatch: '0',
+        upscaleMatch: '1',
         upscaleMatchContainer: '0',
         streamerMode: '0',
         hideWPM: '0',
@@ -58,6 +59,7 @@ function useConfig() {
         matchFinishBeep: '1',
         matchContainerTransparent: '0',
         matchTextType: '1',
+        focusMode: '0',
         performanceMode: '0',
         shortcutHome: 'CTRL+ALT+H',
         shortcutExit: 'CTRL+ALT+E',
@@ -98,6 +100,7 @@ function useConfig() {
         matchFinishBeep: (storageJSON && typeof storageJSON.matchFinishBeep !== 'undefined' ? storageJSON.matchFinishBeep : defaultJSON.matchFinishBeep),
         matchContainerTransparent: (storageJSON && typeof storageJSON.matchContainerTransparent !== 'undefined' ? storageJSON.matchContainerTransparent : defaultJSON.matchContainerTransparent),
         matchTextType: (storageJSON && typeof storageJSON.matchTextType !== 'undefined' ? storageJSON.matchTextType : defaultJSON.matchTextType),
+        focusMode: (storageJSON && typeof storageJSON.focusMode !== 'undefined' ? storageJSON.focusMode : defaultJSON.focusMode),
         performanceMode: (storageJSON && typeof storageJSON.performanceMode !== 'undefined' ? storageJSON.performanceMode : defaultJSON.performanceMode),
         colorBlindMode: (storageJSON && typeof storageJSON.colorBlindMode !== 'undefined' ? storageJSON.colorBlindMode : defaultJSON.colorBlindMode),
         adsGameplay: (storageJSON && typeof storageJSON.adsGameplay !== 'undefined' ? storageJSON.adsGameplay : defaultJSON.adsGameplay),

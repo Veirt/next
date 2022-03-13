@@ -51,7 +51,7 @@ const Modal = (props: IProps) => {
     }
 
     return (
-        <div ref={divRef} style={{ zIndex: 100 }} className={`modal-bg fixed inset-0 w-full h-screen bg-black bg-opacity-50 transition-all ease-in-out duration-300 ${props.isOpened ? 'opacity-100 visible' : 'opacity-0 pointer-events-none invisible'}`}>
+        <div ref={divRef} style={{ zIndex: 100, overflow: 'hidden' }} className={`modal-bg fixed inset-0 w-full h-screen bg-black bg-opacity-50 transition-all ease-in-out duration-300 ${props.isOpened ? 'opacity-100 visible' : 'opacity-0 pointer-events-none invisible'}`}>
             <div className={`modal-bg flex h-screen transform transition-all ease-in-out duration-300 ${props.isOpened ? 'translate-y-0' : 'translate-y-1'}`}>
               <div className={`modal-bg ${sizeCSS} m-auto relative`}>
                   <div className={`${props.className || "bg-gray-775 p-8"} w-full rounded-2xl shadow-lg relative`}>

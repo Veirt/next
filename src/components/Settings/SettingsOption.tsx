@@ -101,10 +101,10 @@ const SettingsOption = (props: IProps) => {
                         <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
                     </div>
                     <div className={"w-1/4 flex justify-end"}>
-                        <button type={"button"} onClick={() => onChange('1')} className={`w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('1')} className={`rounded-l-lg w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             <FontAwesomeIcon icon={faCheck} />
                         </button>
-                        <button type={"button"} onClick={() => onChange('0')} className={`w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('0')} className={`rounded-r-lg w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             <FontAwesomeIcon icon={faTimes} />
                         </button>
                     </div>
@@ -115,10 +115,10 @@ const SettingsOption = (props: IProps) => {
                         <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
                     </div>
                     <div className={"w-1/4 flex justify-end"}>
-                        <button type={"button"} onClick={() => onChange('1')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('1')} className={`rounded-l-lg w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             Mono
                         </button>
-                        <button type={"button"} onClick={() => onChange('0')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('0')} className={`rounded-r-lg w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             Sans
                         </button>
                     </div>
@@ -129,10 +129,10 @@ const SettingsOption = (props: IProps) => {
                         <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
                     </div>
                     <div className={"w-1/2 flex justify-end"}>
-                        <button type={"button"} onClick={() => onChange('1')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('1')} className={`rounded-l-lg w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             Large
                         </button>
-                        <button type={"button"} onClick={() => onChange('0')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('0')} className={`rounded-r-lg w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             Normal
                         </button>
                     </div>
@@ -143,13 +143,13 @@ const SettingsOption = (props: IProps) => {
                         <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
                     </div>
                     <div className={"w-1/2 flex justify-end"}>
-                        <button type={"button"} onClick={() => onChange('0')} className={`w-20 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('0')} className={`rounded-l-lg w-20 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             Default
                         </button>
                         <button type={"button"} onClick={() => onChange('1')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             List
                         </button>
-                        <button type={"button"} onClick={() => onChange('2')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '2' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('2')} className={`rounded-r-lg w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '2' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             Legacy
                         </button>
                     </div>
@@ -160,10 +160,10 @@ const SettingsOption = (props: IProps) => {
                         <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
                     </div>
                     <div className={"w-1/2 flex justify-end"}>
-                        <button type={"button"} onClick={() => onChange('1')} className={`w-14 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('1')} className={`rounded-l-lg w-14 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             CPM
                         </button>
-                        <button type={"button"} onClick={() => onChange('0')} className={`w-14 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                        <button type={"button"} onClick={() => onChange('0')} className={`rounded-r-lg w-14 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             WPM
                         </button>
                     </div>

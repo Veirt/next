@@ -76,8 +76,8 @@ const ProfileStatistics = (props: IProps) => {
             css: 'lg:col-span-3',
             items: [
                 { label: 'statistics.won', value: (statisticData?.matchesWon || 0).toLocaleString() },
-                { label: 'statistics.lost', value: (statisticData?.matchesLost || 0).toLocaleString() },
-                { label: 'statistics.ratio', value: (statisticData?.matchesWon && statisticData?.matchesLost) ? (statisticData.matchesWon / statisticData.matchesLost).toFixed(1) : 0 },
+                { label: 'statistics.total', value:  ((statisticData?.matchesWon || 0) + (statisticData?.matchesLost || 0) + (statisticData?.matchesQuit || 0)).toLocaleString() },
+                { label: 'statistics.ratio', value: ((statisticData?.matchesWon || 0) / ((statisticData?.matchesLost || 0) + (statisticData?.matchesQuit || 0))).toFixed(2) },
             ]
         },
         {
@@ -93,11 +93,10 @@ const ProfileStatistics = (props: IProps) => {
 
     return (profileData && statisticData) ? (
         <>
-            <h2 className={"headingBox"}>{t('component.navbar.statistics')}</h2>
             <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4"}>
                 {blockItems.map((block, index) => block.title !== 'PROFILE_RANKED' ? (
-                    <div key={index} className={`bg-gray-750 rounded-xl shadow-lg p-4 ${block.css}`}>
-                        <div className={"text-orange-400 pb-2 font-semibold uppercase text-2xl"}>{t(block.title)}</div>
+                    <div key={index} className={`content-box-basic p-4 ${block.css}`}>
+                        <div className={"text-orange-400 pb-2 font-semibold text-3xl"}>{t(block.title)}</div>
                         <div className={"grid grid-cols-1 gap-2"}>
                             {/* @ts-ignore */}
                             {block.items.map((item, key) => (item && (typeof item.value !== 'undefined' && (item.value !== null && item.value !== ""))) ? (
@@ -109,21 +108,23 @@ const ProfileStatistics = (props: IProps) => {
                         </div>
                     </div>
                 ) : (
-                    <div key={index} className={`bg-gray-750 shadow-lg rounded-xl p-4 ${block.css}`}>
+                    <div key={index} className={`content-box-basic p-4 ${block.css}`}>
                         <div className={"flex h-full"}>
                             <div className={"m-auto"}>
                                 {rankedData && (
-                                    <div className={"flex"}>
-                                        <div className={"w-44 lg:w-52 my-auto"}>
-                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.toLowerCase()}.png`} alt={rankedData?.Rank.Rank} />
+                                    <div>
+                                        <div className={"block mx-auto w-20 lg:w-20"}>
+                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank.Rank} />
                                         </div>
-                                        <div className={"w-full my-auto"}>
-                                            {(rankedData && rankedData.Rank.Rank <= 'Unranked') && (
-                                                <div className={"text-white uppercase text-2xl lg:text-5xl font-bold"}>
-                                                    {rankedData?.rating}<span className={"text-orange-400 text-xl lg:text-3xl"}>SR</span>
+                                        <div className={"text-center mt-2"}>
+                                            {(rankedData && rankedData.Rank.Rank <= 'Unrated') && (
+                                                <div className={"text-white text-2xl lg:text-3xl font-bold"}>
+                                                    {rankedData?.Rank.Rank}
                                                 </div>
                                             )}
-                                            <div className={"text-white opacity-70 uppercase text-lg lg:text-2xl font-semibold"}>{rankedData?.Rank.Rank}</div>
+                                            <div className={"text-white opacity-70 uppercase text-xl font-semibold"}>
+                                                {rankedData?.rating} <span className={"text-orange-400"}>SR</span>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
@@ -131,16 +132,14 @@ const ProfileStatistics = (props: IProps) => {
                         </div>
                     </div>
                 ))}
-            </div>
-
-            {chartData !== null && (
-                <div className="mt-10">
-                    <h2 className={"headingBox"}>{t('page.profile.progress')}</h2>
-                    <div className={"p-4 xl:p-8 rounded-xl shadow-lg bg-gray-750 text-white text-center font-semibold uppercase"}>
-                        <ProfileStatisticChart {...chartData} />
+                {chartData !== null && (
+                    <div className="col-span-full">
+                        <div className={"p-4 xl:p-8 content-box-basic text-white text-center font-semibold uppercase"}>
+                            <ProfileStatisticChart {...chartData} />
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </>
     ) : <></>
 }

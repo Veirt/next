@@ -1,9 +1,6 @@
 import {useState, useEffect, useRef, useCallback} from 'react';
-import { useTranslation } from 'next-i18next';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../Config';
-import ComboBottom from "../../components/Advertisement/Combo/ComboBottom";
-import DesktopTop from "../../components/Advertisement/DesktopTop";
 import {
   PlayerExtendedData,
   PlayerStatisticData,
@@ -24,6 +21,7 @@ import ConfigService from '../../services/ConfigService';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PlayerStatisticChartData } from '../../components/Profile/ProfileStatisticChart';
 import { PlayerRankedExtendedData } from '../../components/Leaderboard/LeaderboardPlayerRanked';
+import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
 
 interface IProps {
     playerData: PlayerExtendedData;
@@ -37,7 +35,6 @@ interface IProps {
 const Profile = ({ playerData, statisticData, chartData, rankedData, achievementsData, tournamentsData }: IProps) => {
 
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
-    const { t } = useTranslation();
     const { world } = useConfig();
 
     // Player data
@@ -79,30 +76,30 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
 
     const profileItems = [
         {
-        name: 'General',
-        tab: 'statistics',
-        onClick: () => setTab('statistics')
+            name: 'General',
+            tab: 'statistics',
+            onClick: () => setTab('statistics')
         },
         {
-        name: 'Matches',
-        tab: 'matches',
-        onClick: () => setTab('matches')
+            name: 'Matches',
+            tab: 'matches',
+            onClick: () => setTab('matches')
         },
         {
-        name: 'Achievements',
-        tab: 'achievements',
-        onClick: () => setTab('achievements')
+            name: 'Achievements',
+            tab: 'achievements',
+            onClick: () => setTab('achievements')
         },
         {
-        name: 'Tournaments',
-        tab: 'tournaments',
-        onClick: () => setTab('tournaments')
+            name: 'Tournaments',
+            tab: 'tournaments',
+            onClick: () => setTab('tournaments')
         }
     ]
 
     return (
         <Base meta={<Meta title={`${playerData.name}#${playerData.discriminator}'s Profile`} description={(playerData?.description.substr(0, 200) + '...') || ''} customImage={playerData?.avatarSrc || ''} reverseTitle />} isLoaded={loaded} ads={{ enableBottomRail: true }}>
-            <div className={"container container-margin container-padding"}>
+            <div className={"container container-margin container-content"}>
                 <div className={"relative rounded-xl shadow-lg grid grid-cols-1 lg:grid-cols-5 p-6"} style={{ backgroundImage: `url('/banners/${playerData?.banner}.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                     <div className="lg:col-span-3">
                         <div className={"flex justify-center xl:justify-start space-x-6"}>
@@ -128,22 +125,23 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                         </div>
                     </div> 
                     <div className={"lg:col-span-2"}>
-                        <div className={"m-auto mb-3 rounded-xl py-6 truncate font-semibold text-center text-white text-sm xl:text-base bg-gray-900 bg-opacity-70"}>{playerData?.description}</div>
+                        <div className={"m-auto mb-4 rounded-xl py-6 h-20 truncate font-semibold text-center text-white text-sm xl:text-base bg-gray-900 bg-opacity-70"}>{playerData?.description}</div>
                         <div className={"grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 bg-gray-750 shadow-lg rounded-xl"}>
                             {profileItems.map((item, index) => (
-                                <button key={item.tab} onClick={item.onClick} className={`${index === 0 ? 'rounded-l-xl' : ''} ${index === profileItems.length ? 'rounded-r-xl' : ''} ${item.tab === tab ? 'bg-gray-775 bg-opacity-70' : ''} block text-center text-white uppercase font-semibold tracking-wider text-xxs sm:text-xs lg:text-sm py-2 focus:outline-none hover:border-orange-400 transition ease-in-out duration-300`}>
+                                <button key={item.tab} onClick={item.onClick} className={`${index === 0 ? 'rounded-l-xl' : ''} ${index === profileItems.length ? 'rounded-r-xl' : ''} ${item.tab === tab ? 'bg-gray-775 bg-opacity-70' : ''} block text-center text-white uppercase font-semibold tracking-wider text-xxs sm:text-xs py-2 focus:outline-none hover:border-orange-400 transition ease-in-out duration-300`}>
                                 {item.name}
                                 </button>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className={""}>
-                    <DesktopTop />
+                <div className={"mt-4"}>
+                    <AdvertisementDisplay className="mb-4">
+                            
+                    </AdvertisementDisplay>
                     {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
                     {tab === 'matches' && (
-                        <>
-                          <h2 className={"headingBox"}>{t('component.navbar.recent_matches')}</h2>
+                        <div className="content-box">
                           {matchData && matchData.length !== 0 ? (
                               <>
                                 <LeaderboardPlayerProfile data={matchData} skip={skip} />
@@ -154,11 +152,13 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                                 This player has not played any matches.
                               </div>
                           )}
-                        </>
+                        </div>
                     )}
                     {tab === 'achievements' && <ProfileAchievements data={achievementsData} />}
                     {tab === 'tournaments' && <ProfileTournaments data={tournamentsData} />}
-                    <ComboBottom />
+                    <AdvertisementDisplay className="mt-4">
+                            
+                    </AdvertisementDisplay>
                 </div>
             </div>
         </Base>

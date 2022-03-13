@@ -1,5 +1,4 @@
 import {PlayerTournamentData, TournamentData} from "../../types.client.mongo";
-import {useTranslation} from "next-i18next";
 import {faClock, faGlobe} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import ordinalSuffixOf from "../../utils/ordinalSuffixOf";
@@ -17,13 +16,11 @@ interface IProps {
 const ProfileTournaments = (props: IProps) => {
 
     const { data } = props;
-    const { t } = useTranslation();
 
     return (
-        <div>
-            <h2 className={"headingBox"}>{t('statistics.tournaments')}</h2>
+        <div className="content-box">
             {data && data.length !== 0 ? (
-                <div className={"grid grid-cols-1 md:grid-cols-2 4xl:grid-cols-3 gap-4"}>
+                <div className={"grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-3 gap-4"}>
                     {data.map((item) => (item?.placement !== -1 && item?.placement !== 0) && (
                         <Link key={item.tournamentId} to={`/competitions/${item.tournamentId}`} >
                             <div className={"flex text-white hover:opacity-70 transition ease-in-out duration-300"}>
@@ -37,7 +34,7 @@ const ProfileTournaments = (props: IProps) => {
                                         ) : <></>}
                                     </div>
                                 </div>
-                                <div className={"w-full my-auto bg-gray-750 rounded-xl pl-12 py-2 shadow-md pl-4"}>
+                                <div className={"w-full my-auto bg-gray-700 rounded-xl pl-12 pr-4 py-2 shadow"}>
                                     <div className={"uppercase text-base lg:text-base font-semibold"}>{item.tournament[0]?.name}</div>
                                     <div className="flex space-x-4 text-xs lg:text-sm pt-1 uppercase">
                                       <div>
