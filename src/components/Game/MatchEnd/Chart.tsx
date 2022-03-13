@@ -73,22 +73,22 @@ const Chart = (props: SocketChartData) => {
         },
         scales: {
             yAxes: [
-            {
-                id: 'A',
-                position: 'left',
-                scaleLabel: {
-                display: true,
-                labelString: chartLabel
+                {
+                    id: 'A',
+                    position: 'left',
+                    scaleLabel: {
+                    display: true,
+                    labelString: chartLabel
+                    }
+                },
+                {
+                    id: 'B',
+                    position: 'right',
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Miliseconds Per Word'
+                    }
                 }
-            },
-            {
-                id: 'B',
-                position: 'right',
-                scaleLabel: {
-                display: true,
-                labelString: 'Seconds Per Word'
-                }
-            }
             ]
         }
     };
