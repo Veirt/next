@@ -208,7 +208,7 @@ const Queue = (props: IProps) => {
                     color: 'text-pink-500',
                     onClick: () =>  setInQueue(true),
                     disabled: {
-                        level: !inQueue ? 5 : 99999,
+                        level: !inQueue ? 99999 : 99999,
                         isGuest: false
                     },
                 },
