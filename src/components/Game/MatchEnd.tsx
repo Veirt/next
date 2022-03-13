@@ -21,6 +21,10 @@ import ReactTooltip from 'react-tooltip';
 import Replay from '../Uncategorized/Replay';
 import Ranked from './MatchEnd/Ranked';
 import { toggleStaging } from '../../Config';
+import AchievementItem from '../Achievement/AchievementItem';
+import { useGlobalContext } from '../../contexts/Global.context';
+import { PlayerAchievementExtendedData } from '../Profile/ProfileAchievements';
+import Challenge from '../Challenges/Challenge';
 
 
 interface IProps {
@@ -55,6 +59,7 @@ const MatchEnd = (props: IProps) => {
     const [ toggleAd, setToggleAd ] = useState(true);
 
     const { useCPM, adsGameplay } = useConfig();
+    const { achievements, challenges, gamemodes } = useGlobalContext();
 
     const useRoundData = data?.roundData[showRound] || null;
 
@@ -195,14 +200,31 @@ const MatchEnd = (props: IProps) => {
                                         </div>
                                         <div className="col-span-full lg:col-span-2 mb-4">
                                             <div className={`${boxCSS} flex h-full`}>
-                                                <div className="m-auto">
+                                                <div className="my-auto w-full">
                                                     {matchData.flagId === 3 ? (
                                                         <>
                                                             <Ranked {...data.ranked} />
                                                         </>
                                                     ) : (
                                                         <>
-                                                            Not Ranked
+                                                            <div className="h3 mb-6 text-left">Rewards</div>
+                                                            <div className="h-48 overflow-y-scroll pr-8">
+                                                                <div className="grid grid-cols-1 gap-8">
+                                                                    {data.rewards.achievements.map((item, index) => (
+                                                                        <div key={index}>
+                                                                            {/* @ts-ignore */}
+                                                                            <AchievementItem {...achievements[item as any]} value={1} created={Math.round((new Date().getTime() / 1000) - 15)} />
+                                                                        </div>
+                                                                    ))}
+
+                                                                    {data.rewards.challenges.map((item, index) => (
+                                                                        <div key={index}>
+                                                                            {/* @ts-ignore */}
+                                                                            <Challenge mini {...challenges[item as any]} mode={[ gamemodes[challenges[item as any]?.modeId || 0] ]} challenge={[ challenges[item as any] ]} />
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
                                                         </>
                                                     )}
                                                 </div>

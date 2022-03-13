@@ -262,7 +262,7 @@ export interface ChallengeData {
 }
 
 export interface AchievementData {
-    key: string;
+    achievementId: string;
     title: string;
     type: string;
     require: number;

@@ -18,8 +18,8 @@ const Index = () => {
             "rewards": {
                 "exp": 154,
                 "currency": 163,
-                "achievements": [],
-                "challenges": []
+                "achievements": ["MAX_WPM_10", "MAX_WPM_50"],
+                "challenges": ["0_0_MATCHESTOTAL_1"]
             },
             "level": {
                 "before": {
@@ -465,7 +465,7 @@ const Index = () => {
             "locale": "en",
             "worldId": 0,
             "modeId": 0,
-            "flagId": 3,
+            "flagId": 0,
             "textId": 1860,
             "textCustom": "",
             "tournamentId": "",
@@ -515,7 +515,7 @@ const Index = () => {
                 }}
             >
                 <div className="container-smaller">
-                    <div className="flex h-screen">
+                    <div className="flex h-game">
                         <div className="w-full m-auto">
                             <MatchEnd {...endMatchData} showRewards />
                         </div>

@@ -1,7 +1,7 @@
 import {FC, useState, createContext, useContext, useEffect, useRef, useCallback} from 'react';
 import axios, { CancelTokenSource } from "axios";
 import Config from "../Config";
-import { AchievementData, ChallengeData, ItemData } from '../types.client.mongo';
+import { AchievementData, ChallengeData, GamemodeData, ItemData } from '../types.client.mongo';
 
 interface GlobalAnnouncement {
     key: string;
@@ -17,6 +17,7 @@ interface ContextType {
     borders: ItemData[];
     challenges: ChallengeData[];
     achievements: AchievementData[];
+    gamemodes: GamemodeData[];
     countries: { name: string, code: string }[];
     keyboards: { id: number, name: string }[];
     worlds: { id: number, name: string }[];
@@ -38,6 +39,7 @@ export const GlobalProvider: FC = ({ children }) => {
     const [ borders, setBorders ] = useState<ItemData[]>([]);
     const [ banners, setBanners ] = useState<ItemData[]>([]);
     const [ challenges, setChallenges ] = useState<ChallengeData[]>([]);
+    const [ gamemodes, setGamemodes ] = useState<GamemodeData[]>([]);
     const [ achievements, setAchievements ] = useState<AchievementData[]>([]);
     const [ countries, setCountries ] = useState<{ name: string, code: string }[]>([]);
     const [ keyboards, setKeyboards ] = useState<{ id: number, name: string }[]>([]);
@@ -79,12 +81,13 @@ export const GlobalProvider: FC = ({ children }) => {
                 setKeyboards(r.keyboards || []);
                 setLocales(r.locales || []);
                 setWorlds(r.worlds || []);
+                setGamemodes(r.gamemodes || []);
             }).catch((e) => console.log(e));
 
         return () => axiosCancelSource.current?.cancel();
     }, [ getGlobalData ]);
 
-    return <GlobalContext.Provider value={{ announcement, playercards, borders, banners, challenges, achievements, locales, worlds, keyboards, countries }}>
+    return <GlobalContext.Provider value={{ announcement, playercards, borders, banners, gamemodes, challenges, achievements, locales, worlds, keyboards, countries }}>
         {children}
     </GlobalContext.Provider>;
 }
