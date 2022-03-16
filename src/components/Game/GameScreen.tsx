@@ -201,6 +201,8 @@ const GameScreen = (props: IProps) => {
                         item.Progress = 0;
                         item.WPM = 0;
                         item.Accuracy = 0;
+                        item.Placement = 0;
+                        item.PlacementFinal = 0; 
                     });
     
                     return [ ...participants ];
