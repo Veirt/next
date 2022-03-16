@@ -11,15 +11,20 @@ interface IProps extends PlayerMatchProfileExtendedData {
 }
 
 const PipeReplay = (props: IProps) => {
-    const { playerId, matchId, text, onClose } = props;
+    const { playerId, matchId, onClose } = props;
 
     const [ replayLog, setReplayLog ] = useState<string>('');
+    const [ replayQuote, setReplayQuote ] = useState<string>('');
 
     useEffect(() => {
         setReplayLog('');
 
         getKeystrokeLog(playerId, matchId)
-            .then((text) => setReplayLog(text))
+            .then((text) => {
+                const parseLog = text.split('<&>');
+                setReplayQuote(parseLog[0] || '');
+                setReplayLog(parseLog[1] || '');
+            })
             .catch((err) => toast.error(err));
     }, [ playerId, matchId ]);
 
@@ -31,7 +36,7 @@ const PipeReplay = (props: IProps) => {
                         <button type="button" className="absolute top-8 right-8" onClick={() => onClose()}>
                             <FontAwesomeIcon icon={faTimes} />    
                         </button>
-                        <Replay logString={replayLog} quote={text[0]?.content || ''}  />
+                        <Replay logString={replayLog} quote={replayQuote}  />
                     </div>
                 </div>
             </div>
