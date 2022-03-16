@@ -8,7 +8,7 @@ import {
   faCircle,
   faHourglass,
   faAngleDoubleLeft,
-  faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy, faHome,
+  faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy, faHome, faCopy,
 } from '@fortawesome/free-solid-svg-icons';
 import ReactCountUp from 'react-countup';
 import {SocketGameEndData, SocketMatchData} from "../../types.client.socket";
@@ -24,6 +24,7 @@ import { toggleStaging } from '../../Config';
 import AchievementItem from '../Achievement/AchievementItem';
 import { useGlobalContext } from '../../contexts/Global.context';
 import Challenge from '../Challenges/Challenge';
+import { toast } from 'react-toastify';
 
 
 interface IProps {
@@ -300,7 +301,10 @@ const MatchEnd = (props: IProps) => {
                                                     </div>
                                                 </div>
                                                 <div className={"col-span-full md:col-span-2"}>
-                                                    <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md hidden lg:block"}>
+                                                    <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md hidden lg:block relative"}>
+                                                        <button type="button" data-tip="Copy Text Content to Clipboard" onClick={() => { toast.success("Copied to clipboard!"); navigator?.clipboard.writeText(useRoundData.Text.content) }} className="absolute bottom-5 right-6 text-sm font-semibold text-orange-400 hover:opacity-70 transition ease-in-out duration-300">
+                                                            <FontAwesomeIcon icon={faCopy} className="text-xl" />
+                                                        </button>
                                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                             <div>
                                                                 <div className={"text-white text-xs sm:text-xs uppercase font-semibold"}>Title</div>
@@ -320,11 +324,11 @@ const MatchEnd = (props: IProps) => {
                                                     
                                                     </div>
 
-                                                    <div className="p-5 bg-gray-825 rounded-2xl shadow-md hidden md:block">
-                                                        <div className="inline-flex flex-wrap font-semibold">
+                                                    <div className="p-3 bg-gray-825 rounded-2xl shadow-md hidden md:block">
+                                                        <div className="inline-flex flex-wrap">
                                                             {useRoundData.Text.content.split(' ').map((item, index) => (
                                                                 <Fragment key={index}>
-                                                                    <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`mr-2 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
+                                                                    <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`px-2 bg-white rounded-lg hover:bg-opacity-20 bg-opacity-0 transition ease-in-out duration-100 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
                                                                 </Fragment>
                                                             ))}
                                                         </div>
@@ -360,7 +364,7 @@ const MatchEnd = (props: IProps) => {
                                     </button>
                                 ) : (
                                     <div data-tip="Waiting for Lobby Leader" className={"text-white text-sm uppercase font-semibold tracking-wider pt-2"}>
-                                        <FontAwesomeIcon className="my-1" icon={faSpinner} spin />
+                                        <FontAwesomeIcon className="my-1" icon={faSpinner} spin /> Waiting for Leader
                                     </div>
                                 )}
                             </>
