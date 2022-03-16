@@ -281,7 +281,7 @@ export interface NewsletterData {
 
 export interface TextData {
     _id?: string;
-    textId: string;
+    textId: number;
     content: string;
     author: string;
     source: string;

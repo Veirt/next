@@ -28,6 +28,10 @@
     @apply bg-gray-750 hover:bg-gray-775 text-gray-400;
   }
   
+  .button.darkgray {
+    @apply bg-gray-800 hover:bg-gray-825 text-gray-400;
+  }
+  
   .button.lightgray {
     @apply bg-gray-700 hover:bg-gray-725 text-gray-200;
   }
