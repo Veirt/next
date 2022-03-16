@@ -59,6 +59,7 @@ export interface PlayerMatchData {
     time: number;
     created: number;
     finished: number;
+    keystrokeLog?: boolean;
 }
 
 export interface PlayerTournamentData {

@@ -41,25 +41,9 @@ const parseReplay = (logString: string) => {
                 }
             }
 
-            if (triggerFakeEvent) {
-                console.log('BAD INPUT');
+            if (triggerFakeEvent) 
                 parsedEvents.push({ input: '', delay: 0 });
-            }
-
-
-            /*
-            if (
-                !useLastEvent?.input.endsWith(' ') && 
-                (
-                    (useLastEvent.input.length === input.length && useLastEvent?.input.charAt(useLastEvent.input.length - 1) !== input.charAt(input.length - 1)) || 
-                    useLastEvent?.input.charAt(0) !== input.charAt(0)
-                )
-            )  {
-                parsedEvents.push({ input: '', delay: 0 });
-            }
-            */
         }
-        console.log(input + '|');
 
         parsedEvents.push({ input, delay });
     });
