@@ -8,7 +8,7 @@ import {
   faCircle,
   faHourglass,
   faAngleDoubleLeft,
-  faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy,
+  faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy, faHome,
 } from '@fortawesome/free-solid-svg-icons';
 import ReactCountUp from 'react-countup';
 import {SocketGameEndData, SocketMatchData} from "../../types.client.socket";
@@ -349,8 +349,8 @@ const MatchEnd = (props: IProps) => {
                         ) : ''}
                         {matchData.tournamentId && <a data-tip="Back to Competition page" href={leaveUrl} className="button small orange"><FontAwesomeIcon icon={faTrophy} /></a>}
                         {!embed ? (
-                            <a href={restartUrl} data-tip={`${matchData.flagId === 3 ? 'Play another game' : 'Return to Home'}`} className={`button small red`} >
-                                <FontAwesomeIcon className="my-1" icon={faPlay} />
+                            <a href={restartUrl} data-tip={`${matchData.flagId === 3 ? 'Return to Home' : 'Play another'}`} className={`button small red`} >
+                                <FontAwesomeIcon className="my-1" icon={matchData.flagId === 3 ? faHome : faPlay} />
                             </a>
                         ) : (
                             <>
