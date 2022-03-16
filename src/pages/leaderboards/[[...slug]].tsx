@@ -62,7 +62,7 @@ const Leaderboards = (props: IProps) => {
     }, [ filter, skip ]);
 
     const getTexts = useCallback(() => {
-        axios.get(`${Config.apiUrl}/leaderboards/matches?worldId=${world}&textId=${filter || 1}&flagId=0&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
+        axios.get(`${Config.apiUrl}/leaderboards/matches?worldId=${world}&textId=${parseInt(filter, 10) || 2}&flagId=0&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
             .then((response) => {
                 if (!response.data.error) {
                     setData([ ...response.data.data ]);
@@ -74,7 +74,7 @@ const Leaderboards = (props: IProps) => {
     }, [ world, filter, skip ]);
 
     const getFilterText = useCallback(() => {
-        axios.get(`${Config.apiUrl}/texts/get?textId=${filter || 1}`, { cancelToken: axiosCancelSource.current?.token })
+        axios.get(`${Config.apiUrl}/texts/get?textId=${parseInt(filter, 10) || 2}`, { cancelToken: axiosCancelSource.current?.token })
             .then((response) => {
                 if (!response.data.error) 
                     setFilterText(response.data);
@@ -205,7 +205,7 @@ const Leaderboards = (props: IProps) => {
                                 </button>
                                 <div className={`dropdown dropdown-gap-small w-full ${(dropdown && dropdown === 1) ? 'is-active' : 'is-not'}`}>
                                     {modeList.map((item) => (
-                                        <Link key={item} to={`/leaderboards/${item}${item === 'ranked' ? `/${seasons.length - 1}` : ''}${item === 'texts' ? `/1` : ''}`} className={`item ${item === type && 'is-active'}`}>
+                                        <Link key={item} to={`/leaderboards/${item}${item === 'ranked' ? `/${seasons.length - 1}` : ''}${item === 'texts' ? `/2` : ''}`} className={`item ${item === type && 'is-active'}`}>
                                             {item.slice(0, 1).toUpperCase()}{item.slice(1, item.length)}
                                         </Link>
                                     ))}
@@ -257,7 +257,7 @@ const Leaderboards = (props: IProps) => {
                                     <div className={"relative w-full"}>
                                         <button type={"button"} className={"w-full truncate button-dropdown-alt border-transparent bg-gray-750 hover:bg-gray-775"} onClick={() => setDropdown(dropdown ? 0 : 2)}>
                                             <FontAwesomeIcon icon={faSort} className={"mr-3"} />
-                                            Results for Text #{filterText?.textId}
+                                            Search
                                             <div className={"absolute right-0 top-0 mt-3 mr-6"}>
                                                 <FontAwesomeIcon icon={faCaretDown} />
                                             </div>
