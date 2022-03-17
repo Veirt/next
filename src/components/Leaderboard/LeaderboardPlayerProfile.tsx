@@ -68,7 +68,7 @@ const LeaderboardPlayerProfile:FC<IProps> = (props) => {
                         }
                         <div className="hidden md:block w-32 my-auto">{moment.unix(item.created).fromNow()}</div>
                         <div className={"w-12 my-auto"}>
-                            {item.keystrokeLog && (
+                            {(item.placement !== 0 && item.keystrokeLog) && (
                                 <button type="button" className="text-lg hover:opacity-70 transition ease-in-out duration-300" onClick={() => setCurrentData(item)}>
                                     <FontAwesomeIcon icon={faPlayCircle} />    
                                 </button>
