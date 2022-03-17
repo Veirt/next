@@ -118,13 +118,12 @@ const GameScreen = (props: IProps) => {
             DebugService.add('[Match] onError called');
             socket.emit('disconnect', {});
         });
-        socket.onConnect(() => DebugService.add('[Match] Client made handshake with server'));
-        socket.onDisconnect((data) => DebugService.add(`[Match] onDisconnect called ${data}`))
-        socket.onReconnect(() => DebugService.add('[Match] onReconnect called'));
-        socket.onReconnecting(() => DebugService.add('[Match] onReconnecting called'));
+        socket.onConnect(() => debugAndToast('[Match] Handshake made with server.', 'Conected!'));
+        socket.onDisconnect((data) => debugAndToast('[Match] onDisconnect called' + data, 'Disconnected!'))
+        socket.onReconnect(() => debugAndToast('[Match] onReconnect called', 'connectionReconnect'));
+        socket.onReconnecting(() => debugAndToast('[Match] onReconnecting called', 'connectionTimedOutAndReconnect'));
         socket.onConnectLost(() => debugAndToast('[Match] onConnectLost called', 'connectionTimedOut'));
         socket.onConnectNotSaved(() => { setGameNotice('reconnectFailed'); DebugService.add('[Match] onConnectNotSaved called') });
-        socket.onConnectSaving(() => DebugService.add('[Match] onConnectSaving called'));
         socket.onConnectSaving(() => debugAndToast('[Match] onConnectSaving called', 'connectionSaved'));
         socket.on('getLatency', (data: { latency: number; }) => setLatency(data.latency));
         socket.on('sendLatencyPing', () => socket.emit('sendLatencyPong', {}))
@@ -261,7 +260,6 @@ const GameScreen = (props: IProps) => {
                             spectator.current = true;
 
                         if (participantIndex !== -1) {
-                            console.log(participantsData[participantIndex]);
                             usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
                             usePlayer.Progress = participantsData[participantIndex]?.Progress || 0;
                         }
