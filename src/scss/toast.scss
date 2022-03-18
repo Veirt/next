@@ -5,7 +5,7 @@
 }
 
 .Toastify__toast {
-    @apply rounded-xl text-sm px-6 py-4 tracking-wider #{!important};
+    @apply rounded-2xl text-sm px-6 py-4 tracking-wider #{!important};
 }
 
 .Toastify__toast--error, 
