@@ -6,6 +6,7 @@ const config = {
     slogan: 'Take your typing to the next level',
     defaultIcon: '/extras/avatar.jpg',
     defaultImage: '/extras/banner.jpg',
+    storageUrl: "https://nyc3.digitaloceanspaces.com/keymash",
     webUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : toggleStaging ? 'https://staging.keymash.io' : 'https://dev.keymash.io',
     apiUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:8080/api/v2' : toggleStaging ? 'https://apistaging.keymash.io/api/v2' : 'https://api.keymash.io/api/v2',
     authUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:8080/auth/v2' : toggleStaging ? 'https://apistaging.keymash.io/auth/v2' : 'https://api.keymash.io/auth/v2',

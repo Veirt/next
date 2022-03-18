@@ -14,6 +14,7 @@
 @import './dropdown.scss';
 @import './buttons.scss';
 @import './scrollbar.scss';
+@import './toast.scss';
 
 html {
   overflow-y: scroll;
@@ -66,27 +67,6 @@ body {
   -webkit-transition: width 0.3s ease;
   -o-transition: width 0.3s ease;
   transition: width 0.3s ease;
-}
-
-.Toastify__toast {
-  @apply rounded text-sm p-4 tracking-wider #{!important};;
-}
-
-.Toastify__toast--error {
-  @apply bg-red-600 #{!important};;
-}
-
-
-.Toastify__toast--success {
-  @apply bg-green-600 #{!important};
-}
-
-.Toastify__toast--info {
-  @apply bg-orange-400 #{!important};
-}
-
-.Toastify__toast--warning {
-  @apply bg-orange-600 #{!important};
 }
 
 .__react_component_tooltip {

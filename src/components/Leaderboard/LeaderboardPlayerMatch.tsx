@@ -41,7 +41,7 @@ const LeaderboardPlayerMatch:FC<IProps> = (props) => {
                         {(item.player && item.player[0]) ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : <div className={"py-7"} />}
                     </div>
                     <div className="hidden md:block w-24 my-auto">{item.accuracy}%</div>
-                    <div className="w-32 my-auto">{useCPM === '1' ? `${(item.wpm * 5).toFixed(2)} CPM` : `${item.wpm.toFixed(2)} WPM`}</div>
+                    <div className="w-32 my-auto">{useCPM === '1' ? `${((item?.wpm || 0) * 5).toFixed(2)} CPM` : `${(item?.wpm || 0).toFixed(2)} WPM`}</div>
                     <div className="hidden md:block w-32 my-auto">{moment.unix(item.created).fromNow()}</div>
                     <div className={"w-8 md:hidden"} />
                 </div>

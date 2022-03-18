@@ -1,4 +1,4 @@
-import {Fragment, useState} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBullseye,
@@ -8,7 +8,7 @@ import {
   faCircle,
   faHourglass,
   faAngleDoubleLeft,
-  faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy,
+  faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy, faHome, faCopy,
 } from '@fortawesome/free-solid-svg-icons';
 import ReactCountUp from 'react-countup';
 import {SocketGameEndData, SocketMatchData} from "../../types.client.socket";
@@ -24,6 +24,7 @@ import { toggleStaging } from '../../Config';
 import AchievementItem from '../Achievement/AchievementItem';
 import { useGlobalContext } from '../../contexts/Global.context';
 import Challenge from '../Challenges/Challenge';
+import { toast } from 'react-toastify';
 
 
 interface IProps {
@@ -59,6 +60,10 @@ const MatchEnd = (props: IProps) => {
 
     const { useCPM, adsGameplay } = useConfig();
     const { achievements, challenges, gamemodes } = useGlobalContext();
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    });
 
     const useRoundData = data?.roundData[showRound] || null;
 
@@ -104,7 +109,9 @@ const MatchEnd = (props: IProps) => {
 
     return useRoundData ? (
         <div className="relative">
-            <ReactTooltip />
+            <ReactTooltip id="copyPasta" />
+            <ReactTooltip id="buttons" />
+            <ReactTooltip id="rewards" /> 
             {(toggleStaging && adsGameplay && toggleAd) && <VideoFullscreen toggle={() => setToggleAd(false)} />}
             <audio id="LevelUp" src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="LevelDown" src="/audio/LevelDown.wav" crossOrigin="anonymous" preload="auto" />
@@ -131,19 +138,19 @@ const MatchEnd = (props: IProps) => {
                                         <div className="w-full lg:w-auto">
                                             <div className="flex space-x-2">
                                                 {data.level.before.Index !== data.level.after.Index && (
-                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You are now Level ${data.level.after.Index}!`} >
+                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-for="rewards" data-tip={`You are now Level ${data.level.after.Index}!`} >
                                                         <FontAwesomeIcon icon={faLevelUpAlt} className="text-teal-400 mt-1" />
                                                     </div>
                                                 )}
                                                 
                                                 {data.rewards.achievements.length !== 0 && (
-                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You have unlocked ${data.rewards.achievements.length} new achievement${data.rewards.achievements.length === 1 ? '' : 's'}!`} >
+                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-for="rewards" data-tip={`You have unlocked ${data.rewards.achievements.length} new achievement${data.rewards.achievements.length === 1 ? '' : 's'}!`} >
                                                         <FontAwesomeIcon icon={faAward} className="text-yellow-400 mt-1" />
                                                     </div>
                                                 )}
 
                                                 {data.rewards.challenges.length !== 0 && (
-                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-tip={`You have completed ${data.rewards.challenges.length} challenge${data.rewards.challenges.length === 1 ? '' : 's'}!`} >
+                                                    <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-for="rewards" data-tip={`You have completed ${data.rewards.challenges.length} challenge${data.rewards.challenges.length === 1 ? '' : 's'}!`} >
                                                         <FontAwesomeIcon icon={faTasks} className="text-blue-400 mt-1" />
                                                     </div>
                                                 )}
@@ -291,7 +298,7 @@ const MatchEnd = (props: IProps) => {
                                                                   <span className={"text-2xl"}>{stat.Extension}</span>
                                                               </div>
                                                               {(['statistics.wpm', 'statistics.cpm'].includes(stat.Name) && data.personalBest) ? (
-                                                                  <div className={"absolute top-0 right-0 mt-8 mr-4"} data-tip="New Personal Best for this Text!">
+                                                                  <div className={"absolute top-0 right-0 mt-8 mr-4"} data-for="pbReward" data-tip="New Personal Best for this Text!">
                                                                     <FontAwesomeIcon icon={faCrown} className={"text-yellow-400"} />
                                                                   </div>
                                                               ): ''}
@@ -300,7 +307,12 @@ const MatchEnd = (props: IProps) => {
                                                     </div>
                                                 </div>
                                                 <div className={"col-span-full md:col-span-2"}>
-                                                    <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md hidden lg:block"}>
+                                                    <div className={"mb-4 p-5 bg-gray-825 rounded-2xl shadow-md hidden lg:block relative"}>
+                                                        {useRoundData?.Text?.content && (
+                                                            <button type="button" data-for="copyPasta" data-tip="Copy Text Content to Clipboard" onClick={() => { toast.success("Copied to clipboard!"); navigator?.clipboard.writeText(useRoundData.Text.content) }} className="absolute bottom-5 right-6 text-sm font-semibold text-orange-400 hover:opacity-70 transition ease-in-out duration-300">
+                                                                <FontAwesomeIcon icon={faCopy} className="text-xl" />
+                                                            </button>
+                                                        )}
                                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                             <div>
                                                                 <div className={"text-white text-xs sm:text-xs uppercase font-semibold"}>Title</div>
@@ -320,11 +332,11 @@ const MatchEnd = (props: IProps) => {
                                                     
                                                     </div>
 
-                                                    <div className="p-5 bg-gray-825 rounded-2xl shadow-md hidden md:block">
-                                                        <div className="inline-flex flex-wrap font-semibold">
+                                                    <div className="p-3 bg-gray-825 rounded-2xl shadow-md hidden md:block">
+                                                        <div className="inline-flex flex-wrap">
                                                             {useRoundData.Text.content.split(' ').map((item, index) => (
                                                                 <Fragment key={index}>
-                                                                    <div data-tip={`${useRoundData.Words.wpm[index] || 0}WPM`} className={`mr-2 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
+                                                                    <div className={`px-2 bg-white rounded-lg hover:bg-opacity-20 bg-opacity-0 transition ease-in-out duration-100 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
                                                                 </Fragment>
                                                             ))}
                                                         </div>
@@ -343,24 +355,24 @@ const MatchEnd = (props: IProps) => {
 
                     <div className="flex justify-between mt-3 lg:mt-6">
                         {!embed ? (
-                            <a data-tip="Leave Game" href={leaveUrl} className="button small blue">
+                            <a data-for="buttons" data-tip="Leave Game" href={leaveUrl} className="button small blue">
                                 <FontAwesomeIcon className="my-1" icon={faAngleDoubleLeft} />
                             </a>
                         ) : ''}
-                        {matchData.tournamentId && <a data-tip="Back to Competition page" href={leaveUrl} className="button small orange"><FontAwesomeIcon icon={faTrophy} /></a>}
+                        {matchData.tournamentId && <a data-for="buttons" data-tip="Back to Competition page" href={leaveUrl} className="button small orange"><FontAwesomeIcon icon={faTrophy} /></a>}
                         {!embed ? (
-                            <a href={restartUrl} data-tip={`${matchData.flagId === 3 ? 'Play another game' : 'Return to Home'}`} className={`button small red`} >
-                                <FontAwesomeIcon className="my-1" icon={faPlay} />
+                            <a href={restartUrl} data-for="buttons" data-tip={`${matchData.flagId === 3 ? 'Return to Home' : 'Play another'}`} className={`button small red`} >
+                                <FontAwesomeIcon className="my-1" icon={matchData.flagId === 3 ? faHome : faPlay} />
                             </a>
                         ) : (
                             <>
                                 {embedOwner ? (
-                                    <button data-tip="End Game" type={"button"} onClick={embedClose} className={"button small red"}>
+                                    <button data-for="buttons" data-tip="End Game" type={"button"} onClick={embedClose} className={"button small red"}>
                                       <FontAwesomeIcon className="my-1" icon={faTimes} />
                                     </button>
                                 ) : (
-                                    <div data-tip="Waiting for Lobby Leader" className={"text-white text-sm uppercase font-semibold tracking-wider pt-2"}>
-                                        <FontAwesomeIcon className="my-1" icon={faSpinner} spin />
+                                    <div data-for="buttons" data-tip="Waiting for Lobby Leader" className={"text-white text-sm uppercase font-semibold tracking-wider pt-2"}>
+                                        <FontAwesomeIcon className="my-1" icon={faSpinner} spin /> Waiting for Leader
                                     </div>
                                 )}
                             </>
