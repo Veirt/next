@@ -29,12 +29,7 @@ const PipeReplay = (props: IProps) => {
             .catch((err) => toast.error(err));
     }, [ playerId, matchId ]);
 
-    const getNet90 = () => {
-        const date = new Date();
-        date.setDate(date.getDate() + 90); 
-        console.log(date.toISOString());
-        return date.getTime() / 1000
-    };
+    const getNet90 = (date: number) => date + (90 * 86400);
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50">
@@ -45,7 +40,7 @@ const PipeReplay = (props: IProps) => {
                             <FontAwesomeIcon icon={faTimes} />    
                         </button>
                         <div className="absolute top-16 right-8">
-                            Expires in {moment.unix(getNet90()).diff(moment.unix(created), 'days')} days
+                            Expires in {moment.unix(getNet90(created)).fromNow()}
                         </div>
                         <Replay logString={replayLog} quote={replayQuote}  />
                     </div>
