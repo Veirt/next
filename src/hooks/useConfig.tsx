@@ -23,9 +23,11 @@ export interface ConfigData {
     matchContainerTransparent: '0' | '1';
     matchTextType: '0' | '1';
     focusMode: '0' | '1';
+    matchTextScroll: '0' | '1';
     performanceMode: '0' | '1';
     colorBlindMode: '0' | '1';
     adsGameplay: '0' | '1';
+    networkStrength: '0' | '1' | '2';
     shortcutHome: string;
     shortcutExit: string;
     shortcutPlayRandom: string;
@@ -59,8 +61,10 @@ function useConfig() {
         matchFinishBeep: '1',
         matchContainerTransparent: '0',
         matchTextType: '1',
+        matchTextScroll : '1',
         focusMode: '0',
         performanceMode: '0',
+        networkStrength: '1',
         shortcutHome: 'CTRL+ALT+H',
         shortcutExit: 'CTRL+ALT+E',
         shortcutPlayRandom: 'CTRL+ALT+G',
@@ -100,10 +104,12 @@ function useConfig() {
         matchFinishBeep: (storageJSON && typeof storageJSON.matchFinishBeep !== 'undefined' ? storageJSON.matchFinishBeep : defaultJSON.matchFinishBeep),
         matchContainerTransparent: (storageJSON && typeof storageJSON.matchContainerTransparent !== 'undefined' ? storageJSON.matchContainerTransparent : defaultJSON.matchContainerTransparent),
         matchTextType: (storageJSON && typeof storageJSON.matchTextType !== 'undefined' ? storageJSON.matchTextType : defaultJSON.matchTextType),
+        matchTextScroll: (storageJSON && typeof storageJSON.matchTextScroll !== 'undefined' ? storageJSON.matchTextScroll : defaultJSON.matchTextScroll),
         focusMode: (storageJSON && typeof storageJSON.focusMode !== 'undefined' ? storageJSON.focusMode : defaultJSON.focusMode),
         performanceMode: (storageJSON && typeof storageJSON.performanceMode !== 'undefined' ? storageJSON.performanceMode : defaultJSON.performanceMode),
         colorBlindMode: (storageJSON && typeof storageJSON.colorBlindMode !== 'undefined' ? storageJSON.colorBlindMode : defaultJSON.colorBlindMode),
         adsGameplay: (storageJSON && typeof storageJSON.adsGameplay !== 'undefined' ? storageJSON.adsGameplay : defaultJSON.adsGameplay),
+        networkStrength: (storageJSON && typeof storageJSON.networkStrength !== 'undefined' ? storageJSON.networkStrength : defaultJSON.networkStrength),
         shortcutHome: (storageJSON && typeof storageJSON.shortcutHome !== 'undefined' ? storageJSON.shortcutHome : defaultJSON.shortcutHome),
         shortcutExit: (storageJSON && typeof storageJSON.shortcutExit !== 'undefined' ? storageJSON.shortcutExit : defaultJSON.shortcutExit),
         shortcutPlayRandom: (storageJSON && typeof storageJSON.shortcutPlayRandom !== 'undefined' ? storageJSON.shortcutPlayRandom : defaultJSON.shortcutPlayRandom),

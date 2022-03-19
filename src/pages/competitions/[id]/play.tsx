@@ -24,14 +24,13 @@ const TournamentView = (props: IProps) => {
 
     const { tournamentId } = props;
     const { _csrf } = useCSRF();
-    const { world } = useConfig();
+    const { world, networkStrength } = useConfig();
 
     const [ redirect, setRedirect ] = useState('');
 
     useEffect(() => {
-        console.log(tournamentId);
         if (tournamentId) {
-          const postData = { _csrf, worldId: world, flagId: 1, modeId: 0, locale: 'en', tournamentId, };
+          const postData = { _csrf, worldId: world, networkStrength, flagId: 1, modeId: 0, locale: 'en', tournamentId, };
           axios.post(`${Config.apiUrl}/match/search`, postData, { withCredentials: true })
               .then(response => {
                   if (response && !response.data.error)
