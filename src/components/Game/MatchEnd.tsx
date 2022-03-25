@@ -363,7 +363,7 @@ const MatchEnd = (props: IProps) => {
                         {matchData.tournamentId && <a data-for="buttons" data-tip="Back to Competition page" href={leaveUrl} className="button small orange"><FontAwesomeIcon icon={faTrophy} /></a>}
                         {!embed ? (
                             <Link to={restartUrl} data-tip={`${matchData.flagId === 3 ? 'Play another game' : 'Return to Home'}`} className={`button small red`} >
-                                <FontAwesomeIcon className="my-1" icon={faPlay} />
+                                <FontAwesomeIcon className="my-1" icon={matchData.flagId === 3 ? faPlay : faHome} />
                             </Link>
                         ) : (
                             <>
