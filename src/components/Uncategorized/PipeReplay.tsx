@@ -40,7 +40,7 @@ const PipeReplay = (props: IProps) => {
                             <FontAwesomeIcon icon={faTimes} />    
                         </button>
                         <div className="absolute top-16 right-8">
-                            Expires in {moment.unix(getNet90(created)).fromNow()}
+                            Expires {moment.unix(getNet90(created)).fromNow()}
                         </div>
                         <Replay logString={replayLog} quote={replayQuote}  />
                     </div>
