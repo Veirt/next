@@ -114,12 +114,12 @@ const ProfileStatistics = (props: IProps) => {
                                 {rankedData && (
                                     <div>
                                         <div className={"block mx-auto w-20 lg:w-20"}>
-                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank.Rank.replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank.Rank} />
+                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank?.Rank.replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank.Rank} />
                                         </div>
                                         <div className={"text-center mt-2"}>
-                                            {(rankedData && rankedData.Rank.Rank <= 'Unrated') && (
+                                            {(rankedData && rankedData?.Rank?.Rank <= 'Unrated') && (
                                                 <div className={"text-white text-2xl lg:text-3xl font-bold"}>
-                                                    {rankedData?.Rank.Rank}
+                                                    {rankedData?.Rank?.Rank}
                                                 </div>
                                             )}
                                             <div className={"text-white opacity-70 uppercase text-xl font-semibold"}>
