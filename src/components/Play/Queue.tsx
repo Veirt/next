@@ -228,6 +228,8 @@ const Queue = (props: IProps) => {
         },
     ];
 
+    console.log('inQueue:', inQueue);
+
     return (
         <>
             {redirect && redirect !== '' && <Redirect to={redirect} />}
