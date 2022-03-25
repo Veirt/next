@@ -41,7 +41,7 @@ const Ranked = (props: IProps) => {
 
     const renderScene = (data: PlayerCompetitiveData) => {
         return (
-            <>
+            <div className="flex h-full justify-center items-center">
                 <img className="w-32 h-32" src={`/ranks/${data.Rank ? `${data.Rank.replaceAll(' ', '').toLowerCase()}` : 'unrated'}.svg`} alt={data.Rank} />
                 <div className="text-4xl font-bold mt-4">
                     {data.Rank}
@@ -55,7 +55,7 @@ const Ranked = (props: IProps) => {
                         {data.SR} <span className="text-orange-400">SR</span>
                     </div>
                 )}
-            </>
+            </div>
         )
     }
 

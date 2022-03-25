@@ -24,6 +24,7 @@ import { toggleStaging } from '../../Config';
 import AchievementItem from '../Achievement/AchievementItem';
 import { useGlobalContext } from '../../contexts/Global.context';
 import Challenge from '../Challenges/Challenge';
+import Link from '../Uncategorized/Link';
 import { toast } from 'react-toastify';
 
 
@@ -355,15 +356,15 @@ const MatchEnd = (props: IProps) => {
 
                     <div className="flex justify-between mt-3 lg:mt-6">
                         {!embed ? (
-                            <a data-for="buttons" data-tip="Leave Game" href={leaveUrl} className="button small blue">
+                            <Link to={leaveUrl} data-tip="Leave Game" className="button small blue">
                                 <FontAwesomeIcon className="my-1" icon={faAngleDoubleLeft} />
-                            </a>
+                            </Link>
                         ) : ''}
                         {matchData.tournamentId && <a data-for="buttons" data-tip="Back to Competition page" href={leaveUrl} className="button small orange"><FontAwesomeIcon icon={faTrophy} /></a>}
                         {!embed ? (
-                            <a href={restartUrl} data-for="buttons" data-tip={`${matchData.flagId === 3 ? 'Return to Home' : 'Play another'}`} className={`button small red`} >
-                                <FontAwesomeIcon className="my-1" icon={matchData.flagId === 3 ? faHome : faPlay} />
-                            </a>
+                            <Link to={restartUrl} data-tip={`${matchData.flagId === 3 ? 'Play another game' : 'Return to Home'}`} className={`button small red`} >
+                                <FontAwesomeIcon className="my-1" icon={faPlay} />
+                            </Link>
                         ) : (
                             <>
                                 {embedOwner ? (
