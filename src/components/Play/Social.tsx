@@ -15,7 +15,7 @@ const Social = () => {
         },
         {
             image: '/assets/buttons/merch.svg',
-            href: 'https://store.keymash.io',
+            href: 'https://keymash.creator-spring.com',
         }
     ]
 

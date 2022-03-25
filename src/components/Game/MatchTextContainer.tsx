@@ -31,7 +31,8 @@ const MatchTextContainer = (props: IProps) => {
         smoothCaret, smoothCaretSpeed, 
         matchTextType, matchContainerTransparent,
         hideInputBox, colorBlindMode, 
-        upscaleMatch, performanceMode
+        upscaleMatch, performanceMode,
+        matchTextScroll
     } = useConfig();
 
     // States
@@ -182,35 +183,6 @@ const MatchTextContainer = (props: IProps) => {
 
                 setTypoStreak(currentTypoStreak);
                 setLetterIndex(wordIndex + currentCorrectStreak);
-
-                /*
-                let difference = currentInputLength - inputLength;
-                if (typoStreak > difference) {
-                    console.log('TypoStreak > Difference', typoStreak, difference);
-                    setTypoStreak(typoStreak - difference);
-                } else {
-                    console.log('TypoStreak < Difference', typoStreak, difference);
-                    difference -= typoStreak;
-                    setTypoStreak(0);
-
-                    if (difference > 0) 
-                        setLetterIndex(letterIndex - difference);
-                }
-
-                // ---------------------
-                if (inputLength > 0) {
-                    let i: number, isTypoStreak: boolean = false;
-                    for (i = 0; i < (difference + 1); i++) {
-                        console.log(keystroke, ' vs ', quote.charAt(wordIndex + i));
-                        if (isTypoStreak && keystroke !== quote.charAt(wordIndex + i)) {
-                            setTypoStreak(typoStreak + 1);
-                            isTypoStreak = true;
-                        } else if (!isTypoStreak && keystroke === quote.charAt(wordIndex + i)) {
-                            setLetterIndex(wordIndex + i);
-                        }
-                    }
-                }
-                */
             }
         }
     }
@@ -241,7 +213,8 @@ const MatchTextContainer = (props: IProps) => {
             const caretTop = `${currentElement.current!.offsetTop}px`;
             const caretHeight = `${currentElement.current!.offsetHeight || 0}px`;
 
-            updateContainerOverflow();
+            if (matchTextScroll === '1')
+                updateContainerOverflow();
 
             if (smoothCaret === '1' && ('animate' in caretElement.current)) {
                 useAnimation = caretElement.current?.animate({ left: caretLeft, top: caretTop, height: caretHeight }, { duration: parseInt(smoothCaretSpeed, 10) || 100 });

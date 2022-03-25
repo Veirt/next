@@ -185,6 +185,7 @@ const SettingsFrame = (props: IProps) => {
                         { title: 'page.profile.defaultworld', name: 'defaultWorld', value: config.world, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, world: Number(v) }) }, type: 'selectWorld', worldList: worlds },
                         { title: 'page.profile.streamerMode', name: 'streamerMode', value: config.streamerMode, onChange: (v: number) => { setUnsaved(true);  setConfig({ ...config, streamerMode: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.wpm', name: 'useCPM', value: config.useCPM, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, useCPM: String(v) as '0' | '1' }) }, type: 'configWPM' },
+                        { title: 'page.profile.networkStrength', name: 'networkStrength', value: config.networkStrength, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, networkStrength: String(v) as '0' | '1' | '2' }) }, type: 'configNetworkStrength' },
                     ]
                 },
                 {
@@ -192,6 +193,7 @@ const SettingsFrame = (props: IProps) => {
                     options: [
                         { title: 'page.profile.matchTextSize', name: 'upscaleMatch', value: config.upscaleMatch, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, upscaleMatch: String(v) as '0' | '1' }) }, type: 'configScale' },
                         { title: 'page.profile.matchTextType', name: 'matchTextType', value: config.matchTextType, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, matchTextType: String(v) as '0' | '1' }) }, type: 'configMatchText' },
+                        { title: 'page.profile.matchTextScroll', name: 'matchTextScroll', value: config.matchTextScroll, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, matchTextScroll: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.upscaleMatchContainer', name: 'upscaleMatchContainer', value: config.upscaleMatchContainer, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, upscaleMatchContainer: String(v) as '0' | '1' }) }, type: 'configScale' },
                         { title: 'page.profile.matchContainerTransparent', name: 'matchContainerTransparent', value: config.matchContainerTransparent, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, matchContainerTransparent: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.gameplayParticipantStyle', name: 'gameplayParticipantStyle', value: config.gameplayParticipantStyle, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, gameplayParticipantStyle: String(v) as '0' | '1' }) }, type: 'configPlayercardList' },

@@ -59,6 +59,7 @@ export interface PlayerMatchData {
     time: number;
     created: number;
     finished: number;
+    keystrokeLog?: boolean;
 }
 
 export interface PlayerTournamentData {
@@ -281,7 +282,7 @@ export interface NewsletterData {
 
 export interface TextData {
     _id?: string;
-    textId: string;
+    textId: number;
     content: string;
     author: string;
     source: string;

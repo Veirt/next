@@ -7,7 +7,7 @@ interface IProps {
     name: string;
     value: string | number | any;
     onChange: (e: string | number | any) => void;
-    type: 'string' | 'textarea' | 'configBoolean' | 'configMatchText' | 'configScale' | 'configPlayercardList' | 'configWPM' | 'configShortcut' | 'selectKeyboard' | 'selectCountry' | 'selectWorld' | 'selectLocale' | 'selectSmoothCaretSpeed';
+    type: 'string' | 'textarea' | 'configNetworkStrength' | 'configBoolean' | 'configMatchText' | 'configScale' | 'configPlayercardList' | 'configWPM' | 'configShortcut' | 'selectKeyboard' | 'selectCountry' | 'selectWorld' | 'selectLocale' | 'selectSmoothCaretSpeed';
     worldList?: { id: number, name: string }[];
     localeList?: { name: string, locale: string }[];
     keyboardList?: { id: number, name: string }[];
@@ -151,6 +151,23 @@ const SettingsOption = (props: IProps) => {
                         </button>
                         <button type={"button"} onClick={() => onChange('2')} className={`rounded-r-lg w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '2' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                             Legacy
+                        </button>
+                    </div>
+                </div>
+            ) : type === 'configNetworkStrength' ? (
+                <div className={"flex"}>
+                    <div className={"w-1/2 mr-auto pt-1"}>
+                        <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
+                    </div>
+                    <div className={"w-1/2 flex justify-end"}>
+                        <button type={"button"} onClick={() => onChange('0')} className={`rounded-l-lg w-12 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '0' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                            Slow
+                        </button>
+                        <button type={"button"} onClick={() => onChange('1')} className={`w-16 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '1' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                            Normal
+                        </button>
+                        <button type={"button"} onClick={() => onChange('2')} className={`rounded-r-lg w-12 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${value === '2' ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
+                            Fast
                         </button>
                     </div>
                 </div>

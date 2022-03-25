@@ -51,7 +51,7 @@ const Queue = (props: IProps) => {
 
     const { sessionData, inQueue, setInQueue } = usePlayerContext();
     const { _csrf } = useCSRF();
-    const { world } = useConfig();
+    const { world, networkStrength } = useConfig();
     const { t } = useTranslation();
 
     const [ tab, setTab ] = useState(0);
@@ -94,6 +94,7 @@ const Queue = (props: IProps) => {
             worldId: world,
             flagId: 0,
             modeId: 0,
+            networkStrength, 
             locale: "en",
             textType: text,
         };

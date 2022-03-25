@@ -77,16 +77,16 @@ const Chart = (props: SocketChartData) => {
                     id: 'A',
                     position: 'left',
                     scaleLabel: {
-                    display: true,
-                    labelString: chartLabel
+                        display: true,
+                        labelString: chartLabel
                     }
                 },
                 {
                     id: 'B',
                     position: 'right',
                     scaleLabel: {
-                    display: true,
-                    labelString: 'Miliseconds Per Word'
+                        display: true,
+                        labelString: 'Seconds Per Word'
                     }
                 }
             ]

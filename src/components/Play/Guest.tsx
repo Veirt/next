@@ -14,7 +14,7 @@ const Guest = () => {
                     <li>Ability to personalize your profile</li>
                     <li>Exchange coins for in game items</li>
                 </ul>
-                <Link to="/auth/signin" className="flex w-60 button default orange">
+                <Link to="/auth/login" className="flex w-60 button default orange">
                     Create an account!
                 </Link>
             </p>

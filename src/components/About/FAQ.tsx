@@ -41,9 +41,9 @@ export default (
                 </div>
 
                 <div>
-                    <div className="font-semibold text-lg pb-2">Why are Replay's not accessible in Match History</div>
-                    As of right now our Replay system is in a beta stage where we are still currently working out its consistency and functionality. 
-                    We do plan on making Replays a lot more accessible to recent Match History and will release information about it later on in 2022.
+                    <div className="font-semibold text-lg pb-2">Why are Replay's only available for 90 days?</div>
+                    To help manage storage costs of storing each replay, we have added an expiry date to each replay. 
+                    The 90 day expiry may change at a later time.
                 </div>
             </div>
         </div>

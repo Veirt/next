@@ -27,6 +27,10 @@ class Socket {
     this.client.on('connect', callback);
   }
 
+  public onConnectFailed(callback: () => void): void {
+    this.client.on('connect_failed', callback);
+  }
+
   public onConnectLost(callback: () => void): void {
     this.client.on('connect_timeout', callback);
   }
