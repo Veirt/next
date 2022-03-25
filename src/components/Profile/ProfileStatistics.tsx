@@ -114,17 +114,17 @@ const ProfileStatistics = (props: IProps) => {
                                 {rankedData && (
                                     <div>
                                         <div className={"block mx-auto w-20 lg:w-20"}>
-                                            <img className={"w-full h-full"} src={`/ranks/${rankedData?.Rank?.Rank.replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank.Rank} />
+                                            <img className={"w-full h-full"} src={`/ranks/${String(rankedData?.Rank?.Rank || 'Unrated').replaceAll(' ', '').toLowerCase()}.svg`} alt={rankedData?.Rank?.Rank || 'Unrated'} />
                                         </div>
                                         <div className={"text-center mt-2"}>
-                                            {(rankedData && rankedData?.Rank?.Rank <= 'Unrated') && (
-                                                <div className={"text-white text-2xl lg:text-3xl font-bold"}>
-                                                    {rankedData?.Rank?.Rank}
+                                            <div className={"text-white text-2xl lg:text-3xl font-bold"}>
+                                                {rankedData?.Rank?.Rank || 'Unrated'}
+                                            </div>
+                                            {rankedData?.Rank?.Rank !== 'Unrated' && (
+                                                <div className={"text-white opacity-70 uppercase text-xl font-semibold"}>
+                                                    {rankedData?.rating || 0} <span className={"text-orange-400"}>SR</span>
                                                 </div>
                                             )}
-                                            <div className={"text-white opacity-70 uppercase text-xl font-semibold"}>
-                                                {rankedData?.rating} <span className={"text-orange-400"}>SR</span>
-                                            </div>
                                         </div>
                                     </div>
                                 )}
