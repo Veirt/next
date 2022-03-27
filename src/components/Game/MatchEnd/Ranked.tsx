@@ -41,7 +41,7 @@ const Ranked = (props: IProps) => {
 
     const renderScene = (data: PlayerCompetitiveData) => {
         return (
-            <div className="flex h-full justify-center items-center">
+            <div className="flex flex-col items-center justify-center">
                 <img className="w-32 h-32" src={`/ranks/${data.Rank ? `${data.Rank.replaceAll(' ', '').toLowerCase()}` : 'unrated'}.svg`} alt={data.Rank} />
                 <div className="text-4xl font-bold mt-4">
                     {data.Rank}
@@ -68,7 +68,7 @@ const Ranked = (props: IProps) => {
             </div>
             <div ref={afterScene} className={"absolute inset-0 w-full h-full z-20 transition ease-in-out duration-500"} style={{ opacity: 0 }}>
                 {(after.Rank !== before.Rank) && (
-                    <div className="absolute top-24 -left-4 mt-2">
+                    <div className="absolute top-24 left-0 right-0 flex justify-center mt-2">
                         <div className="w-40">
                             <div className="px-4 py-2 rounded-lg bg-black bg-opacity-80 shadow-sm text-base font-semibold">
                                 New Rank!

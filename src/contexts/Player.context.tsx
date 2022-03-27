@@ -161,6 +161,7 @@ export const PlayerProvider: FC = ({ children }) => {
             queueSocket?.emit('joinQueue', { playerToken });
 
             queueSocket?.on('isBanned', (data: { message: string }) => toast.error(data.message));
+            queueSocket?.on('isCooldown', (data: { message: string }) => toast.error(data.message));
 
             queueSocket?.on('startQueue', () => {
                 if (!intervalQueue)
