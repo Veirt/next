@@ -465,7 +465,7 @@ const Index = () => {
             "locale": "en",
             "worldId": 0,
             "modeId": 0,
-            "flagId": 0,
+            "flagId": 3,
             "textId": 1860,
             "textCustom": "",
             "tournamentId": "",
