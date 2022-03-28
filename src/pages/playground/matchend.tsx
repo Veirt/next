@@ -40,13 +40,13 @@ const Index = () => {
                     "SR": 1300,
                     "Games": 0,
                     "Remaining": 0,
-                    "Rank": "Gold 1"
+                    "Rank": "Silver 3"
                 },
                 "after": {
-                    "SR": 1301,
+                    "SR": 1350,
                     "Games": 0,
                     "Remaining": 0,
-                    "Rank": "Gold 2"
+                    "Rank": "Gold 1"
                 }
             },
             "personalBest": true,

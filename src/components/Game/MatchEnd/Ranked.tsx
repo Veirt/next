@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import ReactCountup from "react-countup";
 import useConfig from "../../../hooks/useConfig";
 import { PlayerCompetitiveData } from "../../../types.client.mongo";
 
@@ -16,6 +17,8 @@ const Ranked = (props: IProps) => {
     const afterScene = useRef<HTMLDivElement | null>(null);
     const sceneTimeout = useRef<NodeJS.Timeout | null>(null);
 
+    const rankDownRef = useRef<HTMLAudioElement | null>(null);
+
     useEffect(() => {
         const handleSceneSwitch = () => {
             if (!afterScene.current || !beforeScene.current || before.Rank === after.Rank || (before.Rank !== after.Rank && before.SR > after.SR))
@@ -25,7 +28,7 @@ const Ranked = (props: IProps) => {
             afterScene.current.style.opacity = '1';
 
             if (rankUpSound === '1' && before.SR < after.SR)
-                (document.getElementById('LevelUp') as HTMLAudioElement)?.play();
+                rankDownRef.current?.play();
         }
 
         if (!sceneTimeout.current) 
@@ -37,7 +40,7 @@ const Ranked = (props: IProps) => {
                 sceneTimeout.current = null;
             }
         }
-    }, [ before, after ]);
+    }, [ rankUpSound, rankDownRef.current, before, after ]);
 
     const renderScene = (data: PlayerCompetitiveData) => {
         return (
@@ -61,8 +64,7 @@ const Ranked = (props: IProps) => {
 
     return (
         <div className="relative">
-            <audio id="LevelUp" src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
-            <audio id="LevelDown" src="/audio/LevelDown.wav" crossOrigin="anonymous" preload="auto" />
+            <audio ref={rankDownRef} src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
             <div ref={beforeScene} className={"transition ease-in-out duration-300"} style={{ opacity: 100 }}>
                 {(before.Rank === after.Rank || (before.Rank !== after.Rank && before.SR > after.SR)) ? renderScene(after) : renderScene(before)}
             </div>
