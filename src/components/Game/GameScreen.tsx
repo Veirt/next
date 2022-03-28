@@ -94,13 +94,20 @@ const GameScreen = (props: IProps) => {
     }, [ ]);
 
     useEffect(() => {
+        const beforeUnload = (e: BeforeUnloadEvent) => {
+            if ((!endMatchData || !endMatchData.roundData) && matchData?.flagId !== 4) {
+                e.preventDefault();
+                e.returnValue = true;
+            }
+        }
+
         if (typeof window !== 'undefined')
             window.addEventListener('beforeunload', beforeUnload);
         return () => {
             window.removeEventListener('beforeunload', beforeUnload);
         }
     // eslint-disable-next-line
-    }, [ endMatchData ]);
+    }, [ matchData, endMatchData ]);
 
     // Socket
     useEffect(() => {
@@ -325,14 +332,6 @@ const GameScreen = (props: IProps) => {
 
         if (!endMatchData && gameCountdown >= 1 && e.key === 'Backspace') 
             e.preventDefault();
-    }
-
-    const beforeUnload = (e: BeforeUnloadEvent) => {
-        console.log('endMatchData', endMatchData);
-        if (!endMatchData || !endMatchData.roundData) {
-            e.preventDefault();
-            e.returnValue = true;
-        }
     }
 
     const debugAndToast = (debug: string, message: string) => {
