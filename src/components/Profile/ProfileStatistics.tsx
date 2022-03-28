@@ -122,7 +122,7 @@ const ProfileStatistics = (props: IProps) => {
                                             </div>
                                             {rankedData?.Rank?.Rank !== 'Unrated' && (
                                                 <div className={"text-white opacity-70 uppercase text-xl font-semibold"}>
-                                                    {rankedData?.rating || 0} <span className={"text-orange-400"}>SR</span>
+                                                    {rankedData?.Rank?.SR || 0} <span className={"text-orange-400"}>SR</span>
                                                 </div>
                                             )}
                                         </div>

@@ -1,5 +1,4 @@
 import { useRef, useEffect } from "react";
-import ReactCountup from "react-countup";
 import useConfig from "../../../hooks/useConfig";
 import { PlayerCompetitiveData } from "../../../types.client.mongo";
 
@@ -40,7 +39,7 @@ const Ranked = (props: IProps) => {
                 sceneTimeout.current = null;
             }
         }
-    }, [ rankUpSound, rankDownRef.current, before, after ]);
+    }, [ rankUpSound, before, after ]);
 
     const renderScene = (data: PlayerCompetitiveData) => {
         return (
