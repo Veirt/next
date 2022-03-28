@@ -3,8 +3,12 @@ import {usePlayerContext} from "../../contexts/Player.context";
 import Redirect from '../Uncategorized/Redirect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/router';
 
 const Queue = () => {
+
+    const router = useRouter();
+
     const { inQueue, setInQueue, queueTimer, queueFound } = usePlayerContext();
     const [ redirect, setRedirect ] = useState('');
 
@@ -12,10 +16,15 @@ const Queue = () => {
         let redirectInterval: NodeJS.Timeout | null = null;
 
         if (queueFound) {
-            (document.getElementById('MatchFound') as HTMLAudioElement).play();
+            (document.getElementById('MatchFound') as HTMLAudioElement)?.play();
+            if (router.pathname !== '/')
+                setRedirect('/');
+
             redirectInterval = setTimeout(() => {
                 setInQueue(false);
                 setRedirect('/game');
+
+                return false;
             }, 5000);
         }
         return () => {
@@ -23,7 +32,7 @@ const Queue = () => {
                 clearInterval(redirectInterval);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ redirect, queueFound ]);
+    }, [ router, redirect, queueFound ]);
 
     const timerString = new Date(queueTimer * 1000).toISOString().substr(14, 5);
 

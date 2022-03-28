@@ -164,8 +164,10 @@ export const PlayerProvider: FC = ({ children }) => {
             queueSocket?.on('isCooldown', (data: { message: string }) => toast.error(data.message));
 
             queueSocket?.on('startQueue', () => {
-                if (!intervalQueue)
+                if (!intervalQueue) 
                     intervalQueue = setInterval(() => setQueueTimer(q => (q + 1)), 1000);
+
+                setInQueue(true);
             });
 
             queueSocket?.on('foundQueue', (data: { playersFound: string[] }) => {

@@ -28,10 +28,10 @@ const MatchCountdown: FC<MatchCountdownProps> = (props) => {
 
       if (countdown !== 99) {
         if (countdown >= 1 && getBeep && countdownBeep === '1')
-          getBeep.play();
+          getBeep?.play();
 
         if (countdown === 0 && getStart && countdownBeep === '1')
-          getStart.play();
+          getStart?.play();
       }
     }, [ countdown, countdownBeep ]);
 
