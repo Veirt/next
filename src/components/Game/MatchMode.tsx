@@ -32,6 +32,9 @@ const MatchMode = (props: IProps) => {
         case 3:
           flagName = 'Ranked';
           break;
+        case 4:
+          flagName = 'Warmup';
+          break;
         default:
           flagName = 'Public';
           break;

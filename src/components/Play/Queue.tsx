@@ -49,7 +49,7 @@ interface IProps {
 const Queue = (props: IProps) => {
     const axiosCancelSource = useRef<CancelTokenSource | null>();
 
-    const { sessionData, inQueue, setInQueue } = usePlayerContext();
+    const { sessionData, inQueue, queueFound, setInQueue } = usePlayerContext();
     const { _csrf } = useCSRF();
     const { world, networkStrength } = useConfig();
     const { t } = useTranslation();
@@ -69,8 +69,6 @@ const Queue = (props: IProps) => {
         if (sessionData) {
             axios.get(`${Config.apiUrl}/player/ranked`, {withCredentials: true, cancelToken: axiosCancelSource.current?.token})
                 .then((response) => {
-                    console.log('ranked');
-                    console.log(response);
                     if (!response.data.error) {
                         setPlayerLevel(response.data.Level);
                         setPlayerRank(response.data?.Rank?.Rank || 'Unrated');
@@ -92,7 +90,7 @@ const Queue = (props: IProps) => {
         const postData = {
             _csrf,
             worldId: world,
-            flagId: 0,
+            flagId: !inQueue ? 0 : 4,
             modeId: 0,
             networkStrength, 
             locale: "en",
@@ -103,7 +101,7 @@ const Queue = (props: IProps) => {
             .then((response) => {
                 if (!response.data.error) {
                     setLoading(2);
-                    setRedirect(`/game/${textType}`);
+                    setRedirect(!inQueue ? `/game/${textType}` : `/warmup/${textType}`);
                 } else {
                     setLoading(null);
                     toast.error(response.data.error);
@@ -113,7 +111,7 @@ const Queue = (props: IProps) => {
                 toast.error(e.message || 'Unknown error occured, please try again later!');
                 setLoading(null);
             })
-    }, [ _csrf, world ]);
+    }, [ _csrf, world, inQueue ]);
 
     useEffect(() => {
         if (mode)
@@ -233,13 +231,13 @@ const Queue = (props: IProps) => {
         <>
             {redirect && redirect !== '' && <Redirect to={redirect} />}
             <RankedModal isLoaded={modal === 0} toggle={() => setModal(null)} />
-            <div style={{ zIndex: 100 }} className={`${loading !== null ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition ease-in-out duration-200 fixed inset-0 w-full h-screen bg-black bg-opacity-40`}>
+            <div style={{ zIndex: 100 }} className={`${(queueFound || loading !== null) ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition ease-in-out duration-200 fixed inset-0 w-full h-screen bg-black bg-opacity-40`}>
                 <div className={"flex h-screen"}>
                     <div className={"m-auto w-11/12 sm:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-4/12 3xl:w-96 px-4 py-12 xl:py-16 rounded-2xl shadow-lg bg-gray-750"}>
                         <div className="text-center">
                             <FontAwesomeIcon icon={faCircleNotch} className={"text-orange-400 text-center"} size={"6x"} spin />
                             <div className="h2 mt-10">
-                                {loading === 2 ? 'Joining Match' : 'Finding Match'}
+                                {(queueFound || loading === 2) ? 'Joining Match' : 'Finding Match'}
                             </div>
                             <p className="mt-4">Get ready to start typing!</p>
                         </div>
