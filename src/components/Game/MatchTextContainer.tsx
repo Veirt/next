@@ -267,9 +267,8 @@ const MatchTextContainer = (props: IProps) => {
                     className={`match--input ${typoStreak > 0 ? colorBlindInputCSS || '' : 'bg-gray-800 border-orange-400'} ${hideInputBox === '1' ? 'absolute left-0 opacity-0' : 'relative'}`}
                     lang="en"
                     type="text"
-                    name="textInput"
                     placeholder={disabled ? 'Type your text in here...' : ''}
-                    autoComplete="off"
+                    autoComplete={`new-password`}
                     autoCorrect="off"
                     autoCapitalize="off"
                     spellCheck="false"
