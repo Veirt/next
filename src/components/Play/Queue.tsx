@@ -72,7 +72,6 @@ const Queue = (props: IProps) => {
                     if (!response.data.error) {
                         setPlayerLevel(response.data.Level);
                         setPlayerRank(response.data?.Rank?.Rank || 'Unrated');
-                        console.log(response.data);
                     } else
                         console.log(response.data.error);
                 })
@@ -111,7 +110,7 @@ const Queue = (props: IProps) => {
                 toast.error(e.message || 'Unknown error occured, please try again later!');
                 setLoading(null);
             })
-    }, [ _csrf, world, inQueue ]);
+    }, [ _csrf, world, inQueue, networkStrength ]);
 
     useEffect(() => {
         if (mode)
@@ -215,7 +214,7 @@ const Queue = (props: IProps) => {
                     name: 'component.navbar.leaders',
                     icon: faTrophy,
                     color: 'text-yellow-400',
-                    onClick: () => setRedirect('/leaderboards/ranked/4'),
+                    onClick: () => setRedirect('/leaderboards/ranked/5'),
                 },
                 {
                     name: 'page.queue.ranked.info',

@@ -177,6 +177,8 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
         const getTournaments = await axios.get(`${Config.apiUrl}/player/tournaments?playerId=${getPlayer.data.playerId}&worldId=${world}`).catch((e) => console.log(e));
         const getRanked = await axios.get(`${Config.apiUrl}/player/ranked?playerId=${getPlayer.data.playerId}&worldId=${world}`).catch((e) => console.log(e));
     
+        console.log(getRanked?.data);
+
         return {
             props: {
                 ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
