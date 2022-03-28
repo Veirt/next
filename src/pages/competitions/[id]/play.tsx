@@ -39,7 +39,7 @@ const TournamentView = (props: IProps) => {
                       toast.error(response.data.error || "We were unable to start finding a match!");
               }).catch(e => console.log(e));
         }
-    }, [ tournamentId, world, _csrf ]);
+    }, [ tournamentId, world, _csrf, networkStrength ]);
 
     return (
           <>
