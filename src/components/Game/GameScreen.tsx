@@ -67,8 +67,8 @@ const GameScreen = (props: IProps) => {
     const [ gameRoundsTotal, setGameRoundsTotal ] = useState<number>(0);
 
     // Global Hot Keys
-    const keyMap = { GOTO_REDO: shortcutGameRedo.toLowerCase() };
-    const handlers = { GOTO_REDO: () => (endMatchData && endMatchData.roundData) ? setRedirect(`/play/${textType || 'random'}`) : false };
+    const keyMap = matchData?.flagId !== 3 ? { GOTO_REDO: shortcutGameRedo.toLowerCase() } : {};
+    const handlers = matchData?.flagId !== 3 ? { GOTO_REDO: () => (endMatchData && endMatchData.roundData) ? setRedirect(`/play/${textType || 'random'}`) : false } : {};
 
     // Effects
     useEffect(() => {
