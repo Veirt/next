@@ -189,8 +189,10 @@ export const PlayerProvider: FC = ({ children }) => {
                     intervalQueue = setInterval(() => setQueueTimer(q => (q + 1)), 1000);
 
                 const array = data?.acceptedPlayers;
-                if (array && sessionData && array.includes(sessionData.playerId))
-                    queueSocket?.emit('joinQueue', { playerToken });
+                if (array && sessionData && array.includes(sessionData.playerId)) {
+                    setInQueue(false);
+                    setTimeout(() => setInQueue(true), 25);
+                }
             });
 
             queueSocket?.on('expiredQueue', (data: { declinedPlayers: string[] }) => {

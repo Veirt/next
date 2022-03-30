@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {usePlayerContext} from "../../contexts/Player.context";
 import Redirect from '../Uncategorized/Redirect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faCheckSquare, faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 
 const Queue = () => {
@@ -50,7 +50,7 @@ const Queue = () => {
                                     <FontAwesomeIcon icon={!queuePending ? faCircleNotch : faCheck} className="mr-2" spin={!queuePending} />
                                     {!queuePending 
                                         ? <span className="font-semibold">Searching ({timerString})</span>
-                                        : <span className="font-semibold">{queueFound ? 'Loading Match' : 'Waiting for Others'}</span>
+                                        : <span className="font-semibold">{queueFound ? 'Loading Match' : 'Match Found!'}</span>
                                     }
                                 </div>
                                 {(!queuePending && !queueAccept) ? (
@@ -58,8 +58,8 @@ const Queue = () => {
                                         <FontAwesomeIcon icon={faTimes} className="mr-2" />
                                     </button>
                                 ) : !queueAccept && (
-                                    <button type="button" className="focus:outline-none text-green-900 hover:opacity-70 transition ease-in-out duration-300" onClick={acceptQueue}>
-                                        <FontAwesomeIcon icon={faCheckSquare} className="mr-2" />
+                                    <button type="button" className={`focus:outline-none my-auto px-2 text-sm rounded-lg border-2 border-green-900 ${!queueAccept ? 'hover:bg-green-900 hover:text-white bg-transparent text-green-900' : 'bg-green-900 text-white'} transition ease-in-out duration-300 mr-2`} onClick={acceptQueue}>
+                                        Accept
                                     </button>
                                 )}
                             </div>
