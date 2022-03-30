@@ -46,8 +46,8 @@ const Leaderboards = (props: IProps) => {
     const [ filterText, setFilterText ] = useState<TextData | null>(null);
 
     const modeList = useMemo(() => { return ['ranked', 'casual', 'texts'] }, []);
-    const filterCasualList = ['experience', 'playtime', 'challenges', 'highestWPM', 'matchesWon'];
-    const filterItemToName = {'experience': 'Total Experience', 'playtime': 'Total Playtime', 'challenges': 'Most Challenges', 'highestWPM': 'Fastest Speed', 'matchesWon': 'Most Wins'};
+    const filterCasualList = ['cr', 'experience', 'playtime', 'challenges', 'highestWPM', 'matchesWon'];
+    const filterItemToName = {'cr': 'Career Rating', 'experience': 'Total Experience', 'playtime': 'Total Playtime', 'challenges': 'Most Challenges', 'highestWPM': 'Fastest Speed', 'matchesWon': 'Most Wins'};
 
     const getRanked = useCallback(() => {
         axios.get(`${Config.apiUrl}/leaderboards/ranked?modeId=1&seasonId=${filter}&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
@@ -321,7 +321,7 @@ export async function getServerSideProps({ req, query }: GetServerSidePropsConte
   return {
       props: {
           type: query.slug?.[0] || 'casual',
-          filter: query.slug?.[1] || 'experience',
+          filter: query.slug?.[1] || 'cr',
           ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
       }
   }
