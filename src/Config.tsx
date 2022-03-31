@@ -1,4 +1,4 @@
-export const toggleStaging = false;
+export const toggleStaging = true;
 
 const config = {
     versionControl: "3.0.0",
