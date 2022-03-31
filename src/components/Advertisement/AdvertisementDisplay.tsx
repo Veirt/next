@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { toggleStaging } from "../../Config";
 import { usePlayerContext } from "../../contexts/Player.context";
 
 interface IProps {
