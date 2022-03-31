@@ -34,7 +34,7 @@ const AdvertisementDisplay = (props: IProps) => {
     }, [ ]);
 
 
-    return (toggleStaging && sessionData && !sessionData.patreon) ? (
+    return (sessionData && !sessionData.patreon) ? (
         <div className={`${height > 50 ? `content-box w-full flex ${className}` : ''}`} style={{ paddingTop: 0, paddingBottom: 0, height: `${height}px` }}>
             <div className={`w-full flex justify-center items-center`}>
                 <div ref={adRef} className={` ${downSize ? 'transform scale-90' : ''}`}>
