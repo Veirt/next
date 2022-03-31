@@ -7,7 +7,7 @@ import LeaderboardPlayerRanked, {PlayerRankedExtendedData} from "../../component
 import LeaderboardPlayerStatistic, {PlayerStatisticExtendedData} from "../../components/Leaderboard/LeaderboardPlayerStatistic";
 import {useTranslation} from "next-i18next";
 import Pagination from "../../components/Uncategorized/Pagination";
-import {faCaretDown, faFilter, faSearch, faSort} from "@fortawesome/free-solid-svg-icons";
+import {faCaretDown, faFilter, faInfoCircle, faSearch, faSort} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useConfig from "../../hooks/useConfig";
 import moment from "moment";
@@ -174,7 +174,7 @@ const Leaderboards = (props: IProps) => {
                             </div>
                             <div className="col-span-full lg:col-span-1 lg:text-right lg:mt-1">
                                 {type === 'ranked' && seasons.map((item) => item.id === (filter ? parseInt(filter, 10) : (seasons.length - 1)) ? (
-                                    <div className={"flex flex-wrap justify-end text-sm opacity-70 font-semibold"}>
+                                    <div className={"flex flex-wrap justify-start lg:justify-end text-sm opacity-70 font-semibold mb-10 lg:mb-0 -mt-6 lg:mt-0"}>
                                         <div className={"w-full"}>
                                             {moment.unix(item.start).format("ll")} - {moment.unix(item.end).format("ll")}
                                         </div>
@@ -183,6 +183,15 @@ const Leaderboards = (props: IProps) => {
                                         </div>
                                     </div>
                                 ) : '')}
+
+                                {(type === 'casual' && filter === 'cr') && (
+                                    <div className={"flex flex-wrap justify-start lg:justify-end text-sm opacity-70 font-semibold mb-10 lg:mb-0 -mt-6 lg:mt-0"}>
+                                        Score calculated off your top 100 personal bests.
+                                        <div>
+                                            You <span className="text-orange-400">must</span> have 100 personal bests to be eligible.
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
