@@ -42,7 +42,7 @@ const Meta = (props: IMetaProps) => {
                         passiveMode: true,
                     }
                 ` }} />
-                <script async id="ramp" src="//cdn.intergient.com/ramp.js" type="text/javascript" />
+                <script id="ramp" src="//cdn.intergient.com/ramp.js" type="text/javascript" />
                 <script async src="https://btloader.com/tag?o=5150306120761344&upapi=true" />
             </Head>
             <NextSeo

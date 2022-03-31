@@ -7,7 +7,7 @@ import LeaderboardPlayerRanked, {PlayerRankedExtendedData} from "../../component
 import LeaderboardPlayerStatistic, {PlayerStatisticExtendedData} from "../../components/Leaderboard/LeaderboardPlayerStatistic";
 import {useTranslation} from "next-i18next";
 import Pagination from "../../components/Uncategorized/Pagination";
-import {faCaretDown, faFilter, faInfoCircle, faSearch, faSort} from "@fortawesome/free-solid-svg-icons";
+import {faCaretDown, faFilter, faSearch, faSort} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useConfig from "../../hooks/useConfig";
 import moment from "moment";
