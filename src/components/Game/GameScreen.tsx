@@ -266,13 +266,16 @@ const GameScreen = (props: IProps) => {
                         if (usePlayer.playerId === sessionData?.playerId && usePlayer.teamId === 0) 
                             spectator.current = true;
 
+                        if (usePlayer.playerId === sessionData?.playerId)
+                            usePlayer.internalSort = (usePlayer.playerId === sessionData?.playerId) ? 0 : 9;
+
                         if (participantIndex !== -1) {
                             usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
                             usePlayer.Progress = participantsData[participantIndex]?.Progress || 0;
                         }
                     }
 
-                    return [ ...data ];
+                    return [ ...data.sort((a, b) => Number(a?.internalSort || 0) - Number(b?.internalSort || 1)) ];
                 });
             } 
         });
