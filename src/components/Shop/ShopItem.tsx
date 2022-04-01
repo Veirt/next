@@ -6,6 +6,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleDoubleRight, faCoins} from "@fortawesome/free-solid-svg-icons";
 import {ItemData, PlayerShopData} from "../../types.client.mongo";
 import {useTranslation} from "next-i18next";
+import ItemNFT from '../Inventory/ItemNFT';
+import { faEthereum } from '@fortawesome/free-brands-svg-icons';
 
 interface IProps extends ItemData {
     player: PlayerShopData;
@@ -31,8 +33,10 @@ const ShopItem:FC<IProps> = (props) => {
                             <ItemPlayercard file={props.file} />
                         ) : props.itemType === 'page.shop.banners' ? (
                             <ItemBanner file={props.file} />
-                        ) : (
+                        ) : props.itemType === 'page.shop.borders' ? (
                             <ItemBorder file={props.file} />
+                        ) : (
+                            <ItemNFT file={props.file} />
                         )}
                     </div>
                 </div>
@@ -40,30 +44,38 @@ const ShopItem:FC<IProps> = (props) => {
             <div className={'p-3'}>
                 <div className={'text-base uppercase text-white font-semibold'}>{props.name}</div>
                 <div className={'flex justify-between text-sm mt-2'}>
-                    <div className={"w-auto"}>
-                        {!props.player.inventory.includes(props.file) ? (
-                            <>
-                                {props.level > props.player.level.Index
-                                    ? <span className={"text-gray-400 uppercase font-semibold"}>Unlock at Level {props.level}</span>
-                                    : props.price > props.player.currency
-                                        ? <span className={"text-gray-400 uppercase font-semibold"}>Not enough coins</span>
-                                        : (
-                                            <button
-                                                type={'button'}
-                                                className={'focus:outline-none bg-orange-400 hover:bg-orange-300 text-orange-900 rounded-full transition ease-in-out duration-300 font-semibold uppercase px-4 text-xs py-1'}
-                                                onClick={() => props.purchaseItem(props.file, props.price)}
-                                            >
-                                                <FontAwesomeIcon icon={faAngleDoubleRight} className={'mr-px'} /> Purchase
-                                            </button>
-                                        )
-                                }
-                            </>
-                        ) : <span className={"text-gray-400 uppercase font-semibold"}>Purchased</span>}
-                    </div>
+                    {props.itemType === 'NFTs' ? (
+                        <div className="w-auto">
+                            <span className={"text-gray-400 uppercase font-semibold"}>Whitelist Only</span>
+                        </div>
+                    ) : (
+                        <div className={"w-auto"}>
+                            {!props.player.inventory.includes(props.file) ? (
+                                <>
+                                    {props.level > props.player.level.Index
+                                        ? <span className={"text-gray-400 uppercase font-semibold"}>Unlock at Level {props.level}</span>
+                                        : props.price > props.player.currency
+                                            ? <span className={"text-gray-400 uppercase font-semibold"}>Not enough coins</span>
+                                            : (
+                                                <button
+                                                    type={'button'}
+                                                    className={'focus:outline-none bg-orange-400 hover:bg-orange-300 text-orange-900 rounded-full transition ease-in-out duration-300 font-semibold uppercase px-4 text-xs py-1'}
+                                                    onClick={() => props.purchaseItem(props.file, props.price)}
+                                                >
+                                                    <FontAwesomeIcon icon={faAngleDoubleRight} className={'mr-px'} /> Purchase
+                                                </button>
+                                            )
+                                    }
+                                </>
+                            ) : <span className={"text-gray-400 uppercase font-semibold"}>Purchased</span>}
+                        </div>
+                    )}
                     <div className={"w-auto my-auto"}>
                         {!props.player.inventory.includes(props.file) && (
                             <div className={"bg-gray-850 text-white text-sm uppercase font-semibold px-4 py-0.5 rounded-xl"}>
-                                <FontAwesomeIcon icon={faCoins} className={'text-yellow-400'} /> {props.price.toLocaleString()}
+                                <FontAwesomeIcon icon={props.itemType === 'NFTs' ? faEthereum : faCoins} className={'text-yellow-400 mr-1'} /> 
+                                {props.price.toLocaleString()}
+                                {props.itemType === 'NFTs' ? ' ETH' : ''}
                             </div>
                         )}
                     </div>

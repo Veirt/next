@@ -46,8 +46,8 @@ const Leaderboards = (props: IProps) => {
     const [ filterText, setFilterText ] = useState<TextData | null>(null);
 
     const modeList = useMemo(() => { return ['ranked', 'casual', 'texts'] }, []);
-    const filterCasualList = ['experience', 'playtime', 'challenges', 'highestWPM', 'matchesWon'];
-    const filterItemToName = {'experience': 'Total Experience', 'playtime': 'Total Playtime', 'challenges': 'Most Challenges', 'highestWPM': 'Fastest Speed', 'matchesWon': 'Most Wins'};
+    const filterCasualList = ['cr', 'experience', 'playtime', 'challenges', 'highestWPM', 'matchesWon'];
+    const filterItemToName = {'cr': 'Career Rating', 'experience': 'Total Experience', 'playtime': 'Total Playtime', 'challenges': 'Most Challenges', 'highestWPM': 'Fastest Speed', 'matchesWon': 'Most Wins'};
 
     const getRanked = useCallback(() => {
         axios.get(`${Config.apiUrl}/leaderboards/ranked?modeId=1&seasonId=${filter}&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
@@ -174,7 +174,7 @@ const Leaderboards = (props: IProps) => {
                             </div>
                             <div className="col-span-full lg:col-span-1 lg:text-right lg:mt-1">
                                 {type === 'ranked' && seasons.map((item) => item.id === (filter ? parseInt(filter, 10) : (seasons.length - 1)) ? (
-                                    <div className={"flex flex-wrap justify-end text-sm opacity-70 font-semibold"}>
+                                    <div className={"flex flex-wrap justify-start lg:justify-end text-sm opacity-70 font-semibold mb-10 lg:mb-0 -mt-6 lg:mt-0"}>
                                         <div className={"w-full"}>
                                             {moment.unix(item.start).format("ll")} - {moment.unix(item.end).format("ll")}
                                         </div>
@@ -252,6 +252,31 @@ const Leaderboards = (props: IProps) => {
                                 </div>
                             )}
 
+                            {(type === 'casual' && filter === 'cr') && (
+                                <>
+                                    <div className="content-box">
+                                        <div className="h4 text-orange-400 mb-2">Info</div>
+                                        <p className="text-sm">
+                                            Career rating is an algorithm based off your best personal bests.
+                                            <br/><br/>
+                                            It is calculated on every personal best received, and is updated every time you receive a new personal best.
+                                        </p>
+
+                                        <div className="h4 text-orange-400 mb-2 mt-4">Requirements</div>
+                                        <p className="text-sm">
+                                            You <span className="text-orange-400">must</span> have 100 personal bests in order to be on this leaderboard.
+                                        </p>
+
+                                        <div className="h4 text-orange-400 mb-2 mt-4">Feedback</div>
+                                        <p className="text-sm">
+                                            This Leaderboard is in <span className="text-orange-400">beta</span> and may have its algorithm changed on occasion (will be announced). 
+                                            <br/><br/>
+                                            We have lots of future plans for this leaderboard and how we will make it more inclusive to players, so let us know what you think!
+                                        </p>
+                                    </div>
+                                </>
+                            )}
+
                             {type === 'texts' && (
                                 <>
                                     <div className={"relative w-full"}>
@@ -321,7 +346,7 @@ export async function getServerSideProps({ req, query }: GetServerSidePropsConte
   return {
       props: {
           type: query.slug?.[0] || 'casual',
-          filter: query.slug?.[1] || 'experience',
+          filter: query.slug?.[1] || 'cr',
           ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
       }
   }

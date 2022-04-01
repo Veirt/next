@@ -15,6 +15,7 @@ interface ContextType {
     playercards: ItemData[];
     banners: ItemData[];
     borders: ItemData[];
+    nfts: ItemData[];
     challenges: ChallengeData[];
     achievements: AchievementData[];
     gamemodes: GamemodeData[];
@@ -38,6 +39,7 @@ export const GlobalProvider: FC = ({ children }) => {
     const [ playercards, setPlayercards ] = useState<ItemData[]>([]);
     const [ borders, setBorders ] = useState<ItemData[]>([]);
     const [ banners, setBanners ] = useState<ItemData[]>([]);
+    const [ nfts, setNfts ] = useState<ItemData[]>([]);
     const [ challenges, setChallenges ] = useState<ChallengeData[]>([]);
     const [ gamemodes, setGamemodes ] = useState<GamemodeData[]>([]);
     const [ achievements, setAchievements ] = useState<AchievementData[]>([]);
@@ -82,12 +84,13 @@ export const GlobalProvider: FC = ({ children }) => {
                 setLocales(r.locales || []);
                 setWorlds(r.worlds || []);
                 setGamemodes(r.gamemodes || []);
+                setNfts(r.nfts || []);
             }).catch((e) => console.log(e));
 
         return () => axiosCancelSource.current?.cancel();
     }, [ getGlobalData ]);
 
-    return <GlobalContext.Provider value={{ announcement, playercards, borders, banners, gamemodes, challenges, achievements, locales, worlds, keyboards, countries }}>
+    return <GlobalContext.Provider value={{ announcement, playercards, borders, banners, nfts, gamemodes, challenges, achievements, locales, worlds, keyboards, countries }}>
         {children}
     </GlobalContext.Provider>;
 }
