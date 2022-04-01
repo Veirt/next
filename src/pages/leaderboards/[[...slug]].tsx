@@ -260,12 +260,18 @@ const Leaderboards = (props: IProps) => {
                                             Career rating is an algorithm based off your best personal bests.
                                             <br/><br/>
                                             It is calculated on every personal best received, and is updated every time you receive a new personal best.
-                                            <br/><br/>
                                         </p>
 
-                                        <div className="h4 text-orange-400 mb-2">Requirements</div>
+                                        <div className="h4 text-orange-400 mb-2 mt-4">Requirements</div>
                                         <p className="text-sm">
                                             You <span className="text-orange-400">must</span> have 100 personal bests in order to be on this leaderboard.
+                                        </p>
+
+                                        <div className="h4 text-orange-400 mb-2 mt-4">Feedback</div>
+                                        <p className="text-sm">
+                                            This Leaderboard is in <span className="text-orange-400">beta</span> and may have its algorithm changed on occasion (will be announced). 
+                                            <br/><br/>
+                                            We have lots of future plans for this leaderboard and how we will make it more inclusive to players, so let us know what you think!
                                         </p>
                                     </div>
                                 </>
