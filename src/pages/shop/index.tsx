@@ -21,7 +21,7 @@ const Shop = () => {
   const axiosCancelSource = useRef<CancelTokenSource | null>(null);
 
   const { sessionData } = usePlayerContext();
-  const { playercards, borders, banners } = useGlobalContext();
+  const { playercards, borders, banners, nfts } = useGlobalContext();
   const { _csrf } = useCSRF();
   const { t } = useTranslation();
 
@@ -31,7 +31,7 @@ const Shop = () => {
   const [owned, setOwned] = useState<string[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  const [tab, setTab] = useState('page.shop.featured');
+  const [tab, setTab] = useState('NFTs');
   const [subtab, setSubtab] = useState(1);
 
   const tabs = [
@@ -40,6 +40,14 @@ const Shop = () => {
       onClick: () => {
         setSubtab(0);
         setTab('page.shop.featured');
+      },
+    },
+    {
+      name: 'NFTs',
+      data: nfts,
+      onClick: () => {
+        setSubtab(0);
+        setTab('NFTs');
       },
     },
     {
@@ -174,6 +182,7 @@ const Shop = () => {
                           </div>
                       </div>
                   )}
+                  
                   {tab !== 'page.shop.featured' && (
                       <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 content-box'}>
                           {tabs.map(row => row.name === tab && row.data && row.data.map(item => !item.secret && (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
