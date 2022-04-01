@@ -183,15 +183,6 @@ const Leaderboards = (props: IProps) => {
                                         </div>
                                     </div>
                                 ) : '')}
-
-                                {(type === 'casual' && filter === 'cr') && (
-                                    <div className={"flex flex-wrap justify-start lg:justify-end text-sm opacity-70 font-semibold mb-10 lg:mb-0 -mt-6 lg:mt-0"}>
-                                        Score calculated off your top 100 personal bests.
-                                        <div>
-                                            You <span className="text-orange-400">must</span> have 100 personal bests to be eligible.
-                                        </div>
-                                    </div>
-                                )}
                             </div>
                         </div>
 
@@ -259,6 +250,25 @@ const Leaderboards = (props: IProps) => {
                                         ))}
                                     </div>
                                 </div>
+                            )}
+
+                            {(type === 'casual' && filter === 'cr') && (
+                                <>
+                                    <div className="content-box">
+                                        <div className="h4 text-orange-400 mb-2">Info</div>
+                                        <p className="text-sm">
+                                            Career rating is an algorithm based off your best personal bests.
+                                            <br/><br/>
+                                            It is calculated on every personal best received, and is updated every time you receive a new personal best.
+                                            <br/><br/>
+                                        </p>
+
+                                        <div className="h4 text-orange-400 mb-2">Requirements</div>
+                                        <p className="text-sm">
+                                            You <span className="text-orange-400">must</span> have 100 personal bests in order to be on this leaderboard.
+                                        </p>
+                                    </div>
+                                </>
                             )}
 
                             {type === 'texts' && (
