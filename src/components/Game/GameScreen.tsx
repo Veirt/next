@@ -68,7 +68,7 @@ const GameScreen = (props: IProps) => {
 
     // Global Hot Keys
     const keyMap = { GOTO_REDO: shortcutGameRedo.toLowerCase() };
-    const handlers = { GOTO_REDO: () => (endMatchData && endMatchData.roundData) ? setRedirect(`/play/${textType || 'random'}`) : false };
+    const handlers = matchData?.flagId !== 3 ? { GOTO_REDO: () => (endMatchData && endMatchData.roundData) ? setRedirect(`/play/${textType || 'random'}`) : false } : { GOTO_REDO: () => false };
 
     // Effects
     useEffect(() => {
@@ -266,13 +266,16 @@ const GameScreen = (props: IProps) => {
                         if (usePlayer.playerId === sessionData?.playerId && usePlayer.teamId === 0) 
                             spectator.current = true;
 
+                        if (usePlayer.playerId === sessionData?.playerId)
+                            usePlayer.internalSort = (usePlayer.playerId === sessionData?.playerId) ? 0 : 9;
+
                         if (participantIndex !== -1) {
                             usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
                             usePlayer.Progress = participantsData[participantIndex]?.Progress || 0;
                         }
                     }
 
-                    return [ ...data ];
+                    return [ ...data.sort((a, b) => Number(a?.internalSort || 0) - Number(b?.internalSort || 1)) ];
                 });
             } 
         });

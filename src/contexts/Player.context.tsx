@@ -16,10 +16,15 @@ interface ContextType {
     getSessionData: () => void;
 
     // Queue Functionality
+    acceptQueue: () => void;
     inQueue?: boolean;
     setInQueue: (v: boolean) => void;
     queueFound?: boolean;
     setQueueFound: (v: boolean) => void;
+    queueAccept?: boolean;
+    setQueueAccept: (v: boolean) => void;
+    queuePending?: boolean;
+    setQueuePending: (v: boolean) => void;
     queueTimer: number;
 
     // Notification Functionality
@@ -49,6 +54,9 @@ export const PlayerProvider: FC = ({ children }) => {
     const [ queueSocket, setQueueSocket ] = useState<Socket | null>(null);
     const [ queueTimer, setQueueTimer ] = useState<number>(0);
     const [ queueFound, setQueueFound ] = useState<boolean>(false);
+    const [ queuePending, setQueuePending ] = useState<boolean>(false);
+    const [ queueAccept, setQueueAccept ] = useState<boolean>(false);
+    const [ queueId, setQueueId ] = useState<number | null>(null);
 
     const getSessionData = useCallback(async () => {
         const response = await axios.get(`${Config.authUrl}/session`, {
@@ -130,6 +138,9 @@ export const PlayerProvider: FC = ({ children }) => {
                 queueSocket?.disconnect();
                 setQueueFound(false);
                 setQueueTimer(0);
+                setQueueId(null);
+                setQueuePending(false);
+                setQueueAccept(false);
                 setQueueSocket(null);
             }
         }
@@ -167,12 +178,42 @@ export const PlayerProvider: FC = ({ children }) => {
                 if (!intervalQueue) 
                     intervalQueue = setInterval(() => setQueueTimer(q => (q + 1)), 1000);
 
+                setQueuePending(false);
+                setQueueAccept(false);
+                setQueueId(null);
                 setInQueue(true);
             });
 
+            queueSocket?.on('restartQueue', (data?: { acceptedPlayers: string[] }) => {
+                if (!intervalQueue) 
+                    intervalQueue = setInterval(() => setQueueTimer(q => (q + 1)), 1000);
+
+                const array = data?.acceptedPlayers;
+                if (array && sessionData && array.includes(sessionData.playerId)) {
+                    setInQueue(false);
+                    setTimeout(() => setInQueue(true), 25);
+                }
+            });
+
+            queueSocket?.on('expiredQueue', (data: { declinedPlayers: string[] }) => {
+                const array = data?.declinedPlayers;
+                if (array && sessionData && array.includes(sessionData.playerId)) {
+                    queueSocket?.disconnect();
+                    toast.error("You didn't press the accept button in time, you have been removed from the queue.");
+                }
+            });
+
+            queueSocket?.on('pendingQueue', (data: { queueId: number, playersFound: string[] }) => {
+                const array = data?.playersFound;
+                if (array && sessionData && array.includes(sessionData.playerId)) {
+                    setQueuePending(array.includes(sessionData.playerId));
+                    setQueueId(data.queueId);
+                }
+            });
+
             queueSocket?.on('foundQueue', (data: { playersFound: string[] }) => {
-                const array = data.playersFound;
-                if (sessionData && array.includes(sessionData.playerId)) 
+                const array = data?.playersFound;
+                if (array && sessionData && array.includes(sessionData.playerId)) 
                     setQueueFound(array.includes(sessionData.playerId));
             });
         });
@@ -181,6 +222,11 @@ export const PlayerProvider: FC = ({ children }) => {
             setQueueSocket(null);
         }
     }, [ sessionData, playerToken, queueSocket ]);
+
+    const acceptQueue = async () => { 
+        setQueueAccept(true); 
+        queueSocket?.emit('acceptQueue', { queueId });
+    };
 
     return <PlayerContext.Provider value={{ 
             sessionData, 
@@ -192,8 +238,13 @@ export const PlayerProvider: FC = ({ children }) => {
             getSessionData,
 
             // Queue Functionality
+            acceptQueue,
             inQueue, 
             setInQueue, 
+            queueAccept,
+            setQueueAccept,
+            queuePending,
+            setQueuePending,
             queueFound,
             setQueueFound,
             queueTimer,

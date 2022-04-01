@@ -34,6 +34,16 @@ const Meta = (props: IMetaProps) => {
 
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
+
+                <script dangerouslySetInnerHTML={{ __html: `
+                    var ramp = { 
+                        mode: "ramp", 
+                        config: "//config.playwire.com/1024504/v2/websites/73412/banner.json",
+                        passiveMode: true,
+                    }
+                ` }} />
+                <script id="ramp" src="//cdn.intergient.com/ramp.js" type="text/javascript" />
+                <script async src="https://btloader.com/tag?o=5150306120761344&upapi=true" />
             </Head>
             <NextSeo
                 title={useTitle}

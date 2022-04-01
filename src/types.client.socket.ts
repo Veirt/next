@@ -60,6 +60,7 @@ export interface SocketMatchPlayerData extends PlayerData, PlayerMatchData {
     Quit: number;
     roundsWon: number;
     spectatorOnly: boolean;
+    internalSort?: number;
 }
 
 export interface SocketMatchEndData {

@@ -1,14 +1,16 @@
 import {FC, useEffect, useState} from 'react';
-import {PlayerMatchData, TextData} from "../../types.client.mongo";
+import {PlayerData, PlayerMatchData, TextData} from "../../types.client.mongo";
 import moment from "moment";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlayCircle, faTrophy} from "@fortawesome/free-solid-svg-icons";
+import {faPlayCircle, faTrophy, faExternalLinkSquareAlt} from "@fortawesome/free-solid-svg-icons";
 import ordinalSuffixOf from "../../utils/ordinalSuffixOf";
 import useConfig from "../../hooks/useConfig";
 import PipeReplay from '../Uncategorized/PipeReplay';
+import Link from '../Uncategorized/Link';
 
 export interface PlayerMatchProfileExtendedData extends PlayerMatchData {
     text: TextData[];
+    player?: PlayerData[];
 }
 
 interface IProps {
@@ -28,7 +30,7 @@ const LeaderboardPlayerProfile:FC<IProps> = (props) => {
 
     return (
         <>
-            {currentData !== null && <PipeReplay {...currentData} onClose={() => setCurrentData(null)} />}
+            {currentData !== null && <PipeReplay isModal {...currentData} onClose={() => setCurrentData(null)} />}
             <div>
                 <div className="flex leaderboards--head">
                     <div className="hidden md:block w-20 text-center font-bold">#</div>
@@ -37,7 +39,7 @@ const LeaderboardPlayerProfile:FC<IProps> = (props) => {
                     <div className="hidden md:block w-24">Acc %</div>
                     <div className="hidden md:block w-32">Speed</div>
                     <div className="hidden md:block w-32">Time</div>
-                    <div className={"w-12"} />
+                    <div className={"w-16"} />
                 </div>
 
                 {data.map((item) => (
@@ -67,11 +69,16 @@ const LeaderboardPlayerProfile:FC<IProps> = (props) => {
                             )
                         }
                         <div className="hidden md:block w-32 my-auto">{moment.unix(item.created).fromNow()}</div>
-                        <div className={"w-12 my-auto"}>
+                        <div className={"w-16 my-auto"}>
                             {(item.placement !== 0 && item.keystrokeLog) && (
-                                <button type="button" className="text-lg hover:opacity-70 transition ease-in-out duration-300" onClick={() => setCurrentData(item)}>
-                                    <FontAwesomeIcon icon={faPlayCircle} />    
-                                </button>
+                                <>
+                                    <Link to={`/replay/${item.playerId}/${item.matchId}`} className="mr-2 text-lg hover:opacity-70 transition ease-in-out duration-300">
+                                        <FontAwesomeIcon icon={faExternalLinkSquareAlt} />
+                                    </Link>
+                                    <button type="button" className="text-lg hover:opacity-70 transition ease-in-out duration-300" onClick={() => setCurrentData(item)}>
+                                        <FontAwesomeIcon icon={faPlayCircle} />    
+                                    </button>
+                                </>
                             )}
                         </div> 
                     </div>

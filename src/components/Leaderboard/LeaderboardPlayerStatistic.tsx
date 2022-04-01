@@ -28,7 +28,9 @@ const LeaderboardPlayerStatistic:FC<IProps> = (props) => {
         else if (fieldName === "matchesWon")
             return (value || 0).toLocaleString() + ' wins';
         else if (fieldName === "count") // Challenges
-        return (value || 0).toLocaleString() + ' challenges';
+            return (value || 0).toLocaleString() + ' challenges';
+        else if (fieldName === "cr") // Challenges
+            return <>{(value || 0).toLocaleString()} <span className="bg-gray-600 px-1 py-0 rounded-full">CR</span></>;
         else
             return value;
     }
@@ -44,6 +46,8 @@ const LeaderboardPlayerStatistic:FC<IProps> = (props) => {
             return "Wins";
         else if (fieldName === "count") // Challenges
             return "Challenges";
+        else if (fieldName === "cr")
+            return "Score";
         else
             return fieldName;
     }

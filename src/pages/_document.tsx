@@ -18,16 +18,6 @@ class MyDocument extends Document {
                       src="https://www.google-analytics.com/analytics.js"
                       strategy="afterInteractive"
                     />
-
-                    <script dangerouslySetInnerHTML={{ __html: `
-                        var ramp = { 
-                            mode: "ramp", 
-                            config: "//config.playwire.com/1024504/v2/websites/73412/banner.json",
-                            passiveMode: true,
-                        }
-                    ` }} />
-                    <script id="ramp" src="//cdn.intergient.com/ramp.js" type="text/javascript" />
-                    <script src="https://btloader.com/tag?o=5150306120761344&upapi=true" />
                 </body>
             </Html>
         );
