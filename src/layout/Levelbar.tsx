@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'next-i18next';
-import {faDiscord, faEthereum, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faDiscord, faGithub, faPatreon, faReddit, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import Userbar from "./Userbar";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -215,10 +215,7 @@ const Levelbar = () => {
                         </Link>
                         {(sessionData && sessionData.authName !== 'Guest') && (
                             <Link to={"/shop"} className={`hidden xl:block ${navCSS} ${router.asPath.startsWith("/shop") && activeCSS}`}>
-                                <FontAwesomeIcon icon={faEthereum} /> NFT {t('component.navbar.shop')}
-                                <span className="text-orange-900 bg-orange-400 ml-2 px-2 py-0.5 rounded text-xs font-semibold">
-                                    NEW
-                                </span>
+                                Item {t('component.navbar.shop')}
                             </Link>
                         )}
                         {sessionData && (

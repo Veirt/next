@@ -12,7 +12,6 @@ import Leaderboards from "../../components/Play/Leaderboards";
 import Queue from "../../components/Play/Queue";
 import Social from "../../components/Play/Social";
 import Tournaments from "../../components/Play/Tournaments";
-import Link from "../../components/Uncategorized/Link";
 import Config from "../../Config";
 import { useGlobalContext } from "../../contexts/Global.context";
 import { Meta } from "../../layout/Meta";
@@ -58,14 +57,6 @@ const Play = (props: IProps) => {
                 )}
                 
                 <Queue mode={mode}/>
-
-                <Link to="/news/introducing-nfts" className="flex h-48 justify-center items-center block bg-gradient-to-r from-gray-800 to-gray-750 rounded-2xl mb-4 hover:opacity-70 transition ease-in-out duration-300">
-                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-8xl font-bold">
-                        Introducing 
-                        <span className="bg-orange-400 px-3 sm:px-5 md:px-6 lg:px-8 xl:px-12 lg:pb-2 text-gray-900 rounded-2xl ml-3 lg:ml-6">NFT's</span>
-                        <div className="text-xs md:text-sm font-semibold">Click to find out more information!</div>
-                    </div>
-                </Link>
 
                 <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
                     <div className="col-span-2 content-box 3xl:h-128">

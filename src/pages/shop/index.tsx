@@ -21,7 +21,7 @@ const Shop = () => {
   const axiosCancelSource = useRef<CancelTokenSource | null>(null);
 
   const { sessionData } = usePlayerContext();
-  const { playercards, borders, banners, nfts } = useGlobalContext();
+  const { playercards, borders, banners } = useGlobalContext();
   const { _csrf } = useCSRF();
   const { t } = useTranslation();
 
@@ -31,7 +31,7 @@ const Shop = () => {
   const [owned, setOwned] = useState<string[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  const [tab, setTab] = useState('NFTs');
+  const [tab, setTab] = useState('page.shop.featured');
   const [subtab, setSubtab] = useState(1);
 
   const tabs = [
@@ -40,14 +40,6 @@ const Shop = () => {
       onClick: () => {
         setSubtab(0);
         setTab('page.shop.featured');
-      },
-    },
-    {
-      name: 'NFTs',
-      data: nfts,
-      onClick: () => {
-        setSubtab(0);
-        setTab('NFTs');
       },
     },
     {
