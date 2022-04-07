@@ -13,6 +13,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ConfigService from '../../services/ConfigService';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import AdvertisementUnit from '../../components/Advertisement/Units/AdvertisementUnit';
 
 interface ILocales {
   key: string;
@@ -80,7 +81,7 @@ const Tournaments = () => {
         <Base meta={<Meta title={t('page.tournaments.title')} />} ads={{ enableBottomRail: true }} isLoaded={(loaded && tournamentsData !== null)}>
             <div className="container container-margin container-content">
                 <AdvertisementDisplay className="mb-6">
-                    
+                    <AdvertisementUnit type={'desktop-top-leaderboard'} />
                 </AdvertisementDisplay>
                 <div className="content-box">
                     <h1>{t('page.tournaments.title')}</h1>
@@ -139,7 +140,7 @@ const Tournaments = () => {
                 </div>
 
                 <AdvertisementDisplay className="mt-6">
-                        
+                    <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
                 </AdvertisementDisplay>
             </div>
         </Base>

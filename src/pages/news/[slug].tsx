@@ -12,6 +12,7 @@ import Base from "../../templates/Base";
 import { Meta } from "../../layout/Meta";
 import { useEffect } from "react";
 import AdvertisementDisplay from "../../components/Advertisement/AdvertisementDisplay";
+import AdvertisementUnit from "../../components/Advertisement/Units/AdvertisementUnit";
 
 interface IProps {
   slug: string
@@ -41,7 +42,7 @@ const News = ({ data }: IProps) => {
                     </div>
 
                     <AdvertisementDisplay className="mt-6">
-                    
+                        <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
                     </AdvertisementDisplay>
                 </div>
             </div>

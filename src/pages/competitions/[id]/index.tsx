@@ -18,6 +18,7 @@ import { Meta } from '../../../layout/Meta';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../../components/Advertisement/AdvertisementDisplay';
 import ReactTooltip from 'react-tooltip';
+import AdvertisementUnit from '../../../components/Advertisement/Units/AdvertisementUnit';
 
 interface IProps {
     tournamentData: TournamentData;
@@ -104,7 +105,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         </div>
 
                         <AdvertisementDisplay className="mt-4">
-                            
+                            <AdvertisementUnit type={'desktop-top-leaderboard'} />
                         </AdvertisementDisplay>
                     </div>
                     <div className="col-span-full lg:col-span-1">
@@ -177,7 +178,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         )}
 
                         <AdvertisementDisplay className="mb-4">
-                            
+                            <AdvertisementUnit type={'responsive-square-one'} />
                         </AdvertisementDisplay>
 
                         {tournamentData?.rules && (
@@ -190,7 +191,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         )}
 
                         <AdvertisementDisplay>
-                            
+                            <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
                         </AdvertisementDisplay>
                     </div>
                 </div>

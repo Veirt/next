@@ -16,6 +16,7 @@ import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
 import { useGlobalContext } from '../../contexts/Global.context';
+import AdvertisementUnit from '../../components/Advertisement/Units/AdvertisementUnit';
 
 const Shop = () => {
   const axiosCancelSource = useRef<CancelTokenSource | null>(null);
@@ -162,7 +163,7 @@ const Shop = () => {
                       <div>
                           <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
                           <AdvertisementDisplay className="mt-4">
-
+                              <AdvertisementUnit type={'desktop-top-leaderboard'} />
                           </AdvertisementDisplay>
                           <div className={"content-box mt-4"}>
                               <h2>Newest Additions</h2>
@@ -184,7 +185,7 @@ const Shop = () => {
                   )}
 
                   <AdvertisementDisplay className="mt-4">
-                  
+                      <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
                   </AdvertisementDisplay>
               </div>
           </Base>
