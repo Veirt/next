@@ -22,6 +22,7 @@ import AdvertisementUnit from '../../components/Advertisement/Units/Advertisemen
 import LeaderboardPlayerMatch, { PlayerMatchExtendedData } from '../../components/Leaderboard/LeaderboardPlayerMatch';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
 import ReactTooltip from 'react-tooltip';
+import Countdown from '../../components/Uncategorized/Countdown';
 
 interface IProps {
     type: string;
@@ -173,6 +174,7 @@ const Leaderboards = (props: IProps) => {
                                 <h1 className={"text-white mb-6"}>{t('component.navbar.leaders')}</h1>
                             </div>
                             <div className="col-span-full lg:col-span-1 lg:text-right lg:mt-1">
+                                {(type === 'casual' && filter !== 'challenges') && <Countdown minuteSeconds={120} onCountdownFinish={getStatistics} />}
                                 {type === 'ranked' && seasons.map((item) => item.id === (filter ? parseInt(filter, 10) : (seasons.length - 1)) ? (
                                     <div className={"flex flex-wrap justify-start lg:justify-end text-sm opacity-70 font-semibold mb-10 lg:mb-0 -mt-6 lg:mt-0"}>
                                         <div className={"w-full"}>

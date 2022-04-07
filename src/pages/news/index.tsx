@@ -9,6 +9,7 @@ import { Meta } from '../../layout/Meta';
 import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import AdvertisementUnit from '../../components/Advertisement/Units/AdvertisementUnit';
 
 interface IProps {
     newsData: NewsletterData[];
@@ -36,7 +37,7 @@ const News = ({ newsData }: IProps) => {
                 </div>
 
                 <AdvertisementDisplay className="mt-4">
-                   
+                    <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
                 </AdvertisementDisplay>
             </div>
         </Base>

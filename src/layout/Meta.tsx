@@ -37,7 +37,7 @@ const Meta = (props: IMetaProps) => {
 
                 <script dangerouslySetInnerHTML={{ __html: `
                     var ramp = { 
-                        mode: "ramp", 
+                        mode: "ramp",  
                         config: "//config.playwire.com/1024504/v2/websites/73412/banner.json",
                         passiveMode: true,
                     }

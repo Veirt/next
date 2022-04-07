@@ -22,6 +22,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { PlayerStatisticChartData } from '../../components/Profile/ProfileStatisticChart';
 import { PlayerRankedExtendedData } from '../../components/Leaderboard/LeaderboardPlayerRanked';
 import AdvertisementDisplay from '../../components/Advertisement/AdvertisementDisplay';
+import AdvertisementUnit from '../../components/Advertisement/Units/AdvertisementUnit';
 
 interface IProps {
     playerData: PlayerExtendedData;
@@ -137,7 +138,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                 </div>
                 <div className={"mt-4"}>
                     <AdvertisementDisplay className="mb-4">
-                            
+                        <AdvertisementUnit type={'desktop-top-leaderboard'} />
                     </AdvertisementDisplay>
                     {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
                     {tab === 'matches' && (
@@ -157,7 +158,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                     {tab === 'achievements' && <ProfileAchievements data={achievementsData} />}
                     {tab === 'tournaments' && <ProfileTournaments data={tournamentsData} />}
                     <AdvertisementDisplay className="mt-4">
-                            
+                        <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
                     </AdvertisementDisplay>
                 </div>
             </div>
