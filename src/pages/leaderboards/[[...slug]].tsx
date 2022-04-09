@@ -23,6 +23,7 @@ import LeaderboardPlayerMatch, { PlayerMatchExtendedData } from '../../component
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
 import ReactTooltip from 'react-tooltip';
 import Countdown from '../../components/Uncategorized/Countdown';
+import { usePlayerContext } from '../../contexts/Player.context';
 
 interface IProps {
     type: string;
@@ -36,10 +37,12 @@ const Leaderboards = (props: IProps) => {
     const searchTimer = useRef<NodeJS.Timeout | null>(null);
     const { world } = useConfig();
     const { t } = useTranslation();
+    const { sessionData } = usePlayerContext();
 
     const [ seasons, setSeasons ] = useState<SeasonData[]>([]);
     const [ loaded, setLoaded ] = useState<boolean>(false);
     const [ data, setData ] = useState<PlayerStatisticExtendedData[] | PlayerRankedExtendedData[] | PlayerMatchExtendedData[]>([]);
+    const [ playerData, setPlayerData ] = useState<PlayerStatisticExtendedData | PlayerRankedExtendedData | PlayerMatchExtendedData | unknown>({});
     const [ dataPage, setDataPage ] = useState<boolean>(true);
     const [ skip, setSkip ] = useState<number>(0);
     const [ dropdown, setDropdown ] = useState<number>(0);
@@ -49,30 +52,6 @@ const Leaderboards = (props: IProps) => {
     const modeList = useMemo(() => { return ['ranked', 'casual', 'texts'] }, []);
     const filterCasualList = ['cr', 'experience', 'playtime', 'challenges', 'highestWPM', 'matchesWon'];
     const filterItemToName = {'cr': 'Career Rating', 'experience': 'Total Experience', 'playtime': 'Total Playtime', 'challenges': 'Most Challenges', 'highestWPM': 'Fastest Speed', 'matchesWon': 'Most Wins'};
-
-    const getRanked = useCallback(() => {
-        axios.get(`${Config.apiUrl}/leaderboards/ranked?modeId=1&seasonId=${filter}&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
-            .then((response) => {
-                if (!response.data.error) {
-                    setData([ ...response.data.data ]);
-                    setDataPage(response.data.isNextPage);
-                    setLoaded(true);
-                } else
-                    toast.error("Unable to pull data");
-            })
-    }, [ filter, skip ]);
-
-    const getTexts = useCallback(() => {
-        axios.get(`${Config.apiUrl}/leaderboards/matches?worldId=${world}&textId=${parseInt(filter, 10) || 2}&flagId=0&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
-            .then((response) => {
-                if (!response.data.error) {
-                    setData([ ...response.data.data ]);
-                    setDataPage(response.data.isNextPage);
-                    setLoaded(true);
-                } else
-                    toast.error("Unable to pull data");
-            })
-    }, [ world, filter, skip ]);
 
     const getFilterText = useCallback(() => {
         axios.get(`${Config.apiUrl}/texts/get?textId=${parseInt(filter, 10) || 2}`, { cancelToken: axiosCancelSource.current?.token })
@@ -84,6 +63,50 @@ const Leaderboards = (props: IProps) => {
             })
     }, [ filter ]);
 
+    const getRanked = useCallback(() => {
+        axios.get(`${Config.apiUrl}/leaderboards/ranked?modeId=1&seasonId=${filter}&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
+            .then((response) => {
+                if (!response.data.error) {
+                    setData([ ...response.data.data ]);
+                    setDataPage(response.data.isNextPage);
+                    setLoaded(true);
+                } else
+                    toast.error("Unable to pull data");
+            })
+
+        if (sessionData?.playerId) {
+            axios.get(`${Config.apiUrl}/leaderboards/ranked?modeId=1&seasonId=${filter}&playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
+                .then((response) => {
+                    if (!response.data.error) 
+                        setPlayerData([ ...response.data.data ]);
+                    else
+                        toast.error("Unable to pull rank data");
+                })
+        }
+    }, [ sessionData, filter, skip ]);
+
+    const getTexts = useCallback(() => {
+        axios.get(`${Config.apiUrl}/leaderboards/matches?worldId=${world}&textId=${parseInt(filter, 10) || 2}&flagId=0&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
+            .then((response) => {
+                if (!response.data.error) {
+                    setData([ ...response.data.data ]);
+                    setDataPage(response.data.isNextPage);
+                    setLoaded(true);
+                } else
+                    toast.error("Unable to pull data");
+            })
+
+        if (sessionData?.playerId) {
+            axios.get(`${Config.apiUrl}/leaderboards/matches?worldId=${world}&textId=${parseInt(filter, 10) || 2}&flagId=0&playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
+                .then((response) => {
+                    if (!response.data.error) 
+                        setPlayerData([ ...response.data.data ]);
+                    else
+                        toast.error("Unable to pull rank data");
+                })
+        }
+    }, [ sessionData, world, filter, skip ]);
+
     const getStatistics = useCallback(() => {
         axios.get(`${Config.apiUrl}/leaderboards/statistics?worldId=${world || 0}&modeId=1&filter=${filter}&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
             .then((response) => {
@@ -94,7 +117,17 @@ const Leaderboards = (props: IProps) => {
                 } else
                     toast.error("Unable to pull data");
             })
-    }, [ filter, skip, world ]);
+
+        if (sessionData?.playerId) {
+            axios.get(`${Config.apiUrl}/leaderboards/statistics?worldId=${world || 0}&modeId=1&filter=${filter}&playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
+                .then((response) => {
+                    if (!response.data.error) 
+                        setPlayerData([ ...response.data.data ]);
+                    else
+                        toast.error("Unable to pull data");
+                })
+        }
+    }, [ sessionData, filter, skip, world ]);
 
     const getChallenges = useCallback(() => {
         axios.get(`${Config.apiUrl}/leaderboards/challenges?startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
@@ -106,7 +139,17 @@ const Leaderboards = (props: IProps) => {
                 } else
                     toast.error("Unable to pull data");
             })
-    }, [ skip ]);
+
+        if (sessionData?.playerId) {
+            axios.get(`${Config.apiUrl}/leaderboards/challenges?playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
+                .then((response) => {
+                    if (!response.data.error) 
+                        setPlayerData([ ...response.data.data ]);
+                    else
+                        toast.error("Unable to pull data");
+                })
+        }
+    }, [ sessionData, skip ]);
 
     const getSeasons = useCallback(() => {
         axios.get(`${Config.gameUrl}/seasons`, { cancelToken: axiosCancelSource.current?.token })
@@ -127,6 +170,7 @@ const Leaderboards = (props: IProps) => {
 
     useEffect(() => {
         setLoaded(false);
+        setPlayerData([]);
         setDropdown(0);
     }, [ type, filter ]);
 
@@ -188,10 +232,10 @@ const Leaderboards = (props: IProps) => {
                             </div>
                         </div>
 
-                        {type === 'ranked' && <LeaderboardPlayerRanked data={data as PlayerRankedExtendedData[]} skip={skip} />}
-                        {type === 'texts' && <LeaderboardPlayerMatch data={data as PlayerMatchExtendedData[]} skip={skip} />}
-                        {(type === 'casual' && filter !== 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} fieldName={filter} skip={skip} />}
-                        {(type === 'casual' && filter === 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} fieldName={"count"} skip={skip} />}
+                        {type === 'ranked' && <LeaderboardPlayerRanked data={data as PlayerRankedExtendedData[]} playerData={playerData as PlayerRankedExtendedData[]} skip={skip} />}
+                        {type === 'texts' && <LeaderboardPlayerMatch data={data as PlayerMatchExtendedData[]} playerData={playerData as PlayerMatchExtendedData[]} skip={skip} />}
+                        {(type === 'casual' && filter !== 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} playerData={playerData as PlayerStatisticExtendedData[]} fieldName={filter} skip={skip} />}
+                        {(type === 'casual' && filter === 'challenges') && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} playerData={playerData as PlayerStatisticExtendedData[]} fieldName={"count"} skip={skip} />}
                         {loaded && <Pagination isNextPage={dataPage} skip={skip} nextPage={() => setSkip(skip + 25)} prevPage={() => setSkip(skip - 25)} />}
                     </div>
 

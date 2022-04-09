@@ -20,4 +20,8 @@
   &--row:last-child {
     @apply rounded-b-xl border-transparent;
   }
+
+  &--highlight {
+    @apply text-white bg-gray-900 border-b-0  border-t-2 border-orange-400 text-xs md:text-sm overflow-hidden #{!important};
+  }
 }

@@ -6,16 +6,18 @@ import FormatIndex from '../Uncategorized/FormatIndex';
 
 export interface PlayerStatisticExtendedData extends PlayerStatisticData {
     player: PlayerExtendedData[];
+    placement: number;
 }
 
 interface IProps {
     data: PlayerStatisticExtendedData[];
+    playerData: PlayerStatisticExtendedData[];
     fieldName: string;
     skip: number
 }
 
 const LeaderboardPlayerStatistic:FC<IProps> = (props) => {
-    const { data, fieldName, skip } = props;
+    const { data, fieldName, skip, playerData } = props;
     const { useCPM } = useConfig();
 
     const updateValue = (fieldName: string, value: number) => {
@@ -64,6 +66,18 @@ const LeaderboardPlayerStatistic:FC<IProps> = (props) => {
             {data.map((item, key) => (
                 <div key={`${key + skip}${item.player[0]?.playerId}`} className="flex leaderboards--row">
                     <div className="hidden md:block my-auto w-10 text-center font-bold"><FormatIndex index={(key + skip + 1)} /></div>
+                    <div className="w-96 md:w-96 mr-auto">
+                        {item.player[0] && <PlayerCard {...item.player[0]} useTransparent isLeaderboard />}
+                    </div>
+                    {/* @ts-ignore */}
+                    <div className="w-32 my-auto">{updateValue(fieldName, item[fieldName])}</div>
+                    <div className={"w-8 md:hidden"} />
+                </div>
+            ))}
+
+            {playerData.map((item) => (
+                <div key={`data${item.player[0]?.playerId}`} className="flex leaderboards--row leaderboards--highlight">
+                    <div className="hidden md:block my-auto w-10 text-center font-bold">{item?.placement || 0}</div>
                     <div className="w-96 md:w-96 mr-auto">
                         {item.player[0] && <PlayerCard {...item.player[0]} useTransparent isLeaderboard />}
                     </div>
