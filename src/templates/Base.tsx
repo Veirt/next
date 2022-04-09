@@ -2,6 +2,7 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { GlobalHotKeys } from 'react-hotkeys';
 import ReactTooltip from 'react-tooltip';
+import AdvertisementSticky from '../components/Advertisement/AdvertisementSticky';
 import PlaywireContainer from '../components/Advertisement/PlaywireContainer';
 import AdvertisementUnit from '../components/Advertisement/Units/AdvertisementUnit';
 import LoadContent from '../components/LoadContent';
@@ -92,14 +93,10 @@ const Base = (props: IMainProps) => {
             )}
             <main>
                 <div className="bgOverlay" />
-                {(toggleStaging && !props.ads?.disableStickyVertical) && (
+                {(!props.ads?.disableStickyVertical) && (
                     <>
-                        <div className="absolute top-24 mt-1 left-4 hidden ads:block">
-                            <AdvertisementUnit type="responsive-skyscraper-one" />
-                        </div>
-                        <div className="absolute top-24 mt-1 right-4 hidden ads:block">
-                            <AdvertisementUnit type="responsive-skyscraper-two" />
-                        </div>
+                        <AdvertisementSticky position="left" />
+                        <AdvertisementSticky position="right" />
                     </>
                 )}
                 {sessionData !== null && <Matchmaking />}
