@@ -37,7 +37,7 @@ const LeaderboardPlayerRanked:FC<IProps> = (props) => {
 
             {data.map((item, key) => (item.Rank && item.rating) && (
                 <div key={`${key + skip}${item.rating}${item.player[0] ? item.player[0].playerId : ''}`} className="flex leaderboards--row">
-                    <div className="hidden md:block my-auto w-10 text-center font-bold">{item?.placement || 0}</div>
+                    <div className="hidden md:block my-auto w-10 text-center font-bold"><FormatIndex index={item?.placement || 0} /></div>
                     <div className="w-96 md:w-96 mr-auto">
                         {item.player[0] ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : ''}
                     </div>

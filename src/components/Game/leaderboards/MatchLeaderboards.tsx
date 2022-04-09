@@ -47,7 +47,7 @@ const MatchLeaderboards: FC<MatchLeaderboardsProps> = (props) => {
         {leaderboardsLoaded
             ? (
                 <>
-                    <LeaderboardPlayerMatch data={leaderboardsData} skip={skip} />
+                    <LeaderboardPlayerMatch data={leaderboardsData} playerData={[]} skip={skip} />
                     <Pagination isNextPage={leaderboardsNextPage} skip={skip} nextPage={() => setSkip(skip + 30)} prevPage={() => setSkip(skip - 30)} />
                 </>
             ) : <LoadingScreen isPartial />
