@@ -82,16 +82,16 @@ const Play = (props: IProps) => {
                         <Social />
                     </div>
                 </div>
-                <AdvertisementDisplay type="leaderboard-small" className="mb-4">
-                    <AdvertisementUnit type="desktop-top-leaderboard" />
+                <AdvertisementDisplay className="mb-4">
+                    <AdvertisementUnit type="leaderboard-top" />
                 </AdvertisementDisplay>
 
                 <div className="content-box 3xl:max-h-208 mb-4">
                     <Leaderboards />
                 </div>
 
-                <AdvertisementDisplay type="leaderboard-small" className="mb-4">
-                    <AdvertisementUnit type="desktop-bottom-leaderboard" />
+                <AdvertisementDisplay className="mb-4">
+                    <AdvertisementUnit type="leaderboard-bottom" />
                 </AdvertisementDisplay>
             </div>
         </Base>

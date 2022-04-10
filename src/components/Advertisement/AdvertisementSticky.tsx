@@ -1,25 +1,27 @@
-import { ReactNode } from "react";
+import { toggleAds } from "../../Config";
+import { usePlayerContext } from "../../contexts/Player.context";
+import AdvertisementUnit from "./Units/AdvertisementUnit";
 
 interface IProps {
     position?: 'left' | 'right';
     className?: string;
-    children: ReactNode;
 }
 
 const AdvertisementSticky = (props: IProps) => {
     const { position, className } = props;
+    const { sessionData } = usePlayerContext();
 
     let useCSS = className || '';
     if (position === 'left')
-        useCSS = 'left-0';
+        useCSS = 'left-4';
     else if (position === 'right')
-        useCSS = 'right-0';
+        useCSS = 'right-4';
 
-    return (
-        <div className={`top-16 ${useCSS}`}>
-
+    return (toggleAds && sessionData && !sessionData.patreon && !sessionData.staff) ? (
+        <div className={`absolute top-6 ${useCSS} hidden ads:block`}>
+            <AdvertisementUnit type={`skyscraper-${position === 'left' ? 'one' : 'two'}`} />
         </div>
-    )
+    ) : <></>;
 };
 
 export default AdvertisementSticky;

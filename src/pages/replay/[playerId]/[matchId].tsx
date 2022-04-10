@@ -36,7 +36,7 @@ const Replay = ({ matchData, resultData }: IProps) => {
 
                         <div className="content-box mt-6">
                             <div className={"h2 mb-6"}>{t('page.match.highscores')}</div>
-                            {resultData?.length !== 0 ? <LeaderboardPlayerMatch data={resultData || []} skip={0} /> : <></>}
+                            {resultData?.length !== 0 ? <LeaderboardPlayerMatch data={resultData || []} playerData={[]} skip={0} /> : <></>}
                         </div>
                     </div>
                     <div>
@@ -89,7 +89,7 @@ const Replay = ({ matchData, resultData }: IProps) => {
                         </div>
 
                         <AdvertisementDisplay>
-                            <AdvertisementUnit type="desktop-top-leaderboard" />
+                            <AdvertisementUnit type="leaderboard-bottom" />
                         </AdvertisementDisplay>
                     </div>
                 </div>

@@ -163,7 +163,7 @@ const Shop = () => {
                       <div>
                           <img className={"w-full h-80 object-center object-cover rounded-2xl shadow-lg"} src={'/assets/shop/featured.png'} alt={"Featured banner"} />
                           <AdvertisementDisplay className="mt-4">
-                              <AdvertisementUnit type={'desktop-top-leaderboard'} />
+                              <AdvertisementUnit type={'leaderboard-top'} />
                           </AdvertisementDisplay>
                           <div className={"content-box mt-4"}>
                               <h2>Newest Additions</h2>
@@ -185,7 +185,7 @@ const Shop = () => {
                   )}
 
                   <AdvertisementDisplay className="mt-4">
-                      <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
+                      <AdvertisementUnit type={'leaderboard-bottom'} />
                   </AdvertisementDisplay>
               </div>
           </Base>

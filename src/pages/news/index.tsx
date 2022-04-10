@@ -37,7 +37,7 @@ const News = ({ newsData }: IProps) => {
                 </div>
 
                 <AdvertisementDisplay className="mt-4">
-                    <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
+                    <AdvertisementUnit type={'leaderboard-bottom'} />
                 </AdvertisementDisplay>
             </div>
         </Base>
