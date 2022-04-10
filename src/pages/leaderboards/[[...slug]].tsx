@@ -371,11 +371,11 @@ const Leaderboards = (props: IProps) => {
                         </div>
 
                         <AdvertisementDisplay className="mt-4" downSize>
-                            <AdvertisementUnit type="responsive-square-one" />
+                            <AdvertisementUnit type="square-one" />
                         </AdvertisementDisplay>
 
                         <AdvertisementDisplay className="mt-4" downSize>
-                            <AdvertisementUnit type="responsive-square-two" />
+                            <AdvertisementUnit type="square-two" />
                         </AdvertisementDisplay>
                     </div>
 

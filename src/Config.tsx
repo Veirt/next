@@ -1,4 +1,5 @@
 export const toggleStaging = false;
+export const toggleAds = false;
 
 const config = {
     versionControl: "3.0.0",

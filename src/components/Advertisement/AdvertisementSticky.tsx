@@ -1,3 +1,4 @@
+import { toggleAds } from "../../Config";
 import { usePlayerContext } from "../../contexts/Player.context";
 import AdvertisementUnit from "./Units/AdvertisementUnit";
 
@@ -16,9 +17,9 @@ const AdvertisementSticky = (props: IProps) => {
     else if (position === 'right')
         useCSS = 'right-4';
 
-    return (sessionData && !sessionData.patreon) ? (
+    return (toggleAds && sessionData && !sessionData.patreon && !sessionData.staff) ? (
         <div className={`absolute top-6 ${useCSS} hidden ads:block`}>
-            <AdvertisementUnit type={`responsive-skyscraper-${position === 'left' ? 'one' : 'two'}`} />
+            <AdvertisementUnit type={`skyscraper-${position === 'left' ? 'one' : 'two'}`} />
         </div>
     ) : <></>;
 };

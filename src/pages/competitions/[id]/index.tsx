@@ -105,7 +105,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         </div>
 
                         <AdvertisementDisplay className="mt-4">
-                            <AdvertisementUnit type={'desktop-top-leaderboard'} />
+                            <AdvertisementUnit type={'leaderboard-top'} />
                         </AdvertisementDisplay>
                     </div>
                     <div className="col-span-full lg:col-span-1">
@@ -178,7 +178,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         )}
 
                         <AdvertisementDisplay className="mb-4">
-                            <AdvertisementUnit type={'responsive-square-one'} />
+                            <AdvertisementUnit type={'square-one'} />
                         </AdvertisementDisplay>
 
                         {tournamentData?.rules && (
@@ -191,7 +191,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                         )}
 
                         <AdvertisementDisplay>
-                            <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
+                            <AdvertisementUnit type={'leaderboard-bottom'} />
                         </AdvertisementDisplay>
                     </div>
                 </div>

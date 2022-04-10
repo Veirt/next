@@ -89,7 +89,7 @@ const Replay = ({ matchData, resultData }: IProps) => {
                         </div>
 
                         <AdvertisementDisplay>
-                            <AdvertisementUnit type="desktop-top-leaderboard" />
+                            <AdvertisementUnit type="leaderboard-bottom" />
                         </AdvertisementDisplay>
                     </div>
                 </div>
