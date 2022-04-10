@@ -42,7 +42,7 @@ const News = ({ data }: IProps) => {
                     </div>
 
                     <AdvertisementDisplay className="mt-6">
-                        <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
+                        <AdvertisementUnit type={'leaderboard-bottom'} />
                     </AdvertisementDisplay>
                 </div>
             </div>

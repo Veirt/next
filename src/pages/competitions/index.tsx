@@ -81,7 +81,7 @@ const Tournaments = () => {
         <Base meta={<Meta title={t('page.tournaments.title')} />} ads={{ enableBottomRail: true }} isLoaded={(loaded && tournamentsData !== null)}>
             <div className="container container-margin container-content">
                 <AdvertisementDisplay className="mb-6">
-                    <AdvertisementUnit type={'desktop-top-leaderboard'} />
+                    <AdvertisementUnit type={'leaderboard-top'} />
                 </AdvertisementDisplay>
                 <div className="content-box">
                     <h1>{t('page.tournaments.title')}</h1>
@@ -140,7 +140,7 @@ const Tournaments = () => {
                 </div>
 
                 <AdvertisementDisplay className="mt-6">
-                    <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
+                    <AdvertisementUnit type={'leaderboard-bottom'} />
                 </AdvertisementDisplay>
             </div>
         </Base>

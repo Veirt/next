@@ -138,7 +138,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                 </div>
                 <div className={"mt-4"}>
                     <AdvertisementDisplay className="mb-4">
-                        <AdvertisementUnit type={'desktop-top-leaderboard'} />
+                        <AdvertisementUnit type={'leaderboard-top'} />
                     </AdvertisementDisplay>
                     {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
                     {tab === 'matches' && (
@@ -158,7 +158,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                     {tab === 'achievements' && <ProfileAchievements data={achievementsData} />}
                     {tab === 'tournaments' && <ProfileTournaments data={tournamentsData} />}
                     <AdvertisementDisplay className="mt-4">
-                        <AdvertisementUnit type={'desktop-bottom-leaderboard'} />
+                        <AdvertisementUnit type={'leaderboard-bottom'} />
                     </AdvertisementDisplay>
                 </div>
             </div>

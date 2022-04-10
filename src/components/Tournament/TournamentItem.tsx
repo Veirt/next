@@ -14,7 +14,7 @@ const TournamentItem = (props: IProps) => {
 
     const { t } = useTranslation();
 
-    let useValue = props.info.replaceAll('KEYMA.SH', 'Keymash');
+    let useValue = String(props?.info || '').replaceAll('KEYMA.SH', 'Keymash');
     const useSplit = String(useValue?.split('.')[0] + '.' + useValue?.split('.')[1]) || '';
 
     if (useSplit.length > 96)

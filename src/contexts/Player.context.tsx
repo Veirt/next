@@ -32,6 +32,9 @@ interface ContextType {
     notificationCount: number;
     deleteNotifications: () => void;
     readNotifications: () => void;
+
+    pingLatency: number;
+    packetLoss: number;
 }
 
 export const PlayerContext = createContext<ContextType | null>(null);
@@ -49,6 +52,8 @@ export const PlayerProvider: FC = ({ children }) => {
     const [ notifySocket, setNotifySocket ] = useState<Socket | null>(null);
     const [ notificationData, setNotificationData ] = useState<PlayerNotificationData[] | null>(null);
     const [ notificationCount, setNotificationCount ] = useState(0);
+    const [ pingLatency, setPingLatency ] = useState<number>(0);
+    const [ packetLoss, setPacketLoss ] = useState<number>(0);
 
     // Queue Socket
     const [ queueSocket, setQueueSocket ] = useState<Socket | null>(null);
@@ -110,6 +115,10 @@ export const PlayerProvider: FC = ({ children }) => {
                 setNotificationData(data.data);
                 setNotificationCount(data.unread);
             });
+            notifySocket?.on('packetLossTest', () => notifySocket?.emit('sendPacket', {}));
+            notifySocket?.on('pingTest', () => notifySocket?.emit('sendPing', {}));
+            notifySocket?.on('updatePacketLoss', (data: number) => setPacketLoss(data));
+            notifySocket?.on('updateLatency', (data: number) => setPingLatency(data));
         });
         return () => {
             notifySocket?.disconnect();
@@ -253,7 +262,10 @@ export const PlayerProvider: FC = ({ children }) => {
             notificationData,
             notificationCount,
             deleteNotifications,
-            readNotifications
+            readNotifications,
+
+            packetLoss,
+            pingLatency
         }}>
         {children}
     </PlayerContext.Provider>;

@@ -37,7 +37,7 @@ const Leaderboards = () => {
                         <div className="h1 mb-6">{t('page.home.matches_high')}</div>
                         <Countdown minuteSeconds={60} onCountdownFinish={getResults} />
                     </div>
-                    <LeaderboardPlayerMatch data={leaderboardsData} skip={0} disableTrophy />
+                    <LeaderboardPlayerMatch data={leaderboardsData} playerData={[]} skip={0} disableTrophy />
                 </>
             )}
         </>

@@ -20,7 +20,7 @@ import PlayerExperience from '../Player/PlayerExperience';
 import ReactTooltip from 'react-tooltip';
 import Replay from '../Uncategorized/Replay';
 import Ranked from './MatchEnd/Ranked';
-import { toggleStaging } from '../../Config';
+import { toggleAds } from '../../Config';
 import AchievementItem from '../Achievement/AchievementItem';
 import { useGlobalContext } from '../../contexts/Global.context';
 import Challenge from '../Challenges/Challenge';
@@ -113,7 +113,7 @@ const MatchEnd = (props: IProps) => {
             <ReactTooltip id="copyPasta" />
             <ReactTooltip id="buttons" />
             <ReactTooltip id="rewards" /> 
-            {(toggleStaging && adsGameplay && toggleAd) && <VideoFullscreen toggle={() => setToggleAd(false)} />}
+            {(toggleAds && adsGameplay && toggleAd) && <VideoFullscreen toggle={() => setToggleAd(false)} />}
             <audio id="LevelUp" src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
             <audio id="LevelDown" src="/audio/LevelDown.wav" crossOrigin="anonymous" preload="auto" />
 
