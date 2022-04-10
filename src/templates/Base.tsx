@@ -11,6 +11,7 @@ import { usePlayerContext } from '../contexts/Player.context';
 import useConfig from '../hooks/useConfig';
 import useGoogleAnalytics from '../hooks/useGoogleAnalytics';
 import Levelbar from '../layout/Levelbar';
+import Network from '../layout/Network';
 
 type IMainProps = {
     meta: ReactNode;
@@ -102,6 +103,7 @@ const Base = (props: IMainProps) => {
                     {sessionData !== null && <PlaywireContainer {...props.ads} />}
                     <>{props.children}</>
                 </LoadContent>
+                <Network />
             </main>
         </>
     ) : <></>;
