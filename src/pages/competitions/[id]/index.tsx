@@ -29,14 +29,14 @@ interface IProps {
 const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) => {
 
     const { _csrf } = useCSRF();
-    const { world, networkStrength } = useConfig();
+    const { networkStrength } = useConfig();
     const { t } = useTranslation();
     const axiosCancelSource = useRef<CancelTokenSource | null>();
 
     const [ redirect, setRedirect ] = useState('');
 
     const createTournamentMatch = () => {
-        const postData = { _csrf, worldId: world, networkStrength, flagId: 1, modeId: 0, locale: 'en', tournamentId, };
+        const postData = { _csrf, networkStrength, flagId: 1, modeId: 0, locale: 'en', tournamentId, };
         axios.post(`${Config.apiUrl}/match/search`, postData, { withCredentials: true, cancelToken: axiosCancelSource.current?.token })
             .then(response => {
                 if (response && !response.data.error)

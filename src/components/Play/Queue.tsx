@@ -51,7 +51,7 @@ const Queue = (props: IProps) => {
 
     const { sessionData, inQueue, queueFound, setInQueue } = usePlayerContext();
     const { _csrf } = useCSRF();
-    const { world, networkStrength } = useConfig();
+    const { networkStrength } = useConfig();
     const { t } = useTranslation();
 
     const [ tab, setTab ] = useState(0);
@@ -88,7 +88,6 @@ const Queue = (props: IProps) => {
 
         const postData = {
             _csrf,
-            worldId: world,
             flagId: !inQueue ? 0 : 4,
             modeId: 0,
             networkStrength, 
@@ -110,7 +109,7 @@ const Queue = (props: IProps) => {
                 toast.error(e.message || 'Unknown error occured, please try again later!');
                 setLoading(null);
             })
-    }, [ _csrf, world, inQueue, networkStrength ]);
+    }, [ _csrf, inQueue, networkStrength ]);
 
     useEffect(() => {
         if (mode)

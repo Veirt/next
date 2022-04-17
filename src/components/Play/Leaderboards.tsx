@@ -9,13 +9,12 @@ import useConfig from "../../hooks/useConfig";
 const Leaderboards = () => {
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
     const { t } = useTranslation();
-    const { world } = useConfig();
 
     const [ leaderboardsLoaded, setLeaderboardsLoaded ] = useState(false);
     const [ leaderboardsData, setLeaderboardsData ] = useState<PlayerMatchExtendedData[]>([]);
 
     const getResults = useCallback(() => {
-      axios.get(`${Config.apiUrl}/leaderboards/recent?worldId=${world}`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token, })
+      axios.get(`${Config.apiUrl}/leaderboards/recent`, { withCredentials: true, cancelToken: axiosCancelSource.current?.token, })
           .then(response => {
               setLeaderboardsData(response.data.slice(0, 15));
               setLeaderboardsLoaded(true);
