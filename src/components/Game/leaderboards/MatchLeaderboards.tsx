@@ -2,7 +2,6 @@ import {FC, useState, useCallback, useRef, useEffect} from 'react';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../../Config';
 import LeaderboardPlayerMatch, {PlayerMatchExtendedData} from "../../../components/Leaderboard/LeaderboardPlayerMatch";
-import useConfig from "../../../hooks/useConfig";
 import {useTranslation} from "next-i18next";
 import LoadingScreen from "../../../components/Uncategorized/LoadingScreen";
 import Pagination from "../../../components/Uncategorized/Pagination";

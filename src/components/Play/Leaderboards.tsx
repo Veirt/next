@@ -4,7 +4,6 @@ import axios, { CancelTokenSource } from 'axios';
 import Config from '../../Config';
 import Countdown from "../../components/Uncategorized/Countdown";
 import LeaderboardPlayerMatch, {PlayerMatchExtendedData} from "../../components/Leaderboard/LeaderboardPlayerMatch";
-import useConfig from "../../hooks/useConfig";
 
 const Leaderboards = () => {
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
@@ -20,7 +19,7 @@ const Leaderboards = () => {
               setLeaderboardsLoaded(true);
           })
           .catch(e => console.log(e));
-  }, [ world ]);
+  }, [ ]);
 
     useEffect(() => {
         axiosCancelSource.current = axios.CancelToken.source();
