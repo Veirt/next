@@ -2,15 +2,13 @@ import Cookie from 'universal-cookie';
 
 interface ConfigData {
   locale: string;
-  world: number;
   playerToken: string;
 }
 
 class ConfigService extends Cookie {
   private readonly defaultJSON: ConfigData = {
-    world: 0,
-    locale: 'en',
-    playerToken: ''
+      locale: 'en',
+      playerToken: ''
   };
 
   public storageJSON: ConfigData = this.get('useConfig');

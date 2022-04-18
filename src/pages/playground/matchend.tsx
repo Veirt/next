@@ -463,7 +463,6 @@ const Index = () => {
             "_id": "sF9Y5YM8DoztWEns6",
             "matchId": "187976187459538944",
             "locale": "en",
-            "worldId": 0,
             "modeId": 0,
             "flagId": 3,
             "textId": 1860,

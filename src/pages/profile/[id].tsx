@@ -5,7 +5,6 @@ import {
   PlayerExtendedData,
   PlayerStatisticData,
 } from "../../types.client.mongo";
-import useConfig from "../../hooks/useConfig";
 import {toast} from "react-toastify";
 import PlayerAvatar from "../../components/Player/PlayerAvatar";
 import ProfileAchievements, {PlayerAchievementExtendedData} from "../../components/Profile/ProfileAchievements";
@@ -36,7 +35,6 @@ interface IProps {
 const Profile = ({ playerData, statisticData, chartData, rankedData, achievementsData, tournamentsData }: IProps) => {
 
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
-    const { world } = useConfig();
 
     // Player data
     const [ tab, setTab ] = useState('statistics');
@@ -52,7 +50,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
         if (!playerData)
         return false;
 
-        axios.get(`${Config.apiUrl}/player/matches?playerId=${playerData.playerId}&worldId=${world}&limit=${limit}&startNum=${skip}`, { cancelToken: axiosCancelSource.current?.token, })
+        axios.get(`${Config.apiUrl}/player/matches?playerId=${playerData.playerId}&limit=${limit}&startNum=${skip}`, { cancelToken: axiosCancelSource.current?.token, })
             .then((response) => {
                 if (!response.data.error) {
                     setMatchData(response.data.data);
@@ -63,7 +61,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
             .catch(() => toast.error("Unable to pull recent matches!"));
 
         return () => false;
-    }, [ playerData, skip, limit, world ]);
+    }, [ playerData, skip, limit ]);
 
     useEffect(() => {
         axiosCancelSource.current = axios.CancelToken.source();
@@ -168,15 +166,14 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
 
 export async function getServerSideProps({ req, params }: GetServerSidePropsContext) {
     const id = encodeURI(String(params?.id || ''));
-    const world = ConfigService.getServerSideOption('world', req.headers.cookie || '');
 
     const getPlayer = await axios.get(`${Config.apiUrl}/player/info?name=${id}`).catch((e) => console.log(e));
     if (getPlayer && !getPlayer.data.error) {
-        const getStatistics = await axios.get(`${Config.apiUrl}/player/statistics?playerId=${getPlayer.data.playerId}&worldId=${world}`).catch((e) => console.log(e));
-        const getChart = await axios.get(`${Config.apiUrl}/player/chart?playerId=${getPlayer.data.playerId}&worldId=${world}`).catch((e) => console.log(e));
+        const getStatistics = await axios.get(`${Config.apiUrl}/player/statistics?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
+        const getChart = await axios.get(`${Config.apiUrl}/player/chart?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
         const getAchievements = await axios.get(`${Config.apiUrl}/player/achievements?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
-        const getTournaments = await axios.get(`${Config.apiUrl}/player/tournaments?playerId=${getPlayer.data.playerId}&worldId=${world}`).catch((e) => console.log(e));
-        const getRanked = await axios.get(`${Config.apiUrl}/player/ranked?playerId=${getPlayer.data.playerId}&worldId=${world}`).catch((e) => console.log(e));
+        const getTournaments = await axios.get(`${Config.apiUrl}/player/tournaments?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
+        const getRanked = await axios.get(`${Config.apiUrl}/player/ranked?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
     
         console.log(getRanked?.data);
 
