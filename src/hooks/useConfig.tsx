@@ -2,7 +2,6 @@ import Cookies from 'universal-cookie';
 
 export interface ConfigData {
     dev: '0' | '1';
-    world: number;
     locale: string;
     queueLocale: string;
     useCPM: '0' | '1';
@@ -41,7 +40,6 @@ function useConfig() {
     const storageJSON: ConfigData = cookies.get('useConfig') || {};
     const defaultJSON: ConfigData = {
         dev: process.env.NODE_ENV === 'development' ? '1' : '0',
-        world: 0,
         locale: 'en',
         queueLocale: 'en',
         useCPM: '0',
@@ -84,7 +82,6 @@ function useConfig() {
     }
 
     const returnConfig = {
-        world: (storageJSON && typeof storageJSON.world !== 'undefined' ? storageJSON.world : defaultJSON.world),
         locale: (storageJSON && typeof storageJSON.locale !== 'undefined' ? storageJSON.locale : defaultJSON.locale),
         queueLocale: (storageJSON && typeof storageJSON.queueLocale !== 'undefined' ? storageJSON.queueLocale : defaultJSON.queueLocale),
         useCPM: (storageJSON && typeof storageJSON.useCPM !== 'undefined' ? storageJSON.useCPM : defaultJSON.useCPM),

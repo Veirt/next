@@ -21,7 +21,6 @@ interface ContextType {
     gamemodes: GamemodeData[];
     countries: { name: string, code: string }[];
     keyboards: { id: number, name: string }[];
-    worlds: { id: number, name: string }[];
     locales: { name: string, locale: string }[];
 }
 
@@ -46,7 +45,6 @@ export const GlobalProvider: FC = ({ children }) => {
     const [ countries, setCountries ] = useState<{ name: string, code: string }[]>([]);
     const [ keyboards, setKeyboards ] = useState<{ id: number, name: string }[]>([]);
     const [ locales, setLocales ] = useState<{ name: string, locale: string }[]>([]);
-    const [ worlds, setWorlds ] = useState<{ id: number, name: string }[]>([]);
 
     const getGlobalData = useCallback(async (key: string) => {
         const response = await axios.get(`${Config.gameUrl}/globals?key=${key}`, {
@@ -82,7 +80,6 @@ export const GlobalProvider: FC = ({ children }) => {
                 setCountries(r.countries || []);
                 setKeyboards(r.keyboards || []);
                 setLocales(r.locales || []);
-                setWorlds(r.worlds || []);
                 setGamemodes(r.gamemodes || []);
                 setNfts(r.nfts || []);
             }).catch((e) => console.log(e));
@@ -90,7 +87,7 @@ export const GlobalProvider: FC = ({ children }) => {
         return () => axiosCancelSource.current?.cancel();
     }, [ getGlobalData ]);
 
-    return <GlobalContext.Provider value={{ announcement, playercards, borders, banners, nfts, gamemodes, challenges, achievements, locales, worlds, keyboards, countries }}>
+    return <GlobalContext.Provider value={{ announcement, playercards, borders, banners, nfts, gamemodes, challenges, achievements, locales, keyboards, countries }}>
         {children}
     </GlobalContext.Provider>;
 }

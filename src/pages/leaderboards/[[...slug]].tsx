@@ -9,7 +9,6 @@ import {useTranslation} from "next-i18next";
 import Pagination from "../../components/Uncategorized/Pagination";
 import {faCaretDown, faFilter, faSearch, faSort} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useConfig from "../../hooks/useConfig";
 import moment from "moment";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ConfigService from '../../services/ConfigService';
@@ -35,7 +34,6 @@ const Leaderboards = (props: IProps) => {
 
     const axiosCancelSource = useRef<CancelTokenSource | null>(null);
     const searchTimer = useRef<NodeJS.Timeout | null>(null);
-    const { world } = useConfig();
     const { t } = useTranslation();
     const { sessionData } = usePlayerContext();
 
@@ -86,7 +84,7 @@ const Leaderboards = (props: IProps) => {
     }, [ sessionData, filter, skip ]);
 
     const getTexts = useCallback(() => {
-        axios.get(`${Config.apiUrl}/leaderboards/matches?worldId=${world}&textId=${parseInt(filter, 10) || 2}&flagId=0&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
+        axios.get(`${Config.apiUrl}/leaderboards/matches?textId=${parseInt(filter, 10) || 2}&flagId=0&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
             .then((response) => {
                 if (!response.data.error) {
                     setData([ ...response.data.data ]);
@@ -97,7 +95,7 @@ const Leaderboards = (props: IProps) => {
             })
 
         if (sessionData?.playerId) {
-            axios.get(`${Config.apiUrl}/leaderboards/matches?worldId=${world}&textId=${parseInt(filter, 10) || 2}&flagId=0&playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
+            axios.get(`${Config.apiUrl}/leaderboards/matches?textId=${parseInt(filter, 10) || 2}&flagId=0&playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
                 .then((response) => {
                     if (!response.data.error) 
                         setPlayerData([ ...response.data.data ]);
@@ -105,10 +103,10 @@ const Leaderboards = (props: IProps) => {
                         toast.error("Unable to pull rank data");
                 })
         }
-    }, [ sessionData, world, filter, skip ]);
+    }, [ sessionData, filter, skip ]);
 
     const getStatistics = useCallback(() => {
-        axios.get(`${Config.apiUrl}/leaderboards/statistics?worldId=${world || 0}&modeId=1&filter=${filter}&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
+        axios.get(`${Config.apiUrl}/leaderboards/statistics?modeId=1&filter=${filter}&startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })
             .then((response) => {
                 if (!response.data.error) {
                     setData([ ...response.data.data ]);
@@ -119,7 +117,7 @@ const Leaderboards = (props: IProps) => {
             })
 
         if (sessionData?.playerId) {
-            axios.get(`${Config.apiUrl}/leaderboards/statistics?worldId=${world || 0}&modeId=1&filter=${filter}&playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
+            axios.get(`${Config.apiUrl}/leaderboards/statistics?modeId=1&filter=${filter}&playerId=${sessionData?.playerId}`, { cancelToken: axiosCancelSource.current?.token })
                 .then((response) => {
                     if (!response.data.error) 
                         setPlayerData([ ...response.data.data ]);
@@ -127,7 +125,7 @@ const Leaderboards = (props: IProps) => {
                         toast.error("Unable to pull data");
                 })
         }
-    }, [ sessionData, filter, skip, world ]);
+    }, [ sessionData, filter, skip ]);
 
     const getChallenges = useCallback(() => {
         axios.get(`${Config.apiUrl}/leaderboards/challenges?startNum=${skip}&limit=50`, { cancelToken: axiosCancelSource.current?.token })

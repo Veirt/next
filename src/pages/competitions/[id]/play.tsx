@@ -24,13 +24,13 @@ const TournamentView = (props: IProps) => {
 
     const { tournamentId } = props;
     const { _csrf } = useCSRF();
-    const { world, networkStrength } = useConfig();
+    const { networkStrength } = useConfig();
 
     const [ redirect, setRedirect ] = useState('');
 
     useEffect(() => {
         if (tournamentId) {
-          const postData = { _csrf, worldId: world, networkStrength, flagId: 1, modeId: 0, locale: 'en', tournamentId, };
+          const postData = { _csrf, networkStrength, flagId: 1, modeId: 0, locale: 'en', tournamentId, };
           axios.post(`${Config.apiUrl}/match/search`, postData, { withCredentials: true })
               .then(response => {
                   if (response && !response.data.error)
@@ -39,7 +39,7 @@ const TournamentView = (props: IProps) => {
                       toast.error(response.data.error || "We were unable to start finding a match!");
               }).catch(e => console.log(e));
         }
-    }, [ tournamentId, world, _csrf, networkStrength ]);
+    }, [ tournamentId, _csrf, networkStrength ]);
 
     return (
           <>

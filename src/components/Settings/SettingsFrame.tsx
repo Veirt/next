@@ -34,7 +34,7 @@ const SettingsFrame = (props: IProps) => {
     const { isVisible, onClose } = props;
 
     const [ tab, setTab ] = useState<number>(0);
-    const { playercards, banners, borders, worlds, locales, countries, keyboards } = useGlobalContext();
+    const { playercards, banners, borders, locales, countries, keyboards } = useGlobalContext();
     const { setSessionData } = usePlayerContext();
     const { fullConfig } = useConfig();
     const { _csrf } = useCSRF();
@@ -182,7 +182,6 @@ const SettingsFrame = (props: IProps) => {
                     title: 'page.profile.general',
                     options: [
                         { title: 'page.profile.locale', name: 'locale', value: config.locale, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, locale: String(v) }) }, type: 'selectLocale', localeList: locales },
-                        { title: 'page.profile.defaultworld', name: 'defaultWorld', value: config.world, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, world: Number(v) }) }, type: 'selectWorld', worldList: worlds },
                         { title: 'page.profile.streamerMode', name: 'streamerMode', value: config.streamerMode, onChange: (v: number) => { setUnsaved(true);  setConfig({ ...config, streamerMode: String(v) as '0' | '1' }) }, type: 'configBoolean' },
                         { title: 'page.profile.wpm', name: 'useCPM', value: config.useCPM, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, useCPM: String(v) as '0' | '1' }) }, type: 'configWPM' },
                         { title: 'page.profile.networkStrength', name: 'networkStrength', value: config.networkStrength, onChange: (v: string) => { setUnsaved(true);  setConfig({ ...config, networkStrength: String(v) as '0' | '1' | '2' }) }, type: 'configNetworkStrength' },

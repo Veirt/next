@@ -120,7 +120,6 @@ export interface GlobalMatchData {
     matchData: {
         locale: string;
         textId: number;
-        worldId: number;
         flagId: number;
         modeId: number;
         modeData: GamemodeData;

@@ -78,7 +78,6 @@ export interface PlayerTournamentData {
 export interface PlayerStatisticData {
     _id?: string;
     playerId: string;
-    worldId: number;
     lowestElapsed: number;
     highestWPM: number;
     highestEXP: number;
@@ -209,7 +208,6 @@ export interface MatchData {
     _id?: string;
     matchId: string;
     locale: string;
-    worldId: number;
     modeId: number;
     modeData: GamemodeData;
     flagId: number;
@@ -225,7 +223,6 @@ export interface MatchData {
 export interface TournamentData {
     _id?: string;
     tournamentId: string;
-    worldId: number;
     locale: string;
     name: string;
     info: string;

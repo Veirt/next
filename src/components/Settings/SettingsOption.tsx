@@ -7,8 +7,7 @@ interface IProps {
     name: string;
     value: string | number | any;
     onChange: (e: string | number | any) => void;
-    type: 'string' | 'textarea' | 'configNetworkStrength' | 'configBoolean' | 'configMatchText' | 'configScale' | 'configPlayercardList' | 'configWPM' | 'configShortcut' | 'selectKeyboard' | 'selectCountry' | 'selectWorld' | 'selectLocale' | 'selectSmoothCaretSpeed';
-    worldList?: { id: number, name: string }[];
+    type: 'string' | 'textarea' | 'configNetworkStrength' | 'configBoolean' | 'configMatchText' | 'configScale' | 'configPlayercardList' | 'configWPM' | 'configShortcut' | 'selectKeyboard' | 'selectCountry' | 'selectLocale' | 'selectSmoothCaretSpeed';
     localeList?: { name: string, locale: string }[];
     keyboardList?: { id: number, name: string }[];
     countryList?: { name: string, code: string }[];
@@ -17,7 +16,7 @@ interface IProps {
 
 const SettingsOption = (props: IProps) => {
 
-    const { title, name, value, onChange, type, worldList, localeList, keyboardList, smoothCaretList, countryList } = props;
+    const { title, name, value, onChange, type, localeList, keyboardList, smoothCaretList, countryList } = props;
     const { t } = useTranslation();
 
     return (
@@ -41,17 +40,6 @@ const SettingsOption = (props: IProps) => {
                     <div className={"w-1/2"}>
                         <select className={"input-settings"} onChange={(e) => onChange(e.target.value)}>
                             {countryList.map((item, index) => <option key={index} value={index} selected={index === value}>{item.name}</option>)}
-                        </select>
-                    </div>
-                </div>
-            ) : (type === 'selectWorld' && worldList) ? (
-                <div className={"flex"}>
-                    <div className={"w-1/2 mr-auto pt-1"}>
-                        <div className={"text-base uppercase font-semibold"}>{t(title)}</div>
-                    </div>
-                    <div className={"w-1/2"}>
-                        <select className={"input-settings"} onChange={(e) => onChange(e.target.value)}>
-                            {worldList.map((item, index) => <option key={index} value={item.id} selected={item.id === value}>{item.name}</option>)}
                         </select>
                     </div>
                 </div>
