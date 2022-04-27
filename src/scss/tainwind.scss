@@ -79,6 +79,10 @@ body {
   @apply border-none #{!important};
 }
 
+.CookieConsent {
+  z-index: 2148483644 #{!important};
+}
+
 @media (min-width: 1024px) {
   .scale-challenge {
     transform: scale(1.45);

@@ -1,14 +1,14 @@
 .container {
-  @apply px-10 w-full mx-auto max-w-screen-3xl;
+  @apply
+    px-4 sm:px-6 lg:px-10 w-full mx-auto max-w-screen-3xl;
 }
 
 .container-small {
-  @apply px-10 w-full mx-auto max-w-screen-xl;
+  @apply px-4 sm:px-6 lg:px-10 w-full mx-auto max-w-screen-xl;
 }
 
-.container-game,
-.container-smaller {
-  @apply px-10 w-full mx-auto max-w-screen-lg;
+.container-game, .container-smaller {
+  @apply px-4 sm:px-6 lg:px-10 w-full mx-auto max-w-screen-lg;
 }
 
 .container-padding {
@@ -20,9 +20,9 @@
 }
 
 .container-padding.container-content {
-  @apply my-8 lg:mt-0; /* my-8 */
+  @apply mt-8 mb-40 lg:mt-0; /* my-8 */ 
 }
 
 .container-margin.container-content {
-  @apply my-8 lg:mt-0; /* py-8 */
+  @apply mt-8 mb-40 lg:mt-0; /* py-8 */
 }
