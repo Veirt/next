@@ -3,18 +3,24 @@
 </p>
 
 ## Information
+
 This is the **official** NextJS Client for Keymash - here you can find or report bugs or even suggest a potential new feature to the game.
 
 ## Contributing
+
 **Community:**
- - [Text/Quote submissions](https://keymash.io/submit)
- - [Internationalization](https://keymash.oneskyapp.com/)
- 
+
+- [Text/Quote submissions](https://keymash.io/submit)
+- [Internationalization](https://keymash.oneskyapp.com/)
+
 **Directly / Financial:**
- - [Patreon](https://patreon.com/keymashgame)
- - [Teespring](https://teespring.com/stores/keymash)
- 
+
+- [Patreon](https://patreon.com/keymashgame)
+- [Teespring](https://teespring.com/stores/keymash)
+
 ## Socials
+
 **Make sure to follow us on all of our social media!**
- - [Discord](https://discord.gg/df4paUq)
- - [Twitter](https://twitter.com/KeymashGame)
+
+- [Discord](https://discord.gg/df4paUq)
+- [Twitter](https://twitter.com/KeymashGame)

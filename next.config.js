@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const { i18n } = require('./next-i18next.config');
 
 /* eslint-disable import/no-extraneous-dependencies */
@@ -15,8 +15,8 @@ module.exports = withBundleAnalyzer({
   // You can remove `basePath` if you don't need it.
   reactStrictMode: true,
   sassOptions: {
-      includePaths: [path.join(__dirname, 'scss')],
+    includePaths: [path.join(__dirname, 'scss')],
   },
-  i18n
+  i18n,
   // swcMinify: true,
 });

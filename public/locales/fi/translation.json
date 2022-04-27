@@ -1,251 +1,251 @@
 {
-    "other": {
-        "account_banned": "K\u00e4ytt\u00e4j\u00e4ll\u00e4si on porttikielto, ota yhteytt\u00e4 s\u00e4hk\u00f6postiin support@keymash.io!",
-        "grades": {
-            "passed": "Suoritettu",
-            "failed": "Ep\u00e4onnistunut"
-        },
-        "gameover": "Peli loppu",
-        "save": "Tallenna!"
+  "other": {
+    "account_banned": "K\u00e4ytt\u00e4j\u00e4ll\u00e4si on porttikielto, ota yhteytt\u00e4 s\u00e4hk\u00f6postiin support@keymash.io!",
+    "grades": {
+      "passed": "Suoritettu",
+      "failed": "Ep\u00e4onnistunut"
     },
-    "button": {
-        "save": "Tallenna!",
-        "retry": "Kokeile uudelleen",
-        "back": "Takaisin",
-        "next": "Seuraava",
-        "close": "Sulje",
-        "leave": "Poistu",
-        "enable": "Ota k\u00e4ytt\u00f6\u00f6n",
-        "disable": "Ota pois k\u00e4yt\u00f6st\u00e4",
-        "spectator": "Katsoja",
-        "join": "Liity",
-        "ladder": "Portaat",
-        "lobby": "Aula",
-        "newgame": "Uusi peli"
+    "gameover": "Peli loppu",
+    "save": "Tallenna!"
+  },
+  "button": {
+    "save": "Tallenna!",
+    "retry": "Kokeile uudelleen",
+    "back": "Takaisin",
+    "next": "Seuraava",
+    "close": "Sulje",
+    "leave": "Poistu",
+    "enable": "Ota k\u00e4ytt\u00f6\u00f6n",
+    "disable": "Ota pois k\u00e4yt\u00f6st\u00e4",
+    "spectator": "Katsoja",
+    "join": "Liity",
+    "ladder": "Portaat",
+    "lobby": "Aula",
+    "newgame": "Uusi peli"
+  },
+  "charts": {
+    "lowest": "Matalin",
+    "highest": "Korkein"
+  },
+  "options": {
+    "yes": "Kyll\u00e4",
+    "no": "Ei",
+    "random": "Satunnainen",
+    "quotes": "Sitaatit",
+    "dict": "Sanakirja",
+    "custom": "Mukautettu"
+  },
+  "form": {
+    "message": "Kirjoita viesti..."
+  },
+  "statistics": {
+    "wpm_abbreviation": "WPM",
+    "cpm_abbreviation": "CPM",
+    "wpm": "Sanaa minuutissa",
+    "cpm": "Merkki\u00e4 minuutissa",
+    "time": "Kulunut aika",
+    "won": "Voitettu",
+    "lost": "H\u00e4vitty",
+    "ratio": "Suhde",
+    "accuracy": "Tarkkuus",
+    "exp_abbreviation": "XP",
+    "playtime": "Peliaika",
+    "exp_total": "Kokonais-XP",
+    "exp": "XP",
+    "wpm_fastest": "Nopein peli",
+    "mistakes": "Virheet",
+    "grade": "Arvosana",
+    "records": "Enn\u00e4tykset",
+    "total": "Yhteens\u00e4"
+  },
+  "component": {
+    "spectator": {
+      "help_title": "Katsojan ohjeet"
     },
-    "charts": {
-        "lowest": "Matalin",
-        "highest": "Korkein"
+    "topbar": {
+      "home": "Koti",
+      "news": "Uutiset",
+      "play": "Pelaa",
+      "leaders": "Johtajat",
+      "discord": "Discord"
     },
-    "options": {
-        "yes": "Kyll\u00e4",
-        "no": "Ei",
-        "random": "Satunnainen",
-        "quotes": "Sitaatit",
-        "dict": "Sanakirja",
-        "custom": "Mukautettu"
+    "bottombar": {
+      "about": "Tietoa",
+      "tos": "K\u00e4ytt\u00f6ehdot",
+      "privacy": "Yksityisyysk\u00e4yt\u00e4nt\u00f6",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Auta sivua",
+      "guidelines": "Yhteis\u00f6n s\u00e4\u00e4nn\u00f6t",
+      "shortcuts": "Pikan\u00e4pp\u00e4imet",
+      "faq": "Usein kysytyt kysymykset",
+      "faqM": "UKK"
     },
-    "form": {
-        "message": "Kirjoita viesti..."
+    "navbar": {
+      "home": "Koti",
+      "news": "Uutiset",
+      "play": "Pelaa",
+      "leaders": "Johtajat",
+      "discord": "Discord",
+      "practice": "Harjoittele",
+      "learn": "Opi",
+      "achievements": "Saavutukset",
+      "statistics": "Tilastot",
+      "matches": "Ottelut",
+      "recent_matches": "Viimeaikaiset ottelut",
+      "tournaments": "Turnaukset",
+      "settings": "Asetukset",
+      "logout": "Kirjaudu ulos",
+      "login": "Kirjaudu sis\u00e4\u00e4n",
+      "notifications": "Ilmoitukset",
+      "custom": "Mukautettu"
     },
-    "statistics": {
-        "wpm_abbreviation": "WPM",
-        "cpm_abbreviation": "CPM",
-        "wpm": "Sanaa minuutissa",
-        "cpm": "Merkki\u00e4 minuutissa",
-        "time": "Kulunut aika",
-        "won": "Voitettu",
-        "lost": "H\u00e4vitty",
-        "ratio": "Suhde",
-        "accuracy": "Tarkkuus",
-        "exp_abbreviation": "XP",
-        "playtime": "Peliaika",
-        "exp_total": "Kokonais-XP",
-        "exp": "XP",
-        "wpm_fastest": "Nopein peli",
-        "mistakes": "Virheet",
-        "grade": "Arvosana",
-        "records": "Enn\u00e4tykset",
-        "total": "Yhteens\u00e4"
-    },
-    "component": {
-        "spectator": {
-            "help_title": "Katsojan ohjeet"
-        },
-        "topbar": {
-            "home": "Koti",
-            "news": "Uutiset",
-            "play": "Pelaa",
-            "leaders": "Johtajat",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "Tietoa",
-            "tos": "K\u00e4ytt\u00f6ehdot",
-            "privacy": "Yksityisyysk\u00e4yt\u00e4nt\u00f6",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "Auta sivua",
-            "guidelines": "Yhteis\u00f6n s\u00e4\u00e4nn\u00f6t",
-            "shortcuts": "Pikan\u00e4pp\u00e4imet",
-            "faq": "Usein kysytyt kysymykset",
-            "faqM": "UKK"
-        },
-        "navbar": {
-            "home": "Koti",
-            "news": "Uutiset",
-            "play": "Pelaa",
-            "leaders": "Johtajat",
-            "discord": "Discord",
-            "practice": "Harjoittele",
-            "learn": "Opi",
-            "achievements": "Saavutukset",
-            "statistics": "Tilastot",
-            "matches": "Ottelut",
-            "recent_matches": "Viimeaikaiset ottelut",
-            "tournaments": "Turnaukset",
-            "settings": "Asetukset",
-            "logout": "Kirjaudu ulos",
-            "login": "Kirjaudu sis\u00e4\u00e4n",
-            "notifications": "Ilmoitukset",
-            "custom": "Mukautettu"
-        },
-        "auth": {
-            "discord": "Kirjaudu sis\u00e4\u00e4n Discordilla",
-            "facebook": "Kirjaudu sis\u00e4\u00e4n Facebookilla",
-            "google": "Kirjaudu sis\u00e4\u00e4n Googlella"
-        }
-    },
-    "page": {
-        "match": {
-            "completed": "Ottelu suoritettu",
-            "mistakes": "Virheet",
-            "no_mistakes": "Hienoa! Et tehnyt yht\u00e4\u00e4n virhett\u00e4 t\u00e4m\u00e4n ottelun aikana.",
-            "suspended": "Sinut on poistettu t\u00e4st\u00e4 ottelusta huijaamisen takia.",
-            "time_out": "Sinulta loppui aika suorittaa ottelu. Onnea ensi kertaan!",
-            "reconnect_failed": "Uudelleen yhdist\u00e4minen ep\u00e4onnistui.",
-            "many_mistakes": "Olet tehnyt liian monta virhett\u00e4",
-            "statistics_unsaved": "Tilastojasi t\u00e4st\u00e4 ottelusta ei ole tallennettu",
-            "connect_lost": "Yhteys menetetty, yritet\u00e4\u00e4n uudelleen",
-            "reconnect": "Yhdistet\u00e4\u00e4n uudelleen"
-        },
-        "error404": {
-            "title": "Sivu, jota etsit ei ole olemassa.",
-            "message": "Jos sinut ohjattiin t\u00e4lle sivulle virheellisesti, ota yhteytt\u00e4"
-        },
-        "custom": {
-            "guests": "Salli vieraat?",
-            "text": "Teksti",
-            "match": "Ottelu",
-            "custom": "Mukautettu",
-            "status": {
-                "lobby": "Aulassa",
-                "game": "Peliss\u00e4"
-            },
-            "unlisted": "Listaamaton",
-            "public": "Julkinen",
-            "startmatch": "Aloita ottelu"
-        },
-        "learn": {
-            "lesson": "Oppitunti",
-            "section": "Osio",
-            "tips": {
-                "two": "Tee ranneharjoituksia 15 minuutin v\u00e4lein v\u00e4ltt\u00e4\u00e4ksesi pysyv\u00e4t vauriot ranteisiin ja olkap\u00e4ihin"
-            }
-        },
-        "achievements": {
-            "personal_best": "Oma enn\u00e4tys",
-            "matches_played": "Pelatut ottelut",
-            "matches_won": "Voitetut ottelut",
-            "playtime": "Peliaika yhteens\u00e4"
-        },
-        "login": {
-            "title": "Kirjaudu sis\u00e4\u00e4n",
-            "descr": "Valitse yksi seuraavista vaihtoehdoista"
-        },
-        "home": {
-            "matches_new": "Uusimmat ottelut",
-            "matches_high": "P\u00e4iv\u00e4n enn\u00e4tykset",
-            "lobbies": "Julkiset aulat",
-            "news": "Viimeisimm\u00e4t uutiset",
-            "schools": {
-                "content2": "T\u00e4m\u00e4 palvelu on <1>ilmainen<1> kaikille ymp\u00e4ri maailman, ja k\u00e4yt\u00e4mme yksinkertaista amerikkalaistaustaista arviointitapaa."
-            },
-            "custom": {
-                "title": "Yst\u00e4vien kanssa pelaaminen on niin helppoa",
-                "content1": "Vain nappia napauttamalla voit luoda oman yksityisen huoneen, johon kaikki yst\u00e4v\u00e4si ja tuttusi voivat liitty\u00e4. Tarjoamme t\u00e4ydet mukautusmahdollisuudet ja jopa annamme mahdollisuuden katsoa, kun muut kirjoittavat!",
-                "button": "Luo aula!"
-            }
-        },
-        "leaderboards": {
-            "level": "Korkein taso",
-            "time": "Eniten pelattu",
-            "speed": "Nopein nopeus",
-            "wins": "Eniten voittoja"
-        },
-        "tournaments": {
-            "title": "Turnaukset",
-            "play": "Pelaa nyt",
-            "starts": "Alkaa",
-            "ends": "Loppuu",
-            "finished": "Valmis",
-            "info": "Informaatio",
-            "rules": "S\u00e4\u00e4nn\u00f6t",
-            "players": "Pelaajat",
-            "bracket": "Otteluj\u00e4rjestys",
-            "qualified": "Kvalifioitu",
-            "notqualified": "Ei kvalifioitu",
-            "qualification": "Karsinnat",
-            "none": "Kukaan ei ole osallistunut viel\u00e4, ole ensimm\u00e4inen!"
-        },
-        "queue": {
-            "shortcut": "Tiesitk\u00f6, ett\u00e4 k\u00e4ytt\u00e4m\u00e4ll\u00e4 <1>CTRL+ALT+I<1> voit p\u00e4\u00e4st\u00e4 t\u00e4nne nopeammin?",
-            "quickplay": {
-                "title": "Avoin tappelu",
-                "description": "Liity otteluun miss\u00e4 tahansa ymp\u00e4ri maailman",
-                "": "Nopea peli"
-            },
-            "ranked": {
-                "title": "Kilpailullinen",
-                "description": "Aseta itsesi kilpailun maailmaan",
-                "join": "Tulossa pian"
-            },
-            "custom": {
-                "title": "Mukautettu",
-                "description": "Luo yksityinen ottelu sinulle ja yst\u00e4villesi",
-                "create": "Luo",
-                "browse": "Selaa",
-                "public": "Julkiset aulat",
-                "none": "T\u00e4ll\u00e4 hetkell\u00e4 ei ole julkisia auloja.",
-                "": "Mukautettu"
-            },
-            "practice": "Pelaat <1>harjoittelu<1>ottelussa. Tulostasi ei tallenneta.",
-            "cooldown": "Olet jo ottelussa, odota {{count}} sekuntia ja yrit\u00e4 uudelleen.",
-            "cooldown_plural": "Olet jo ottelussa, odota {{count}} sekuntia ja yrit\u00e4 uudelleen.",
-            "random": {
-                "title": "Satunnainen",
-                "description": "Anna meid\u00e4n p\u00e4\u00e4tt\u00e4\u00e4 puolestasi"
-            },
-            "quotes": {
-                "title": "Sitaatit",
-                "description": "Kirjoja, elokuvia ja enemm\u00e4n"
-            },
-            "dictionary": {
-                "title": "Sanakirja",
-                "description": "Englannin yleisimm\u00e4t sanat"
-            }
-        },
-        "notifications": {
-            "title": "Ilmoitukset",
-            "none": "Sinulla ei ole ilmoituksia.",
-            "markread": "Merkitse luetuksi",
-            "remove": "Poista kaikki",
-            "removeconfirm": "Oletko varma, ett\u00e4 haluat poistaa ilmoituksesi?"
-        },
-        "profile": {
-            "refresh": "T\u00e4m\u00e4 sivu lataa uudelleen painettuasi tallennusnappia.",
-            "profile": "Profiili",
-            "account": "K\u00e4ytt\u00e4j\u00e4tili",
-            "personal": "Yksityistiedot"
-        },
-        "settings": {
-            "refresh": "T\u00e4m\u00e4 sivu p\u00e4ivittyy, kun olet painanut tallennusnappia.",
-            "profile": "Profiili",
-            "information": "Informaatio",
-            "personalize": "Personoi",
-            "displayname": "Nimi",
-            "defaultworld": "Oletusmaailma",
-            "about": "Tietoa minusta"
-        }
+    "auth": {
+      "discord": "Kirjaudu sis\u00e4\u00e4n Discordilla",
+      "facebook": "Kirjaudu sis\u00e4\u00e4n Facebookilla",
+      "google": "Kirjaudu sis\u00e4\u00e4n Googlella"
     }
+  },
+  "page": {
+    "match": {
+      "completed": "Ottelu suoritettu",
+      "mistakes": "Virheet",
+      "no_mistakes": "Hienoa! Et tehnyt yht\u00e4\u00e4n virhett\u00e4 t\u00e4m\u00e4n ottelun aikana.",
+      "suspended": "Sinut on poistettu t\u00e4st\u00e4 ottelusta huijaamisen takia.",
+      "time_out": "Sinulta loppui aika suorittaa ottelu. Onnea ensi kertaan!",
+      "reconnect_failed": "Uudelleen yhdist\u00e4minen ep\u00e4onnistui.",
+      "many_mistakes": "Olet tehnyt liian monta virhett\u00e4",
+      "statistics_unsaved": "Tilastojasi t\u00e4st\u00e4 ottelusta ei ole tallennettu",
+      "connect_lost": "Yhteys menetetty, yritet\u00e4\u00e4n uudelleen",
+      "reconnect": "Yhdistet\u00e4\u00e4n uudelleen"
+    },
+    "error404": {
+      "title": "Sivu, jota etsit ei ole olemassa.",
+      "message": "Jos sinut ohjattiin t\u00e4lle sivulle virheellisesti, ota yhteytt\u00e4"
+    },
+    "custom": {
+      "guests": "Salli vieraat?",
+      "text": "Teksti",
+      "match": "Ottelu",
+      "custom": "Mukautettu",
+      "status": {
+        "lobby": "Aulassa",
+        "game": "Peliss\u00e4"
+      },
+      "unlisted": "Listaamaton",
+      "public": "Julkinen",
+      "startmatch": "Aloita ottelu"
+    },
+    "learn": {
+      "lesson": "Oppitunti",
+      "section": "Osio",
+      "tips": {
+        "two": "Tee ranneharjoituksia 15 minuutin v\u00e4lein v\u00e4ltt\u00e4\u00e4ksesi pysyv\u00e4t vauriot ranteisiin ja olkap\u00e4ihin"
+      }
+    },
+    "achievements": {
+      "personal_best": "Oma enn\u00e4tys",
+      "matches_played": "Pelatut ottelut",
+      "matches_won": "Voitetut ottelut",
+      "playtime": "Peliaika yhteens\u00e4"
+    },
+    "login": {
+      "title": "Kirjaudu sis\u00e4\u00e4n",
+      "descr": "Valitse yksi seuraavista vaihtoehdoista"
+    },
+    "home": {
+      "matches_new": "Uusimmat ottelut",
+      "matches_high": "P\u00e4iv\u00e4n enn\u00e4tykset",
+      "lobbies": "Julkiset aulat",
+      "news": "Viimeisimm\u00e4t uutiset",
+      "schools": {
+        "content2": "T\u00e4m\u00e4 palvelu on <1>ilmainen<1> kaikille ymp\u00e4ri maailman, ja k\u00e4yt\u00e4mme yksinkertaista amerikkalaistaustaista arviointitapaa."
+      },
+      "custom": {
+        "title": "Yst\u00e4vien kanssa pelaaminen on niin helppoa",
+        "content1": "Vain nappia napauttamalla voit luoda oman yksityisen huoneen, johon kaikki yst\u00e4v\u00e4si ja tuttusi voivat liitty\u00e4. Tarjoamme t\u00e4ydet mukautusmahdollisuudet ja jopa annamme mahdollisuuden katsoa, kun muut kirjoittavat!",
+        "button": "Luo aula!"
+      }
+    },
+    "leaderboards": {
+      "level": "Korkein taso",
+      "time": "Eniten pelattu",
+      "speed": "Nopein nopeus",
+      "wins": "Eniten voittoja"
+    },
+    "tournaments": {
+      "title": "Turnaukset",
+      "play": "Pelaa nyt",
+      "starts": "Alkaa",
+      "ends": "Loppuu",
+      "finished": "Valmis",
+      "info": "Informaatio",
+      "rules": "S\u00e4\u00e4nn\u00f6t",
+      "players": "Pelaajat",
+      "bracket": "Otteluj\u00e4rjestys",
+      "qualified": "Kvalifioitu",
+      "notqualified": "Ei kvalifioitu",
+      "qualification": "Karsinnat",
+      "none": "Kukaan ei ole osallistunut viel\u00e4, ole ensimm\u00e4inen!"
+    },
+    "queue": {
+      "shortcut": "Tiesitk\u00f6, ett\u00e4 k\u00e4ytt\u00e4m\u00e4ll\u00e4 <1>CTRL+ALT+I<1> voit p\u00e4\u00e4st\u00e4 t\u00e4nne nopeammin?",
+      "quickplay": {
+        "title": "Avoin tappelu",
+        "description": "Liity otteluun miss\u00e4 tahansa ymp\u00e4ri maailman",
+        "": "Nopea peli"
+      },
+      "ranked": {
+        "title": "Kilpailullinen",
+        "description": "Aseta itsesi kilpailun maailmaan",
+        "join": "Tulossa pian"
+      },
+      "custom": {
+        "title": "Mukautettu",
+        "description": "Luo yksityinen ottelu sinulle ja yst\u00e4villesi",
+        "create": "Luo",
+        "browse": "Selaa",
+        "public": "Julkiset aulat",
+        "none": "T\u00e4ll\u00e4 hetkell\u00e4 ei ole julkisia auloja.",
+        "": "Mukautettu"
+      },
+      "practice": "Pelaat <1>harjoittelu<1>ottelussa. Tulostasi ei tallenneta.",
+      "cooldown": "Olet jo ottelussa, odota {{count}} sekuntia ja yrit\u00e4 uudelleen.",
+      "cooldown_plural": "Olet jo ottelussa, odota {{count}} sekuntia ja yrit\u00e4 uudelleen.",
+      "random": {
+        "title": "Satunnainen",
+        "description": "Anna meid\u00e4n p\u00e4\u00e4tt\u00e4\u00e4 puolestasi"
+      },
+      "quotes": {
+        "title": "Sitaatit",
+        "description": "Kirjoja, elokuvia ja enemm\u00e4n"
+      },
+      "dictionary": {
+        "title": "Sanakirja",
+        "description": "Englannin yleisimm\u00e4t sanat"
+      }
+    },
+    "notifications": {
+      "title": "Ilmoitukset",
+      "none": "Sinulla ei ole ilmoituksia.",
+      "markread": "Merkitse luetuksi",
+      "remove": "Poista kaikki",
+      "removeconfirm": "Oletko varma, ett\u00e4 haluat poistaa ilmoituksesi?"
+    },
+    "profile": {
+      "refresh": "T\u00e4m\u00e4 sivu lataa uudelleen painettuasi tallennusnappia.",
+      "profile": "Profiili",
+      "account": "K\u00e4ytt\u00e4j\u00e4tili",
+      "personal": "Yksityistiedot"
+    },
+    "settings": {
+      "refresh": "T\u00e4m\u00e4 sivu p\u00e4ivittyy, kun olet painanut tallennusnappia.",
+      "profile": "Profiili",
+      "information": "Informaatio",
+      "personalize": "Personoi",
+      "displayname": "Nimi",
+      "defaultworld": "Oletusmaailma",
+      "about": "Tietoa minusta"
+    }
+  }
 }

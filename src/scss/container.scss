@@ -1,13 +1,13 @@
 .container {
-  @apply
-    px-10 w-full mx-auto max-w-screen-3xl;
+  @apply px-10 w-full mx-auto max-w-screen-3xl;
 }
 
 .container-small {
   @apply px-10 w-full mx-auto max-w-screen-xl;
 }
 
-.container-game, .container-smaller {
+.container-game,
+.container-smaller {
   @apply px-10 w-full mx-auto max-w-screen-lg;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .container-padding.container-content {
-  @apply my-8 lg:mt-0; /* my-8 */ 
+  @apply my-8 lg:mt-0; /* my-8 */
 }
 
 .container-margin.container-content {

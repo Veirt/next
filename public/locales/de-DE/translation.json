@@ -1,347 +1,347 @@
 {
-    "other": {
-        "account_banned": "Dein Benutzerkonto wurde gesperrt, kontaktiere uns bitte per Mail: support@keymash.io!",
-        "twitch_none": "Niemand streamt gerade :( Komme sp\u00e4ter wieder oder starte selbst einen Stream!",
-        "grades": {
-            "passed": "Bestanden",
-            "failed": "Durchgefallen"
-        },
-        "finished": "Fertig",
-        "gameover": "Spiel vorbei",
-        "save": "Speichern!"
+  "other": {
+    "account_banned": "Dein Benutzerkonto wurde gesperrt, kontaktiere uns bitte per Mail: support@keymash.io!",
+    "twitch_none": "Niemand streamt gerade :( Komme sp\u00e4ter wieder oder starte selbst einen Stream!",
+    "grades": {
+      "passed": "Bestanden",
+      "failed": "Durchgefallen"
     },
-    "button": {
-        "save": "Speichern!",
-        "retry": "Wiederholen",
-        "back": "Zur\u00fcck",
-        "next": "Weiter",
-        "close": "Schlie\u00dfen",
-        "leave": "Verlassen",
-        "enable": "Aktivieren",
-        "disable": "Deaktivieren",
-        "spectator": "Zuschauer",
-        "join": "Beitreten",
-        "ladder": "Ladder",
-        "lobby": "Lobby",
-        "newgame": "Neues Spiel",
-        "letsgo": "Lass uns starten!"
+    "finished": "Fertig",
+    "gameover": "Spiel vorbei",
+    "save": "Speichern!"
+  },
+  "button": {
+    "save": "Speichern!",
+    "retry": "Wiederholen",
+    "back": "Zur\u00fcck",
+    "next": "Weiter",
+    "close": "Schlie\u00dfen",
+    "leave": "Verlassen",
+    "enable": "Aktivieren",
+    "disable": "Deaktivieren",
+    "spectator": "Zuschauer",
+    "join": "Beitreten",
+    "ladder": "Ladder",
+    "lobby": "Lobby",
+    "newgame": "Neues Spiel",
+    "letsgo": "Lass uns starten!"
+  },
+  "charts": {
+    "lowest": "Geringste",
+    "highest": "H\u00f6chste"
+  },
+  "options": {
+    "yes": "Ja",
+    "no": "Nein",
+    "random": "Zufall",
+    "quotes": "Zitat",
+    "dict": "W\u00f6rterbuch",
+    "custom": "Benutzerdefiniert"
+  },
+  "form": {
+    "message": "Geben Sie eine Nachricht ein..."
+  },
+  "statistics": {
+    "wpm_abbreviation": "WPM",
+    "cpm_abbreviation": "APM",
+    "wpm": "W\u00f6rter Pro Minute",
+    "cpm": "Anschl\u00e4ge Pro Minute",
+    "time": "Vergangene Zeit",
+    "won": "Gewonnen",
+    "lost": "Verloren",
+    "ratio": "Verh\u00e4ltnis",
+    "accuracy": "Genauigkeit",
+    "exp_abbreviation": "EXP",
+    "playtime": "Spielzeit",
+    "exp_total": "Total Erfahrung",
+    "exp": "Erfahrung",
+    "wpm_fastest": "Schnellstes Spiel",
+    "mistakes": "Fehler",
+    "grade": "Note",
+    "records": "Rekorde",
+    "tournaments": "Turniere",
+    "top5": "Top 5"
+  },
+  "component": {
+    "spectator": {
+      "help_title": "Zuschauerhilfe",
+      "help_1": "1. Um das Match zu verlassen, benutze bitte den Knopf in der oberen linken Ecke.",
+      "help_4": "4. Wenn jeder Spieler fertig ist, dr\u00fccke den Knopf in der oberen linken Ecke, um zur Lobby zur\u00fcckzukehren. Dies wurde absichtlich gemacht, um Sie nicht vollst\u00e4ndig umzuleiten, nur f\u00fcr den Fall, dass Sie die bereitgestellten Statistiken sehen m\u00f6chten."
     },
-    "charts": {
-        "lowest": "Geringste",
-        "highest": "H\u00f6chste"
+    "topbar": {
+      "home": "Home",
+      "news": "Neuigkeiten",
+      "play": "Los",
+      "leaders": "Rangliste",
+      "discord": "Discord"
     },
-    "options": {
-        "yes": "Ja",
-        "no": "Nein",
-        "random": "Zufall",
-        "quotes": "Zitat",
-        "dict": "W\u00f6rterbuch",
-        "custom": "Benutzerdefiniert"
+    "bottombar": {
+      "about": "\u00dcber uns",
+      "tos": "Nutzungsbedinungen",
+      "privacy": "Datenschutzrichtlinie",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Mitwirken",
+      "guidelines": "Community Richtlinien",
+      "shortcuts": "Tastaturk\u00fcrzel",
+      "faq": "H\u00e4ufig gestellte Fragen",
+      "faqM": "FAQ"
     },
-    "form": {
-        "message": "Geben Sie eine Nachricht ein..."
+    "navbar": {
+      "home": "Startseite",
+      "news": "Neuigkeiten",
+      "play": "Spielen",
+      "leaders": "Leitung",
+      "discord": "Discord",
+      "practice": "Trainieren",
+      "twitch": "Twitch",
+      "store": "Fan-Shop",
+      "learn": "Lernen",
+      "achievements": "Errungenschaften",
+      "statistics": "Statistiken",
+      "matches": "Spiele",
+      "recent_matches": "K\u00fcrzliche Spiele",
+      "tournaments": "Turniere",
+      "settings": "Einstellungen",
+      "logout": "ausloggen",
+      "login": "einloggen",
+      "notifications": "Benachrichtigungen",
+      "custom": "Benutzerdefiniert"
     },
-    "statistics": {
-        "wpm_abbreviation": "WPM",
-        "cpm_abbreviation": "APM",
-        "wpm": "W\u00f6rter Pro Minute",
-        "cpm": "Anschl\u00e4ge Pro Minute",
-        "time": "Vergangene Zeit",
-        "won": "Gewonnen",
-        "lost": "Verloren",
-        "ratio": "Verh\u00e4ltnis",
-        "accuracy": "Genauigkeit",
-        "exp_abbreviation": "EXP",
-        "playtime": "Spielzeit",
-        "exp_total": "Total Erfahrung",
-        "exp": "Erfahrung",
-        "wpm_fastest": "Schnellstes Spiel",
-        "mistakes": "Fehler",
-        "grade": "Note",
-        "records": "Rekorde",
-        "tournaments": "Turniere",
-        "top5": "Top 5"
-    },
-    "component": {
-        "spectator": {
-            "help_title": "Zuschauerhilfe",
-            "help_1": "1. Um das Match zu verlassen, benutze bitte den Knopf in der oberen linken Ecke.",
-            "help_4": "4. Wenn jeder Spieler fertig ist, dr\u00fccke den Knopf in der oberen linken Ecke, um zur Lobby zur\u00fcckzukehren. Dies wurde absichtlich gemacht, um Sie nicht vollst\u00e4ndig umzuleiten, nur f\u00fcr den Fall, dass Sie die bereitgestellten Statistiken sehen m\u00f6chten."
-        },
-        "topbar": {
-            "home": "Home",
-            "news": "Neuigkeiten",
-            "play": "Los",
-            "leaders": "Rangliste",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "\u00dcber uns",
-            "tos": "Nutzungsbedinungen",
-            "privacy": "Datenschutzrichtlinie",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "Mitwirken",
-            "guidelines": "Community Richtlinien",
-            "shortcuts": "Tastaturk\u00fcrzel",
-            "faq": "H\u00e4ufig gestellte Fragen",
-            "faqM": "FAQ"
-        },
-        "navbar": {
-            "home": "Startseite",
-            "news": "Neuigkeiten",
-            "play": "Spielen",
-            "leaders": "Leitung",
-            "discord": "Discord",
-            "practice": "Trainieren",
-            "twitch": "Twitch",
-            "store": "Fan-Shop",
-            "learn": "Lernen",
-            "achievements": "Errungenschaften",
-            "statistics": "Statistiken",
-            "matches": "Spiele",
-            "recent_matches": "K\u00fcrzliche Spiele",
-            "tournaments": "Turniere",
-            "settings": "Einstellungen",
-            "logout": "ausloggen",
-            "login": "einloggen",
-            "notifications": "Benachrichtigungen",
-            "custom": "Benutzerdefiniert"
-        },
-        "auth": {
-            "discord": "Einloggen mit Discord",
-            "facebook": "Einloggen mit Facebook",
-            "google": "Einloggen mit Google"
-        }
-    },
-    "page": {
-        "banned": {
-            "title": "Du wurdest gebannt.",
-            "text": "Ihr Keymash Konto wurde auf unbestimmte Zeit gesperrt. Dies kann durch einen Versto\u00df gegen unsere Nutzungsbedingungen oder durch Betrug verursacht werden. Bei Fragen wenden Sie sich bitte an support@keymash.io!"
-        },
-        "guest": {
-            "title": "Dein G\u00e4ste Account wurde zur\u00fcckgesetzt.",
-            "text": "Danke das du Keymash benutzt! Wir freuen uns, dass dir das Spiel gef\u00e4llt und wir w\u00fcrden dir empfehlen einen Account zu erstellen, damit du deine Fortschritte in Zukunft speichern kannst. Hinweis: Wir l\u00f6schen G\u00e4ste Accounts die \u00e4lter als 7 Tage sind."
-        },
-        "match": {
-            "completed": "Beendete Spiele",
-            "mistakes": "Fehler",
-            "no_mistakes": "Super! Du hast w\u00e4hrend dieses Spiels keine Fehler gemacht.",
-            "suspended": "Du wurdest aufgrund von Betr\u00fcgerei von diesem Spiel disqualifiziert.",
-            "time_out": "Die Zeit ist abgelaufen. Viel Gl\u00fcck beim n\u00e4chsten Mal!",
-            "reconnect_failed": "Wir konnten die Verbindung zum Spiel nicht wiederherstellen.",
-            "many_mistakes": "Du hast zu viele Fehler gemacht.",
-            "statistics_unsaved": "Deine Statistiken wurden f\u00fcr dieses Spiel nicht gespeichert.",
-            "connect_lost": "Verbindung wurde unterbrochen, es wird erneut versucht",
-            "reconnect": "Es wird erneut verbunden"
-        },
-        "error404": {
-            "title": "Die Seite die Du suchst gibt es leider nicht.",
-            "message": "Falls Du auf diese Seite fehlerhafterweies umgeleitet wurdest wende Dich bitte an"
-        },
-        "custom": {
-            "configuration": "Konfiguration",
-            "title": "Titel",
-            "privacy": "Privatsph\u00e4re",
-            "mode": "Modus",
-            "guests": "G\u00e4ste zulassen?",
-            "text": "Text",
-            "match": "Spiel",
-            "custom": "Benutzerdefiniert",
-            "status": {
-                "lobby": "In der Lobby",
-                "game": "Im Spiel"
-            },
-            "unlisted": "Ungelistet",
-            "public": "\u00d6ffentlich",
-            "countdown": "Countdown",
-            "startmatch": "Spiel beginnen",
-            "error": {
-                "team_size": "Die Gr\u00f6\u00dfe deines Teams muss genau sein um das Spiel zu starten.",
-                "unsaved": "Du musst deine \u00c4nderungen speichern, um zu starten."
-            },
-            "chat": "Bitte unterlasse das Posten von sensiblen und\/oder von vertraulichen Nachrichten."
-        },
-        "learn": {
-            "title": "Lernzentrum",
-            "welcome": "Willkommen! Dieses Lernzentrum wird helfen Tipper mit neuen Materialien zu versorgen, um ihnen zu helfen ihre Tippgeschwindigkeit zu erh\u00f6hen.",
-            "lesson": "Lektion",
-            "section": "Sektion",
-            "reportcard": "Zeugnis",
-            "tips": {
-                "one": "Schwierige W\u00f6rter langsam zu tippen wird dir langfristig mehr Best\u00e4ndigkeit geben.",
-                "two": "Lockere dein Handgelenk alle 15 Minuten, um dauerhaften Schaden an diesem und deinen Schultern zu verhindern.",
-                "three": "Die Hauptreihe auf der Tastatur zu lernen ist sehr wichtig, damit es dir m\u00f6glich wird mithilfe von muscle memory zu tippen ohne auf die Tastatur schauen zu m\u00fcssen."
-            }
-        },
-        "achievements": {
-            "personal_best": "Personal Best",
-            "matches_played": "Spiele gespielt",
-            "matches_won": "Spiele gewonnen",
-            "playtime": "Insgesamte Spielzeit"
-        },
-        "login": {
-            "title": "einloggen",
-            "descr": "W\u00e4hle eine der folgenden Optionen"
-        },
-        "home": {
-            "matches_new": "Aktuellste Partie",
-            "matches_high": "Heutige Bestenliste",
-            "tournaments": {
-                "title": "T\u00e4gliche Wettbewerbe!",
-                "content1": "Wir veranstalten <1>t\u00e4glich<\/1> Turniere, um Tippskills zu testen. Zus\u00e4tzlich findet jeden Sonntag ein zus\u00e4tzliches Turnier statt mit einer Chance <1>Discord Nitro<\/1> zu gewinnen.",
-                "button": "Starte jetzt!"
-            },
-            "lobbies": "\u00d6ffentliche Lobbies",
-            "news": "Letzte Neuigkeiten",
-            "slogan": "Bring dein Tippen zum n\u00e4chsten Level.",
-            "hero": {
-                "content1": "Falls du irgendwelche Fragen oder Bedenken haben solltest, z\u00f6gere nicht uns \u00fcber Discord oder direkt \u00fcber <1>support@keymash.io<\/1> zu kontaktieren.",
-                "content2": "Ah ja, ich habe ganz vergessen zu erw\u00e4hnen, dass wir immer auf der Suche nach Beitr\u00e4gen der Community sind, wie Texteinreichungen, \u00dcbersetzungen und mehr! <1>Hier klicken<\/1>, um dar\u00fcber zu erfahren.",
-                "button": "Jetzt anfangen zu tippen!"
-            },
-            "schools": {
-                "title": "D\u00fcrfen Schule das verwenden?",
-                "button": "Beginne zu lernen!",
-                "content1": " <1>Auf jeden Fall<\/1>. Unser Lernzentrum bieten wir jedem Tipper mit oder auch ohne Account an, obwohl wir stark empfehen einen Account zu haben, um Fortschritt zu speichern.",
-                "content2": "Dieser Dienst ist <1>kostenlos<\/1> f\u00fcr jeden rund um den Globus und wir benutzen ein einfach Bewertungssystem, das auf dem der USA basiert."
-            },
-            "custom": {
-                "title": "Mit Freunden zu spielen ist so einfach",
-                "content1": "Mit nur einem Knopfdruck kannst deinen eigenen, privaten Raum \u00f6ffnen, wo jeder deiner Freunde und deiner Familie beitreten kann. Wir bieten vollst\u00e4ndige Individualisierung an und es besteht sogar die M\u00f6glichkeit einem anderen Spieler beim Tippen zu beobachten.",
-                "button": "Erstelle eine Lobby!"
-            }
-        },
-        "leaderboards": {
-            "level": "H\u00f6chstes Level",
-            "time": "Am meisten gespielt",
-            "speed": "H\u00f6chste Geschwindigkeit",
-            "wins": "Meiste Siege"
-        },
-        "tournaments": {
-            "title": "Turniere",
-            "join": "Ladder beitreten",
-            "play": "Spiel jetzt gleich",
-            "starts": "Startet",
-            "ends": "Endet",
-            "finished": "Vorbei",
-            "info": "Information",
-            "rules": "Regeln",
-            "players": "Spieler",
-            "bracket": "Turnierbaum",
-            "qualified": "Qualifiziert",
-            "notqualified": "Nicht Qualifiziert",
-            "qualification": "Qualifikationen",
-            "ladders": "Ranglisten",
-            "none": "Bis jetzt haben noch keine Spieler teilgenommen, sei der Erste!"
-        },
-        "queue": {
-            "howToPlayGuide": {
-                "1_title": "Wie spielt man?",
-                "1_description": "Um Ranked Matchmaking zu spielen, m\u00fcssen sie mindestens <1>Level 10<\/1> sein. Sie werden durch eine Berechnungsphase gef\u00fchrt, in der sie Ihren Rang erst sehen, wenn Sie <2> 10 Spiele <\/ 2> beendet haben. Dies wird die Genauigkeit ihres k\u00f6nnen sicher stellen, wenn sie gegen andere Spieler antreten.",
-                "2_title": "Was ist Ranked?",
-                "2_description": "Ranked Matchmaking ist ein kompetitives Umfeld, in dem Spieler mit anderen Spielern mit \u00e4hnlichen F\u00e4higkeiten verglichen werden, die genauer sind als die aktuellen Schnellspielmodi.",
-                "3_title": "Wie wird SR definiert?",
-                "4_title": "K\u00f6nnen wir mitten im Spiel aufh\u00f6ren?"
-            },
-            "shortcut": "Wusstest Du schon, dass du mit <1>CTRL+ALT+I<\/1> schneller hier her kommst?",
-            "quickplay": {
-                "title": "Alle gegen alle",
-                "description": "Trete einem Spiel \u00fcberall und jederzeit bei.",
-                "": "Quick Play"
-            },
-            "ranked": {
-                "title": "Rangliste",
-                "description": "Finde heraus wie du dich im internatiolen Wettbewerb schl\u00e4gst",
-                "join": "Duell (1v1)",
-                "how": "Wie wird gespielt?"
-            },
-            "custom": {
-                "title": "Benutzerdefiniert",
-                "description": "Erstelle ein privates Match f\u00fcr dich und deine Freunde",
-                "create": "Erstelle",
-                "browse": "Suchen",
-                "public": "\u00d6ffentliche Lobbies",
-                "none": "Momentan gibt es keine \u00f6ffentlichen Lobbies.",
-                "": "Benutzerdefiniert"
-            },
-            "practice": "Du befindest Dich in einer <1>\u00dcbungspartie<\/1>. Deine Resultate werden nicht gespeichert.",
-            "cooldown": "Du bist bereits in einer Partie, bitte warte {{count}} Sekunden bevor Du es nochmal versuchst.",
-            "cooldown_plural": "Du bist bereits in einer Partie, bitte warte {{count}} Sekunden bevor Du es nochmal versuchst.",
-            "random": {
-                "title": "Zuf\u00e4llig",
-                "description": "Lass uns f\u00fcr Dich aussuchen"
-            },
-            "quotes": {
-                "title": "Zitate",
-                "description": "B\u00fccher, Filme und mehr"
-            },
-            "dictionary": {
-                "title": "W\u00f6rterbuch",
-                "description": "H\u00e4ufigsten englischen W\u00f6rter"
-            }
-        },
-        "notifications": {
-            "title": "Benachrichtigungen",
-            "none": "Leider keine Benachrichtigungen.",
-            "markread": "Als gelesen markieren",
-            "remove": "Alle entfernen",
-            "removeconfirm": "Bist Du sicher das Du deine Benachrichtigungen entfernen willst?"
-        },
-        "profile": {
-            "refresh": "Diese Seite wird aktualisiert, beim dr\u00fccken auf \u00c4nderungen speichern.",
-            "profile": "Profil",
-            "account": "Account",
-            "personal": "Pers\u00f6nliches",
-            "information": "Information",
-            "personalize": "Personalisieren",
-            "joined": "Beigetreten",
-            "displayname": "Benutzername",
-            "defaultworld": "Standard Welt",
-            "about": "\u00dcber mich",
-            "fullname": "Name",
-            "level": "Level",
-            "age": "Alter",
-            "years_old": "Jahre alt",
-            "dob": "Geburtsdatum",
-            "showOnline": "Zeige Online Status",
-            "gender": "Geschlecht",
-            "locale": "Sprache",
-            "country": "Land",
-            "keyboard": {
-                "title": "Tastatur",
-                "layout": "Tastaturlayout",
-                "brand": "Tastaturhersteller",
-                "model": "Tastaturmodell"
-            },
-            "customize": "Anpassen",
-            "wpm": "WPM oder CPM",
-            "border": "Bilderrahmen",
-            "playercards": "Spielerkarte"
-        },
-        "settings": {
-            "refresh": "Diese Seite wird aktualisiert, beim dr\u00fccken auf \u00c4nderungen speichern.",
-            "profile": "Profil",
-            "information": "Information",
-            "personalize": "Personalisieren",
-            "displayname": "Benutzername",
-            "defaultworld": "Standard Welt",
-            "about": "\u00dcber mich",
-            "fullname": "Name",
-            "dob": "Geburtsdatum",
-            "showOnline": "Zeige Online Status",
-            "gender": "Geschlecht",
-            "locale": "Sprache",
-            "country": "Land",
-            "keyboard": {
-                "layout": "Tastaturlayout",
-                "brand": "Tastaturhersteller",
-                "model": "Tastaturmodell"
-            },
-            "customize": "Anpassen",
-            "wpm": "WPM oder CPM",
-            "border": "Bilderrahmen",
-            "playercards": "Spielerkarte"
-        }
+    "auth": {
+      "discord": "Einloggen mit Discord",
+      "facebook": "Einloggen mit Facebook",
+      "google": "Einloggen mit Google"
     }
+  },
+  "page": {
+    "banned": {
+      "title": "Du wurdest gebannt.",
+      "text": "Ihr Keymash Konto wurde auf unbestimmte Zeit gesperrt. Dies kann durch einen Versto\u00df gegen unsere Nutzungsbedingungen oder durch Betrug verursacht werden. Bei Fragen wenden Sie sich bitte an support@keymash.io!"
+    },
+    "guest": {
+      "title": "Dein G\u00e4ste Account wurde zur\u00fcckgesetzt.",
+      "text": "Danke das du Keymash benutzt! Wir freuen uns, dass dir das Spiel gef\u00e4llt und wir w\u00fcrden dir empfehlen einen Account zu erstellen, damit du deine Fortschritte in Zukunft speichern kannst. Hinweis: Wir l\u00f6schen G\u00e4ste Accounts die \u00e4lter als 7 Tage sind."
+    },
+    "match": {
+      "completed": "Beendete Spiele",
+      "mistakes": "Fehler",
+      "no_mistakes": "Super! Du hast w\u00e4hrend dieses Spiels keine Fehler gemacht.",
+      "suspended": "Du wurdest aufgrund von Betr\u00fcgerei von diesem Spiel disqualifiziert.",
+      "time_out": "Die Zeit ist abgelaufen. Viel Gl\u00fcck beim n\u00e4chsten Mal!",
+      "reconnect_failed": "Wir konnten die Verbindung zum Spiel nicht wiederherstellen.",
+      "many_mistakes": "Du hast zu viele Fehler gemacht.",
+      "statistics_unsaved": "Deine Statistiken wurden f\u00fcr dieses Spiel nicht gespeichert.",
+      "connect_lost": "Verbindung wurde unterbrochen, es wird erneut versucht",
+      "reconnect": "Es wird erneut verbunden"
+    },
+    "error404": {
+      "title": "Die Seite die Du suchst gibt es leider nicht.",
+      "message": "Falls Du auf diese Seite fehlerhafterweies umgeleitet wurdest wende Dich bitte an"
+    },
+    "custom": {
+      "configuration": "Konfiguration",
+      "title": "Titel",
+      "privacy": "Privatsph\u00e4re",
+      "mode": "Modus",
+      "guests": "G\u00e4ste zulassen?",
+      "text": "Text",
+      "match": "Spiel",
+      "custom": "Benutzerdefiniert",
+      "status": {
+        "lobby": "In der Lobby",
+        "game": "Im Spiel"
+      },
+      "unlisted": "Ungelistet",
+      "public": "\u00d6ffentlich",
+      "countdown": "Countdown",
+      "startmatch": "Spiel beginnen",
+      "error": {
+        "team_size": "Die Gr\u00f6\u00dfe deines Teams muss genau sein um das Spiel zu starten.",
+        "unsaved": "Du musst deine \u00c4nderungen speichern, um zu starten."
+      },
+      "chat": "Bitte unterlasse das Posten von sensiblen und/oder von vertraulichen Nachrichten."
+    },
+    "learn": {
+      "title": "Lernzentrum",
+      "welcome": "Willkommen! Dieses Lernzentrum wird helfen Tipper mit neuen Materialien zu versorgen, um ihnen zu helfen ihre Tippgeschwindigkeit zu erh\u00f6hen.",
+      "lesson": "Lektion",
+      "section": "Sektion",
+      "reportcard": "Zeugnis",
+      "tips": {
+        "one": "Schwierige W\u00f6rter langsam zu tippen wird dir langfristig mehr Best\u00e4ndigkeit geben.",
+        "two": "Lockere dein Handgelenk alle 15 Minuten, um dauerhaften Schaden an diesem und deinen Schultern zu verhindern.",
+        "three": "Die Hauptreihe auf der Tastatur zu lernen ist sehr wichtig, damit es dir m\u00f6glich wird mithilfe von muscle memory zu tippen ohne auf die Tastatur schauen zu m\u00fcssen."
+      }
+    },
+    "achievements": {
+      "personal_best": "Personal Best",
+      "matches_played": "Spiele gespielt",
+      "matches_won": "Spiele gewonnen",
+      "playtime": "Insgesamte Spielzeit"
+    },
+    "login": {
+      "title": "einloggen",
+      "descr": "W\u00e4hle eine der folgenden Optionen"
+    },
+    "home": {
+      "matches_new": "Aktuellste Partie",
+      "matches_high": "Heutige Bestenliste",
+      "tournaments": {
+        "title": "T\u00e4gliche Wettbewerbe!",
+        "content1": "Wir veranstalten <1>t\u00e4glich</1> Turniere, um Tippskills zu testen. Zus\u00e4tzlich findet jeden Sonntag ein zus\u00e4tzliches Turnier statt mit einer Chance <1>Discord Nitro</1> zu gewinnen.",
+        "button": "Starte jetzt!"
+      },
+      "lobbies": "\u00d6ffentliche Lobbies",
+      "news": "Letzte Neuigkeiten",
+      "slogan": "Bring dein Tippen zum n\u00e4chsten Level.",
+      "hero": {
+        "content1": "Falls du irgendwelche Fragen oder Bedenken haben solltest, z\u00f6gere nicht uns \u00fcber Discord oder direkt \u00fcber <1>support@keymash.io</1> zu kontaktieren.",
+        "content2": "Ah ja, ich habe ganz vergessen zu erw\u00e4hnen, dass wir immer auf der Suche nach Beitr\u00e4gen der Community sind, wie Texteinreichungen, \u00dcbersetzungen und mehr! <1>Hier klicken</1>, um dar\u00fcber zu erfahren.",
+        "button": "Jetzt anfangen zu tippen!"
+      },
+      "schools": {
+        "title": "D\u00fcrfen Schule das verwenden?",
+        "button": "Beginne zu lernen!",
+        "content1": " <1>Auf jeden Fall</1>. Unser Lernzentrum bieten wir jedem Tipper mit oder auch ohne Account an, obwohl wir stark empfehen einen Account zu haben, um Fortschritt zu speichern.",
+        "content2": "Dieser Dienst ist <1>kostenlos</1> f\u00fcr jeden rund um den Globus und wir benutzen ein einfach Bewertungssystem, das auf dem der USA basiert."
+      },
+      "custom": {
+        "title": "Mit Freunden zu spielen ist so einfach",
+        "content1": "Mit nur einem Knopfdruck kannst deinen eigenen, privaten Raum \u00f6ffnen, wo jeder deiner Freunde und deiner Familie beitreten kann. Wir bieten vollst\u00e4ndige Individualisierung an und es besteht sogar die M\u00f6glichkeit einem anderen Spieler beim Tippen zu beobachten.",
+        "button": "Erstelle eine Lobby!"
+      }
+    },
+    "leaderboards": {
+      "level": "H\u00f6chstes Level",
+      "time": "Am meisten gespielt",
+      "speed": "H\u00f6chste Geschwindigkeit",
+      "wins": "Meiste Siege"
+    },
+    "tournaments": {
+      "title": "Turniere",
+      "join": "Ladder beitreten",
+      "play": "Spiel jetzt gleich",
+      "starts": "Startet",
+      "ends": "Endet",
+      "finished": "Vorbei",
+      "info": "Information",
+      "rules": "Regeln",
+      "players": "Spieler",
+      "bracket": "Turnierbaum",
+      "qualified": "Qualifiziert",
+      "notqualified": "Nicht Qualifiziert",
+      "qualification": "Qualifikationen",
+      "ladders": "Ranglisten",
+      "none": "Bis jetzt haben noch keine Spieler teilgenommen, sei der Erste!"
+    },
+    "queue": {
+      "howToPlayGuide": {
+        "1_title": "Wie spielt man?",
+        "1_description": "Um Ranked Matchmaking zu spielen, m\u00fcssen sie mindestens <1>Level 10</1> sein. Sie werden durch eine Berechnungsphase gef\u00fchrt, in der sie Ihren Rang erst sehen, wenn Sie <2> 10 Spiele </ 2> beendet haben. Dies wird die Genauigkeit ihres k\u00f6nnen sicher stellen, wenn sie gegen andere Spieler antreten.",
+        "2_title": "Was ist Ranked?",
+        "2_description": "Ranked Matchmaking ist ein kompetitives Umfeld, in dem Spieler mit anderen Spielern mit \u00e4hnlichen F\u00e4higkeiten verglichen werden, die genauer sind als die aktuellen Schnellspielmodi.",
+        "3_title": "Wie wird SR definiert?",
+        "4_title": "K\u00f6nnen wir mitten im Spiel aufh\u00f6ren?"
+      },
+      "shortcut": "Wusstest Du schon, dass du mit <1>CTRL+ALT+I</1> schneller hier her kommst?",
+      "quickplay": {
+        "title": "Alle gegen alle",
+        "description": "Trete einem Spiel \u00fcberall und jederzeit bei.",
+        "": "Quick Play"
+      },
+      "ranked": {
+        "title": "Rangliste",
+        "description": "Finde heraus wie du dich im internatiolen Wettbewerb schl\u00e4gst",
+        "join": "Duell (1v1)",
+        "how": "Wie wird gespielt?"
+      },
+      "custom": {
+        "title": "Benutzerdefiniert",
+        "description": "Erstelle ein privates Match f\u00fcr dich und deine Freunde",
+        "create": "Erstelle",
+        "browse": "Suchen",
+        "public": "\u00d6ffentliche Lobbies",
+        "none": "Momentan gibt es keine \u00f6ffentlichen Lobbies.",
+        "": "Benutzerdefiniert"
+      },
+      "practice": "Du befindest Dich in einer <1>\u00dcbungspartie</1>. Deine Resultate werden nicht gespeichert.",
+      "cooldown": "Du bist bereits in einer Partie, bitte warte {{count}} Sekunden bevor Du es nochmal versuchst.",
+      "cooldown_plural": "Du bist bereits in einer Partie, bitte warte {{count}} Sekunden bevor Du es nochmal versuchst.",
+      "random": {
+        "title": "Zuf\u00e4llig",
+        "description": "Lass uns f\u00fcr Dich aussuchen"
+      },
+      "quotes": {
+        "title": "Zitate",
+        "description": "B\u00fccher, Filme und mehr"
+      },
+      "dictionary": {
+        "title": "W\u00f6rterbuch",
+        "description": "H\u00e4ufigsten englischen W\u00f6rter"
+      }
+    },
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "none": "Leider keine Benachrichtigungen.",
+      "markread": "Als gelesen markieren",
+      "remove": "Alle entfernen",
+      "removeconfirm": "Bist Du sicher das Du deine Benachrichtigungen entfernen willst?"
+    },
+    "profile": {
+      "refresh": "Diese Seite wird aktualisiert, beim dr\u00fccken auf \u00c4nderungen speichern.",
+      "profile": "Profil",
+      "account": "Account",
+      "personal": "Pers\u00f6nliches",
+      "information": "Information",
+      "personalize": "Personalisieren",
+      "joined": "Beigetreten",
+      "displayname": "Benutzername",
+      "defaultworld": "Standard Welt",
+      "about": "\u00dcber mich",
+      "fullname": "Name",
+      "level": "Level",
+      "age": "Alter",
+      "years_old": "Jahre alt",
+      "dob": "Geburtsdatum",
+      "showOnline": "Zeige Online Status",
+      "gender": "Geschlecht",
+      "locale": "Sprache",
+      "country": "Land",
+      "keyboard": {
+        "title": "Tastatur",
+        "layout": "Tastaturlayout",
+        "brand": "Tastaturhersteller",
+        "model": "Tastaturmodell"
+      },
+      "customize": "Anpassen",
+      "wpm": "WPM oder CPM",
+      "border": "Bilderrahmen",
+      "playercards": "Spielerkarte"
+    },
+    "settings": {
+      "refresh": "Diese Seite wird aktualisiert, beim dr\u00fccken auf \u00c4nderungen speichern.",
+      "profile": "Profil",
+      "information": "Information",
+      "personalize": "Personalisieren",
+      "displayname": "Benutzername",
+      "defaultworld": "Standard Welt",
+      "about": "\u00dcber mich",
+      "fullname": "Name",
+      "dob": "Geburtsdatum",
+      "showOnline": "Zeige Online Status",
+      "gender": "Geschlecht",
+      "locale": "Sprache",
+      "country": "Land",
+      "keyboard": {
+        "layout": "Tastaturlayout",
+        "brand": "Tastaturhersteller",
+        "model": "Tastaturmodell"
+      },
+      "customize": "Anpassen",
+      "wpm": "WPM oder CPM",
+      "border": "Bilderrahmen",
+      "playercards": "Spielerkarte"
+    }
+  }
 }

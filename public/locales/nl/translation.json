@@ -1,370 +1,370 @@
 {
-    "other": {
-        "account_banned": "Uw account is verbannen, neem contact op met support@keymash.io!",
-        "twitch_none": "Er is momenteel niemand live :( Kom later terug of start zelf een stream!",
-        "grades": {
-            "passed": "Geslaagd",
-            "failed": "Gefaald"
-        },
-        "finished": "Klaar",
-        "gameover": "Game Over",
-        "lists": {
-            "locales": "Talen",
-            "types": "Types"
-        },
-        "debug": {
-            "title": "Bug rapporteren",
-            "list": {
-                "0": "Plotselinge disconnectie tijdens een potje",
-                "2": "Jouw voortgangsbalk wordt niet vernieuwt voor jou en anderen",
-                "3": "Niet het eindresultaat zien, hoewel de pot al gespeeld is"
-            }
-        },
-        "save": "Opslaan!"
+  "other": {
+    "account_banned": "Uw account is verbannen, neem contact op met support@keymash.io!",
+    "twitch_none": "Er is momenteel niemand live :( Kom later terug of start zelf een stream!",
+    "grades": {
+      "passed": "Geslaagd",
+      "failed": "Gefaald"
     },
-    "button": {
-        "save": "Opslaan!",
-        "retry": "Opnieuw",
-        "back": "Terug",
-        "next": "Volgende",
-        "close": "Dichtbij",
-        "leave": "Verlaat",
-        "enable": "Activeer",
-        "disable": "Deactiveer",
-        "spectator": "Toeschouwer",
-        "join": "Word lid-",
-        "ladder": "Ranglijst",
-        "lobby": "Lobby",
-        "newgame": "Nieuw Spel",
-        "letsgo": "Goedzo!"
+    "finished": "Klaar",
+    "gameover": "Game Over",
+    "lists": {
+      "locales": "Talen",
+      "types": "Types"
     },
-    "charts": {
-        "lowest": "Laagste",
-        "highest": "Hoogste"
+    "debug": {
+      "title": "Bug rapporteren",
+      "list": {
+        "0": "Plotselinge disconnectie tijdens een potje",
+        "2": "Jouw voortgangsbalk wordt niet vernieuwt voor jou en anderen",
+        "3": "Niet het eindresultaat zien, hoewel de pot al gespeeld is"
+      }
     },
-    "options": {
-        "yes": "Ja",
-        "no": "Nee",
-        "random": "Willekeurig",
-        "quotes": "Citaten",
-        "dict": "Woordenboek",
-        "custom": "Aangepast"
+    "save": "Opslaan!"
+  },
+  "button": {
+    "save": "Opslaan!",
+    "retry": "Opnieuw",
+    "back": "Terug",
+    "next": "Volgende",
+    "close": "Dichtbij",
+    "leave": "Verlaat",
+    "enable": "Activeer",
+    "disable": "Deactiveer",
+    "spectator": "Toeschouwer",
+    "join": "Word lid-",
+    "ladder": "Ranglijst",
+    "lobby": "Lobby",
+    "newgame": "Nieuw Spel",
+    "letsgo": "Goedzo!"
+  },
+  "charts": {
+    "lowest": "Laagste",
+    "highest": "Hoogste"
+  },
+  "options": {
+    "yes": "Ja",
+    "no": "Nee",
+    "random": "Willekeurig",
+    "quotes": "Citaten",
+    "dict": "Woordenboek",
+    "custom": "Aangepast"
+  },
+  "form": {
+    "message": "Voer een bericht in..."
+  },
+  "statistics": {
+    "wpm_abbreviation": "WPM",
+    "cpm_abbreviation": "APM",
+    "wpm": "Woorden Per Minuut",
+    "cpm": "Aanslagen Per Minuut",
+    "time": "Verstreken Tijd",
+    "won": "Gewonnen",
+    "lost": "Verloren",
+    "ratio": "Ratio",
+    "accuracy": "Nauwkeurigheid",
+    "exp_abbreviation": "ERV",
+    "playtime": "Gespeelde tijd",
+    "exp_total": "Totale ervaring",
+    "exp": "Ervaring",
+    "wpm_fastest": "Snelste spel",
+    "mistakes": "Fouten",
+    "grade": "Cijfer",
+    "records": "Records",
+    "total": "Totaal",
+    "tournaments": "Toernooien",
+    "top5": "Top 5"
+  },
+  "component": {
+    "spectator": {
+      "help_title": "Toeschouwer hulp",
+      "help_1": "1. Gebruik de knop linksboven om het spel te verlaten.",
+      "help_2": "2. Iedere speler is gemarkeerd met een gekleurde driehoek. De kleur komt overeen met het streepje in het tekstvak."
     },
-    "form": {
-        "message": "Voer een bericht in..."
+    "topbar": {
+      "home": "Startpagina",
+      "news": "Nieuws",
+      "play": "Speel",
+      "leaders": "Leiders",
+      "discord": "Discord"
     },
-    "statistics": {
-        "wpm_abbreviation": "WPM",
-        "cpm_abbreviation": "APM",
-        "wpm": "Woorden Per Minuut",
-        "cpm": "Aanslagen Per Minuut",
-        "time": "Verstreken Tijd",
-        "won": "Gewonnen",
-        "lost": "Verloren",
-        "ratio": "Ratio",
-        "accuracy": "Nauwkeurigheid",
-        "exp_abbreviation": "ERV",
-        "playtime": "Gespeelde tijd",
-        "exp_total": "Totale ervaring",
-        "exp": "Ervaring",
-        "wpm_fastest": "Snelste spel",
-        "mistakes": "Fouten",
-        "grade": "Cijfer",
-        "records": "Records",
-        "total": "Totaal",
-        "tournaments": "Toernooien",
-        "top5": "Top 5"
+    "bottombar": {
+      "about": "Over ons",
+      "tos": "Servicevoorwaarden",
+      "privacy": "Privacybeleid",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Bijdragen",
+      "guidelines": "Communityrichtlijnen",
+      "shortcuts": "Sneltoetsen",
+      "faq": "Veel Gestelde Vragen",
+      "troubleshooting": "Probleemoplossen",
+      "faqM": "FAQ"
     },
-    "component": {
-        "spectator": {
-            "help_title": "Toeschouwer hulp",
-            "help_1": "1. Gebruik de knop linksboven om het spel te verlaten.",
-            "help_2": "2. Iedere speler is gemarkeerd met een gekleurde driehoek. De kleur komt overeen met het streepje in het tekstvak."
-        },
-        "topbar": {
-            "home": "Startpagina",
-            "news": "Nieuws",
-            "play": "Speel",
-            "leaders": "Leiders",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "Over ons",
-            "tos": "Servicevoorwaarden",
-            "privacy": "Privacybeleid",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "Bijdragen",
-            "guidelines": "Communityrichtlijnen",
-            "shortcuts": "Sneltoetsen",
-            "faq": "Veel Gestelde Vragen",
-            "troubleshooting": "Probleemoplossen",
-            "faqM": "FAQ"
-        },
-        "navbar": {
-            "home": "Home",
-            "news": "Nieuws",
-            "play": "Speel",
-            "leaders": "Leiders",
-            "discord": "Discord",
-            "practice": "Oefen",
-            "twitch": "Twitch",
-            "store": "Merch",
-            "learn": "Leren",
-            "achievements": "Prestaties",
-            "statistics": "Statistieken",
-            "matches": "Matchen",
-            "recent_matches": "Recente Matchen",
-            "tournaments": "Toernooien",
-            "settings": "Instellingen",
-            "matchmaking": "Matchmaking",
-            "logout": "Uitloggen",
-            "login": "Aanmelden",
-            "notifications": "Meldingen",
-            "custom": "Op Maat"
-        },
-        "auth": {
-            "discord": "Log in met Discord",
-            "facebook": "Log in met Facebook",
-            "google": "Log in met Google"
-        }
+    "navbar": {
+      "home": "Home",
+      "news": "Nieuws",
+      "play": "Speel",
+      "leaders": "Leiders",
+      "discord": "Discord",
+      "practice": "Oefen",
+      "twitch": "Twitch",
+      "store": "Merch",
+      "learn": "Leren",
+      "achievements": "Prestaties",
+      "statistics": "Statistieken",
+      "matches": "Matchen",
+      "recent_matches": "Recente Matchen",
+      "tournaments": "Toernooien",
+      "settings": "Instellingen",
+      "matchmaking": "Matchmaking",
+      "logout": "Uitloggen",
+      "login": "Aanmelden",
+      "notifications": "Meldingen",
+      "custom": "Op Maat"
     },
-    "page": {
-        "banned": {
-            "title": "Uw account is geblokkeerd",
-            "text": "Uw Keymash account is voorlopig geblokkeerd. Dit kan komen door het overtreden van onze algemene voorwaarden. Heeft u vragen? Neem dan contact op via support@keymash.io"
-        },
-        "guest": {
-            "title": "Uw gast account is gereset"
-        },
-        "match": {
-            "completed": "Match Voltooid",
-            "mistakes": "Fouten",
-            "no_mistakes": "Geweldig! Je maakte geen fouten tijdens deze match.",
-            "suspended": "Je bent geschorst van deze match vanwege valsspelen.",
-            "time_out": "Je hebt geen tijd meer om de match af te ronden. Volgende keer meer geluk!",
-            "reconnect_failed": "We zijn er niet in geslaagd om je terug te aan te melden bij de match.",
-            "many_mistakes": "Je hebt te veel fouten gemaakt",
-            "statistics_unsaved": "Jouw statistieken zijn niet opgeslagen voor deze match.",
-            "connect_lost": "Verbinding verloren, opnieuw proberen",
-            "reconnect": "Herconnecteren"
-        },
-        "error404": {
-            "title": "The pagina waar u naar op zoek bent, bestaat niet.",
-            "message": "Als u per ongeluk naar deze pagina bent doorverwezen, neem dan contact op met"
-        },
-        "custom": {
-            "configuration": "Configuratei",
-            "title": "Titel",
-            "privacy": "Privacy",
-            "mode": "Modus",
-            "guests": "Gasten toestaan?",
-            "text": "Tekst",
-            "match": "Match",
-            "custom": "Aangepast",
-            "status": {
-                "lobby": "In Lobby",
-                "game": "In Wedstrijd"
-            },
-            "unlisted": "Niet op ranglijst",
-            "public": "Publiek",
-            "countdown": "Aftellen",
-            "startmatch": "Start Match",
-            "error": {
-                "team_size": "Je teamgrootte moet exact zijn om de match te kunnen beginnen.",
-                "unsaved": "Je moet je wijzigingen opslaan om te starten."
-            },
-            "chat": "Gelieve u te onthouden van het plaatsen van gevoelige en\/of vertrouwelijke berichten."
-        },
-        "learn": {
-            "title": "Leercentrum",
-            "welcome": "Welkom! Dit leercentrum zal typisten helpen voorzien van nieuw materiaal, om hun typesnelheid te vergroten.",
-            "lesson": "Les",
-            "section": "Sectie",
-            "reportcard": "Rapport",
-            "tips": {
-                "one": "Als u langzamer typt op woorden die veel moeilijker zijn, helpt dat uw consistentie op de lange termijn.",
-                "two": "Voer elke 15 minuten polsoefeningen uit om permanente zenuwschade aan uw polsen en schouders te voorkomen.",
-                "three": "Het leren van de Home Row is zeer belangrijk bij het trainen van je spiergeheugen om te typen zonder naar het toetsenbord te kijken."
-            }
-        },
-        "achievements": {
-            "personal_best": "Persoonlijk beste",
-            "matches_played": "Matchen gespeeld",
-            "matches_won": "Matchen gewonnen",
-            "playtime": "Totale speeltijd"
-        },
-        "login": {
-            "title": "Log in",
-            "descr": "Selecteer \u00e9\u00e9n van de volgende opties"
-        },
-        "home": {
-            "matches_new": "Nieuwste Match",
-            "matches_high": "Highscore van vandaag",
-            "tournaments": {
-                "title": "Dagelijkse competities",
-                "content1": "Wij organiseren toernooien om de vaardigheden van typisten te testen <1> elke dag<\/1>. Met elke zondag een extra toernooi om kans te maken op <1>Discord Nitro<\/1>.",
-                "button": "Begin nu met de competitie!"
-            },
-            "lobbies": "Publieke Lobbies",
-            "news": "Laatste nieuws",
-            "slogan": "Til typen naar een hoger niveau",
-            "hero": {
-                "content1": "Als u vragen of opmerkingen heeft, aarzel dan niet om contact met ons op te nemen op Discord of direct via <1>support@keymash.io<\/1>.",
-                "content2": "Oh ja, vergeten te vermelden... We zijn altijd op zoek naar een bijdrage van de gemeenschap, inclusief tekstinzendingen, taalvertalingen en meer! <1>Klik hier<\/1> voor meer informatie.",
-                "button": "Start nu met typen!"
-            },
-            "schools": {
-                "title": "Kunnen scholen dit gebruiken?",
-                "button": "Start met leren!",
-                "content1": " <1>Absoluut<\/1>. Ons Leercentrum wordt aangeboden aan elke typiste met of zonder een account, maar we raden ten zeerste aan om een account te hebben om de voortgang op te slaan.",
-                "content2": "Deze service is <1>vrij<\/1> voor iedereen over de hele wereld en we gebruiken een eenvoudig scoresysteem dat gebaseerd is op de Verenigde Staten."
-            },
-            "custom": {
-                "title": "Spelen met vrienden is zo gemakkelijk",
-                "content1": "Met \u00e9\u00e9n druk op de knop kunt u uw eigen priv\u00e9kamer starten waar een van uw vrienden en familie kan meedoen. Wij bieden volledige aanpassing en laten zelfs de mogelijkheid om te kijken hoe andere spelers typen.",
-                "button": "Maak een lobby!"
-            }
-        },
-        "leaderboards": {
-            "level": "Hoogste niveau",
-            "time": "Meeste gespeeld",
-            "speed": "Snelste snelheid",
-            "wins": "Meeste Gewonnen"
-        },
-        "tournaments": {
-            "title": "Tornooien",
-            "join": "Doe mee met de ranglijst",
-            "play": "Speel nu",
-            "starts": "Start",
-            "ends": "Einde",
-            "finished": "Voltooid",
-            "info": "Informatie",
-            "rules": "Regels",
-            "players": "Spelers",
-            "bracket": "Ondersteuning",
-            "qualified": "Gekwalificieerd",
-            "notqualified": "Niet Gekwalificeerd",
-            "qualification": "Kwalificaties",
-            "ladders": "Ranglijsten",
-            "none": "Er hebben nog geen spelers meegedaan, word de eerste!"
-        },
-        "queue": {
-            "howToPlayGuide": {
-                "1_title": "Hoe te Spelen?",
-                "2_title": "Wat is Competitief?",
-                "3_title": "Hoe wordt SR bepaald?",
-                "4_title": "Kunnen we midden in het spel verlaten?"
-            },
-            "shortcut": "Wist je dat <1>CTRL+ALT+I<1> je hier sneller kan brengen?",
-            "titles": {
-                "casual": "Gewoon",
-                "competitive": "Competitief",
-                "playNow": "Speel Nu",
-                "latestNews": "Laatste Nieuws",
-                "lobbies": "Open Lobby's",
-                "competitions": "Competities"
-            },
-            "quickplay": {
-                "title": "Gratis voor iedereen",
-                "description": "Neem onmiddellijk deel aan een wedstrijd waar ook ter wereld",
-                "": "Snel spel"
-            },
-            "ranked": {
-                "title": "Gerangschikt",
-                "description": "Plaats jezelf tegen de wereld van de competitie",
-                "join": "Binnenkort verwacht",
-                "how": "Hoe te spelen"
-            },
-            "custom": {
-                "title": "Aangepast",
-                "description": "Maak een priv\u00e9-match met jou en je vrienden",
-                "create": "Maak",
-                "browse": "Zoek",
-                "public": "Publieke lobbies",
-                "none": "Er zijn momenteel geen publieke lobbies.",
-                "": "Aangepast"
-            },
-            "practice": "Je speelt in een <1>oefen<\/1> wedstrijd. Je scores worden niet opgeslagen.",
-            "cooldown": "Je bent al in een wedstrijd, wacht {{count}} seconde en probeer het dan nog eens.",
-            "cooldown_plural": "Je bent al in een wedstrijd, wacht {{count}} seconden en probeer het dan nog eens.",
-            "random": {
-                "title": "Willekeurig",
-                "description": "Laar ons kiezen voor jou"
-            },
-            "quotes": {
-                "title": "Citaten",
-                "description": "Boeken, films en meer"
-            },
-            "dictionary": {
-                "title": "Woordenboek",
-                "description": "Top Engelse Woorden"
-            }
-        },
-        "notifications": {
-            "title": "Notificaties",
-            "none": "Je hebt geen notificaties.",
-            "markread": "Markeer als gelezen",
-            "remove": "Verwijder alles",
-            "removeconfirm": "Ben je zeker dat je alle notificaties wil verwijderen?"
-        },
-        "profile": {
-            "refresh": "Deze pagina zal herladen nadat je op wijzigingen opslaan hebt gedrukt.",
-            "profile": "Profiel",
-            "account": "Account",
-            "personal": "Persoonlijk",
-            "information": "Informatie",
-            "personalize": "Personalizeer",
-            "joined": "Aangesloten",
-            "displayname": "Gebruikersnaam",
-            "defaultworld": "Standaard wereld",
-            "about": "Over Mij",
-            "general": "Algemeen",
-            "fullname": "Naam",
-            "level": "Niveau",
-            "age": "Leeftijd",
-            "years_old": "jaren oud",
-            "dob": "Geboortedatum",
-            "showOnline": "Geef online status weer",
-            "gender": "Geslacht",
-            "locale": "Taal",
-            "country": "Land",
-            "simplifyHome": "Home vereenvoudigen?",
-            "keyboard": {
-                "title": "Toetsenbord",
-                "layout": "Toetsenbord Layout",
-                "brand": "Merk van toetsenbord",
-                "model": "Model van toetsenbord"
-            },
-            "customize": "Pas aan",
-            "wpm": "WPM of APM?",
-            "navbar": "Stijl van de navbar",
-            "border": "Afbeelding rand",
-            "playercards": "Kaarten van spelers"
-        },
-        "settings": {
-            "refresh": "Deze pagina zal herladen als je op wijzigingen opslaan klikt.",
-            "profile": "Profiel",
-            "information": "Informatie",
-            "personalize": "Personaliseer",
-            "displayname": "Gebruikersnaam",
-            "defaultworld": "Standaard wereld",
-            "about": "Over mij",
-            "fullname": "Naam",
-            "dob": "Geboortedatum",
-            "showOnline": "Geef online status weer",
-            "gender": "Geslacht",
-            "locale": "Taal",
-            "country": "Land",
-            "keyboard": {
-                "layout": "Toetsenboard Layout",
-                "brand": "Merk van toetsenbord",
-                "model": "Model van toetenbord"
-            },
-            "customize": "Pas aan",
-            "wpm": "WPM of AMP?",
-            "border": "Afbeelding rand",
-            "playercards": "Kaarten van spelers"
-        }
+    "auth": {
+      "discord": "Log in met Discord",
+      "facebook": "Log in met Facebook",
+      "google": "Log in met Google"
     }
+  },
+  "page": {
+    "banned": {
+      "title": "Uw account is geblokkeerd",
+      "text": "Uw Keymash account is voorlopig geblokkeerd. Dit kan komen door het overtreden van onze algemene voorwaarden. Heeft u vragen? Neem dan contact op via support@keymash.io"
+    },
+    "guest": {
+      "title": "Uw gast account is gereset"
+    },
+    "match": {
+      "completed": "Match Voltooid",
+      "mistakes": "Fouten",
+      "no_mistakes": "Geweldig! Je maakte geen fouten tijdens deze match.",
+      "suspended": "Je bent geschorst van deze match vanwege valsspelen.",
+      "time_out": "Je hebt geen tijd meer om de match af te ronden. Volgende keer meer geluk!",
+      "reconnect_failed": "We zijn er niet in geslaagd om je terug te aan te melden bij de match.",
+      "many_mistakes": "Je hebt te veel fouten gemaakt",
+      "statistics_unsaved": "Jouw statistieken zijn niet opgeslagen voor deze match.",
+      "connect_lost": "Verbinding verloren, opnieuw proberen",
+      "reconnect": "Herconnecteren"
+    },
+    "error404": {
+      "title": "The pagina waar u naar op zoek bent, bestaat niet.",
+      "message": "Als u per ongeluk naar deze pagina bent doorverwezen, neem dan contact op met"
+    },
+    "custom": {
+      "configuration": "Configuratei",
+      "title": "Titel",
+      "privacy": "Privacy",
+      "mode": "Modus",
+      "guests": "Gasten toestaan?",
+      "text": "Tekst",
+      "match": "Match",
+      "custom": "Aangepast",
+      "status": {
+        "lobby": "In Lobby",
+        "game": "In Wedstrijd"
+      },
+      "unlisted": "Niet op ranglijst",
+      "public": "Publiek",
+      "countdown": "Aftellen",
+      "startmatch": "Start Match",
+      "error": {
+        "team_size": "Je teamgrootte moet exact zijn om de match te kunnen beginnen.",
+        "unsaved": "Je moet je wijzigingen opslaan om te starten."
+      },
+      "chat": "Gelieve u te onthouden van het plaatsen van gevoelige en/of vertrouwelijke berichten."
+    },
+    "learn": {
+      "title": "Leercentrum",
+      "welcome": "Welkom! Dit leercentrum zal typisten helpen voorzien van nieuw materiaal, om hun typesnelheid te vergroten.",
+      "lesson": "Les",
+      "section": "Sectie",
+      "reportcard": "Rapport",
+      "tips": {
+        "one": "Als u langzamer typt op woorden die veel moeilijker zijn, helpt dat uw consistentie op de lange termijn.",
+        "two": "Voer elke 15 minuten polsoefeningen uit om permanente zenuwschade aan uw polsen en schouders te voorkomen.",
+        "three": "Het leren van de Home Row is zeer belangrijk bij het trainen van je spiergeheugen om te typen zonder naar het toetsenbord te kijken."
+      }
+    },
+    "achievements": {
+      "personal_best": "Persoonlijk beste",
+      "matches_played": "Matchen gespeeld",
+      "matches_won": "Matchen gewonnen",
+      "playtime": "Totale speeltijd"
+    },
+    "login": {
+      "title": "Log in",
+      "descr": "Selecteer \u00e9\u00e9n van de volgende opties"
+    },
+    "home": {
+      "matches_new": "Nieuwste Match",
+      "matches_high": "Highscore van vandaag",
+      "tournaments": {
+        "title": "Dagelijkse competities",
+        "content1": "Wij organiseren toernooien om de vaardigheden van typisten te testen <1> elke dag</1>. Met elke zondag een extra toernooi om kans te maken op <1>Discord Nitro</1>.",
+        "button": "Begin nu met de competitie!"
+      },
+      "lobbies": "Publieke Lobbies",
+      "news": "Laatste nieuws",
+      "slogan": "Til typen naar een hoger niveau",
+      "hero": {
+        "content1": "Als u vragen of opmerkingen heeft, aarzel dan niet om contact met ons op te nemen op Discord of direct via <1>support@keymash.io</1>.",
+        "content2": "Oh ja, vergeten te vermelden... We zijn altijd op zoek naar een bijdrage van de gemeenschap, inclusief tekstinzendingen, taalvertalingen en meer! <1>Klik hier</1> voor meer informatie.",
+        "button": "Start nu met typen!"
+      },
+      "schools": {
+        "title": "Kunnen scholen dit gebruiken?",
+        "button": "Start met leren!",
+        "content1": " <1>Absoluut</1>. Ons Leercentrum wordt aangeboden aan elke typiste met of zonder een account, maar we raden ten zeerste aan om een account te hebben om de voortgang op te slaan.",
+        "content2": "Deze service is <1>vrij</1> voor iedereen over de hele wereld en we gebruiken een eenvoudig scoresysteem dat gebaseerd is op de Verenigde Staten."
+      },
+      "custom": {
+        "title": "Spelen met vrienden is zo gemakkelijk",
+        "content1": "Met \u00e9\u00e9n druk op de knop kunt u uw eigen priv\u00e9kamer starten waar een van uw vrienden en familie kan meedoen. Wij bieden volledige aanpassing en laten zelfs de mogelijkheid om te kijken hoe andere spelers typen.",
+        "button": "Maak een lobby!"
+      }
+    },
+    "leaderboards": {
+      "level": "Hoogste niveau",
+      "time": "Meeste gespeeld",
+      "speed": "Snelste snelheid",
+      "wins": "Meeste Gewonnen"
+    },
+    "tournaments": {
+      "title": "Tornooien",
+      "join": "Doe mee met de ranglijst",
+      "play": "Speel nu",
+      "starts": "Start",
+      "ends": "Einde",
+      "finished": "Voltooid",
+      "info": "Informatie",
+      "rules": "Regels",
+      "players": "Spelers",
+      "bracket": "Ondersteuning",
+      "qualified": "Gekwalificieerd",
+      "notqualified": "Niet Gekwalificeerd",
+      "qualification": "Kwalificaties",
+      "ladders": "Ranglijsten",
+      "none": "Er hebben nog geen spelers meegedaan, word de eerste!"
+    },
+    "queue": {
+      "howToPlayGuide": {
+        "1_title": "Hoe te Spelen?",
+        "2_title": "Wat is Competitief?",
+        "3_title": "Hoe wordt SR bepaald?",
+        "4_title": "Kunnen we midden in het spel verlaten?"
+      },
+      "shortcut": "Wist je dat <1>CTRL+ALT+I<1> je hier sneller kan brengen?",
+      "titles": {
+        "casual": "Gewoon",
+        "competitive": "Competitief",
+        "playNow": "Speel Nu",
+        "latestNews": "Laatste Nieuws",
+        "lobbies": "Open Lobby's",
+        "competitions": "Competities"
+      },
+      "quickplay": {
+        "title": "Gratis voor iedereen",
+        "description": "Neem onmiddellijk deel aan een wedstrijd waar ook ter wereld",
+        "": "Snel spel"
+      },
+      "ranked": {
+        "title": "Gerangschikt",
+        "description": "Plaats jezelf tegen de wereld van de competitie",
+        "join": "Binnenkort verwacht",
+        "how": "Hoe te spelen"
+      },
+      "custom": {
+        "title": "Aangepast",
+        "description": "Maak een priv\u00e9-match met jou en je vrienden",
+        "create": "Maak",
+        "browse": "Zoek",
+        "public": "Publieke lobbies",
+        "none": "Er zijn momenteel geen publieke lobbies.",
+        "": "Aangepast"
+      },
+      "practice": "Je speelt in een <1>oefen</1> wedstrijd. Je scores worden niet opgeslagen.",
+      "cooldown": "Je bent al in een wedstrijd, wacht {{count}} seconde en probeer het dan nog eens.",
+      "cooldown_plural": "Je bent al in een wedstrijd, wacht {{count}} seconden en probeer het dan nog eens.",
+      "random": {
+        "title": "Willekeurig",
+        "description": "Laar ons kiezen voor jou"
+      },
+      "quotes": {
+        "title": "Citaten",
+        "description": "Boeken, films en meer"
+      },
+      "dictionary": {
+        "title": "Woordenboek",
+        "description": "Top Engelse Woorden"
+      }
+    },
+    "notifications": {
+      "title": "Notificaties",
+      "none": "Je hebt geen notificaties.",
+      "markread": "Markeer als gelezen",
+      "remove": "Verwijder alles",
+      "removeconfirm": "Ben je zeker dat je alle notificaties wil verwijderen?"
+    },
+    "profile": {
+      "refresh": "Deze pagina zal herladen nadat je op wijzigingen opslaan hebt gedrukt.",
+      "profile": "Profiel",
+      "account": "Account",
+      "personal": "Persoonlijk",
+      "information": "Informatie",
+      "personalize": "Personalizeer",
+      "joined": "Aangesloten",
+      "displayname": "Gebruikersnaam",
+      "defaultworld": "Standaard wereld",
+      "about": "Over Mij",
+      "general": "Algemeen",
+      "fullname": "Naam",
+      "level": "Niveau",
+      "age": "Leeftijd",
+      "years_old": "jaren oud",
+      "dob": "Geboortedatum",
+      "showOnline": "Geef online status weer",
+      "gender": "Geslacht",
+      "locale": "Taal",
+      "country": "Land",
+      "simplifyHome": "Home vereenvoudigen?",
+      "keyboard": {
+        "title": "Toetsenbord",
+        "layout": "Toetsenbord Layout",
+        "brand": "Merk van toetsenbord",
+        "model": "Model van toetsenbord"
+      },
+      "customize": "Pas aan",
+      "wpm": "WPM of APM?",
+      "navbar": "Stijl van de navbar",
+      "border": "Afbeelding rand",
+      "playercards": "Kaarten van spelers"
+    },
+    "settings": {
+      "refresh": "Deze pagina zal herladen als je op wijzigingen opslaan klikt.",
+      "profile": "Profiel",
+      "information": "Informatie",
+      "personalize": "Personaliseer",
+      "displayname": "Gebruikersnaam",
+      "defaultworld": "Standaard wereld",
+      "about": "Over mij",
+      "fullname": "Naam",
+      "dob": "Geboortedatum",
+      "showOnline": "Geef online status weer",
+      "gender": "Geslacht",
+      "locale": "Taal",
+      "country": "Land",
+      "keyboard": {
+        "layout": "Toetsenboard Layout",
+        "brand": "Merk van toetsenbord",
+        "model": "Model van toetenbord"
+      },
+      "customize": "Pas aan",
+      "wpm": "WPM of AMP?",
+      "border": "Afbeelding rand",
+      "playercards": "Kaarten van spelers"
+    }
+  }
 }

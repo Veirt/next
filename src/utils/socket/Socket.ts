@@ -11,7 +11,7 @@ class Socket {
   constructor(uri?: string, opts?: Partial<ManagerOptions & SocketOptions>) {
     this.client = connect(uri || 'http://localhost', {
       ...opts,
-      parser: msgPackParser
+      parser: msgPackParser,
     });
   }
 

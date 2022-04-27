@@ -1,125 +1,124 @@
-import { SocketChartData } from "./types.client.socket";
-
+import { SocketChartData } from './types.client.socket';
 
 export interface PlayerLogData {
-    _id?: string;
-    playerId: string;
-    action: string;
-    ipAddress: string;
-    created: number;
+  _id?: string;
+  playerId: string;
+  action: string;
+  ipAddress: string;
+  created: number;
 }
 
 export interface PlayerAchievementData {
-    _id?: string;
-    playerId: string;
-    achievementId: string;
-    exp: number;
-    created: number;
+  _id?: string;
+  playerId: string;
+  achievementId: string;
+  exp: number;
+  created: number;
 }
 
 export interface PlayerItemData {
-    _id?: string;
-    playerId: string;
-    itemId: string;
-    created: number;
+  _id?: string;
+  playerId: string;
+  itemId: string;
+  created: number;
 }
 
 export interface PlayerLearnData extends LearnLesson {
-    _id?: string;
-    playerId: string;
-    lessonId: string;
-    exp: number;
-    wpm: number;
-    accuracy: number;
-    mistakes: number;
-    time: number;
-    unlocked: number;
-    created: number;
+  _id?: string;
+  playerId: string;
+  lessonId: string;
+  exp: number;
+  wpm: number;
+  accuracy: number;
+  mistakes: number;
+  time: number;
+  unlocked: number;
+  created: number;
 }
 
 export interface PlayerNotificationData {
-    _id?: string;
-    playerId: string;
-    type: string;
-    message: string;
-    read: number;
-    location: string;
-    created: number;
+  _id?: string;
+  playerId: string;
+  type: string;
+  message: string;
+  read: number;
+  location: string;
+  created: number;
 }
 
 export interface PlayerMatchData {
-    _id?: string;
-    playerId: string;
-    matchId: string;
-    wpm: number;
-    exp: number;
-    points: number;
-    placement: number;
-    accuracy: number;
-    time: number;
-    created: number;
-    finished: number;
-    keystrokeLog?: boolean;
+  _id?: string;
+  playerId: string;
+  matchId: string;
+  wpm: number;
+  exp: number;
+  points: number;
+  placement: number;
+  accuracy: number;
+  time: number;
+  created: number;
+  finished: number;
+  keystrokeLog?: boolean;
 }
 
 export interface PlayerTournamentData {
-    _id?: string;
-    playerId: string;
-    tournamentId: string;
-    maxWPM: number;
-    avgWPM: number;
-    matchesTotal: number;
-    matchesWon: number;
-    recentWPM: number[];
-    placement?: number;
-    created: number;
+  _id?: string;
+  playerId: string;
+  tournamentId: string;
+  maxWPM: number;
+  avgWPM: number;
+  matchesTotal: number;
+  matchesWon: number;
+  recentWPM: number[];
+  placement?: number;
+  created: number;
 }
 
 export interface PlayerStatisticData {
-    _id?: string;
-    playerId: string;
-    lowestElapsed: number;
-    highestWPM: number;
-    highestEXP: number;
-    matchesWon: number;
-    matchesLost: number;
-    matchesQuit: number;
-    tournamentsWon: number;
-    tournamentsTop5: number;
-    tournamentsLost: number;
+  _id?: string;
+  playerId: string;
+  lowestElapsed: number;
+  highestWPM: number;
+  highestEXP: number;
+  matchesWon: number;
+  matchesLost: number;
+  matchesQuit: number;
+  tournamentsWon: number;
+  tournamentsTop5: number;
+  tournamentsLost: number;
 }
 
 export interface PlayerRankedData {
-    _id?: string;
-    playerId: string;
-    locale: string;
-    seasonId: number;
-    modeId: number;
-    rating: number;
-    deviation: number;
-    matchesWon: number;
-    matchesLost: number;
-    matchesQuit: number;
-    created: number;
+  _id?: string;
+  playerId: string;
+  locale: string;
+  seasonId: number;
+  modeId: number;
+  rating: number;
+  deviation: number;
+  matchesWon: number;
+  matchesLost: number;
+  matchesQuit: number;
+  created: number;
 }
 
 export interface PlayerRoundData {
-    WPM: number;
-    Replay: string;
-    Keystrokes: { 
-        averageDelay: number;
-        delay: number[];
-        incorrect: number[];
-    };
-    Words: { 
-        averageWPM: number;
-        wpm: number[];
-        incorrect: number[];
-    };
-    Accuracy: number;
-    ElapsedTime: number;
-    Chart: SocketChartData;
-    Text: TextData;
+  WPM: number;
+  Replay: string;
+  Keystrokes: {
+    averageDelay: number;
+    delay: number[];
+    incorrect: number[];
+  };
+  Words: {
+    averageWPM: number;
+    wpm: number[];
+    incorrect: number[];
+  };
+  Accuracy: number;
+  ElapsedTime: number;
+  Chart: SocketChartData;
+  Text: TextData;
 }
 
 /*
@@ -127,266 +126,266 @@ export interface PlayerRoundData {
  */
 
 export interface AuthenticationSessionData extends PlayerData {
-    authName: string;
+  authName: string;
 }
 
 export interface AuthenticationData {
-    _id?: string;
-    playerId: string;
-    avatarSrc: string;
-    emailAddress: string;
-    authName: string;
-    authId?: string | null;
-    authUser?: string;
-    authPassword?: string;
+  _id?: string;
+  playerId: string;
+  avatarSrc: string;
+  emailAddress: string;
+  authName: string;
+  authId?: string | null;
+  authUser?: string;
+  authPassword?: string;
 }
 
 export interface PlayerData {
-    _id?: string;
-    playerId: string;
-    name: string;
-    discriminator: string;
-    avatarSrc: string;
-    verified: number;
-    patreon: number;
-    staff: number;
-    experience: number;
-    playtime: number;
-    currency: number;
-    fullName: string;
-    dateOfBirth: string;
-    useConfig: string;
-    countryId: number;
-    description: string;
-    keyboardBrand: string;
-    keyboardModel: string;
-    keyboardId: number;
-    cardImage: string;
-    cardBorder: string;
-    banner: number;
-    created: number;
+  _id?: string;
+  playerId: string;
+  name: string;
+  discriminator: string;
+  avatarSrc: string;
+  verified: number;
+  patreon: number;
+  staff: number;
+  experience: number;
+  playtime: number;
+  currency: number;
+  fullName: string;
+  dateOfBirth: string;
+  useConfig: string;
+  countryId: number;
+  description: string;
+  keyboardBrand: string;
+  keyboardModel: string;
+  keyboardId: number;
+  cardImage: string;
+  cardBorder: string;
+  banner: number;
+  created: number;
 }
 
 export interface PlayerShopData {
-    currency: number;
-    level: PlayerLevelData;
-    inventory: string[];
+  currency: number;
+  level: PlayerLevelData;
+  inventory: string[];
 }
 
 export interface PlayerExtendedData extends PlayerData {
-    country: {
-        name: string;
-        code: string;
-    },
-    Level: PlayerLevelData;
-    keyboardLayout: string;
+  country: {
+    name: string;
+    code: string;
+  };
+  Level: PlayerLevelData;
+  keyboardLayout: string;
 }
 
 export interface LobbyData {
-    lobbyId: string;
-    invite: string;
-    name: string;
-    owner: string;
-    textId: number;
-    textCustom?: string;
-    modeId: number;
-    allowGuests: number;
-    countdown: number;
-    privacy: number;
-    status: number;
-    cardImage?: string;
-    cardBorder?: string;
-    avatarSrc?: string;
-    verified: number;
-    patreon: number;
-    staff: number;
-    gameModes: GamemodeData[];
-    playerList: PlayerData[];
+  lobbyId: string;
+  invite: string;
+  name: string;
+  owner: string;
+  textId: number;
+  textCustom?: string;
+  modeId: number;
+  allowGuests: number;
+  countdown: number;
+  privacy: number;
+  status: number;
+  cardImage?: string;
+  cardBorder?: string;
+  avatarSrc?: string;
+  verified: number;
+  patreon: number;
+  staff: number;
+  gameModes: GamemodeData[];
+  playerList: PlayerData[];
 }
 
 export interface MatchData {
-    _id?: string;
-    matchId: string;
-    locale: string;
-    modeId: number;
-    modeData: GamemodeData;
-    flagId: number;
-    textId: number;
-    tournamentId: string;
-    referralId: string;
-    textCustom: string | null;
-    timeStart: number;
-    timeEnd: number;
-    created: number;
+  _id?: string;
+  matchId: string;
+  locale: string;
+  modeId: number;
+  modeData: GamemodeData;
+  flagId: number;
+  textId: number;
+  tournamentId: string;
+  referralId: string;
+  textCustom: string | null;
+  timeStart: number;
+  timeEnd: number;
+  created: number;
 }
 
 export interface TournamentData {
-    _id?: string;
-    tournamentId: string;
-    locale: string;
-    name: string;
-    info: string;
-    rules: string;
-    bracket: string;
-    qualifier: number;
-    qualifierSort: string;
-    qualifierCutoff: number;
-    recentWPMTotal: number;
-    textType: number;
-    textCustom: string;
-    manual: number;
-    prizing: number;
-    prizingJSON: any;
-    finished: number;
-    startTime: number;
-    endTime: number;
-    created: number;
-    status: number;
-    totalPlayers: number;
+  _id?: string;
+  tournamentId: string;
+  locale: string;
+  name: string;
+  info: string;
+  rules: string;
+  bracket: string;
+  qualifier: number;
+  qualifierSort: string;
+  qualifierCutoff: number;
+  recentWPMTotal: number;
+  textType: number;
+  textCustom: string;
+  manual: number;
+  prizing: number;
+  prizingJSON: any;
+  finished: number;
+  startTime: number;
+  endTime: number;
+  created: number;
+  status: number;
+  totalPlayers: number;
 }
 
 export interface ChallengeData {
-    challengeId: string;
-    text: string;
-    type: string;
-    threshold: number;
-    value: number;
-    flagId: number;
-    modeId: number;
-    rewards: {
-        currency: number;
-        item: string[]
-    }
+  challengeId: string;
+  text: string;
+  type: string;
+  threshold: number;
+  value: number;
+  flagId: number;
+  modeId: number;
+  rewards: {
+    currency: number;
+    item: string[];
+  };
 }
 
 export interface AchievementData {
-    achievementId: string;
-    title: string;
-    type: string;
-    require: number;
-    exp: number;
+  achievementId: string;
+  title: string;
+  type: string;
+  require: number;
+  exp: number;
 }
 
 export interface NewsletterData {
-    _id?: string;
-    increment: number;
-    slug: string;
-    title: string;
-    thumbnail: string;
-    content: string;
-    created: number;
+  _id?: string;
+  increment: number;
+  slug: string;
+  title: string;
+  thumbnail: string;
+  content: string;
+  created: number;
 }
 
 export interface TextData {
-    _id?: string;
-    textId: number;
-    content: string;
-    author: string;
-    source: string;
-    contributor: string;
+  _id?: string;
+  textId: number;
+  content: string;
+  author: string;
+  source: string;
+  contributor: string;
 }
 
 export interface LearnCourse {
-    _id?: string;
-    courseId: string;
-    name: string;
-    keyboard: string;
-    order: number;
+  _id?: string;
+  courseId: string;
+  name: string;
+  keyboard: string;
+  order: number;
 }
 
 export interface LearnSection {
-    _id?: string;
-    sectionId: string;
-    courseId: string;
-    name: string;
-    about: string;
+  _id?: string;
+  sectionId: string;
+  courseId: string;
+  name: string;
+  about: string;
 }
 
 export interface LearnLesson {
-    _id?: string;
-    lessonId: string;
-    sectionId: string;
-    name: string;
-    instruction: string;
-    text: string;
+  _id?: string;
+  lessonId: string;
+  sectionId: string;
+  name: string;
+  instruction: string;
+  text: string;
 }
 
 export interface GamemodeData {
-    modeId: number;
-    modeName: string;
-    modeConfig: {
-        TIMER: number;
-        TEAMS: {
-            MAX: number;
-            SIZE: number;
-            STRICT: boolean;
-          }
-          ROUNDS: {
-            LIMIT: number;
-            FIRST: number;
-          }
-          TRIGGERS: {
-            FIRST_TYPO: boolean;
-            FIRST_FINISH: boolean;
-          }
-          SORT: {
-            ROUND: string; // 'WPM' | 'Elapsed' | 'Accuracy';
-            GLOBAL: string; // 'WPM' | 'Elapsed' | 'Accuracy' | 'roundsWon';
-          }
+  modeId: number;
+  modeName: string;
+  modeConfig: {
+    TIMER: number;
+    TEAMS: {
+      MAX: number;
+      SIZE: number;
+      STRICT: boolean;
     };
+    ROUNDS: {
+      LIMIT: number;
+      FIRST: number;
+    };
+    TRIGGERS: {
+      FIRST_TYPO: boolean;
+      FIRST_FINISH: boolean;
+    };
+    SORT: {
+      ROUND: string; // 'WPM' | 'Elapsed' | 'Accuracy';
+      GLOBAL: string; // 'WPM' | 'Elapsed' | 'Accuracy' | 'roundsWon';
+    };
+  };
 }
 
 export interface SeasonData {
-    id: number;
-    name: string;
-    start: number;
-    end: number;
+  id: number;
+  name: string;
+  start: number;
+  end: number;
 }
 
 /*
  * Other Interfaces
  */
 export interface PlayerCompetitiveData {
-    SR: number;
-    Rank: string;
-    Remaining: number;
-    Games: number;
+  SR: number;
+  Rank: string;
+  Remaining: number;
+  Games: number;
 }
 
 export interface PlayerLevelData {
-    Index: number;
-    Next: number;
-    Prev: number;
-    Percentage: number;
+  Index: number;
+  Next: number;
+  Prev: number;
+  Percentage: number;
 }
 
 export interface PlayerChallengeData {
-    _id?: string;
-    playerId: string;
-    challengeId: string;
-    value: number;
-    finished: number;
-    count: number;
-    created: string; 
-    player: PlayerExtendedData[];
-    challenge: ChallengeData[];
-    mode: GamemodeData[];
+  _id?: string;
+  playerId: string;
+  challengeId: string;
+  value: number;
+  finished: number;
+  count: number;
+  created: string;
+  player: PlayerExtendedData[];
+  challenge: ChallengeData[];
+  mode: GamemodeData[];
 }
 
 export interface TwitchData {
-    name: string;
-    avatar: string;
-    title: string;
-    viewers: number;
-    thumbnail: string;
+  name: string;
+  avatar: string;
+  title: string;
+  viewers: number;
+  thumbnail: string;
 }
 
 export interface ItemData {
-    id: number;
-    name: string;
-    file: string;
-    level: number;
-    price: number;
-    order: number;
-    secret?: boolean;
+  id: number;
+  name: string;
+  file: string;
+  level: number;
+  price: number;
+  order: number;
+  secret?: boolean;
 }

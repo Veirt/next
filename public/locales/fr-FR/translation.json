@@ -1,381 +1,381 @@
 {
-    "other": {
-        "account_banned": "Votre compte a \u00e9t\u00e9 banni, veuillez contacter support@keymash.io !",
-        "twitch_none": "Personne ne stream en ce moment :( Revenez plus tard ou commencez \u00e0 streamer !",
-        "grades": {
-            "passed": "Pass\u00e9",
-            "failed": "Rat\u00e9"
-        },
-        "finished": "Termin\u00e9",
-        "gameover": "Fin de partie",
-        "lists": {
-            "locales": "Langues"
-        },
-        "debug": {
-            "title": "Signaler un bug",
-            "message": "Si vous rencontrez un ou plusieurs des probl\u00e8mes ci-dessous, veuillez cliquer sur le bouton ci-dessous et envoyer un email \u00e0 support@keymash.io avec un maximum d'information sur la fa\u00e7on dont vous avez rencontr\u00e9 ce probl\u00e8me et comment le recr\u00e9er. Plus vous nous fournirez d'informations, plus nous serons en mesure de recr\u00e9er votre probl\u00e8me et le r\u00e9soudre.",
-            "list": [
-                "D\u00e9connexion inopin\u00e9e au milieu d'un match",
-                "Vos MPM\/CPM ne s'actualisent plus pour vous ou pour les autres joueurs",
-                "Votre barre de progression ne se met plus \u00e0 jour, ni pour vous ni pour les autres joueurs",
-                "Ne pas voir les r\u00e9sultats \u00e0 la fin d'une partie alors que celle-ci est termin\u00e9e"
-            ]
-        },
-        "save": "Sauvegarder!"
+  "other": {
+    "account_banned": "Votre compte a \u00e9t\u00e9 banni, veuillez contacter support@keymash.io !",
+    "twitch_none": "Personne ne stream en ce moment :( Revenez plus tard ou commencez \u00e0 streamer !",
+    "grades": {
+      "passed": "Pass\u00e9",
+      "failed": "Rat\u00e9"
     },
-    "button": {
-        "save": "Sauvegarder!",
-        "retry": "R\u00e9essayer",
-        "back": "Retour",
-        "next": "Suivant",
-        "close": "Fermer",
-        "leave": "Quitter",
-        "enable": "Activer",
-        "disable": "D\u00e9sactiver",
-        "spectator": "Spectateur",
-        "join": "Rejoindre",
-        "ladder": "Classement",
-        "lobby": "Lobby",
-        "newgame": "Nouvelle Partie",
-        "letsgo": "C'est parti!"
+    "finished": "Termin\u00e9",
+    "gameover": "Fin de partie",
+    "lists": {
+      "locales": "Langues"
     },
-    "charts": {
-        "lowest": "Le plus bas",
-        "highest": "Le plus haut"
+    "debug": {
+      "title": "Signaler un bug",
+      "message": "Si vous rencontrez un ou plusieurs des probl\u00e8mes ci-dessous, veuillez cliquer sur le bouton ci-dessous et envoyer un email \u00e0 support@keymash.io avec un maximum d'information sur la fa\u00e7on dont vous avez rencontr\u00e9 ce probl\u00e8me et comment le recr\u00e9er. Plus vous nous fournirez d'informations, plus nous serons en mesure de recr\u00e9er votre probl\u00e8me et le r\u00e9soudre.",
+      "list": [
+        "D\u00e9connexion inopin\u00e9e au milieu d'un match",
+        "Vos MPM/CPM ne s'actualisent plus pour vous ou pour les autres joueurs",
+        "Votre barre de progression ne se met plus \u00e0 jour, ni pour vous ni pour les autres joueurs",
+        "Ne pas voir les r\u00e9sultats \u00e0 la fin d'une partie alors que celle-ci est termin\u00e9e"
+      ]
     },
-    "options": {
-        "yes": "Oui",
-        "no": "Non",
-        "random": "Al\u00e9atoire",
-        "quotes": "Citations",
-        "dict": "Dictionnaire",
-        "custom": "Personnalis\u00e9"
+    "save": "Sauvegarder!"
+  },
+  "button": {
+    "save": "Sauvegarder!",
+    "retry": "R\u00e9essayer",
+    "back": "Retour",
+    "next": "Suivant",
+    "close": "Fermer",
+    "leave": "Quitter",
+    "enable": "Activer",
+    "disable": "D\u00e9sactiver",
+    "spectator": "Spectateur",
+    "join": "Rejoindre",
+    "ladder": "Classement",
+    "lobby": "Lobby",
+    "newgame": "Nouvelle Partie",
+    "letsgo": "C'est parti!"
+  },
+  "charts": {
+    "lowest": "Le plus bas",
+    "highest": "Le plus haut"
+  },
+  "options": {
+    "yes": "Oui",
+    "no": "Non",
+    "random": "Al\u00e9atoire",
+    "quotes": "Citations",
+    "dict": "Dictionnaire",
+    "custom": "Personnalis\u00e9"
+  },
+  "form": {
+    "message": "Entrer un message"
+  },
+  "statistics": {
+    "wpm_abbreviation": "MPM",
+    "cpm_abbreviation": "CPM",
+    "wpm": "Mots Par Minute",
+    "cpm": "Caract\u00e8re Par Minute",
+    "time": "Temps \u00e9coul\u00e9",
+    "won": "Gagn\u00e9",
+    "lost": "Perdu",
+    "ratio": "Ratio",
+    "accuracy": "Pr\u00e9cision",
+    "exp_abbreviation": "EXP",
+    "playtime": "Temps de jeu",
+    "exp_total": "Exp\u00e9rience totale",
+    "exp": "Exp\u00e9rience",
+    "wpm_fastest": "Match le plus rapide",
+    "mistakes": "Erreurs",
+    "grade": "Note",
+    "records": "Records",
+    "total": "Total",
+    "tournaments": "Tournois",
+    "top5": "Top 5"
+  },
+  "component": {
+    "spectator": {
+      "help_title": "Aide Spectateur",
+      "help_1": "1. Pour quitter le match, veuillez utiliser le bouton dans le coin en haut \u00e0 gauche.",
+      "help_2": "2. \u00c0 c\u00f4t\u00e9 de chaque joueur est un triangle color\u00e9, cette couleur correspond \u00e0 celle du curseur sur le texte.",
+      "help_3": "3. Pour les modes de jeu qui utilisent un syst\u00e8me de manches, vous allez remarquer qu'il y a une boule surlign\u00e9e pour chaque manche gagn\u00e9e et perdue.",
+      "help_4": "4. Lorsque tout les joueurs ont fini, assurez-vous d'appuyer sur le bouton dans le coin en haut \u00e0 gauche pour revenir au lobby. Ceci a \u00e9t\u00e9 fait intentionnellement pour vous laisser regarder les statistiques si vous le voulez."
     },
-    "form": {
-        "message": "Entrer un message"
+    "topbar": {
+      "home": "Accueil",
+      "news": "Nouvelles",
+      "play": "Jouer",
+      "leaders": "Leaders",
+      "discord": "Discord"
     },
-    "statistics": {
-        "wpm_abbreviation": "MPM",
-        "cpm_abbreviation": "CPM",
-        "wpm": "Mots Par Minute",
-        "cpm": "Caract\u00e8re Par Minute",
-        "time": "Temps \u00e9coul\u00e9",
-        "won": "Gagn\u00e9",
-        "lost": "Perdu",
-        "ratio": "Ratio",
-        "accuracy": "Pr\u00e9cision",
-        "exp_abbreviation": "EXP",
-        "playtime": "Temps de jeu",
-        "exp_total": "Exp\u00e9rience totale",
-        "exp": "Exp\u00e9rience",
-        "wpm_fastest": "Match le plus rapide",
-        "mistakes": "Erreurs",
-        "grade": "Note",
-        "records": "Records",
-        "total": "Total",
-        "tournaments": "Tournois",
-        "top5": "Top 5"
+    "bottombar": {
+      "about": "\u00c0 propos de nous",
+      "tos": "Conditions d'utilisation",
+      "privacy": "Police de confidentialit\u00e9",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Contribuer",
+      "guidelines": "Directives de la communaut\u00e9",
+      "shortcuts": "Raccourcis clavier",
+      "faq": "Questions les plus fr\u00e9quentes",
+      "troubleshooting": "D\u00e9pannage",
+      "faqM": "FAQ"
     },
-    "component": {
-        "spectator": {
-            "help_title": "Aide Spectateur",
-            "help_1": "1. Pour quitter le match, veuillez utiliser le bouton dans le coin en haut \u00e0 gauche.",
-            "help_2": "2. \u00c0 c\u00f4t\u00e9 de chaque joueur est un triangle color\u00e9, cette couleur correspond \u00e0 celle du curseur sur le texte.",
-            "help_3": "3. Pour les modes de jeu qui utilisent un syst\u00e8me de manches, vous allez remarquer qu'il y a une boule surlign\u00e9e pour chaque manche gagn\u00e9e et perdue.",
-            "help_4": "4. Lorsque tout les joueurs ont fini, assurez-vous d'appuyer sur le bouton dans le coin en haut \u00e0 gauche pour revenir au lobby. Ceci a \u00e9t\u00e9 fait intentionnellement pour vous laisser regarder les statistiques si vous le voulez."
-        },
-        "topbar": {
-            "home": "Accueil",
-            "news": "Nouvelles",
-            "play": "Jouer",
-            "leaders": "Leaders",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "\u00c0 propos de nous",
-            "tos": "Conditions d'utilisation",
-            "privacy": "Police de confidentialit\u00e9",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "Contribuer",
-            "guidelines": "Directives de la communaut\u00e9",
-            "shortcuts": "Raccourcis clavier",
-            "faq": "Questions les plus fr\u00e9quentes",
-            "troubleshooting": "D\u00e9pannage",
-            "faqM": "FAQ"
-        },
-        "navbar": {
-            "home": "Accueil",
-            "news": "Nouvelles",
-            "play": "Jouer",
-            "leaders": "Leaders",
-            "discord": "Discord",
-            "practice": "Entra\u00eenement",
-            "twitch": "Twitch",
-            "store": "Boutique",
-            "learn": "Apprendre",
-            "achievements": "Succ\u00e8s",
-            "statistics": "Statistiques",
-            "matches": "Matchs",
-            "recent_matches": "Matchs r\u00e9cents",
-            "tournaments": "Comp\u00e9titions",
-            "settings": "R\u00e9glages",
-            "matchmaking": "Jumelage",
-            "logout": "D\u00e9connexion",
-            "login": "Connexion",
-            "notifications": "Notifications",
-            "custom": "Personnaliser"
-        },
-        "auth": {
-            "discord": "Se connecter avec Discord",
-            "facebook": "Se connecter avec Facebook",
-            "google": "Se connecter avec Google"
-        }
+    "navbar": {
+      "home": "Accueil",
+      "news": "Nouvelles",
+      "play": "Jouer",
+      "leaders": "Leaders",
+      "discord": "Discord",
+      "practice": "Entra\u00eenement",
+      "twitch": "Twitch",
+      "store": "Boutique",
+      "learn": "Apprendre",
+      "achievements": "Succ\u00e8s",
+      "statistics": "Statistiques",
+      "matches": "Matchs",
+      "recent_matches": "Matchs r\u00e9cents",
+      "tournaments": "Comp\u00e9titions",
+      "settings": "R\u00e9glages",
+      "matchmaking": "Jumelage",
+      "logout": "D\u00e9connexion",
+      "login": "Connexion",
+      "notifications": "Notifications",
+      "custom": "Personnaliser"
     },
-    "page": {
-        "banned": {
-            "title": "Vous avez \u00e9t\u00e9 banni",
-            "text": "Votre compte Keymash a \u00e9t\u00e9 banni pour une dur\u00e9e ind\u00e9termin\u00e9e, cela peut \u00eatre d\u00fb \u00e0 une violation de nos Conditions d'Utilisation ou \u00e0 une tentative de triche. Si vous avez une question, veuillez contacter notre support \u00e0 support@keymas.sh !"
-        },
-        "guest": {
-            "title": "Votre compte invit\u00e9 a \u00e9t\u00e9 r\u00e9initialis\u00e9",
-            "text": "Merci de jouer \u00e0 Keymash ! Nous sommes heureux de voir que vous appr\u00e9ciez le jeu. Nous vous recommandons de cr\u00e9er un compte afin de sauvegarder votre progression \u00e0 l'avenir. Pour information, nous supprimons les comptes Invit\u00e9s qui datent de plus de 7 jours."
-        },
-        "match": {
-            "completed": "Match compl\u00e9t\u00e9",
-            "mistakes": "Erreurs",
-            "no_mistakes": "Impressionnant! Vous n'avez fait aucune erreur durant ce match.",
-            "suspended": "Vous avez \u00e9t\u00e9 suspendu de ce match pour cause de triche.",
-            "time_out": "Vous \u00eates arriv\u00e9s \u00e0 court de temps pour terminer ce match. Vous aurez plus de chance la prochaine fois!",
-            "reconnect_failed": "Nous avons \u00e9chou\u00e9 \u00e0 vous reconnecter au match.",
-            "many_mistakes": "Vous avez fait trop d'erreurs",
-            "statistics_unsaved": "Vos statistiques n'ont pas \u00e9t\u00e9 sauvegard\u00e9es pour ce match",
-            "connect_lost": "Connection perdue, tentative en cours",
-            "reconnect": "En cours de reconnexion"
-        },
-        "error404": {
-            "title": "La page que vous recherchez n'existe pas.",
-            "message": "Si vous avez \u00e9t\u00e9 redirig\u00e9 sur cette page par erreur, merci de nous contacter."
-        },
-        "custom": {
-            "configuration": "Configuration",
-            "title": "Titre",
-            "privacy": "Vie priv\u00e9e",
-            "mode": "Mode",
-            "guests": "Autoriser les invit\u00e9s?",
-            "text": "Texte",
-            "match": "Match",
-            "custom": "Personnalis\u00e9",
-            "status": {
-                "lobby": "En Lobby",
-                "game": "En Jeu"
-            },
-            "unlisted": "Non-list\u00e9",
-            "public": "Public",
-            "countdown": "Compte \u00e0 rebours",
-            "startmatch": "D\u00e9marrer Le Match",
-            "error": {
-                "team_size": "Vos tailles d'\u00e9quipe doivent \u00eatre exactes pour pouvoir commencer le match.",
-                "unsaved": "Vos devez sauvegarder vos changements pour pouvoir commencer."
-            },
-            "chat": "Veuillez vous retenir de poster des messages \u00e0 caract\u00e8re sensible et\/ou confidentiel."
-        },
-        "learn": {
-            "title": "Centre d'Aprentissage",
-            "welcome": "Bienvenue! Le centre d'apprentissage va apporter de l'aide aux dactylos avec du nouveau contenu pour aider \u00e0 am\u00e9liorer leur vitesse de frappe.",
-            "lesson": "Le\u00e7on",
-            "section": "Section",
-            "reportcard": "Fiche de rapport",
-            "tips": {
-                "one": "Taper plus doucement des mots qui sont bien plus difficiles va am\u00e9liorer votre r\u00e9gularit\u00e9 sur le long terme.",
-                "two": "R\u00e9alisez des exercices du poignet toutes les 15 minutes pour \u00e9viter des dommages nerveux permanents \u00e0 vos poignets et \u00e9paules.",
-                "three": "Apprendre la rang\u00e9e du milieu est tr\u00e8s important pour entra\u00eener votre m\u00e9moire musculaire pour pouvoir taper sans regarder le clavier."
-            }
-        },
-        "achievements": {
-            "personal_best": "Record Personnel",
-            "matches_played": "Matchs Jou\u00e9s",
-            "matches_won": "Matchs Gagn\u00e9s",
-            "playtime": "Temps de Jeu Total"
-        },
-        "login": {
-            "title": "Se connecter",
-            "descr": "S\u00e9lectionnez une des options suivantes"
-        },
-        "home": {
-            "matches_new": "Matchs les plus r\u00e9cents",
-            "matches_high": "Meilleurs Scores R\u00e9cents",
-            "tournaments": {
-                "title": "Comp\u00e9titions Quotidiennes!",
-                "content1": "Nous animons des tournois pour tester les talents de dactylo <1>tous les jours<\/1>. Avec un tournoi suppl\u00e9mentaire tous les dimanche pour une chance de gagner <1>Discord Nitro<\/1>.",
-                "button": "Commencer la comp\u00e9tition maintenant!"
-            },
-            "lobbies": "Lobbies Publics",
-            "news": "Derni\u00e8res nouvelles",
-            "slogan": "Amenez votre dactylo au niveau sup\u00e9rieur",
-            "hero": {
-                "content1": "Si vous avez des questions ou soucis, n'h\u00e9sitez pas \u00e0 nous contacter sur Discord ou directement par <1>support@keymash.io<\/1>.",
-                "content2": "Ah oui, un l\u00e9ger oubli\u2026 Nous sommes toujours \u00e0 la recherche de contributions de la communaut\u00e9, incluant des propositions de texte, des traductions dans d'autres langues et plus encore! <1>Cliquez ici<\/1> pour en apprendre plus.",
-                "button": "Commencez \u00e0 taper maintenant!"
-            },
-            "schools": {
-                "title": "Les \u00e9coles peuvent-elles utiliser ceci?",
-                "button": "Commencez \u00e0 apprendre!",
-                "content1": " <1>Absolument<\/1>. Notre Centre d'apprentissage est offert \u00e0 n'importe qui avec ou sans compte, nous recommandons cependant tr\u00e8s fortement d'en avoir un pour sauvegarder votre progression.",
-                "content2": "Ce service est <1>gratuit<\/1> pour n'importe qui \u00e0 travers le monde et nous utiliser un syst\u00e8me de notation simple bas\u00e9 sur celui des \u00c9tats-Unis."
-            },
-            "custom": {
-                "title": "Jouer avec des amis est si simple",
-                "content1": "En un seul clic vous pouvez d\u00e9marrer votre propre espace priv\u00e9 que n'importe lequel de vos amis ou proches peut rejoindre. Nous offrons une personnalisation compl\u00e8te et permettons m\u00eame la capacit\u00e9 de voir un autre jouer taper!",
-                "button": "Cr\u00e9er un lobby!"
-            }
-        },
-        "leaderboards": {
-            "level": "Niveau le Plus Haut",
-            "time": "Le Plus Jou\u00e9",
-            "speed": "Vitesse la Plus Rapide",
-            "wins": "Le Plus de Victoires"
-        },
-        "tournaments": {
-            "title": "Comp\u00e9titions",
-            "join": "Rejoindre le classement",
-            "play": "Jouer maintenant",
-            "starts": "D\u00e9buts",
-            "ends": "Fins",
-            "finished": "Termin\u00e9",
-            "info": "Information",
-            "rules": "R\u00e8gles",
-            "players": "Joueurs",
-            "bracket": "Fourche",
-            "qualified": "Qualifi\u00e9",
-            "notqualified": "Pas Qualifi\u00e9",
-            "qualification": "Qualifications",
-            "ladders": "Classements",
-            "none": "Aucun joueur n'a encore particip\u00e9, soyez le premier!"
-        },
-        "queue": {
-            "howToPlayGuide": {
-                "1_title": "Comment jouer?",
-                "1_description": "Pour jouer des parties class\u00e9es, vous devez \u00eatre au moins <1>Niveau 10<\/1>. Vous serez plac\u00e9 \u00e0 travers une \u00e9tape de calcul o\u00f9 vous ne verrez pas votre rang jusqu'\u00e0 ce que vous aillez fini <2>10 parties<\/2>. Ceci assurera la pr\u00e9cision de votre niveau de comp\u00e9tence lorsque vous serez mis contre d'autres joueurs.",
-                "2_title": "Qu'est ce que le Class\u00e9 ?",
-                "2_description": "Le mode Class\u00e9 par Matchmaking est un environnement comp\u00e9titif dans lequel les joueurs s'affrontent entre eux par m\u00eame niveau. Ce syst\u00e8me est plus pr\u00e9cis que les modes de Partie Rapide actuels.",
-                "3_title": "Comment le classement est-t-il d\u00e9termin\u00e9 ?",
-                "3_description": "Bien connu aux \u00e9checs, le syst\u00e8me de class\u00e9 par matchmaking utilise une forme de \"syst\u00e8me d'\u00e9valuation\" ( \"rating system\" en anglais ) \u00e9galement connu sous le nom de Classement Glicko-2. Il utilise une forme de calcule pour d\u00e9terminer votre classement en comparant votre classement \u00e0 celui de vos adversaires et la fiabilit\u00e9 de votre classement, \u00e9galement appel\u00e9 \"\u00e9cart de cote\".",
-                "4_title": "Pouvons-nous quitter en pleine partie?",
-                "4_description": "En raison de leur nature comp\u00e9titive, il est extr\u00eamement d\u00e9conseill\u00e9 de quitter une partie. Si vous quittez avant d'avoir termin\u00e9 votre partie class\u00e9e, <1>20 points<\/1> seront d\u00e9duits de votre classement. De plus, si votre adversaire termine la partie, cela comptera comme une d\u00e9faite, comme si vous aviez termin\u00e9 le match."
-            },
-            "shortcut": "Saviez-vous qu'utiliser <1>CTRL+ALT+I<\/1> vous am\u00e8ne ici plus rapidement?",
-            "titles": {
-                "casual": "Occasionnel",
-                "competitive": "Comp\u00e9titif",
-                "playNow": "Jouer Maintenant",
-                "latestNews": "Derni\u00e8res Actualit\u00e9s",
-                "lobbies": "Lobbies Publics",
-                "competitions": "Comp\u00e9titions"
-            },
-            "quickplay": {
-                "title": "Chacun pour Soi",
-                "description": "Rejoindre un match n'importe o\u00f9 instantan\u00e9ment dans le monde entier",
-                "": "Partie Rapide"
-            },
-            "ranked": {
-                "title": "Class\u00e9",
-                "description": "Placez-vous face au monde de la comp\u00e9tition",
-                "join": "Duel (1v1)",
-                "how": "Comment jouer"
-            },
-            "custom": {
-                "title": "Personnalis\u00e9",
-                "description": "Cr\u00e9er un match priv\u00e9 avec vous et vos amis",
-                "create": "Cr\u00e9er",
-                "browse": "Naviguer",
-                "public": "Lobbies Publics",
-                "none": "Il n'y a actuellement aucun lobby public.",
-                "": "Personnalis\u00e9"
-            },
-            "practice": "Vous jouez un match d'<1>entra\u00eenement<\/1>. Vos scores ne seront pas sauvegard\u00e9.",
-            "cooldown": "Vous \u00eates d\u00e9j\u00e0 dans un match, veuillez attendre {{count}} seconde et r\u00e9essayer ensuite.",
-            "cooldown_plural": "Vous \u00eates d\u00e9j\u00e0 dans un match, veuillez attendre {{count}} secondes et r\u00e9essayer ensuite.",
-            "random": {
-                "title": "Al\u00e9atoire",
-                "description": "Laissez nous choisir pour vous."
-            },
-            "quotes": {
-                "title": "Citations",
-                "description": "Jouez uniquement avec des citations de films, de musique et d'auteurs"
-            },
-            "dictionary": {
-                "title": "Dictionnaire",
-                "description": "Jouez uniquement avec des textes du dictionnaire"
-            }
-        },
-        "notifications": {
-            "title": "Notifications",
-            "none": "Vous n'avez aucune notification.",
-            "markread": "Marquer comme lu",
-            "remove": "Supprimer tout",
-            "removeconfirm": "\u00cates-vous s\u00fbr.e de vouloir supprimer toutes vos notifications?"
-        },
-        "profile": {
-            "refresh": "Cette page va rafra\u00eechir apr\u00e8s avoir press\u00e9 sauvegarder les changements.",
-            "profile": "Profil",
-            "account": "Compte",
-            "personal": "Personnel",
-            "information": "Information",
-            "personalize": "Personnaliser",
-            "joined": "Rejoint",
-            "smoothCaretSpeed": "Vitesse du Curseur Fluide",
-            "smoothCaret": "Curseur Fluide (b\u00eata)",
-            "inputbox": "En Jeu - Masquer la zone de saisie ?",
-            "displayname": "Nom d'utilisateur",
-            "defaultworld": "Monde par d\u00e9faut",
-            "about": "A propos de moi",
-            "general": "G\u00e9n\u00e9ral",
-            "fullname": "Nom",
-            "level": "Niveau",
-            "age": "\u00c2ge",
-            "years_old": "ans",
-            "dob": "Date de naissance",
-            "showOnline": "Montrer le statut en ligne",
-            "gender": "Genre",
-            "locale": "Langue",
-            "country": "Pays",
-            "simplifyHome": "Simplifier l'accueil?",
-            "keyboard": {
-                "title": "Clavier",
-                "layout": "Disposition du clavier",
-                "brand": "Marque du clavier",
-                "model": "Mod\u00e8le du clavier"
-            },
-            "customize": "Personnaliser",
-            "wpm": "MPM ou CPM?",
-            "navbar": "Style de barre de navigation",
-            "border": "Bordure d'image",
-            "playercards": "Cartes de joueur"
-        },
-        "settings": {
-            "refresh": "Cette page va rafra\u00eechir apr\u00e8s avoir choisi de sauvegarder les changements",
-            "profile": "Profil",
-            "information": "Information",
-            "personalize": "Personaliser",
-            "displayname": "Nom d'utilisateur",
-            "defaultworld": "Monde par d\u00e9faut",
-            "about": "\u00c0 propos de moi",
-            "fullname": "Nom",
-            "dob": "Date de naissance",
-            "showOnline": "Montrer le statut en ligne",
-            "gender": "Genre",
-            "locale": "Langue",
-            "country": "Pays",
-            "keyboard": {
-                "layout": "Disposition du clavier",
-                "brand": "Marque du clavier",
-                "model": "Mod\u00e8le du clavier"
-            },
-            "customize": "Personnaliser",
-            "wpm": "MPM ou CPM?",
-            "border": "Cadre d'image",
-            "playercards": "Cartes de joueur"
-        }
+    "auth": {
+      "discord": "Se connecter avec Discord",
+      "facebook": "Se connecter avec Facebook",
+      "google": "Se connecter avec Google"
     }
+  },
+  "page": {
+    "banned": {
+      "title": "Vous avez \u00e9t\u00e9 banni",
+      "text": "Votre compte Keymash a \u00e9t\u00e9 banni pour une dur\u00e9e ind\u00e9termin\u00e9e, cela peut \u00eatre d\u00fb \u00e0 une violation de nos Conditions d'Utilisation ou \u00e0 une tentative de triche. Si vous avez une question, veuillez contacter notre support \u00e0 support@keymas.sh !"
+    },
+    "guest": {
+      "title": "Votre compte invit\u00e9 a \u00e9t\u00e9 r\u00e9initialis\u00e9",
+      "text": "Merci de jouer \u00e0 Keymash ! Nous sommes heureux de voir que vous appr\u00e9ciez le jeu. Nous vous recommandons de cr\u00e9er un compte afin de sauvegarder votre progression \u00e0 l'avenir. Pour information, nous supprimons les comptes Invit\u00e9s qui datent de plus de 7 jours."
+    },
+    "match": {
+      "completed": "Match compl\u00e9t\u00e9",
+      "mistakes": "Erreurs",
+      "no_mistakes": "Impressionnant! Vous n'avez fait aucune erreur durant ce match.",
+      "suspended": "Vous avez \u00e9t\u00e9 suspendu de ce match pour cause de triche.",
+      "time_out": "Vous \u00eates arriv\u00e9s \u00e0 court de temps pour terminer ce match. Vous aurez plus de chance la prochaine fois!",
+      "reconnect_failed": "Nous avons \u00e9chou\u00e9 \u00e0 vous reconnecter au match.",
+      "many_mistakes": "Vous avez fait trop d'erreurs",
+      "statistics_unsaved": "Vos statistiques n'ont pas \u00e9t\u00e9 sauvegard\u00e9es pour ce match",
+      "connect_lost": "Connection perdue, tentative en cours",
+      "reconnect": "En cours de reconnexion"
+    },
+    "error404": {
+      "title": "La page que vous recherchez n'existe pas.",
+      "message": "Si vous avez \u00e9t\u00e9 redirig\u00e9 sur cette page par erreur, merci de nous contacter."
+    },
+    "custom": {
+      "configuration": "Configuration",
+      "title": "Titre",
+      "privacy": "Vie priv\u00e9e",
+      "mode": "Mode",
+      "guests": "Autoriser les invit\u00e9s?",
+      "text": "Texte",
+      "match": "Match",
+      "custom": "Personnalis\u00e9",
+      "status": {
+        "lobby": "En Lobby",
+        "game": "En Jeu"
+      },
+      "unlisted": "Non-list\u00e9",
+      "public": "Public",
+      "countdown": "Compte \u00e0 rebours",
+      "startmatch": "D\u00e9marrer Le Match",
+      "error": {
+        "team_size": "Vos tailles d'\u00e9quipe doivent \u00eatre exactes pour pouvoir commencer le match.",
+        "unsaved": "Vos devez sauvegarder vos changements pour pouvoir commencer."
+      },
+      "chat": "Veuillez vous retenir de poster des messages \u00e0 caract\u00e8re sensible et/ou confidentiel."
+    },
+    "learn": {
+      "title": "Centre d'Aprentissage",
+      "welcome": "Bienvenue! Le centre d'apprentissage va apporter de l'aide aux dactylos avec du nouveau contenu pour aider \u00e0 am\u00e9liorer leur vitesse de frappe.",
+      "lesson": "Le\u00e7on",
+      "section": "Section",
+      "reportcard": "Fiche de rapport",
+      "tips": {
+        "one": "Taper plus doucement des mots qui sont bien plus difficiles va am\u00e9liorer votre r\u00e9gularit\u00e9 sur le long terme.",
+        "two": "R\u00e9alisez des exercices du poignet toutes les 15 minutes pour \u00e9viter des dommages nerveux permanents \u00e0 vos poignets et \u00e9paules.",
+        "three": "Apprendre la rang\u00e9e du milieu est tr\u00e8s important pour entra\u00eener votre m\u00e9moire musculaire pour pouvoir taper sans regarder le clavier."
+      }
+    },
+    "achievements": {
+      "personal_best": "Record Personnel",
+      "matches_played": "Matchs Jou\u00e9s",
+      "matches_won": "Matchs Gagn\u00e9s",
+      "playtime": "Temps de Jeu Total"
+    },
+    "login": {
+      "title": "Se connecter",
+      "descr": "S\u00e9lectionnez une des options suivantes"
+    },
+    "home": {
+      "matches_new": "Matchs les plus r\u00e9cents",
+      "matches_high": "Meilleurs Scores R\u00e9cents",
+      "tournaments": {
+        "title": "Comp\u00e9titions Quotidiennes!",
+        "content1": "Nous animons des tournois pour tester les talents de dactylo <1>tous les jours</1>. Avec un tournoi suppl\u00e9mentaire tous les dimanche pour une chance de gagner <1>Discord Nitro</1>.",
+        "button": "Commencer la comp\u00e9tition maintenant!"
+      },
+      "lobbies": "Lobbies Publics",
+      "news": "Derni\u00e8res nouvelles",
+      "slogan": "Amenez votre dactylo au niveau sup\u00e9rieur",
+      "hero": {
+        "content1": "Si vous avez des questions ou soucis, n'h\u00e9sitez pas \u00e0 nous contacter sur Discord ou directement par <1>support@keymash.io</1>.",
+        "content2": "Ah oui, un l\u00e9ger oubli\u2026 Nous sommes toujours \u00e0 la recherche de contributions de la communaut\u00e9, incluant des propositions de texte, des traductions dans d'autres langues et plus encore! <1>Cliquez ici</1> pour en apprendre plus.",
+        "button": "Commencez \u00e0 taper maintenant!"
+      },
+      "schools": {
+        "title": "Les \u00e9coles peuvent-elles utiliser ceci?",
+        "button": "Commencez \u00e0 apprendre!",
+        "content1": " <1>Absolument</1>. Notre Centre d'apprentissage est offert \u00e0 n'importe qui avec ou sans compte, nous recommandons cependant tr\u00e8s fortement d'en avoir un pour sauvegarder votre progression.",
+        "content2": "Ce service est <1>gratuit</1> pour n'importe qui \u00e0 travers le monde et nous utiliser un syst\u00e8me de notation simple bas\u00e9 sur celui des \u00c9tats-Unis."
+      },
+      "custom": {
+        "title": "Jouer avec des amis est si simple",
+        "content1": "En un seul clic vous pouvez d\u00e9marrer votre propre espace priv\u00e9 que n'importe lequel de vos amis ou proches peut rejoindre. Nous offrons une personnalisation compl\u00e8te et permettons m\u00eame la capacit\u00e9 de voir un autre jouer taper!",
+        "button": "Cr\u00e9er un lobby!"
+      }
+    },
+    "leaderboards": {
+      "level": "Niveau le Plus Haut",
+      "time": "Le Plus Jou\u00e9",
+      "speed": "Vitesse la Plus Rapide",
+      "wins": "Le Plus de Victoires"
+    },
+    "tournaments": {
+      "title": "Comp\u00e9titions",
+      "join": "Rejoindre le classement",
+      "play": "Jouer maintenant",
+      "starts": "D\u00e9buts",
+      "ends": "Fins",
+      "finished": "Termin\u00e9",
+      "info": "Information",
+      "rules": "R\u00e8gles",
+      "players": "Joueurs",
+      "bracket": "Fourche",
+      "qualified": "Qualifi\u00e9",
+      "notqualified": "Pas Qualifi\u00e9",
+      "qualification": "Qualifications",
+      "ladders": "Classements",
+      "none": "Aucun joueur n'a encore particip\u00e9, soyez le premier!"
+    },
+    "queue": {
+      "howToPlayGuide": {
+        "1_title": "Comment jouer?",
+        "1_description": "Pour jouer des parties class\u00e9es, vous devez \u00eatre au moins <1>Niveau 10</1>. Vous serez plac\u00e9 \u00e0 travers une \u00e9tape de calcul o\u00f9 vous ne verrez pas votre rang jusqu'\u00e0 ce que vous aillez fini <2>10 parties</2>. Ceci assurera la pr\u00e9cision de votre niveau de comp\u00e9tence lorsque vous serez mis contre d'autres joueurs.",
+        "2_title": "Qu'est ce que le Class\u00e9 ?",
+        "2_description": "Le mode Class\u00e9 par Matchmaking est un environnement comp\u00e9titif dans lequel les joueurs s'affrontent entre eux par m\u00eame niveau. Ce syst\u00e8me est plus pr\u00e9cis que les modes de Partie Rapide actuels.",
+        "3_title": "Comment le classement est-t-il d\u00e9termin\u00e9 ?",
+        "3_description": "Bien connu aux \u00e9checs, le syst\u00e8me de class\u00e9 par matchmaking utilise une forme de \"syst\u00e8me d'\u00e9valuation\" ( \"rating system\" en anglais ) \u00e9galement connu sous le nom de Classement Glicko-2. Il utilise une forme de calcule pour d\u00e9terminer votre classement en comparant votre classement \u00e0 celui de vos adversaires et la fiabilit\u00e9 de votre classement, \u00e9galement appel\u00e9 \"\u00e9cart de cote\".",
+        "4_title": "Pouvons-nous quitter en pleine partie?",
+        "4_description": "En raison de leur nature comp\u00e9titive, il est extr\u00eamement d\u00e9conseill\u00e9 de quitter une partie. Si vous quittez avant d'avoir termin\u00e9 votre partie class\u00e9e, <1>20 points</1> seront d\u00e9duits de votre classement. De plus, si votre adversaire termine la partie, cela comptera comme une d\u00e9faite, comme si vous aviez termin\u00e9 le match."
+      },
+      "shortcut": "Saviez-vous qu'utiliser <1>CTRL+ALT+I</1> vous am\u00e8ne ici plus rapidement?",
+      "titles": {
+        "casual": "Occasionnel",
+        "competitive": "Comp\u00e9titif",
+        "playNow": "Jouer Maintenant",
+        "latestNews": "Derni\u00e8res Actualit\u00e9s",
+        "lobbies": "Lobbies Publics",
+        "competitions": "Comp\u00e9titions"
+      },
+      "quickplay": {
+        "title": "Chacun pour Soi",
+        "description": "Rejoindre un match n'importe o\u00f9 instantan\u00e9ment dans le monde entier",
+        "": "Partie Rapide"
+      },
+      "ranked": {
+        "title": "Class\u00e9",
+        "description": "Placez-vous face au monde de la comp\u00e9tition",
+        "join": "Duel (1v1)",
+        "how": "Comment jouer"
+      },
+      "custom": {
+        "title": "Personnalis\u00e9",
+        "description": "Cr\u00e9er un match priv\u00e9 avec vous et vos amis",
+        "create": "Cr\u00e9er",
+        "browse": "Naviguer",
+        "public": "Lobbies Publics",
+        "none": "Il n'y a actuellement aucun lobby public.",
+        "": "Personnalis\u00e9"
+      },
+      "practice": "Vous jouez un match d'<1>entra\u00eenement</1>. Vos scores ne seront pas sauvegard\u00e9.",
+      "cooldown": "Vous \u00eates d\u00e9j\u00e0 dans un match, veuillez attendre {{count}} seconde et r\u00e9essayer ensuite.",
+      "cooldown_plural": "Vous \u00eates d\u00e9j\u00e0 dans un match, veuillez attendre {{count}} secondes et r\u00e9essayer ensuite.",
+      "random": {
+        "title": "Al\u00e9atoire",
+        "description": "Laissez nous choisir pour vous."
+      },
+      "quotes": {
+        "title": "Citations",
+        "description": "Jouez uniquement avec des citations de films, de musique et d'auteurs"
+      },
+      "dictionary": {
+        "title": "Dictionnaire",
+        "description": "Jouez uniquement avec des textes du dictionnaire"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "none": "Vous n'avez aucune notification.",
+      "markread": "Marquer comme lu",
+      "remove": "Supprimer tout",
+      "removeconfirm": "\u00cates-vous s\u00fbr.e de vouloir supprimer toutes vos notifications?"
+    },
+    "profile": {
+      "refresh": "Cette page va rafra\u00eechir apr\u00e8s avoir press\u00e9 sauvegarder les changements.",
+      "profile": "Profil",
+      "account": "Compte",
+      "personal": "Personnel",
+      "information": "Information",
+      "personalize": "Personnaliser",
+      "joined": "Rejoint",
+      "smoothCaretSpeed": "Vitesse du Curseur Fluide",
+      "smoothCaret": "Curseur Fluide (b\u00eata)",
+      "inputbox": "En Jeu - Masquer la zone de saisie ?",
+      "displayname": "Nom d'utilisateur",
+      "defaultworld": "Monde par d\u00e9faut",
+      "about": "A propos de moi",
+      "general": "G\u00e9n\u00e9ral",
+      "fullname": "Nom",
+      "level": "Niveau",
+      "age": "\u00c2ge",
+      "years_old": "ans",
+      "dob": "Date de naissance",
+      "showOnline": "Montrer le statut en ligne",
+      "gender": "Genre",
+      "locale": "Langue",
+      "country": "Pays",
+      "simplifyHome": "Simplifier l'accueil?",
+      "keyboard": {
+        "title": "Clavier",
+        "layout": "Disposition du clavier",
+        "brand": "Marque du clavier",
+        "model": "Mod\u00e8le du clavier"
+      },
+      "customize": "Personnaliser",
+      "wpm": "MPM ou CPM?",
+      "navbar": "Style de barre de navigation",
+      "border": "Bordure d'image",
+      "playercards": "Cartes de joueur"
+    },
+    "settings": {
+      "refresh": "Cette page va rafra\u00eechir apr\u00e8s avoir choisi de sauvegarder les changements",
+      "profile": "Profil",
+      "information": "Information",
+      "personalize": "Personaliser",
+      "displayname": "Nom d'utilisateur",
+      "defaultworld": "Monde par d\u00e9faut",
+      "about": "\u00c0 propos de moi",
+      "fullname": "Nom",
+      "dob": "Date de naissance",
+      "showOnline": "Montrer le statut en ligne",
+      "gender": "Genre",
+      "locale": "Langue",
+      "country": "Pays",
+      "keyboard": {
+        "layout": "Disposition du clavier",
+        "brand": "Marque du clavier",
+        "model": "Mod\u00e8le du clavier"
+      },
+      "customize": "Personnaliser",
+      "wpm": "MPM ou CPM?",
+      "border": "Cadre d'image",
+      "playercards": "Cartes de joueur"
+    }
+  }
 }

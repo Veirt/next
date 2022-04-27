@@ -6,28 +6,26 @@ import Base from '../../templates/Base';
 import { GetServerSidePropsContext } from 'next';
 
 const Guest = () => {
-    const { t } = useTranslation();
-    
-    return (
-        <Base meta={<Meta title="Your account has been reset" />}>
-            <div className="flex h-screen">
-                <div className="m-auto w-5/6 sm:w-4/6 lg:w-3/6 xl:w-2/5">
-                    <div className={"text-5xl font-bold text-white uppercase"}>{t('page.guest.title')}</div>
-                    <div className={"text-xl text-white pt-6"}>
-                        {t('page.guest.text')}
-                    </div>
-                </div>
-            </div>
-        </Base>
-    );
-}
+  const { t } = useTranslation();
+
+  return (
+    <Base meta={<Meta title="Your account has been reset" />}>
+      <div className="flex h-screen">
+        <div className="m-auto w-5/6 sm:w-4/6 lg:w-3/6 xl:w-2/5">
+          <div className={'text-5xl font-bold text-white uppercase'}>{t('page.guest.title')}</div>
+          <div className={'text-xl text-white pt-6'}>{t('page.guest.text')}</div>
+        </div>
+      </div>
+    </Base>
+  );
+};
 
 export async function getServerSideProps({ req }: GetServerSidePropsContext) {
   return {
     props: {
       ...(await serverSideTranslations(ConfigService.getServerSideOption('locale', req.headers.cookie || ''))),
-    }
-  }
+    },
+  };
 }
 
 export default Guest;

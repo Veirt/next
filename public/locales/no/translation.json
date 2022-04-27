@@ -1,374 +1,374 @@
 {
-    "other": {
-        "account_banned": "Kontoen din er utestengt, vennligst kontakt support@keymash.io!",
-        "twitch_none": "Ingen str\u00f8mmer for \u00f8yeblikket :( Kom tilbake senere, eller begynn \u00e5 str\u00f8mme!",
-        "grades": {
-            "passed": "Best\u00e5tt",
-            "failed": "Ikke Best\u00e5tt"
-        },
-        "finished": "Ferdig",
-        "gameover": "Spill Over",
-        "lists": {
-            "locales": "Spr\u00e5k",
-            "types": "Typer"
-        },
-        "debug": {
-            "title": "Feilrapportering",
-            "message": "Hvis du opplever en eller flere av problemene under, venligst klikk knappen under og send en epost til support@keymash.io med s\u00e5 mye informasjon som mulig om hvordan det oppstod, og hvordan man kan gjenskape det. Jo mer informasjon du gir, jo enklere blir det for oss \u00e5 gjenskape problemet for \u00e5 fikse det.",
-            "list": [
-                "Plutselig avkobling midt i en kamp",
-                "WPM\/CPM'en blir ikke lengre oppdatert for deg selv eller andre spillere",
-                "Framgangen din blir ikke lengre oppdatert for deg selv eller andre spillere",
-                "Ser ikke sluttresultatet selv om kampen er ferdig"
-            ]
-        },
-        "save": "Lagre!"
+  "other": {
+    "account_banned": "Kontoen din er utestengt, vennligst kontakt support@keymash.io!",
+    "twitch_none": "Ingen str\u00f8mmer for \u00f8yeblikket :( Kom tilbake senere, eller begynn \u00e5 str\u00f8mme!",
+    "grades": {
+      "passed": "Best\u00e5tt",
+      "failed": "Ikke Best\u00e5tt"
     },
-    "button": {
-        "save": "Lagre!",
-        "retry": "Pr\u00f8v P\u00e5 Nytt",
-        "back": "Tilbake",
-        "next": "Neste",
-        "close": "Lukk",
-        "leave": "Forlat",
-        "enable": "Aktiver",
-        "disable": "Deaktiver",
-        "spectator": "Tilskuer",
-        "join": "Bli med",
-        "ladder": "Stige",
-        "lobby": "Lobby",
-        "newgame": "Nytt Spill",
-        "letsgo": "Kj\u00f8r p\u00e5!"
+    "finished": "Ferdig",
+    "gameover": "Spill Over",
+    "lists": {
+      "locales": "Spr\u00e5k",
+      "types": "Typer"
     },
-    "charts": {
-        "lowest": "Laveste",
-        "highest": "H\u00f8yeste"
+    "debug": {
+      "title": "Feilrapportering",
+      "message": "Hvis du opplever en eller flere av problemene under, venligst klikk knappen under og send en epost til support@keymash.io med s\u00e5 mye informasjon som mulig om hvordan det oppstod, og hvordan man kan gjenskape det. Jo mer informasjon du gir, jo enklere blir det for oss \u00e5 gjenskape problemet for \u00e5 fikse det.",
+      "list": [
+        "Plutselig avkobling midt i en kamp",
+        "WPM/CPM'en blir ikke lengre oppdatert for deg selv eller andre spillere",
+        "Framgangen din blir ikke lengre oppdatert for deg selv eller andre spillere",
+        "Ser ikke sluttresultatet selv om kampen er ferdig"
+      ]
     },
-    "options": {
-        "yes": "Ja",
-        "no": "Nei",
-        "random": "Tilfeldig",
-        "quotes": "Sitater",
-        "dict": "Ordbok",
-        "custom": "Tilpasset"
+    "save": "Lagre!"
+  },
+  "button": {
+    "save": "Lagre!",
+    "retry": "Pr\u00f8v P\u00e5 Nytt",
+    "back": "Tilbake",
+    "next": "Neste",
+    "close": "Lukk",
+    "leave": "Forlat",
+    "enable": "Aktiver",
+    "disable": "Deaktiver",
+    "spectator": "Tilskuer",
+    "join": "Bli med",
+    "ladder": "Stige",
+    "lobby": "Lobby",
+    "newgame": "Nytt Spill",
+    "letsgo": "Kj\u00f8r p\u00e5!"
+  },
+  "charts": {
+    "lowest": "Laveste",
+    "highest": "H\u00f8yeste"
+  },
+  "options": {
+    "yes": "Ja",
+    "no": "Nei",
+    "random": "Tilfeldig",
+    "quotes": "Sitater",
+    "dict": "Ordbok",
+    "custom": "Tilpasset"
+  },
+  "form": {
+    "message": "Skriv en melding..."
+  },
+  "statistics": {
+    "wpm_abbreviation": "WPM",
+    "cpm_abbreviation": "CPM",
+    "wpm": "Ord i Minuttet",
+    "cpm": "Tegn i Minuttet",
+    "time": "Forl\u00f8pt Tid",
+    "won": "Vant",
+    "lost": "Tapte",
+    "ratio": "Forhold",
+    "accuracy": "N\u00f8yaktighet",
+    "exp_abbreviation": "ERF",
+    "playtime": "Spilletid",
+    "exp_total": "Total Erfaring",
+    "exp": "Erfaring",
+    "wpm_fastest": "Raskeste Kamp",
+    "mistakes": "Feil",
+    "grade": "Karakter",
+    "records": "Rekorder",
+    "total": "Total",
+    "tournaments": "Turneringer",
+    "top5": "Topp 5"
+  },
+  "component": {
+    "spectator": {
+      "help_title": "Tilskuerhjelp",
+      "help_1": "1. For \u00e5 avslutte kampen, bruk knappen oppe i venstre hj\u00f8rne.",
+      "help_2": "2. Ved siden av hver spiller er det en trekant med en farge. Denne fargen vil v\u00e6re lik merket i teksten.",
+      "help_3": "3. I spillmoduser som bruker rundesystemet vil det v\u00e6re en opplyst sirkel for hver runde som er tapt og vunnet.",
+      "help_4": "4. N\u00e5r hver spiller er ferdig s\u00f8rg for \u00e5 trykke p\u00e5 knappen oppe i venstre hj\u00f8rne for \u00e5 g\u00e5 tilbake til lobbyen. Dette vil ta deg tilbake uten \u00e5 oppdatere siden hvis du \u00f8nsker \u00e5 se statistikken."
     },
-    "form": {
-        "message": "Skriv en melding..."
+    "topbar": {
+      "home": "Hjem",
+      "news": "Nyhet",
+      "play": "Spille",
+      "leaders": "Ledere",
+      "discord": "Discord"
     },
-    "statistics": {
-        "wpm_abbreviation": "WPM",
-        "cpm_abbreviation": "CPM",
-        "wpm": "Ord i Minuttet",
-        "cpm": "Tegn i Minuttet",
-        "time": "Forl\u00f8pt Tid",
-        "won": "Vant",
-        "lost": "Tapte",
-        "ratio": "Forhold",
-        "accuracy": "N\u00f8yaktighet",
-        "exp_abbreviation": "ERF",
-        "playtime": "Spilletid",
-        "exp_total": "Total Erfaring",
-        "exp": "Erfaring",
-        "wpm_fastest": "Raskeste Kamp",
-        "mistakes": "Feil",
-        "grade": "Karakter",
-        "records": "Rekorder",
-        "total": "Total",
-        "tournaments": "Turneringer",
-        "top5": "Topp 5"
+    "bottombar": {
+      "about": "Om oss",
+      "tos": "Vilk\u00e5r for bruk",
+      "privacy": "Personvernregler",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Bidra",
+      "guidelines": "Retningslinjer for fellesskap",
+      "shortcuts": "Tastatursnarveier",
+      "faq": "Ofte Stilte Sp\u00f8rsm\u00e5l",
+      "troubleshooting": "Feils\u00f8king",
+      "faqM": "FAQ"
     },
-    "component": {
-        "spectator": {
-            "help_title": "Tilskuerhjelp",
-            "help_1": "1. For \u00e5 avslutte kampen, bruk knappen oppe i venstre hj\u00f8rne.",
-            "help_2": "2. Ved siden av hver spiller er det en trekant med en farge. Denne fargen vil v\u00e6re lik merket i teksten.",
-            "help_3": "3. I spillmoduser som bruker rundesystemet vil det v\u00e6re en opplyst sirkel for hver runde som er tapt og vunnet.",
-            "help_4": "4. N\u00e5r hver spiller er ferdig s\u00f8rg for \u00e5 trykke p\u00e5 knappen oppe i venstre hj\u00f8rne for \u00e5 g\u00e5 tilbake til lobbyen. Dette vil ta deg tilbake uten \u00e5 oppdatere siden hvis du \u00f8nsker \u00e5 se statistikken."
-        },
-        "topbar": {
-            "home": "Hjem",
-            "news": "Nyhet",
-            "play": "Spille",
-            "leaders": "Ledere",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "Om oss",
-            "tos": "Vilk\u00e5r for bruk",
-            "privacy": "Personvernregler",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "Bidra",
-            "guidelines": "Retningslinjer for fellesskap",
-            "shortcuts": "Tastatursnarveier",
-            "faq": "Ofte Stilte Sp\u00f8rsm\u00e5l",
-            "troubleshooting": "Feils\u00f8king",
-            "faqM": "FAQ"
-        },
-        "navbar": {
-            "home": "Hjem",
-            "news": "Nyheter",
-            "play": "Spille",
-            "leaders": "Ledere",
-            "discord": "Discord",
-            "practice": "\u00d8ve",
-            "twitch": "Twitch",
-            "store": "Effekter",
-            "learn": "L\u00e6re",
-            "achievements": "Prestasjoner",
-            "statistics": "Statistikk",
-            "matches": "Kamper",
-            "recent_matches": "Nylige Kamper",
-            "tournaments": "Turneringer",
-            "settings": "Innstillinger",
-            "logout": "Logg ut",
-            "login": "Logg inn",
-            "notifications": "Varsler",
-            "custom": "Custom"
-        },
-        "auth": {
-            "discord": "Logg inn med Discord",
-            "facebook": "Logg inn med Facebook",
-            "google": "Logg inn med Google"
-        }
+    "navbar": {
+      "home": "Hjem",
+      "news": "Nyheter",
+      "play": "Spille",
+      "leaders": "Ledere",
+      "discord": "Discord",
+      "practice": "\u00d8ve",
+      "twitch": "Twitch",
+      "store": "Effekter",
+      "learn": "L\u00e6re",
+      "achievements": "Prestasjoner",
+      "statistics": "Statistikk",
+      "matches": "Kamper",
+      "recent_matches": "Nylige Kamper",
+      "tournaments": "Turneringer",
+      "settings": "Innstillinger",
+      "logout": "Logg ut",
+      "login": "Logg inn",
+      "notifications": "Varsler",
+      "custom": "Custom"
     },
-    "page": {
-        "banned": {
-            "title": "Du har blitt utestengt",
-            "text": "Din Keymash konto har blitt utestengt for alltid. Dette kan skyldes et brudd p\u00e5 v\u00e5re retningslinjer, eller juksing. Hvis du har noen sp\u00f8rsm\u00e5l, venligst kontakt support@keymash.io!"
-        },
-        "guest": {
-            "title": "Din gjestekonto har blitt nullstilt",
-            "text": "Takk for at du spiller Keymash! Vi er glad for at du liker spiller, og vil anbefale at du lager en konto for \u00e5 lagre fremgangen din. Til info s\u00e5 fjerner vi gjestekonto eldre enn 7 dager."
-        },
-        "match": {
-            "completed": "Kamp Ferdig",
-            "mistakes": "Tabber",
-            "no_mistakes": "R\u00e5tt! Du hadde ingen feil i denne kampen.",
-            "suspended": "Du har blitt kastet ut av denne kampen p\u00e5 grunn av juks.",
-            "time_out": "Du gikk tom for tid til \u00e5 utf\u00f8re kampen. Bedre lykke neste gang!",
-            "reconnect_failed": "Vi mislykkes med \u00e5 koble deg tilbake til kampen.",
-            "many_mistakes": "Du gjorde for mange tabber.",
-            "statistics_unsaved": "Din statistikk hare ikke blitt lagret for denne kampen",
-            "connect_lost": "Tilkobling mistet, pr\u00f8ver p\u00e5 nytt",
-            "reconnect": "Kobler til p\u00e5 nytt"
-        },
-        "error404": {
-            "title": "Siden du ser etter finnes ikke.",
-            "message": "Hvis du ble omdirigert til denne siden ved en feil, venligst kontakt"
-        },
-        "custom": {
-            "configuration": "Konfigurasjon",
-            "title": "Tittel",
-            "privacy": "Personvern",
-            "mode": "Modus",
-            "guests": "Tillat gjester?",
-            "text": "Tekst",
-            "match": "Kamp",
-            "custom": "Tilpasset",
-            "status": {
-                "lobby": "I Lobby",
-                "game": "I Spill"
-            },
-            "unlisted": "Ikke oppf\u00f8rt",
-            "public": "Offentlig",
-            "countdown": "Nedtelling",
-            "startmatch": "Start Kamp",
-            "error": {
-                "team_size": "Lag st\u00f8rrelsene m\u00e5 v\u00e6re lik for \u00e5 starte kampen.",
-                "unsaved": "Du m\u00e5 lagre endringene for \u00e5 starte."
-            },
-            "chat": "Venligst ikke skriv sensitive og\/eller konfidensielle meldinger."
-        },
-        "learn": {
-            "title": "Oppl\u00e6ringssenter",
-            "welcome": "Velkommen! Dette oppl\u00e6ringssenteret vil gi skribenter nytt material for \u00e5 \u00f8ke deres skrive hastighet.",
-            "lesson": "Leksjon",
-            "section": "Seksjon",
-            "reportcard": "Karakterutskrift",
-            "tips": {
-                "one": "\u00c5 skrive saktere p\u00e5 ord som er veldig vanskelig vil gi deg bedre n\u00f8yaktighet p\u00e5 lang sikt.",
-                "two": "Gj\u00f8r h\u00e5ndledds\u00f8velser hver 15. minutt for \u00e5 unng\u00e5 permanente nerveskader p\u00e5 h\u00e5ndleddene og skuldrene dine.",
-                "three": "\u00c5 l\u00e6re hjemmeraden er veldig viktig n\u00e5r du trener opp muskelminnet for \u00e5 skrive uten \u00e5 se p\u00e5 tastaturet"
-            }
-        },
-        "achievements": {
-            "personal_best": "Personlig Rekord",
-            "matches_played": "Kamper Spilt",
-            "matches_won": "Kamper Vunnet",
-            "playtime": "Total spilletid"
-        },
-        "login": {
-            "title": "Logg inn",
-            "descr": "Velg en av de f\u00f8lgende alternativene"
-        },
-        "home": {
-            "matches_new": "Nyeste Kamper",
-            "matches_high": "Dagens Rekorder",
-            "tournaments": {
-                "title": "Daglige Kamper!",
-                "content1": "Vi arrangerer turneringer for \u00e5 teste skribenters ferdigheter <1>hver dag<\/1>. Med en til turnering hver s\u00f8ndag, som gir mulighet til \u00e5 vinne <1>Discord Nitro<\/1>.",
-                "button": "Begynn \u00e5 konkurrere n\u00e5!"
-            },
-            "lobbies": "Offentlige Lobbyer",
-            "news": "Siste Nytt",
-            "slogan": "Ta skriveferdighetene dine til neste niv\u00e5",
-            "hero": {
-                "content1": "Hvis du har noen sp\u00f8rsm\u00e5l, ta gjerne kontakt med oss p\u00e5 Discord, eller direkte gjennom <1>support@keymash.io<\/1>.",
-                "content2": "\u00c5 ja, jeg glemte \u00e5 nevne... Vi er alltid p\u00e5 utkikk etter samfunnsbidrag. Dette inkluderer tekst bidrag, spr\u00e5koversettelser og mer! <1>Klikk her<\/1> for \u00e5 l\u00e6re mer.",
-                "button": "Begynn \u00e5 skrive n\u00e5!"
-            },
-            "schools": {
-                "title": "Kan skoler bruke dette?",
-                "button": "Beynn \u00e5 l\u00e6re!",
-                "content1": " <1>Absolutt<\/1>. V\u00e5rt oppl\u00e6ringssenter blir tilbudt til enhver skribent med eller uten konto, men vi anbefaler sterkt \u00e5 lage en konto for \u00e5 lagre framgang.",
-                "content2": "Denne tjenesten er <1>gratis<\/1> for alle i hele verden, og vi bruker et enkelt karaktersystem basert p\u00e5 USA sitt."
-            },
-            "custom": {
-                "title": "\u00c5 spille med venner er s\u00e5 lett",
-                "content1": "Innen et tastetrykk kan du starte ditt eget private rom der alle vennene og familiemedlemmene dine kan bli med. Vi gir full konfigureringsmuligheter og til og med muligheten for \u00e5 se p\u00e5 andre spillere n\u00e5r de skriver!",
-                "button": "Lag en lobby!"
-            }
-        },
-        "leaderboards": {
-            "level": "H\u00f8yeste Niv\u00e5",
-            "time": "Mest Spilt",
-            "speed": "Raskeste Hastighet",
-            "wins": "Mest Vunnet"
-        },
-        "tournaments": {
-            "title": "Turneringer",
-            "join": "Bli med i stige",
-            "play": "Spille n\u00e5",
-            "starts": "Starter",
-            "ends": "Slutter",
-            "finished": "Slutt",
-            "info": "Informasjon",
-            "rules": "Regler",
-            "players": "Spillere",
-            "bracket": "Brakett",
-            "qualified": "Kvalifisert",
-            "notqualified": "Ikke Kvalifisert",
-            "qualification": "Kvalifiseringer",
-            "ladders": "Stiger",
-            "none": "Ingen spillere har blitt med enda, bli den f\u00f8rste!"
-        },
-        "queue": {
-            "howToPlayGuide": {
-                "1_title": "Hvordan spiller jeg?",
-                "1_description": "For \u00e5 kunne spille rangert matchmaking m\u00e5 du minst v\u00e6re i niv\u00e5 10. Du vil bli plassert gjennom en kalkuleringsfase, der du ikke vil se rangeringen din f\u00f8r du har spilt 10 kamper. Dette s\u00f8rger for at n\u00f8yaktigheten av ferdighetsniv\u00e5et ditt n\u00e5r du blir matchet mot andre spillere.",
-                "2_title": "Hva er rangert?",
-                "2_description": "Rangert matchmaking er et konkurrerende milj\u00f8 der spillere blir matchet med andre med et lignende ferdighetsniv\u00e5 som har st\u00f8rre n\u00f8yaktighet en den n\u00e5v\u00e6rende raskt spill modusene.",
-                "4_title": "Kan vi avslutte midt i en kamp?"
-            },
-            "shortcut": "Visste du at <1>CTRL+ALT+I<\/1> vil f\u00e5 deg hit raskere?",
-            "titles": {
-                "casual": "Uformelt",
-                "competitive": "Konkurrerende",
-                "latestNews": "Siste Nytt",
-                "lobbies": "Offentlige lobbyer",
-                "competitions": "Kamper"
-            },
-            "quickplay": {
-                "title": "Free for All",
-                "description": "Bli med p\u00e5 en kamp \u00f8yeblikkelig over hele verden",
-                "": "Raskt Spill"
-            },
-            "ranked": {
-                "title": "Rangert",
-                "description": "Sett deg selv i kampens hete",
-                "join": "Kommer snart",
-                "how": "Hvordan spille"
-            },
-            "custom": {
-                "title": "Tilpasset",
-                "description": "Lag en privat kamp med deg og dine venner",
-                "create": "Lag",
-                "browse": "Bla",
-                "public": "Offentlige Lobbyer",
-                "none": "Det er ingen offentlige lobbyer for \u00f8yeblikket",
-                "": "Tilpasset"
-            },
-            "practice": "Du spiller i en <1>\u00f8velses<\/1>kamp. Poengsummen din vil ikke lagres.",
-            "cooldown": "Du er allerede i en kamp, venligst vent {{count}} sekunder f\u00f8r du pr\u00f8ver igjen.",
-            "cooldown_plural": "Du er allerede i en kamp, venligst vent {{count}}\u00a0sekunder f\u00f8r du pr\u00f8ver igjen.",
-            "random": {
-                "title": "Tilfeldig",
-                "description": "La oss bestemme for deg"
-            },
-            "quotes": {
-                "title": "Sitater",
-                "description": "B\u00f8ker, filmer og mer"
-            },
-            "dictionary": {
-                "title": "Ordbok",
-                "description": "Topp Engelske Ord"
-            }
-        },
-        "notifications": {
-            "title": "Notifikasjoner",
-            "none": "Du har ingen notifikasjoner.",
-            "markread": "Marker som lest",
-            "remove": "Fjern alle",
-            "removeconfirm": "Er du sikker p\u00e5 at du vil fjerne alle notifikasjonene dine?"
-        },
-        "profile": {
-            "refresh": "Denne siden vil oppdateres etter du har trykt lagre endringer.",
-            "profile": "Profil",
-            "account": "Konto",
-            "personal": "Personlig",
-            "information": "Informasjon",
-            "personalize": "Personliggj\u00f8r",
-            "joined": "Ble med",
-            "displayname": "Brukernavn",
-            "defaultworld": "Standard Verden",
-            "about": "Om Meg",
-            "general": "Generelt",
-            "fullname": "Navn",
-            "level": "Niv\u00e5",
-            "age": "Alder",
-            "years_old": "\u00e5r gammel",
-            "dob": "F\u00f8dselsdato",
-            "showOnline": "Vis online status",
-            "gender": "Kj\u00f8nn",
-            "locale": "Spr\u00e5k",
-            "country": "Land",
-            "simplifyHome": "Forenkle Hjem?",
-            "keyboard": {
-                "title": "Tastatur",
-                "layout": "Tastaturoppsett",
-                "brand": "Tastaturmerke",
-                "model": "Tastaturmodell"
-            },
-            "customize": "Tilpasse",
-            "wpm": "WPM eller CPM?",
-            "navbar": "Navigasjonsbarstil",
-            "border": "Bildekant",
-            "playercards": "Spillerkort"
-        },
-        "settings": {
-            "refresh": "Denne siden vil oppdateres etter du har trykt lagre endringer.",
-            "profile": "Profil",
-            "information": "Informasjon",
-            "personalize": "Personliggj\u00f8r",
-            "displayname": "Brukernavn",
-            "defaultworld": "Standard Verden",
-            "about": "Om Meg",
-            "fullname": "Navn",
-            "dob": "F\u00f8dselsdato",
-            "showOnline": "Vis Online Status",
-            "gender": "Kj\u00f8nn",
-            "locale": "Spr\u00e5k",
-            "country": "Land",
-            "keyboard": {
-                "layout": "Tastaturoppsett",
-                "brand": "Tastaturmerke",
-                "model": "Tastaturmodell"
-            },
-            "customize": "Tilpass",
-            "wpm": "WPM eller CPM?",
-            "border": "Bildekant",
-            "playercards": "Spillerkort"
-        }
+    "auth": {
+      "discord": "Logg inn med Discord",
+      "facebook": "Logg inn med Facebook",
+      "google": "Logg inn med Google"
     }
+  },
+  "page": {
+    "banned": {
+      "title": "Du har blitt utestengt",
+      "text": "Din Keymash konto har blitt utestengt for alltid. Dette kan skyldes et brudd p\u00e5 v\u00e5re retningslinjer, eller juksing. Hvis du har noen sp\u00f8rsm\u00e5l, venligst kontakt support@keymash.io!"
+    },
+    "guest": {
+      "title": "Din gjestekonto har blitt nullstilt",
+      "text": "Takk for at du spiller Keymash! Vi er glad for at du liker spiller, og vil anbefale at du lager en konto for \u00e5 lagre fremgangen din. Til info s\u00e5 fjerner vi gjestekonto eldre enn 7 dager."
+    },
+    "match": {
+      "completed": "Kamp Ferdig",
+      "mistakes": "Tabber",
+      "no_mistakes": "R\u00e5tt! Du hadde ingen feil i denne kampen.",
+      "suspended": "Du har blitt kastet ut av denne kampen p\u00e5 grunn av juks.",
+      "time_out": "Du gikk tom for tid til \u00e5 utf\u00f8re kampen. Bedre lykke neste gang!",
+      "reconnect_failed": "Vi mislykkes med \u00e5 koble deg tilbake til kampen.",
+      "many_mistakes": "Du gjorde for mange tabber.",
+      "statistics_unsaved": "Din statistikk hare ikke blitt lagret for denne kampen",
+      "connect_lost": "Tilkobling mistet, pr\u00f8ver p\u00e5 nytt",
+      "reconnect": "Kobler til p\u00e5 nytt"
+    },
+    "error404": {
+      "title": "Siden du ser etter finnes ikke.",
+      "message": "Hvis du ble omdirigert til denne siden ved en feil, venligst kontakt"
+    },
+    "custom": {
+      "configuration": "Konfigurasjon",
+      "title": "Tittel",
+      "privacy": "Personvern",
+      "mode": "Modus",
+      "guests": "Tillat gjester?",
+      "text": "Tekst",
+      "match": "Kamp",
+      "custom": "Tilpasset",
+      "status": {
+        "lobby": "I Lobby",
+        "game": "I Spill"
+      },
+      "unlisted": "Ikke oppf\u00f8rt",
+      "public": "Offentlig",
+      "countdown": "Nedtelling",
+      "startmatch": "Start Kamp",
+      "error": {
+        "team_size": "Lag st\u00f8rrelsene m\u00e5 v\u00e6re lik for \u00e5 starte kampen.",
+        "unsaved": "Du m\u00e5 lagre endringene for \u00e5 starte."
+      },
+      "chat": "Venligst ikke skriv sensitive og/eller konfidensielle meldinger."
+    },
+    "learn": {
+      "title": "Oppl\u00e6ringssenter",
+      "welcome": "Velkommen! Dette oppl\u00e6ringssenteret vil gi skribenter nytt material for \u00e5 \u00f8ke deres skrive hastighet.",
+      "lesson": "Leksjon",
+      "section": "Seksjon",
+      "reportcard": "Karakterutskrift",
+      "tips": {
+        "one": "\u00c5 skrive saktere p\u00e5 ord som er veldig vanskelig vil gi deg bedre n\u00f8yaktighet p\u00e5 lang sikt.",
+        "two": "Gj\u00f8r h\u00e5ndledds\u00f8velser hver 15. minutt for \u00e5 unng\u00e5 permanente nerveskader p\u00e5 h\u00e5ndleddene og skuldrene dine.",
+        "three": "\u00c5 l\u00e6re hjemmeraden er veldig viktig n\u00e5r du trener opp muskelminnet for \u00e5 skrive uten \u00e5 se p\u00e5 tastaturet"
+      }
+    },
+    "achievements": {
+      "personal_best": "Personlig Rekord",
+      "matches_played": "Kamper Spilt",
+      "matches_won": "Kamper Vunnet",
+      "playtime": "Total spilletid"
+    },
+    "login": {
+      "title": "Logg inn",
+      "descr": "Velg en av de f\u00f8lgende alternativene"
+    },
+    "home": {
+      "matches_new": "Nyeste Kamper",
+      "matches_high": "Dagens Rekorder",
+      "tournaments": {
+        "title": "Daglige Kamper!",
+        "content1": "Vi arrangerer turneringer for \u00e5 teste skribenters ferdigheter <1>hver dag</1>. Med en til turnering hver s\u00f8ndag, som gir mulighet til \u00e5 vinne <1>Discord Nitro</1>.",
+        "button": "Begynn \u00e5 konkurrere n\u00e5!"
+      },
+      "lobbies": "Offentlige Lobbyer",
+      "news": "Siste Nytt",
+      "slogan": "Ta skriveferdighetene dine til neste niv\u00e5",
+      "hero": {
+        "content1": "Hvis du har noen sp\u00f8rsm\u00e5l, ta gjerne kontakt med oss p\u00e5 Discord, eller direkte gjennom <1>support@keymash.io</1>.",
+        "content2": "\u00c5 ja, jeg glemte \u00e5 nevne... Vi er alltid p\u00e5 utkikk etter samfunnsbidrag. Dette inkluderer tekst bidrag, spr\u00e5koversettelser og mer! <1>Klikk her</1> for \u00e5 l\u00e6re mer.",
+        "button": "Begynn \u00e5 skrive n\u00e5!"
+      },
+      "schools": {
+        "title": "Kan skoler bruke dette?",
+        "button": "Beynn \u00e5 l\u00e6re!",
+        "content1": " <1>Absolutt</1>. V\u00e5rt oppl\u00e6ringssenter blir tilbudt til enhver skribent med eller uten konto, men vi anbefaler sterkt \u00e5 lage en konto for \u00e5 lagre framgang.",
+        "content2": "Denne tjenesten er <1>gratis</1> for alle i hele verden, og vi bruker et enkelt karaktersystem basert p\u00e5 USA sitt."
+      },
+      "custom": {
+        "title": "\u00c5 spille med venner er s\u00e5 lett",
+        "content1": "Innen et tastetrykk kan du starte ditt eget private rom der alle vennene og familiemedlemmene dine kan bli med. Vi gir full konfigureringsmuligheter og til og med muligheten for \u00e5 se p\u00e5 andre spillere n\u00e5r de skriver!",
+        "button": "Lag en lobby!"
+      }
+    },
+    "leaderboards": {
+      "level": "H\u00f8yeste Niv\u00e5",
+      "time": "Mest Spilt",
+      "speed": "Raskeste Hastighet",
+      "wins": "Mest Vunnet"
+    },
+    "tournaments": {
+      "title": "Turneringer",
+      "join": "Bli med i stige",
+      "play": "Spille n\u00e5",
+      "starts": "Starter",
+      "ends": "Slutter",
+      "finished": "Slutt",
+      "info": "Informasjon",
+      "rules": "Regler",
+      "players": "Spillere",
+      "bracket": "Brakett",
+      "qualified": "Kvalifisert",
+      "notqualified": "Ikke Kvalifisert",
+      "qualification": "Kvalifiseringer",
+      "ladders": "Stiger",
+      "none": "Ingen spillere har blitt med enda, bli den f\u00f8rste!"
+    },
+    "queue": {
+      "howToPlayGuide": {
+        "1_title": "Hvordan spiller jeg?",
+        "1_description": "For \u00e5 kunne spille rangert matchmaking m\u00e5 du minst v\u00e6re i niv\u00e5 10. Du vil bli plassert gjennom en kalkuleringsfase, der du ikke vil se rangeringen din f\u00f8r du har spilt 10 kamper. Dette s\u00f8rger for at n\u00f8yaktigheten av ferdighetsniv\u00e5et ditt n\u00e5r du blir matchet mot andre spillere.",
+        "2_title": "Hva er rangert?",
+        "2_description": "Rangert matchmaking er et konkurrerende milj\u00f8 der spillere blir matchet med andre med et lignende ferdighetsniv\u00e5 som har st\u00f8rre n\u00f8yaktighet en den n\u00e5v\u00e6rende raskt spill modusene.",
+        "4_title": "Kan vi avslutte midt i en kamp?"
+      },
+      "shortcut": "Visste du at <1>CTRL+ALT+I</1> vil f\u00e5 deg hit raskere?",
+      "titles": {
+        "casual": "Uformelt",
+        "competitive": "Konkurrerende",
+        "latestNews": "Siste Nytt",
+        "lobbies": "Offentlige lobbyer",
+        "competitions": "Kamper"
+      },
+      "quickplay": {
+        "title": "Free for All",
+        "description": "Bli med p\u00e5 en kamp \u00f8yeblikkelig over hele verden",
+        "": "Raskt Spill"
+      },
+      "ranked": {
+        "title": "Rangert",
+        "description": "Sett deg selv i kampens hete",
+        "join": "Kommer snart",
+        "how": "Hvordan spille"
+      },
+      "custom": {
+        "title": "Tilpasset",
+        "description": "Lag en privat kamp med deg og dine venner",
+        "create": "Lag",
+        "browse": "Bla",
+        "public": "Offentlige Lobbyer",
+        "none": "Det er ingen offentlige lobbyer for \u00f8yeblikket",
+        "": "Tilpasset"
+      },
+      "practice": "Du spiller i en <1>\u00f8velses</1>kamp. Poengsummen din vil ikke lagres.",
+      "cooldown": "Du er allerede i en kamp, venligst vent {{count}} sekunder f\u00f8r du pr\u00f8ver igjen.",
+      "cooldown_plural": "Du er allerede i en kamp, venligst vent {{count}}\u00a0sekunder f\u00f8r du pr\u00f8ver igjen.",
+      "random": {
+        "title": "Tilfeldig",
+        "description": "La oss bestemme for deg"
+      },
+      "quotes": {
+        "title": "Sitater",
+        "description": "B\u00f8ker, filmer og mer"
+      },
+      "dictionary": {
+        "title": "Ordbok",
+        "description": "Topp Engelske Ord"
+      }
+    },
+    "notifications": {
+      "title": "Notifikasjoner",
+      "none": "Du har ingen notifikasjoner.",
+      "markread": "Marker som lest",
+      "remove": "Fjern alle",
+      "removeconfirm": "Er du sikker p\u00e5 at du vil fjerne alle notifikasjonene dine?"
+    },
+    "profile": {
+      "refresh": "Denne siden vil oppdateres etter du har trykt lagre endringer.",
+      "profile": "Profil",
+      "account": "Konto",
+      "personal": "Personlig",
+      "information": "Informasjon",
+      "personalize": "Personliggj\u00f8r",
+      "joined": "Ble med",
+      "displayname": "Brukernavn",
+      "defaultworld": "Standard Verden",
+      "about": "Om Meg",
+      "general": "Generelt",
+      "fullname": "Navn",
+      "level": "Niv\u00e5",
+      "age": "Alder",
+      "years_old": "\u00e5r gammel",
+      "dob": "F\u00f8dselsdato",
+      "showOnline": "Vis online status",
+      "gender": "Kj\u00f8nn",
+      "locale": "Spr\u00e5k",
+      "country": "Land",
+      "simplifyHome": "Forenkle Hjem?",
+      "keyboard": {
+        "title": "Tastatur",
+        "layout": "Tastaturoppsett",
+        "brand": "Tastaturmerke",
+        "model": "Tastaturmodell"
+      },
+      "customize": "Tilpasse",
+      "wpm": "WPM eller CPM?",
+      "navbar": "Navigasjonsbarstil",
+      "border": "Bildekant",
+      "playercards": "Spillerkort"
+    },
+    "settings": {
+      "refresh": "Denne siden vil oppdateres etter du har trykt lagre endringer.",
+      "profile": "Profil",
+      "information": "Informasjon",
+      "personalize": "Personliggj\u00f8r",
+      "displayname": "Brukernavn",
+      "defaultworld": "Standard Verden",
+      "about": "Om Meg",
+      "fullname": "Navn",
+      "dob": "F\u00f8dselsdato",
+      "showOnline": "Vis Online Status",
+      "gender": "Kj\u00f8nn",
+      "locale": "Spr\u00e5k",
+      "country": "Land",
+      "keyboard": {
+        "layout": "Tastaturoppsett",
+        "brand": "Tastaturmerke",
+        "model": "Tastaturmodell"
+      },
+      "customize": "Tilpass",
+      "wpm": "WPM eller CPM?",
+      "border": "Bildekant",
+      "playercards": "Spillerkort"
+    }
+  }
 }
