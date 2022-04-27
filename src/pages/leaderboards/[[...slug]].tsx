@@ -244,7 +244,7 @@ const Leaderboards = (props: IProps) => {
             {type === 'texts' && <LeaderboardPlayerMatch data={data as PlayerMatchExtendedData[]} playerData={playerData as PlayerMatchExtendedData[]} skip={skip} />}
             {type === 'casual' && filter !== 'challenges' && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} playerData={playerData as PlayerStatisticExtendedData[]} fieldName={filter} skip={skip} />}
             {type === 'casual' && filter === 'challenges' && <LeaderboardPlayerStatistic data={data as PlayerStatisticExtendedData[]} playerData={playerData as PlayerStatisticExtendedData[]} fieldName={'count'} skip={skip} />}
-            {loaded && <Pagination isNextPage={dataPage} skip={skip} nextPage={() => setSkip(skip + 25)} prevPage={() => setSkip(skip - 25)} />}
+            {loaded && <Pagination isNextPage={dataPage} skip={skip} nextPage={() => setSkip(skip + 50)} prevPage={() => setSkip(skip - 50)} />}
           </div>
 
           <div className="col-span-full lg:col-span-1">
