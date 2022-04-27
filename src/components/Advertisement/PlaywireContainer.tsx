@@ -1,6 +1,5 @@
 // @ts-nocheck
 import { useEffect } from 'react';
-import { toast } from 'react-toastify';
 import { usePlayerContext } from '../../contexts/Player.context';
 
 interface IProps {
