@@ -666,7 +666,9 @@ const SettingsFrame = (props: IProps) => {
                               {item.options.map((option) => (
                                 <SettingsOption
                                   key={option.title}
+                                  // @ts-ignore
                                   type={option.type}
+                                  // @ts-ignore
                                   select={option.data}
                                   {...option}
                                 />

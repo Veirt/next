@@ -73,12 +73,14 @@ const LeaderboardPlayerTournament: FC<IProps> = (props) => {
               </span>
             </div>
           )}
-          {/* @ts-ignore */}
           <div className="hidden md:block w-28 my-auto">
             {isWPM.includes(qualifierSort)
               ? useCPM === '1'
+                // @ts-ignore
                 ? `${(item[qualifierSort] * 5).toFixed(2)} CPM`
+                // @ts-ignore
                 : `${item[qualifierSort].toFixed(2)} WPM`
+              // @ts-ignore
               : `${(item[qualifierSort] ?? 0).toLocaleString()} matches`}
           </div>
           <div className={'w-8 md:hidden'} />
