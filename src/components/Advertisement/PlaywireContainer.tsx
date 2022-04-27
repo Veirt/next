@@ -62,14 +62,15 @@ function Playwire(props: IProps) {
                         });
                 });
                 
-                /* Debounce Variables */
+                /* Debounce constiables */
                 //  ************* Start of the Debounce code **************
                 // Debounce Function To keep on Window Resize.
-                var debounce = (callback, wait) => {
-                    var timeoutId = null;
+                const debounce = (callback, wait) => {
+                    const timeoutId = null;
                     return (...args) => {
                         window.clearTimeout(timeoutId);
                         timeoutId = window.setTimeout(() => {
+                            // eslint-disable-next-line
                             callback.apply(null, args);
                         }, wait);
                     };
@@ -80,17 +81,17 @@ function Playwire(props: IProps) {
                     'resize',
                     debounce(() => {
                         // Replace the Units or array of units that you wish to destroy on resize.
-                        var pwSkyId = ['leaderboard_atf', 'leaderboard_btf'];
+                        const pwSkyId = ['leaderboard_atf', 'leaderboard_btf'];
 
                         // Replace array with destroyed units you wish to re add to the site.
-                        var pwSkyArray = [
+                        const pwSkyArray = [
                             { selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
                             { selectorId: 'responsive-bottom-skyscraper', type: 'sky_btf' },
                         ];
 
                         // Replace with the AdUnit you wish to check for.
-                        var leaderboardAtf = document.querySelector('#leaderboard_atf');
-                        var leaderboardBtf = document.querySelector('#leaderboard_btf');
+                        const leaderboardAtf = document.querySelector('#leaderboard_atf');
+                        const leaderboardBtf = document.querySelector('#leaderboard_btf');
 
                         // When window width hides the ad, destroy the Units on the Array.
                         // Change innerWidth to your relevant size.
