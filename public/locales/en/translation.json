@@ -344,9 +344,9 @@
       "age": "Age",
       "years_old": "years old",
       "dob": "Date of Birth",
-      "showOnline":  "Show Online Status",
-      "gender":  "Gender",
-      "locale":  "Language",
+      "showOnline": "Show Online Status",
+      "gender": "Gender",
+      "locale": "Language",
       "country": "Country",
       "simplifyHome": "Simplify Home?",
       "keyboard": {

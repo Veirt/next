@@ -1,24 +1,24 @@
-const colors = require('tailwindcss/colors')
-      
+const colors = require('tailwindcss/colors');
+
 module.exports = {
-  mode: 'jit',   
-  purge: {       
-    enabled: true,  
-    content: [ 
+  mode: 'jit',
+  purge: {
+    enabled: true,
+    content: [
       './src/components/**/**/*.{js,jsx,ts,tsx}',
       './src/components/**/*.{js,jsx,ts,tsx}',
-      './src/components/*.{js,jsx,ts,tsx}', 
+      './src/components/*.{js,jsx,ts,tsx}',
       './src/pages/**/*.{js,jsx,ts,tsx}',
       './src/pages/*.{js,jsx,ts,tsx}',
-      './src/layout/*.{js,jsx,ts,tsx}', 
-      './src/templates/*.{js,jsx,ts,tsx}',  
+      './src/layout/*.{js,jsx,ts,tsx}',
+      './src/templates/*.{js,jsx,ts,tsx}',
       './src/*.{js,jsx,ts,tsx}',
-      './public/index.html'
+      './public/index.html',
     ],
     options: {
       safelist: [],
     },
-  }, 
+  },
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -27,23 +27,23 @@ module.exports = {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px', 
+      xl: '1280px',
       '2xl': '1300px',
-      '3xl': '1340px', 
+      '3xl': '1340px',
       '16-9': '1920px',
-      'ads': '1920px', 
-    }, 
+      ads: '1920px',
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
 
       black: colors.black,
-      white: colors.white,  
+      white: colors.white,
       gray: {
         50: '#FAFAFA',
         100: '#F4F4F5',
         200: '#E4E4E7',
-        300: '#D4D4D8',   
+        300: '#D4D4D8',
         400: '#A1A1AA',
         500: '#71717A',
         600: '#52525B',
@@ -90,9 +90,9 @@ module.exports = {
       9: '2.25rem',
       10: '2.5rem',
       11: '2.75rem',
-      12: '3rem', 
+      12: '3rem',
       14: '3.5rem',
-      16: '4rem',  
+      16: '4rem',
       20: '5rem',
       24: '6rem',
       28: '7rem',
@@ -114,7 +114,7 @@ module.exports = {
       92: '23rem',
       96: '24rem',
       100: '25rem',
-      104: '26rem', 
+      104: '26rem',
       108: '27rem',
       112: '28rem',
       116: '29rem',
@@ -632,7 +632,7 @@ module.exports = {
     }),
     minHeight: {
       0: '0px',
-      '128': '32rem',
+      128: '32rem',
       full: '100%',
       screen: '100vh',
     },
@@ -1063,4 +1063,4 @@ module.exports = {
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
   plugins: [],
-}
+};

@@ -1,19 +1,18 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 interface IProps {
-    to: string
+  to: string;
 }
 
 const Redirect = (props: IProps) => {
-    const router = useRouter();
+  const router = useRouter();
 
-    useEffect(() => {
-        if (props.to) 
-            router.push(router.basePath + props.to);
-    }, [router, props.to]);
+  useEffect(() => {
+    if (props.to) router.push(router.basePath + props.to);
+  }, [router, props.to]);
 
-    return <></>;
-}
+  return <></>;
+};
 
 export default Redirect;

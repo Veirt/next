@@ -1,15 +1,8 @@
 {
   // Configuration for JavaScript files
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "extends": [
-    "eslint:recommended", 
-    "plugin:@typescript-eslint/eslint-recommended", 
-    "next", 
-    "next/core-web-vitals"
-  ],
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/eslint-recommended", "next", "next/core-web-vitals"],
   "env": {
     "browser": true,
     "node": true,

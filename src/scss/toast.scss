@@ -1,40 +1,40 @@
 @media (min-width: 640px) {
-    .Toastify__toast-container {
-        width: 360px;
-    }
+  .Toastify__toast-container {
+    width: 360px;
+  }
 }
 
 .Toastify__toast {
-    @apply rounded-2xl text-sm px-4 py-4 tracking-wider #{!important};
+  @apply rounded-2xl text-sm px-4 py-4 tracking-wider #{!important};
 }
 
-.Toastify__toast--error, 
+.Toastify__toast--error,
 .Toastify__toast--success,
 .Toastify__toast--info,
 .Toastify__toast--warning {
-    background: #111;
+  background: #111;
 }
 
 .Toastify__toast-body {
-    @apply tracking-normal;
+  @apply tracking-normal;
 }
 
 .Toastify__progress-bar--success {
-    @apply bg-green-600 #{!important};  
+  @apply bg-green-600 #{!important};
 }
 
 .Toastify__progress-bar--error {
-    @apply bg-red-600 #{!important};  
+  @apply bg-red-600 #{!important};
 }
 
 .Toastify__progress-bar--warning {
-    @apply bg-orange-600 #{!important};  
+  @apply bg-orange-600 #{!important};
 }
 
 .Toastify__progress-bar--info {
-    @apply bg-blue-600 #{!important};  
+  @apply bg-blue-600 #{!important};
 }
 
 .Toastify__close-button {
-    @apply my-auto pr-1 pl-1.5 py-1 transform scale-125 hover:bg-white hover:bg-opacity-30 rounded;
+  @apply my-auto pr-1 pl-1.5 py-1 transform scale-125 hover:bg-white hover:bg-opacity-30 rounded;
 }

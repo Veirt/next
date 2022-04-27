@@ -1,383 +1,383 @@
 {
-    "other": {
-        "account_banned": "Sua conta foi banida, por favor contate support@keymash.io!",
-        "twitch_none": "Ningu\u00e9m est\u00e1 transmitindo agora :( Retorne mais tarde ou comece a transmitir!",
-        "grades": {
-            "passed": "Aprovado",
-            "failed": "Reprovado"
-        },
-        "finished": "Terminado",
-        "gameover": "Fim de Jogo",
-        "lists": {
-            "locales": "Linguagens",
-            "types": "Tipos"
-        },
-        "debug": {
-            "title": "Relat\u00f3rio de Erros",
-            "message": "Se voc\u00ea estiver com algum dos problemas abaixo, por favor clique no bot\u00e3o abaixo e mande um email para support@keymash.io com o m\u00e1ximo de informa\u00e7\u00f5es poss\u00edvel sobre como o problema aconteceu e como reproduzi-lo. As informa\u00e7\u00f5es extra providas ir\u00e3o nos ajudar permitindo-nos reproduzir o problema exato e resolver.",
-            "list": [
-                "Desconex\u00e3o repentina no meio de uma partida.",
-                "Sua contagem de palavras\/caracteres por minuto n\u00e3o atualizando automaticamente ou a de outros jogadores.",
-                "Sua barra de progresso n\u00e3o atualizar mais para voc\u00ea ou outros jogadores.",
-                "N\u00e3o ver os resultados de fim de partida apesar de ter terminado a partida."
-            ]
-        },
-        "save": "Salvar!"
+  "other": {
+    "account_banned": "Sua conta foi banida, por favor contate support@keymash.io!",
+    "twitch_none": "Ningu\u00e9m est\u00e1 transmitindo agora :( Retorne mais tarde ou comece a transmitir!",
+    "grades": {
+      "passed": "Aprovado",
+      "failed": "Reprovado"
     },
-    "button": {
-        "save": "Salvar!",
-        "retry": "Tentar Novamente",
-        "back": "Voltar",
-        "next": "Pr\u00f3ximo",
-        "close": "Fechar",
-        "leave": "Sair",
-        "enable": "Habilitar",
-        "disable": "Desabilitar",
-        "spectator": "Espectador",
-        "join": "Entrar",
-        "ladder": "Escalada",
-        "lobby": "Sagu\u00e3o",
-        "newgame": "Novo Jogo",
-        "letsgo": "Vamos l\u00e1!"
+    "finished": "Terminado",
+    "gameover": "Fim de Jogo",
+    "lists": {
+      "locales": "Linguagens",
+      "types": "Tipos"
     },
-    "charts": {
-        "lowest": "Menor",
-        "highest": "Maior"
+    "debug": {
+      "title": "Relat\u00f3rio de Erros",
+      "message": "Se voc\u00ea estiver com algum dos problemas abaixo, por favor clique no bot\u00e3o abaixo e mande um email para support@keymash.io com o m\u00e1ximo de informa\u00e7\u00f5es poss\u00edvel sobre como o problema aconteceu e como reproduzi-lo. As informa\u00e7\u00f5es extra providas ir\u00e3o nos ajudar permitindo-nos reproduzir o problema exato e resolver.",
+      "list": [
+        "Desconex\u00e3o repentina no meio de uma partida.",
+        "Sua contagem de palavras/caracteres por minuto n\u00e3o atualizando automaticamente ou a de outros jogadores.",
+        "Sua barra de progresso n\u00e3o atualizar mais para voc\u00ea ou outros jogadores.",
+        "N\u00e3o ver os resultados de fim de partida apesar de ter terminado a partida."
+      ]
     },
-    "options": {
-        "yes": "Sim",
-        "no": "N\u00e3o",
-        "random": "Aleat\u00f3rio",
-        "quotes": "Cita\u00e7\u00f5es",
-        "dict": "Dicion\u00e1rio",
-        "custom": "Personalizada"
+    "save": "Salvar!"
+  },
+  "button": {
+    "save": "Salvar!",
+    "retry": "Tentar Novamente",
+    "back": "Voltar",
+    "next": "Pr\u00f3ximo",
+    "close": "Fechar",
+    "leave": "Sair",
+    "enable": "Habilitar",
+    "disable": "Desabilitar",
+    "spectator": "Espectador",
+    "join": "Entrar",
+    "ladder": "Escalada",
+    "lobby": "Sagu\u00e3o",
+    "newgame": "Novo Jogo",
+    "letsgo": "Vamos l\u00e1!"
+  },
+  "charts": {
+    "lowest": "Menor",
+    "highest": "Maior"
+  },
+  "options": {
+    "yes": "Sim",
+    "no": "N\u00e3o",
+    "random": "Aleat\u00f3rio",
+    "quotes": "Cita\u00e7\u00f5es",
+    "dict": "Dicion\u00e1rio",
+    "custom": "Personalizada"
+  },
+  "form": {
+    "message": "Insira uma mensagem..."
+  },
+  "statistics": {
+    "wpm_abbreviation": "PPM",
+    "cpm_abbreviation": "CPM",
+    "wpm": "Palavras por Minuto",
+    "cpm": "Caracteres por Minuto",
+    "time": "Tempo Total",
+    "won": "Ganhou",
+    "lost": "Perdeu",
+    "ratio": "Propor\u00e7\u00e3o",
+    "accuracy": "Precis\u00e3o",
+    "exp_abbreviation": "XP",
+    "playtime": "Tempo de Jogo",
+    "exp_total": "Experi\u00eancia Total",
+    "exp": "Experi\u00eancia",
+    "wpm_fastest": "Partida mais R\u00e1pida",
+    "mistakes": "Erros",
+    "grade": "Nota",
+    "records": "Recordes",
+    "total": "Total",
+    "tournaments": "Campeonatos",
+    "top5": "Top 5"
+  },
+  "component": {
+    "spectator": {
+      "help_title": "Ajuda de Espectador",
+      "help_1": "1. Para sair da chamada, use o bot\u00e3o no canto superior esquerdo.",
+      "help_2": "2. Enquanto cada jogador \u00e9 um triangulo com uma cor, esta cor vai estar combinando com o acento circunflexo.",
+      "help_3": "3. Para modos de jogos utilizando o sistema de rodadas, voc\u00ea vai ver uma orbe destacada para cada rodada ganha e perdida.",
+      "help_4": "4. Quando cada jogador acaba de terminar, fique \u00e0 certeza de clicar no bot\u00e3o no canto superior esquerdo. Isso \u00e9 intencionalmente feito para n\u00e3o redirecionar s\u00f3 em caso se voc\u00ea quer desejar que quer ver as estat\u00edsticas fornecidas."
     },
-    "form": {
-        "message": "Insira uma mensagem..."
+    "topbar": {
+      "home": "P\u00e1gina Inicial",
+      "news": "Novidades",
+      "play": "Jogar",
+      "leaders": "L\u00edderes",
+      "discord": "Discord"
     },
-    "statistics": {
-        "wpm_abbreviation": "PPM",
-        "cpm_abbreviation": "CPM",
-        "wpm": "Palavras por Minuto",
-        "cpm": "Caracteres por Minuto",
-        "time": "Tempo Total",
-        "won": "Ganhou",
-        "lost": "Perdeu",
-        "ratio": "Propor\u00e7\u00e3o",
-        "accuracy": "Precis\u00e3o",
-        "exp_abbreviation": "XP",
-        "playtime": "Tempo de Jogo",
-        "exp_total": "Experi\u00eancia Total",
-        "exp": "Experi\u00eancia",
-        "wpm_fastest": "Partida mais R\u00e1pida",
-        "mistakes": "Erros",
-        "grade": "Nota",
-        "records": "Recordes",
-        "total": "Total",
-        "tournaments": "Campeonatos",
-        "top5": "Top 5"
+    "bottombar": {
+      "about": "Sobre n\u00f3s",
+      "tos": "Termos de Servi\u00e7o",
+      "privacy": "Pol\u00edtica de privacidade",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Contribua",
+      "guidelines": "Diretrizes da Comunidade",
+      "shortcuts": "Atalhos do teclado",
+      "faq": "Perguntas Frequentes",
+      "troubleshooting": "Solu\u00e7\u00e3o de Problemas",
+      "faqM": "Perguntas Frequentes"
     },
-    "component": {
-        "spectator": {
-            "help_title": "Ajuda de Espectador",
-            "help_1": "1. Para sair da chamada, use o bot\u00e3o no canto superior esquerdo.",
-            "help_2": "2. Enquanto cada jogador \u00e9 um triangulo com uma cor, esta cor vai estar combinando com o acento circunflexo.",
-            "help_3": "3. Para modos de jogos utilizando o sistema de rodadas, voc\u00ea vai ver uma orbe destacada para cada rodada ganha e perdida.",
-            "help_4": "4. Quando cada jogador acaba de terminar, fique \u00e0 certeza de clicar no bot\u00e3o no canto superior esquerdo. Isso \u00e9 intencionalmente feito para n\u00e3o redirecionar s\u00f3 em caso se voc\u00ea quer desejar que quer ver as estat\u00edsticas fornecidas."
-        },
-        "topbar": {
-            "home": "P\u00e1gina Inicial",
-            "news": "Novidades",
-            "play": "Jogar",
-            "leaders": "L\u00edderes",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "Sobre n\u00f3s",
-            "tos": "Termos de Servi\u00e7o",
-            "privacy": "Pol\u00edtica de privacidade",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "Contribua",
-            "guidelines": "Diretrizes da Comunidade",
-            "shortcuts": "Atalhos do teclado",
-            "faq": "Perguntas Frequentes",
-            "troubleshooting": "Solu\u00e7\u00e3o de Problemas",
-            "faqM": "Perguntas Frequentes"
-        },
-        "navbar": {
-            "home": "Inicio",
-            "news": "Novidades",
-            "play": "Jogar",
-            "leaders": "L\u00edderes",
-            "discord": "Discord",
-            "practice": "Praticar",
-            "twitch": "Twitch.",
-            "store": "Mercadoria.",
-            "learn": "Aprender",
-            "achievements": "Conquistas",
-            "statistics": "Estat\u00edsticas",
-            "matches": "Partidas",
-            "recent_matches": "Partidas Recentes",
-            "tournaments": "Torneios",
-            "settings": "Configura\u00e7\u00f5es",
-            "matchmaking": "Matchmaking",
-            "logout": "Sair",
-            "login": "Entrar",
-            "notifications": "Notifica\u00e7\u00f5es",
-            "custom": "Personalizado"
-        },
-        "auth": {
-            "discord": "Conectar com Discord",
-            "facebook": "Conectar com Facebook",
-            "google": "Conectar com Google"
-        }
+    "navbar": {
+      "home": "Inicio",
+      "news": "Novidades",
+      "play": "Jogar",
+      "leaders": "L\u00edderes",
+      "discord": "Discord",
+      "practice": "Praticar",
+      "twitch": "Twitch.",
+      "store": "Mercadoria.",
+      "learn": "Aprender",
+      "achievements": "Conquistas",
+      "statistics": "Estat\u00edsticas",
+      "matches": "Partidas",
+      "recent_matches": "Partidas Recentes",
+      "tournaments": "Torneios",
+      "settings": "Configura\u00e7\u00f5es",
+      "matchmaking": "Matchmaking",
+      "logout": "Sair",
+      "login": "Entrar",
+      "notifications": "Notifica\u00e7\u00f5es",
+      "custom": "Personalizado"
     },
-    "page": {
-        "banned": {
-            "title": "Sua conta foi banida.",
-            "text": "Sua conta do Keymash foi infinitamente banida, isso poderia ter causado em nossas viola\u00e7\u00f5es de termos de servi\u00e7os ou trapa\u00e7as. Se voc\u00ea tem qualquer quest\u00e3o, por favor contate support@keymash.io!"
-        },
-        "guest": {
-            "title": "Sua conta de visitante foi reiniciada.",
-            "text": "Obrigado por jogar Keymash! N\u00f3s estamos alegre que voc\u00ea esta gostando e n\u00f3s recomendamos em criar uma conta no futuro. Para contexto, n\u00f3s removemos contas de visitantes que s\u00e3o mais velho do que 7 dias."
-        },
-        "match": {
-            "completed": "Partida Completa",
-            "mistakes": "Erros",
-            "no_mistakes": "Perfeito! Voc\u00ea n\u00e3o teve nenhum erro durante esta partida.",
-            "suspended": "Voc\u00ea foi suspenso dessa partida por causa de trapa\u00e7a.",
-            "time_out": "Voc\u00ea n\u00e3o teve tempo o suficiente para completar essa partida. Boa sorte na pr\u00f3xima vez!",
-            "reconnect_failed": "N\u00e3o foi poss\u00edvel se reconectar \u00e0 esta partida.",
-            "many_mistakes": "Voc\u00ea teve erros excessivos",
-            "statistics_unsaved": "Suas estat\u00edsticas n\u00e3o foram salvas nesta partida",
-            "connect_lost": "Conex\u00e3o perdida, tentando reconex\u00e3o.",
-            "reconnect": "Reconectando"
-        },
-        "error404": {
-            "title": "A p\u00e1gina que voc\u00ea est\u00e1 procurando n\u00e3o existe.",
-            "message": "Se voc\u00ea foi redirecionado a essa p\u00e1gina por um erro por favor nos contate"
-        },
-        "custom": {
-            "configuration": "Configura\u00e7\u00e3o",
-            "title": "Titulo",
-            "privacy": "Privacidade",
-            "mode": "Modo",
-            "guests": "Permitir Visitantes?",
-            "text": "Texto",
-            "match": "Partida",
-            "custom": "Personalizado",
-            "status": {
-                "lobby": "No Sagu\u00e3o",
-                "game": "Em Jogo"
-            },
-            "unlisted": "N\u00e3o Listado",
-            "public": "Publico",
-            "countdown": "Contagem Regressiva",
-            "startmatch": "Come\u00e7ar Partida",
-            "error": {
-                "team_size": "O tamanho das equipes devem estar em ordem para o inicio da partida.",
-                "unsaved": "Voc\u00ea deve confirmar suas altera\u00e7\u00f5es para come\u00e7ar."
-            },
-            "chat": "Se poss\u00edvel, evite postar mensagens sens\u00edveis e\/ou confidenciais."
-        },
-        "learn": {
-            "title": "Centro de Aprendizagem",
-            "welcome": "Bem vindo! Este centro de aprendizagem ira servir de ajuda para digitadores novatos, com materiais para aumentar sua velocidade de digita\u00e7\u00e3o.",
-            "lesson": "Li\u00e7\u00e3o",
-            "section": "Se\u00e7\u00e3o",
-            "reportcard": "Ficha",
-            "tips": {
-                "one": "Digitar mais devagar em palavras que s\u00e3o muito mais dif\u00edceis ajudar\u00e1 na sua consist\u00eancia a longo prazo.",
-                "two": "Fa\u00e7a exerc\u00edcios de pulso a cada 15 minutos para evitar danos permanentes aos nervos dos pulsos e ombros.",
-                "three": "Aprender o Home Row \u00e9 muito importante para treinar a mem\u00f3ria muscular para digitar sem olhar para o teclado."
-            }
-        },
-        "achievements": {
-            "personal_best": "Melhor pessoal",
-            "matches_played": "Partidas Jogadas",
-            "matches_won": "Jogos Vencidos",
-            "playtime": "Tempo total de jogo"
-        },
-        "login": {
-            "title": "Entrar",
-            "descr": "Selecione uma das op\u00e7\u00f5es seguintes"
-        },
-        "home": {
-            "matches_new": "Partidas Recentes",
-            "matches_high": "Maiores Pontua\u00e7\u00f5es de Hoje",
-            "tournaments": {
-                "title": "Competi\u00e7\u00f5es di\u00e1rias!",
-                "content1": "Organizamos torneios para testar as habilidades dos digitadores <1> todos os dias <\/1>. Com um torneio adicional todos os domingos para a chance de ganhar o <1> Discord Nitro <\/1>.",
-                "button": "Comece a competir agora!"
-            },
-            "lobbies": "Lobbies P\u00fablicos",
-            "news": "\u00daltimas Novidades",
-            "slogan": "Leve sua digita\u00e7\u00e3o para o pr\u00f3ximo n\u00edvel",
-            "hero": {
-                "content1": "Se voc\u00ea tiver qualquer perguntas ou preocupa\u00e7\u00f5es, n\u00e3o se resista para falar com n\u00f3s no Discord ou direto pelo support@keymash.io",
-                "content2": "Ah sim, esquecemos de mencionar, n\u00f3s estamos olhando por uma contribui\u00e7\u00e3o de comunidade incluindo submiss\u00e3o de texto, tradutores de linguagens e mais! Clique aqui para saber mais.",
-                "button": "Comece a digitar agora!"
-            },
-            "schools": {
-                "title": "As escolas podem usar isso?",
-                "button": "Comece a aprender!",
-                "content1": "Absolutamente, Nosso centro de ensinar \u00e9 oferecida por algum datil\u00f3grafa com ou sem conta, Contudo, n\u00f3s recomendamos ter uma conta para salvar o progresso.",
-                "content2": "Esse servi\u00e7o \u00e9 gr\u00e1tis, para qualquer usu\u00e1rio do mundo e n\u00f3s usamos um sistema de gradua\u00e7\u00e3o simples baseado nos EUA."
-            },
-            "custom": {
-                "title": "Jogar com os amigos \u00e9 t\u00e3o f\u00e1cil",
-                "content1": "Com um clique de um bot\u00e3o, voc\u00ea pode iniciar sua pr\u00f3pria sala privada onde qualquer um de seus amigos e familiares pode participar. Oferecemos personaliza\u00e7\u00e3o total e at\u00e9 permitimos a capacidade de assistir a outro tipo de jogador!",
-                "button": "Crie um lobby!"
-            }
-        },
-        "leaderboards": {
-            "level": "Mais alto n\u00edvel",
-            "time": "Mais tocado",
-            "speed": "Velocidade mais r\u00e1pida",
-            "wins": "Mais vit\u00f3rias"
-        },
-        "tournaments": {
-            "title": "Torneios",
-            "join": "Entrar na escada",
-            "play": "Jogar Agora",
-            "starts": "Come\u00e7a",
-            "ends": "Termina",
-            "finished": "Acabado",
-            "info": "Informa\u00e7\u00e3o",
-            "rules": "Regras",
-            "players": "Jogadores",
-            "bracket": "Suporte",
-            "qualified": "Qualificado",
-            "notqualified": "N\u00e3o qualificado",
-            "qualification": "Qualifica\u00e7\u00f5es",
-            "ladders": "Escadas",
-            "none": "Nenhum jogador participou ainda, seja o primeiro!"
-        },
-        "queue": {
-            "howToPlayGuide": {
-                "1_title": "Como jogar?",
-                "1_description": "Em ordem para jogar as partidas matchmaking classificadas voc\u00ea precisa chegar at\u00e9 o n\u00edvel 10. Voc\u00ea vai ser colocado em uma fase de classifica\u00e7\u00e3o aonde voc\u00ea n\u00e3o vai ver seu rank at\u00e9 voc\u00ea ter terminado 10 partidas. Isso vai garantir a sua precis\u00e3o em sua habilidade de n\u00edvel quando voc\u00ea ser coincidir contra as outras pessoas.",
-                "2_title": "O que \u00e9 ranqueado?",
-                "2_description": "A combina\u00e7\u00e3o ranqueada \u00e9 um ambiente competitivo onde os jogadores s\u00e3o combinados com outros de n\u00edvel de habilidade semelhante, que \u00e9 de maior precis\u00e3o do que os modos Jogada R\u00e1pida atuais.",
-                "3_title": "Como que \u00e9 determinado SR",
-                "3_description": "Famosamente usado no xadrez, o matchmaking classificado utiliza uma forma de \"sistema de classifica\u00e7\u00e3o\" tamb\u00e9m conhecido como sistema de classifica\u00e7\u00e3o Glicko-2. Ele usa uma forma de c\u00e1lculo para determinar sua classifica\u00e7\u00e3o de habilidade (SR) comparando sua classifica\u00e7\u00e3o de habilidade com a de seus oponentes e sua confiabilidade de classifica\u00e7\u00e3o, tamb\u00e9m conhecida como \"Desvio de classifica\u00e7\u00e3o\".",
-                "4_title": "Podemos sair no meio da partida?",
-                "4_description": "Devido \u00e0 natureza competitiva, \u00e9 extremamente desencorajado sair de um jogo. Se voc\u00ea sair antes de terminar de jogar seu jogo classificado, ent\u00e3o 20 pontos ser\u00e1 deduzido de sua classifica\u00e7\u00e3o de habilidade. Al\u00e9m disso, se o seu oponente terminar o jogo, voc\u00ea sofrer\u00e1 a derrota como se tivesse completado a partida."
-            },
-            "shortcut": "Gr\u00e1tis para todos",
-            "titles": {
-                "casual": "Casual",
-                "competitive": "Competitivo",
-                "playNow": "Jogar Agora",
-                "latestNews": "\u00daltimas Noticias",
-                "lobbies": "Sagu\u00f5es P\u00fablicos",
-                "competitions": "Competi\u00e7\u00f5es"
-            },
-            "quickplay": {
-                "title": "Gr\u00e1tis para todos",
-                "description": "Junte-se a uma partida em qualquer lugar do mundo instantaneamente",
-                "": "Jogo R\u00e1pido"
-            },
-            "ranked": {
-                "title": "Classificado",
-                "description": "Coloque-se contra o mundo da competi\u00e7\u00e3o",
-                "join": "Duelo (1v1)",
-                "how": "Como jogar"
-            },
-            "custom": {
-                "title": "personalizadas",
-                "description": "Crie uma partida privada com voc\u00ea e seus amigos",
-                "create": "Crio",
-                "browse": "Squeaky toy",
-                "public": "Lobbies P\u00fablicos",
-                "none": "Atualmente n\u00e3o h\u00e1 lobbies p\u00fablicos.",
-                "": "Privado"
-            },
-            "practice": "Voc\u00ea est\u00e1 jogando em uma partida de <1>treino<1>. Sua pontua\u00e7\u00e3o n\u00e3o ser\u00e1 salva.",
-            "cooldown": "Voc\u00ea j\u00e1 est\u00e1 em uma partida. Por favor espere {{contagem}} segundo e tente de novo",
-            "cooldown_plural": "Voc\u00ea j\u00e1 est\u00e1 em uma partida. Por favor espere {{contagem}} segundos e tente de novo",
-            "random": {
-                "title": "Aleat\u00f3rio",
-                "description": "Deixe-nos decidir por voc\u00ea"
-            },
-            "quotes": {
-                "title": "Frases",
-                "description": "Livros, filmes e mais"
-            },
-            "dictionary": {
-                "title": "Dicion\u00e1rio",
-                "description": "Principais Palavras em Ingl\u00eas"
-            }
-        },
-        "notifications": {
-            "title": "Notifica\u00e7\u00f5es",
-            "none": "Voc\u00ea n\u00e3o possui nenhuma notifica\u00e7\u00e3o",
-            "markread": "Marque como Lido",
-            "remove": "Remover todas",
-            "removeconfirm": "Voc\u00ea tem certeza de que quer remover suas notifica\u00e7\u00f5es"
-        },
-        "profile": {
-            "refresh": "Esta p\u00e1gina ser\u00e1 atualizada ap\u00f3s pressionar salvar altera\u00e7\u00f5es.",
-            "profile": "Perfil",
-            "account": "Conta",
-            "personal": "Pessoal",
-            "information": "Informa\u00e7\u00e3o",
-            "personalize": "Personalizar",
-            "joined": "Entrou",
-            "smoothCaretSpeed": "Velocidade suave do cursor",
-            "smoothCaret": "Velocidade suave (beta)",
-            "gameplayParticipantStyle": "Em Jogo - Estilo de Participante.",
-            "inputbox": "Em Jogo - Esconder Caixa de Input?",
-            "displayname": "Usuario",
-            "defaultworld": "Mundo Padr\u00e3o",
-            "about": "Sobre Eu",
-            "general": "Geral",
-            "fullname": "Nome",
-            "level": "N\u00edvel",
-            "age": "Idade",
-            "years_old": "Anos",
-            "dob": "Data de nascimento",
-            "showOnline": "Mostrar Status Online",
-            "gender": "G\u00eanero",
-            "locale": "Lingua",
-            "country": "Pa\u00eds",
-            "simplifyHome": "Voltar ao Inicio?",
-            "keyboard": {
-                "title": "Teclado",
-                "layout": "Layout do Teclado",
-                "brand": "Marca de Teclado",
-                "model": "Modelo do Teclado"
-            },
-            "customize": "Customizar",
-            "wpm": "WPM ou CPM",
-            "navbar": "Estilo Barra de Navega\u00e7\u00e3o",
-            "border": "Borda da Imagem",
-            "playercards": "Cart\u00e3o de Jogo"
-        },
-        "settings": {
-            "refresh": "Essa p\u00e1gina ser\u00e1 atualizada depois de apertar salvar altera\u00e7\u00f5es",
-            "profile": "Perfil",
-            "information": "Informa\u00e7\u00f5es",
-            "personalize": "Personalizar",
-            "displayname": "Nome de usu\u00e1rio",
-            "defaultworld": "Palavra Padr\u00e3o",
-            "about": "Sobre Mim",
-            "fullname": "Nome",
-            "dob": "Data de Nascimento",
-            "showOnline": "Mostrar status online",
-            "gender": "G\u00eanero",
-            "locale": "L\u00edngua",
-            "country": "Pa\u00eds",
-            "keyboard": {
-                "layout": "Layout do Teclado",
-                "brand": "Marca do Teclado",
-                "model": "Modelo do Teclado"
-            },
-            "customize": "Customizar",
-            "wpm": "WPM ou CPM?",
-            "border": "Borda da Imagem",
-            "playercards": "Cart\u00e3o de Jogo"
-        }
+    "auth": {
+      "discord": "Conectar com Discord",
+      "facebook": "Conectar com Facebook",
+      "google": "Conectar com Google"
     }
+  },
+  "page": {
+    "banned": {
+      "title": "Sua conta foi banida.",
+      "text": "Sua conta do Keymash foi infinitamente banida, isso poderia ter causado em nossas viola\u00e7\u00f5es de termos de servi\u00e7os ou trapa\u00e7as. Se voc\u00ea tem qualquer quest\u00e3o, por favor contate support@keymash.io!"
+    },
+    "guest": {
+      "title": "Sua conta de visitante foi reiniciada.",
+      "text": "Obrigado por jogar Keymash! N\u00f3s estamos alegre que voc\u00ea esta gostando e n\u00f3s recomendamos em criar uma conta no futuro. Para contexto, n\u00f3s removemos contas de visitantes que s\u00e3o mais velho do que 7 dias."
+    },
+    "match": {
+      "completed": "Partida Completa",
+      "mistakes": "Erros",
+      "no_mistakes": "Perfeito! Voc\u00ea n\u00e3o teve nenhum erro durante esta partida.",
+      "suspended": "Voc\u00ea foi suspenso dessa partida por causa de trapa\u00e7a.",
+      "time_out": "Voc\u00ea n\u00e3o teve tempo o suficiente para completar essa partida. Boa sorte na pr\u00f3xima vez!",
+      "reconnect_failed": "N\u00e3o foi poss\u00edvel se reconectar \u00e0 esta partida.",
+      "many_mistakes": "Voc\u00ea teve erros excessivos",
+      "statistics_unsaved": "Suas estat\u00edsticas n\u00e3o foram salvas nesta partida",
+      "connect_lost": "Conex\u00e3o perdida, tentando reconex\u00e3o.",
+      "reconnect": "Reconectando"
+    },
+    "error404": {
+      "title": "A p\u00e1gina que voc\u00ea est\u00e1 procurando n\u00e3o existe.",
+      "message": "Se voc\u00ea foi redirecionado a essa p\u00e1gina por um erro por favor nos contate"
+    },
+    "custom": {
+      "configuration": "Configura\u00e7\u00e3o",
+      "title": "Titulo",
+      "privacy": "Privacidade",
+      "mode": "Modo",
+      "guests": "Permitir Visitantes?",
+      "text": "Texto",
+      "match": "Partida",
+      "custom": "Personalizado",
+      "status": {
+        "lobby": "No Sagu\u00e3o",
+        "game": "Em Jogo"
+      },
+      "unlisted": "N\u00e3o Listado",
+      "public": "Publico",
+      "countdown": "Contagem Regressiva",
+      "startmatch": "Come\u00e7ar Partida",
+      "error": {
+        "team_size": "O tamanho das equipes devem estar em ordem para o inicio da partida.",
+        "unsaved": "Voc\u00ea deve confirmar suas altera\u00e7\u00f5es para come\u00e7ar."
+      },
+      "chat": "Se poss\u00edvel, evite postar mensagens sens\u00edveis e/ou confidenciais."
+    },
+    "learn": {
+      "title": "Centro de Aprendizagem",
+      "welcome": "Bem vindo! Este centro de aprendizagem ira servir de ajuda para digitadores novatos, com materiais para aumentar sua velocidade de digita\u00e7\u00e3o.",
+      "lesson": "Li\u00e7\u00e3o",
+      "section": "Se\u00e7\u00e3o",
+      "reportcard": "Ficha",
+      "tips": {
+        "one": "Digitar mais devagar em palavras que s\u00e3o muito mais dif\u00edceis ajudar\u00e1 na sua consist\u00eancia a longo prazo.",
+        "two": "Fa\u00e7a exerc\u00edcios de pulso a cada 15 minutos para evitar danos permanentes aos nervos dos pulsos e ombros.",
+        "three": "Aprender o Home Row \u00e9 muito importante para treinar a mem\u00f3ria muscular para digitar sem olhar para o teclado."
+      }
+    },
+    "achievements": {
+      "personal_best": "Melhor pessoal",
+      "matches_played": "Partidas Jogadas",
+      "matches_won": "Jogos Vencidos",
+      "playtime": "Tempo total de jogo"
+    },
+    "login": {
+      "title": "Entrar",
+      "descr": "Selecione uma das op\u00e7\u00f5es seguintes"
+    },
+    "home": {
+      "matches_new": "Partidas Recentes",
+      "matches_high": "Maiores Pontua\u00e7\u00f5es de Hoje",
+      "tournaments": {
+        "title": "Competi\u00e7\u00f5es di\u00e1rias!",
+        "content1": "Organizamos torneios para testar as habilidades dos digitadores <1> todos os dias </1>. Com um torneio adicional todos os domingos para a chance de ganhar o <1> Discord Nitro </1>.",
+        "button": "Comece a competir agora!"
+      },
+      "lobbies": "Lobbies P\u00fablicos",
+      "news": "\u00daltimas Novidades",
+      "slogan": "Leve sua digita\u00e7\u00e3o para o pr\u00f3ximo n\u00edvel",
+      "hero": {
+        "content1": "Se voc\u00ea tiver qualquer perguntas ou preocupa\u00e7\u00f5es, n\u00e3o se resista para falar com n\u00f3s no Discord ou direto pelo support@keymash.io",
+        "content2": "Ah sim, esquecemos de mencionar, n\u00f3s estamos olhando por uma contribui\u00e7\u00e3o de comunidade incluindo submiss\u00e3o de texto, tradutores de linguagens e mais! Clique aqui para saber mais.",
+        "button": "Comece a digitar agora!"
+      },
+      "schools": {
+        "title": "As escolas podem usar isso?",
+        "button": "Comece a aprender!",
+        "content1": "Absolutamente, Nosso centro de ensinar \u00e9 oferecida por algum datil\u00f3grafa com ou sem conta, Contudo, n\u00f3s recomendamos ter uma conta para salvar o progresso.",
+        "content2": "Esse servi\u00e7o \u00e9 gr\u00e1tis, para qualquer usu\u00e1rio do mundo e n\u00f3s usamos um sistema de gradua\u00e7\u00e3o simples baseado nos EUA."
+      },
+      "custom": {
+        "title": "Jogar com os amigos \u00e9 t\u00e3o f\u00e1cil",
+        "content1": "Com um clique de um bot\u00e3o, voc\u00ea pode iniciar sua pr\u00f3pria sala privada onde qualquer um de seus amigos e familiares pode participar. Oferecemos personaliza\u00e7\u00e3o total e at\u00e9 permitimos a capacidade de assistir a outro tipo de jogador!",
+        "button": "Crie um lobby!"
+      }
+    },
+    "leaderboards": {
+      "level": "Mais alto n\u00edvel",
+      "time": "Mais tocado",
+      "speed": "Velocidade mais r\u00e1pida",
+      "wins": "Mais vit\u00f3rias"
+    },
+    "tournaments": {
+      "title": "Torneios",
+      "join": "Entrar na escada",
+      "play": "Jogar Agora",
+      "starts": "Come\u00e7a",
+      "ends": "Termina",
+      "finished": "Acabado",
+      "info": "Informa\u00e7\u00e3o",
+      "rules": "Regras",
+      "players": "Jogadores",
+      "bracket": "Suporte",
+      "qualified": "Qualificado",
+      "notqualified": "N\u00e3o qualificado",
+      "qualification": "Qualifica\u00e7\u00f5es",
+      "ladders": "Escadas",
+      "none": "Nenhum jogador participou ainda, seja o primeiro!"
+    },
+    "queue": {
+      "howToPlayGuide": {
+        "1_title": "Como jogar?",
+        "1_description": "Em ordem para jogar as partidas matchmaking classificadas voc\u00ea precisa chegar at\u00e9 o n\u00edvel 10. Voc\u00ea vai ser colocado em uma fase de classifica\u00e7\u00e3o aonde voc\u00ea n\u00e3o vai ver seu rank at\u00e9 voc\u00ea ter terminado 10 partidas. Isso vai garantir a sua precis\u00e3o em sua habilidade de n\u00edvel quando voc\u00ea ser coincidir contra as outras pessoas.",
+        "2_title": "O que \u00e9 ranqueado?",
+        "2_description": "A combina\u00e7\u00e3o ranqueada \u00e9 um ambiente competitivo onde os jogadores s\u00e3o combinados com outros de n\u00edvel de habilidade semelhante, que \u00e9 de maior precis\u00e3o do que os modos Jogada R\u00e1pida atuais.",
+        "3_title": "Como que \u00e9 determinado SR",
+        "3_description": "Famosamente usado no xadrez, o matchmaking classificado utiliza uma forma de \"sistema de classifica\u00e7\u00e3o\" tamb\u00e9m conhecido como sistema de classifica\u00e7\u00e3o Glicko-2. Ele usa uma forma de c\u00e1lculo para determinar sua classifica\u00e7\u00e3o de habilidade (SR) comparando sua classifica\u00e7\u00e3o de habilidade com a de seus oponentes e sua confiabilidade de classifica\u00e7\u00e3o, tamb\u00e9m conhecida como \"Desvio de classifica\u00e7\u00e3o\".",
+        "4_title": "Podemos sair no meio da partida?",
+        "4_description": "Devido \u00e0 natureza competitiva, \u00e9 extremamente desencorajado sair de um jogo. Se voc\u00ea sair antes de terminar de jogar seu jogo classificado, ent\u00e3o 20 pontos ser\u00e1 deduzido de sua classifica\u00e7\u00e3o de habilidade. Al\u00e9m disso, se o seu oponente terminar o jogo, voc\u00ea sofrer\u00e1 a derrota como se tivesse completado a partida."
+      },
+      "shortcut": "Gr\u00e1tis para todos",
+      "titles": {
+        "casual": "Casual",
+        "competitive": "Competitivo",
+        "playNow": "Jogar Agora",
+        "latestNews": "\u00daltimas Noticias",
+        "lobbies": "Sagu\u00f5es P\u00fablicos",
+        "competitions": "Competi\u00e7\u00f5es"
+      },
+      "quickplay": {
+        "title": "Gr\u00e1tis para todos",
+        "description": "Junte-se a uma partida em qualquer lugar do mundo instantaneamente",
+        "": "Jogo R\u00e1pido"
+      },
+      "ranked": {
+        "title": "Classificado",
+        "description": "Coloque-se contra o mundo da competi\u00e7\u00e3o",
+        "join": "Duelo (1v1)",
+        "how": "Como jogar"
+      },
+      "custom": {
+        "title": "personalizadas",
+        "description": "Crie uma partida privada com voc\u00ea e seus amigos",
+        "create": "Crio",
+        "browse": "Squeaky toy",
+        "public": "Lobbies P\u00fablicos",
+        "none": "Atualmente n\u00e3o h\u00e1 lobbies p\u00fablicos.",
+        "": "Privado"
+      },
+      "practice": "Voc\u00ea est\u00e1 jogando em uma partida de <1>treino<1>. Sua pontua\u00e7\u00e3o n\u00e3o ser\u00e1 salva.",
+      "cooldown": "Voc\u00ea j\u00e1 est\u00e1 em uma partida. Por favor espere {{contagem}} segundo e tente de novo",
+      "cooldown_plural": "Voc\u00ea j\u00e1 est\u00e1 em uma partida. Por favor espere {{contagem}} segundos e tente de novo",
+      "random": {
+        "title": "Aleat\u00f3rio",
+        "description": "Deixe-nos decidir por voc\u00ea"
+      },
+      "quotes": {
+        "title": "Frases",
+        "description": "Livros, filmes e mais"
+      },
+      "dictionary": {
+        "title": "Dicion\u00e1rio",
+        "description": "Principais Palavras em Ingl\u00eas"
+      }
+    },
+    "notifications": {
+      "title": "Notifica\u00e7\u00f5es",
+      "none": "Voc\u00ea n\u00e3o possui nenhuma notifica\u00e7\u00e3o",
+      "markread": "Marque como Lido",
+      "remove": "Remover todas",
+      "removeconfirm": "Voc\u00ea tem certeza de que quer remover suas notifica\u00e7\u00f5es"
+    },
+    "profile": {
+      "refresh": "Esta p\u00e1gina ser\u00e1 atualizada ap\u00f3s pressionar salvar altera\u00e7\u00f5es.",
+      "profile": "Perfil",
+      "account": "Conta",
+      "personal": "Pessoal",
+      "information": "Informa\u00e7\u00e3o",
+      "personalize": "Personalizar",
+      "joined": "Entrou",
+      "smoothCaretSpeed": "Velocidade suave do cursor",
+      "smoothCaret": "Velocidade suave (beta)",
+      "gameplayParticipantStyle": "Em Jogo - Estilo de Participante.",
+      "inputbox": "Em Jogo - Esconder Caixa de Input?",
+      "displayname": "Usuario",
+      "defaultworld": "Mundo Padr\u00e3o",
+      "about": "Sobre Eu",
+      "general": "Geral",
+      "fullname": "Nome",
+      "level": "N\u00edvel",
+      "age": "Idade",
+      "years_old": "Anos",
+      "dob": "Data de nascimento",
+      "showOnline": "Mostrar Status Online",
+      "gender": "G\u00eanero",
+      "locale": "Lingua",
+      "country": "Pa\u00eds",
+      "simplifyHome": "Voltar ao Inicio?",
+      "keyboard": {
+        "title": "Teclado",
+        "layout": "Layout do Teclado",
+        "brand": "Marca de Teclado",
+        "model": "Modelo do Teclado"
+      },
+      "customize": "Customizar",
+      "wpm": "WPM ou CPM",
+      "navbar": "Estilo Barra de Navega\u00e7\u00e3o",
+      "border": "Borda da Imagem",
+      "playercards": "Cart\u00e3o de Jogo"
+    },
+    "settings": {
+      "refresh": "Essa p\u00e1gina ser\u00e1 atualizada depois de apertar salvar altera\u00e7\u00f5es",
+      "profile": "Perfil",
+      "information": "Informa\u00e7\u00f5es",
+      "personalize": "Personalizar",
+      "displayname": "Nome de usu\u00e1rio",
+      "defaultworld": "Palavra Padr\u00e3o",
+      "about": "Sobre Mim",
+      "fullname": "Nome",
+      "dob": "Data de Nascimento",
+      "showOnline": "Mostrar status online",
+      "gender": "G\u00eanero",
+      "locale": "L\u00edngua",
+      "country": "Pa\u00eds",
+      "keyboard": {
+        "layout": "Layout do Teclado",
+        "brand": "Marca do Teclado",
+        "model": "Modelo do Teclado"
+      },
+      "customize": "Customizar",
+      "wpm": "WPM ou CPM?",
+      "border": "Borda da Imagem",
+      "playercards": "Cart\u00e3o de Jogo"
+    }
+  }
 }

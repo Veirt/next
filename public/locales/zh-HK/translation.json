@@ -1,144 +1,144 @@
 {
-    "other": {
-        "account_banned": "\u4f60\u7684\u8cec\u865f\u5df2\u88ab\u5c01\u9396\uff0c\u8acb\u806f\u7d61support@keymash.io!",
-        "save": "\u5132\u5b58!"
+  "other": {
+    "account_banned": "\u4f60\u7684\u8cec\u865f\u5df2\u88ab\u5c01\u9396\uff0c\u8acb\u806f\u7d61support@keymash.io!",
+    "save": "\u5132\u5b58!"
+  },
+  "button": {
+    "save": "\u5132\u5b58!",
+    "back": "\u8fd4\u56de"
+  },
+  "component": {
+    "topbar": {
+      "home": "\u4e3b\u9801",
+      "news": "\u6700\u65b0\u6d88\u606f",
+      "play": "\u958b\u59cb\u904a\u6232",
+      "leaders": "\u6392\u884c\u699c",
+      "discord": "Discord"
     },
-    "button": {
-        "save": "\u5132\u5b58!",
-        "back": "\u8fd4\u56de"
+    "bottombar": {
+      "about": "\u95dc\u65bc\u6211\u5011",
+      "tos": "\u670d\u52d9\u689d\u6b3e",
+      "privacy": "\u96b1\u79c1\u653f\u7b56",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "\u6350\u52a9",
+      "guidelines": "\u793e\u5340\u898f\u5247",
+      "shortcuts": "\u9375\u76e4\u5feb\u6377\u9375",
+      "faq": "\u5e38\u554f\u554f\u984c",
+      "faqM": "\u5e38\u554f\u554f\u984c"
     },
-    "component": {
-        "topbar": {
-            "home": "\u4e3b\u9801",
-            "news": "\u6700\u65b0\u6d88\u606f",
-            "play": "\u958b\u59cb\u904a\u6232",
-            "leaders": "\u6392\u884c\u699c",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "\u95dc\u65bc\u6211\u5011",
-            "tos": "\u670d\u52d9\u689d\u6b3e",
-            "privacy": "\u96b1\u79c1\u653f\u7b56",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "\u6350\u52a9",
-            "guidelines": "\u793e\u5340\u898f\u5247",
-            "shortcuts": "\u9375\u76e4\u5feb\u6377\u9375",
-            "faq": "\u5e38\u554f\u554f\u984c",
-            "faqM": "\u5e38\u554f\u554f\u984c"
-        },
-        "navbar": {
-            "news": "\u6700\u65b0\u6d88\u606f",
-            "play": "\u958b\u59cb\u904a\u6232",
-            "practice": "\u7df4\u7fd2",
-            "learn": "\u5b78\u7fd2",
-            "achievements": "\u6210\u5c31",
-            "tournaments": "\u6392\u884c\u699c",
-            "settings": "\u8a2d\u7f6e",
-            "logout": "\u767b\u51fa",
-            "login": "\u767b\u5165",
-            "notifications": "\u901a\u77e5",
-            "custom": "\u81ea\u5b9a\u7fa9"
-        },
-        "auth": {
-            "discord": "Discord \u767b\u5165",
-            "facebook": "Facebook \u767b\u5165",
-            "google": "Google \u767b\u5165"
-        }
+    "navbar": {
+      "news": "\u6700\u65b0\u6d88\u606f",
+      "play": "\u958b\u59cb\u904a\u6232",
+      "practice": "\u7df4\u7fd2",
+      "learn": "\u5b78\u7fd2",
+      "achievements": "\u6210\u5c31",
+      "tournaments": "\u6392\u884c\u699c",
+      "settings": "\u8a2d\u7f6e",
+      "logout": "\u767b\u51fa",
+      "login": "\u767b\u5165",
+      "notifications": "\u901a\u77e5",
+      "custom": "\u81ea\u5b9a\u7fa9"
     },
-    "page": {
-        "error404": {
-            "title": "\u60a8\u8981\u67e5\u627e\u7684\u9801\u9762\u4e0d\u5b58\u5728",
-            "message": "\u5982\u679c\u60a8\u88ab\u932f\u8aa4\u5730\u5230\u6b64\u9801\u9762\uff0c\u8acb\u806f\u7e6b"
-        },
-        "login": {
-            "title": "\u767b\u5165",
-            "descr": "\u8acb\u9078\u64c7\u4ee5\u4e0b\u5176\u4e2d\u4e00\u9805\u65b9\u5f0f"
-        },
-        "home": {
-            "matches_new": "\u6700\u65b0\u5339\u914d",
-            "matches_high": "\u4eca\u5929\u6700\u9ad8\u5206",
-            "news": "\u6700\u65b0\u6d88\u606f"
-        },
-        "tournaments": {
-            "join": "\u52a0\u5165\u6392\u884c\u699c",
-            "play": "\u73fe\u5728\u73a9\u904a",
-            "starts": "\u958b\u59cb",
-            "ends": "\u7d50\u675f",
-            "finished": "\u5b8c\u6210",
-            "info": "\u8cc7\u8a0a",
-            "rules": "\u898f\u5247",
-            "players": "\u73a9\u5bb6",
-            "bracket": "\u7af6\u8cfd\u5206\u7d44",
-            "none": "\u76ee\u524d\u6c92\u6709\u73a9\u5bb6\u53c3\u52a0\uff0c\u6210\u70ba\u7b2c\u4e00\u500b\u73a9\u5bb6\uff01"
-        },
-        "queue": {
-            "shortcut": "\u4f60\u77e5\u9053\u6309\u4e0b <1>CTRL+ALT+I<\/1> \u80fd\u66f4\u5feb\u4f86\u5230\u9019\u88cf\u55ce\uff1f",
-            "quickplay": {
-                "title": "\u4efb\u4f55\u4eba",
-                "description": "\u7acb\u5373\u5728\u5168\u7403\u4efb\u4f55\u5730\u65b9\u53c3\u52a0\u6bd4\u8cfd",
-                "": "\u5feb\u901f\u904a\u73a9"
-            },
-            "ranked": {
-                "title": "\u6392\u4f4d",
-                "description": "\u8b93\u81ea\u5df1\u9762\u5c0d\u7af6\u722d\u7684\u4e16\u754c",
-                "join": "\u5373\u5c07\u63a8\u51fa"
-            },
-            "custom": {
-                "title": "\u81ea\u5b9a\u7fa9",
-                "description": "\u5275\u5efa\u4e00\u500b\u60a8\u548c\u60a8\u7684\u670b\u53cb\u7684\u79c1\u4eba\u6bd4\u8cfd",
-                "create": "\u5275\u5efa",
-                "browse": "\u700f\u89bd",
-                "public": "\u516c\u773e\u5927\u5ef3",
-                "none": "\u76ee\u524d\u6c92\u6709\u4efb\u4f55\u516c\u5171\u5927\u5ef3",
-                "": "\u81ea\u5b9a\u7fa9"
-            },
-            "practice": "\u60a8\u6b63\u5728\u904a\u73a9<1>\u7df4\u7fd2<\/ 1>\u6a21\u5f0f\uff0c\u60a8\u7684\u5206\u6578\u5c07\u4e0d\u6703\u88ab\u4fdd\u5b58\u3002",
-            "cooldown": "\u60a8\u5df2\u5728\u5339\u914d\u4e2d\uff0c\u8acb\u7b49\u5f85{{count}}\u79d2\uff0c\u7136\u5f8c\u91cd\u8a66\u3002",
-            "cooldown_plural": "\u60a8\u5df2\u5728\u5339\u914d\u4e2d\uff0c\u8acb\u7b49\u5f85{{count}}\u79d2\uff0c\u7136\u5f8c\u91cd\u8a66\u3002",
-            "random": {
-                "title": "\u96a8\u6a5f",
-                "description": "\u8b93\u6211\u5011\u70ba\u60a8\u6c7a\u5b9a"
-            },
-            "quotes": {
-                "title": "\u5f15\u8a00",
-                "description": "\u66f8\u7c4d\uff0c\u96fb\u5f71\u7b49"
-            },
-            "dictionary": {
-                "title": "\u5b57\u5178",
-                "description": "\u71b1\u9580\u82f1\u8a9e\u55ae\u8a5e"
-            }
-        },
-        "notifications": {
-            "title": "\u901a\u77e5",
-            "none": "\u4f60\u6c92\u6709\u4efb\u4f55\u901a\u77e5",
-            "markread": "\u6a19\u8a18\u70ba\u5df2\u8b80",
-            "remove": "\u79fb\u9664\u6240\u6709",
-            "removeconfirm": "\u60a8\u78ba\u5b9a\u8981\u522a\u9664\u901a\u77e5\u55ce\uff1f"
-        },
-        "settings": {
-            "refresh": "\u6309\u4fdd\u5b58\u66f4\u6539\u5f8c\uff0c\u6b64\u9801\u9762\u5c07\u5237\u65b0\u3002",
-            "profile": "\u500b\u4eba\u8cc7\u6599",
-            "information": "\u4fe1\u606f",
-            "personalize": "\u500b\u6027\u5316",
-            "displayname": "\u7528\u6236\u540d",
-            "defaultworld": "\u9ed8\u8a8d\u4e16\u754c",
-            "about": "\u95dc\u65bc\u6211",
-            "fullname": "\u540d\u7a31",
-            "dob": "\u751f\u65e5",
-            "showOnline": "\u986f\u793a\u5728\u7dda\u72c0\u614b",
-            "gender": "\u6027\u5225",
-            "locale": "\u8a9e\u8a00",
-            "country": "\u570b\u5bb6",
-            "keyboard": {
-                "layout": "\u9375\u76e4\u4f48\u5c40",
-                "brand": "\u9375\u76e4\u54c1\u724c",
-                "model": "\u9375\u76e4\u578b\u865f"
-            },
-            "customize": "\u81ea\u5b9a\u7fa9",
-            "wpm": "\u55ae\u8a5e\u6bcf\u5206\u9418\u6216 \u5b57\u7b26\u6bcf\u5206\u9418",
-            "border": "\u5716\u7247\u908a\u6846",
-            "playercards": "\u73a9\u5bb6\u5716\u7247\u5361"
-        }
+    "auth": {
+      "discord": "Discord \u767b\u5165",
+      "facebook": "Facebook \u767b\u5165",
+      "google": "Google \u767b\u5165"
     }
+  },
+  "page": {
+    "error404": {
+      "title": "\u60a8\u8981\u67e5\u627e\u7684\u9801\u9762\u4e0d\u5b58\u5728",
+      "message": "\u5982\u679c\u60a8\u88ab\u932f\u8aa4\u5730\u5230\u6b64\u9801\u9762\uff0c\u8acb\u806f\u7e6b"
+    },
+    "login": {
+      "title": "\u767b\u5165",
+      "descr": "\u8acb\u9078\u64c7\u4ee5\u4e0b\u5176\u4e2d\u4e00\u9805\u65b9\u5f0f"
+    },
+    "home": {
+      "matches_new": "\u6700\u65b0\u5339\u914d",
+      "matches_high": "\u4eca\u5929\u6700\u9ad8\u5206",
+      "news": "\u6700\u65b0\u6d88\u606f"
+    },
+    "tournaments": {
+      "join": "\u52a0\u5165\u6392\u884c\u699c",
+      "play": "\u73fe\u5728\u73a9\u904a",
+      "starts": "\u958b\u59cb",
+      "ends": "\u7d50\u675f",
+      "finished": "\u5b8c\u6210",
+      "info": "\u8cc7\u8a0a",
+      "rules": "\u898f\u5247",
+      "players": "\u73a9\u5bb6",
+      "bracket": "\u7af6\u8cfd\u5206\u7d44",
+      "none": "\u76ee\u524d\u6c92\u6709\u73a9\u5bb6\u53c3\u52a0\uff0c\u6210\u70ba\u7b2c\u4e00\u500b\u73a9\u5bb6\uff01"
+    },
+    "queue": {
+      "shortcut": "\u4f60\u77e5\u9053\u6309\u4e0b <1>CTRL+ALT+I</1> \u80fd\u66f4\u5feb\u4f86\u5230\u9019\u88cf\u55ce\uff1f",
+      "quickplay": {
+        "title": "\u4efb\u4f55\u4eba",
+        "description": "\u7acb\u5373\u5728\u5168\u7403\u4efb\u4f55\u5730\u65b9\u53c3\u52a0\u6bd4\u8cfd",
+        "": "\u5feb\u901f\u904a\u73a9"
+      },
+      "ranked": {
+        "title": "\u6392\u4f4d",
+        "description": "\u8b93\u81ea\u5df1\u9762\u5c0d\u7af6\u722d\u7684\u4e16\u754c",
+        "join": "\u5373\u5c07\u63a8\u51fa"
+      },
+      "custom": {
+        "title": "\u81ea\u5b9a\u7fa9",
+        "description": "\u5275\u5efa\u4e00\u500b\u60a8\u548c\u60a8\u7684\u670b\u53cb\u7684\u79c1\u4eba\u6bd4\u8cfd",
+        "create": "\u5275\u5efa",
+        "browse": "\u700f\u89bd",
+        "public": "\u516c\u773e\u5927\u5ef3",
+        "none": "\u76ee\u524d\u6c92\u6709\u4efb\u4f55\u516c\u5171\u5927\u5ef3",
+        "": "\u81ea\u5b9a\u7fa9"
+      },
+      "practice": "\u60a8\u6b63\u5728\u904a\u73a9<1>\u7df4\u7fd2</ 1>\u6a21\u5f0f\uff0c\u60a8\u7684\u5206\u6578\u5c07\u4e0d\u6703\u88ab\u4fdd\u5b58\u3002",
+      "cooldown": "\u60a8\u5df2\u5728\u5339\u914d\u4e2d\uff0c\u8acb\u7b49\u5f85{{count}}\u79d2\uff0c\u7136\u5f8c\u91cd\u8a66\u3002",
+      "cooldown_plural": "\u60a8\u5df2\u5728\u5339\u914d\u4e2d\uff0c\u8acb\u7b49\u5f85{{count}}\u79d2\uff0c\u7136\u5f8c\u91cd\u8a66\u3002",
+      "random": {
+        "title": "\u96a8\u6a5f",
+        "description": "\u8b93\u6211\u5011\u70ba\u60a8\u6c7a\u5b9a"
+      },
+      "quotes": {
+        "title": "\u5f15\u8a00",
+        "description": "\u66f8\u7c4d\uff0c\u96fb\u5f71\u7b49"
+      },
+      "dictionary": {
+        "title": "\u5b57\u5178",
+        "description": "\u71b1\u9580\u82f1\u8a9e\u55ae\u8a5e"
+      }
+    },
+    "notifications": {
+      "title": "\u901a\u77e5",
+      "none": "\u4f60\u6c92\u6709\u4efb\u4f55\u901a\u77e5",
+      "markread": "\u6a19\u8a18\u70ba\u5df2\u8b80",
+      "remove": "\u79fb\u9664\u6240\u6709",
+      "removeconfirm": "\u60a8\u78ba\u5b9a\u8981\u522a\u9664\u901a\u77e5\u55ce\uff1f"
+    },
+    "settings": {
+      "refresh": "\u6309\u4fdd\u5b58\u66f4\u6539\u5f8c\uff0c\u6b64\u9801\u9762\u5c07\u5237\u65b0\u3002",
+      "profile": "\u500b\u4eba\u8cc7\u6599",
+      "information": "\u4fe1\u606f",
+      "personalize": "\u500b\u6027\u5316",
+      "displayname": "\u7528\u6236\u540d",
+      "defaultworld": "\u9ed8\u8a8d\u4e16\u754c",
+      "about": "\u95dc\u65bc\u6211",
+      "fullname": "\u540d\u7a31",
+      "dob": "\u751f\u65e5",
+      "showOnline": "\u986f\u793a\u5728\u7dda\u72c0\u614b",
+      "gender": "\u6027\u5225",
+      "locale": "\u8a9e\u8a00",
+      "country": "\u570b\u5bb6",
+      "keyboard": {
+        "layout": "\u9375\u76e4\u4f48\u5c40",
+        "brand": "\u9375\u76e4\u54c1\u724c",
+        "model": "\u9375\u76e4\u578b\u865f"
+      },
+      "customize": "\u81ea\u5b9a\u7fa9",
+      "wpm": "\u55ae\u8a5e\u6bcf\u5206\u9418\u6216 \u5b57\u7b26\u6bcf\u5206\u9418",
+      "border": "\u5716\u7247\u908a\u6846",
+      "playercards": "\u73a9\u5bb6\u5716\u7247\u5361"
+    }
+  }
 }
