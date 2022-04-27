@@ -35,6 +35,7 @@ import { useGlobalContext } from '../../contexts/Global.context';
 import Challenge from '../Challenges/Challenge';
 import Link from '../Uncategorized/Link';
 import { toast } from 'react-toastify';
+import { ChallengeData, GamemodeData } from '../../types.client.mongo';
 
 interface IProps {
   data: SocketGameEndData;
@@ -280,8 +281,8 @@ const MatchEnd = (props: IProps) => {
                                           <Challenge
                                             mini
                                             {...challenges[item as any]}
-                                            mode={[gamemodes[challenges[item as any]?.modeId || 0]]}
-                                            challenge={[challenges[item as any]]}
+                                            mode={[gamemodes[challenges[item as any]?.modeId || 0] as GamemodeData]}
+                                            challenge={[challenges[item as any] as ChallengeData]}
                                           />
                                         </div>
                                       ))}
