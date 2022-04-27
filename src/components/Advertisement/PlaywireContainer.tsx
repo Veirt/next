@@ -44,7 +44,6 @@ function Playwire(props: IProps) {
 
     // Skyscraper Ads using Debounce
     const handleAdResizeAndLoad = debounce(() => {
-        toast.error('Debounce');
         console.log('[Playwire] Debounce called');
         // Replace the Units or array of units that you wish to destroy on resize.
         const pwSkyId = ['pw-160x600_atf', 'pw-160x600_btf'];
