@@ -66,7 +66,7 @@ function Playwire(props: IProps) {
                 //  ************* Start of the Debounce code **************
                 // Debounce Function To keep on Window Resize.
                 const debounce = (callback, wait) => {
-                    const timeoutId = null;
+                    let timeoutId = null;
                     return (...args) => {
                         window.clearTimeout(timeoutId);
                         timeoutId = window.setTimeout(() => {
