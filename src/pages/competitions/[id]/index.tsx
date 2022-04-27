@@ -110,10 +110,6 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                 </div>
               )}
             </div>
-
-            <AdvertisementDisplay className="mt-4">
-              <AdvertisementUnit type={'leaderboard-top'} />
-            </AdvertisementDisplay>
           </div>
           <div className="col-span-full lg:col-span-1">
             <div className={'text-sm text-white'}>
@@ -201,6 +197,10 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
             </AdvertisementDisplay>
           </div>
         </div>
+
+        <AdvertisementDisplay className="mt-4">
+          <AdvertisementUnit type={'leaderboard-top'} />
+        </AdvertisementDisplay>
       </div>
     </Base>
   );
