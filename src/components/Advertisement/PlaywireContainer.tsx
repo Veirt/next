@@ -61,6 +61,56 @@ function Playwire(props: IProps) {
                             window.console.log('[Playwire] displayUnits error: ', e);
                         });
                 });
+                
+                /* Debounce Variables */
+                //  ************* Start of the Debounce code **************
+                // Debounce Function To keep on Window Resize.
+                var debounce = (callback, wait) => {
+                    var timeoutId = null;
+                    return (...args) => {
+                        window.clearTimeout(timeoutId);
+                        timeoutId = window.setTimeout(() => {
+                            callback.apply(null, args);
+                        }, wait);
+                    };
+                };
+
+                // Event Listener that checks for windows resizing.
+                window.addEventListener(
+                    'resize',
+                    debounce(() => {
+                        // Replace the Units or array of units that you wish to destroy on resize.
+                        var pwSkyId = ['leaderboard_atf', 'leaderboard_btf'];
+
+                        // Replace array with destroyed units you wish to re add to the site.
+                        var pwSkyArray = [
+                            { selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
+                            { selectorId: 'responsive-bottom-skyscraper', type: 'sky_btf' },
+                        ];
+
+                        // Replace with the AdUnit you wish to check for.
+                        var leaderboardAtf = document.querySelector('#leaderboard_atf');
+                        var leaderboardBtf = document.querySelector('#leaderboard_btf');
+
+                        // When window width hides the ad, destroy the Units on the Array.
+                        // Change innerWidth to your relevant size.
+                        if (window.innerWidth < 1280) {
+                            ramp.destroyUnits(pwSkyId).catch((e) => {
+                                console.log('displayUnits error: ', e);
+                            });
+                            // When window width is big enough to show the unit and the ads chosen are not present in the page, add and display the units.
+                        } else if (window.innerWidth > 1280 && !leaderboardAtf && !leaderboardBtf) {
+                            ramp.addUnits(pwSkyArray)
+                                .then(() => {
+                                    ramp.displayUnits();
+                                })
+                                .catch((e) => {
+                                    ramp.displayUnits();
+                                    console.log('displayUnits error: ', e);
+                                });
+                        }
+                    }, 500)
+                );
             });
         };
 
