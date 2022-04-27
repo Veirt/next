@@ -107,6 +107,7 @@ function Playwire(props: IProps) {
                             window.ramp.displayUnits();
                             window.console.log('[Playwire] displayUnits error: ', e);
                         });
+                    handleAdResizeAndLoad();
                 });
                  
                 window.addEventListener('resize', handleAdResizeAndLoad);
