@@ -17,8 +17,8 @@ function Playwire(props: IProps) {
         // { selectorId: 'mobile-leaderboard', type: '320x50' },
         { selectorId: 'responsive-top-square', type: 'med_rect_atf' },
         { selectorId: 'responsive-bottom-square', type: 'med_rect_btf' },
-        { selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
-        { selectorId: 'responsive-bottom-skyscraper', type: 'sky_btf' },
+        //{ selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
+        //{ selectorId: 'responsive-bottom-skyscraper', type: 'sky_btf' },
         { type: 'desktop_in_article' },
         { type: 'mobile_in_article' },
     ];
