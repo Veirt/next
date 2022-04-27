@@ -81,7 +81,7 @@ function Playwire(props: IProps) {
                     'resize',
                     debounce(() => {
                         // Replace the Units or array of units that you wish to destroy on resize.
-                        const pwSkyId = ['sky_atf', 'sky_btf'];
+                        const pwSkyId = ['pw-160x600_atf', 'pw-160x600_btf'];
 
                         // Replace array with destroyed units you wish to re add to the site.
                         const pwSkyArray = [
@@ -90,17 +90,17 @@ function Playwire(props: IProps) {
                         ];
 
                         // Replace with the AdUnit you wish to check for.
-                        const leaderboardAtf = document.querySelector('#responsive-top-skyscraper');
-                        const leaderboardBtf = document.querySelector('#responsive-bottom-skyscraper');
+                        const leaderboardAtf = document.querySelector('#pw-160x600_atf');
+                        const leaderboardBtf = document.querySelector('#pw-160x600_btf');
 
                         // When window width hides the ad, destroy the Units on the Array.
                         // Change innerWidth to your relevant size.
-                        if (window.innerWidth < 1280) {
+                        if (window.innerWidth < 1920) {
                             ramp.destroyUnits(pwSkyId).catch((e) => {
                                 console.log('displayUnits error: ', e);
                             });
                             // When window width is big enough to show the unit and the ads chosen are not present in the page, add and display the units.
-                        } else if (window.innerWidth > 1280 && !leaderboardAtf && !leaderboardBtf) {
+                        } else if (window.innerWidth >= 1920 && !leaderboardAtf && !leaderboardBtf) {
                             ramp.addUnits(pwSkyArray)
                                 .then(() => {
                                     ramp.displayUnits();
