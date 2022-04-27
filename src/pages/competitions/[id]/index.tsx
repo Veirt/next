@@ -219,7 +219,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
             )}
 
             <AdvertisementDisplay>
-              <AdvertisementUnit type={'leaderboard-bottom'} />
+              <AdvertisementUnit type={'square-two'} />
             </AdvertisementDisplay>
           </div>
         </div>
