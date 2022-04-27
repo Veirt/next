@@ -40,11 +40,7 @@ const Activate = (props: IProps) => {
     e.preventDefault();
 
     axios
-      .post(
-        `${Config.authUrl}/activate`,
-        { emailAddress, key: code, _csrf },
-        { cancelToken: axiosCancelSource.current?.token, withCredentials: true },
-      )
+      .post(`${Config.authUrl}/activate`, { emailAddress, key: code, _csrf }, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
       .then((response) => {
         if (!response.data.error) {
           getSessionData();
@@ -77,14 +73,7 @@ const Activate = (props: IProps) => {
                     <div>
                       <FontAwesomeIcon icon={item.icon} />
                     </div>
-                    <input
-                      type={item.type}
-                      name={item.name}
-                      placeholder={item.placeholder}
-                      value={item.value}
-                      onChange={(e) => item.onChange(e.target.value)}
-                      required
-                    />
+                    <input type={item.type} name={item.name} placeholder={item.placeholder} value={item.value} onChange={(e) => item.onChange(e.target.value)} required />
                   </div>
                 ))}
               </div>

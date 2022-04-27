@@ -231,18 +231,9 @@ const Queue = (props: IProps) => {
     <>
       {redirect && redirect !== '' && <Redirect to={redirect} />}
       <RankedModal isLoaded={modal === 0} toggle={() => setModal(null)} />
-      <div
-        style={{ zIndex: 100 }}
-        className={`${
-          queueFound || loading !== null ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        } transition ease-in-out duration-200 fixed inset-0 w-full h-screen bg-black bg-opacity-40`}
-      >
+      <div style={{ zIndex: 100 }} className={`${queueFound || loading !== null ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition ease-in-out duration-200 fixed inset-0 w-full h-screen bg-black bg-opacity-40`}>
         <div className={'flex h-screen'}>
-          <div
-            className={
-              'm-auto w-11/12 sm:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-4/12 3xl:w-96 px-4 py-12 xl:py-16 rounded-2xl shadow-lg bg-gray-750'
-            }
-          >
+          <div className={'m-auto w-11/12 sm:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-4/12 3xl:w-96 px-4 py-12 xl:py-16 rounded-2xl shadow-lg bg-gray-750'}>
             <div className="text-center">
               <FontAwesomeIcon icon={faCircleNotch} className={'text-orange-400 text-center'} size={'6x'} spin />
               <div className="h2 mt-10">{queueFound || loading === 2 ? 'Joining Match' : 'Finding Match'}</div>
@@ -254,29 +245,16 @@ const Queue = (props: IProps) => {
 
       <Modal isOpened={lobbiesLoaded && tab === 1} onClose={() => setTab(0)}>
         <div className="h3 mb-4">{t('page.queue.custom.public')}</div>
-        <div style={{ height: '70vh' }}>
-          {lobbiesData.length !== 0 ? (
-            lobbiesData.map((row) => <LobbiesRow key={row.invite} {...row} />)
-          ) : (
-            <div className="py-32 w-full bg-black-light text-sm uppercase text-white font-semibold text-center">
-              {t('page.queue.custom.none')}
-            </div>
-          )}
-        </div>
+        <div style={{ height: '70vh' }}>{lobbiesData.length !== 0 ? lobbiesData.map((row) => <LobbiesRow key={row.invite} {...row} />) : <div className="py-32 w-full bg-black-light text-sm uppercase text-white font-semibold text-center">{t('page.queue.custom.none')}</div>}</div>
       </Modal>
 
       <audio id="MatchFound" src="/audio/MatchFound.wav" crossOrigin="anonymous" preload="auto" />
 
-      <div
-        className={'grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box'}
-        style={{ paddingLeft: 0, paddingRight: 0 }}
-      >
+      <div className={'grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 mb-4 content-box'} style={{ paddingLeft: 0, paddingRight: 0 }}>
         {tabs.map((tab, index) => (
           <div key={index} className={`relative col-span-full lg:col-span-1 px-8 text-center lg:text-left`}>
             {/* Custom Border */}
-            {index !== 0 && (
-              <div className="hidden lg:block h-full border-r-4 rounded-full border-gray-800 absolute -left-2.5 z-20" />
-            )}
+            {index !== 0 && <div className="hidden lg:block h-full border-r-4 rounded-full border-gray-800 absolute -left-2.5 z-20" />}
             {/* Flex / Icon */}
             <div className="relative">
               <div className="h1 text-white relative z-10 inline relative">
@@ -293,40 +271,17 @@ const Queue = (props: IProps) => {
                     key={item.name}
                     onClick={item.onClick}
                     className={`py-2 px-4 bg-gray-825 bg-opacity-90 hover:bg-opacity-70 rounded-lg transition ease-in-out duration-200 ${
-                      item.disabled &&
-                      sessionData &&
-                      ((playerLevel !== null && playerLevel?.Index) < item.disabled.level ||
-                        sessionData.authName === 'Guest')
-                        ? 'pointer-events-none opacity-80'
-                        : ''
+                      item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest') ? 'pointer-events-none opacity-80' : ''
                     }`}
                   >
                     <div className={'flex justify-center text-white text-xs uppercase font-semibold'}>
-                      <div
-                        className={`w-4 text-center ${
-                          item.name ? 'mr-0.5 sm:text-left lg:text-center 3xl:text-left' : ''
-                        }`}
-                      >
-                        <FontAwesomeIcon
-                          icon={item.icon}
-                          className={`${
-                            item.disabled &&
-                            sessionData &&
-                            ((playerLevel !== null && playerLevel?.Index) < item.disabled.level ||
-                              sessionData.authName === 'Guest')
-                              ? 'text-gray-600'
-                              : item.color
-                          }`}
-                        />
+                      <div className={`w-4 text-center ${item.name ? 'mr-0.5 sm:text-left lg:text-center 3xl:text-left' : ''}`}>
+                        <FontAwesomeIcon icon={item.icon} className={`${item.disabled && sessionData && ((playerLevel !== null && playerLevel?.Index) < item.disabled.level || sessionData.authName === 'Guest') ? 'text-gray-600' : item.color}`} />
                       </div>
                       {item.name && (
                         <div className={'hidden sm:block lg:hidden 3xl:block w-auto'}>
                           {t(item.name)}
-                          {typeof item.badge !== 'undefined' && (
-                            <span className="ml-1.5 bg-gray-700 px-1.5 pb-0.5 pt-px text-xs rounded">
-                              {item.badge || 0}
-                            </span>
-                          )}
+                          {typeof item.badge !== 'undefined' && <span className="ml-1.5 bg-gray-700 px-1.5 pb-0.5 pt-px text-xs rounded">{item.badge || 0}</span>}
                         </div>
                       )}
                     </div>

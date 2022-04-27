@@ -83,110 +83,36 @@ function useConfig() {
 
   const returnConfig = {
     locale: storageJSON && typeof storageJSON.locale !== 'undefined' ? storageJSON.locale : defaultJSON.locale,
-    queueLocale:
-      storageJSON && typeof storageJSON.queueLocale !== 'undefined' ? storageJSON.queueLocale : defaultJSON.queueLocale,
+    queueLocale: storageJSON && typeof storageJSON.queueLocale !== 'undefined' ? storageJSON.queueLocale : defaultJSON.queueLocale,
     useCPM: storageJSON && typeof storageJSON.useCPM !== 'undefined' ? storageJSON.useCPM : defaultJSON.useCPM,
-    smoothCaret:
-      storageJSON && typeof storageJSON.smoothCaret !== 'undefined' ? storageJSON.smoothCaret : defaultJSON.smoothCaret,
-    smoothCaretSpeed:
-      storageJSON && typeof storageJSON.smoothCaretSpeed !== 'undefined'
-        ? storageJSON.smoothCaretSpeed
-        : defaultJSON.smoothCaretSpeed,
-    hideInputBox:
-      storageJSON && typeof storageJSON.hideInputBox !== 'undefined'
-        ? storageJSON.hideInputBox
-        : defaultJSON.hideInputBox,
-    gameplayParticipantStyle:
-      storageJSON && typeof storageJSON.gameplayParticipantStyle !== 'undefined'
-        ? storageJSON.gameplayParticipantStyle
-        : defaultJSON.gameplayParticipantStyle,
-    upscaleMatch:
-      storageJSON && typeof storageJSON.upscaleMatch !== 'undefined'
-        ? storageJSON.upscaleMatch
-        : defaultJSON.upscaleMatch,
-    upscaleMatchContainer:
-      storageJSON && typeof storageJSON.upscaleMatchContainer !== 'undefined'
-        ? storageJSON.upscaleMatchContainer
-        : defaultJSON.upscaleMatchContainer,
-    streamerMode:
-      storageJSON && typeof storageJSON.streamerMode !== 'undefined'
-        ? storageJSON.streamerMode
-        : defaultJSON.streamerMode,
+    smoothCaret: storageJSON && typeof storageJSON.smoothCaret !== 'undefined' ? storageJSON.smoothCaret : defaultJSON.smoothCaret,
+    smoothCaretSpeed: storageJSON && typeof storageJSON.smoothCaretSpeed !== 'undefined' ? storageJSON.smoothCaretSpeed : defaultJSON.smoothCaretSpeed,
+    hideInputBox: storageJSON && typeof storageJSON.hideInputBox !== 'undefined' ? storageJSON.hideInputBox : defaultJSON.hideInputBox,
+    gameplayParticipantStyle: storageJSON && typeof storageJSON.gameplayParticipantStyle !== 'undefined' ? storageJSON.gameplayParticipantStyle : defaultJSON.gameplayParticipantStyle,
+    upscaleMatch: storageJSON && typeof storageJSON.upscaleMatch !== 'undefined' ? storageJSON.upscaleMatch : defaultJSON.upscaleMatch,
+    upscaleMatchContainer: storageJSON && typeof storageJSON.upscaleMatchContainer !== 'undefined' ? storageJSON.upscaleMatchContainer : defaultJSON.upscaleMatchContainer,
+    streamerMode: storageJSON && typeof storageJSON.streamerMode !== 'undefined' ? storageJSON.streamerMode : defaultJSON.streamerMode,
     hideWPM: storageJSON && typeof storageJSON.hideWPM !== 'undefined' ? storageJSON.hideWPM : defaultJSON.hideWPM,
-    countdownBeep:
-      storageJSON && typeof storageJSON.countdownBeep !== 'undefined'
-        ? storageJSON.countdownBeep
-        : defaultJSON.countdownBeep,
-    rankUpSound:
-      storageJSON && typeof storageJSON.rankUpSound !== 'undefined' ? storageJSON.rankUpSound : defaultJSON.rankUpSound,
-    rankDownSound:
-      storageJSON && typeof storageJSON.rankDownSound !== 'undefined'
-        ? storageJSON.rankDownSound
-        : defaultJSON.rankDownSound,
-    customChatBeep:
-      storageJSON && typeof storageJSON.customChatBeep !== 'undefined'
-        ? storageJSON.customChatBeep
-        : defaultJSON.customChatBeep,
-    globalChatBeep:
-      storageJSON && typeof storageJSON.globalChatBeep !== 'undefined'
-        ? storageJSON.globalChatBeep
-        : defaultJSON.globalChatBeep,
-    matchFinishBeep:
-      storageJSON && typeof storageJSON.matchFinishBeep !== 'undefined'
-        ? storageJSON.matchFinishBeep
-        : defaultJSON.matchFinishBeep,
-    matchContainerTransparent:
-      storageJSON && typeof storageJSON.matchContainerTransparent !== 'undefined'
-        ? storageJSON.matchContainerTransparent
-        : defaultJSON.matchContainerTransparent,
-    matchTextType:
-      storageJSON && typeof storageJSON.matchTextType !== 'undefined'
-        ? storageJSON.matchTextType
-        : defaultJSON.matchTextType,
-    matchTextScroll:
-      storageJSON && typeof storageJSON.matchTextScroll !== 'undefined'
-        ? storageJSON.matchTextScroll
-        : defaultJSON.matchTextScroll,
-    focusMode:
-      storageJSON && typeof storageJSON.focusMode !== 'undefined' ? storageJSON.focusMode : defaultJSON.focusMode,
-    performanceMode:
-      storageJSON && typeof storageJSON.performanceMode !== 'undefined'
-        ? storageJSON.performanceMode
-        : defaultJSON.performanceMode,
-    colorBlindMode:
-      storageJSON && typeof storageJSON.colorBlindMode !== 'undefined'
-        ? storageJSON.colorBlindMode
-        : defaultJSON.colorBlindMode,
-    adsGameplay:
-      storageJSON && typeof storageJSON.adsGameplay !== 'undefined' ? storageJSON.adsGameplay : defaultJSON.adsGameplay,
-    networkStrength:
-      storageJSON && typeof storageJSON.networkStrength !== 'undefined'
-        ? storageJSON.networkStrength
-        : defaultJSON.networkStrength,
-    shortcutHome:
-      storageJSON && typeof storageJSON.shortcutHome !== 'undefined'
-        ? storageJSON.shortcutHome
-        : defaultJSON.shortcutHome,
-    shortcutExit:
-      storageJSON && typeof storageJSON.shortcutExit !== 'undefined'
-        ? storageJSON.shortcutExit
-        : defaultJSON.shortcutExit,
-    shortcutPlayRandom:
-      storageJSON && typeof storageJSON.shortcutPlayRandom !== 'undefined'
-        ? storageJSON.shortcutPlayRandom
-        : defaultJSON.shortcutPlayRandom,
-    shortcutPlayQuotes:
-      storageJSON && typeof storageJSON.shortcutPlayQuotes !== 'undefined'
-        ? storageJSON.shortcutPlayQuotes
-        : defaultJSON.shortcutPlayQuotes,
-    shortcutPlayDictionary:
-      storageJSON && typeof storageJSON.shortcutPlayDictionary !== 'undefined'
-        ? storageJSON.shortcutPlayDictionary
-        : defaultJSON.shortcutPlayDictionary,
-    shortcutGameRedo:
-      storageJSON && typeof storageJSON.shortcutGameRedo !== 'undefined'
-        ? storageJSON.shortcutGameRedo
-        : defaultJSON.shortcutGameRedo,
+    countdownBeep: storageJSON && typeof storageJSON.countdownBeep !== 'undefined' ? storageJSON.countdownBeep : defaultJSON.countdownBeep,
+    rankUpSound: storageJSON && typeof storageJSON.rankUpSound !== 'undefined' ? storageJSON.rankUpSound : defaultJSON.rankUpSound,
+    rankDownSound: storageJSON && typeof storageJSON.rankDownSound !== 'undefined' ? storageJSON.rankDownSound : defaultJSON.rankDownSound,
+    customChatBeep: storageJSON && typeof storageJSON.customChatBeep !== 'undefined' ? storageJSON.customChatBeep : defaultJSON.customChatBeep,
+    globalChatBeep: storageJSON && typeof storageJSON.globalChatBeep !== 'undefined' ? storageJSON.globalChatBeep : defaultJSON.globalChatBeep,
+    matchFinishBeep: storageJSON && typeof storageJSON.matchFinishBeep !== 'undefined' ? storageJSON.matchFinishBeep : defaultJSON.matchFinishBeep,
+    matchContainerTransparent: storageJSON && typeof storageJSON.matchContainerTransparent !== 'undefined' ? storageJSON.matchContainerTransparent : defaultJSON.matchContainerTransparent,
+    matchTextType: storageJSON && typeof storageJSON.matchTextType !== 'undefined' ? storageJSON.matchTextType : defaultJSON.matchTextType,
+    matchTextScroll: storageJSON && typeof storageJSON.matchTextScroll !== 'undefined' ? storageJSON.matchTextScroll : defaultJSON.matchTextScroll,
+    focusMode: storageJSON && typeof storageJSON.focusMode !== 'undefined' ? storageJSON.focusMode : defaultJSON.focusMode,
+    performanceMode: storageJSON && typeof storageJSON.performanceMode !== 'undefined' ? storageJSON.performanceMode : defaultJSON.performanceMode,
+    colorBlindMode: storageJSON && typeof storageJSON.colorBlindMode !== 'undefined' ? storageJSON.colorBlindMode : defaultJSON.colorBlindMode,
+    adsGameplay: storageJSON && typeof storageJSON.adsGameplay !== 'undefined' ? storageJSON.adsGameplay : defaultJSON.adsGameplay,
+    networkStrength: storageJSON && typeof storageJSON.networkStrength !== 'undefined' ? storageJSON.networkStrength : defaultJSON.networkStrength,
+    shortcutHome: storageJSON && typeof storageJSON.shortcutHome !== 'undefined' ? storageJSON.shortcutHome : defaultJSON.shortcutHome,
+    shortcutExit: storageJSON && typeof storageJSON.shortcutExit !== 'undefined' ? storageJSON.shortcutExit : defaultJSON.shortcutExit,
+    shortcutPlayRandom: storageJSON && typeof storageJSON.shortcutPlayRandom !== 'undefined' ? storageJSON.shortcutPlayRandom : defaultJSON.shortcutPlayRandom,
+    shortcutPlayQuotes: storageJSON && typeof storageJSON.shortcutPlayQuotes !== 'undefined' ? storageJSON.shortcutPlayQuotes : defaultJSON.shortcutPlayQuotes,
+    shortcutPlayDictionary: storageJSON && typeof storageJSON.shortcutPlayDictionary !== 'undefined' ? storageJSON.shortcutPlayDictionary : defaultJSON.shortcutPlayDictionary,
+    shortcutGameRedo: storageJSON && typeof storageJSON.shortcutGameRedo !== 'undefined' ? storageJSON.shortcutGameRedo : defaultJSON.shortcutGameRedo,
   };
 
   return {

@@ -39,9 +39,7 @@ const Countdown = (props: IProps) => {
 
   const formatCountdown = (countdown: number) => new Date(countdown * 1000).toISOString().substr(14, 5);
 
-  return (
-    <div className={'pt-2 text-white font-semibold uppercase text-xs'}>Updating in {formatCountdown(countdown)}</div>
-  );
+  return <div className={'pt-2 text-white font-semibold uppercase text-xs'}>Updating in {formatCountdown(countdown)}</div>;
 };
 
 export default Countdown;

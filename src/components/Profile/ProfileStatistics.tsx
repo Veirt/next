@@ -59,10 +59,7 @@ const ProfileStatistics = (props: IProps) => {
         { label: 'page.profile.level', value: profileData?.Level?.Index },
         {
           label: 'statistics.exp',
-          value:
-            profileData?.experience && profileData?.experience < 1000
-              ? profileData?.experience
-              : `${Math.floor((profileData?.experience || 0) / 1000)}K`,
+          value: profileData?.experience && profileData?.experience < 1000 ? profileData?.experience : `${Math.floor((profileData?.experience || 0) / 1000)}K`,
         },
         { label: 'statistics.playtime', value: usePlaytime },
       ],
@@ -78,8 +75,7 @@ const ProfileStatistics = (props: IProps) => {
         { label: 'statistics.exp_total', value: statisticData?.highestEXP || 0 },
         {
           label: 'statistics.wpm_fastest',
-          value:
-            statisticData?.lowestElapsed && statisticData.lowestElapsed < 999 ? statisticData?.lowestElapsed : 'None',
+          value: statisticData?.lowestElapsed && statisticData.lowestElapsed < 999 ? statisticData?.lowestElapsed : 'None',
         },
       ],
     },
@@ -90,18 +86,11 @@ const ProfileStatistics = (props: IProps) => {
         { label: 'statistics.won', value: (statisticData?.matchesWon || 0).toLocaleString() },
         {
           label: 'statistics.total',
-          value: (
-            (statisticData?.matchesWon || 0) +
-            (statisticData?.matchesLost || 0) +
-            (statisticData?.matchesQuit || 0)
-          ).toLocaleString(),
+          value: ((statisticData?.matchesWon || 0) + (statisticData?.matchesLost || 0) + (statisticData?.matchesQuit || 0)).toLocaleString(),
         },
         {
           label: 'statistics.ratio',
-          value: (
-            (statisticData?.matchesWon || 0) /
-            ((statisticData?.matchesLost || 0) + (statisticData?.matchesQuit || 0))
-          ).toFixed(2),
+          value: ((statisticData?.matchesWon || 0) / ((statisticData?.matchesLost || 0) + (statisticData?.matchesQuit || 0))).toFixed(2),
         },
       ],
     },
@@ -111,10 +100,7 @@ const ProfileStatistics = (props: IProps) => {
       items: [
         {
           label: 'statistics.total',
-          value:
-            (statisticData?.tournamentsLost || 0) +
-            (statisticData?.tournamentsWon || 0) +
-            (statisticData?.tournamentsTop5 || 0),
+          value: (statisticData?.tournamentsLost || 0) + (statisticData?.tournamentsWon || 0) + (statisticData?.tournamentsTop5 || 0),
         },
         { label: 'statistics.won', value: (statisticData?.tournamentsWon || 0).toLocaleString() },
         { label: 'statistics.top5', value: (statisticData?.tournamentsTop5 || 0).toLocaleString() },
@@ -159,9 +145,7 @@ const ProfileStatistics = (props: IProps) => {
                         />
                       </div>
                       <div className={'text-center mt-2'}>
-                        <div className={'text-white text-2xl lg:text-3xl font-bold'}>
-                          {rankedData?.Rank?.Rank || 'Unrated'}
-                        </div>
+                        <div className={'text-white text-2xl lg:text-3xl font-bold'}>{rankedData?.Rank?.Rank || 'Unrated'}</div>
                         {rankedData?.Rank?.Rank !== 'Unrated' && (
                           <div className={'text-white opacity-70 uppercase text-xl font-semibold'}>
                             {rankedData?.Rank?.SR || 0} <span className={'text-orange-400'}>SR</span>

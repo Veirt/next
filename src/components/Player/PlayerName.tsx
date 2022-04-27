@@ -19,15 +19,7 @@ const PlayerName: FC<IProps> = (props) => {
   const { name, discriminator, verified, patreon, staff, showDiscriminator, useSmall, useBig } = props;
 
   return (
-    <div
-      className={`flex space-x-2  ${
-        useSmall
-          ? 'text-xs sm:text-sm md:text-base'
-          : useBig
-          ? 'text-lg sm:text-xl md:text-2xl'
-          : 'text-sm sm:text-base md:text-lg'
-      }`}
-    >
+    <div className={`flex space-x-2  ${useSmall ? 'text-xs sm:text-sm md:text-base' : useBig ? 'text-lg sm:text-xl md:text-2xl' : 'text-sm sm:text-base md:text-lg'}`}>
       <div className={`truncate font-semibold text-white`}>
         {truncate(name, 14)}
         {showDiscriminator && <span className={'text-gray-500'}>#{discriminator}</span>}

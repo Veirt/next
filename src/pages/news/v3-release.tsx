@@ -6,10 +6,7 @@ import ConfigService from '../../services/ConfigService';
 
 const News = () => {
   return (
-    <Base
-      meta={<Meta title={'v3 Released'} description={''} isThumbnail reverseTitle />}
-      ads={{ enableBottomRail: true }}
-    >
+    <Base meta={<Meta title={'v3 Released'} description={''} isThumbnail reverseTitle />} ads={{ enableBottomRail: true }}>
       <div className="container">
         <div className="border-t border-gray-800" />
         <img className="w-full h-auto mb-8" src={`/news/behance5.png`} alt={'v3 released'} />

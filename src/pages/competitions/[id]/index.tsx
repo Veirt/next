@@ -7,9 +7,7 @@ import { toast } from 'react-toastify';
 import moment from 'moment';
 import useCSRF from '../../../hooks/useCSRF';
 import useConfig from '../../../hooks/useConfig';
-import LeaderboardPlayerTournament, {
-  PlayerTournamentExtendedData,
-} from '../../../components/Leaderboard/LeaderboardPlayerTournament';
+import LeaderboardPlayerTournament, { PlayerTournamentExtendedData } from '../../../components/Leaderboard/LeaderboardPlayerTournament';
 import { faClock, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -57,22 +55,14 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
 
   if (redirect) return <Redirect to={redirect} />;
   return (
-    <Base
-      meta={<Meta title={tournamentData?.name || ''} />}
-      ads={{ enableBottomRail: true }}
-      isLoaded={tournamentData !== null}
-      contentTopBorder
-    >
+    <Base meta={<Meta title={tournamentData?.name || ''} />} ads={{ enableBottomRail: true }} isLoaded={tournamentData !== null} contentTopBorder>
       <ReactTooltip />
       <div className="container container-margin container-content pt-8">
         <div className="flex flex-wrap justify-center lg:justify-start gap-2">
           <div className="w-full text-center lg:w-auto lg:text-left my-auto">
             <div className="flex">
               <h1 className={'text-white'}>{tournamentData?.name}</h1>
-              <div
-                data-tip="Achievements and Records are disabled in Competition matches."
-                className="hidden 3xl:block ml-3 mt-3 text-gray-200"
-              >
+              <div data-tip="Achievements and Records are disabled in Competition matches." className="hidden 3xl:block ml-3 mt-3 text-gray-200">
                 <FontAwesomeIcon icon={faInfoCircle} className="text-xl" />
               </div>
             </div>
@@ -80,10 +70,8 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
           <div className="w-auto text-center lg:ml-auto my-auto">
             <div className={'py-3 uppercase rounded-lg font-bold bg-gray-700 text-gray-400 px-5'}>
               <FontAwesomeIcon icon={faClock} className={'mr-1'} />
-              {tournamentData?.status === 0 &&
-                `${t('page.tournaments.starts')} ${moment.unix(tournamentData?.startTime).fromNow()}`}
-              {tournamentData?.status === 1 &&
-                `${t('page.tournaments.ends')} ${moment.unix(tournamentData?.endTime).fromNow()}`}
+              {tournamentData?.status === 0 && `${t('page.tournaments.starts')} ${moment.unix(tournamentData?.startTime).fromNow()}`}
+              {tournamentData?.status === 1 && `${t('page.tournaments.ends')} ${moment.unix(tournamentData?.endTime).fromNow()}`}
               {tournamentData?.status === 2 && `${t('page.tournaments.finished')}`}
             </div>
           </div>
@@ -132,22 +120,16 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
               {tournamentData?.qualifierSort === 'maxWPM' && (
                 <div className={`mb-4 content-box`}>
                   <h3 className={'h4 mb-2'}>Highest WPM</h3>
-                  <div>
-                    All players that have completed at least one match will appear showing their highest speed in a
-                    match.
-                  </div>
+                  <div>All players that have completed at least one match will appear showing their highest speed in a match.</div>
                 </div>
               )}
               {tournamentData?.qualifierSort === 'avgWPM' && (
                 <div className={`mb-4 content-box`}>
                   <h3 className={'h4 mb-2'}>Average WPM</h3>
                   <div>
-                    All players that have at least {tournamentData?.recentWPMTotal} matches will appear showing their
-                    Average speed based off their {tournamentData?.recentWPMTotal} most recent matches.
+                    All players that have at least {tournamentData?.recentWPMTotal} matches will appear showing their Average speed based off their {tournamentData?.recentWPMTotal} most recent matches.
                     <div className={'pt-4'}>
-                      <span className={'text-red-400 text-sm'}>
-                        Quitting matches will be included in your average as a "zero".
-                      </span>
+                      <span className={'text-red-400 text-sm'}>Quitting matches will be included in your average as a "zero".</span>
                     </div>
                   </div>
                 </div>
@@ -167,9 +149,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                       <div className="w-full h-4 bg-green-500 rounded-full" />
                     </div>
                     <div className="w-auto pl-1">
-                      <span className="text-xs uppercase text-white font-semibold">
-                        {t('page.tournaments.qualified')}
-                      </span>
+                      <span className="text-xs uppercase text-white font-semibold">{t('page.tournaments.qualified')}</span>
                     </div>
                   </div>
                 </div>
@@ -179,9 +159,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
                       <div className="w-full h-4 bg-yellow-500 rounded-full" />
                     </div>
                     <div className="w-auto pl-1">
-                      <span className="text-xs uppercase text-white font-semibold">
-                        {t('page.tournaments.notqualified')}
-                      </span>
+                      <span className="text-xs uppercase text-white font-semibold">{t('page.tournaments.notqualified')}</span>
                     </div>
                   </div>
                 </div>
@@ -230,9 +208,7 @@ const TournamentView = ({ tournamentData, playersData, tournamentId }: IProps) =
 
 export async function getServerSideProps({ req, params }: GetServerSidePropsContext) {
   const getTournamentData = async (tournamentId: string) => {
-    const response = await axios
-      .get(`${Config.apiUrl}/tournaments/list?id=${tournamentId || ''}`)
-      .catch((e) => console.log(e));
+    const response = await axios.get(`${Config.apiUrl}/tournaments/list?id=${tournamentId || ''}`).catch((e) => console.log(e));
     if (response && !response.data.error) {
       response.data.prizingJSON = response.data.prizingJSON ? Object.values(JSON.parse(response.data.prizingJSON)) : [];
       return response.data;
@@ -241,9 +217,7 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
   };
 
   const getTournamentPlayers = async (tournamentId: string) => {
-    const response = await axios
-      .get(`${Config.apiUrl}/tournaments/players?tournamentId=${tournamentId || ''}`)
-      .catch((e) => console.log(e));
+    const response = await axios.get(`${Config.apiUrl}/tournaments/players?tournamentId=${tournamentId || ''}`).catch((e) => console.log(e));
     if (response && response.data) return response.data;
     return [];
   };

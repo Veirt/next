@@ -6,9 +6,7 @@ import { toast } from 'react-toastify';
 import PlayerAvatar from '../../components/Player/PlayerAvatar';
 import ProfileAchievements, { PlayerAchievementExtendedData } from '../../components/Profile/ProfileAchievements';
 import ProfileTournaments, { PlayerTournamentExtendedData } from '../../components/Profile/ProfileTournaments';
-import LeaderboardPlayerProfile, {
-  PlayerMatchProfileExtendedData,
-} from '../../components/Leaderboard/LeaderboardPlayerProfile';
+import LeaderboardPlayerProfile, { PlayerMatchProfileExtendedData } from '../../components/Leaderboard/LeaderboardPlayerProfile';
 import Pagination from '../../components/Uncategorized/Pagination';
 import ProfileStatistics from '../../components/Profile/ProfileStatistics';
 import PlayerName from '../../components/Player/PlayerName';
@@ -97,18 +95,7 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
   ];
 
   return (
-    <Base
-      meta={
-        <Meta
-          title={`${playerData.name}#${playerData.discriminator}'s Profile`}
-          description={playerData?.description.substr(0, 200) + '...' || ''}
-          customImage={playerData?.avatarSrc || ''}
-          reverseTitle
-        />
-      }
-      isLoaded={loaded}
-      ads={{ enableBottomRail: true }}
-    >
+    <Base meta={<Meta title={`${playerData.name}#${playerData.discriminator}'s Profile`} description={playerData?.description.substr(0, 200) + '...' || ''} customImage={playerData?.avatarSrc || ''} reverseTitle />} isLoaded={loaded} ads={{ enableBottomRail: true }}>
       <div className={'container container-margin container-content'}>
         <div
           className={'relative rounded-xl shadow-lg grid grid-cols-1 lg:grid-cols-5 p-6'}
@@ -124,52 +111,29 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
                 <PlayerAvatar source={playerData?.avatarSrc} border={4} color={playerData?.cardBorder} />
               </div>
               <div className={'w-auto my-auto'}>
-                {playerData && playerData.name && (
-                  <PlayerName
-                    showDiscriminator
-                    useBig
-                    name={playerData.name}
-                    discriminator={playerData.discriminator}
-                    staff={playerData.staff}
-                    verified={playerData.verified}
-                    patreon={playerData.patreon}
-                  />
-                )}
+                {playerData && playerData.name && <PlayerName showDiscriminator useBig name={playerData.name} discriminator={playerData.discriminator} staff={playerData.staff} verified={playerData.verified} patreon={playerData.patreon} />}
                 <div className={'mt-2 lg:mt-5 w-48 lg:w-64'}>
                   <div className={'rounded-full bg-gray-750 h-2'}>
-                    <div
-                      className={'rounded-full bg-orange-400 h-2'}
-                      style={{ width: `${playerData?.Level.Percentage}%` }}
-                    />
+                    <div className={'rounded-full bg-orange-400 h-2'} style={{ width: `${playerData?.Level.Percentage}%` }} />
                   </div>
                   <div className={'flex pt-1'}>
                     <div className={'font-semibold text-xs lg:text-sm uppercase text-white w-auto mr-auto'}>
                       {playerData?.experience.toLocaleString()} / {playerData?.Level.Next.toLocaleString()}
                     </div>
-                    <div className={'font-semibold text-xs lg:text-sm uppercase text-white w-auto'}>
-                      Level {playerData?.Level?.Index}
-                    </div>
+                    <div className={'font-semibold text-xs lg:text-sm uppercase text-white w-auto'}>Level {playerData?.Level?.Index}</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className={'lg:col-span-2'}>
-            <div
-              className={
-                'm-auto mb-4 rounded-xl py-6 h-20 truncate font-semibold text-center text-white text-sm xl:text-base bg-gray-900 bg-opacity-70'
-              }
-            >
-              {playerData?.description}
-            </div>
+            <div className={'m-auto mb-4 rounded-xl py-6 h-20 truncate font-semibold text-center text-white text-sm xl:text-base bg-gray-900 bg-opacity-70'}>{playerData?.description}</div>
             <div className={'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 bg-gray-750 shadow-lg rounded-xl'}>
               {profileItems.map((item, index) => (
                 <button
                   key={item.tab}
                   onClick={item.onClick}
-                  className={`${index === 0 ? 'rounded-l-xl' : ''} ${
-                    index === profileItems.length ? 'rounded-r-xl' : ''
-                  } ${
+                  className={`${index === 0 ? 'rounded-l-xl' : ''} ${index === profileItems.length ? 'rounded-r-xl' : ''} ${
                     item.tab === tab ? 'bg-gray-775 bg-opacity-70' : ''
                   } block text-center text-white uppercase font-semibold tracking-wider text-xxs sm:text-xs py-2 focus:outline-none hover:border-orange-400 transition ease-in-out duration-300`}
                 >
@@ -183,30 +147,16 @@ const Profile = ({ playerData, statisticData, chartData, rankedData, achievement
           <AdvertisementDisplay className="mb-4">
             <AdvertisementUnit type={'leaderboard-top'} />
           </AdvertisementDisplay>
-          {tab === 'statistics' && (
-            <ProfileStatistics
-              profileData={playerData}
-              chartData={chartData}
-              statisticData={statisticData}
-              rankedData={rankedData || null}
-            />
-          )}
+          {tab === 'statistics' && <ProfileStatistics profileData={playerData} chartData={chartData} statisticData={statisticData} rankedData={rankedData || null} />}
           {tab === 'matches' && (
             <div className="content-box">
               {matchData && matchData.length !== 0 ? (
                 <>
                   <LeaderboardPlayerProfile data={matchData} skip={skip} />
-                  <Pagination
-                    isNextPage={matchNextPage}
-                    skip={skip}
-                    nextPage={() => setSkip(skip + limit)}
-                    prevPage={() => setSkip(skip - limit)}
-                  />
+                  <Pagination isNextPage={matchNextPage} skip={skip} nextPage={() => setSkip(skip + limit)} prevPage={() => setSkip(skip - limit)} />
                 </>
               ) : (
-                <div className={'text-center text-lg bg-gray-750 py-32 uppercase font-semibold text-white'}>
-                  This player has not played any matches.
-                </div>
+                <div className={'text-center text-lg bg-gray-750 py-32 uppercase font-semibold text-white'}>This player has not played any matches.</div>
               )}
             </div>
           )}
@@ -226,21 +176,11 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
 
   const getPlayer = await axios.get(`${Config.apiUrl}/player/info?name=${id}`).catch((e) => console.log(e));
   if (getPlayer && !getPlayer.data.error) {
-    const getStatistics = await axios
-      .get(`${Config.apiUrl}/player/statistics?playerId=${getPlayer.data.playerId}`)
-      .catch((e) => console.log(e));
-    const getChart = await axios
-      .get(`${Config.apiUrl}/player/chart?playerId=${getPlayer.data.playerId}`)
-      .catch((e) => console.log(e));
-    const getAchievements = await axios
-      .get(`${Config.apiUrl}/player/achievements?playerId=${getPlayer.data.playerId}`)
-      .catch((e) => console.log(e));
-    const getTournaments = await axios
-      .get(`${Config.apiUrl}/player/tournaments?playerId=${getPlayer.data.playerId}`)
-      .catch((e) => console.log(e));
-    const getRanked = await axios
-      .get(`${Config.apiUrl}/player/ranked?playerId=${getPlayer.data.playerId}`)
-      .catch((e) => console.log(e));
+    const getStatistics = await axios.get(`${Config.apiUrl}/player/statistics?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
+    const getChart = await axios.get(`${Config.apiUrl}/player/chart?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
+    const getAchievements = await axios.get(`${Config.apiUrl}/player/achievements?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
+    const getTournaments = await axios.get(`${Config.apiUrl}/player/tournaments?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
+    const getRanked = await axios.get(`${Config.apiUrl}/player/ranked?playerId=${getPlayer.data.playerId}`).catch((e) => console.log(e));
 
     console.log(getRanked?.data);
 

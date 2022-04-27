@@ -15,8 +15,7 @@ const AdvertisementUnit = (props: IProps) => {
   else if (type === 'skyscraper-two') useName = 'responsive-bottom-skyscraper';
 
   if (process.env.NODE_ENV === 'production') return <div id={useName} className="pw pwUnit" />;
-  else if (useName.includes('leaderboard'))
-    return <div className="w-64 sm:w-80 md:w-92 lg:w-128 xl:w-164 mx-auto rounded-lg bg-gray-700 h-16" />;
+  else if (useName.includes('leaderboard')) return <div className="w-64 sm:w-80 md:w-92 lg:w-128 xl:w-164 mx-auto rounded-lg bg-gray-700 h-16" />;
   else if (useName.includes('square')) return <div className="w-64 mx-auto rounded-lg bg-gray-700 h-48" />;
   else if (useName.includes('skyscraper')) return <div className="w-64 mx-auto rounded-lg bg-gray-700 h-128" />;
   else return <></>;

@@ -25,17 +25,7 @@ const MatchTextContainer = (props: IProps) => {
   const containerElement = useRef<HTMLDivElement | null>(null);
 
   // Config
-  const {
-    smoothCaret,
-    smoothCaretSpeed,
-    matchTextType,
-    matchContainerTransparent,
-    hideInputBox,
-    colorBlindMode,
-    upscaleMatch,
-    performanceMode,
-    matchTextScroll,
-  } = useConfig();
+  const { smoothCaret, smoothCaretSpeed, matchTextType, matchContainerTransparent, hideInputBox, colorBlindMode, upscaleMatch, performanceMode, matchTextScroll } = useConfig();
 
   // States
   const [input, setInput] = useState<string>(replayInput || '');
@@ -94,12 +84,7 @@ const MatchTextContainer = (props: IProps) => {
   useEffect(() => {
     const typoStreakAfterCurrent = typoStreak - 1;
 
-    const useNextIndex =
-      typoStreak >= 1
-        ? typoStreak === 1
-          ? letterIndex + 1
-          : letterIndex + 1 + typoStreakAfterCurrent
-        : letterIndex + 1 + typoStreak;
+    const useNextIndex = typoStreak >= 1 ? (typoStreak === 1 ? letterIndex + 1 : letterIndex + 1 + typoStreakAfterCurrent) : letterIndex + 1 + typoStreak;
 
     setCorrect(props.quote.substr(0, letterIndex));
     setCurrent(props.quote.substr(letterIndex, 1));
@@ -191,11 +176,9 @@ const MatchTextContainer = (props: IProps) => {
       const currentLine = Math.round(currentElement.current.offsetTop / letterHeight) + 1;
 
       // Initial Height
-      if (containerElement.current.scrollHeight > letterHeight * 3)
-        containerElement.current.style.height = `${letterHeight * 3}px`;
+      if (containerElement.current.scrollHeight > letterHeight * 3) containerElement.current.style.height = `${letterHeight * 3}px`;
 
-      if (currentLine >= 3 && currentLine < totalLines)
-        containerElement.current.scrollTop = letterHeight * (currentLine - 2);
+      if (currentLine >= 3 && currentLine < totalLines) containerElement.current.scrollTop = letterHeight * (currentLine - 2);
     }
   };
 
@@ -210,10 +193,7 @@ const MatchTextContainer = (props: IProps) => {
       if (matchTextScroll === '1') updateContainerOverflow();
 
       if (smoothCaret === '1' && 'animate' in caretElement.current) {
-        useAnimation = caretElement.current?.animate(
-          { left: caretLeft, top: caretTop, height: caretHeight },
-          { duration: parseInt(smoothCaretSpeed, 10) || 100 },
-        );
+        useAnimation = caretElement.current?.animate({ left: caretLeft, top: caretTop, height: caretHeight }, { duration: parseInt(smoothCaretSpeed, 10) || 100 });
 
         useAnimation.onfinish = () => {
           if (caretElement.current) {
@@ -240,13 +220,10 @@ const MatchTextContainer = (props: IProps) => {
 
   // CSS Inlines
   // For Tailwind Purge: duration-50 duration-75 duration-100 duration-150 duration-175 duration-200
-  const upscaleMatchCSS =
-    upscaleMatch === '1' ? 'text-base sm:text-lg md:text-xl lg:text-2xl' : 'text-sm sm:text-base md:text-lg lg:text-xl';
+  const upscaleMatchCSS = upscaleMatch === '1' ? 'text-base sm:text-lg md:text-xl lg:text-2xl' : 'text-sm sm:text-base md:text-lg lg:text-xl';
   const matchTextTypeCSS = matchTextType === '1' ? 'match--mono' : 'font-sans';
-  const colorBlindCSS =
-    colorBlindMode === '1' ? 'bg-blue-600 bg-opacity-40 text-white' : 'bg-red-600 bg-opacity-40 text-white';
-  const colorBlindInputCSS =
-    colorBlindMode === '1' ? 'bg-blue-600 bg-opacity-10 text-white' : 'bg-red-600 bg-opacity-10 text-white';
+  const colorBlindCSS = colorBlindMode === '1' ? 'bg-blue-600 bg-opacity-40 text-white' : 'bg-red-600 bg-opacity-40 text-white';
+  const colorBlindInputCSS = colorBlindMode === '1' ? 'bg-blue-600 bg-opacity-10 text-white' : 'bg-red-600 bg-opacity-10 text-white';
 
   return (
     <>
@@ -255,17 +232,8 @@ const MatchTextContainer = (props: IProps) => {
           A
         </div>
       </div>
-      <div
-        className={`${
-          !isReplay && matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'
-        }`}
-      >
-        <div
-          ref={containerElement}
-          className={`match--text ${matchTextTypeCSS || ''} ${
-            upscaleMatchCSS || ''
-          }  relative pointer-events-none overflow-y-hidden`}
-        >
+      <div className={`${!isReplay && matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
+        <div ref={containerElement} className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none overflow-y-hidden`}>
           <div
             ref={caretElement}
             className={`${caretBlinker && !disabled ? 'caret-idle' : ''} absolute rounded`}
@@ -287,9 +255,7 @@ const MatchTextContainer = (props: IProps) => {
         </div>
         <input
           ref={inputElement}
-          className={`match--input ${typoStreak > 0 ? colorBlindInputCSS || '' : 'bg-gray-800 border-orange-400'} ${
-            hideInputBox === '1' ? 'absolute left-0 opacity-0' : 'relative'
-          }`}
+          className={`match--input ${typoStreak > 0 ? colorBlindInputCSS || '' : 'bg-gray-800 border-orange-400'} ${hideInputBox === '1' ? 'absolute left-0 opacity-0' : 'relative'}`}
           lang="en"
           type="text"
           placeholder={disabled ? 'Type your text in here...' : ''}

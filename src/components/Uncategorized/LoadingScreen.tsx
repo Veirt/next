@@ -15,11 +15,7 @@ const LoadingScreen = (props: IProps) => {
   }, []);
 
   return (
-    <div
-      className={`flex ${isPartial ? 'py-64' : 'h-screen'} transition-all ease-in-out duration-500 ${
-        show ? 'opacity-100' : 'opacity-0'
-      }`}
-    >
+    <div className={`flex ${isPartial ? 'py-64' : 'h-screen'} transition-all ease-in-out duration-500 ${show ? 'opacity-100' : 'opacity-0'}`}>
       <div className={'m-auto'}>
         <FontAwesomeIcon className="text-3xl text-center text-white text-white" icon={faCircleNotch} spin />
       </div>

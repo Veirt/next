@@ -21,11 +21,7 @@ const Playercard: FC<IProps> = (props) => {
   const { hideWPM, useCPM } = useConfig();
 
   return (
-    <div
-      className={`flex flex-wrap ${
-        modeId === 1 ? `justify-center lg:justify-between ${!isFinished ? 'pt-0' : 'pt-6'}` : 'justify-center py-6'
-      } gap-4`}
-    >
+    <div className={`flex flex-wrap ${modeId === 1 ? `justify-center lg:justify-between ${!isFinished ? 'pt-0' : 'pt-6'}` : 'justify-center py-6'} gap-4`}>
       {participantsData.map(
         (item) =>
           item.teamId !== 0 && (
@@ -46,12 +42,7 @@ const Playercard: FC<IProps> = (props) => {
                     <div className={'w-auto block text-xs uppercase font-semibold text-white'}>
                       Level <span className={'text-orange-400'}>{item.Level.Index}</span>
                     </div>
-                    <PlayerExperience
-                      experience={item.experience}
-                      level={item.Level.Index}
-                      next={item.Level.Next}
-                      percentage={item.Level.Percentage}
-                    />
+                    <PlayerExperience experience={item.experience} level={item.Level.Index} next={item.Level.Next} percentage={item.Level.Percentage} />
                   </div>
                 </PlayerCard>
                 {firstWord && (
@@ -66,26 +57,14 @@ const Playercard: FC<IProps> = (props) => {
                           </>
                         )}
                       </div>
-                      <div className={'w-32 my-auto text-right'}>
-                        {!item.Placement || item.Placement === 0 ? (
-                          <div className="truncate font-semibold text-orange-400">{item.currentWord || firstWord}</div>
-                        ) : (
-                          <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} />
-                        )}
-                      </div>
+                      <div className={'w-32 my-auto text-right'}>{!item.Placement || item.Placement === 0 ? <div className="truncate font-semibold text-orange-400">{item.currentWord || firstWord}</div> : <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} />}</div>
                     </div>
                   </div>
                 )}
               </div>
               {roundLimit >= 1 && (
                 <div className={'flex justify-center gap-4 text-xs md:text-sm pt-2'}>
-                  {[...Array(roundLimit)].map((_circle, index) =>
-                    index < (item.roundsWon ? item.roundsWon : 0) ? (
-                      <FontAwesomeIcon icon={faCircle} className={'text-orange-400'} />
-                    ) : (
-                      <FontAwesomeIcon icon={faCircle} className={'text-gray-600'} />
-                    ),
-                  )}
+                  {[...Array(roundLimit)].map((_circle, index) => (index < (item.roundsWon ? item.roundsWon : 0) ? <FontAwesomeIcon icon={faCircle} className={'text-orange-400'} /> : <FontAwesomeIcon icon={faCircle} className={'text-gray-600'} />))}
                 </div>
               )}
             </div>

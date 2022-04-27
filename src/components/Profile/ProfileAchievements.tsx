@@ -42,9 +42,7 @@ const ProfileAchievements: FC<IProps> = (props) => {
       {sections.map((section) => (
         <div key={section.string} className={'mb-8 mt-4'}>
           <h3 className={'text-white font-semibold pb-3'}>{t(section.string)}</h3>
-          <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'}>
-            {achievementsData.map((item) => item.type === section.key && <AchievementItem require={0} {...item} />)}
-          </div>
+          <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'}>{achievementsData.map((item) => item.type === section.key && <AchievementItem require={0} {...item} />)}</div>
         </div>
       ))}
     </div>

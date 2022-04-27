@@ -16,24 +16,12 @@ const Pagination: FC<IProps> = (props) => {
   return (
     <div className={`flex justify-end space-x-4 ${isTop ? 'mb-4' : 'mt-4'}`}>
       {skip !== 0 && (
-        <button
-          type={'button'}
-          className={
-            'focus:outline-none bg-gray-700 hover:opacity-70 px-4 py-1 font-semibold uppercase text-sm rounded text-white text-center transition ease-in-out duration-300'
-          }
-          onClick={prevPage}
-        >
+        <button type={'button'} className={'focus:outline-none bg-gray-700 hover:opacity-70 px-4 py-1 font-semibold uppercase text-sm rounded text-white text-center transition ease-in-out duration-300'} onClick={prevPage}>
           <FontAwesomeIcon icon={faAngleLeft} /> Back
         </button>
       )}
       {isNextPage && skip < 500 && (
-        <button
-          type={'button'}
-          className={
-            'focus:outline-none bg-gray-700 hover:opacity-70 px-4 py-1 font-semibold uppercase text-sm rounded text-white text-center transition ease-in-out duration-300'
-          }
-          onClick={nextPage}
-        >
+        <button type={'button'} className={'focus:outline-none bg-gray-700 hover:opacity-70 px-4 py-1 font-semibold uppercase text-sm rounded text-white text-center transition ease-in-out duration-300'} onClick={nextPage}>
           Next <FontAwesomeIcon icon={faAngleRight} />
         </button>
       )}

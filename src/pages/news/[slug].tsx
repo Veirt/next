@@ -26,19 +26,7 @@ const News = ({ data }: IProps) => {
   }, [data]);
 
   return (
-    <Base
-      meta={
-        <Meta
-          title={data.title}
-          description={data.content.substr(0, 150) + '...'}
-          customImage={`/news/${data.thumbnail}.jpg`}
-          isThumbnail
-          reverseTitle
-        />
-      }
-      ads={{ enableBottomRail: true }}
-      contentTopBorder
-    >
+    <Base meta={<Meta title={data.title} description={data.content.substr(0, 150) + '...'} customImage={`/news/${data.thumbnail}.jpg`} isThumbnail reverseTitle />} ads={{ enableBottomRail: true }} contentTopBorder>
       <div className="container">
         <div className={'container-smaller container-margin container-content'}>
           <div className="py-14">
@@ -61,9 +49,7 @@ const News = ({ data }: IProps) => {
 
 export async function getServerSideProps({ req, params }: GetServerSidePropsContext) {
   const getNews = async (id?: string) => {
-    const response = await axios
-      .get(`${Config.apiUrl}/newsletter/list${id ? `?id=${id}` : '?limit=50'}`)
-      .catch((e) => console.log(e));
+    const response = await axios.get(`${Config.apiUrl}/newsletter/list${id ? `?id=${id}` : '?limit=50'}`).catch((e) => console.log(e));
     if (response) return id ? response.data : response.data.data;
     else return null;
   };

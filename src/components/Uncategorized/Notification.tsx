@@ -1,15 +1,5 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import {
-  faAward,
-  faCircleNotch,
-  faGamepad,
-  faHandHoldingUsd,
-  faExclamationTriangle,
-  faTrophy,
-  faUserShield,
-  faBullhorn,
-  faLevelUpAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faAward, faCircleNotch, faGamepad, faHandHoldingUsd, faExclamationTriangle, faTrophy, faUserShield, faBullhorn, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PlayerNotificationData } from '../../types.client.mongo';
 import moment from 'moment';
@@ -67,9 +57,7 @@ const Notification = (props: IProps) => {
       break;
   }
 
-  const useCSS = `flex py-5 border-b border-gray-700 ${
-    !read ? 'bg-white bg-opacity-5' : 'bg-transparent'
-  } hover:bg-white hover:bg-opacity-5 transition ease-in-out duration-300`;
+  const useCSS = `flex py-5 border-b border-gray-700 ${!read ? 'bg-white bg-opacity-5' : 'bg-transparent'} hover:bg-white hover:bg-opacity-5 transition ease-in-out duration-300`;
 
   if (location && location !== '')
     return (
@@ -94,9 +82,7 @@ const Notification = (props: IProps) => {
           <div className="flex flex-wrap md:flex-nowrap">
             <div className="w-auto mr-auto">
               <div className="text-base font- text-white">{message}</div>
-              <div className="text-gray-500 font-semibold uppercase text-sm pt-1.5">
-                {moment.unix(created).fromNow()}
-              </div>
+              <div className="text-gray-500 font-semibold uppercase text-sm pt-1.5">{moment.unix(created).fromNow()}</div>
             </div>
           </div>
         </div>

@@ -94,12 +94,9 @@ export const PlayerProvider: FC = ({ children }) => {
       if (!notifySocket) {
         console.log('Start Notification Socket');
         setNotifySocket(
-          new Socket(
-            `${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/account`,
-            {
-              transports: ['websocket', 'polling'],
-            },
-          ),
+          new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/account`, {
+            transports: ['websocket', 'polling'],
+          }),
         );
       }
     }
@@ -140,12 +137,9 @@ export const PlayerProvider: FC = ({ children }) => {
         console.log('Start Matchmaking Socket');
         startMatchMakingInterval = setTimeout(() => {
           setQueueSocket(
-            new Socket(
-              `${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/queue`,
-              {
-                transports: ['websocket', 'polling'],
-              },
-            ),
+            new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/queue`, {
+              transports: ['websocket', 'polling'],
+            }),
           );
         }, 100);
       }
@@ -223,8 +217,7 @@ export const PlayerProvider: FC = ({ children }) => {
 
       queueSocket?.on('foundQueue', (data: { playersFound: string[] }) => {
         const array = data?.playersFound;
-        if (array && sessionData && array.includes(sessionData.playerId))
-          setQueueFound(array.includes(sessionData.playerId));
+        if (array && sessionData && array.includes(sessionData.playerId)) setQueueFound(array.includes(sessionData.playerId));
       });
     });
     return () => {

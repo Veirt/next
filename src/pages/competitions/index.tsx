@@ -47,16 +47,9 @@ const Tournaments = () => {
   const getTournaments = useCallback(
     async (searchString?: string) => {
       axios
-        .get(
-          `${
-            Config.apiUrl
-          }/tournaments/list?filter=${filterType}&locale=${filterLocale}&limit=${limit}&startNum=${startNum}${
-            searchString ? `&search=${searchString}` : ''
-          }`,
-          {
-            cancelToken: axiosCancelSource.current?.token,
-          },
-        )
+        .get(`${Config.apiUrl}/tournaments/list?filter=${filterType}&locale=${filterLocale}&limit=${limit}&startNum=${startNum}${searchString ? `&search=${searchString}` : ''}`, {
+          cancelToken: axiosCancelSource.current?.token,
+        })
         .then((response) => {
           setTournamentsData(response.data);
           setLoaded(true);
@@ -90,11 +83,7 @@ const Tournaments = () => {
   ];
 
   return (
-    <Base
-      meta={<Meta title={t('page.tournaments.title')} />}
-      ads={{ enableBottomRail: true }}
-      isLoaded={loaded && tournamentsData !== null}
-    >
+    <Base meta={<Meta title={t('page.tournaments.title')} />} ads={{ enableBottomRail: true }} isLoaded={loaded && tournamentsData !== null}>
       <div className="container container-margin container-content">
         <AdvertisementDisplay className="mb-6">
           <AdvertisementUnit type={'leaderboard-top'} />
@@ -105,11 +94,7 @@ const Tournaments = () => {
             <div className={'w-full lg:w-auto mr-auto my-auto'}>
               <div className={'flex flex-wrap gap-x-2 text-lg text-white uppercase'}>
                 <div className={'relative'}>
-                  <button
-                    type={'button'}
-                    className={'w-44 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725'}
-                    onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}
-                  >
+                  <button type={'button'} className={'w-44 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725'} onClick={() => setDropdown(dropdown === 1 ? 0 : 1)}>
                     <FontAwesomeIcon icon={faFilter} className={'mr-1'} />
                     {types[filterType]?.name}
                     <div className={'absolute right-0 top-0 mt-1.5 mr-3'}>
@@ -134,11 +119,7 @@ const Tournaments = () => {
                 </div>
 
                 <div className={'relative'}>
-                  <button
-                    type={'button'}
-                    className={'w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725'}
-                    onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}
-                  >
+                  <button type={'button'} className={'w-48 button-dropdown border-transparent bg-gray-700 hover:bg-gray-725'} onClick={() => setDropdown(dropdown === 2 ? 0 : 2)}>
                     <FontAwesomeIcon icon={faGlobe} className={'mr-1'} />
                     {locales.map((item) => (item.key === filterLocale ? item.name : ''))}
                     <div className={'absolute right-0 top-0 mt-1.5 mr-3'}>
@@ -166,13 +147,7 @@ const Tournaments = () => {
             <div className={'w-full lg:w-auto'}>
               <form method={'post'} onSubmit={handleSubmit}>
                 <div className={'form-search'}>
-                  <input
-                    type={'text'}
-                    name="search"
-                    value={search}
-                    placeholder="Search"
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
+                  <input type={'text'} name="search" value={search} placeholder="Search" onChange={(e) => setSearch(e.target.value)} />
                   <button type={'submit'}>
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
@@ -182,22 +157,9 @@ const Tournaments = () => {
           </div>
           <div className={'mt-6'}>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {tournamentsData?.data.length ? (
-                tournamentsData.data.map((tournament) => (
-                  <TournamentItem key={tournament.tournamentId} {...tournament} />
-                ))
-              ) : (
-                <div className={'col-span-full py-48 text-white font-semibold text-center bg-gray-700'}>
-                  No results found!
-                </div>
-              )}
+              {tournamentsData?.data.length ? tournamentsData.data.map((tournament) => <TournamentItem key={tournament.tournamentId} {...tournament} />) : <div className={'col-span-full py-48 text-white font-semibold text-center bg-gray-700'}>No results found!</div>}
               <div className={'col-span-full flex justify-end'}>
-                <Pagination
-                  isNextPage={tournamentsData && tournamentsData.isNextPage ? true : false}
-                  skip={startNum}
-                  nextPage={() => setStartNum(startNum + limit)}
-                  prevPage={() => setStartNum(startNum - limit)}
-                />
+                <Pagination isNextPage={tournamentsData && tournamentsData.isNextPage ? true : false} skip={startNum} nextPage={() => setStartNum(startNum + limit)} prevPage={() => setStartNum(startNum - limit)} />
               </div>
             </div>
           </div>

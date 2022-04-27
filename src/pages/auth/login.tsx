@@ -50,11 +50,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post(
-        `${Config.authUrl}/login`,
-        { emailAddress, password, _csrf },
-        { cancelToken: axiosCancelSource.current?.token, withCredentials: true },
-      )
+      .post(`${Config.authUrl}/login`, { emailAddress, password, _csrf }, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
       .then((response) => {
         if (!response.data.error) {
           getSessionData();
@@ -85,11 +81,7 @@ const Login = () => {
                 <div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {AuthProviders.map((item) => (
-                      <Link
-                        key={item.callback}
-                        to={`${Config.oauthUrl}/${item.callback}`}
-                        className={`${item.bg} hover:opacity-70 transition ease-in-out duration-300 rounded shadow`}
-                      >
+                      <Link key={item.callback} to={`${Config.oauthUrl}/${item.callback}`} className={`${item.bg} hover:opacity-70 transition ease-in-out duration-300 rounded shadow`}>
                         <div className="flex items-center justify-center p-2">
                           <FontAwesomeIcon icon={item.icon} className={`${item.color} text-xl`} />
                           <span className="ml-2 font-semibold">{item.name}</span>
@@ -104,14 +96,7 @@ const Login = () => {
                     <div>
                       <FontAwesomeIcon icon={item.icon} />
                     </div>
-                    <input
-                      type={item.type}
-                      name={item.name}
-                      placeholder={item.placeholder}
-                      value={item.value}
-                      onChange={(e) => item.onChange(e.target.value)}
-                      required
-                    />
+                    <input type={item.type} name={item.name} placeholder={item.placeholder} value={item.value} onChange={(e) => item.onChange(e.target.value)} required />
                   </div>
                 ))}
               </div>
@@ -129,10 +114,7 @@ const Login = () => {
               </div>
             </form>
           </div>
-          <Link
-            to="/auth/signup"
-            className="text-lg block mt-4 text-center font-semibold hover:opacity-70 transition ease-in-out duration-300"
-          >
+          <Link to="/auth/signup" className="text-lg block mt-4 text-center font-semibold hover:opacity-70 transition ease-in-out duration-300">
             Don't have an account?
           </Link>
         </div>

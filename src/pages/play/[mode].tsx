@@ -31,12 +31,9 @@ const Play = (props: IProps) => {
   const { mode, challengesData, tournamentsData, loaded } = props;
   const { announcement } = useGlobalContext();
 
-  const [latestAnnouncement, setLatestAnnouncement] = useState<string>(
-    typeof window !== 'undefined' ? window.localStorage.getItem('announcement') || '' : '',
-  );
+  const [latestAnnouncement, setLatestAnnouncement] = useState<string>(typeof window !== 'undefined' ? window.localStorage.getItem('announcement') || '' : '');
 
-  const updateLatestAnnouncement = (v: string) =>
-    typeof window !== 'undefined' ? window.localStorage.setItem('announcement', v) : null;
+  const updateLatestAnnouncement = (v: string) => (typeof window !== 'undefined' ? window.localStorage.setItem('announcement', v) : null);
 
   return (
     <Base meta={<Meta title="Take your typing to the next level" />} ads={{ enableBottomRail: true }} isLoaded={loaded}>
@@ -47,14 +44,9 @@ const Play = (props: IProps) => {
               <FontAwesomeIcon icon={faBullhorn} className="mr-1" />
               {announcement.value.split(': ')[0]}
             </div>
-            <div className="pl-2 sm:pl-0 my-auto text-orange-900 font-semibold">
-              {announcement.value.split(': ')[1]}
-            </div>
+            <div className="pl-2 sm:pl-0 my-auto text-orange-900 font-semibold">{announcement.value.split(': ')[1]}</div>
 
-            <button
-              type="button"
-              className="absolute top-0.5 sm:top-1.5 right-4 text-xl text-orange-900 hover:opacity-70 transition ease-in-out duration-300"
-            >
+            <button type="button" className="absolute top-0.5 sm:top-1.5 right-4 text-xl text-orange-900 hover:opacity-70 transition ease-in-out duration-300">
               <FontAwesomeIcon
                 icon={faTimes}
                 onClick={() => {
@@ -112,9 +104,7 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
   const getLocale = ConfigService.getServerSideOption('locale', req.headers.cookie || '');
 
   const getTournaments = async () => {
-    const response = await axios
-      .get(`${Config.apiUrl}/tournaments/list?locale=${getLocale}&limit=3`)
-      .catch((e) => console.log(e));
+    const response = await axios.get(`${Config.apiUrl}/tournaments/list?locale=${getLocale}&limit=3`).catch((e) => console.log(e));
     if (response && response.data) return response.data?.data || [];
     else return [];
   };

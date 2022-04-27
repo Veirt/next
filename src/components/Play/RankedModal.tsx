@@ -27,11 +27,7 @@ const RankedModal = (props: IProps) => {
         {ranks.map((item, index) => (
           <div key={index}>
             <div className="block text-center mx-auto">
-              <img
-                src={`/ranks/${item.icon}.svg`}
-                alt={item.name}
-                className="block mx-auto object-contain w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
-              />
+              <img src={`/ranks/${item.icon}.svg`} alt={item.name} className="block mx-auto object-contain w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />
               <div className="font-semibold mt-2 text-xs sm:text-sm md:text-base lg:text-lg">{item.name}</div>
               <div className="text-orange-400 font-semibold text-xs lg:text-sm">{item.sr}</div>
             </div>

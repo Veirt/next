@@ -28,9 +28,7 @@ const Settings = (props: IProps) => {
 
   return (
     <>
-      {dropdown !== null && (
-        <div className={`bg-white bg-opacity-0 fixed inset-0 w-full h-screen`} onClick={() => setDropdown(null)} />
-      )}
+      {dropdown !== null && <div className={`bg-white bg-opacity-0 fixed inset-0 w-full h-screen`} onClick={() => setDropdown(null)} />}
       <SettingItem
         className="3xl:rounded-l-xl"
         label={t('page.custom.mode')}

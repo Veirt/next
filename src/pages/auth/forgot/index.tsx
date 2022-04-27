@@ -34,11 +34,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post(
-        `${Config.authUrl}/sendForgot`,
-        { emailAddress, _csrf },
-        { cancelToken: axiosCancelSource.current?.token, withCredentials: true },
-      )
+      .post(`${Config.authUrl}/sendForgot`, { emailAddress, _csrf }, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
       .then((response) => {
         if (!response.data.error) return setRedirect('/');
         else return toast.error(response.data.error);
@@ -69,14 +65,7 @@ const Login = () => {
                     <div>
                       <FontAwesomeIcon icon={item.icon} />
                     </div>
-                    <input
-                      type={item.type}
-                      name={item.name}
-                      placeholder={item.placeholder}
-                      value={item.value}
-                      onChange={(e) => item.onChange(e.target.value)}
-                      required
-                    />
+                    <input type={item.type} name={item.name} placeholder={item.placeholder} value={item.value} onChange={(e) => item.onChange(e.target.value)} required />
                   </div>
                 ))}
               </div>

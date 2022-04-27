@@ -65,11 +65,7 @@ const Base = (props: IMainProps) => {
   };
 
   useEffect(() => {
-    if (
-      !props.noAnimate &&
-      (typeof props.isLoaded === 'undefined' || (typeof props.isLoaded !== 'undefined' && props.isLoaded))
-    )
-      timer.current = setTimeout(onTimerCalled, 1);
+    if (!props.noAnimate && (typeof props.isLoaded === 'undefined' || (typeof props.isLoaded !== 'undefined' && props.isLoaded))) timer.current = setTimeout(onTimerCalled, 1);
     else console.log('Failed to queue animation');
     return () => {
       if (timer.current) clearTimeout(timer.current);

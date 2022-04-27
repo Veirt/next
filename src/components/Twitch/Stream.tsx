@@ -36,11 +36,7 @@ const Stream: FC<IProps> = (props) => {
     </div>
   ) : (
     <a href={`https://twitch.tv/${props.name}`} target={'_blank'} rel="noreferrer" className={'mb-2 block'}>
-      <div
-        className={
-          'bg-gray-775 hover:bg-gray-800 transition ease-in-out duration-200 border-l-4 border-purple-500 rounded shadow'
-        }
-      >
+      <div className={'bg-gray-775 hover:bg-gray-800 transition ease-in-out duration-200 border-l-4 border-purple-500 rounded shadow'}>
         <div className={'flex p-2'}>
           <div className={'w-32'}>
             <img className="w-full h-auto" src={props.thumbnail} alt={props.name} />

@@ -1,13 +1,4 @@
-import {
-  GamemodeData,
-  MatchData,
-  PlayerCompetitiveData,
-  PlayerData,
-  PlayerExtendedData,
-  PlayerLevelData,
-  PlayerMatchData,
-  PlayerRoundData,
-} from './types.client.mongo';
+import { GamemodeData, MatchData, PlayerCompetitiveData, PlayerData, PlayerExtendedData, PlayerLevelData, PlayerMatchData, PlayerRoundData } from './types.client.mongo';
 
 export interface ChatroomMessageProps {
   playerData: PlayerExtendedData;

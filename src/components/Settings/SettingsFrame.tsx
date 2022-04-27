@@ -1,15 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
-import {
-  faCheck,
-  faExclamationCircle,
-  faImage,
-  faLayerGroup,
-  faPortrait,
-  faSlidersH,
-  faTimes,
-  faTimesCircle,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faExclamationCircle, faImage, faLayerGroup, faPortrait, faSlidersH, faTimes, faTimesCircle, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useConfig, { ConfigData } from '../../hooks/useConfig';
 import { useTranslation } from 'next-i18next';
@@ -83,23 +73,21 @@ const SettingsFrame = (props: IProps) => {
   useEffect(() => {
     axiosCancelSource.current = axios.CancelToken.source();
 
-    axios
-      .get(`${Config.apiUrl}/player/info`, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
-      .then((response) => {
-        if (!response.data.error) {
-          setName(response.data.name);
-          setFullName(response.data.fullName);
-          setCountry(response.data.countryId);
-          setDescription(response.data.description);
-          setKeyboardBrand(response.data.keyboardBrand);
-          setKeyboardModel(response.data.keyboardModel);
-          setKeyboardLayout(response.data.keyboardId);
-          setCardImage(response.data.cardImage);
-          setCardBorder(response.data.cardBorder);
-          setBanner(response.data.banner);
-          setApiKey(response.data.apiKey);
-        } else console.error(response.data.error);
-      });
+    axios.get(`${Config.apiUrl}/player/info`, { cancelToken: axiosCancelSource.current?.token, withCredentials: true }).then((response) => {
+      if (!response.data.error) {
+        setName(response.data.name);
+        setFullName(response.data.fullName);
+        setCountry(response.data.countryId);
+        setDescription(response.data.description);
+        setKeyboardBrand(response.data.keyboardBrand);
+        setKeyboardModel(response.data.keyboardModel);
+        setKeyboardLayout(response.data.keyboardId);
+        setCardImage(response.data.cardImage);
+        setCardBorder(response.data.cardBorder);
+        setBanner(response.data.banner);
+        setApiKey(response.data.apiKey);
+      } else console.error(response.data.error);
+    });
 
     axios
       .get(`${Config.apiUrl}/player/inventory`, {
@@ -122,11 +110,7 @@ const SettingsFrame = (props: IProps) => {
 
   const handleDelete = () => {
     axios
-      .post(
-        `${Config.apiUrl}/player/delete`,
-        { _csrf },
-        { cancelToken: axiosCancelSource.current?.token, withCredentials: true },
-      )
+      .post(`${Config.apiUrl}/player/delete`, { _csrf }, { cancelToken: axiosCancelSource.current?.token, withCredentials: true })
       .then((response) => {
         if (!response.data.error) {
           setSessionData(null);
@@ -589,24 +573,10 @@ const SettingsFrame = (props: IProps) => {
 
   return (
     <>
-      <div
-        className={`fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 flex w-screen h-screen z-50 ${
-          isVisible ? 'visible opacity-100' : 'invisible opacity-0'
-        }  transition-all ease-in-out duration-300`}
-      >
-        <div
-          className={`m-auto max-w-screen-lg w-full ${
-            isVisible ? 'translate-y-0' : 'translate-y-2'
-          } transition-all ease-in-out duration-300`}
-        >
+      <div className={`fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-70 flex w-screen h-screen z-50 ${isVisible ? 'visible opacity-100' : 'invisible opacity-0'}  transition-all ease-in-out duration-300`}>
+        <div className={`m-auto max-w-screen-lg w-full ${isVisible ? 'translate-y-0' : 'translate-y-2'} transition-all ease-in-out duration-300`}>
           <div className={'relative mx-5'}>
-            <button
-              type={'button'}
-              onClick={onClose}
-              className={
-                'focus:outline-none top-0 right-0 mr-2 absolute text-2xl text-gray-400 hover:text-gray-600 transition ease-in-out duration-300'
-              }
-            >
+            <button type={'button'} onClick={onClose} className={'focus:outline-none top-0 right-0 mr-2 absolute text-2xl text-gray-400 hover:text-gray-600 transition ease-in-out duration-300'}>
               <FontAwesomeIcon icon={faTimes} />
             </button>
             <div className={'bg-gray-750 text-white shadow-lg rounded-t-2xl'}>
@@ -616,9 +586,7 @@ const SettingsFrame = (props: IProps) => {
                     key={item.tab}
                     type={'button'}
                     onClick={() => setTab(item.tab)}
-                    className={`rounded-t-lg w-auto px-6 py-1.5 sm:py-2 focus:outline-none block text-center text-sm ${
-                      tab === item.tab ? 'text-orange-400 bg-gray-750' : 'text-white bg-gray-800 hover:bg-gray-775'
-                    } text-base uppercase font-semibold`}
+                    className={`rounded-t-lg w-auto px-6 py-1.5 sm:py-2 focus:outline-none block text-center text-sm ${tab === item.tab ? 'text-orange-400 bg-gray-750' : 'text-white bg-gray-800 hover:bg-gray-775'} text-base uppercase font-semibold`}
                   >
                     <FontAwesomeIcon icon={item.icon} className={'lg:mr-2'} />
                     <span className="hidden lg:inline">{item.name}</span>
@@ -626,21 +594,11 @@ const SettingsFrame = (props: IProps) => {
                 ))}
               </div>
               {unsaved && (
-                <div
-                  className={
-                    'absolute flex justify-center gap-2 top-0 mt-12 z-50 left-0 right-0 w-full text-center p-1.5 bg-red-700 bg-opacity-50 text-white'
-                  }
-                >
+                <div className={'absolute flex justify-center gap-2 top-0 mt-12 z-50 left-0 right-0 w-full text-center p-1.5 bg-red-700 bg-opacity-50 text-white'}>
                   <div className={'my-auto'}>
                     <strong>Unsaved!</strong> This page will refresh upon saving your changes.
                   </div>
-                  <button
-                    type={'button'}
-                    onClick={handleSave}
-                    className={
-                      'focus:outline-none border border-white rounded px-1 py-0 text-base hover:bg-white hover:text-gray-900 transition ease-in-out duration-300'
-                    }
-                  >
+                  <button type={'button'} onClick={handleSave} className={'focus:outline-none border border-white rounded px-1 py-0 text-base hover:bg-white hover:text-gray-900 transition ease-in-out duration-300'}>
                     Save now
                   </button>
                 </div>
@@ -654,13 +612,7 @@ const SettingsFrame = (props: IProps) => {
                         {/* @ts-ignore */}
                         {options[index].form.map((item) => (
                           <div key={item.title} className={'mb-6'}>
-                            <h3
-                              className={
-                                'uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg'
-                              }
-                            >
-                              {t(item.title)}
-                            </h3>
+                            <h3 className={'uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg'}>{t(item.title)}</h3>
                             <div className={'grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4'}>
                               {/* @ts-ignore */}
                               {item.options.map((option) => (
@@ -682,29 +634,13 @@ const SettingsFrame = (props: IProps) => {
 
                 {tab === 0 && (
                   <div className={'mb-6'}>
-                    <h3
-                      className={'uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg'}
-                    >
-                      Developers (coming soon)
-                    </h3>
+                    <h3 className={'uppercase text-white p-2 text-sm uppercase font-semibold bg-gray-700 mb-3 rounded-lg'}>Developers (coming soon)</h3>
                     <div className={'flex w-48'}>
                       <div className={'w-auto my-auto font-semibold mr-2'}>Show API Key</div>
-                      <button
-                        type={'button'}
-                        onClick={() => setToggleSecret(true)}
-                        className={`w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${
-                          toggleSecret ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'
-                        }`}
-                      >
+                      <button type={'button'} onClick={() => setToggleSecret(true)} className={`w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${toggleSecret ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                         <FontAwesomeIcon icon={faCheck} />
                       </button>
-                      <button
-                        type={'button'}
-                        onClick={() => setToggleSecret(false)}
-                        className={`w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${
-                          !toggleSecret ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'
-                        }`}
-                      >
+                      <button type={'button'} onClick={() => setToggleSecret(false)} className={`w-10 text-center py-1.5 focus:outline-none transition ease-in-out duration-300 ${!toggleSecret ? 'bg-orange-400 text-white' : 'bg-gray-700 text-gray-400'}`}>
                         <FontAwesomeIcon icon={faTimes} />
                       </button>
                     </div>
@@ -742,20 +678,10 @@ const SettingsFrame = (props: IProps) => {
                               defaultChecked={cardImage === item.file}
                             />
                             <div className={'relative h-40 flex bg-gray-700 rounded-lg'}>
-                              <div
-                                className={
-                                  'w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110'
-                                }
-                              >
+                              <div className={'w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110'}>
                                 <ItemPlayercard file={item.file} />
                               </div>
-                              <div
-                                className={
-                                  'text-center font-semibold absolute w-full left-0 right-0 bottom-0 py-2 text-sm uppercase text-white'
-                                }
-                              >
-                                {item.name}
-                              </div>
+                              <div className={'text-center font-semibold absolute w-full left-0 right-0 bottom-0 py-2 text-sm uppercase text-white'}>{item.name}</div>
                             </div>
                           </label>
                         ),
@@ -781,20 +707,10 @@ const SettingsFrame = (props: IProps) => {
                               defaultChecked={cardBorder === item.file}
                             />
                             <div className={'relative h-40 flex bg-gray-700 rounded-lg'}>
-                              <div
-                                className={
-                                  'w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110'
-                                }
-                              >
+                              <div className={'w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110'}>
                                 <ItemBorder file={item.file} />
                               </div>
-                              <div
-                                className={
-                                  'text-center font-semibold absolute w-full left-0 right-0 bottom-0 py-2 text-sm uppercase text-white'
-                                }
-                              >
-                                {item.name}
-                              </div>
+                              <div className={'text-center font-semibold absolute w-full left-0 right-0 bottom-0 py-2 text-sm uppercase text-white'}>{item.name}</div>
                             </div>
                           </label>
                         ),
@@ -820,20 +736,10 @@ const SettingsFrame = (props: IProps) => {
                               defaultChecked={banner === item.file}
                             />
                             <div className={'relative h-40 flex bg-gray-700 rounded-lg'}>
-                              <div
-                                className={
-                                  'w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110'
-                                }
-                              >
+                              <div className={'w-3/5 m-auto h-auto transition ease-in-out duration-300 hover:transform hover:scale-110'}>
                                 <ItemBanner file={item.file} />
                               </div>
-                              <div
-                                className={
-                                  'text-center font-semibold absolute w-full left-0 right-0 bottom-0 py-2 text-sm uppercase text-white'
-                                }
-                              >
-                                {item.name}
-                              </div>
+                              <div className={'text-center font-semibold absolute w-full left-0 right-0 bottom-0 py-2 text-sm uppercase text-white'}>{item.name}</div>
                             </div>
                           </label>
                         ),
@@ -843,36 +749,20 @@ const SettingsFrame = (props: IProps) => {
 
                 {tab === 5 && (
                   <>
-                    <h3
-                      className={
-                        'uppercase text-white p-2 text-sm uppercase font-semibold bg-red-700 bg-opacity-30 mb-3'
-                      }
-                    >
-                      Danger Zone
-                    </h3>
+                    <h3 className={'uppercase text-white p-2 text-sm uppercase font-semibold bg-red-700 bg-opacity-30 mb-3'}>Danger Zone</h3>
                     <div className={'grid grid-cols-1 md:grid-cols-2 gap-6'}>
                       <div className={'p-6 bg-gray-775 rounded-lg'}>
                         <h4>Your Data</h4>
-                        <p className={'pt-1 pb-6 text-sm'}>
-                          Click the button below to see all of the Data that has ever been stored on Keymash.
-                        </p>
+                        <p className={'pt-1 pb-6 text-sm'}>Click the button below to see all of the Data that has ever been stored on Keymash.</p>
                         <div className="flex">
-                          <a
-                            target={'_blank'}
-                            rel={'noopener noreferrer'}
-                            href={`${Config.apiUrl}/player/gdpr`}
-                            className={'button small blue'}
-                          >
+                          <a target={'_blank'} rel={'noopener noreferrer'} href={`${Config.apiUrl}/player/gdpr`} className={'button small blue'}>
                             Raw JSON
                           </a>
                         </div>
                       </div>
                       <div className={'p-6 bg-gray-775 rounded-lg'}>
                         <h4>Delete Account</h4>
-                        <p className={'pt-1 pb-6 text-sm'}>
-                          By hitting the button below, your account will be placed in an automatic deletion queue that
-                          executes once a day.
-                        </p>
+                        <p className={'pt-1 pb-6 text-sm'}>By hitting the button below, your account will be placed in an automatic deletion queue that executes once a day.</p>
                         <div className="flex">
                           <button type={'button'} onClick={() => setDeletionModel(true)} className={'button small red'}>
                             Delete
@@ -889,36 +779,17 @@ const SettingsFrame = (props: IProps) => {
               <div className={'bg-black bg-opacity-50 absolute top-0 right-0 bottom-0 left-0 z-50'}>
                 <div className={'flex h-full w-full'}>
                   <div className={'relative m-auto w-80 bg-gray-700 text-white rounded p-4'}>
-                    <button
-                      type={'button'}
-                      onClick={() => setDeletionModel(false)}
-                      className={
-                        'absolute top-2 right-2 focus:outline-none text-gray-200 hover:text-gray-400 transition ease-in-out duration-300'
-                      }
-                    >
+                    <button type={'button'} onClick={() => setDeletionModel(false)} className={'absolute top-2 right-2 focus:outline-none text-gray-200 hover:text-gray-400 transition ease-in-out duration-300'}>
                       <FontAwesomeIcon icon={faTimesCircle} />
                     </button>
                     <div className={'text-base text-gray-300'}>
-                      Please enter <span className={'text-white font-semibold'}>{name}</span> in the input field to
-                      delete this account.
+                      Please enter <span className={'text-white font-semibold'}>{name}</span> in the input field to delete this account.
                     </div>
                     <div className={'text-base text-gray-300 mt-4'}>
                       This <span className={'font-semibold'}>cannot</span> be reversed.
                     </div>
-                    <input
-                      type={'text'}
-                      className={'input-settings my-4'}
-                      onChange={(e) => setDeletionText(e.target.value)}
-                      value={deletionText}
-                      placeholder={name}
-                    />
-                    <button
-                      type={'button'}
-                      onClick={handleDelete}
-                      className={`flex ml-auto rounded transition ease-in-out duration-300 focus:outline-none bg-red-500 hover:bg-red-600 px-3 py-1 text-sm text-white ${
-                        name === deletionText ? 'opacity-100' : 'opacity-50 pointer-events-none'
-                      }`}
-                    >
+                    <input type={'text'} className={'input-settings my-4'} onChange={(e) => setDeletionText(e.target.value)} value={deletionText} placeholder={name} />
+                    <button type={'button'} onClick={handleDelete} className={`flex ml-auto rounded transition ease-in-out duration-300 focus:outline-none bg-red-500 hover:bg-red-600 px-3 py-1 text-sm text-white ${name === deletionText ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
                       Delete
                     </button>
                   </div>

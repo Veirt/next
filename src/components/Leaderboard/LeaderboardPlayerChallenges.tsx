@@ -25,13 +25,7 @@ const LeaderboardPlayerChallenges: FC<IProps> = (props) => {
           <div className="hidden md:block w-10 text-center font-bold my-auto">
             <FormatIndex index={key + skip + 1} />
           </div>
-          <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">
-            {item.player && item.player[0] ? (
-              <PlayerCard {...item.player[0]} useTransparent isLeaderboard />
-            ) : (
-              <div className={'py-7'} />
-            )}
-          </div>
+          <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">{item.player && item.player[0] ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : <div className={'py-7'} />}</div>
           <div className="hidden md:block w-40 my-auto">
             {item.count.toLocaleString()} challenge{item.count > 1 || item.count === 0 ? 's' : ''}
           </div>

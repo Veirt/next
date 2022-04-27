@@ -4,15 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { faDiscord, faGithub, faPatreon, faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Userbar from './Userbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCaretUp,
-  faHome,
-  faInfoCircle,
-  faListAlt,
-  faNewspaper,
-  faStoreAlt,
-  faTrophy,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp, faHome, faInfoCircle, faListAlt, faNewspaper, faStoreAlt, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { usePlayerContext } from '../contexts/Player.context';
 import { useRouter } from 'next/router';
 import Link from '../components/Uncategorized/Link';
@@ -126,12 +118,7 @@ const Levelbar = () => {
   const renderDropdown = () => (
     <div className={`dropdown w-40 ${toggleSitebar ? 'is-open' : 'is-not'}`} style={{ marginTop: '4rem' }}>
       {links.map((item) => (
-        <Link
-          key={item.link}
-          to={item.link}
-          onClick={() => setToggleSitebar(false)}
-          className={`item ${router.asPath.startsWith(item.link) && 'is-active'}`}
-        >
+        <Link key={item.link} to={item.link} onClick={() => setToggleSitebar(false)} className={`item ${router.asPath.startsWith(item.link) && 'is-active'}`}>
           {t(item.name)}
         </Link>
       ))}
@@ -156,11 +143,7 @@ const Levelbar = () => {
       <div className={'fixed top-0 left-0 right-0 z-50 bg-gray-775 shadow'}>
         <div className={'flex py-1 px-10 justify-between'}>
           <div className={'w-auto pt-1 my-auto relative'}>
-            <button
-              type={'button'}
-              onClick={() => setToggleSitebar(!toggleSitebar)}
-              className={'w-8 my-auto focus:outline-none'}
-            >
+            <button type={'button'} onClick={() => setToggleSitebar(!toggleSitebar)} className={'w-8 my-auto focus:outline-none'}>
               <img src={'/assets/logo_icon.svg'} alt={'Logo'} className={'w-full h-auto'} />
             </button>
             {renderDropdown()}
@@ -175,32 +158,16 @@ const Levelbar = () => {
         <Link to={'/'} className={`${mobileNavCSS} ${router.asPath === '/' && mobileActiveCSS} text-center text-xxs`}>
           <FontAwesomeIcon icon={faHome} className={'text-2xl'} />
         </Link>
-        <Link
-          to={'/about/us'}
-          className={`${mobileNavCSS} ${router.asPath === '/play' && mobileActiveCSS} text-center text-xxs`}
-        >
+        <Link to={'/about/us'} className={`${mobileNavCSS} ${router.asPath === '/play' && mobileActiveCSS} text-center text-xxs`}>
           <FontAwesomeIcon icon={faInfoCircle} className={'text-2xl'} />
         </Link>
-        <Link
-          to={'/news'}
-          className={`${mobileNavCSS} ${router.asPath.startsWith('/news') && mobileActiveCSS} text-center text-xxs`}
-        >
+        <Link to={'/news'} className={`${mobileNavCSS} ${router.asPath.startsWith('/news') && mobileActiveCSS} text-center text-xxs`}>
           <FontAwesomeIcon icon={faNewspaper} className={'text-2xl'} />
         </Link>
-        <Link
-          to={'/leaderboards'}
-          className={`${mobileNavCSS} ${
-            router.asPath.startsWith('/leaderboards') && mobileActiveCSS
-          } text-center text-xxs`}
-        >
+        <Link to={'/leaderboards'} className={`${mobileNavCSS} ${router.asPath.startsWith('/leaderboards') && mobileActiveCSS} text-center text-xxs`}>
           <FontAwesomeIcon icon={faListAlt} className={'text-2xl'} />
         </Link>
-        <Link
-          to={'/competitions'}
-          className={`${mobileNavCSS} ${
-            router.asPath.startsWith('/competitions') && mobileActiveCSS
-          } text-center text-xxs`}
-        >
+        <Link to={'/competitions'} className={`${mobileNavCSS} ${router.asPath.startsWith('/competitions') && mobileActiveCSS} text-center text-xxs`}>
           <FontAwesomeIcon icon={faTrophy} className={'text-2xl'} />
         </Link>
       </div>
@@ -208,24 +175,14 @@ const Levelbar = () => {
   ) : (
     <>
       {scroll && (
-        <button
-          type="button"
-          onClick={() => window.scroll({ top: 0, left: 0, behavior: 'smooth' })}
-          className="z-50 button gray border border-gray-700 fixed bottom-16 right-16 w-12 h-12"
-        >
+        <button type="button" onClick={() => window.scroll({ top: 0, left: 0, behavior: 'smooth' })} className="z-50 button gray border border-gray-700 fixed bottom-16 right-16 w-12 h-12">
           <FontAwesomeIcon icon={faCaretUp} className="text-2xl m-auto" />
         </button>
       )}
       <div className={`hidden lg:block fixed top-0 left-0 right-0 z-50 navigationBar`}>
         <div className={'container flex'}>
           <div className="w-44 relative my-auto py-3">
-            <button
-              type={'button'}
-              onClick={() => setToggleSitebar(!toggleSitebar)}
-              className={`w-11 h-11 absolute -left-1 mb-px top-2 bottom-0 h-full ${
-                toggleSitebar ? 'opacity-10' : 'opacity-0 hover:opacity-10'
-              } bg-white opacity-0 rounded-xl transition ease-in-out duration-300`}
-            />
+            <button type={'button'} onClick={() => setToggleSitebar(!toggleSitebar)} className={`w-11 h-11 absolute -left-1 mb-px top-2 bottom-0 h-full ${toggleSitebar ? 'opacity-10' : 'opacity-0 hover:opacity-10'} bg-white opacity-0 rounded-xl transition ease-in-out duration-300`} />
             <Link to="/" className="my-auto">
               <img src={'/assets/logo_text.svg'} alt={'Logo'} className={'w-full h-auto'} />
             </Link>
@@ -245,10 +202,7 @@ const Levelbar = () => {
             {t('component.navbar.tournaments')}
           </Link>
           {sessionData && sessionData.authName !== 'Guest' && (
-            <Link
-              to={'/shop'}
-              className={`hidden xl:block ${navCSS} ${router.asPath.startsWith('/shop') && activeCSS}`}
-            >
+            <Link to={'/shop'} className={`hidden xl:block ${navCSS} ${router.asPath.startsWith('/shop') && activeCSS}`}>
               Item {t('component.navbar.shop')}
             </Link>
           )}

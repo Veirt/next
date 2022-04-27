@@ -36,24 +36,7 @@ interface IPropsWithPlayer extends PlayerExtendedData {
 }
 
 const PlayerCard: FC<IProps | IPropsWithPlayer> = (props) => {
-  const {
-    cardImage,
-    cardBorder,
-    className,
-    name,
-    discriminator,
-    draggable,
-    avatarSrc,
-    verified,
-    patreon,
-    staff,
-    noBorder,
-    noImage,
-    useTransparent,
-    isLeaderboard,
-    useSmall,
-    children,
-  } = props;
+  const { cardImage, cardBorder, className, name, discriminator, draggable, avatarSrc, verified, patreon, staff, noBorder, noImage, useTransparent, isLeaderboard, useSmall, children } = props;
 
   const useImageCSS = isLeaderboard ? 'hidden md:block w-8' : 'hidden md:block w-16';
 
@@ -67,9 +50,7 @@ const PlayerCard: FC<IProps | IPropsWithPlayer> = (props) => {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
-              backgroundImage: `url('/playercards/${cardImage ? cardImage : 'dotted_generic'}${
-                useTransparent ? '_transparent' : ''
-              }.png')`,
+              backgroundImage: `url('/playercards/${cardImage ? cardImage : 'dotted_generic'}${useTransparent ? '_transparent' : ''}.png')`,
             }
       }
       className={`${className} ${isLeaderboard ? 'px-4 py-2 md:py-1.5' : ''}`}
@@ -80,14 +61,7 @@ const PlayerCard: FC<IProps | IPropsWithPlayer> = (props) => {
         </Link>
         <div className={`w-full my-auto pl-2.5`}>
           <Link to={`/profile/${name}-${discriminator}`}>
-            <PlayerName
-              name={name}
-              discriminator={discriminator}
-              verified={verified || 0}
-              patreon={patreon || 0}
-              staff={staff || 0}
-              useSmall={isLeaderboard || useSmall}
-            />
+            <PlayerName name={name} discriminator={discriminator} verified={verified || 0} patreon={patreon || 0} staff={staff || 0} useSmall={isLeaderboard || useSmall} />
           </Link>
           {children ? <div className={'-mt-0.5'}>{children}</div> : <></>}
         </div>

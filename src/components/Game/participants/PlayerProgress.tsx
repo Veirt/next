@@ -16,19 +16,9 @@ const PlayerProgress: FC<IProps> = (props) => {
   return (
     <div className={`bg-gray-800 ${rounded ? 'rounded-lg' : ''}`}>
       {Quit !== 1 ? (
-        <div
-          className={`progress-smooth ${Progress === 100 ? 'bg-green-400' : 'bg-blue-400'} bg-opacity-50 ${
-            rounded ? 'rounded-lg' : ''
-          } ${heightCSS}`}
-          style={{ width: `${Progress || 0}%` }}
-        />
+        <div className={`progress-smooth ${Progress === 100 ? 'bg-green-400' : 'bg-blue-400'} bg-opacity-50 ${rounded ? 'rounded-lg' : ''} ${heightCSS}`} style={{ width: `${Progress || 0}%` }} />
       ) : (
-        <div
-          className={`progress-smooth ${Progress !== 100 ? `bg-red-600` : `bg-green-400`} bg-opacity-50 ${
-            rounded ? 'rounded-lg' : ''
-          } ${heightCSS}`}
-          style={{ width: `${Progress || 100}%` }}
-        />
+        <div className={`progress-smooth ${Progress !== 100 ? `bg-red-600` : `bg-green-400`} bg-opacity-50 ${rounded ? 'rounded-lg' : ''} ${heightCSS}`} style={{ width: `${Progress || 100}%` }} />
       )}
     </div>
   );

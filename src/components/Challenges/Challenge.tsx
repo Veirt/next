@@ -20,11 +20,7 @@ const Challenge: FC<IProps> = (props) => {
 
   const redeemChallenges = () => {
     axios
-      .post(
-        `${Config.apiUrl}/player/redeem`,
-        { _csrf },
-        { withCredentials: true, cancelToken: axiosCancelSource.current?.token },
-      )
+      .post(`${Config.apiUrl}/player/redeem`, { _csrf }, { withCredentials: true, cancelToken: axiosCancelSource.current?.token })
       .then((response) => {
         if (!response.data.error) {
           setRedeem(true);
@@ -45,11 +41,7 @@ const Challenge: FC<IProps> = (props) => {
         <div className={`text-left`}>
           <div className={'flex text-white'}>
             <div className={'w-20 text-center my-auto -mr-8 z-20'}>
-              <img
-                className={'w-full h-auto filter drop-shadow-lg'}
-                src={`/challenges/${challenge[0].type}.svg`}
-                alt={``}
-              />
+              <img className={'w-full h-auto filter drop-shadow-lg'} src={`/challenges/${challenge[0].type}.svg`} alt={``} />
             </div>
             <div className={'w-full my-auto bg-gray-700 rounded-xl pl-12 py-2 shadow'}>
               <div className={'text-lg font-semibold'}>{mode[0].modeName}</div>
@@ -62,11 +54,7 @@ const Challenge: FC<IProps> = (props) => {
       ) : (
         <div className="grid grid-cols-5 gap-4 text-left">
           <div className="hidden 3xl:block col-span-full xl:col-span-1 my-auto">
-            <img
-              src={`/challenges/${challenge[0].type}.svg`}
-              alt={challenge[0].text}
-              className={'block mx-auto transform scale-110'}
-            />
+            <img src={`/challenges/${challenge[0].type}.svg`} alt={challenge[0].text} className={'block mx-auto transform scale-110'} />
           </div>
           <div className="col-span-full 3xl:col-span-4 my-auto">
             <div className="h4 text-orange-400" style={{ fontWeight: '700' }}>
@@ -87,13 +75,7 @@ const Challenge: FC<IProps> = (props) => {
                 {value > challenge[0].value ? challenge[0].value.toLocaleString() : value.toLocaleString()}
                 <span className={'text-white'}>/{challenge[0].value.toLocaleString()}</span>
               </div>
-              <button
-                type={'button'}
-                className={`button small orange ${
-                  !finished || finished === 2 || redeem ? 'opacity-50 pointer-events-none' : 'opacity-100'
-                } `}
-                onClick={redeemChallenges}
-              >
+              <button type={'button'} className={`button small orange ${!finished || finished === 2 || redeem ? 'opacity-50 pointer-events-none' : 'opacity-100'} `} onClick={redeemChallenges}>
                 {redeem || finished === 2 ? 'Redeemed' : 'Redeem'}
               </button>
             </div>

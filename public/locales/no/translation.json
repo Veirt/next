@@ -15,12 +15,7 @@
     "debug": {
       "title": "Feilrapportering",
       "message": "Hvis du opplever en eller flere av problemene under, venligst klikk knappen under og send en epost til support@keymash.io med s\u00e5 mye informasjon som mulig om hvordan det oppstod, og hvordan man kan gjenskape det. Jo mer informasjon du gir, jo enklere blir det for oss \u00e5 gjenskape problemet for \u00e5 fikse det.",
-      "list": [
-        "Plutselig avkobling midt i en kamp",
-        "WPM/CPM'en blir ikke lengre oppdatert for deg selv eller andre spillere",
-        "Framgangen din blir ikke lengre oppdatert for deg selv eller andre spillere",
-        "Ser ikke sluttresultatet selv om kampen er ferdig"
-      ]
+      "list": ["Plutselig avkobling midt i en kamp", "WPM/CPM'en blir ikke lengre oppdatert for deg selv eller andre spillere", "Framgangen din blir ikke lengre oppdatert for deg selv eller andre spillere", "Ser ikke sluttresultatet selv om kampen er ferdig"]
     },
     "save": "Lagre!"
   },

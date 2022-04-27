@@ -66,8 +66,7 @@ const GameScreen = (props: IProps) => {
   const handlers =
     matchData?.flagId !== 3
       ? {
-          GOTO_REDO: () =>
-            endMatchData && endMatchData.roundData ? setRedirect(`/play/${textType || 'random'}`) : false,
+          GOTO_REDO: () => (endMatchData && endMatchData.roundData ? setRedirect(`/play/${textType || 'random'}`) : false),
         }
       : { GOTO_REDO: () => false };
 
@@ -77,12 +76,9 @@ const GameScreen = (props: IProps) => {
     if (window) {
       DebugService.add('[Match] Server has been called to be initialized');
       setSocket(
-        new Socket(
-          `${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/game`,
-          {
-            transports: ['websocket', 'polling'],
-          },
-        ),
+        new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/game`, {
+          transports: ['websocket', 'polling'],
+        }),
       );
 
       // Event Listeners
@@ -145,12 +141,8 @@ const GameScreen = (props: IProps) => {
     socket.on('cheatDetected', () => setGameNotice('cheatDetected'));
     socket.on('manyMistakes', () => setGameNotice('manyMistakes'));
     socket.on('timeoutMatch', () => setGameNotice('timeoutMatch'));
-    socket.on('achievementUnlocked', (data: { message: string }) =>
-      data.message ? toast.success(data.message) : false,
-    );
-    socket.on('levelUp', (data: { level: string }) =>
-      data.level ? toast.success(`You have ranked up to Level ${data.level}!`) : false,
-    );
+    socket.on('achievementUnlocked', (data: { message: string }) => (data.message ? toast.success(data.message) : false));
+    socket.on('levelUp', (data: { level: string }) => (data.level ? toast.success(`You have ranked up to Level ${data.level}!`) : false));
     socket.on('forceEndMatch', () => socket.emit('sendWord', { forceEnd: 1 }));
     socket.on('globalForceEnd', (data: { type: string }) => {
       setGameDisabled(true);
@@ -234,9 +226,7 @@ const GameScreen = (props: IProps) => {
       DebugService.add(`[Match] Ranked Text (old): ${matchData?.textContent}`);
       DebugService.add(`[Match] Ranked Text (new): ${data.textContent}`);
 
-      setMatchData((matchData) =>
-        matchData !== null ? { ...matchData, textContent: data.textContent, textCustom: data.textContent } : null,
-      );
+      setMatchData((matchData) => (matchData !== null ? { ...matchData, textContent: data.textContent, textCustom: data.textContent } : null));
       setQueueRoundEnd(true);
       setQueueRoundWon(sessionData?.playerId === data.userRoundWon);
       setGameDisabled(true);
@@ -277,8 +267,7 @@ const GameScreen = (props: IProps) => {
 
             if (usePlayer.playerId === sessionData?.playerId && usePlayer.teamId === 0) spectator.current = true;
 
-            if (usePlayer.playerId === sessionData?.playerId)
-              usePlayer.internalSort = usePlayer.playerId === sessionData?.playerId ? 0 : 9;
+            if (usePlayer.playerId === sessionData?.playerId) usePlayer.internalSort = usePlayer.playerId === sessionData?.playerId ? 0 : 9;
 
             if (participantIndex !== -1) {
               usePlayer.Quit = participantsData[participantIndex]?.Quit || 0;
@@ -357,36 +346,18 @@ const GameScreen = (props: IProps) => {
   let noticeString = '',
     firstWord = '';
 
-  const quoteString =
-      (matchData?.textCustom && matchData.textCustom !== '' ? matchData.textCustom : matchData?.textContent) || '',
-    leaveUrl =
-      matchData?.flagId !== 3
-        ? matchData?.referralId
-          ? `/`
-          : matchData?.tournamentId !== ''
-          ? `/competitions/${matchData?.tournamentId}`
-          : `/`
-        : `/`,
-    restartUrl =
-      matchData?.flagId !== 3
-        ? matchData?.referralId
-          ? `/custom/${matchData?.referralId}`
-          : matchData?.tournamentId !== ''
-          ? `/competitions/${matchData?.tournamentId}/`
-          : `/play${textType ? `/${textType}` : ''}`
-        : '/';
+  const quoteString = (matchData?.textCustom && matchData.textCustom !== '' ? matchData.textCustom : matchData?.textContent) || '',
+    leaveUrl = matchData?.flagId !== 3 ? (matchData?.referralId ? `/` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}` : `/`) : `/`,
+    restartUrl = matchData?.flagId !== 3 ? (matchData?.referralId ? `/custom/${matchData?.referralId}` : matchData?.tournamentId !== '' ? `/competitions/${matchData?.tournamentId}/` : `/play${textType ? `/${textType}` : ''}`) : '/';
 
   if (gameNotice === 'banDetected') noticeString = 'Your account is currently banned, please contact support.';
   else if (gameNotice === 'cheatDetected') noticeString = 'Your match has been flagged and is being reviewed.';
   else if (gameNotice === 'manyMistakes') noticeString = 'You have made too many mistakes!';
-  else if (gameNotice === 'timeoutMatch')
-    noticeString = 'You have run out of time to complete the game. Better luck next time!';
+  else if (gameNotice === 'timeoutMatch') noticeString = 'You have run out of time to complete the game. Better luck next time!';
   else if (gameNotice === 'reconnectFailed') noticeString = 'We have failed to reconnect you back to the game.';
 
-  if (matchData?.flagId === 2 && matchData.referralId && noticeString === 'timeoutMatch')
-    return <Redirect to={`/custom/${matchData.referralId}`} />;
-  if (matchData?.flagId === 1 && matchData.tournamentId && noticeString === 'timeoutMatch')
-    return <Redirect to={`/competitions/${matchData.tournamentId}`} />;
+  if (matchData?.flagId === 2 && matchData.referralId && noticeString === 'timeoutMatch') return <Redirect to={`/custom/${matchData.referralId}`} />;
+  if (matchData?.flagId === 1 && matchData.tournamentId && noticeString === 'timeoutMatch') return <Redirect to={`/competitions/${matchData.tournamentId}`} />;
   firstWord = quoteString.split(' ')[0] || '';
 
   const gameContainer = (
@@ -395,33 +366,13 @@ const GameScreen = (props: IProps) => {
       <audio id="LevelCompleted" src="/audio/LevelCompleted.wav" crossOrigin="anonymous" preload="auto" />
       <audio id="CountBeep" src="/audio/CountBeep.wav" crossOrigin="anonymous" preload="auto" />
       <audio id="CountStart" src="/audio/CountStart.wav" crossOrigin="anonymous" preload="auto" />
-      {matchData && endMatchData === null && gameCountdown > -1 && (
-        <MatchCountdown
-          url={matchData.referralId ? restartUrl : leaveUrl}
-          isSpectator={spectator.current}
-          isDisabled={gameDisabled}
-          countdown={gameCountdown}
-          win={queueRoundWon}
-          roundEnd={queueRoundEnd}
-        />
-      )}
-      <MatchToast
-        isReconnecting={gameToast === 'connectionSaved'}
-        isConnectionLost={gameToast === 'connectionTimedOut'}
-      />
+      {matchData && endMatchData === null && gameCountdown > -1 && <MatchCountdown url={matchData.referralId ? restartUrl : leaveUrl} isSpectator={spectator.current} isDisabled={gameDisabled} countdown={gameCountdown} win={queueRoundWon} roundEnd={queueRoundEnd} />}
+      <MatchToast isReconnecting={gameToast === 'connectionSaved'} isConnectionLost={gameToast === 'connectionTimedOut'} />
       <div className={`${matchContainerCSS ?? 'container-small'}`}>
         {!spectator.current ? (
           <>
-            {focusMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData)) && (
-              <div className={'fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen'} />
-            )}
-            <div
-              className={`relative ${focusMode === '1' ? 'z-50' : 'z-20'} flex ${
-                endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0
-                  ? 'h-auto container-margin'
-                  : `h-auto lg:h-game container-padding`
-              }`}
-            >
+            {focusMode === '1' && (!endMatchData || (endMatchData && !endMatchData.roundData)) && <div className={'fixed z-50 top-0 right-0 bottom-0 left-0 bg-gray-900 bg-opacity-50 w-full h-screen'} />}
+            <div className={`relative ${focusMode === '1' ? 'z-50' : 'z-20'} flex ${endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? 'h-auto container-margin' : `h-auto lg:h-game container-padding`}`}>
               <Player
                 embed={embed || false}
                 embedClose={embedClose}
@@ -474,11 +425,7 @@ const GameScreen = (props: IProps) => {
   if (redirect && redirect !== '') return <Redirect to={redirect} />;
   else
     return !embed ? (
-      <Base
-        meta={<Meta title="In Game" />}
-        isLoaded={matchData !== null && sessionData !== null}
-        ads={{ enableTrendiVideo: focusMode === '0' }}
-      >
+      <Base meta={<Meta title="In Game" />} isLoaded={matchData !== null && sessionData !== null} ads={{ enableTrendiVideo: focusMode === '0' }}>
         {gameContainer}
       </Base>
     ) : (

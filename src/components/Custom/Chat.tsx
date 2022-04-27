@@ -35,14 +35,7 @@ const Chat = (props: IProps) => {
                   </div>
                   <div className={'my-auto w-full pl-3'}>
                     <div className={'text-base font-semibold flex'}>
-                      <PlayerName
-                        name={row.name}
-                        discriminator={row.discriminator}
-                        verified={row.verified}
-                        patreon={row.patreon}
-                        staff={row.staff}
-                        showDiscriminator
-                      />
+                      <PlayerName name={row.name} discriminator={row.discriminator} verified={row.verified} patreon={row.patreon} staff={row.staff} showDiscriminator />
                       <div className={'my-auto ml-2 text-xs text-gray-600 font-semibold'}>{row.posted}</div>
                     </div>
                     <div className={'text-gray-400 text-sm -mt-1'}>{row.message}</div>
@@ -57,27 +50,11 @@ const Chat = (props: IProps) => {
           ))}
       </div>
       <div className={'text-gray-400 font-semibold h-3 text-xs'}>
-        {typingData.length !== 0 &&
-          (typingData.length === 1
-            ? `${typingData[0]} is`
-            : typingData.length === 2
-            ? `${typingData[0]} and ${typingData[1]} are`
-            : typingData.length === 3
-            ? `${typingData[0]}, ${typingData[1]} and ${typingData[2]} are`
-            : `Several people are`)}
+        {typingData.length !== 0 && (typingData.length === 1 ? `${typingData[0]} is` : typingData.length === 2 ? `${typingData[0]} and ${typingData[1]} are` : typingData.length === 3 ? `${typingData[0]}, ${typingData[1]} and ${typingData[2]} are` : `Several people are`)}
         {typingData.length !== 0 && ' typing...'}
       </div>
       <div className={'mt-2'}>
-        <input
-          type="text"
-          name="message"
-          className="form-settings rounded-lg"
-          placeholder={t('form.message')}
-          value={message || ''}
-          autoComplete="off"
-          onChange={chatOnChange}
-          onKeyDown={chatOnKeyDown}
-        />
+        <input type="text" name="message" className="form-settings rounded-lg" placeholder={t('form.message')} value={message || ''} autoComplete="off" onChange={chatOnChange} onKeyDown={chatOnKeyDown} />
       </div>
     </div>
   );

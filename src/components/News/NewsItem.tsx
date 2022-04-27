@@ -27,16 +27,7 @@ const NewsItem: FC<IProps> = (props) => {
         <div className={'mt-auto'}>
           <div className={'text-white font-semibold text-base lg:text-lg'}>{title}</div>
           <div className={'text-sm text-gray-400 mt-auto'}>
-            {moment.unix(created).fromNow()}{' '}
-            {showUnread && (
-              <span
-                className={
-                  'inline ml-2 px-2 rounded py-0.5 text-xs uppercase bg-orange-400 text-orange-900 font-semibold'
-                }
-              >
-                New
-              </span>
-            )}
+            {moment.unix(created).fromNow()} {showUnread && <span className={'inline ml-2 px-2 rounded py-0.5 text-xs uppercase bg-orange-400 text-orange-900 font-semibold'}>New</span>}
           </div>
         </div>
       </div>

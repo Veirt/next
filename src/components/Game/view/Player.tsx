@@ -38,28 +38,7 @@ interface IProps {
 
 const Player: FC<IProps> = (props) => {
   const [isCapslock, setIsCapslock] = useState(false);
-  const {
-    embed,
-    embedClose,
-    embedOwner,
-    countdown,
-    timer,
-    disabled,
-    latency,
-    totalPlayers,
-    sendKeystroke,
-    firstWord,
-    endMatch,
-    endMatchData,
-    playerData,
-    quoteString,
-    noticeString,
-    roundsTotal,
-    matchData,
-    participantsData,
-    restartUrl,
-    leaveUrl,
-  } = props;
+  const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
   const handleCapslock = (e: KeyboardEvent) => setIsCapslock(e.getModifierState('CapsLock'));
 
   const { gameplayParticipantStyle, focusMode } = useConfig();
@@ -73,25 +52,10 @@ const Player: FC<IProps> = (props) => {
       {matchData && playerData && (
         <div className={'my-auto w-full'}>
           {matchData && endMatch && endMatchData !== null ? (
-            <MatchEnd
-              playersLength={participantsData.length}
-              data={endMatchData}
-              matchData={matchData}
-              leaveUrl={matchData.referralId ? restartUrl : leaveUrl}
-              restartUrl={restartUrl}
-              embed={embed}
-              embedClose={embedClose}
-              embedOwner={embedOwner}
-            />
+            <MatchEnd playersLength={participantsData.length} data={endMatchData} matchData={matchData} leaveUrl={matchData.referralId ? restartUrl : leaveUrl} restartUrl={restartUrl} embed={embed} embedClose={embedClose} embedOwner={embedOwner} />
           ) : (
             <div className={`relative`}>
-              <MatchMode
-                totalPlayers={totalPlayers}
-                matchData={matchData}
-                roundsTotal={roundsTotal}
-                timer={timer}
-                countdown={countdown}
-              />
+              <MatchMode totalPlayers={totalPlayers} matchData={matchData} roundsTotal={roundsTotal} timer={timer} countdown={countdown} />
               <MatchBar
                 className="rounded-t"
                 embed={embed}
@@ -106,54 +70,26 @@ const Player: FC<IProps> = (props) => {
                 latency={latency}
                 isSpectate={0}
               />
-              {noticeString ? (
-                <MatchNotice message={noticeString} />
-              ) : (
-                <MatchTextContainer
-                  quote={quoteString && quoteString !== 'KEYMASH_GAMEMODE_ROUND_END' ? quoteString : ''}
-                  sendKeystroke={sendKeystroke}
-                  isSuddenDeath={matchData.modeData.modeConfig.TRIGGERS.FIRST_TYPO}
-                  disabled={disabled}
-                />
-              )}
+              {noticeString ? <MatchNotice message={noticeString} /> : <MatchTextContainer quote={quoteString && quoteString !== 'KEYMASH_GAMEMODE_ROUND_END' ? quoteString : ''} sendKeystroke={sendKeystroke} isSuddenDeath={matchData.modeData.modeConfig.TRIGGERS.FIRST_TYPO} disabled={disabled} />}
             </div>
           )}
           {(focusMode === '0' || endMatch) && (
             <>
               {(!participantsData || participantsData.length === 0) && <div className={'py-10'} />}
               {gameplayParticipantStyle === '2' && (
-                <Playercard
-                  participantsData={participantsData}
-                  isFinished={
-                    endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? true : false
-                  }
-                  firstWord={firstWord}
-                  modeId={matchData.modeId}
-                  roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST}
-                />
+                <Playercard participantsData={participantsData} isFinished={endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? true : false} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />
               )}
               {gameplayParticipantStyle === '0' && (
                 <PlayerRacetrack
                   quoteString={quoteString}
                   participantsData={participantsData}
-                  isFinished={
-                    endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? true : false
-                  }
+                  isFinished={endMatchData && endMatchData.roundData && endMatchData.roundData.length !== 0 ? true : false}
                   firstWord={firstWord}
                   modeId={matchData.modeId}
                   roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST}
                 />
               )}
-              {gameplayParticipantStyle === '1' && (
-                <Playerboard
-                  isSpectator={0}
-                  quoteString={quoteString}
-                  participantsData={participantsData}
-                  firstWord={firstWord}
-                  modeId={matchData.modeId}
-                  roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST}
-                />
-              )}
+              {gameplayParticipantStyle === '1' && <Playerboard isSpectator={0} quoteString={quoteString} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
               {!embed && endMatch && !noticeString && matchData.flagId === 0 && (
                 <div className="w-full">
                   <div className="my-8 md:my-16 lg:my-32">

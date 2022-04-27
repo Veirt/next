@@ -35,13 +35,7 @@ const LeaderboardPlayerPoints: FC<IProps> = (props) => {
           <div className="hidden md:block w-10 text-center font-bold my-auto">
             <FormatIndex index={key + skip + 1} />
           </div>
-          <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">
-            {item.player && item.player[0] ? (
-              <PlayerCard {...item.player[0]} useTransparent isLeaderboard />
-            ) : (
-              <div className={'py-7'} />
-            )}
-          </div>
+          <div className="pl-6 md:pl-0 w-96 md:w-96 mr-auto">{item.player && item.player[0] ? <PlayerCard {...item.player[0]} useTransparent isLeaderboard /> : <div className={'py-7'} />}</div>
           <div className="hidden md:block w-32 my-auto">
             {item.prizing && item.prizing.currency ? (
               <>

@@ -5,9 +5,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import AdvertisementDisplay from '../../../components/Advertisement/AdvertisementDisplay';
 import AdvertisementUnit from '../../../components/Advertisement/Units/AdvertisementUnit';
-import LeaderboardPlayerMatch, {
-  PlayerMatchExtendedData,
-} from '../../../components/Leaderboard/LeaderboardPlayerMatch';
+import LeaderboardPlayerMatch, { PlayerMatchExtendedData } from '../../../components/Leaderboard/LeaderboardPlayerMatch';
 import { PlayerMatchProfileExtendedData } from '../../../components/Leaderboard/LeaderboardPlayerProfile';
 import PlayerCard from '../../../components/Player/PlayerCard';
 import PipeReplay from '../../../components/Uncategorized/PipeReplay';
@@ -29,16 +27,7 @@ const Replay = ({ matchData, resultData }: IProps) => {
   const { t } = useTranslation();
 
   return (
-    <Base
-      meta={
-        <Meta
-          title={`${matchData?.wpm}WPM by ${matchData?.player?.[0]?.name}#${matchData?.player?.[0]?.discriminator}`}
-          reverseTitle
-        />
-      }
-      isLoaded={true}
-      ads={{ enableBottomRail: true }}
-    >
+    <Base meta={<Meta title={`${matchData?.wpm}WPM by ${matchData?.player?.[0]?.name}#${matchData?.player?.[0]?.discriminator}`} reverseTitle />} isLoaded={true} ads={{ enableBottomRail: true }}>
       <div className={'container container-margin container-content'}>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <div className="col-span-full lg:col-span-3">
@@ -46,11 +35,7 @@ const Replay = ({ matchData, resultData }: IProps) => {
 
             <div className="content-box mt-6">
               <div className={'h2 mb-6'}>{t('page.match.highscores')}</div>
-              {resultData?.length !== 0 ? (
-                <LeaderboardPlayerMatch data={resultData || []} playerData={[]} skip={0} />
-              ) : (
-                <></>
-              )}
+              {resultData?.length !== 0 ? <LeaderboardPlayerMatch data={resultData || []} playerData={[]} skip={0} /> : <></>}
             </div>
           </div>
           <div>
@@ -59,9 +44,7 @@ const Replay = ({ matchData, resultData }: IProps) => {
             <div className="content-box mb-4">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="bg-gray-825 py-4 rounded-xl text-center">
-                  <div className="h4">
-                    {useCPM === '1' ? `${(matchData.wpm * 5).toFixed(2)}` : `${matchData.wpm.toFixed(2)}`}
-                  </div>
+                  <div className="h4">{useCPM === '1' ? `${(matchData.wpm * 5).toFixed(2)}` : `${matchData.wpm.toFixed(2)}`}</div>
                   <div className="text-xs">{useCPM === '1' ? 'CPM' : 'WPM'}</div>
                 </div>
 
@@ -100,14 +83,10 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
   const playerId = encodeURI(String(params?.playerId || ''));
   const matchId = String(params?.matchId || '');
 
-  const matchData = await axios
-    .get(`${Config.apiUrl}/player/matches?playerId=${playerId}&matchId=${matchId}`)
-    .catch((e) => console.log(e));
+  const matchData = await axios.get(`${Config.apiUrl}/player/matches?playerId=${playerId}&matchId=${matchId}`).catch((e) => console.log(e));
 
   if (playerId && matchId && matchData && !matchData.data.error) {
-    const resultData = await axios
-      .get(`${Config.apiUrl}/leaderboards/matches?textId=${matchData?.data?.leaderboardSort?.textId}`)
-      .catch((e) => console.log(e));
+    const resultData = await axios.get(`${Config.apiUrl}/leaderboards/matches?textId=${matchData?.data?.leaderboardSort?.textId}`).catch((e) => console.log(e));
 
     return {
       props: {

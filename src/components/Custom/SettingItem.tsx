@@ -22,31 +22,12 @@ interface IProps {
 }
 
 const Settings = (props: IProps) => {
-  const {
-    label,
-    value,
-    options,
-    textCustom,
-    onDropdown,
-    onUpdate,
-    isTextDropdown,
-    isOwner,
-    isActive,
-    isCustomValue,
-    className,
-  } = props;
-  const buttonCSS = `bg-gray-750 text-left text-center px-2 ${
-    isOwner ? 'hover:bg-gray-775 focus:outline-none' : 'pointer-events-none'
-  } transition ease-in-out duration-300 py-3 text-white font-semibold text-sm`;
+  const { label, value, options, textCustom, onDropdown, onUpdate, isTextDropdown, isOwner, isActive, isCustomValue, className } = props;
+  const buttonCSS = `bg-gray-750 text-left text-center px-2 ${isOwner ? 'hover:bg-gray-775 focus:outline-none' : 'pointer-events-none'} transition ease-in-out duration-300 py-3 text-white font-semibold text-sm`;
 
   return (
     <div className={'w-full sm:w-1/2 md:w-1/3 xl:w-28 relative'}>
-      <button
-        type="button"
-        className={`w-full ${className || ''} ${buttonCSS}`}
-        disabled={!isOwner}
-        onClick={() => onDropdown()}
-      >
+      <button type="button" className={`w-full ${className || ''} ${buttonCSS}`} disabled={!isOwner} onClick={() => onDropdown()}>
         <div className={'text-xxs text-gray-400'}>{label}</div>
         <span>{value === 9 && isTextDropdown ? options[3]?.label : options[value]?.label}</span>
       </button>
@@ -64,9 +45,7 @@ const Settings = (props: IProps) => {
 
           {isTextDropdown && value === 9 && (
             <textarea
-              className={
-                'block text-sm w-full bg-gray-775 p-2 text-white border-t-2 border-white focus:outline-none focus:shadow'
-              }
+              className={'block text-sm w-full bg-gray-775 p-2 text-white border-t-2 border-white focus:outline-none focus:shadow'}
               onChange={(e) => isTextDropdown(String(e.target.value || ''))}
               rows={3}
               defaultValue={textCustom || ''}

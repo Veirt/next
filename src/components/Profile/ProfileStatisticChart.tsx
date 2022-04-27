@@ -147,29 +147,17 @@ const ProfileStatisticChart: FC<PlayerStatisticChartData> = (props) => {
         </div>
         <div>
           <div className="flex justify-center mb-8">
-            <button
-              type="button"
-              onClick={() => setTab(0)}
-              className={`px-6 w-auto uppercase font-semibold text-lg ${tab !== 0 ? 'text-white' : 'text-orange-400'}`}
-            >
+            <button type="button" onClick={() => setTab(0)} className={`px-6 w-auto uppercase font-semibold text-lg ${tab !== 0 ? 'text-white' : 'text-orange-400'}`}>
               30 days
             </button>
-            <button
-              type="button"
-              onClick={() => setTab(1)}
-              className={`px-6 w-auto uppercase font-semibold text-lg ${tab !== 1 ? 'text-white' : 'text-orange-400'}`}
-            >
+            <button type="button" onClick={() => setTab(1)} className={`px-6 w-auto uppercase font-semibold text-lg ${tab !== 1 ? 'text-white' : 'text-orange-400'}`}>
               12 months
             </button>
           </div>
         </div>
       </div>
       <div className="h-80 md:h-96 lg:h-108 xl:h-120">
-        <Line
-          data={(tab === 0 ? chartYear : chartMonth) as any}
-          options={{ responsive: true, maintainAspectRatio: false }}
-          redraw
-        />
+        <Line data={(tab === 0 ? chartYear : chartMonth) as any} options={{ responsive: true, maintainAspectRatio: false }} redraw />
       </div>
     </>
   );

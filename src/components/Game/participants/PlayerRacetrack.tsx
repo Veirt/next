@@ -43,35 +43,18 @@ const PlayerRacetrack = (props: IProps) => {
 
               <div className="w-128 my-auto mx-auto relative border-gray-825">
                 <PlayerProgress Progress={item.Progress} Quit={item.Quit} rounded />
-                <div
-                  className="absolute inline w-auto text-xs text-center text-white font-semibold -mt-4 transition-all ease-in-out duration-300"
-                  style={{ left: item.Progress ? `${item.Progress}%` : '0' }}
-                >
-                  <div className="block mb-1 bg-gray-750 bg-opacity-50 border border-gray-700 px-2 py-1 rounded-lg">
-                    {item.Quit === 1 && item.Progress !== 100 ? 'Quit' : item.currentWord || firstWord}
-                  </div>
+                <div className="absolute inline w-auto text-xs text-center text-white font-semibold -mt-4 transition-all ease-in-out duration-300" style={{ left: item.Progress ? `${item.Progress}%` : '0' }}>
+                  <div className="block mb-1 bg-gray-750 bg-opacity-50 border border-gray-700 px-2 py-1 rounded-lg">{item.Quit === 1 && item.Progress !== 100 ? 'Quit' : item.currentWord || firstWord}</div>
                 </div>
               </div>
 
               <div className="w-48 px-16 text-center my-auto font-semibold text-white">
                 {roundLimit >= 1 ? (
                   <div className={'flex justify-center gap-3'}>
-                    {[...Array(roundLimit)].map((_circle, index) =>
-                      index < (item.roundsWon ? item.roundsWon : 0) ? (
-                        <FontAwesomeIcon key={index} icon={faCircle} className={'text-orange-400'} />
-                      ) : (
-                        <FontAwesomeIcon key={index} icon={faCircle} className={'text-gray-600'} />
-                      ),
-                    )}
+                    {[...Array(roundLimit)].map((_circle, index) => (index < (item.roundsWon ? item.roundsWon : 0) ? <FontAwesomeIcon key={index} icon={faCircle} className={'text-orange-400'} /> : <FontAwesomeIcon key={index} icon={faCircle} className={'text-gray-600'} />))}
                   </div>
                 ) : (
-                  <div className="text-right">
-                    {item.Placement >= 1 ? (
-                      <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} />
-                    ) : (
-                      ''
-                    )}
-                  </div>
+                  <div className="text-right">{item.Placement >= 1 ? <PlayerPlacement placement={item.Placement} placementFinal={item.PlacementFinal} /> : ''}</div>
                 )}
               </div>
 

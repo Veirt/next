@@ -20,17 +20,9 @@ const TournamentItem = (props: IProps) => {
   else useValue = useValue?.split('Keymash')[0] + '\nKeymash.' || '';
 
   return (
-    <Link
-      key={props.tournamentId}
-      to={`/competitions/${props.tournamentId}`}
-      className={`block w-full h-full flex flex-col p-4 bg-gray-800 hover:bg-gray-825 border border-gray-775 rounded-xl transition ease-in-out duration-300`}
-    >
+    <Link key={props.tournamentId} to={`/competitions/${props.tournamentId}`} className={`block w-full h-full flex flex-col p-4 bg-gray-800 hover:bg-gray-825 border border-gray-775 rounded-xl transition ease-in-out duration-300`}>
       <div className={'h4 text-orange-400 truncate'}>{props.name.split('(')[0]}</div>
-      <p className="block pt-2 text-sm">
-        {!props.info || !props.info.length
-          ? 'No information is currently available at this time. Please check back later!'
-          : useValue}
-      </p>
+      <p className="block pt-2 text-sm">{!props.info || !props.info.length ? 'No information is currently available at this time. Please check back later!' : useValue}</p>
       <div className={'w-full mt-auto pt-5'}>
         <div className={'flex space-x-2 text-sm'}>
           <div className={'uppercase px-3 py-1.5 bg-gray-825 rounded-lg'}>

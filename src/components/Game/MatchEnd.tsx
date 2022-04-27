@@ -1,24 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBullseye,
-  faAward,
-  faCrown,
-  faBolt,
-  faCircle,
-  faHourglass,
-  faAngleDoubleLeft,
-  faSpinner,
-  faCoins,
-  faLevelUpAlt,
-  faTasks,
-  faList,
-  faTimes,
-  faPlay,
-  faTrophy,
-  faHome,
-  faCopy,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBullseye, faAward, faCrown, faBolt, faCircle, faHourglass, faAngleDoubleLeft, faSpinner, faCoins, faLevelUpAlt, faTasks, faList, faTimes, faPlay, faTrophy, faHome, faCopy } from '@fortawesome/free-solid-svg-icons';
 import ReactCountUp from 'react-countup';
 import { SocketGameEndData, SocketMatchData } from '../../types.client.socket';
 import useConfig from '../../hooks/useConfig';
@@ -129,22 +111,13 @@ const MatchEnd = (props: IProps) => {
         <div id="matchEnd">
           <div className={'bg-gray-775 rounded-t-2xl flex flex-wrap justify-center text-white'}>
             {tabs.map((item) => (
-              <button
-                key={item.tab}
-                type={'button'}
-                onClick={() => setTab(item.tab)}
-                className={`w-32 focus:outline-none py-2 text-sm font-semibold text-center border-b-2 ${
-                  tab === item.tab ? 'border-orange-400' : 'border-transparent'
-                } hover:border-orange-400 transition ease-in-out duration-300`}
-              >
+              <button key={item.tab} type={'button'} onClick={() => setTab(item.tab)} className={`w-32 focus:outline-none py-2 text-sm font-semibold text-center border-b-2 ${tab === item.tab ? 'border-orange-400' : 'border-transparent'} hover:border-orange-400 transition ease-in-out duration-300`}>
                 {item.name}
               </button>
             ))}
           </div>
 
-          <div
-            className={'bg-black bg-opacity-20 h-auto lg:min-h-128 rounded-b-2xl shadow-lg p-4 sm:p-6 md:p-8 relative'}
-          >
+          <div className={'bg-black bg-opacity-20 h-auto lg:min-h-128 rounded-b-2xl shadow-lg p-4 sm:p-6 md:p-8 relative'}>
             {tab === 'summary' && (
               <>
                 <div>
@@ -154,35 +127,19 @@ const MatchEnd = (props: IProps) => {
                     <div className="w-full lg:w-auto">
                       <div className="flex space-x-2">
                         {data.level.before.Index !== data.level.after.Index && (
-                          <div
-                            className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg"
-                            data-for="rewards"
-                            data-tip={`You are now Level ${data.level.after.Index}!`}
-                          >
+                          <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-for="rewards" data-tip={`You are now Level ${data.level.after.Index}!`}>
                             <FontAwesomeIcon icon={faLevelUpAlt} className="text-teal-400 mt-1" />
                           </div>
                         )}
 
                         {data.rewards.achievements.length !== 0 && (
-                          <div
-                            className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg"
-                            data-for="rewards"
-                            data-tip={`You have unlocked ${data.rewards.achievements.length} new achievement${
-                              data.rewards.achievements.length === 1 ? '' : 's'
-                            }!`}
-                          >
+                          <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-for="rewards" data-tip={`You have unlocked ${data.rewards.achievements.length} new achievement${data.rewards.achievements.length === 1 ? '' : 's'}!`}>
                             <FontAwesomeIcon icon={faAward} className="text-yellow-400 mt-1" />
                           </div>
                         )}
 
                         {data.rewards.challenges.length !== 0 && (
-                          <div
-                            className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg"
-                            data-for="rewards"
-                            data-tip={`You have completed ${data.rewards.challenges.length} challenge${
-                              data.rewards.challenges.length === 1 ? '' : 's'
-                            }!`}
-                          >
+                          <div className="py-1 px-2.5 flex justify-center bg-gray-775 rounded-lg" data-for="rewards" data-tip={`You have completed ${data.rewards.challenges.length} challenge${data.rewards.challenges.length === 1 ? '' : 's'}!`}>
                             <FontAwesomeIcon icon={faTasks} className="text-blue-400 mt-1" />
                           </div>
                         )}
@@ -198,9 +155,7 @@ const MatchEnd = (props: IProps) => {
                             <FontAwesomeIcon icon={faCircle} className="text-yellow-400 text-2xl mt-1" />
                           </div>
                           <div className="text-left w-auto my-auto">
-                            <div className="font-bold text-base sm:text-lg md:text-xl">
-                              {data.rewards.exp.toLocaleString()} EXP
-                            </div>
+                            <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.exp.toLocaleString()} EXP</div>
                           </div>
                         </div>
                       </div>
@@ -211,9 +166,7 @@ const MatchEnd = (props: IProps) => {
                             <FontAwesomeIcon icon={faCoins} className="text-yellow-400 text-2xl mt-1" />
                           </div>
                           <div className="text-left w-auto my-auto">
-                            <div className="font-bold text-base sm:text-lg md:text-xl">
-                              {data.rewards.currency.toLocaleString()} Coins
-                            </div>
+                            <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.currency.toLocaleString()} Coins</div>
                           </div>
                         </div>
                       </div>
@@ -224,9 +177,7 @@ const MatchEnd = (props: IProps) => {
                             <FontAwesomeIcon icon={faAward} className="text-yellow-400 text-2xl mt-1" />
                           </div>
                           <div className="text-left w-auto my-auto">
-                            <div className="font-bold text-base sm:text-lg md:text-xl">
-                              {data.rewards.achievements.length.toLocaleString()} Achievements
-                            </div>
+                            <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.achievements.length.toLocaleString()} Achievements</div>
                           </div>
                         </div>
                       </div>
@@ -237,9 +188,7 @@ const MatchEnd = (props: IProps) => {
                             <FontAwesomeIcon icon={faList} className="text-blue-400 text-2xl mt-1" />
                           </div>
                           <div className="text-left w-auto my-auto">
-                            <div className="font-bold text-base sm:text-lg md:text-xl">
-                              {data.rewards.challenges.length.toLocaleString()} Challenges
-                            </div>
+                            <div className="font-bold text-base sm:text-lg md:text-xl">{data.rewards.challenges.length.toLocaleString()} Challenges</div>
                           </div>
                         </div>
                       </div>
@@ -255,8 +204,7 @@ const MatchEnd = (props: IProps) => {
                             <>
                               {data.rewards.achievements.length === 0 && data.rewards.challenges.length === 0 ? (
                                 <div>
-                                  If you believe in yourself and have dedication and pride - and never quit, you'll be a
-                                  winner. The price of victory is high but so are the rewards.
+                                  If you believe in yourself and have dedication and pride - and never quit, you'll be a winner. The price of victory is high but so are the rewards.
                                   <div className="font-semibold">- Bear Bryant</div>
                                 </div>
                               ) : (
@@ -267,23 +215,14 @@ const MatchEnd = (props: IProps) => {
                                       {data.rewards.achievements.map((item, index) => (
                                         <div key={index}>
                                           {/* @ts-ignore */}
-                                          <AchievementItem
-                                            {...achievements[item as any]}
-                                            value={1}
-                                            created={Math.round(new Date().getTime() / 1000 - 15)}
-                                          />
+                                          <AchievementItem {...achievements[item as any]} value={1} created={Math.round(new Date().getTime() / 1000 - 15)} />
                                         </div>
                                       ))}
 
                                       {data.rewards.challenges.map((item, index) => (
                                         <div key={index}>
                                           {/* @ts-ignore */}
-                                          <Challenge
-                                            mini
-                                            {...challenges[item as any]}
-                                            mode={[gamemodes[challenges[item as any]?.modeId || 0] as GamemodeData]}
-                                            challenge={[challenges[item as any] as ChallengeData]}
-                                          />
+                                          <Challenge mini {...challenges[item as any]} mode={[gamemodes[challenges[item as any]?.modeId || 0] as GamemodeData]} challenge={[challenges[item as any] as ChallengeData]} />
                                         </div>
                                       ))}
                                     </div>
@@ -299,13 +238,7 @@ const MatchEnd = (props: IProps) => {
 
                   {isPublicOrRankedMatch ? (
                     <div className="absolute left-4 bottom-4 right-4 sm:left-6 sm:bottom-6 sm:right-6 md:bottom-8 md:left-8 md:right-8">
-                      <PlayerExperience
-                        experience={0}
-                        level={data.level.after.Index}
-                        next={data.level.after.Next}
-                        percentage={data.level.after.Percentage}
-                        size={2}
-                      />
+                      <PlayerExperience experience={0} level={data.level.after.Index} next={data.level.after.Next} percentage={data.level.after.Percentage} size={2} />
                       <div className="flex justify-between mt-2">
                         <div>Level {data.level.after.Index}</div>
                         <div>Level {data.level.after.Index + 1}</div>
@@ -327,11 +260,7 @@ const MatchEnd = (props: IProps) => {
                           key={item.tab}
                           type="button"
                           onClick={() => setSubtab(item.tab)}
-                          className={`w-full xs:w-auto ${index === 0 ? 'xs:rounded-l-lg' : ''} ${
-                            index === 2 ? 'xs:rounded-r-lg' : ''
-                          } transition ease-in-out duration-300 focus:outline-none py-2 px-4 text-sm ${
-                            subtab !== item.tab ? 'bg-gray-775' : 'bg-gray-800'
-                          } hover:bg-gray-800 animation-short`}
+                          className={`w-full xs:w-auto ${index === 0 ? 'xs:rounded-l-lg' : ''} ${index === 2 ? 'xs:rounded-r-lg' : ''} transition ease-in-out duration-300 focus:outline-none py-2 px-4 text-sm ${subtab !== item.tab ? 'bg-gray-775' : 'bg-gray-800'} hover:bg-gray-800 animation-short`}
                         >
                           {item.name}
                         </button>
@@ -342,14 +271,7 @@ const MatchEnd = (props: IProps) => {
                     <div className={'flex text-white'}>
                       {matchData.modeData.modeConfig.ROUNDS.LIMIT >= 1 &&
                         [...Array(data?.roundData.length || 0)].map((_i, k) => (
-                          <button
-                            key={k}
-                            type="button"
-                            onClick={() => setShowRound(k)}
-                            className={`transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${
-                              showRound !== k ? 'bg-gray-750' : 'bg-gray-775'
-                            } hover:bg-gray-775 animation-short`}
-                          >
+                          <button key={k} type="button" onClick={() => setShowRound(k)} className={`transition ease-in-out duration-300 border-l border-gray-800 focus:outline-none py-2 px-3 text-sm ${showRound !== k ? 'bg-gray-750' : 'bg-gray-775'} hover:bg-gray-775 animation-short`}>
                             Round {k + 1}
                           </button>
                         ))}
@@ -365,27 +287,12 @@ const MatchEnd = (props: IProps) => {
                             {rows.map((stat) => (
                               <div key={stat.Name} className={'relative bg-gray-825 shadow-md rounded-2xl px-5 py-3'}>
                                 <div className={'uppercase text-xs font-semibold text-white'}>{t(stat.Name)}</div>
-                                <div
-                                  className={'text-xl sm:text-2xl md:text-3xl lg:text-4xl text-orange-400 font-bold'}
-                                >
-                                  <ReactCountUp
-                                    start={0}
-                                    end={stat.Value || 0}
-                                    decimal={'.'}
-                                    decimals={
-                                      ['statistics.time', 'statistics.wpm', 'statistics.cpm'].includes(stat.Name)
-                                        ? 2
-                                        : 0
-                                    }
-                                  />
+                                <div className={'text-xl sm:text-2xl md:text-3xl lg:text-4xl text-orange-400 font-bold'}>
+                                  <ReactCountUp start={0} end={stat.Value || 0} decimal={'.'} decimals={['statistics.time', 'statistics.wpm', 'statistics.cpm'].includes(stat.Name) ? 2 : 0} />
                                   <span className={'text-2xl'}>{stat.Extension}</span>
                                 </div>
                                 {['statistics.wpm', 'statistics.cpm'].includes(stat.Name) && data.personalBest ? (
-                                  <div
-                                    className={'absolute top-0 right-0 mt-8 mr-4'}
-                                    data-for="pbReward"
-                                    data-tip="New Personal Best for this Text!"
-                                  >
+                                  <div className={'absolute top-0 right-0 mt-8 mr-4'} data-for="pbReward" data-tip="New Personal Best for this Text!">
                                     <FontAwesomeIcon icon={faCrown} className={'text-yellow-400'} />
                                   </div>
                                 ) : (
@@ -414,26 +321,16 @@ const MatchEnd = (props: IProps) => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               <div>
                                 <div className={'text-white text-xs sm:text-xs uppercase font-semibold'}>Title</div>
-                                <div className={'text-orange-400 sm:text-base lg:text-lg uppercase font-semibold'}>
-                                  {useRoundData.Text.source}
-                                </div>
+                                <div className={'text-orange-400 sm:text-base lg:text-lg uppercase font-semibold'}>{useRoundData.Text.source}</div>
                               </div>
                               <div>
                                 <div className={'text-white text-xs uppercase font-semibold'}>Author</div>
-                                <div className={'text-orange-400 sm:text-base lg:text-lg uppercase font-semibold'}>
-                                  {useRoundData.Text.author}
-                                </div>
+                                <div className={'text-orange-400 sm:text-base lg:text-lg uppercase font-semibold'}>{useRoundData.Text.author}</div>
                               </div>
                               {useRoundData.Text.contributor && useRoundData.Text.contributor !== 'admin' && (
                                 <div>
                                   <div className={'text-white text-xs uppercase font-semibold'}>Contributor</div>
-                                  <div
-                                    className={
-                                      'text-orange-400 sm:text-base lg:text-lg uppercase font-semibold truncate'
-                                    }
-                                  >
-                                    {useRoundData.Text.contributor}
-                                  </div>
+                                  <div className={'text-orange-400 sm:text-base lg:text-lg uppercase font-semibold truncate'}>{useRoundData.Text.contributor}</div>
                                 </div>
                               )}
                             </div>
@@ -443,14 +340,7 @@ const MatchEnd = (props: IProps) => {
                             <div className="inline-flex flex-wrap">
                               {useRoundData.Text.content.split(' ').map((item, index) => (
                                 <Fragment key={index}>
-                                  <div
-                                    className={`px-2 bg-white rounded-lg hover:bg-opacity-20 bg-opacity-0 transition ease-in-out duration-100 ${filterDelayCSS(
-                                      index,
-                                      useRoundData.Words.incorrect,
-                                    )}`}
-                                  >
-                                    {item}
-                                  </div>
+                                  <div className={`px-2 bg-white rounded-lg hover:bg-opacity-20 bg-opacity-0 transition ease-in-out duration-100 ${filterDelayCSS(index, useRoundData.Words.incorrect)}`}>{item}</div>
                                 </Fragment>
                               ))}
                             </div>
@@ -460,9 +350,7 @@ const MatchEnd = (props: IProps) => {
                     )}
 
                     {subtab === 'graph' && <Chart {...useRoundData.Chart} />}
-                    {subtab === 'replay' && (
-                      <Replay logString={useRoundData.Replay} quote={useRoundData.Text.content || ''} />
-                    )}
+                    {subtab === 'replay' && <Replay logString={useRoundData.Replay} quote={useRoundData.Text.content || ''} />}
                   </div>
                 )}
               </>
@@ -483,31 +371,17 @@ const MatchEnd = (props: IProps) => {
               </a>
             )}
             {!embed ? (
-              <Link
-                to={restartUrl}
-                data-tip={`${matchData.flagId !== 3 ? 'Play another game' : 'Return to Home'}`}
-                className={`button small red`}
-              >
+              <Link to={restartUrl} data-tip={`${matchData.flagId !== 3 ? 'Play another game' : 'Return to Home'}`} className={`button small red`}>
                 <FontAwesomeIcon className="my-1" icon={matchData.flagId !== 3 ? faPlay : faHome} />
               </Link>
             ) : (
               <>
                 {embedOwner ? (
-                  <button
-                    data-for="buttons"
-                    data-tip="End Game"
-                    type={'button'}
-                    onClick={embedClose}
-                    className={'button small red'}
-                  >
+                  <button data-for="buttons" data-tip="End Game" type={'button'} onClick={embedClose} className={'button small red'}>
                     <FontAwesomeIcon className="my-1" icon={faTimes} />
                   </button>
                 ) : (
-                  <div
-                    data-for="buttons"
-                    data-tip="Waiting for Lobby Leader"
-                    className={'text-white text-sm uppercase font-semibold tracking-wider pt-2'}
-                  >
+                  <div data-for="buttons" data-tip="Waiting for Lobby Leader" className={'text-white text-sm uppercase font-semibold tracking-wider pt-2'}>
                     <FontAwesomeIcon className="my-1" icon={faSpinner} spin /> Waiting for Leader
                   </div>
                 )}

@@ -27,15 +27,7 @@ const LoadContent = (props: LoadContentProps) => {
 
   return (
     <>
-      <div
-        className={`${
-          props.isLoaded
-            ? `${!props.disableTransform && `${mountTranslate ? 'translate-y-0' : ''}`} opacity-100`
-            : `${!props.disableTransform && 'translate-y-1'} opacity-0`
-        } transition ease-in-out duration-200`}
-      >
-        {props.isLoaded ? props.children : ''}
-      </div>
+      <div className={`${props.isLoaded ? `${!props.disableTransform && `${mountTranslate ? 'translate-y-0' : ''}`} opacity-100` : `${!props.disableTransform && 'translate-y-1'} opacity-0`} transition ease-in-out duration-200`}>{props.isLoaded ? props.children : ''}</div>
       {!props.disableTransform && !props.isLoaded ? <LoadingScreen isPartial={props.isPartial} /> : ''}
     </>
   );

@@ -74,12 +74,9 @@ const Custom = (props: IProps) => {
       setRedirect('');
       if (window) {
         setSocket(
-          new Socket(
-            `${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/lobby`,
-            {
-              transports: ['websocket', 'polling'],
-            },
-          ),
+          new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/lobby`, {
+            transports: ['websocket', 'polling'],
+          }),
         );
       }
     }
@@ -125,26 +122,19 @@ const Custom = (props: IProps) => {
 
         if (!currentState.includes(data.name) && data.isTyping) currentState.push(data.name);
 
-        if (currentState.includes(data.name) && !data.isTyping)
-          currentState = currentState.filter((name) => name !== data.name);
+        if (currentState.includes(data.name) && !data.isTyping) currentState = currentState.filter((name) => name !== data.name);
 
         return currentState;
       });
     });
 
     socket?.on('isKicked', (data: { playerId: string; message: string }) => {
-      if (data.playerId === sessionData?.playerId)
-        toastAndRedirect(!data.message ? 'You have been removed from this lobby.' : data.message, '/');
+      if (data.playerId === sessionData?.playerId) toastAndRedirect(!data.message ? 'You have been removed from this lobby.' : data.message, '/');
     });
     socket?.on('updateLobbyChat', (data: SocketCustomChatData) => {
       setChatData((chatData) => [...chatData, data]);
 
-      if (
-        customChatBeep === '1' &&
-        data.type !== 'global' &&
-        data.name !== sessionData?.name &&
-        data.discriminator !== sessionData?.discriminator
-      ) {
+      if (customChatBeep === '1' && data.type !== 'global' && data.name !== sessionData?.name && data.discriminator !== sessionData?.discriminator) {
         const chatBeepElement = document.getElementById('ChatBeep') as HTMLAudioElement;
         if (chatBeepElement) {
           chatBeepElement.currentTime = 0;
@@ -166,17 +156,14 @@ const Custom = (props: IProps) => {
   const updateChatScroll = () => {
     const overflowChatElement: HTMLElement | null = document.getElementById('chatbox');
     if (overflowChatElement) {
-      const isNotBottom =
-        overflowChatElement.scrollHeight - (overflowChatElement.offsetHeight + overflowChatElement.scrollTop) >= 75;
-      if (!isNotBottom)
-        overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
+      const isNotBottom = overflowChatElement.scrollHeight - (overflowChatElement.offsetHeight + overflowChatElement.scrollTop) >= 75;
+      if (!isNotBottom) overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
     }
   };
 
   const resetChatScroll = () => {
     const overflowChatElement: HTMLElement | null = document.getElementById('chatbox');
-    if (overflowChatElement)
-      overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
+    if (overflowChatElement) overflowChatElement.scrollTop = overflowChatElement.scrollHeight - overflowChatElement.clientHeight;
   };
 
   const chatOnChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -229,11 +216,7 @@ const Custom = (props: IProps) => {
   return (
     <>
       {redirect && <Redirect to={redirect} />}
-      <Base
-        meta={<Meta title={!name || name === 'undefined' ? 'Joining Lobby' : name} reverseTitle />}
-        ads={{ enableBottomRail: true }}
-        isLoaded={loaded}
-      >
+      <Base meta={<Meta title={!name || name === 'undefined' ? 'Joining Lobby' : name} reverseTitle />} ads={{ enableBottomRail: true }} isLoaded={loaded}>
         <ReactTooltip />
         <audio id="ChatBeep" src="/audio/ChatBeep.wav" crossOrigin="anonymous" preload="auto" />
         {useGameMode && !showMatch ? (
@@ -250,43 +233,22 @@ const Custom = (props: IProps) => {
                     onChange={(e) => handleUpdateSettings('name', e.target.value)}
                     defaultValue={name}
                   />
-                  <span
-                    data-tip="Rewards, Achievements and Records are disabled in Custom matches."
-                    className="hidden 3xl:inline ml-3 text-gray-200"
-                  >
+                  <span data-tip="Rewards, Achievements and Records are disabled in Custom matches." className="hidden 3xl:inline ml-3 text-gray-200">
                     <FontAwesomeIcon icon={faInfoCircle} className="text-xl" />
                   </span>
                 </div>
                 <div className="flex flex-wrap justify-end">
-                  <Settings
-                    modeId={modeId}
-                    privacy={privacy}
-                    allowGuests={allowGuests}
-                    textId={textId}
-                    countdown={countdown}
-                    textCustom={textCustom}
-                    gameModes={gameModes}
-                    owner={sessionData?.playerId === owner}
-                    handleUpdateSettings={handleUpdateSettings}
-                  />
+                  <Settings modeId={modeId} privacy={privacy} allowGuests={allowGuests} textId={textId} countdown={countdown} textCustom={textCustom} gameModes={gameModes} owner={sessionData?.playerId === owner} handleUpdateSettings={handleUpdateSettings} />
                 </div>
               </div>
               {/* Content */}
               <div className="grid grid-cols-1 lg:grid-cols-10 gap-4 mt-4">
                 <div className="col-span-full lg:col-span-7">
-                  <Chat
-                    chatData={chatData}
-                    typingData={typingData}
-                    message={message}
-                    chatOnChange={chatOnChange}
-                    chatOnKeyDown={chatOnKeyDown}
-                  />
+                  <Chat chatData={chatData} typingData={typingData} message={message} chatOnChange={chatOnChange} chatOnKeyDown={chatOnKeyDown} />
                   <div className="hidden 3xl:block">
                     <div className={'flex flex-wrap gap-x-6 mt-4'}>
                       <div className="w-5/12">
-                        <div className={'py-3.5 px-4 bg-gray-750 rounded-xl text-gray-400 font-semibold text-sm'}>
-                          Invite your friends by sending them the invite link!
-                        </div>
+                        <div className={'py-3.5 px-4 bg-gray-750 rounded-xl text-gray-400 font-semibold text-sm'}>Invite your friends by sending them the invite link!</div>
                       </div>
                       <div className={`w-36 my-auto`}>
                         <button
@@ -311,9 +273,7 @@ const Custom = (props: IProps) => {
                     <button
                       type="button"
                       style={{ display: 'block' }}
-                      className={`${
-                        !enableStartLobby ? 'disabled opacity-50' : ''
-                      } mb-4 w-full text-xl button xxlarge orange`}
+                      className={`${!enableStartLobby ? 'disabled opacity-50' : ''} mb-4 w-full text-xl button xxlarge orange`}
                       onClick={enableStartLobby ? handleStartMatch : () => false}
                       data-tip={enableStartLobby ? t('page.custom.startmatch') : t('page.custom.error.team_size')}
                     >
@@ -371,11 +331,7 @@ const Custom = (props: IProps) => {
             </div>
           </>
         ) : showMatch ? (
-          <Match
-            embed
-            embedOwner={sessionData?.playerId === owner}
-            embedClose={() => socket?.emit('forceEndMatch', {})}
-          />
+          <Match embed embedOwner={sessionData?.playerId === owner} embedClose={() => socket?.emit('forceEndMatch', {})} />
         ) : (
           <LoadingScreen />
         )}

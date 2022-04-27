@@ -28,18 +28,8 @@ const ProfileTournaments = (props: IProps) => {
                   <div className={'flex text-white hover:opacity-70 transition ease-in-out duration-300'}>
                     <div className={'w-20 text-center my-auto -mr-8 z-20'}>
                       <div className="relative">
-                        <img
-                          className={'w-full h-auto filter drop-shadow-lg'}
-                          src={`/badges/${item.placement && item.placement <= 5 ? item.placement : 'participant'}.png`}
-                          alt={``}
-                        />
-                        {item.placement && item.placement > 3 ? (
-                          <div className="absolute text-center text-lg text-white w-10 mx-auto bottom-7 left-0 right-0 font-bold rounded-lg">
-                            {ordinalSuffixOf(item.placement || 0)}
-                          </div>
-                        ) : (
-                          <></>
-                        )}
+                        <img className={'w-full h-auto filter drop-shadow-lg'} src={`/badges/${item.placement && item.placement <= 5 ? item.placement : 'participant'}.png`} alt={``} />
+                        {item.placement && item.placement > 3 ? <div className="absolute text-center text-lg text-white w-10 mx-auto bottom-7 left-0 right-0 font-bold rounded-lg">{ordinalSuffixOf(item.placement || 0)}</div> : <></>}
                       </div>
                     </div>
                     <div className={'w-full my-auto bg-gray-700 rounded-xl pl-12 pr-4 py-2 shadow'}>
@@ -61,9 +51,7 @@ const ProfileTournaments = (props: IProps) => {
           )}
         </div>
       ) : (
-        <div className={'text-center text-lg bg-gray-750 py-32 uppercase font-semibold text-white'}>
-          This player has not participated in any tournaments recently.
-        </div>
+        <div className={'text-center text-lg bg-gray-750 py-32 uppercase font-semibold text-white'}>This player has not participated in any tournaments recently.</div>
       )}
     </div>
   );

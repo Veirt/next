@@ -25,22 +25,7 @@ interface IProps {
 }
 
 const TeamData = (props: IProps) => {
-  const {
-    handlePlayerBan,
-    handleGiveOwner,
-    lobbyOwner,
-    teamId,
-    teamSize,
-    teamStrict,
-    data,
-    dataLength,
-    onDrop,
-    draggable,
-    maxTeams,
-    isDragging,
-    onDragStart,
-    onDragEnd,
-  } = props;
+  const { handlePlayerBan, handleGiveOwner, lobbyOwner, teamId, teamSize, teamStrict, data, dataLength, onDrop, draggable, maxTeams, isDragging, onDragStart, onDragEnd } = props;
   const { t } = useTranslation();
 
   const playerCount = (data: SocketCustomPlayerData[], teamId: number) => {
@@ -52,13 +37,7 @@ const TeamData = (props: IProps) => {
 
   return (
     <div key={teamId} className="mb-8" onDragEnd={onDragEnd}>
-      <div className="h5 font-semibold bg-gray-750 px-6 py-2 rounded-lg mb-2">
-        {teamId === 0
-          ? 'Spectators'
-          : !teamStrict && maxTeams >= teamId
-          ? `Players`
-          : `Players (${dataLength}/${teamSize})`}
-      </div>
+      <div className="h5 font-semibold bg-gray-750 px-6 py-2 rounded-lg mb-2">{teamId === 0 ? 'Spectators' : !teamStrict && maxTeams >= teamId ? `Players` : `Players (${dataLength}/${teamSize})`}</div>
       <div className={`relative`}>
         <div className="grid grid-cols-1 gap-2">
           {data.map(
@@ -74,11 +53,7 @@ const TeamData = (props: IProps) => {
                   }}
                 >
                   {draggable ? (
-                    <div
-                      className={`w-8 flex items-center justify-center rounded-l-lg text-gray-500 bg-gray-700 ${
-                        draggable && 'cursor-move'
-                      }`}
-                    >
+                    <div className={`w-8 flex items-center justify-center rounded-l-lg text-gray-500 bg-gray-700 ${draggable && 'cursor-move'}`}>
                       <FontAwesomeIcon icon={faEllipsisV} />
                       <FontAwesomeIcon icon={faEllipsisV} />
                     </div>
@@ -86,41 +61,20 @@ const TeamData = (props: IProps) => {
                     <></>
                   )}
                   <div className={'w-full'}>
-                    <PlayerCard
-                      className={`px-4 py-2 ${
-                        draggable ? `` : userData.playerId === lobbyOwner ? 'rounded-l-xl' : 'rounded-xl'
-                      }`}
-                      {...userData}
-                    >
-                      {userData.state ? (
-                        <div className="my-auto text-sm text-orange-400">{t('page.custom.status.game')}</div>
-                      ) : (
-                        <div className="my-auto text-xs text-gray-300">{t('page.custom.status.lobby')}</div>
-                      )}
+                    <PlayerCard className={`px-4 py-2 ${draggable ? `` : userData.playerId === lobbyOwner ? 'rounded-l-xl' : 'rounded-xl'}`} {...userData}>
+                      {userData.state ? <div className="my-auto text-sm text-orange-400">{t('page.custom.status.game')}</div> : <div className="my-auto text-xs text-gray-300">{t('page.custom.status.lobby')}</div>}
                     </PlayerCard>
                   </div>
                   {draggable && userData.playerId !== lobbyOwner ? (
                     <div className={'rounded-r-lg w-10 border-b border-gray-800'}>
                       {!userData.staff ? (
-                        <button
-                          onClick={() => handlePlayerBan(userData.playerId)}
-                          style={{ height: '50%' }}
-                          className={
-                            'rounded-tr-lg block w-full bg-gray-700 text-red-400 hover:bg-red-400 hover:text-white transition ease-in-out duration-300 focus:outline-none'
-                          }
-                        >
+                        <button onClick={() => handlePlayerBan(userData.playerId)} style={{ height: '50%' }} className={'rounded-tr-lg block w-full bg-gray-700 text-red-400 hover:bg-red-400 hover:text-white transition ease-in-out duration-300 focus:outline-none'}>
                           <FontAwesomeIcon icon={faTimes} />
                         </button>
                       ) : (
                         <></>
                       )}
-                      <button
-                        onClick={() => handleGiveOwner(userData.playerId)}
-                        style={{ height: '50%' }}
-                        className={
-                          'rounded-br-lg block w-full bg-gray-700 text-yellow-400 hover:bg-yellow-400 hover:text-white transition ease-in-out duration-300 focus:outline-none'
-                        }
-                      >
+                      <button onClick={() => handleGiveOwner(userData.playerId)} style={{ height: '50%' }} className={'rounded-br-lg block w-full bg-gray-700 text-yellow-400 hover:bg-yellow-400 hover:text-white transition ease-in-out duration-300 focus:outline-none'}>
                         <FontAwesomeIcon icon={faCrown} />
                       </button>
                     </div>
@@ -137,14 +91,7 @@ const TeamData = (props: IProps) => {
               ),
           )}
           {playerCount(data, teamId) === 0 && <div className="rounded-xl bg-gray-725 py-8" />}
-          <div
-            onDragEnd={onDragEnd}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={onDrop}
-            className={`${
-              isDragging ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            } absolute inset-0 rounded-xl bg-green-500 bg-opacity-10 border-2 border-green-800 py-8 w-full z-20`}
-          />
+          <div onDragEnd={onDragEnd} onDragOver={(e) => e.preventDefault()} onDrop={onDrop} className={`${isDragging ? 'opacity-100' : 'opacity-0 pointer-events-none'} absolute inset-0 rounded-xl bg-green-500 bg-opacity-10 border-2 border-green-800 py-8 w-full z-20`} />
         </div>
       </div>
     </div>

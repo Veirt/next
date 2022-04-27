@@ -13,11 +13,7 @@ const AchievementItem = (props: IProps) => {
     <div className={`${props.value ? 'opacity-100' : 'opacity-50'} text-left`}>
       <div className={'flex text-white'}>
         <div className={'w-20 text-center my-auto -mr-8 z-20'}>
-          <img
-            className={'w-full h-auto filter drop-shadow-lg'}
-            src={`/achievements/${props.achievementId}.png`}
-            alt={``}
-          />
+          <img className={'w-full h-auto filter drop-shadow-lg'} src={`/achievements/${props.achievementId}.png`} alt={``} />
         </div>
         <div className={'w-full my-auto bg-gray-700 rounded-xl pl-12 py-2 shadow'}>
           <div className={'text-lg font-semibold'}>{props.title}</div>

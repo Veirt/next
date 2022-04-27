@@ -19,13 +19,7 @@ const Ranked = (props: IProps) => {
 
   useEffect(() => {
     const handleSceneSwitch = () => {
-      if (
-        !afterScene.current ||
-        !beforeScene.current ||
-        before.Rank === after.Rank ||
-        (before.Rank !== after.Rank && before.SR > after.SR)
-      )
-        return;
+      if (!afterScene.current || !beforeScene.current || before.Rank === after.Rank || (before.Rank !== after.Rank && before.SR > after.SR)) return;
 
       beforeScene.current.style.opacity = '0';
       afterScene.current.style.opacity = '1';
@@ -46,11 +40,7 @@ const Ranked = (props: IProps) => {
   const renderScene = (data: PlayerCompetitiveData) => {
     return (
       <div className="flex flex-col items-center justify-center">
-        <img
-          className="w-32 h-32"
-          src={`/ranks/${data.Rank ? `${data.Rank.replaceAll(' ', '').toLowerCase()}` : 'unrated'}.svg`}
-          alt={data.Rank}
-        />
+        <img className="w-32 h-32" src={`/ranks/${data.Rank ? `${data.Rank.replaceAll(' ', '').toLowerCase()}` : 'unrated'}.svg`} alt={data.Rank} />
         <div className="text-4xl font-bold mt-4">{data.Rank}</div>
         {data.Remaining > 0 ? (
           <div className="text-sm font-semibold">{data.Remaining} games remaining</div>
@@ -67,21 +57,13 @@ const Ranked = (props: IProps) => {
     <div className="relative">
       <audio ref={rankDownRef} src="/audio/LevelUp.wav" crossOrigin="anonymous" preload="auto" />
       <div ref={beforeScene} className={'transition ease-in-out duration-300'} style={{ opacity: 100 }}>
-        {before.Rank === after.Rank || (before.Rank !== after.Rank && before.SR > after.SR)
-          ? renderScene(after)
-          : renderScene(before)}
+        {before.Rank === after.Rank || (before.Rank !== after.Rank && before.SR > after.SR) ? renderScene(after) : renderScene(before)}
       </div>
-      <div
-        ref={afterScene}
-        className={'absolute inset-0 w-full h-full z-20 transition ease-in-out duration-500'}
-        style={{ opacity: 0 }}
-      >
+      <div ref={afterScene} className={'absolute inset-0 w-full h-full z-20 transition ease-in-out duration-500'} style={{ opacity: 0 }}>
         {after.Rank !== before.Rank && (
           <div className="absolute top-24 left-0 right-0 flex justify-center mt-2">
             <div className="w-40">
-              <div className="px-4 py-2 rounded-lg bg-black bg-opacity-80 shadow-sm text-base font-semibold">
-                New Rank!
-              </div>
+              <div className="px-4 py-2 rounded-lg bg-black bg-opacity-80 shadow-sm text-base font-semibold">New Rank!</div>
             </div>
           </div>
         )}

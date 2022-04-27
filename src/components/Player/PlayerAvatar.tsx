@@ -37,17 +37,7 @@ const PlayerAvatar: FC<UserAvatarProps> = (props) => {
   // Tailwind Safe Purge: border-yellow-400 border-4
   return (
     <>
-      <img
-        src={image}
-        className={`w-full h-auto rounded-full ${loaded && !hideBorder && `border-${border} border-${color}-400`} ${
-          !hideBorder && 'bg-black bg-opacity-50'
-        }`}
-        height={20}
-        width={20}
-        alt="Avatar"
-        onLoad={onLoad}
-        onError={onError}
-      />
+      <img src={image} className={`w-full h-auto rounded-full ${loaded && !hideBorder && `border-${border} border-${color}-400`} ${!hideBorder && 'bg-black bg-opacity-50'}`} height={20} width={20} alt="Avatar" onLoad={onLoad} onError={onError} />
     </>
   );
 };

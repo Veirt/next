@@ -32,18 +32,7 @@ const Spectator: FC<IProps> = (props) => {
 
   const [charHeight, setCharHeight] = useState('0px');
   const [showHelp, setShowHelp] = useState(false);
-  const {
-    timer,
-    countdown,
-    embedClose,
-    embedOwner,
-    firstWord,
-    totalPlayers,
-    quoteString,
-    roundsTotal,
-    matchData,
-    participantsData,
-  } = props;
+  const { timer, countdown, embedClose, embedOwner, firstWord, totalPlayers, quoteString, roundsTotal, matchData, participantsData } = props;
   const { t } = useTranslation();
 
   const newQuote: string = quoteString && quoteString !== 'KEYMASH_GAMEMODE_ROUND_END' ? quoteString : '';
@@ -65,29 +54,9 @@ const Spectator: FC<IProps> = (props) => {
     'border-gray-400',
     'border-gray-400',
   ];
-  const caretColors = [
-    'bg-orange-400',
-    'bg-green-400',
-    'bg-blue-400',
-    'bg-purple-400',
-    'bg-teal-400',
-    'bg-pink-400',
-    'bg-indigo-400',
-    'bg-gray-400',
-    'bg-gray-400',
-    'bg-gray-400',
-    'bg-gray-400',
-    'bg-gray-400',
-    'bg-gray-400',
-    'bg-gray-400',
-    'bg-gray-400',
-    'bg-gray-400',
-  ];
+  const caretColors = ['bg-orange-400', 'bg-green-400', 'bg-blue-400', 'bg-purple-400', 'bg-teal-400', 'bg-pink-400', 'bg-indigo-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400', 'bg-gray-400'];
 
-  useEffect(
-    () => setCharHeight(`${(document.getElementsByClassName('cursor--locate')[0] as HTMLDivElement)?.offsetHeight}px`),
-    [quoteString],
-  );
+  useEffect(() => setCharHeight(`${(document.getElementsByClassName('cursor--locate')[0] as HTMLDivElement)?.offsetHeight}px`), [quoteString]);
   useEffect(() => {
     if (!caretTimer.current) {
       caretTimer.current = setInterval(
@@ -97,21 +66,15 @@ const Spectator: FC<IProps> = (props) => {
 
           for (i = 0; i < participantsLength; i++) {
             if (participantsData[i] && participantsData[i]?.playerId) {
-              const correctKeystrokes =
-                (participantsData[i]?.wordLetterIndex || 0) + (participantsData[i]?.currentInput?.length || 0);
+              const correctKeystrokes = (participantsData[i]?.wordLetterIndex || 0) + (participantsData[i]?.currentInput?.length || 0);
               const getUserCaret: HTMLElement | null = document.getElementById(String(participantsData[i]?.playerId));
-              const getCaretPosition = document.getElementsByClassName('cursor--locate')[
-                correctKeystrokes ? correctKeystrokes : 0
-              ] as HTMLElement;
+              const getCaretPosition = document.getElementsByClassName('cursor--locate')[correctKeystrokes ? correctKeystrokes : 0] as HTMLElement;
 
               if (getCaretPosition && getUserCaret) {
                 const { offsetLeft, offsetTop } = getCaretPosition;
 
                 if (smoothCaret === '1') {
-                  const caretAnimation = getUserCaret.animate(
-                    { marginLeft: `${offsetLeft - 2}px` },
-                    { duration: parseInt(smoothCaretSpeed, 10) },
-                  );
+                  const caretAnimation = getUserCaret.animate({ marginLeft: `${offsetLeft - 2}px` }, { duration: parseInt(smoothCaretSpeed, 10) });
                   caretAnimation.onfinish = () => {
                     getUserCaret.style.marginLeft = `${offsetLeft - 2}px`;
                     getUserCaret.style.marginTop = `${offsetTop}px`;
@@ -142,9 +105,7 @@ const Spectator: FC<IProps> = (props) => {
       <>
         <Modal isOpened={showHelp} onClose={() => setShowHelp(false)}>
           <div>
-            <div className={'text-xl uppercase font-semibold tracking-wider pb-3 mb-3 border-b border-orange-400'}>
-              {t('component.spectator.help_title')}
-            </div>
+            <div className={'text-xl uppercase font-semibold tracking-wider pb-3 mb-3 border-b border-orange-400'}>{t('component.spectator.help_title')}</div>
             <div className={'text-gray-300'}>
               <div className={'pb-2'}>{t('component.spectator.help_1')}</div>
               <div className={'pb-2'}>{t('component.spectator.help_2')}</div>
@@ -158,32 +119,17 @@ const Spectator: FC<IProps> = (props) => {
         </Modal>
         <div className={'absolute w-16 top-20 right-0 left-2'}>
           {embedOwner && (
-            <button
-              type={'button'}
-              onClick={embedClose}
-              data-tip="Close"
-              className={'block bg-black bg-opacity-50 hover:bg-opacity-70 w-12 text-center py-3 rounded-xl'}
-            >
+            <button type={'button'} onClick={embedClose} data-tip="Close" className={'block bg-black bg-opacity-50 hover:bg-opacity-70 w-12 text-center py-3 rounded-xl'}>
               <FontAwesomeIcon icon={faTimes} className={'text-pink-500 text-xl'} />
             </button>
           )}
 
-          <button
-            onClick={() => setShowHelp(true)}
-            className={'mt-2 block bg-black bg-opacity-50 hover:bg-opacity-70 w-12 text-center py-3 rounded-xl'}
-          >
+          <button onClick={() => setShowHelp(true)} className={'mt-2 block bg-black bg-opacity-50 hover:bg-opacity-70 w-12 text-center py-3 rounded-xl'}>
             <FontAwesomeIcon icon={faQuestion} className={'text-white text-xl'} />
           </button>
         </div>
         <div className="container-smaller container-margin">
-          <MatchMode
-            totalPlayers={totalPlayers}
-            matchData={matchData}
-            roundsTotal={roundsTotal}
-            timer={timer}
-            countdown={countdown}
-            isSpectate={true}
-          />
+          <MatchMode totalPlayers={totalPlayers} matchData={matchData} roundsTotal={roundsTotal} timer={timer} countdown={countdown} isSpectate={true} />
           {quoteString && quoteString !== 'KEYMASH_GAMEMODE_ROUND_END' && (
             <>
               <div className={'break-words mb-6 match--container text-gray-200 text-xl rounded-t-xl'}>
@@ -192,19 +138,9 @@ const Spectator: FC<IProps> = (props) => {
                     (participant, x) =>
                       participant.teamId !== 0 &&
                       (participant.Progress ? participant.Progress : 0) < 100 && (
-                        <div
-                          key={`key${participant.playerId}`}
-                          id={`${participant.playerId}`}
-                          className="absolute"
-                          style={{ marginLeft: '0px', marginTop: '0px' }}
-                        >
-                          <div className="absolute -top-4 z-10 bg-gray-600 bg-opacity-40 text-gray-200 shadow-sm px-1.5 py-0.5 text-xs rounded-lg">
-                            {participant.name}
-                          </div>
-                          <div
-                            className={`rounded ${caretColors[x]}`}
-                            style={{ width: '2px', height: charHeight || '2px', transform: 'scale(1.1)' }}
-                          />
+                        <div key={`key${participant.playerId}`} id={`${participant.playerId}`} className="absolute" style={{ marginLeft: '0px', marginTop: '0px' }}>
+                          <div className="absolute -top-4 z-10 bg-gray-600 bg-opacity-40 text-gray-200 shadow-sm px-1.5 py-0.5 text-xs rounded-lg">{participant.name}</div>
+                          <div className={`rounded ${caretColors[x]}`} style={{ width: '2px', height: charHeight || '2px', transform: 'scale(1.1)' }} />
                         </div>
                       ),
                   )}
@@ -223,17 +159,7 @@ const Spectator: FC<IProps> = (props) => {
             <div className={'hidden lg:block text-right w-24 pr-3'}>Accuracy</div>
             <div className={'text-right w-32 pr-3'}>Speed</div>
           </div>
-          {matchData && (
-            <Playerboard
-              isSpectator={1}
-              quoteString={quoteString}
-              borderColors={borderColors}
-              participantsData={participantsData}
-              firstWord={firstWord}
-              modeId={matchData.modeId}
-              roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST}
-            />
-          )}
+          {matchData && <Playerboard isSpectator={1} quoteString={quoteString} borderColors={borderColors} participantsData={participantsData} firstWord={firstWord} modeId={matchData.modeId} roundLimit={matchData.modeData.modeConfig.ROUNDS.FIRST} />}
         </div>
       </>
     );

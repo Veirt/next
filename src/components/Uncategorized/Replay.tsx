@@ -78,8 +78,7 @@ const Replay = (props: IProps) => {
 
     // Other
     if (state === 'PLAY') {
-      if (parsedReplay.length && iteration < parsedReplay.length)
-        replayInterval.current = setTimeout(onIterationCalled, (parsedReplay[iteration]?.delay || 50) / speed);
+      if (parsedReplay.length && iteration < parsedReplay.length) replayInterval.current = setTimeout(onIterationCalled, (parsedReplay[iteration]?.delay || 50) / speed);
     } else if (state === 'RESTART') {
       setIteration(0);
       setMount(false);
@@ -127,78 +126,37 @@ const Replay = (props: IProps) => {
             <button type="button" className="button small lightgray" onClick={resetInterval}>
               <FontAwesomeIcon icon={faRedo} />
             </button>
-            <div
-              className="flex space-x-4 pl-4 text-xs my-auto hidden lg:block"
-              data-tip="These results may be slightly inaccurate from your final speed."
-            >
-              <div className="text-orange-400 font-semibold hidden">
-                {(iteration / 5 / (elapsed / 1000 / 60) || 0).toFixed(2)} WPM
-              </div>
+            <div className="flex space-x-4 pl-4 text-xs my-auto hidden lg:block" data-tip="These results may be slightly inaccurate from your final speed.">
+              <div className="text-orange-400 font-semibold hidden">{(iteration / 5 / (elapsed / 1000 / 60) || 0).toFixed(2)} WPM</div>
               <div className="text-orange-400 font-semibold">
                 {iteration}f of {parsedReplay.length}f
               </div>
             </div>
           </div>
           <div className="w-auto space-x-2 hidden lg:flex">
-            <button
-              type="button"
-              style={{ textTransform: 'lowercase' }}
-              className={`button small ${speed === 2 ? 'gray' : 'lightgray'} text-xs`}
-              onClick={() => setSpeed(2)}
-            >
+            <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 2 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(2)}>
               2x
             </button>
-            <button
-              type="button"
-              style={{ textTransform: 'lowercase' }}
-              className={`button small ${speed === 1.5 ? 'gray' : 'lightgray'} text-xs`}
-              onClick={() => setSpeed(1.5)}
-            >
+            <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 1.5 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(1.5)}>
               1.5x
             </button>
-            <button
-              type="button"
-              style={{ textTransform: 'lowercase' }}
-              className={`button small ${speed === 1 ? 'gray' : 'lightgray'} text-xs`}
-              onClick={() => setSpeed(1)}
-            >
+            <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 1 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(1)}>
               1x
             </button>
-            <button
-              type="button"
-              style={{ textTransform: 'lowercase' }}
-              className={`button small ${speed === 0.75 ? 'gray' : 'lightgray'} text-xs`}
-              onClick={() => setSpeed(0.75)}
-            >
+            <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 0.75 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.75)}>
               3/4x
             </button>
-            <button
-              type="button"
-              style={{ textTransform: 'lowercase' }}
-              className={`button small ${speed === 0.5 ? 'gray' : 'lightgray'} text-xs`}
-              onClick={() => setSpeed(0.5)}
-            >
+            <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 0.5 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.5)}>
               1/2x
             </button>
-            <button
-              type="button"
-              style={{ textTransform: 'lowercase' }}
-              className={`button small ${speed === 0.25 ? 'gray' : 'lightgray'} text-xs`}
-              onClick={() => setSpeed(0.25)}
-            >
+            <button type="button" style={{ textTransform: 'lowercase' }} className={`button small ${speed === 0.25 ? 'gray' : 'lightgray'} text-xs`} onClick={() => setSpeed(0.25)}>
               1/4x
             </button>
           </div>
         </div>
       </div>
       <div className={'pointer-events-none h-68'}>
-        <MatchTextContainer
-          quote={mount ? quote : 'Refreshing...'}
-          sendKeystroke={() => false}
-          disabled={false}
-          replayInput={parsedReplay[iteration]?.input || ''}
-          isReplay
-        />
+        <MatchTextContainer quote={mount ? quote : 'Refreshing...'} sendKeystroke={() => false} disabled={false} replayInput={parsedReplay[iteration]?.input || ''} isReplay />
       </div>
     </div>
   );

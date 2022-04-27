@@ -1,9 +1,7 @@
 import { FC, useState, useCallback, useRef, useEffect } from 'react';
 import axios, { CancelTokenSource } from 'axios';
 import Config from '../../../Config';
-import LeaderboardPlayerMatch, {
-  PlayerMatchExtendedData,
-} from '../../../components/Leaderboard/LeaderboardPlayerMatch';
+import LeaderboardPlayerMatch, { PlayerMatchExtendedData } from '../../../components/Leaderboard/LeaderboardPlayerMatch';
 import { useTranslation } from 'next-i18next';
 import LoadingScreen from '../../../components/Uncategorized/LoadingScreen';
 import Pagination from '../../../components/Uncategorized/Pagination';
@@ -52,12 +50,7 @@ const MatchLeaderboards: FC<MatchLeaderboardsProps> = (props) => {
       {leaderboardsLoaded ? (
         <>
           <LeaderboardPlayerMatch data={leaderboardsData} playerData={[]} skip={skip} />
-          <Pagination
-            isNextPage={leaderboardsNextPage}
-            skip={skip}
-            nextPage={() => setSkip(skip + 30)}
-            prevPage={() => setSkip(skip - 30)}
-          />
+          <Pagination isNextPage={leaderboardsNextPage} skip={skip} nextPage={() => setSkip(skip + 30)} prevPage={() => setSkip(skip - 30)} />
         </>
       ) : (
         <LoadingScreen isPartial />

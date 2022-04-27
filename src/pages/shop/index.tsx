@@ -89,11 +89,7 @@ const Shop = () => {
 
   const purchaseItem = (itemKey: string, itemPrice: number) => {
     axios
-      .post(
-        `${Config.apiUrl}/shop/purchase`,
-        { _csrf, itemId: itemKey },
-        { withCredentials: true, cancelToken: axiosCancelSource.current?.token },
-      )
+      .post(`${Config.apiUrl}/shop/purchase`, { _csrf, itemId: itemKey }, { withCredentials: true, cancelToken: axiosCancelSource.current?.token })
       .then((response) => {
         if (response.data.error) toast.error(response.data.error);
         else {
@@ -120,23 +116,7 @@ const Shop = () => {
     return () => axiosCancelSource.current?.cancel();
   }, [sessionData?.authName]);
 
-  const featuredItems = [
-    'stars_red',
-    'stars_purple',
-    'stars_orange',
-    'stars_green',
-    'stars_blue',
-    'lines_purple',
-    'lines_red',
-    'lines_orange',
-    'lines_green',
-    'lines_blue',
-    'flowers_purple',
-    'flowers_orange',
-    'flowers_green',
-    'flowers_blue',
-    'diamonds',
-  ];
+  const featuredItems = ['stars_red', 'stars_purple', 'stars_orange', 'stars_green', 'stars_blue', 'lines_purple', 'lines_red', 'lines_orange', 'lines_green', 'lines_blue', 'flowers_purple', 'flowers_orange', 'flowers_green', 'flowers_blue', 'diamonds'];
 
   return (
     <>
@@ -154,9 +134,7 @@ const Shop = () => {
                     key={item.name}
                     type={'button'}
                     onClick={item.onClick}
-                    className={`mb-2 md:mb-0 ${
-                      item.name === tab ? 'bg-gray-800 text-orange-400' : 'bg-gray-775 text-white'
-                    } hover:bg-gray-800 text-sm uppercase font-semibold px-6 py-1 rounded-xl h-8 my-auto mr-3 transition ease-in-out duration-300`}
+                    className={`mb-2 md:mb-0 ${item.name === tab ? 'bg-gray-800 text-orange-400' : 'bg-gray-775 text-white'} hover:bg-gray-800 text-sm uppercase font-semibold px-6 py-1 rounded-xl h-8 my-auto mr-3 transition ease-in-out duration-300`}
                   >
                     {t(item.name)}
                   </button>
@@ -181,9 +159,7 @@ const Shop = () => {
                       key={item.name}
                       type={'button'}
                       onClick={() => setSubtab(item.order)}
-                      className={`${index === row.subtabs.length && 'rounded-r-lg'} ${
-                        subtab === item.order ? 'text-orange-400 bg-gray-775' : 'bg-gray-750 hover:bg-gray-775'
-                      } py-2.5 w-32 text-center text-sm font-semibold transition ease-in-out duration-300`}
+                      className={`${index === row.subtabs.length && 'rounded-r-lg'} ${subtab === item.order ? 'text-orange-400 bg-gray-775' : 'bg-gray-750 hover:bg-gray-775'} py-2.5 w-32 text-center text-sm font-semibold transition ease-in-out duration-300`}
                     >
                       {item.name}
                     </button>
@@ -194,11 +170,7 @@ const Shop = () => {
 
           {tab === 'page.shop.featured' && (
             <div>
-              <img
-                className={'w-full h-80 object-center object-cover rounded-2xl shadow-lg'}
-                src={'/assets/shop/featured.png'}
-                alt={'Featured banner'}
-              />
+              <img className={'w-full h-80 object-center object-cover rounded-2xl shadow-lg'} src={'/assets/shop/featured.png'} alt={'Featured banner'} />
               <AdvertisementDisplay className="mt-4">
                 <AdvertisementUnit type={'leaderboard-top'} />
               </AdvertisementDisplay>
@@ -241,8 +213,7 @@ const Shop = () => {
                   row.data.map(
                     (item) =>
                       !item.secret &&
-                      (tab !== 'page.shop.playercards' ||
-                        (tab === 'page.shop.playercards' && subtab === item.order)) && (
+                      (tab !== 'page.shop.playercards' || (tab === 'page.shop.playercards' && subtab === item.order)) && (
                         <ShopItem
                           key={item.file}
                           player={{
