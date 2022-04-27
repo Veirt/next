@@ -76,46 +76,52 @@ function Playwire(props: IProps) {
                     };
                 };
 
-                // Event Listener that checks for windows resizing.
-                window.addEventListener(
-                    'resize',
-                    debounce(() => {
-                        // Replace the Units or array of units that you wish to destroy on resize.
-                        const pwSkyId = ['pw-160x600_atf', 'pw-160x600_btf'];
+                const callRampSkyscraper = () => debounce(() => {
+                    console.log('[Playwire] Skyscraper Resize');
+                    // Replace the Units or array of units that you wish to destroy on resize.
+                    const pwSkyId = ['pw-160x600_atf', 'pw-160x600_btf'];
 
-                        // Replace array with destroyed units you wish to re add to the site.
-                        const pwSkyArray = [
-                            { selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
-                            { selectorId: 'responsive-bottom-skyscraper', type: 'sky_btf' },
-                        ];
+                    // Replace array with destroyed units you wish to re add to the site.
+                    const pwSkyArray = [
+                        { selectorId: 'responsive-top-skyscraper', type: 'sky_atf' },
+                        { selectorId: 'responsive-bottom-skyscraper', type: 'sky_btf' },
+                    ];
 
-                        // Replace with the AdUnit you wish to check for.
-                        const leaderboardAtf = document.querySelector('#pw-160x600_atf');
-                        const leaderboardBtf = document.querySelector('#pw-160x600_btf');
+                    // Replace with the AdUnit you wish to check for.
+                    const leaderboardAtf = document.querySelector('#pw-160x600_atf');
+                    const leaderboardBtf = document.querySelector('#pw-160x600_btf');
 
-                        // When window width hides the ad, destroy the Units on the Array.
-                        // Change innerWidth to your relevant size.
-                        if (window.innerWidth < 1920) {
-                            ramp.destroyUnits(pwSkyId).catch((e) => {
+                    // When window width hides the ad, destroy the Units on the Array.
+                    // Change innerWidth to your relevant size.
+                    if (window.innerWidth < 1920) {
+                        ramp.destroyUnits(pwSkyId).catch((e) => {
+                            console.log('displayUnits error: ', e);
+                        });
+                        // When window width is big enough to show the unit and the ads chosen are not present in the page, add and display the units.
+                    } else if (window.innerWidth >= 1920 && !leaderboardAtf && !leaderboardBtf) {
+                        ramp.addUnits(pwSkyArray)
+                            .then(() => {
+                                ramp.displayUnits();
+                            })
+                            .catch((e) => {
+                                ramp.displayUnits();
                                 console.log('displayUnits error: ', e);
                             });
-                            // When window width is big enough to show the unit and the ads chosen are not present in the page, add and display the units.
-                        } else if (window.innerWidth >= 1920 && !leaderboardAtf && !leaderboardBtf) {
-                            ramp.addUnits(pwSkyArray)
-                                .then(() => {
-                                    ramp.displayUnits();
-                                })
-                                .catch((e) => {
-                                    ramp.displayUnits();
-                                    console.log('displayUnits error: ', e);
-                                });
-                        }
-                    }, 500)
-                );
+                    }
+                }, 500);
+
+                // Event Listener that checks for windows resizing.
+                window.addEventListener('resize', callRampSkyscraper);
+                window.addEventListener('DOMContentLoaded', callRampSkyscraper);
             });
         };
 
         if (sessionData && !sessionData.patreon && !sessionData.staff) init();
+
+        return () => {
+            window?.removeEventListener('resize', callRampSkyscraper);
+            window?.removeEventListener('DOMContentLoaded', callRampSkyscraper);
+        }
         // eslint-disable-next-line
     }, [ ]);
 
