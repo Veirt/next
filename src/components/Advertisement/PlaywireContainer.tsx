@@ -81,7 +81,7 @@ function Playwire(props: IProps) {
                     'resize',
                     debounce(() => {
                         // Replace the Units or array of units that you wish to destroy on resize.
-                        const pwSkyId = ['leaderboard_atf', 'leaderboard_btf'];
+                        const pwSkyId = ['sky_atf', 'sky_btf'];
 
                         // Replace array with destroyed units you wish to re add to the site.
                         const pwSkyArray = [
@@ -90,8 +90,8 @@ function Playwire(props: IProps) {
                         ];
 
                         // Replace with the AdUnit you wish to check for.
-                        const leaderboardAtf = document.querySelector('#leaderboard_atf');
-                        const leaderboardBtf = document.querySelector('#leaderboard_btf');
+                        const leaderboardAtf = document.querySelector('#responsive-top-skyscraper');
+                        const leaderboardBtf = document.querySelector('#responsive-bottom-skyscraper');
 
                         // When window width hides the ad, destroy the Units on the Array.
                         // Change innerWidth to your relevant size.
