@@ -22,7 +22,7 @@
 }
 
 .form-settings-small {
-  @apply py-1 px-2 #{!important};;
+  @apply py-1 px-2 #{!important};
 }
 
 .form-settings-dob {
@@ -78,13 +78,13 @@ option {
   outline: 1px solid #f6ad55;
 }
 
-/* Form Combination */ 
+/* Form Combination */
 .form-combo {
-    @apply flex bg-black bg-opacity-20 rounded-lg shadow-sm focus:border-gray-700 transition ease-in-out duration-300;
+  @apply flex bg-black bg-opacity-20 rounded-lg shadow-sm focus:border-gray-700 transition ease-in-out duration-300;
 }
 
 .form-combo div {
-   @apply w-12 text-center my-auto opacity-100;
+  @apply w-12 text-center my-auto opacity-100;
 }
 
 .form-combo input {

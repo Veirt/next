@@ -1,12 +1,8 @@
 import { FC } from 'react';
 
-const Playground:FC = () => {
-    return (
-        <div className={"container container-margin text-white text-center py-10"}>
-            
-        </div>
-    )
-}
+const Playground: FC = () => {
+  return <div className={'container container-margin text-white text-center py-10'}></div>;
+};
 
 export default Playground;
 

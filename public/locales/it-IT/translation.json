@@ -1,344 +1,344 @@
 {
-    "other": {
-        "account_banned": "Il tuo account \u00e8 stato bannato, sei pregato di contattare support@keymash.io!",
-        "twitch_none": "Nessuno \u00e8 in streaming in questo momento :( Torna pi\u00f9 tardi oppure avvia tu uno streaming!",
-        "grades": {
-            "passed": "Passato",
-            "failed": "Fallito"
-        },
-        "finished": "Finito",
-        "gameover": "Game Over",
-        "save": "Salva!"
+  "other": {
+    "account_banned": "Il tuo account \u00e8 stato bannato, sei pregato di contattare support@keymash.io!",
+    "twitch_none": "Nessuno \u00e8 in streaming in questo momento :( Torna pi\u00f9 tardi oppure avvia tu uno streaming!",
+    "grades": {
+      "passed": "Passato",
+      "failed": "Fallito"
     },
-    "button": {
-        "save": "Salva!",
-        "retry": "Riprova",
-        "back": "Indietro",
-        "next": "Prossimo",
-        "close": "Chiudi",
-        "leave": "Esci",
-        "enable": "Abilita",
-        "disable": "Disabilita",
-        "spectator": "Spettatore",
-        "join": "Entra",
-        "ladder": "Scala",
-        "lobby": "Lobby",
-        "newgame": "Nuova partita",
-        "letsgo": "Andiamo!"
+    "finished": "Finito",
+    "gameover": "Game Over",
+    "save": "Salva!"
+  },
+  "button": {
+    "save": "Salva!",
+    "retry": "Riprova",
+    "back": "Indietro",
+    "next": "Prossimo",
+    "close": "Chiudi",
+    "leave": "Esci",
+    "enable": "Abilita",
+    "disable": "Disabilita",
+    "spectator": "Spettatore",
+    "join": "Entra",
+    "ladder": "Scala",
+    "lobby": "Lobby",
+    "newgame": "Nuova partita",
+    "letsgo": "Andiamo!"
+  },
+  "charts": {
+    "lowest": "Pi\u00f9 basso",
+    "highest": "Pi\u00f9 alto"
+  },
+  "options": {
+    "yes": "S\u00ec",
+    "no": "No",
+    "random": "Random",
+    "quotes": "Citazioni",
+    "dict": "Dizionario",
+    "custom": "Custom"
+  },
+  "form": {
+    "message": "Invia un messaggio..."
+  },
+  "statistics": {
+    "wpm_abbreviation": "WPM",
+    "cpm_abbreviation": "CPM",
+    "wpm": "Parole Al Minuto",
+    "cpm": "Caratteri Al Minuto",
+    "time": "Tempo trascorso",
+    "won": "Vinto",
+    "lost": "Perso",
+    "ratio": "Ratio",
+    "accuracy": "Accuratezza",
+    "exp_abbreviation": "EXP",
+    "playtime": "Tempo di gioco",
+    "exp_total": "Esperienza Totale",
+    "exp": "Esperienza",
+    "wpm_fastest": "Partita pi\u00f9 veloce",
+    "mistakes": "Errori",
+    "grade": "Grado",
+    "records": "Records",
+    "total": "Totale",
+    "tournaments": "Tornei",
+    "top5": "Top 5"
+  },
+  "component": {
+    "spectator": {
+      "help_1": "Per uscire dalla partita, usa il bottone in alto a sinistra."
     },
-    "charts": {
-        "lowest": "Pi\u00f9 basso",
-        "highest": "Pi\u00f9 alto"
+    "topbar": {
+      "home": "Home",
+      "news": "Notizie",
+      "play": "Gioca",
+      "leaders": "Capi",
+      "discord": "Discord"
     },
-    "options": {
-        "yes": "S\u00ec",
-        "no": "No",
-        "random": "Random",
-        "quotes": "Citazioni",
-        "dict": "Dizionario",
-        "custom": "Custom"
+    "bottombar": {
+      "about": "Su di noi",
+      "tos": "Termini di servizio",
+      "privacy": "Politica sulla riservatezza",
+      "trello": "Trello",
+      "patreon": "Patreon",
+      "contribute": "Contribuisci",
+      "guidelines": "Linee guida della Community",
+      "shortcuts": "Tasti rapidi",
+      "faq": "Domande chieste frequentemente",
+      "faqM": "FAQ"
     },
-    "form": {
-        "message": "Invia un messaggio..."
+    "navbar": {
+      "home": "Home",
+      "news": "Notizie",
+      "play": "Gioca",
+      "leaders": "Capi",
+      "discord": "Discord",
+      "practice": "Pratica",
+      "twitch": "Twitch",
+      "store": "Merch",
+      "learn": "Impara",
+      "achievements": "Distintivi",
+      "statistics": "Statistiche",
+      "matches": "Partite",
+      "recent_matches": "Partite recenti",
+      "tournaments": "Tornei",
+      "settings": "Impostazioni",
+      "matchmaking": "Matchmaking",
+      "logout": "Logout",
+      "login": "Sign In",
+      "notifications": "Notifiche",
+      "custom": "Custom"
     },
-    "statistics": {
-        "wpm_abbreviation": "WPM",
-        "cpm_abbreviation": "CPM",
-        "wpm": "Parole Al Minuto",
-        "cpm": "Caratteri Al Minuto",
-        "time": "Tempo trascorso",
-        "won": "Vinto",
-        "lost": "Perso",
-        "ratio": "Ratio",
-        "accuracy": "Accuratezza",
-        "exp_abbreviation": "EXP",
-        "playtime": "Tempo di gioco",
-        "exp_total": "Esperienza Totale",
-        "exp": "Esperienza",
-        "wpm_fastest": "Partita pi\u00f9 veloce",
-        "mistakes": "Errori",
-        "grade": "Grado",
-        "records": "Records",
-        "total": "Totale",
-        "tournaments": "Tornei",
-        "top5": "Top 5"
-    },
-    "component": {
-        "spectator": {
-            "help_1": "Per uscire dalla partita, usa il bottone in alto a sinistra."
-        },
-        "topbar": {
-            "home": "Home",
-            "news": "Notizie",
-            "play": "Gioca",
-            "leaders": "Capi",
-            "discord": "Discord"
-        },
-        "bottombar": {
-            "about": "Su di noi",
-            "tos": "Termini di servizio",
-            "privacy": "Politica sulla riservatezza",
-            "trello": "Trello",
-            "patreon": "Patreon",
-            "contribute": "Contribuisci",
-            "guidelines": "Linee guida della Community",
-            "shortcuts": "Tasti rapidi",
-            "faq": "Domande chieste frequentemente",
-            "faqM": "FAQ"
-        },
-        "navbar": {
-            "home": "Home",
-            "news": "Notizie",
-            "play": "Gioca",
-            "leaders": "Capi",
-            "discord": "Discord",
-            "practice": "Pratica",
-            "twitch": "Twitch",
-            "store": "Merch",
-            "learn": "Impara",
-            "achievements": "Distintivi",
-            "statistics": "Statistiche",
-            "matches": "Partite",
-            "recent_matches": "Partite recenti",
-            "tournaments": "Tornei",
-            "settings": "Impostazioni",
-            "matchmaking": "Matchmaking",
-            "logout": "Logout",
-            "login": "Sign In",
-            "notifications": "Notifiche",
-            "custom": "Custom"
-        },
-        "auth": {
-            "discord": "Accedi con Discord",
-            "facebook": "Accedi con Facebook",
-            "google": "Accedi con Google"
-        }
-    },
-    "page": {
-        "banned": {
-            "title": "Sei stato bannato"
-        },
-        "guest": {
-            "title": "Il tuo account da ospite \u00e8 stato resettato"
-        },
-        "match": {
-            "completed": "Partita completata",
-            "mistakes": "Errori",
-            "no_mistakes": "Molto bene! Non hai fatto errori durante questa partita.",
-            "suspended": "Sei stato bannato dalla partita a causa di cheating.",
-            "time_out": "Hai finito il tempo. La prossima volta sarai pi\u00f9 fortunato!",
-            "reconnect_failed": "Non siamo riusciti a riconneterti alla partita.",
-            "many_mistakes": "Hai fatto troppi errori",
-            "statistics_unsaved": "Le tue statistiche non sono state salvate per questa partita",
-            "connect_lost": "Connessione persa, riprova",
-            "reconnect": "Riconnessione"
-        },
-        "error404": {
-            "title": "La pagina che stai cercando non esiste.",
-            "message": "Se sei stato portato a questa pagina per sbaglio contattaci"
-        },
-        "custom": {
-            "configuration": "Configurazione",
-            "title": "Titolo",
-            "privacy": "Privacy",
-            "mode": "Modalit\u00e0",
-            "guests": "Consentire i Guest?",
-            "text": "Testo",
-            "match": "Partita",
-            "custom": "Custom",
-            "status": {
-                "lobby": "Nella Lobby",
-                "game": "In gioco"
-            },
-            "unlisted": "Non in lista",
-            "public": "Pubblico",
-            "countdown": "Conto alla rovescia",
-            "startmatch": "Inizia partita",
-            "error": {
-                "team_size": "Le dimensione della squadra devono essere uguali per iniziare la partita.",
-                "unsaved": "Devi salvare i cambiamenti per partire."
-            },
-            "chat": "Sei pregato di non postare messaggi sensibili\/o confidenziali"
-        },
-        "learn": {
-            "title": "Centro di apprendimento",
-            "welcome": "Benvenuto! Questo centro di apprendimento aiuter\u00e0 i dattilografi con nuovo materiale per diventari pi\u00f9 veloci in scrittura.",
-            "lesson": "Lezioni",
-            "section": "Sezione",
-            "reportcard": "Pagella",
-            "tips": {
-                "one": "Scrivendo lento su parole che sono molto difficili ti aiuter\u00e0 con la consistenza",
-                "two": "Fai esercizi con i tuoi palmi ogni 15 minuti per evitare danno permanente ai tuoi palmi e spalle.",
-                "three": "Imparare la Home Row \u00e8 molto importante per allenare la tua memoria muscolare per scrivere senza guardare alla tastiera."
-            }
-        },
-        "achievements": {
-            "personal_best": "Record personale",
-            "matches_played": "Partite giocate",
-            "matches_won": "Partite vinte",
-            "playtime": "Tempo di gioco totale"
-        },
-        "login": {
-            "title": "Sign In",
-            "descr": "Seleziona una opzione dalle seguenti"
-        },
-        "home": {
-            "matches_new": "Partite pi\u00f9 nuove",
-            "matches_high": "Punteggio pi\u00f9 alto di oggi",
-            "tournaments": {
-                "title": "Competizioni",
-                "content1": "Organizziamo tornei per testare le skill di battitura ogni giorno. Con un torneo in pi\u00f9 tutte le Domeniche con una chance per vincere Discord Nitro",
-                "button": "Inizia a competere ora!"
-            },
-            "lobbies": "Lobby pubbliche",
-            "news": "Notizie pi\u00f9 recenti",
-            "slogan": "Porta la tua battitura al prossimo livello",
-            "hero": {
-                "content1": "Se hai domande o dubbi, non esitare a contattarci su Discord o direttamente da support@keymash.io",
-                "content2": "Oh s\u00ec, ho dimenticato di menzionare che... Siamo sempre alla ricerca di contributi della Community, inclusi invii di testi, traduzioni in lingue e altro! Clicca qui per saperne di pi\u00f9.",
-                "button": "Inizia a scrivere ora!"
-            },
-            "schools": {
-                "title": "Le scuole possono utilizzarlo?",
-                "button": "Inizia ad imparare!",
-                "content1": "Assolutamente. Il nostro centro di apprendimento si offre ad ogni dattilografo con o senza account per\u00f2 vi raccomandiamo fortemente di avere un account per salvare i progressi.",
-                "content2": "Questo servizio \u00e8 gratuito per chiunque in giro per il mondo e usiamo un semplice sistema di graduazione basato sui Stati Uniti."
-            },
-            "custom": {
-                "title": "Giocare con gli amici \u00e8 molto facile",
-                "content1": "Con un solo click puoi fare la tua stanza privata dove i tuoi amici e famiglia possono entrare. Offriamo piena personalizzazione fino a permetterti di guardare un altro giocatore scrivere!",
-                "button": "Crea una lobby!"
-            }
-        },
-        "leaderboards": {
-            "level": "Livello pi\u00f9 alto",
-            "time": "Pi\u00f9 giocate",
-            "speed": "Velocit\u00e0 pi\u00f9 alta",
-            "wins": "Pi\u00f9 vittorie"
-        },
-        "tournaments": {
-            "title": "Tornei",
-            "join": "Unisciti alla scala",
-            "play": "Gioca ora",
-            "starts": "Inizii",
-            "ends": "Finisce",
-            "finished": "Finito",
-            "info": "Informazione",
-            "rules": "Regole",
-            "players": "Giocatori",
-            "bracket": "Parentesi",
-            "qualified": "Qualificato",
-            "notqualified": "Non qualificato",
-            "qualification": "Qualificazioni",
-            "ladders": "Scale",
-            "none": "Nessun giocatore ha ancora partecipato, sii il primo!"
-        },
-        "queue": {
-            "howToPlayGuide": {
-                "1_title": "Come si gioca?",
-                "2_title": "Cos'\u00e8 una partita classificata?",
-                "4_title": "Posso uscire a met\u00e0 partita?"
-            },
-            "shortcut": "Lo sapevi che usando CTRL+ALT+I puoi arrivare qui pi\u00f9 velocemente?",
-            "quickplay": {
-                "title": "Free for all",
-                "description": "Entra in una partita da qualunque parte nel mondo",
-                "": "Partita veloce"
-            },
-            "ranked": {
-                "title": "Rankato",
-                "description": "Piazzati nel mondo della competizione",
-                "join": "Duello (1v1)"
-            },
-            "custom": {
-                "title": "Custom",
-                "description": "Crea una partita private con i tuoi amici",
-                "create": "Crea",
-                "browse": "Cerca",
-                "public": "Lobby pubbliche",
-                "none": "Non ci sono alcune lobby pubbliche",
-                "": "Custom"
-            },
-            "practice": "Stai facendo una partita di pratica. I tuoi score non si salveranno",
-            "cooldown": "Sei gi\u00e0 in una partita, aspetta {{count}} secondo e riprova.",
-            "cooldown_plural": "Sei gi\u00e0 in una partita, aspetta {{count}} secondi e riprova.",
-            "random": {
-                "title": "Random",
-                "description": "Facci decidere per te"
-            },
-            "quotes": {
-                "title": "Citazioni",
-                "description": "Libri, film e altro"
-            },
-            "dictionary": {
-                "title": "Dizionario",
-                "description": "Top parole Inglesi"
-            }
-        },
-        "notifications": {
-            "title": "Notifiche",
-            "none": "Non hai notifiche",
-            "markread": "Segna come letto",
-            "remove": "Rimuovi tutto",
-            "removeconfirm": "Sei sicuro che vuoi rimuovere le tue notifiche?"
-        },
-        "profile": {
-            "refresh": "La pagina si ricaricher\u00e0 dopo aver premuto salva cambiamenti.",
-            "profile": "Profilo",
-            "account": "Account",
-            "personal": "Personale",
-            "information": "Informazione",
-            "personalize": "Personalizza",
-            "joined": "Entrato",
-            "displayname": "Username",
-            "defaultworld": "Parola default",
-            "about": "Su di me",
-            "general": "Su di me",
-            "fullname": "Nome",
-            "level": "Livello",
-            "age": "Et\u00e0",
-            "years_old": "Anni",
-            "dob": "Data di nascita",
-            "showOnline": "Mostra stato Online",
-            "gender": "Genere",
-            "locale": "lingua",
-            "country": "Paese",
-            "simplifyHome": "Semplificare Casa?",
-            "keyboard": {
-                "title": "Tastiera",
-                "layout": "Layout della tastiera",
-                "brand": "Marca della tastiera",
-                "model": "Modello della tastiera"
-            },
-            "customize": "Personalizza",
-            "wpm": "PAM o CAM?",
-            "navbar": "Stile navbar",
-            "border": "Bordo foto",
-            "playercards": "Carta del player"
-        },
-        "settings": {
-            "refresh": "La pagina si ricaricher\u00e0 dopo aver premuto salva cambiamenti",
-            "profile": "Profilo",
-            "information": "Informazione",
-            "personalize": "Personalizza",
-            "displayname": "Username",
-            "defaultworld": "Parola default",
-            "about": "Su di me",
-            "fullname": "Nome",
-            "dob": "Data di nascita",
-            "showOnline": "Mostra stato Online",
-            "gender": "Genere",
-            "locale": "Lingua",
-            "country": "Paese",
-            "keyboard": {
-                "layout": "Layout della tastiera",
-                "brand": "Marca della tastiera",
-                "model": "Modello della tastiera"
-            },
-            "customize": "Personalizza",
-            "wpm": "PAM o CAM?",
-            "border": "Bordo foto",
-            "playercards": "Carta del giocatore"
-        }
+    "auth": {
+      "discord": "Accedi con Discord",
+      "facebook": "Accedi con Facebook",
+      "google": "Accedi con Google"
     }
+  },
+  "page": {
+    "banned": {
+      "title": "Sei stato bannato"
+    },
+    "guest": {
+      "title": "Il tuo account da ospite \u00e8 stato resettato"
+    },
+    "match": {
+      "completed": "Partita completata",
+      "mistakes": "Errori",
+      "no_mistakes": "Molto bene! Non hai fatto errori durante questa partita.",
+      "suspended": "Sei stato bannato dalla partita a causa di cheating.",
+      "time_out": "Hai finito il tempo. La prossima volta sarai pi\u00f9 fortunato!",
+      "reconnect_failed": "Non siamo riusciti a riconneterti alla partita.",
+      "many_mistakes": "Hai fatto troppi errori",
+      "statistics_unsaved": "Le tue statistiche non sono state salvate per questa partita",
+      "connect_lost": "Connessione persa, riprova",
+      "reconnect": "Riconnessione"
+    },
+    "error404": {
+      "title": "La pagina che stai cercando non esiste.",
+      "message": "Se sei stato portato a questa pagina per sbaglio contattaci"
+    },
+    "custom": {
+      "configuration": "Configurazione",
+      "title": "Titolo",
+      "privacy": "Privacy",
+      "mode": "Modalit\u00e0",
+      "guests": "Consentire i Guest?",
+      "text": "Testo",
+      "match": "Partita",
+      "custom": "Custom",
+      "status": {
+        "lobby": "Nella Lobby",
+        "game": "In gioco"
+      },
+      "unlisted": "Non in lista",
+      "public": "Pubblico",
+      "countdown": "Conto alla rovescia",
+      "startmatch": "Inizia partita",
+      "error": {
+        "team_size": "Le dimensione della squadra devono essere uguali per iniziare la partita.",
+        "unsaved": "Devi salvare i cambiamenti per partire."
+      },
+      "chat": "Sei pregato di non postare messaggi sensibili/o confidenziali"
+    },
+    "learn": {
+      "title": "Centro di apprendimento",
+      "welcome": "Benvenuto! Questo centro di apprendimento aiuter\u00e0 i dattilografi con nuovo materiale per diventari pi\u00f9 veloci in scrittura.",
+      "lesson": "Lezioni",
+      "section": "Sezione",
+      "reportcard": "Pagella",
+      "tips": {
+        "one": "Scrivendo lento su parole che sono molto difficili ti aiuter\u00e0 con la consistenza",
+        "two": "Fai esercizi con i tuoi palmi ogni 15 minuti per evitare danno permanente ai tuoi palmi e spalle.",
+        "three": "Imparare la Home Row \u00e8 molto importante per allenare la tua memoria muscolare per scrivere senza guardare alla tastiera."
+      }
+    },
+    "achievements": {
+      "personal_best": "Record personale",
+      "matches_played": "Partite giocate",
+      "matches_won": "Partite vinte",
+      "playtime": "Tempo di gioco totale"
+    },
+    "login": {
+      "title": "Sign In",
+      "descr": "Seleziona una opzione dalle seguenti"
+    },
+    "home": {
+      "matches_new": "Partite pi\u00f9 nuove",
+      "matches_high": "Punteggio pi\u00f9 alto di oggi",
+      "tournaments": {
+        "title": "Competizioni",
+        "content1": "Organizziamo tornei per testare le skill di battitura ogni giorno. Con un torneo in pi\u00f9 tutte le Domeniche con una chance per vincere Discord Nitro",
+        "button": "Inizia a competere ora!"
+      },
+      "lobbies": "Lobby pubbliche",
+      "news": "Notizie pi\u00f9 recenti",
+      "slogan": "Porta la tua battitura al prossimo livello",
+      "hero": {
+        "content1": "Se hai domande o dubbi, non esitare a contattarci su Discord o direttamente da support@keymash.io",
+        "content2": "Oh s\u00ec, ho dimenticato di menzionare che... Siamo sempre alla ricerca di contributi della Community, inclusi invii di testi, traduzioni in lingue e altro! Clicca qui per saperne di pi\u00f9.",
+        "button": "Inizia a scrivere ora!"
+      },
+      "schools": {
+        "title": "Le scuole possono utilizzarlo?",
+        "button": "Inizia ad imparare!",
+        "content1": "Assolutamente. Il nostro centro di apprendimento si offre ad ogni dattilografo con o senza account per\u00f2 vi raccomandiamo fortemente di avere un account per salvare i progressi.",
+        "content2": "Questo servizio \u00e8 gratuito per chiunque in giro per il mondo e usiamo un semplice sistema di graduazione basato sui Stati Uniti."
+      },
+      "custom": {
+        "title": "Giocare con gli amici \u00e8 molto facile",
+        "content1": "Con un solo click puoi fare la tua stanza privata dove i tuoi amici e famiglia possono entrare. Offriamo piena personalizzazione fino a permetterti di guardare un altro giocatore scrivere!",
+        "button": "Crea una lobby!"
+      }
+    },
+    "leaderboards": {
+      "level": "Livello pi\u00f9 alto",
+      "time": "Pi\u00f9 giocate",
+      "speed": "Velocit\u00e0 pi\u00f9 alta",
+      "wins": "Pi\u00f9 vittorie"
+    },
+    "tournaments": {
+      "title": "Tornei",
+      "join": "Unisciti alla scala",
+      "play": "Gioca ora",
+      "starts": "Inizii",
+      "ends": "Finisce",
+      "finished": "Finito",
+      "info": "Informazione",
+      "rules": "Regole",
+      "players": "Giocatori",
+      "bracket": "Parentesi",
+      "qualified": "Qualificato",
+      "notqualified": "Non qualificato",
+      "qualification": "Qualificazioni",
+      "ladders": "Scale",
+      "none": "Nessun giocatore ha ancora partecipato, sii il primo!"
+    },
+    "queue": {
+      "howToPlayGuide": {
+        "1_title": "Come si gioca?",
+        "2_title": "Cos'\u00e8 una partita classificata?",
+        "4_title": "Posso uscire a met\u00e0 partita?"
+      },
+      "shortcut": "Lo sapevi che usando CTRL+ALT+I puoi arrivare qui pi\u00f9 velocemente?",
+      "quickplay": {
+        "title": "Free for all",
+        "description": "Entra in una partita da qualunque parte nel mondo",
+        "": "Partita veloce"
+      },
+      "ranked": {
+        "title": "Rankato",
+        "description": "Piazzati nel mondo della competizione",
+        "join": "Duello (1v1)"
+      },
+      "custom": {
+        "title": "Custom",
+        "description": "Crea una partita private con i tuoi amici",
+        "create": "Crea",
+        "browse": "Cerca",
+        "public": "Lobby pubbliche",
+        "none": "Non ci sono alcune lobby pubbliche",
+        "": "Custom"
+      },
+      "practice": "Stai facendo una partita di pratica. I tuoi score non si salveranno",
+      "cooldown": "Sei gi\u00e0 in una partita, aspetta {{count}} secondo e riprova.",
+      "cooldown_plural": "Sei gi\u00e0 in una partita, aspetta {{count}} secondi e riprova.",
+      "random": {
+        "title": "Random",
+        "description": "Facci decidere per te"
+      },
+      "quotes": {
+        "title": "Citazioni",
+        "description": "Libri, film e altro"
+      },
+      "dictionary": {
+        "title": "Dizionario",
+        "description": "Top parole Inglesi"
+      }
+    },
+    "notifications": {
+      "title": "Notifiche",
+      "none": "Non hai notifiche",
+      "markread": "Segna come letto",
+      "remove": "Rimuovi tutto",
+      "removeconfirm": "Sei sicuro che vuoi rimuovere le tue notifiche?"
+    },
+    "profile": {
+      "refresh": "La pagina si ricaricher\u00e0 dopo aver premuto salva cambiamenti.",
+      "profile": "Profilo",
+      "account": "Account",
+      "personal": "Personale",
+      "information": "Informazione",
+      "personalize": "Personalizza",
+      "joined": "Entrato",
+      "displayname": "Username",
+      "defaultworld": "Parola default",
+      "about": "Su di me",
+      "general": "Su di me",
+      "fullname": "Nome",
+      "level": "Livello",
+      "age": "Et\u00e0",
+      "years_old": "Anni",
+      "dob": "Data di nascita",
+      "showOnline": "Mostra stato Online",
+      "gender": "Genere",
+      "locale": "lingua",
+      "country": "Paese",
+      "simplifyHome": "Semplificare Casa?",
+      "keyboard": {
+        "title": "Tastiera",
+        "layout": "Layout della tastiera",
+        "brand": "Marca della tastiera",
+        "model": "Modello della tastiera"
+      },
+      "customize": "Personalizza",
+      "wpm": "PAM o CAM?",
+      "navbar": "Stile navbar",
+      "border": "Bordo foto",
+      "playercards": "Carta del player"
+    },
+    "settings": {
+      "refresh": "La pagina si ricaricher\u00e0 dopo aver premuto salva cambiamenti",
+      "profile": "Profilo",
+      "information": "Informazione",
+      "personalize": "Personalizza",
+      "displayname": "Username",
+      "defaultworld": "Parola default",
+      "about": "Su di me",
+      "fullname": "Nome",
+      "dob": "Data di nascita",
+      "showOnline": "Mostra stato Online",
+      "gender": "Genere",
+      "locale": "Lingua",
+      "country": "Paese",
+      "keyboard": {
+        "layout": "Layout della tastiera",
+        "brand": "Marca della tastiera",
+        "model": "Modello della tastiera"
+      },
+      "customize": "Personalizza",
+      "wpm": "PAM o CAM?",
+      "border": "Bordo foto",
+      "playercards": "Carta del giocatore"
+    }
+  }
 }

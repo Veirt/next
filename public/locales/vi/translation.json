@@ -1,49 +1,46 @@
 {
-    "other": {
-        "account_banned": "t\u1ea3i kho\u1ea3n c\u1ee7a b\u1ea1n b\u1ecb c\u1ea5m, l\u00e0m \u01a1n ti\u1ebfp s\u00fac v\u00f3i support@keymash.io tr\u00ean e-mail",
-        "twitch_none": "Kh\u00f4ng c\u00f3 ai ph\u00e1t thanh truy\u1ec1n h\u00ecnh l\u00fac n\u00e0y :( l\u00e0m \u01a1n v\u1ec1 l\u1ea1i l\u00fac kh\u00e1c",
-        "grades": {
-            "passed": "th\u00f4ng qua",
-            "failed": "kh\u00f4ng qua"
-        },
-        "finished": "k\u1ebft th\u00fac r\u1ed3i",
-        "gameover": "tr\u00f2 ch\u01a1i k\u1ebft th\u00fac",
-        "lists": {
-            "locales": "ng\u00f4n ng\u1eef",
-            "types": "C\u00e1c lo\u1ea1i"
-        },
-        "debug": {
-            "title": "b\u00e1o c\u00e1o l\u1ed7i",
-            "message": "N\u1ebfu b\u1ea1n g\u1eb7p b\u1ea5t k\u1ef3 kh\u00f3 kh\u0103n n\u00e0o d\u01b0\u1edbi \u0111\u00e2y, vui l\u00f2ng nh\u1ea5p v\u00e0o buton v\u00e0 g\u1eedi email t\u1edbi support@keymash.io v\u1edbi t\u1ea5t c\u1ea3 th\u00f4ng tin v\u1ec1 l\u1ed7i n\u00e0y. B\u1ea1n cung c\u1ea5p c\u00e0ng nhi\u1ec1u th\u00ec ch\u00fang t\u00f4i c\u00e0ng d\u1ec5 d\u00e0ng s\u1eeda l\u1ed7i.",
-            "list": [
-                "Ng\u1eaft k\u1ebft n\u1ed1i \u0111\u1ed9t ng\u1ed9t gi\u1eefa tr\u1eadn \u0111\u1ea5u",
-                "WPM\/CPM c\u1ee7a b\u1ea1n kh\u00f4ng \u0111ang c\u1eadp nh\u1eadt v\u00f3i ng\u01b0\u1eddi kh\u00e1c \u0111\u01b0\u1ee3c",
-                "Thanh ti\u1ebfn tr\u00ecnh c\u1ee7a b\u1ea1n kh\u00f4ng c\u00f2n \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt cho nh\u1eefng ng\u01b0\u1eddi ch\u01a1i kh\u00e1c",
-                "Kh\u00f4ng th\u1ea5y k\u1ebft qu\u1ea3 tr\u1eadn \u0111\u1ea5u cu\u1ed1i c\u00f9ng m\u1eb7c d\u00f9 \u0111\u00e3 k\u1ebft th\u00fac tr\u1eadn \u0111\u1ea5u"
-            ]
-        },
-        "save": "Ti\u1ebft ki\u1ec7m!"
+  "other": {
+    "account_banned": "t\u1ea3i kho\u1ea3n c\u1ee7a b\u1ea1n b\u1ecb c\u1ea5m, l\u00e0m \u01a1n ti\u1ebfp s\u00fac v\u00f3i support@keymash.io tr\u00ean e-mail",
+    "twitch_none": "Kh\u00f4ng c\u00f3 ai ph\u00e1t thanh truy\u1ec1n h\u00ecnh l\u00fac n\u00e0y :( l\u00e0m \u01a1n v\u1ec1 l\u1ea1i l\u00fac kh\u00e1c",
+    "grades": {
+      "passed": "th\u00f4ng qua",
+      "failed": "kh\u00f4ng qua"
     },
-    "button": {
-        "save": "Ti\u1ebft ki\u1ec7m!",
-        "retry": "Th\u1eed l\u00e0m l\u1ea1i",
-        "back": "Tr\u1edf l\u1ea1i",
-        "next": "Ke ti\u1ebfp",
-        "close": "\u0110\u00f3ng",
-        "leave": "R\u1eddi kh\u1ecfi",
-        "newgame": "Tr\u00f2 ch\u01a1i m\u1edbi"
+    "finished": "k\u1ebft th\u00fac r\u1ed3i",
+    "gameover": "tr\u00f2 ch\u01a1i k\u1ebft th\u00fac",
+    "lists": {
+      "locales": "ng\u00f4n ng\u1eef",
+      "types": "C\u00e1c lo\u1ea1i"
     },
-    "form": {
-        "message": [
-            "Nh\u1eadp tin nh\u1eafn...",
-            ""
-        ]
+    "debug": {
+      "title": "b\u00e1o c\u00e1o l\u1ed7i",
+      "message": "N\u1ebfu b\u1ea1n g\u1eb7p b\u1ea5t k\u1ef3 kh\u00f3 kh\u0103n n\u00e0o d\u01b0\u1edbi \u0111\u00e2y, vui l\u00f2ng nh\u1ea5p v\u00e0o buton v\u00e0 g\u1eedi email t\u1edbi support@keymash.io v\u1edbi t\u1ea5t c\u1ea3 th\u00f4ng tin v\u1ec1 l\u1ed7i n\u00e0y. B\u1ea1n cung c\u1ea5p c\u00e0ng nhi\u1ec1u th\u00ec ch\u00fang t\u00f4i c\u00e0ng d\u1ec5 d\u00e0ng s\u1eeda l\u1ed7i.",
+      "list": [
+        "Ng\u1eaft k\u1ebft n\u1ed1i \u0111\u1ed9t ng\u1ed9t gi\u1eefa tr\u1eadn \u0111\u1ea5u",
+        "WPM/CPM c\u1ee7a b\u1ea1n kh\u00f4ng \u0111ang c\u1eadp nh\u1eadt v\u00f3i ng\u01b0\u1eddi kh\u00e1c \u0111\u01b0\u1ee3c",
+        "Thanh ti\u1ebfn tr\u00ecnh c\u1ee7a b\u1ea1n kh\u00f4ng c\u00f2n \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt cho nh\u1eefng ng\u01b0\u1eddi ch\u01a1i kh\u00e1c",
+        "Kh\u00f4ng th\u1ea5y k\u1ebft qu\u1ea3 tr\u1eadn \u0111\u1ea5u cu\u1ed1i c\u00f9ng m\u1eb7c d\u00f9 \u0111\u00e3 k\u1ebft th\u00fac tr\u1eadn \u0111\u1ea5u"
+      ]
     },
-    "statistics": {
-        "cpm_abbreviation": "CPM",
-        "wpm": "T\u1eeb m\u1ed7i ph\u00fat",
-        "cpm": "K\u00fd t\u1ef1 m\u1ed7i ph\u00fat",
-        "won": "Th\u1eafng l\u1ee3i",
-        "lost": "Thua"
-    }
+    "save": "Ti\u1ebft ki\u1ec7m!"
+  },
+  "button": {
+    "save": "Ti\u1ebft ki\u1ec7m!",
+    "retry": "Th\u1eed l\u00e0m l\u1ea1i",
+    "back": "Tr\u1edf l\u1ea1i",
+    "next": "Ke ti\u1ebfp",
+    "close": "\u0110\u00f3ng",
+    "leave": "R\u1eddi kh\u1ecfi",
+    "newgame": "Tr\u00f2 ch\u01a1i m\u1edbi"
+  },
+  "form": {
+    "message": ["Nh\u1eadp tin nh\u1eafn...", ""]
+  },
+  "statistics": {
+    "cpm_abbreviation": "CPM",
+    "wpm": "T\u1eeb m\u1ed7i ph\u00fat",
+    "cpm": "K\u00fd t\u1ef1 m\u1ed7i ph\u00fat",
+    "won": "Th\u1eafng l\u1ee3i",
+    "lost": "Thua"
+  }
 }
