@@ -1,11 +1,10 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+/*
 interface IProps {
   toggle: () => void;
 }
-
-function VideoFullscreen(props: IProps) {
+*/
+function VideoFullscreen() {
+  /*
   const { toggle } = props;
   return (
     <div className={'fixed inset-0 h-screen w-full bg-black bg-opacity-50'} style={{ zIndex: 100 }}>
@@ -21,7 +20,8 @@ function VideoFullscreen(props: IProps) {
         </div>
       </div>
     </div>
-  );
+  );*/
+  return <></>
 }
 
 export default VideoFullscreen;
