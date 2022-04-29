@@ -1,11 +1,12 @@
-/*
+
 interface IProps {
   toggle: () => void;
 }
-*/
-function VideoFullscreen() {
-  /*
+
+function VideoFullscreen(props: IProps) {
   const { toggle } = props;
+  console.log(toggle);
+  /*
   return (
     <div className={'fixed inset-0 h-screen w-full bg-black bg-opacity-50'} style={{ zIndex: 100 }}>
       <div className="flex h-screen">
