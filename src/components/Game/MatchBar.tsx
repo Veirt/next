@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleLeft, faStopwatch, faWifi } from '@fortawesome/free-solid-svg-icons';
-import GameTimer from './countdown/GameTimer';
+import { faAngleDoubleLeft, faWifi } from '@fortawesome/free-solid-svg-icons';
 import { GamemodeData } from '../../types.client.mongo';
 import Link from '../Uncategorized/Link';
 import useConfig from '../../hooks/useConfig';
@@ -10,7 +9,6 @@ interface IProps {
   redirectUrl: string;
   modeData: GamemodeData;
   countdown: number;
-  timer: number;
   disabled: boolean;
   latency: number;
   className?: string;
@@ -22,7 +20,7 @@ interface IProps {
 }
 
 const MatchBar: FC<IProps> = (props) => {
-  const { redirectUrl, className, timer, countdown, disabled, latency, modeData, isSpectate, isCapslock, embedClose, embedOwner, embed } = props;
+  const { redirectUrl, className, latency, isSpectate, isCapslock, embedClose, embedOwner, embed } = props;
 
   const { matchContainerTransparent } = useConfig();
 
@@ -51,29 +49,12 @@ const MatchBar: FC<IProps> = (props) => {
             </div>
           )}
           <div className="w-auto my-auto font-semibold text-white text-right pt-px">
-            {modeData && modeData.modeConfig && modeData.modeConfig.ROUNDS.LIMIT === 0 && countdown < 0 && timer > 0 && !disabled && (
-              <span className="px-3 w-auto mr-3">
-                <FontAwesomeIcon icon={faStopwatch} className="text-red-400 mr-2" />
-                <GameTimer timer={timer} />
-              </span>
-            )}
             <span className="pl-3 w-auto">
               <FontAwesomeIcon icon={faWifi} className="text-blue-400 mr-1" /> {latency}ms
             </span>
           </div>
         </div>
-      ) : (
-        countdown < 0 &&
-        timer > 0 &&
-        !disabled && (
-          <div>
-            <div className="bg-black bg-opacity-25 text-white w-64 text-center mx-auto mb-4 p-3 rounded text-4xl font-semibold tracking-wide rounded">
-              <FontAwesomeIcon icon={faStopwatch} className="text-red-400 mr-2" />
-              <GameTimer timer={timer} />
-            </div>
-          </div>
-        )
-      )}
+      ) : <></>}
     </>
   );
 };

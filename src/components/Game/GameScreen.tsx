@@ -33,9 +33,6 @@ const GameScreen = (props: IProps) => {
   const axiosCancelSource = useRef<CancelTokenSource | null>(null);
   const spectator = useRef<boolean>(false);
 
-  // Intervals
-  const gameTimerInterval = useRef<NodeJS.Timer | null>(null);
-
   // Contexts
   const { t } = useTranslation();
   const { matchFinishBeep, upscaleMatchContainer, focusMode, shortcutGameRedo } = useConfig();
@@ -48,7 +45,6 @@ const GameScreen = (props: IProps) => {
   const [gameToast, setGameToast] = useState<string>('');
   const [gameNotice, setGameNotice] = useState<string>('');
   const [gameCountdown, setGameCountdown] = useState<number>(-1);
-  const [gameTimer, setGameTimer] = useState<number>(-1);
   const [gameDisabled, setGameDisabled] = useState<boolean>(true);
   const [gamePlayers, setGamePlayers] = useState<number>(0);
   const [participantsData, setParticipantsData] = useState<SocketMatchPlayerData[]>([]);
@@ -73,11 +69,13 @@ const GameScreen = (props: IProps) => {
   // Effects
   useEffect(() => {
     axiosCancelSource.current = axios.CancelToken.source();
+    DebugService.clear();
     if (window) {
       DebugService.add('[Match] Server has been called to be initialized');
       setSocket(
         new Socket(`${Config.gameServer.URL}${Config.gameServer.Port !== null ? `:${Config.gameServer.Port}` : ''}/game`, {
           transports: ['websocket', 'polling'],
+          multiplex: false,
         }),
       );
 
@@ -86,10 +84,6 @@ const GameScreen = (props: IProps) => {
     }
     return () => {
       document.removeEventListener('keydown', handleKeydown);
-      if (gameTimerInterval.current) {
-        clearInterval(gameTimerInterval.current);
-        gameTimerInterval.current = null;
-      }
       axiosCancelSource.current?.cancel();
     };
     // eslint-disable-next-line
@@ -165,34 +159,9 @@ const GameScreen = (props: IProps) => {
       DebugService.add('[Match] Match has been successfully ended.');
       playSound();
 
-      if (gameTimer && gameTimerInterval.current) {
-        clearInterval(gameTimerInterval.current);
-        gameTimerInterval.current = null;
-      }
-
       setGameDisabled(true);
       setGameCountdown(-1);
       setEndMatchData({ ...data });
-    });
-
-    // Timers
-    socket.on('sendTimer', (data: { timer: number }) => {
-      DebugService.add('[Match] Timer has been sent and initialized');
-      if (!gameTimerInterval.current) {
-        let newTimer = data.timer;
-        gameTimerInterval.current = setInterval(() => {
-          if (newTimer > 0) {
-            setGameTimer(newTimer);
-            newTimer--;
-          } else {
-            setGameTimer(-1);
-            if (gameTimerInterval.current) {
-              clearInterval(gameTimerInterval.current);
-              gameTimerInterval.current = null;
-            }
-          }
-        }, 1000);
-      }
     });
 
     socket.on('sendCountdown', (data: { countdown: number }) => {
@@ -383,7 +352,6 @@ const GameScreen = (props: IProps) => {
                 sendKeystroke={sendKeystroke}
                 playerData={sessionData}
                 countdown={gameCountdown}
-                timer={gameTimer}
                 disabled={gameDisabled}
                 latency={latency}
                 quoteString={quoteString}
@@ -407,7 +375,6 @@ const GameScreen = (props: IProps) => {
               totalPlayers={gamePlayers}
               firstWord={firstWord}
               countdown={gameCountdown}
-              timer={gameTimer}
               quoteString={quoteString}
               leaveUrl={leaveUrl}
               matchData={matchData}

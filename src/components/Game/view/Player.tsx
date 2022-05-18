@@ -18,7 +18,6 @@ interface IProps {
   endMatchData: SocketGameEndData | null;
   playerData: AuthenticationSessionData | null;
   countdown: number;
-  timer: number;
   disabled: boolean;
   latency: number;
   restartUrl: string;
@@ -38,7 +37,7 @@ interface IProps {
 
 const Player: FC<IProps> = (props) => {
   const [isCapslock, setIsCapslock] = useState(false);
-  const { embed, embedClose, embedOwner, countdown, timer, disabled, latency, totalPlayers, sendKeystroke, firstWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
+  const { embed, embedClose, embedOwner, countdown, disabled, latency, totalPlayers, sendKeystroke, firstWord, endMatch, endMatchData, playerData, quoteString, noticeString, roundsTotal, matchData, participantsData, restartUrl, leaveUrl } = props;
   const handleCapslock = (e: KeyboardEvent) => setIsCapslock(e.getModifierState('CapsLock'));
 
   const { gameplayParticipantStyle, focusMode } = useConfig();
@@ -55,7 +54,7 @@ const Player: FC<IProps> = (props) => {
             <MatchEnd playersLength={participantsData.length} data={endMatchData} matchData={matchData} leaveUrl={matchData.referralId ? restartUrl : leaveUrl} restartUrl={restartUrl} embed={embed} embedClose={embedClose} embedOwner={embedOwner} />
           ) : (
             <div className={`relative`}>
-              <MatchMode totalPlayers={totalPlayers} matchData={matchData} roundsTotal={roundsTotal} timer={timer} countdown={countdown} />
+              <MatchMode totalPlayers={totalPlayers} matchData={matchData} roundsTotal={roundsTotal} countdown={countdown} />
               <MatchBar
                 className="rounded-t"
                 embed={embed}
@@ -64,7 +63,6 @@ const Player: FC<IProps> = (props) => {
                 isCapslock={isCapslock}
                 redirectUrl={matchData && matchData.referralId ? restartUrl : leaveUrl}
                 modeData={matchData && matchData.modeData}
-                timer={timer}
                 countdown={countdown}
                 disabled={disabled}
                 latency={latency}

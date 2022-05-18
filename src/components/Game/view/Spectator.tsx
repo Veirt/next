@@ -11,7 +11,6 @@ import Modal from '../../Uncategorized/Modal';
 interface IProps {
   matchData: SocketMatchData | null;
   participantsData: SocketMatchPlayerData[];
-  timer: number;
   countdown: number;
   restartUrl: string;
   leaveUrl: string;
@@ -32,7 +31,7 @@ const Spectator: FC<IProps> = (props) => {
 
   const [charHeight, setCharHeight] = useState('0px');
   const [showHelp, setShowHelp] = useState(false);
-  const { timer, countdown, embedClose, embedOwner, firstWord, totalPlayers, quoteString, roundsTotal, matchData, participantsData } = props;
+  const { countdown, embedClose, embedOwner, firstWord, totalPlayers, quoteString, roundsTotal, matchData, participantsData } = props;
   const { t } = useTranslation();
 
   const newQuote: string = quoteString && quoteString !== 'KEYMASH_GAMEMODE_ROUND_END' ? quoteString : '';
@@ -129,7 +128,7 @@ const Spectator: FC<IProps> = (props) => {
           </button>
         </div>
         <div className="container-smaller container-margin">
-          <MatchMode totalPlayers={totalPlayers} matchData={matchData} roundsTotal={roundsTotal} timer={timer} countdown={countdown} isSpectate={true} />
+          <MatchMode totalPlayers={totalPlayers} matchData={matchData} roundsTotal={roundsTotal} countdown={countdown} isSpectate={true} />
           {quoteString && quoteString !== 'KEYMASH_GAMEMODE_ROUND_END' && (
             <>
               <div className={'break-words mb-6 match--container text-gray-200 text-xl rounded-t-xl'}>

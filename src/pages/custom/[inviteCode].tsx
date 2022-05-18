@@ -238,7 +238,7 @@ const Custom = (props: IProps) => {
                   </span>
                 </div>
                 <div className="flex flex-wrap justify-end">
-                  <Settings modeId={modeId} privacy={privacy} allowGuests={allowGuests} textId={textId} countdown={countdown} textCustom={textCustom} gameModes={gameModes} owner={sessionData?.playerId === owner} handleUpdateSettings={handleUpdateSettings} />
+                  <Settings modeId={modeId} privacy={privacy} allowGuests={allowGuests} textId={textId} countdown={countdown} textCustom={textCustom} gameModes={gameModes} owner={(Number(sessionData?.staff || 0) >= 1 || sessionData?.playerId === owner)} handleUpdateSettings={handleUpdateSettings} />
                 </div>
               </div>
               {/* Content */}
@@ -269,7 +269,7 @@ const Custom = (props: IProps) => {
 
                 <div className="col-span-full lg:col-span-3">
                   {/* Start */}
-                  {sessionData?.playerId === owner && (
+                  {(Number(sessionData?.staff || 0) >= 1 || sessionData?.playerId === owner) && (
                     <button
                       type="button"
                       style={{ display: 'block' }}
@@ -291,7 +291,7 @@ const Custom = (props: IProps) => {
                       teamStrict={useGameMode.modeConfig.TEAMS.STRICT}
                       data={participantsData}
                       dataLength={getTeamLength(1)}
-                      draggable={owner === sessionData?.playerId}
+                      draggable={(Number(sessionData?.staff || 0) >= 1 || sessionData?.playerId === owner)}
                       lobbyOwner={owner}
                       handlePlayerBan={handlePlayerBan}
                       handleGiveOwner={handleGiveOwner}
@@ -314,7 +314,7 @@ const Custom = (props: IProps) => {
                     dataLength={getTeamLength(0)}
                     maxTeams={useGameMode?.modeConfig.TEAMS.MAX}
                     lobbyOwner={owner}
-                    draggable={owner === sessionData?.playerId}
+                    draggable={(Number(sessionData?.staff || 0) >= 1 || sessionData?.playerId === owner)}
                     handlePlayerBan={handlePlayerBan}
                     handleGiveOwner={handleGiveOwner}
                     isDragging={isDragging !== null && isDragging !== 0}
@@ -331,7 +331,7 @@ const Custom = (props: IProps) => {
             </div>
           </>
         ) : showMatch ? (
-          <Match embed embedOwner={sessionData?.playerId === owner} embedClose={() => socket?.emit('forceEndMatch', {})} />
+          <Match embed embedOwner={(Number(sessionData?.staff || 0) >= 1 || sessionData?.playerId === owner)} embedClose={() => socket?.emit('forceEndMatch', {})} />
         ) : (
           <LoadingScreen />
         )}
