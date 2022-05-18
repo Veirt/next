@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown, faEllipsisV, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { SocketCustomPlayerData } from '../../types.client.socket';
 import PlayerCard from '../Player/PlayerCard';
+import { usePlayerContext } from '../../contexts/Player.context';
 
 interface IProps {
   teamId: number;
@@ -27,6 +28,7 @@ interface IProps {
 const TeamData = (props: IProps) => {
   const { handlePlayerBan, handleGiveOwner, lobbyOwner, teamId, teamSize, teamStrict, data, dataLength, onDrop, draggable, maxTeams, isDragging, onDragStart, onDragEnd } = props;
   const { t } = useTranslation();
+  const { sessionData } = usePlayerContext();
 
   const playerCount = (data: SocketCustomPlayerData[], teamId: number) => {
     let totalPlayers = 0;
@@ -45,7 +47,7 @@ const TeamData = (props: IProps) => {
               userData.teamId === teamId && (
                 <div
                   key={userData.playerId}
-                  className="flex z-10 relative"
+                  className="flex z-10 relative rounded-xl overflow-hidden"
                   draggable={draggable ? 'true' : 'false'}
                   onDragStart={(e) => {
                     onDragStart();
@@ -61,21 +63,19 @@ const TeamData = (props: IProps) => {
                     <></>
                   )}
                   <div className={'w-full'}>
-                    <PlayerCard className={`px-4 py-2 ${draggable ? `` : userData.playerId === lobbyOwner ? 'rounded-l-xl' : 'rounded-xl'}`} {...userData}>
+                    <PlayerCard className={`px-4 py-2`} {...userData}>
                       {userData.state ? <div className="my-auto text-sm text-orange-400">{t('page.custom.status.game')}</div> : <div className="my-auto text-xs text-gray-300">{t('page.custom.status.lobby')}</div>}
                     </PlayerCard>
                   </div>
-                  {draggable && userData.playerId !== lobbyOwner ? (
+                  {(draggable && (!userData.staff && userData.playerId !== sessionData?.playerId)) ? (
                     <div className={'rounded-r-lg w-10 border-b border-gray-800'}>
                       {!userData.staff ? (
                         <button onClick={() => handlePlayerBan(userData.playerId)} style={{ height: '50%' }} className={'rounded-tr-lg block w-full bg-gray-700 text-red-400 hover:bg-red-400 hover:text-white transition ease-in-out duration-300 focus:outline-none'}>
                           <FontAwesomeIcon icon={faTimes} />
                         </button>
-                      ) : (
-                        <></>
-                      )}
-                      <button onClick={() => handleGiveOwner(userData.playerId)} style={{ height: '50%' }} className={'rounded-br-lg block w-full bg-gray-700 text-yellow-400 hover:bg-yellow-400 hover:text-white transition ease-in-out duration-300 focus:outline-none'}>
-                        <FontAwesomeIcon icon={faCrown} />
+                      ) : <></>}
+                      <button onClick={() => handleGiveOwner(userData.playerId)} style={{ height: '50%' }} className={`${userData.playerId === lobbyOwner ? 'pointer-events-none' : ''} rounded-br-lg block w-full bg-gray-700 text-yellow-400 hover:bg-yellow-400 hover:text-white transition ease-in-out duration-300 focus:outline-none`}>
+                        <FontAwesomeIcon icon={faCrown} className={(userData.playerId === lobbyOwner) ? 'text-gray-500': ''} />
                       </button>
                     </div>
                   ) : (
