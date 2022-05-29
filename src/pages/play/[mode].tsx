@@ -104,7 +104,7 @@ export async function getServerSideProps({ req, params }: GetServerSidePropsCont
   const getLocale = ConfigService.getServerSideOption('locale', req.headers.cookie || '');
 
   const getTournaments = async () => {
-    const response = await axios.get(`${Config.apiUrl}/tournaments/list?locale=${getLocale}&limit=3`).catch((e) => console.log(e));
+    const response = await axios.get(`${Config.apiUrl}/tournaments/list?locale=${getLocale}&limit=2`).catch((e) => console.log(e));
     if (response && response.data) return response.data?.data || [];
     else return [];
   };
