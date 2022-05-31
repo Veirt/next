@@ -5,6 +5,7 @@ import { AuthenticationSessionData, PlayerNotificationData } from '../types.clie
 import { toast } from 'react-toastify';
 import Socket from '../utils/socket/Socket';
 import usePlayerToken from '../hooks/usePlayerToken';
+import Authentication from '../utils/Authentication';
 
 interface ContextType {
   sessionData: AuthenticationSessionData | null;
@@ -75,6 +76,8 @@ export const PlayerProvider: FC = ({ children }) => {
     if (getData.patreon || getData.staff) setIsPatreon(true);
 
     if (getData.authName && getData.authName === 'Guest') setIsGuest(true);
+
+    if (data.token) Authentication.updateAccessToken(data.token);
 
     if (data.versionControl !== Config.versionControl) {
       toast.error(`Keymash version mismatch detected, please clear your cache!`);

@@ -1,8 +1,7 @@
-import Cookies from 'universal-cookie';
+import Authentication from '../utils/Authentication';
 
 function usePlayerToken() {
-  const cookies = new Cookies();
-  return { playerToken: cookies.get('playerToken') };
+  return { playerToken: Authentication.getAccessToken() }
 }
 
 export default usePlayerToken;

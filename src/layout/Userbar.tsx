@@ -9,6 +9,7 @@ import { usePlayerContext } from '../contexts/Player.context';
 import PlayerAvatar from '../components/Player/PlayerAvatar';
 import SettingsFrame from '../components/Settings/SettingsFrame';
 import Link from '../components/Uncategorized/Link';
+import Authentication from '../utils/Authentication';
 
 interface IProps {
   isSidebar?: boolean;
@@ -44,7 +45,10 @@ const Userbar = (props: IProps) => {
   const logoutNow = () => {
     axios
       .get(`${Config.oauthUrl}/logout`, { withCredentials: true })
-      .then(() => window.location.reload())
+      .then(() => {
+        Authentication.updateAccessToken('');
+        window.location.reload();
+      })
       .catch(() => window.location.reload());
   };
 

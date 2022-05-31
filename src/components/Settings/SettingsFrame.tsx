@@ -13,6 +13,7 @@ import ItemBorder from '../Inventory/ItemBorder';
 import ItemBanner from '../Inventory/ItemBanner';
 import { usePlayerContext } from '../../contexts/Player.context';
 import { useGlobalContext } from '../../contexts/Global.context';
+import Authentication from '../../utils/Authentication';
 
 interface IProps {
   isVisible?: boolean;
@@ -114,6 +115,7 @@ const SettingsFrame = (props: IProps) => {
       .then((response) => {
         if (!response.data.error) {
           setSessionData(null);
+          Authentication.updateAccessToken('');
           return (window.location.href = '/');
         } else return toast.error(response.data.error);
       })

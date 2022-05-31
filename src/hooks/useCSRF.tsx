@@ -1,8 +1,7 @@
-import Cookies from 'universal-cookie';
+import Authentication from "../utils/Authentication";
 
 function useCSRF() {
-  const cookies = new Cookies();
-  return { _csrf: cookies.get('_csrf') };
+  return { _csrf: Authentication.getCSRFToken() }
 }
 
 export default useCSRF;
