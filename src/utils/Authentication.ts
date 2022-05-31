@@ -16,29 +16,29 @@ const getAccessToken = () => {
 }
 
 const updateAccessToken = (token: string) => {
-    if (isServerRequest) return '';
-
-    console.log('Called updateAccessToken: ', token.substring(-5, 5));
-    axios.defaults.headers.common['X-Authentication-Token'] = token;
-    localStorage?.setItem('playerToken', token);
+    if (!isServerRequest) {
+        console.log('Called updateAccessToken: ', token.substring(-5, 5));
+        axios.defaults.headers.common['X-Authentication-Token'] = token;
+        localStorage?.setItem('playerToken', token);
+    }
 }
 
 const getCSRFToken = () => {
-    if (isServerRequest) return '';
-
-    const accessToken = localStorage?.getItem('_csrf') || cookies.get('_csrf');
-    if (accessToken) 
-        return accessToken;
-    
-    return null;
+    if (!isServerRequest) {
+        const accessToken = localStorage?.getItem('_csrf') || cookies.get('_csrf');
+        if (accessToken) 
+            return accessToken;
+        
+        return null;
+    } else return '';
 }
 
 const updateCSRFToken = (token: string) => {
-    if (isServerRequest) return '';
-    
-    console.log('Called updateCSRFToken: ', token.substring(-5, 5));
-    axios.defaults.headers.common['X-CSRF-Token'] = token;
-    localStorage.setItem('_csrf', token);
+    if (!isServerRequest) {
+        console.log('Called updateCSRFToken: ', token.substring(-5, 5));
+        axios.defaults.headers.common['X-CSRF-Token'] = token;
+        localStorage.setItem('_csrf', token);
+    }
 }
 
 // eslint-disable-next-line
