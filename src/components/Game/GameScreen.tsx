@@ -5,7 +5,6 @@ import { GlobalHotKeys } from 'react-hotkeys';
 import Socket from '../../utils/socket/Socket';
 import MatchCountdown from './countdown/MatchCountdown';
 import Config from '../../Config';
-import CookieService from '../../services/CookieService';
 import MatchToast from './MatchToast';
 import Player from './view/Player';
 import Spectator from './view/Spectator';
