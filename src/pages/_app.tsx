@@ -15,6 +15,8 @@ import React from 'react';
 import NextNProgress from 'nextjs-progressbar';
 import { GlobalProvider } from '../contexts/Global.context';
 
+import '../utils/axiosConfig';
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // -mt-2 pl-12 translate-y-64 bg-red-400 bg-yellow-400 font-sans font-mono bg-red-600 bg-blue-600 bg-opacity-20 bg-opacity-10 border-red-400 border-blue-400 bg-gray-800 bg-opacity-20 border-orange-400
   // eslint-disable-next-line react/jsx-props-no-spreading

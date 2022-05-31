@@ -10,6 +10,7 @@ import { usePlayerContext } from '../../../contexts/Player.context';
 import useCSRF from '../../../hooks/useCSRF';
 import { Meta } from '../../../layout/Meta';
 import Base from '../../../templates/Base';
+import Authentication from '../../../utils/Authentication';
 
 interface IProps {
   code?: string;
@@ -44,6 +45,7 @@ const Activate = (props: IProps) => {
       .then((response) => {
         if (!response.data.error) {
           getSessionData();
+          Authentication.updateAccessToken(response.data?.token || '');
           return setRedirect('/');
         } else return toast.error(response.data.error);
       })
