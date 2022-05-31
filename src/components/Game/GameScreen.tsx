@@ -17,6 +17,7 @@ import Base from '../../templates/Base';
 import { Meta } from '../../layout/Meta';
 import useConfig from '../../hooks/useConfig';
 import { usePlayerContext } from '../../contexts/Player.context';
+import Authentication from '../../utils/Authentication';
 
 interface IProps {
   textType?: string;
@@ -111,7 +112,7 @@ const GameScreen = (props: IProps) => {
     if (!loaded) {
       DebugService.add('[Match] Match not joined, joining now...');
       socket.emit('joinMatch', {
-        playerToken: CookieService.get('playerToken'),
+        playerToken: Authentication.getAccessToken(),
       });
     }
 
