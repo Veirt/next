@@ -2,7 +2,7 @@ const Social = () => {
   const socialItems = [
     {
       image: '/assets/buttons/discord.svg',
-      href: 'https://discord.gg/df4paUq',
+      href: 'https://discord.gg/Jrmq8agHdB',
     },
     {
       image: '/assets/buttons/patreon.svg',

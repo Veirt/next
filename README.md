@@ -22,5 +22,5 @@ This is the **official** NextJS Client for Keymash - here you can find or report
 
 **Make sure to follow us on all of our social media!**
 
-- [Discord](https://discord.gg/df4paUq)
+- [Discord](https://discord.gg/Jrmq8agHdB)
 - [Twitter](https://twitter.com/KeymashGame)
