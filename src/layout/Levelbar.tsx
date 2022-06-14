@@ -58,7 +58,7 @@ const Levelbar = () => {
       name: 'Discord',
       icon: faDiscord,
       color: 'hover:text-orange-700',
-      link: 'https://discord.gg/df4paUq',
+      link: 'https://discord.gg/Jrmq8agHdB',
     },
     {
       name: 'Twitter',
