@@ -174,7 +174,7 @@ const Shop = () => {
               <AdvertisementDisplay className="mt-4">
                 <AdvertisementUnit type={'leaderboard-top'} />
               </AdvertisementDisplay>
-              <div className={'content-box mt-4'}>
+              <div className={'content-box mt-4 mb-6'}>
                 <h2>Newest Additions</h2>
                 <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6'}>
                   {tabs.map(
