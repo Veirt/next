@@ -116,7 +116,7 @@ const Shop = () => {
     return () => axiosCancelSource.current?.cancel();
   }, [sessionData?.authName]);
 
-  const featuredItems = ['stars_red', 'stars_purple', 'stars_orange', 'stars_green', 'stars_blue', 'lines_purple', 'lines_red', 'lines_orange', 'lines_green', 'lines_blue', 'flowers_purple', 'flowers_orange', 'flowers_green', 'flowers_blue', 'diamonds'];
+  const featuredItems = ['gata_blue', 'gata_green', 'gata_orange', 'gata_yellow', 'gata_purple', 'gata_red', 'banner_gata_blue', 'banner_gata_green', 'banner_gata_orange', 'banner_gata_yellow', 'banner_gata_purple', 'banner_gata_red', 'frktl_blue', 'frktl_green', 'frktl_orange', 'frktl_yellow', 'frktl_purple', 'frktl_red', 'frktl_pink', 'frktl_cyan', 'frktl_white', 'banner_frktl_blue', 'banner_frktl_green', 'banner_frktl_orange', 'banner_frktl_yellow', 'banner_frktl_purple', 'banner_frktl_red', 'banner_frktl_pink', 'banner_frktl_cyan', 'banner_frktl_white', 'notebook_blue', 'notebook_orange', 'banner_notebook_blue', 'banner_notebook_orange', 'pride', 'space_milky_way'];
 
   return (
     <>
