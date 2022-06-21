@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'next-i18next';
 import axios, { CancelTokenSource } from 'axios';
-import Config from '../Config';
 import { faBell, faCog, faSignInAlt, faSignOutAlt, faSpinner, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Notification from '../components/Uncategorized/Notification';
@@ -9,7 +8,6 @@ import { usePlayerContext } from '../contexts/Player.context';
 import PlayerAvatar from '../components/Player/PlayerAvatar';
 import SettingsFrame from '../components/Settings/SettingsFrame';
 import Link from '../components/Uncategorized/Link';
-import Authentication from '../utils/Authentication';
 
 interface IProps {
   isSidebar?: boolean;
@@ -18,7 +16,7 @@ interface IProps {
 const Userbar = (props: IProps) => {
   const axiosCancelSource = useRef<CancelTokenSource | null>();
 
-  const { sessionData, isGuest, notificationData, notificationCount, deleteNotifications, readNotifications } = usePlayerContext();
+  const { sessionData, isGuest, notificationData, notificationCount, deleteNotifications, readNotifications, resetSessionData } = usePlayerContext();
   const { t } = useTranslation();
 
   const [toggleNotifications, setToggleNotifications] = useState(false);
@@ -42,16 +40,6 @@ const Userbar = (props: IProps) => {
     };
   }, []);
 
-  const logoutNow = () => {
-    axios
-      .get(`${Config.oauthUrl}/logout`, { withCredentials: true })
-      .then(() => {
-        Authentication.updateAccessToken('');
-        window.location.reload();
-      })
-      .catch(() => window.location.reload());
-  };
-
   const notificationsEffect = useCallback(() => {
     if (!toggleNotifications) readNotifications();
   }, [toggleNotifications]);
@@ -70,7 +58,7 @@ const Userbar = (props: IProps) => {
       icon: { name: faSignOutAlt },
       target: '_self',
       route: ``,
-      onClick: () => logoutNow(),
+      onClick: () => resetSessionData(),
       isAuth: true,
     },
     {

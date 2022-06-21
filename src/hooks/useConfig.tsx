@@ -26,6 +26,7 @@ export interface ConfigData {
   performanceMode: '0' | '1';
   colorBlindMode: '0' | '1';
   adsGameplay: '0' | '1';
+  rightToLeft: '0' | '1';
   networkStrength: '0' | '1' | '2';
   shortcutHome: string;
   shortcutExit: string;
@@ -63,6 +64,7 @@ function useConfig() {
     focusMode: '0',
     performanceMode: '0',
     networkStrength: '1',
+    rightToLeft: '0',
     shortcutHome: 'CTRL+ALT+H',
     shortcutExit: 'CTRL+ALT+E',
     shortcutPlayRandom: 'CTRL+ALT+G',
@@ -113,6 +115,7 @@ function useConfig() {
     shortcutPlayQuotes: storageJSON && typeof storageJSON.shortcutPlayQuotes !== 'undefined' ? storageJSON.shortcutPlayQuotes : defaultJSON.shortcutPlayQuotes,
     shortcutPlayDictionary: storageJSON && typeof storageJSON.shortcutPlayDictionary !== 'undefined' ? storageJSON.shortcutPlayDictionary : defaultJSON.shortcutPlayDictionary,
     shortcutGameRedo: storageJSON && typeof storageJSON.shortcutGameRedo !== 'undefined' ? storageJSON.shortcutGameRedo : defaultJSON.shortcutGameRedo,
+    rightToLeft: storageJSON && typeof storageJSON.rightToLeft !== 'undefined' ? storageJSON.rightToLeft : defaultJSON.rightToLeft,
   };
 
   return {

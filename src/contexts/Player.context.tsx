@@ -15,6 +15,7 @@ interface ContextType {
   isPatreon: boolean;
   setIsPatreon: (v: boolean) => void;
   getSessionData: () => void;
+  resetSessionData: () => void;
 
   // Queue Functionality
   acceptQueue: () => void;
@@ -78,12 +79,26 @@ export const PlayerProvider: FC = ({ children }) => {
     if (getData.authName && getData.authName === 'Guest') setIsGuest(true);
 
     if (data.token) Authentication.updateAccessToken(data.token);
+    
+    if (data.csrf) Authentication.updateCSRFToken(data.csrf);
 
     if (data.versionControl !== Config.versionControl) {
       toast.error(`Keymash version mismatch detected, please clear your cache!`);
       console.log(`[SERVER MISMATCH WITH CLIENT] Server v${data.versionControl} - Client v${Config.versionControl}`);
     }
   }, []);
+
+  const resetSessionData = useCallback(async () => {
+    const response = await axios.get(`${Config.oauthUrl}/logout`, {
+      withCredentials: true,
+      cancelToken: axiosCancelSource.current?.token,
+    });
+
+    if (response && response.status === 200) {
+      Authentication.updateAccessToken('');
+      getSessionData();
+    }
+  }, [ getSessionData ]);
 
   useEffect(() => {
     axiosCancelSource.current = axios.CancelToken.source();
@@ -244,6 +259,7 @@ export const PlayerProvider: FC = ({ children }) => {
         isPatreon,
         setIsPatreon,
         getSessionData,
+        resetSessionData,
 
         // Queue Functionality
         acceptQueue,

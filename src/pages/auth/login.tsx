@@ -55,7 +55,6 @@ const Login = () => {
       .then((response) => {
         if (!response.data.error) {
           getSessionData();
-          Authentication.updateAccessToken(response.data?.token || '');
           return setRedirect('/');
         } else return toast.error(response.data.error);
       })

@@ -41,6 +41,14 @@
     @apply leading-loose #{!important};
   }
 
+  &--rtl {
+    direction: rtl;
+  }
+
+  &--ltr {
+    direction: ltr;
+  }
+
   &--container {
     line-height: 0 !important;
     @apply p-8 bg-black bg-gray-775 shadow-lg rounded-b-2xl font-medium;
