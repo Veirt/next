@@ -10,7 +10,7 @@ const Social = () => {
     },
     {
       image: '/assets/buttons/github.svg',
-      href: 'https://github.com/keyma-sh/next',
+      href: 'https://github.com/KeymashGame/next',
     },
     {
       image: '/assets/buttons/merch.svg',
