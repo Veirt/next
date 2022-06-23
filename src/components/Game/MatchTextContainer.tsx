@@ -25,7 +25,7 @@ const MatchTextContainer = (props: IProps) => {
   const containerElement = useRef<HTMLDivElement | null>(null);
 
   // Config
-  const { smoothCaret, smoothCaretSpeed, matchTextType, matchContainerTransparent, hideInputBox, colorBlindMode, upscaleMatch, performanceMode, matchTextScroll } = useConfig();
+  const { smoothCaret, smoothCaretSpeed, matchTextType, matchContainerTransparent, hideInputBox, colorBlindMode, upscaleMatch, performanceMode, matchTextScroll, rightToLeft } = useConfig();
 
   // States
   const [input, setInput] = useState<string>(replayInput || '');
@@ -232,7 +232,7 @@ const MatchTextContainer = (props: IProps) => {
           A
         </div>
       </div>
-      <div className={`${!isReplay && matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'}`}>
+      <div className={`${!isReplay && matchContainerTransparent === '1' ? 'match--container-transparent' : 'match--container'} ${rightToLeft === '1' ? 'match--rtl' : 'match--ltr'}`}>
         <div ref={containerElement} className={`match--text ${matchTextTypeCSS || ''} ${upscaleMatchCSS || ''}  relative pointer-events-none overflow-y-hidden`}>
           <div
             ref={caretElement}

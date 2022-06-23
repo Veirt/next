@@ -384,7 +384,8 @@
       "shortcutPlayQuotes": "Play Now (Quotes)",
       "shortcutPlayDictionary": "Play Now (Dictionary)",
       "shortcutGameRedo": "Redo Match",
-      "shortcuts": "Keyboard Shortcuts"
+      "shortcuts": "Keyboard Shortcuts",
+      "rightToLeft": "Right to Left"
     }
   }
 }

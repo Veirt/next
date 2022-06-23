@@ -438,6 +438,16 @@ const SettingsFrame = (props: IProps) => {
               type: 'configBoolean',
             },
             {
+              title: 'page.profile.rightToLeft',
+              name: 'rightToLeft',
+              value: config.rightToLeft,
+              onChange: (v: string) => {
+                setUnsaved(true);
+                setConfig({ ...config, rightToLeft: String(v) as '0' | '1' });
+              },
+              type: 'configBoolean',
+            },
+            {
               title: 'page.profile.adsGameplay',
               name: 'adsGameplay',
               value: config.adsGameplay,

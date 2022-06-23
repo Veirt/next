@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { faDiscord, faGithub, faPatreon, faReddit, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Userbar from './Userbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretUp, faHome, faInfoCircle, faListAlt, faNewspaper, faStoreAlt, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp, faExternalLinkSquareAlt, faHome, faInfoCircle, faListAlt, faNewspaper, faStoreAlt, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { usePlayerContext } from '../contexts/Player.context';
 import { useRouter } from 'next/router';
 import Link from '../components/Uncategorized/Link';
@@ -55,6 +55,12 @@ const Levelbar = () => {
 
   const socials = [
     {
+      name: 'User Styles',
+      icon: faExternalLinkSquareAlt,
+      color: 'hover:text-orange-700',
+      link: 'https://userstyles.world/search?q=Keymash',
+    },
+    {
       name: 'Discord',
       icon: faDiscord,
       color: 'hover:text-orange-700',
@@ -88,7 +94,7 @@ const Levelbar = () => {
       name: 'GitHub',
       icon: faGithub,
       color: 'hover:text-gray-400',
-      link: 'https://github.com/Keyma-sh/next',
+      link: 'https://github.com/KeymashGame/next',
     },
   ];
 
