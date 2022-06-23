@@ -10,7 +10,6 @@ import { usePlayerContext } from '../../../contexts/Player.context';
 import useCSRF from '../../../hooks/useCSRF';
 import { Meta } from '../../../layout/Meta';
 import Base from '../../../templates/Base';
-import Authentication from '../../../utils/Authentication';
 
 interface IProps {
   code?: string;

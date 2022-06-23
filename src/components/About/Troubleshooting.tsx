@@ -1,4 +1,4 @@
-import Config from '../../Config';
+
 import { usePlayerContext } from '../../contexts/Player.context';
 
 const Component = () => {
@@ -50,4 +50,6 @@ const Component = () => {
       </div>
     </div>
   );
-);
+};
+
+export default Component;
