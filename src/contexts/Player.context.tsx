@@ -126,7 +126,7 @@ export const PlayerProvider: FC = ({ children }) => {
     notifySocket?.onError(() => console.log('[NotificationSocket] OnError'));
     notifySocket?.onDisconnect(() => console.log('[NotificationSocket] OnDisconnect'));
     notifySocket?.onConnect(() => {
-      console.log('Notification Socket Connceted');
+      console.log('Notification Socket Connected');
       notifySocket?.emit('joinNotifications', { playerToken });
       notifySocket?.on('updateNotifications', async (data: { unread: number; data: PlayerNotificationData[] }) => {
         setNotificationData(data.data);
@@ -192,7 +192,7 @@ export const PlayerProvider: FC = ({ children }) => {
       if (intervalQueue) clearInterval(intervalQueue);
     });
     queueSocket?.onConnect(() => {
-      console.log('Matchmaking Socket Connceted');
+      console.log('Matchmaking Socket Connected');
       queueSocket?.emit('joinQueue', { playerToken });
 
       queueSocket?.on('isBanned', (data: { message: string }) => toast.error(data.message));
