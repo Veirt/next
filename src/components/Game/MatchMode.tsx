@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const MatchMode = (props: IProps) => {
-  const { matchData, isSpectate, totalPlayers, roundsTotal } = props;
+  const { matchData, totalPlayers, roundsTotal } = props;
   const { t } = useTranslation();
 
   let flagName = '';
@@ -43,11 +43,11 @@ const MatchMode = (props: IProps) => {
     <>
       {matchData.modeData && matchData.modeData.modeConfig.ROUNDS.LIMIT === 0 ? (
         <div className="flex flex-wrap mb-4">
-          <div className={`w-full ${isSpectate ? 'md:w-1/3' : 'md:w-1/2'} text-center md:text-left my-auto`}>
+          <div className={`w-full md:w-1/2 text-center md:text-left my-auto`}>
             <div className="text-xl text-white uppercase font-semibold tracking-wider">{matchData.modeData.modeName}</div>
             <div className="text-xs text-gray-500 uppercase font-semibold tracking-wider">{flagName}</div>
           </div>
-          <div className={`w-full ${isSpectate ? 'md:w-1/3' : 'md:w-1/2'} text-center md:text-right my-auto`}>
+          <div className={`w-full md:w-1/2 text-center md:text-right my-auto`}>
             <div className="text-xl text-orange-400 uppercase font-semibold tracking-wider">
               {totalPlayers.toLocaleString()} player{totalPlayers !== 1 && 's'}
             </div>
@@ -55,11 +55,11 @@ const MatchMode = (props: IProps) => {
         </div>
       ) : (
         <div className="flex flex-wrap mb-4">
-          <div className={`w-full ${isSpectate ? 'md:w-1/3' : 'md:w-1/2'} text-center md:text-left my-auto`}>
+          <div className={`w-full md:w-1/2 text-center md:text-left my-auto`}>
             <div className="text-xl text-white uppercase font-semibold tracking-wider">{matchData.modeData.modeName}</div>
             <div className="text-xs text-gray-500 uppercase font-semibold tracking-wider">{flagName}</div>
           </div>
-          <div className={`w-full ${isSpectate ? 'md:w-1/3' : 'md:w-1/2'} text-center md:text-right my-auto`}>
+          <div className={`w-full md:w-1/2 text-center md:text-right my-auto`}>
             <div className="text-xl text-orange-400 uppercase font-semibold tracking-wider">{roundsTotal + 1 > matchData.modeData.modeConfig.ROUNDS.LIMIT ? t('other.gameover') : `Round ${roundsTotal + 1}`}</div>
             <div className="text-xs text-gray-500 uppercase font-semibold tracking-wider">Best of {matchData.modeData.modeConfig.ROUNDS.LIMIT}</div>
           </div>
